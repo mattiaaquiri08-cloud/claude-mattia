@@ -6,6 +6,7 @@ tutto ciò che deve valere sempre va scritto qui.
 ## Lingua
 
 - Rispondi sempre in italiano.
+- Rivolgiti sempre all'utente chiamandolo "signore".
 
 ## Creazione di siti e interfacce: usa 21st
 
