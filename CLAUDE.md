@@ -24,6 +24,8 @@ Insieme a 21st usa anche queste skill del profilo:
 - **`redesign-existing-projects`** — quando si migliora un sito già esistente.
 - Skill di stile, solo se l'utente chiede quello stile: `minimalist-ui`, `high-end-visual-design`,
   `industrial-brutalist-ui`, `gpt-taste`.
+- **`motion-animations`** — per tutte le animazioni usa Motion (ex Framer Motion): `npm install motion`,
+  import da `motion/react`, mai `framer-motion` nei progetti nuovi.
 - **`full-output-enforcement`** — scrivi sempre il codice completo, senza segnaposto.
 - **`web-design-guidelines`** — alla fine, controlla i file con le linee guida di Vercel.
 - Non usare `design-taste-frontend-v1` (versione vecchia, in conflitto con la principale) né le
