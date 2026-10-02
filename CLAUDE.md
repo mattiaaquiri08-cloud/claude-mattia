@@ -18,6 +18,18 @@ Quando ti viene chiesto di creare un sito, una pagina o un componente UI, usa le
    Cerca sempre nel catalogo prima di scrivere un componente da zero.
 4. **`21st-ui-review`** — alla fine, controlla accessibilità, responsive e coerenza.
 
+Insieme a 21st usa anche queste skill del profilo:
+- **`design-taste-frontend`** — sempre, per landing page, portfolio e restyling: fai la "design read",
+  imposta i tre parametri ed evita i cliché da sito generato dall'AI.
+- **`redesign-existing-projects`** — quando si migliora un sito già esistente.
+- Skill di stile, solo se l'utente chiede quello stile: `minimalist-ui`, `high-end-visual-design`,
+  `industrial-brutalist-ui`, `gpt-taste`.
+- **`full-output-enforcement`** — scrivi sempre il codice completo, senza segnaposto.
+- **`web-design-guidelines`** — alla fine, controlla i file con le linee guida di Vercel.
+- Non usare `design-taste-frontend-v1` (versione vecchia, in conflitto con la principale) né le
+  skill che generano immagini (`imagegen-frontend-*`, `image-to-code`, `brandkit`): qui non
+  è possibile generare immagini.
+
 Account e limiti (piano free):
 - La chiave API è nella variabile d'ambiente `API_KEY_21ST` (non scriverla mai nel codice o nei commit).
 - La ricerca nel catalogo è illimitata.
@@ -38,4 +50,4 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 
 ## Preferenze e lezioni apprese
 
-- Per i siti si usano le skill e i componenti di 21st (vedi sopra).
+- Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
