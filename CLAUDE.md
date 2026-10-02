@@ -55,3 +55,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
 - Semplicità e complessità: 50 e 50. Proponi la soluzione più adatta, ma se è complessa
   offri anche un'alternativa semplice e lascia scegliere all'utente.
+- Sito FLIPPER in `flipper/` (Vite + TypeScript + Motion vanilla, testo in HTML statico per la SEO).
+  La rotazione è una sequenza di 200 frame WebP su canvas guidata dallo scroll; per cambiare la
+  coreografia si modificano `STORY_DOCKS`/`STORY_SPIN` in `src/main.ts` e i dock nel CSS.
+- Il video 360° di FLIPPER non chiude perfettamente il giro: usare `flipper/scripts/estrai-frame.sh`,
+  che interpola i frame mancanti. Informazioni sul prodotto: email da info@flippersalvainfradito.it
+  e schede Amazon (il sito ufficiale e Amazon non sono raggiungibili dalla rete della sessione).
