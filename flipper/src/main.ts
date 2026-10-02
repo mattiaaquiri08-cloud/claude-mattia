@@ -122,7 +122,7 @@ canvas.height = CH;
 canvas.style.width = `${CW}px`;
 canvas.style.height = `${CH}px`;
 
-const seq = new FrameSequence(FRAMES, (i) => `/frames/${SET.dir}/${String(i).padStart(3, "0")}.webp`);
+const seq = new FrameSequence(FRAMES, (i) => `frames/${SET.dir}/${String(i).padStart(3, "0")}.webp`);
 
 let drawnFrame = -1;
 let drawnMix = -1;
