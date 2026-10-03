@@ -70,3 +70,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   (le foto dei profili pubblici si possono usare).
 - Bozze da mandare al cliente: file HTML unici offline (`npm run bozze` in `exotique-estetique/`),
   una versione PC e una smartphone con cornice di telefono. Preferenza dell'utente.
+- Link pubblici alle bozze: il repository è pubblico, quindi si usa
+  `https://rawcdn.githack.com/mattiaaquiri08-cloud/claude-mattia/<SHA-commit>/consegna/<file>.html`
+  (serve l'HTML correttamente; nuovo SHA a ogni aggiornamento). Gmail e Drive via connettore non
+  possono allegare file di qualche MB: mandare i link, non gli allegati.
