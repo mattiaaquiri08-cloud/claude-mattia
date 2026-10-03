@@ -27,3 +27,11 @@ npm run build    # produzione in dist/
   e cambia posizione con una dissolvenza; senza JavaScript la storia è testo statico.
 
 Per rigenerare i frame da un nuovo video: `scripts/estrai-frame.sh video.mp4`.
+
+## Bozza online
+
+A ogni push sul branch principale che tocca `flipper/`, il workflow
+`.github/workflows/pages.yml` costruisce il sito e pubblica `dist/` sul branch `gh-pages`.
+Indirizzo: https://mattiaaquiri08-cloud.github.io/claude-mattia/
+(una tantum: Settings → Pages → Source "Deploy from a branch", branch `gh-pages`, cartella `/`).
+Sulle pull request il workflow fa solo la build, come controllo.
