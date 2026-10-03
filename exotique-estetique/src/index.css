@@ -22,6 +22,7 @@
   --night-ink: #eeebe6;
   --night-soft: #a9a49e;
   --night-line: rgb(238 235 230 / 0.16);
+  --lacca-glow: #dd3f33;
   color-scheme: light;
 }
 
@@ -53,6 +54,7 @@
   --color-night-ink: var(--night-ink);
   --color-night-soft: var(--night-soft);
   --color-night-line: var(--night-line);
+  --color-lacca-glow: var(--lacca-glow);
   --font-display: 'Bodoni Moda Variable', 'Bodoni 72', Didot, Georgia, serif;
   --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -81,6 +83,18 @@
     color: var(--ink);
     font-family: var(--font-sans);
     font-feature-settings: 'ss01', 'cv11';
+  }
+  body {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
   }
   ::selection {
     background: var(--lacca);

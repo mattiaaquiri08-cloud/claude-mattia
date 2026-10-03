@@ -66,3 +66,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Dati verificati il 3/10/2026 (Google Maps e Treatwell), con fonte indicata nel file.
 - Con Motion, `whileInView` va messo su un contenitore non mascherato: un elemento traslato
   dentro un `overflow-hidden` non risulta mai visibile e l'animazione non parte.
+- Treatwell per Exotique & Estetique non funziona: niente link né recensioni Treatwell sul sito
+  (le foto dei profili pubblici si possono usare).
+- Bozze da mandare al cliente: file HTML unici offline (`npm run bozze` in `exotique-estetique/`),
+  una versione PC e una smartphone con cornice di telefono. Preferenza dell'utente.

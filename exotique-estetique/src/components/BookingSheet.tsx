@@ -44,7 +44,9 @@ function Sheet({ initialCategory, onClose }: { initialCategory?: string; onClose
   useEffect(() => {
     const prevFocus = document.activeElement as HTMLElement | null
     const el = panel.current
-    el?.querySelector<HTMLElement>('[data-autofocus]')?.focus()
+    // Su desktop il cursore va nel campo nome; su smartphone non apriamo la tastiera.
+    if (window.matchMedia('(pointer: fine)').matches) el?.querySelector<HTMLElement>('[data-autofocus]')?.focus()
+    else el?.focus()
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
       if (e.key === 'Tab' && el) {
@@ -104,6 +106,7 @@ function Sheet({ initialCategory, onClose }: { initialCategory?: string; onClose
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
+        tabIndex={-1}
         data-lenis-prevent
         className="absolute inset-x-0 bottom-0 flex max-h-[92svh] flex-col overflow-y-auto overscroll-contain bg-paper text-ink md:inset-y-0 md:left-auto md:right-0 md:max-h-none md:w-[min(32rem,100%)]"
         initial={hiddenPos}
@@ -183,6 +186,7 @@ function Sheet({ initialCategory, onClose }: { initialCategory?: string; onClose
             <input
               id={nameId}
               data-autofocus
+              name="nome"
               value={name}
               autoComplete="given-name"
               onChange={(e) => {
@@ -198,7 +202,7 @@ function Sheet({ initialCategory, onClose }: { initialCategory?: string; onClose
             />
             {error && (
               <p id={errId} className="text-[0.8125rem] text-lacca">
-                Scrivi il tuo nome, così sappiamo chi ricontattare.
+                Scrivi il tuo nome per inviare la richiesta: così sappiamo chi ricontattare.
               </p>
             )}
           </div>
@@ -209,7 +213,9 @@ function Sheet({ initialCategory, onClose }: { initialCategory?: string; onClose
             </label>
             <textarea
               id={noteId}
+              name="note"
               rows={3}
+              autoComplete="off"
               value={note}
               onChange={(e) => setNote(e.target.value)}
               className="resize-none border border-ink/30 bg-transparent px-4 py-3 text-[1rem] transition-colors focus:border-ink"

@@ -29,6 +29,8 @@ function Item({ p }: { p: (typeof photos)[number] }) {
         <img
           src={p.src}
           alt={p.alt}
+          width={720}
+          height={480}
           loading="lazy"
           decoding="async"
           className="size-full object-cover"

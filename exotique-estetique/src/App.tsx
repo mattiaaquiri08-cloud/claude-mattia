@@ -5,6 +5,8 @@ import { BookingContext, type BookingApi } from './components/booking-context'
 import { BookingSheet } from './components/BookingSheet'
 import { Gallery } from './components/Gallery'
 import { Hero } from './components/Hero'
+import { IntroContext } from './components/intro-context'
+import { Splash } from './components/Splash'
 import { Manifesto } from './components/Manifesto'
 import { MobileBar } from './components/MobileBar'
 import { Naomi } from './components/Naomi'
@@ -39,16 +41,39 @@ function useLenis(paused: boolean) {
   }, [paused])
 }
 
+const SPLASH_KEY = 'ee-splash-vista'
+
+function splashAlreadySeen() {
+  try {
+    return window.sessionStorage.getItem(SPLASH_KEY) === '1'
+  } catch {
+    return false
+  }
+}
+
 export default function App() {
+  // La splash compare una volta per sessione del browser.
+  const [introDone, setIntroDone] = useState(splashAlreadySeen)
+  // Resta montata fino alla fine della sua animazione di uscita.
+  const [needSplash] = useState(() => !splashAlreadySeen())
+  const finishIntro = useCallback(() => {
+    setIntroDone(true)
+    try {
+      window.sessionStorage.setItem(SPLASH_KEY, '1')
+    } catch {
+      /* archiviazione non disponibile: nessun problema */
+    }
+  }, [])
   const [booking, setBooking] = useState<{ open: boolean; cat?: string }>({ open: false })
   const open = useCallback((cat?: string) => setBooking({ open: true, cat }), [])
   const close = useCallback(() => setBooking((b) => ({ ...b, open: false })), [])
   const api = useMemo<BookingApi>(() => ({ open, close, isOpen: booking.open }), [open, close, booking.open])
 
-  useLenis(booking.open)
+  const locked = booking.open || !introDone
+  useLenis(locked)
   useEffect(() => {
-    document.documentElement.style.overflow = booking.open ? 'hidden' : ''
-  }, [booking.open])
+    document.documentElement.style.overflow = locked ? 'hidden' : ''
+  }, [locked])
 
   // Barra mobile: compare dopo la hero, sparisce sul blocco contatti.
   const { scrollY } = useScroll()
@@ -59,6 +84,7 @@ export default function App() {
 
   return (
     <MotionConfig reducedMotion="user">
+      <IntroContext.Provider value={introDone}>
       <BookingContext.Provider value={api}>
         <a
           href="#centro"
@@ -80,8 +106,10 @@ export default function App() {
         </main>
         <MobileBar visible={pastHero && !atVisit} />
         <BookingSheet isOpen={booking.open} initialCategory={booking.cat} onClose={close} />
+        {needSplash && <Splash onDone={finishIntro} />}
         <div className="grain" aria-hidden />
       </BookingContext.Provider>
+      </IntroContext.Provider>
     </MotionConfig>
   )
 }

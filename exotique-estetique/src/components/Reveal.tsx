@@ -40,11 +40,14 @@ export function MaskLines({
   className,
   delay = 0,
   animateOnMount = false,
+  play = true,
 }: {
   lines: ReactNode[]
   className?: string
   delay?: number
   animateOnMount?: boolean
+  /** Con animateOnMount: parte solo quando diventa true. */
+  play?: boolean
 }) {
   const line = {
     hidden: { y: '110%' },
@@ -54,7 +57,7 @@ export function MaskLines({
     <motion.span
       className={cn('block', className)}
       initial="hidden"
-      {...(animateOnMount ? { animate: 'show' } : { whileInView: 'show', viewport: { once: true, amount: 0.4 } })}
+      {...(animateOnMount ? { animate: play ? 'show' : 'hidden' } : { whileInView: 'show', viewport: { once: true, amount: 0.4 } })}
     >
       {lines.map((l, i) => (
         <span key={i} className="block overflow-hidden pb-[0.14em] -mb-[0.14em]">

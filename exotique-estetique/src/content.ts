@@ -17,7 +17,7 @@ import naomi from './assets/photo/real/naomi.webp'
  *  - Google Maps, scheda "Exotique & Estetique": valutazione 4,6 su 34 recensioni,
  *    telefono, orari, descrizione scritta dalla titolare, recensioni.
  *  - Treatwell, profili "exotique-estetique" ed "exotique-estetique-1": elenco dei
- *    servizi con durata, foto del centro e di Naomi, una recensione.
+ *    servizi con durata, foto del centro e di Naomi.
  *    Treatwell non mostra prezzi e i profili non accettano prenotazioni.
  */
 
@@ -43,7 +43,7 @@ export type Review = {
   author: string
   /** Estratto fedele del testo originale (i tagli sono segnati con "…"). */
   text: string
-  source: 'Google' | 'Treatwell'
+  source: 'Google'
 }
 
 const s = (name: string, duration: number | null): Service => ({ name, duration, price: null })
@@ -216,7 +216,7 @@ export const categories: Category[] = [
   },
 ]
 
-/* Recensioni reali: Google Maps (scheda del centro) e Treatwell. */
+/* Recensioni reali dalla scheda Google Maps del centro (scelta dell'utente: niente Treatwell). */
 export const reviews: Review[] = [
   {
     author: 'Paola D.',
@@ -237,11 +237,6 @@ export const reviews: Review[] = [
     author: 'Monica C.',
     source: 'Google',
     text: 'Naomi brava e cordiale. Ha rimesso a nuovo i miei piedi.',
-  },
-  {
-    author: 'Lorenza',
-    source: 'Treatwell',
-    text: 'Naomi è stata bravissima! Piega fantastica! Accoglienza meravigliosa! Tornerò presto!',
   },
 ]
 

@@ -23,7 +23,9 @@ Tutto parte dalla fotografia del salone:
 - **movimento**: la hero si apre da una fessura con le proporzioni di uno specchio; le immagini scendono "a tenda"; i titoli salgono da una maschera; il manifesto si accende parola per parola. Tutto rispetta `prefers-reduced-motion`;
 - **tema chiaro e scuro** automatici in base al dispositivo.
 
-Percorso: Hero → Il centro → Trattamenti → Lo spazio (foto esplorabile) → Naomi → Listino → Recensioni → Contatti e prenotazione.
+Apertura: splash di circa 3 secondi (una volta per sessione, si salta con un clic): la linea rossa dello specchio diventa la "&" e il nome sale lettera per lettera, poi la tenda si alza sulla hero.
+
+Percorso: Hero → Il centro → Trattamenti → Lo spazio (foto esplorabile) → Le stanze del centro (galleria) → Naomi → Listino → Recensioni → Contatti e prenotazione.
 
 ## Contenuti: un solo file
 
@@ -34,7 +36,7 @@ Fonti verificate il 3 ottobre 2026:
 |---|---|---|
 | Indirizzo, telefono 388 090 3695, orari mar-sab 9:30-18:00 | Google Maps | |
 | Valutazione 4,6 su 34 recensioni | Google Maps | |
-| Recensioni (5 estratti fedeli) | Google Maps, Treatwell | nomi abbreviati per riservatezza |
+| Recensioni (4 estratti fedeli) | Google Maps | nomi abbreviati; per scelta del cliente nessuna recensione o link Treatwell |
 | Servizi e durate (84 trattamenti) | Treatwell | Treatwell non pubblica i prezzi: il listino mostra le durate |
 | Foto del centro e di Naomi | Treatwell, Google Maps | |
 | Frase e principi di Naomi | descrizione scritta dalla titolare su Google | |
@@ -51,7 +53,14 @@ Per aggiungere i prezzi basta compilare `price` nei servizi: il listino li mostr
 
 Dopo aver scelto il dominio, rendere assoluto l'URL di `og:image` in `index.html` (es. `https://dominio.it/og.jpg`).
 
-`npm run build:single` produce invece `dist-single/index.html`, un unico file apribile anche offline.
+## Bozze da inviare (offline)
+
+`npm run bozze` crea in `../consegna/` due file HTML unici, apribili senza internet e senza server:
+
+- `Exotique-Estetique_bozza_PC.html`: il sito completo;
+- `Exotique-Estetique_bozza_smartphone.html`: su computer mostra il sito dentro una cornice di telefono, su smartphone lo apre a tutto schermo.
+
+Si possono mandare via WhatsApp, email o Drive: chi li riceve li apre con un doppio clic (o con il browser del telefono).
 
 ## Immagini
 

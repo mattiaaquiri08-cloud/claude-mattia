@@ -17,7 +17,7 @@ const links = [
 
 export function Wordmark({ className }: { className?: string }) {
   return (
-    <span className={cn('font-display whitespace-nowrap tracking-[-0.01em]', className)}>
+    <span translate="no" className={cn('font-display whitespace-nowrap tracking-[-0.01em]', className)}>
       Exotique <em className="text-lacca">&amp;</em> Estetique
     </span>
   )
