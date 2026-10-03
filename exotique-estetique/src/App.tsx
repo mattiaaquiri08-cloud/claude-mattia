@@ -3,6 +3,7 @@ import Lenis from 'lenis'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { BookingContext, type BookingApi } from './components/booking-context'
 import { BookingSheet } from './components/BookingSheet'
+import { Gallery } from './components/Gallery'
 import { Hero } from './components/Hero'
 import { Manifesto } from './components/Manifesto'
 import { MobileBar } from './components/MobileBar'
@@ -71,6 +72,7 @@ export default function App() {
           <Manifesto />
           <Treatments />
           <Space />
+          <Gallery />
           <Naomi />
           <PriceList />
           <Reviews />

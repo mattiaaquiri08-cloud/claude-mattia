@@ -101,7 +101,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 1.35, ease: EASE }}
           >
-            Viso, corpo, mani, piedi e capelli in un unico spazio luminoso, curato in ogni dettaglio.
+            Viso, corpo, laser, unghie e capelli in un unico spazio luminoso, curato in ogni dettaglio.
           </motion.p>
 
           <motion.div

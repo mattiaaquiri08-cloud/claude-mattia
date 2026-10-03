@@ -1,14 +1,15 @@
 import { motion, useScroll, useTransform } from 'motion/react'
 import { useRef } from 'react'
 import postazione from '../assets/photo/postazione.webp'
-import { business, naomiPhoto } from '../content'
+import { business, naomiPhoto, naomiQuote } from '../content'
 import { EASE } from '../lib'
 import { ClipReveal, MaskLines, Reveal } from './Reveal'
 
+/* Dalla descrizione scritta da Naomi sulla scheda Google del centro. */
 const principles = [
-  { word: 'Ascolto', text: 'Ogni trattamento comincia da una conversazione su di te e su ciò che desideri.' },
-  { word: 'Precisione', text: 'Gesti accurati e prodotti professionali, senza lasciare nulla al caso.' },
-  { word: 'Tempo', text: 'Un appuntamento è un momento dedicato, da vivere senza fretta.' },
+  { word: 'Qualità', text: 'Solo prodotti e trattamenti di alta qualità, che rispettano la salute della pelle e del corpo.' },
+  { word: 'Accoglienza', text: 'Un ambiente accogliente e un servizio curato, che riflette la passione per l\u2019estetica.' },
+  { word: 'Benessere', text: 'Non solo migliorare l\u2019aspetto esteriore, ma promuovere il benessere generale di chi viene in salone.' },
 ]
 
 export function Naomi() {
@@ -21,7 +22,7 @@ export function Naomi() {
       <div className="wrap grid gap-14 md:grid-cols-12 md:gap-10">
         <div className="md:col-span-5 lg:col-span-5">
           <div ref={frame}>
-          <ClipReveal className="relative aspect-[4/5] overflow-hidden border-[6px] border-ink bg-night md:aspect-[3/4.4]">
+          <ClipReveal className="relative aspect-[4/5] overflow-hidden border-[6px] border-ink bg-night md:max-w-[28rem]">
             <motion.img
               src={naomiPhoto ?? postazione}
               alt={
@@ -29,7 +30,7 @@ export function Naomi() {
                   ? `Naomi, titolare di ${business.name}.`
                   : 'Una postazione del centro: specchio a tutta altezza e poltrona in pelle nera.'
               }
-              className="absolute inset-x-0 -top-[7%] h-[114%] w-full object-cover"
+              className="absolute inset-x-0 -top-[7%] h-[114%] w-full object-cover [filter:saturate(0.8)_contrast(1.03)]"
               style={{ y }}
               loading="lazy"
               decoding="async"
@@ -46,11 +47,20 @@ export function Naomi() {
           >
             <MaskLines lines={[<em key="n">Naomi</em>]} />
           </h2>
-          <Reveal className="mt-10 max-w-[44ch]">
+          <Reveal className="mt-10 max-w-[46ch]">
             <p className="text-[1.1875rem] leading-relaxed text-ink">
-              Dietro {business.name} c&apos;è Naomi. Ha voluto un centro in cui ogni cliente si senta accolta con
-              calma e seguita con precisione, un appuntamento dopo l&apos;altro.
+              Capelli, unghie, massaggi, laser, ciglia: dietro ogni trattamento di {business.name} c&apos;è Naomi.
+              Una cliente l&apos;ha descritta così: &ldquo;lei è 10 persone in una&rdquo;.
             </p>
+          </Reveal>
+
+          <Reveal className="mt-12" delay={0.1}>
+            <figure className="border-l-2 border-lacca pl-6">
+              <blockquote className="font-display text-[clamp(1.5rem,2.6vw,2.1rem)] italic leading-[1.25]">
+                &ldquo;{naomiQuote}&rdquo;
+              </blockquote>
+              <figcaption className="mt-4 text-[0.875rem] text-ink-soft">Naomi, titolare</figcaption>
+            </figure>
           </Reveal>
 
           <ul className="mt-14 border-t border-line">

@@ -61,9 +61,6 @@ export const Visit = forwardRef<HTMLElement>(function Visit(_, ref) {
                 <div>
                   <dt className="text-[0.8125rem] text-night-soft">Telefono</dt>
                   <dd className="mt-1 flex flex-col gap-1">
-                    <a href={business.phone.href} className="tabular-nums transition-opacity hover:opacity-70">
-                      {business.phone.display}
-                    </a>
                     <a href={business.mobile.href} className="tabular-nums transition-opacity hover:opacity-70">
                       {business.mobile.display}
                     </a>
@@ -78,14 +75,14 @@ export const Visit = forwardRef<HTMLElement>(function Visit(_, ref) {
                     {business.hours ? (
                       <ul>
                         {business.hours.map((h) => (
-                          <li key={h.days} className="flex justify-between gap-6">
+                          <li key={h.days} className="flex justify-between gap-6 py-0.5">
                             <span>{h.days}</span>
                             <span className="tabular-nums">{h.time}</span>
                           </li>
                         ))}
                       </ul>
                     ) : (
-                      <span>Su appuntamento. Scrivici su WhatsApp per la prima disponibilità.</span>
+                      <span>Su appuntamento.</span>
                     )}
                   </dd>
                 </div>
@@ -106,11 +103,6 @@ export const Visit = forwardRef<HTMLElement>(function Visit(_, ref) {
               <li>
                 <a href={business.facebookUrl} target="_blank" rel="noopener noreferrer" className="hover:text-night-ink">
                   Facebook
-                </a>
-              </li>
-              <li>
-                <a href={business.treatwellUrl} target="_blank" rel="noopener noreferrer" className="hover:text-night-ink">
-                  Treatwell
                 </a>
               </li>
               <li>

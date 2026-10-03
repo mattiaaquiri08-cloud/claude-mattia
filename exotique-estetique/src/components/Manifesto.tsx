@@ -56,7 +56,7 @@ export function Manifesto() {
             </div>
             <div className="border-t border-line pt-4">
               <dt className="text-ink-soft">Cosa</dt>
-              <dd className="mt-1 text-ink">Estetica, unghie e capelli</dd>
+              <dd className="mt-1 text-ink">Centro estetico e parrucchiere</dd>
             </div>
           </motion.dl>
         </div>

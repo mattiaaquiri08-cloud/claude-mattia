@@ -7,6 +7,7 @@ import { CURTAIN, EASE, cn } from '../lib'
 import { useBooking } from './booking-context'
 import { Button } from './Button'
 import { MaskLines } from './Reveal'
+import { showInPriceList } from './price-events'
 
 function plural(n: number) {
   return n === 1 ? '1 servizio' : `${n} servizi`
@@ -25,7 +26,7 @@ export function Treatments() {
           id="trattamenti-titolo"
           className="font-display max-w-[16ch] text-[clamp(2.6rem,6vw,5.25rem)] leading-[1.02] tracking-[-0.02em]"
         >
-          <MaskLines lines={['Cinque mondi,', <em key="e">una sola cura.</em>]} />
+          <MaskLines lines={['Sei mondi,', <em key="e">una sola cura.</em>]} />
         </h2>
 
         <div className="mt-16 grid gap-12 md:mt-24 lg:grid-cols-12 lg:gap-16">
@@ -99,7 +100,7 @@ export function Treatments() {
                             </div>
                             <p className="max-w-[46ch] text-[1.0625rem] leading-relaxed text-ink-soft">{c.intro}</p>
                             <ul className="mt-6 flex flex-wrap gap-2">
-                              {c.services.map((s) => (
+                              {c.services.slice(0, 5).map((s) => (
                                 <li
                                   key={s.name}
                                   className="border border-line px-3.5 py-2 text-[0.875rem] text-ink"
@@ -108,6 +109,15 @@ export function Treatments() {
                                 </li>
                               ))}
                             </ul>
+                            {c.services.length > 5 && (
+                              <a
+                                href="#listino"
+                                onClick={() => showInPriceList(c.id)}
+                                className="mt-4 inline-block text-[0.875rem] text-ink underline decoration-line underline-offset-4 transition-colors hover:decoration-ink"
+                              >
+                                Tutti i {c.services.length} trattamenti nel listino
+                              </a>
+                            )}
                           </div>
                           <Button variant="ink" onClick={() => open(c.id)}>
                             Prenota

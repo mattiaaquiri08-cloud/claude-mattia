@@ -27,20 +27,33 @@ Percorso: Hero → Il centro → Trattamenti → Lo spazio (foto esplorabile) �
 
 ## Contenuti: un solo file
 
-Tutti i dati sono in [`src/content.ts`](src/content.ts), con la fonte di ogni campo. **Nessun dato commerciale è inventato**: i campi non verificabili sono `null` o liste vuote e il sito mostra uno stato dedicato.
+Tutti i dati sono in [`src/content.ts`](src/content.ts), con la fonte di ogni campo. **Nessun dato commerciale è inventato.**
+Fonti verificate il 3 ottobre 2026:
 
-| Dato | Stato | Cosa fare |
+| Dato | Fonte | Note |
 |---|---|---|
-| Indirizzo, servizi offerti | Verificati (Treatwell) | - |
-| Prenotazione online Treatwell | Non attiva sul profilo | Le CTA "Prenota ora" aprono una richiesta via WhatsApp/telefono. Se Treatwell viene riattivato, impostare `treatwellBookingUrl` |
-| Telefoni 06 3089 1368 e 388 090 3695 | Da directory pubbliche | **Confermare con Naomi**, e verificare che il cellulare usi WhatsApp |
-| Orari | Non verificati | Compilare `business.hours` |
-| Prezzi e durate | Non verificati | Compilare `price` e `duration` di ogni servizio dal listino Treatwell |
-| Recensioni e valutazione | Non verificate | Compilare `reviews` e `rating` copiando testi reali da Google/Treatwell |
-| Foto di Naomi | Non disponibile | Salvare `src/assets/photo/naomi.webp` e impostare `naomiPhoto` |
+| Indirizzo, telefono 388 090 3695, orari mar-sab 9:30-18:00 | Google Maps | |
+| Valutazione 4,6 su 34 recensioni | Google Maps | |
+| Recensioni (5 estratti fedeli) | Google Maps, Treatwell | nomi abbreviati per riservatezza |
+| Servizi e durate (84 trattamenti) | Treatwell | Treatwell non pubblica i prezzi: il listino mostra le durate |
+| Foto del centro e di Naomi | Treatwell, Google Maps | |
+| Frase e principi di Naomi | descrizione scritta dalla titolare su Google | |
+| Prenotazione online | - | i profili Treatwell non accettano prenotazioni: le CTA aprono WhatsApp e telefono |
 
-I testi della sezione Naomi (filosofia del centro) sono una proposta da far approvare alla titolare.
+Per aggiungere i prezzi basta compilare `price` nei servizi: il listino li mostra al posto della durata.
+
+## Pubblicazione su Cloudflare Pages
+
+- Root directory: `exotique-estetique`
+- Build command: `npm run build`
+- Output directory: `dist`
+- `public/_headers` imposta la cache lunga sugli asset con hash.
+
+Dopo aver scelto il dominio, rendere assoluto l'URL di `og:image` in `index.html` (es. `https://dominio.it/og.jpg`).
+
+`npm run build:single` produce invece `dist-single/index.html`, un unico file apribile anche offline.
 
 ## Immagini
 
-`src/assets/photo/` contiene la foto del salone in versioni responsive (AVIF/WebP) e i ritagli dei dettagli usati nelle sezioni. Tutte provengono dalla fotografia fornita: nessuna immagine stock o generata.
+`src/assets/photo/` contiene la foto della hero in versioni responsive (AVIF/WebP) e i suoi ritagli: nessuna immagine stock o generata.
+Le foto in `src/assets/photo/real/` provengono dai profili pubblici del centro (Treatwell, Google Maps): verificarne con la titolare l’uso sul sito.
