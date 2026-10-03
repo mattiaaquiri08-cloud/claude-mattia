@@ -1,8 +1,6 @@
 import { motion, useScroll, useTransform, type MotionValue } from 'motion/react'
 import { useRef } from 'react'
-import specchio from '../assets/photo/specchio.webp'
 import { EASE } from '../lib'
-import { ClipReveal } from './Reveal'
 
 const text =
   'Un centro estetico moderno a La Storta, dove viso, corpo, mani e capelli ricevono lo stesso tempo e la stessa attenzione.'
@@ -20,10 +18,7 @@ function Word({ word, progress, range }: { word: string; progress: MotionValue<n
 
 export function Manifesto() {
   const ref = useRef<HTMLParagraphElement>(null)
-  const frame = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start 85%', 'end 45%'] })
-  const { scrollYProgress: frameProgress } = useScroll({ target: frame, offset: ['start end', 'end start'] })
-  const imgY = useTransform(frameProgress, [0, 1], ['-8%', '8%'])
   const words = text.split(' ')
 
   return (
@@ -32,7 +27,7 @@ export function Manifesto() {
         Il centro
       </h2>
       <div className="grid gap-16 md:grid-cols-12 md:gap-10">
-        <div className="md:col-span-8 lg:col-span-8">
+        <div className="md:col-span-11 lg:col-span-10">
           <p
             ref={ref}
             className="font-display text-[clamp(2rem,4.6vw,4.1rem)] leading-[1.12] tracking-[-0.015em] text-ink"
@@ -61,20 +56,6 @@ export function Manifesto() {
           </motion.dl>
         </div>
 
-        <div className="md:col-span-4 md:col-start-9 md:pt-40 lg:col-span-3 lg:col-start-10">
-          <div ref={frame} className="mx-auto w-[62%] max-w-[17rem] md:w-full">
-          <ClipReveal className="relative aspect-[9/22] overflow-hidden border-[6px] border-ink">
-            <motion.img
-              src={specchio}
-              alt="Un dettaglio dell'interno del centro."
-              className="absolute inset-x-0 -top-[8%] h-[116%] w-full object-cover"
-              style={{ y: imgY }}
-              loading="lazy"
-              decoding="async"
-            />
-          </ClipReveal>
-          </div>
-        </div>
       </div>
     </section>
   )
