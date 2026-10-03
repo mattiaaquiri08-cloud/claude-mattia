@@ -25,7 +25,7 @@ Tutto parte dalla fotografia del salone:
 
 Apertura: splash di circa 3 secondi (una volta per sessione, si salta con un clic): la linea rossa dello specchio diventa la "&" e il nome sale lettera per lettera, poi la tenda si alza sulla hero.
 
-Percorso: Hero → Il centro → Trattamenti → Lo spazio (foto esplorabile) → Le stanze del centro (galleria) → Naomi → Listino → Recensioni → Contatti e prenotazione.
+Percorso: Hero → Il centro → Trattamenti → Le stanze del centro (galleria) → Naomi → Listino → Recensioni → Contatti e prenotazione.
 
 ## Contenuti: un solo file
 

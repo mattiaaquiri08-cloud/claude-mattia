@@ -66,7 +66,7 @@ export function Manifesto() {
           <ClipReveal className="relative aspect-[9/22] overflow-hidden border-[6px] border-ink">
             <motion.img
               src={specchio}
-              alt="Uno degli specchi a tutta altezza del centro, con la sua cornice nera."
+              alt="Un dettaglio dell'interno del centro."
               className="absolute inset-x-0 -top-[8%] h-[116%] w-full object-cover"
               style={{ y: imgY }}
               loading="lazy"
@@ -74,9 +74,6 @@ export function Manifesto() {
             />
           </ClipReveal>
           </div>
-          <p className="mx-auto mt-4 w-[62%] max-w-[17rem] text-[0.8125rem] leading-snug text-ink-soft md:w-full">
-            Gli specchi del centro, a tutta altezza.
-          </p>
         </div>
       </div>
     </section>

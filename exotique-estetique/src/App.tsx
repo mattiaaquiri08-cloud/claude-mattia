@@ -13,7 +13,6 @@ import { Naomi } from './components/Naomi'
 import { Nav } from './components/Nav'
 import { PriceList } from './components/PriceList'
 import { Reviews } from './components/Reviews'
-import { Space } from './components/Space'
 import { Treatments } from './components/Treatments'
 import { Visit } from './components/Visit'
 
@@ -97,7 +96,6 @@ export default function App() {
           <Hero />
           <Manifesto />
           <Treatments />
-          <Space />
           <Gallery />
           <Naomi />
           <PriceList />

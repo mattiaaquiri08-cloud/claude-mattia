@@ -72,6 +72,7 @@ export function Gallery() {
   return (
     <section
       ref={wrap}
+      id="spazio"
       aria-labelledby="galleria-titolo"
       className="relative border-t border-line"
       style={pinned ? { height: `calc(100vh + ${distance}px)` } : undefined}
