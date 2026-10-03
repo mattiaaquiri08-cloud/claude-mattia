@@ -55,3 +55,10 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
 - Semplicità e complessità: 50 e 50. Proponi la soluzione più adatta, ma se è complessa
   offri anche un'alternativa semplice e lascia scegliere all'utente.
+- Rete del container ristretta: Treatwell, Google Maps, Facebook e Fresha sono bloccati (solo
+  WebSearch funziona). Per dati reali (prezzi, recensioni, foto) chiedere all'utente di aggiungere
+  i domini in Network access dell'ambiente, oppure di incollare i dati.
+- Sito Exotique & Estetique in `exotique-estetique/`: tutti i contenuti in `src/content.ts`;
+  i dati non verificati restano `null` e il sito li gestisce senza inventare nulla.
+- Con Motion, `whileInView` va messo su un contenitore non mascherato: un elemento traslato
+  dentro un `overflow-hidden` non risulta mai visibile e l'animazione non parte.

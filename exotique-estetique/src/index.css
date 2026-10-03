@@ -1,0 +1,164 @@
+@import '@fontsource-variable/bodoni-moda/opsz.css';
+@import '@fontsource-variable/bodoni-moda/opsz-italic.css';
+@import '@fontsource-variable/geist/wght.css';
+@import 'tailwindcss';
+
+/*
+ * Palette ricavata dalla fotografia del centro:
+ * pareti porcellana, cornici e poltrone nere, cassettiera e smalti rosso lacca.
+ * Una sola tinta d'accento (lacca) su tutto il sito. Raggi a zero ovunque,
+ * come le cornici degli specchi.
+ */
+:root {
+  --paper: #f3f2ef;
+  --paper-2: #e8e6e1;
+  --ink: #151414;
+  --ink-soft: #4b4846;
+  --line: rgb(21 20 20 / 0.14);
+  --lacca: #b3201c;
+  --lacca-ink: #fbf8f5;
+  --night: #151414;
+  --night-2: #1f1d1c;
+  --night-ink: #eeebe6;
+  --night-soft: #a9a49e;
+  --night-line: rgb(238 235 230 / 0.16);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #121111;
+    --paper-2: #1c1b1a;
+    --ink: #eeebe6;
+    --ink-soft: #a9a49e;
+    --line: rgb(238 235 230 / 0.14);
+    --lacca: #dd3f33;
+    --lacca-ink: #fbf8f5;
+    --night: #0c0b0b;
+    --night-2: #181716;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+  --color-lacca: var(--lacca);
+  --color-lacca-ink: var(--lacca-ink);
+  --color-night: var(--night);
+  --color-night-2: var(--night-2);
+  --color-night-ink: var(--night-ink);
+  --color-night-soft: var(--night-soft);
+  --color-night-line: var(--night-line);
+  --font-display: 'Bodoni Moda Variable', 'Bodoni 72', Didot, Georgia, serif;
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-curtain: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    scroll-padding-top: 5rem;
+  }
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: clip;
+  }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  ::selection {
+    background: var(--lacca);
+    color: var(--lacca-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--lacca);
+    outline-offset: 3px;
+  }
+  img {
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+}
+
+@layer components {
+  /*
+   * Bodoni Moda ha un asse ottico: in automatico ai corpi grandi i filetti
+   * diventano quasi invisibili sugli schermi. Lo fissiamo a valori più robusti.
+   */
+  .font-display {
+    font-optical-sizing: none;
+    font-variation-settings: 'opsz' 22;
+    font-kerning: normal;
+  }
+  .opsz-xl {
+    font-variation-settings: 'opsz' 40;
+  }
+  .wrap {
+    width: 100%;
+    max-width: 1400px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .wrap {
+      padding-inline: 2.5rem;
+    }
+  }
+  @media (min-width: 1280px) {
+    .wrap {
+      padding-inline: 4rem;
+    }
+  }
+
+  /* Linea di guida puntinata del listino */
+  .leader {
+    flex: 1 1 auto;
+    min-width: 1.5rem;
+    height: 1px;
+    transform: translateY(-0.3em);
+    background-image: radial-gradient(circle, currentColor 0.6px, transparent 0.8px);
+    background-size: 5px 1px;
+    background-repeat: repeat-x;
+    opacity: 0.45;
+  }
+
+  /* Grana leggera, fissa: non ridisegna durante lo scroll */
+  .grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 70;
+    opacity: 0.045;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  @media (prefers-color-scheme: dark) {
+    .grain {
+      mix-blend-mode: screen;
+      opacity: 0.035;
+    }
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
