@@ -1,5 +1,6 @@
 import "@fontsource-variable/geist";
 import "@fontsource-variable/geist-mono";
+import "@fontsource-variable/bricolage-grotesque";
 import "./style.css";
 import { animate, inView, scroll, stagger } from "motion";
 import { FrameSequence } from "./sequence";
@@ -11,7 +12,7 @@ import { FrameSequence } from "./sequence";
 const FRAMES = 200; // un giro completo, 1,8° per frame
 const DEG_PER_FRAME = 360 / FRAMES;
 const BASELINE = 0.9667; // dove la base a disco tocca il "pavimento" (frazione dell'altezza)
-const REFLECTION = 0.24; // altezza del riflesso, frazione dell'altezza del frame
+const FLOOR = 0.06; // spazio sotto il frame per l'ombra a terra
 const GLIDE_MS = 750; // passaggio da un dock all'altro
 const FRAME_TAU = 0.085; // inerzia della rotazione in secondi: bassa = risposta immediata
 
@@ -52,6 +53,23 @@ const STORY_SPIN: Array<[number, number]> = [
   [1, 900],
 ];
 
+/* Colori: ogni scena ha uno sfondo e un colore di FLIPPER (tra quelli in cui
+ * viene davvero prodotto). Cambiano insieme con lo scroll.
+ * Storia: [inizio della scena (progresso), sfondo, colore di FLIPPER]. */
+const STORY_COLORS: Array<[number, string, string]> = [
+  [0, "#FFD23F", "#1F4C9E"], // giallo / Blu
+  [0.1, "#FF8C42", "#3EB3D3"], // arancio / Aqua
+  [0.255, "#FF5A5F", "#F0CD2C"], // corallo / Giallo
+  [0.345, "#FF7EB6", "#1F4C9E"], // rosa / Blu
+  [0.415, "#4FB3FF", "#EE7A2B"], // azzurro / Arancione
+  [0.505, "#2EC4B6", "#D2357D"], // turchese / Fucsia
+  [0.625, "#7BD86A", "#EF6F5C"], // verde / Corallo
+  [0.71, "#FFB627", "#1F4C9E"], // mango / Blu
+  [0.835, "#3DCCC7", "#F0CD2C"], // mare / Giallo
+  [0.935, "#FFD23F", "#62C6B8"], // giallo / Acqua Marina
+];
+const COLOR_FADE = 0.035; // durata del passaggio di colore (in progresso della storia)
+
 /* -------------------------------------------------------------------------
  * Utilità
  * ---------------------------------------------------------------------- */
@@ -66,6 +84,26 @@ const lerpRect = (a: Rect, b: Rect, t: number): Rect => ({
   cy: lerp(a.cy, b.cy, t),
   h: lerp(a.h, b.h, t),
 });
+type RGB = [number, number, number];
+/* Colore di FLIPPER: tinta "color" (s = intensità), più due ritocchi per i
+ * colori che una tinta non può dare: Bianco (lift) e Nero (dark). */
+type Tint = { c: RGB; s: number; lift: number; dark: number };
+const hex = (h: string): RGB => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16)) as RGB;
+const mixRGB = (a: RGB, b: RGB, t: number): RGB => [lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t)];
+const mixTint = (a: Tint, b: Tint, t: number): Tint => ({
+  c: mixRGB(a.c, b.c, t),
+  s: lerp(a.s, b.s, t),
+  lift: lerp(a.lift, b.lift, t),
+  dark: lerp(a.dark, b.dark, t),
+});
+const css = (c: RGB) => `rgb(${Math.round(c[0])}, ${Math.round(c[1])}, ${Math.round(c[2])})`;
+function tintOf(color: string, mode = ""): Tint {
+  if (mode === "silver") return { c: [190, 190, 190], s: 0, lift: 0, dark: 0 };
+  if (mode === "white") return { c: [255, 255, 255], s: 0, lift: 0.55, dark: 0 };
+  if (mode === "black") return { c: [30, 30, 30], s: 0, lift: 0, dark: 0.8 };
+  return { c: hex(color), s: 1, lift: 0, dark: 0 };
+}
+
 const toRect = (r: DOMRect): Rect => ({ cx: r.left + r.width / 2, cy: r.top + r.height / 2, h: r.height });
 
 function piecewise(points: Array<[number, number]>, x: number) {
@@ -96,6 +134,10 @@ const hud = $<HTMLElement>(".hud");
 const hudDeg = $<HTMLElement>(".hud-deg");
 const steps = $$<HTMLElement>(".step");
 const ctx = canvas.getContext("2d", { alpha: true })!;
+const bgLayer = $<HTMLElement>(".bg-layer");
+const nav = $<HTMLElement>(".nav");
+const themeMeta = $<HTMLMetaElement>('meta[name="theme-color"]');
+const swatches = $$<HTMLButtonElement>(".swatch");
 
 const stageDocks = new Map<string, HTMLElement>(
   $$<HTMLElement>("[data-stage-dock]").map((el) => [el.dataset.stageDock!, el]),
@@ -116,67 +158,93 @@ const beats: Beat[] = $$<HTMLElement>(".beat").map((el) => ({
  * ---------------------------------------------------------------------- */
 
 const CW = SET.w;
-const CH = Math.round(SET.h * (1 + REFLECTION));
+const CH = Math.round(SET.h * (1 + FLOOR));
 canvas.width = CW;
 canvas.height = CH;
 canvas.style.width = `${CW}px`;
 canvas.style.height = `${CH}px`;
 
+// Il frame (o i due frame in dissolvenza) si compone prima qui, poi si colora.
+const prod = document.createElement("canvas");
+prod.width = SET.w;
+prod.height = SET.h;
+const pctx = prod.getContext("2d")!;
+
 const seq = new FrameSequence(FRAMES, (i) => `frames/${SET.dir}/${String(i).padStart(3, "0")}.webp`);
 
-let drawnFrame = -1;
-let drawnMix = -1;
+let drawnKey = "";
 
-function draw(frame: number) {
+function draw(frame: number, tint: Tint) {
   const f = ((frame % FRAMES) + FRAMES) % FRAMES;
   const i0 = Math.floor(f);
-  // Crossfade tra due frame adiacenti: la rotazione resta continua anche
+  // Dissolvenza tra due frame adiacenti: la rotazione resta continua anche
   // tra un frame e l'altro (1,8°), senza scatti a scroll lento.
   const mix = Math.round((f - i0) * 24) / 24;
-  if (i0 === drawnFrame && mix === drawnMix) return;
-
   const a = seq.nearest(i0);
   if (!a) return;
   const b = mix > 0 ? seq.exact((i0 + 1) % FRAMES) : null;
 
+  const key = `${seq.has(i0) ? i0 : "x" + seq.loaded}|${b ? mix : 0}|${css(tint.c)}|${tint.s.toFixed(3)}|${tint.lift.toFixed(3)}|${tint.dark.toFixed(3)}`;
+  if (key === drawnKey) return;
+  drawnKey = key;
+
   const { w, h } = SET;
-  ctx.globalCompositeOperation = "source-over";
+  pctx.globalCompositeOperation = "source-over";
+  pctx.clearRect(0, 0, w, h);
+  pctx.globalAlpha = b ? 1 - mix : 1;
+  pctx.drawImage(a, 0, 0, w, h);
+  if (b) {
+    pctx.globalCompositeOperation = "lighter";
+    pctx.globalAlpha = mix;
+    pctx.drawImage(b, 0, 0, w, h);
+  }
+  pctx.globalAlpha = 1;
+  pctx.globalCompositeOperation = "source-over";
+
   ctx.globalAlpha = 1;
+  ctx.globalCompositeOperation = "source-over";
   ctx.clearRect(0, 0, CW, CH);
-  ctx.drawImage(a, 0, 0, w, h);
-  if (b) {
-    ctx.globalAlpha = mix;
-    ctx.drawImage(b, 0, 0, w, h);
-  }
+  ctx.drawImage(prod, 0, 0);
 
-  // Riflesso sul pavimento dello studio: specchia il frame sotto la base
-  // e lo dissolve verso il basso.
-  const base = h * BASELINE;
-  ctx.save();
-  ctx.beginPath();
-  ctx.rect(0, base, w, CH - base);
-  ctx.clip();
-  ctx.translate(0, base * 2);
-  ctx.scale(1, -1);
-  ctx.globalAlpha = 0.17;
-  ctx.drawImage(a, 0, 0, w, h);
-  if (b) {
-    ctx.globalAlpha = 0.17 * mix;
-    ctx.drawImage(b, 0, 0, w, h);
+  // Colore: la tinta "color" tiene luci e ombre dell'argento e ne cambia la tinta.
+  if (tint.s > 0.001) {
+    ctx.globalCompositeOperation = "color";
+    ctx.globalAlpha = tint.s;
+    ctx.fillStyle = css(tint.c);
+    ctx.fillRect(0, 0, w, h);
   }
-  ctx.restore();
-
+  if (tint.lift > 0.001) {
+    ctx.globalCompositeOperation = "screen";
+    ctx.globalAlpha = tint.lift;
+    ctx.fillStyle = "#fff";
+    ctx.fillRect(0, 0, w, h);
+  }
+  if (tint.dark > 0.001) {
+    ctx.globalCompositeOperation = "multiply";
+    ctx.globalAlpha = tint.dark;
+    ctx.fillStyle = "#2a2a2a";
+    ctx.fillRect(0, 0, w, h);
+  }
+  // Ritaglia di nuovo sulla sagoma del prodotto.
   ctx.globalAlpha = 1;
-  ctx.globalCompositeOperation = "destination-out";
-  const g = ctx.createLinearGradient(0, base, 0, base + h * REFLECTION * 0.9);
-  g.addColorStop(0, "rgba(0,0,0,0)");
-  g.addColorStop(1, "rgba(0,0,0,1)");
-  ctx.fillStyle = g;
-  ctx.fillRect(0, base, w, CH - base);
-  ctx.globalCompositeOperation = "source-over";
+  ctx.globalCompositeOperation = "destination-in";
+  ctx.drawImage(prod, 0, 0);
 
-  drawnFrame = seq.has(i0) ? i0 : -1;
-  drawnMix = b ? mix : 0;
+  // Ombra morbida a terra, dietro al prodotto.
+  ctx.globalCompositeOperation = "destination-over";
+  const base = h * BASELINE;
+  const g = ctx.createRadialGradient(w / 2, base, 0, w / 2, base, w * 0.26);
+  g.addColorStop(0, "rgba(0,0,0,0.30)");
+  g.addColorStop(0.55, "rgba(0,0,0,0.12)");
+  g.addColorStop(1, "rgba(0,0,0,0)");
+  ctx.save();
+  ctx.translate(0, base);
+  ctx.scale(1, 0.14);
+  ctx.translate(0, -base);
+  ctx.fillStyle = g;
+  ctx.fillRect(0, base - w * 0.3, w, w * 0.6);
+  ctx.restore();
+  ctx.globalCompositeOperation = "source-over";
 }
 
 /* -------------------------------------------------------------------------
@@ -188,6 +256,9 @@ let storyTop = 0;
 let storyLen = 1;
 const stageRects = new Map<string, Rect>();
 let afterSpin: Array<[number, number]> = [];
+type ColorPoint = { y: number; bg: RGB; tint: Tint | "pick" };
+let colorPoints: ColorPoint[] = [];
+let pickedTint: Tint = tintOf("#D2357D"); // Fucsia, finché non si sceglie un colore
 
 function docTop(el: HTMLElement) {
   return el.getBoundingClientRect().top + window.scrollY;
@@ -232,6 +303,40 @@ function measure() {
   const [ly, lf] = pts[pts.length - 1];
   pts.push([ly + vh * 20, lf + vh * 20 * rate]);
   afterSpin = pts;
+
+  // Colori: punti [scroll, sfondo, tinta]. Nella storia seguono il progresso;
+  // dopo, ogni sezione con data-bg entra con un passaggio di mezzo schermo.
+  const cps: ColorPoint[] = [];
+  STORY_COLORS.forEach(([p0, bg, t], i) => {
+    const y = storyTop + p0 * storyLen;
+    const fadeStart = i === 0 ? y : y - COLOR_FADE * storyLen;
+    if (i > 0) cps.push({ y: fadeStart, bg: cps[cps.length - 1].bg, tint: cps[cps.length - 1].tint });
+    cps.push({ y, bg: hex(bg), tint: tintOf(t) });
+  });
+  for (const el of $$<HTMLElement>("[data-bg]")) {
+    const top = docTop(el);
+    const prev = cps[cps.length - 1];
+    const tint = el.dataset.tint === "pick" ? "pick" : tintOf(el.dataset.tint ?? "#1F4C9E");
+    cps.push({ y: Math.max(prev.y + 1, top - vh * 0.8), bg: prev.bg, tint: prev.tint });
+    cps.push({ y: Math.max(prev.y + 2, top - vh * 0.35), bg: hex(el.dataset.bg!), tint });
+  }
+  colorPoints = cps;
+}
+
+function colorsAt(y: number): { bg: RGB; tint: Tint } {
+  const resolve = (t: Tint | "pick") => (t === "pick" ? pickedTint : t);
+  const pts = colorPoints;
+  if (y <= pts[0].y) return { bg: pts[0].bg, tint: resolve(pts[0].tint) };
+  for (let i = 1; i < pts.length; i++) {
+    if (y <= pts[i].y) {
+      const a = pts[i - 1];
+      const b = pts[i];
+      const t = easeInOut((y - a.y) / (b.y - a.y));
+      return { bg: mixRGB(a.bg, b.bg, t), tint: mixTint(resolve(a.tint), resolve(b.tint), t) };
+    }
+  }
+  const last = pts[pts.length - 1];
+  return { bg: last.bg, tint: resolve(last.tint) };
 }
 
 /* -------------------------------------------------------------------------
@@ -307,6 +412,8 @@ function dockRect(d: string | HTMLElement): Rect {
 let running = false;
 let lastT = 0;
 let lastTransform = "";
+let lastBg = "";
+let lastMetaT = 0;
 
 function tick(t: number) {
   const dt = lastT ? Math.min(0.1, (t - lastT) / 1000) : 1 / 60;
@@ -371,7 +478,18 @@ function tick(t: number) {
   }
   canvas.style.opacity = reduced ? String(1 - fadeOut) : "";
 
-  draw(frameNow);
+  const col = colorsAt(scrollY);
+  draw(frameNow, col.tint);
+  const bgCss = css(col.bg);
+  if (bgCss !== lastBg) {
+    bgLayer.style.backgroundColor = bgCss;
+    nav.style.setProperty("--nav-bg", bgCss);
+    lastBg = bgCss;
+  }
+  if (!running || t - lastMetaT > 250) {
+    themeMeta.content = bgCss;
+    lastMetaT = t;
+  }
 
   // 3. Testi della storia.
   const p = storyProgress(scrollY);
@@ -475,25 +593,26 @@ function start() {
 
   // Il poster resta finché il canvas non ha il primo frame, poi passa la mano.
   seq.ready.then(() => {
-    draw(frameNow);
+    draw(frameNow, colorsAt(window.scrollY).tint);
     const handoff = () => {
       layer.style.opacity = "1";
       poster.classList.add("is-hidden");
     };
-    if (reduced || window.scrollY > 4) handoff();
-    else {
-      const done = () => handoff();
-      poster.getAnimations().length ? Promise.all(poster.getAnimations().map((a) => a.finished)).then(done, done) : done();
-      scroll(() => {
-        if (window.scrollY > 4) handoff();
-      });
-    }
+    // L'argento del poster si "accende" nel colore della prima scena.
+    handoff();
     kick();
   });
-  seq.onProgress = () => {
-    drawnFrame = -1;
-    kick();
-  };
+  seq.onProgress = () => kick();
+
+  // Sezione Colori: toccando un colore, FLIPPER si colora così.
+  for (const sw of swatches) {
+    sw.addEventListener("click", () => {
+      pickedTint = tintOf(sw.dataset.color!, sw.dataset.mode);
+      for (const o of swatches) o.setAttribute("aria-pressed", String(o === sw));
+      drawnKey = "";
+      kick();
+    });
+  }
   seq.load();
 
   kick();

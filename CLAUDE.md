@@ -58,6 +58,11 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Sito FLIPPER in `flipper/` (Vite + TypeScript + Motion vanilla, testo in HTML statico per la SEO).
   La rotazione è una sequenza di 200 frame WebP su canvas guidata dallo scroll; per cambiare la
   coreografia si modificano `STORY_DOCKS`/`STORY_SPIN` in `src/main.ts` e i dock nel CSS.
+- Stile FLIPPER scelto dall'utente: colori allegri stile estate brasiliana (Havaianas), sfondo che
+  cambia colore scena per scena e FLIPPER colorato nei suoi colori reali (`STORY_COLORS`).
+  La prima versione era nera e argento (vedi la storia git).
+- Anteprima pubblica: artifact claude.ai/artifact/DfobVxATYQyPtxJf4uYM62 (si ripubblica allo
+  stesso link; l'utente lo rende pubblico dal menu Condividi).
 - Il video 360° di FLIPPER non chiude perfettamente il giro: usare `flipper/scripts/estrai-frame.sh`,
   che interpola i frame mancanti. Informazioni sul prodotto: email da info@flippersalvainfradito.it
   e schede Amazon (il sito ufficiale e Amazon non sono raggiungibili dalla rete della sessione).

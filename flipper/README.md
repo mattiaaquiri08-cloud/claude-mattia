@@ -22,6 +22,10 @@ npm run build    # produzione in dist/
   `data-in`/`data-out` (e `data-in-m`/`data-out-m` per il mobile) nell'HTML.
   Dopo la storia, gli elementi con `data-frame` fanno fermare la rotazione su un angolo
   preciso quando sono al centro dello schermo (0 profilo, 50 fronte, 140 testa a cuore).
+- **Colori**: i frame sono argento su fondo trasparente; il canvas colora FLIPPER al volo
+  (metodo di fusione "color"). `STORY_COLORS` in `src/main.ts` abbina sfondo e colore di
+  FLIPPER per ogni scena; dopo la storia li danno `data-bg` e `data-tint` sulle sezioni.
+  Nella sezione Colori i campioni sono bottoni che cambiano il colore di FLIPPER.
 - **Caricamento**: frame 0 subito (poster), poi gli altri in ordine "binario".
 - **Accessibilità**: con `prefers-reduced-motion` FLIPPER resta fermo sulla testa a cuore
   e cambia posizione con una dissolvenza; senza JavaScript la storia è testo statico.

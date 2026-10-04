@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Rigenera la sequenza di FLIPPER (200 frame = un giro completo) dal video 360°.
 # Uso: scripts/estrai-frame.sh percorso/video_3d_flipper.mp4
-# Richiede ffmpeg. Il video originale ha 97 frame a 24 fps e non chiude
+# Richiede ffmpeg e Python con numpy e Pillow. Il video originale ha 97 frame a 24 fps e non chiude
 # perfettamente il giro: i frame mancanti vengono interpolati per evitare
 # il salto tra ultimo e primo frame.
 set -euo pipefail
@@ -29,13 +29,30 @@ for i in $(seq 1 191); do add "$TMP/mi/m_$(printf %03d "$i").png"; done
 add "$TMP/p1/o_04.png"; add "$TMP/p1/o_05.png"
 for i in $(seq 10 16); do add "$TMP/p2/o_$i.png"; done
 
-# 3. Ritaglio, nero puro (si fonde con lo sfondo #000) e WebP.
-BASE="crop=400:660:80:90,curves=all='0/0 0.035/0 0.09/0.07 1/1'"
+# 3. Ritaglio e scontorno: il fondo nero diventa trasparente (alpha dalla
+#    luminosità, colori "de-premoltiplicati" sui bordi), argento un po' schiarito.
+#    FLIPPER viene poi colorato nel browser, quindi i frame restano argento.
+mkdir -p "$TMP/alpha"
+python3 - "$TMP/seq" "$TMP/alpha" <<'PY'
+import os, sys
+import numpy as np
+from PIL import Image
+src, dst = sys.argv[1], sys.argv[2]
+T = 34.0
+for f in sorted(os.listdir(src)):
+    a = np.asarray(Image.open(os.path.join(src, f)).convert("RGB")).astype(np.float32)[90:750, 80:480]
+    m = a.max(axis=2)
+    alpha = np.clip((m - 7.0) / (T - 7.0), 0, 1)
+    rgb = np.where(alpha[..., None] > 0, np.clip(a / np.minimum(1, np.maximum(m / T, 1e-3))[..., None], 0, 255), 0)
+    rgb = 255.0 * (rgb / 255.0) ** 0.86
+    Image.fromarray(np.dstack([rgb, alpha * 255]).astype(np.uint8), "RGBA").save(os.path.join(dst, f))
+PY
+
 mkdir -p "$OUT/d" "$OUT/m"
-ffmpeg -v error -y -framerate 24 -i "$TMP/seq/s_%03d.png" \
-  -vf "$BASE,scale=600:990:flags=lanczos,unsharp=5:5:0.35" \
-  -c:v libwebp -quality 80 -compression_level 6 -start_number 0 "$OUT/d/%03d.webp"
-ffmpeg -v error -y -framerate 24 -i "$TMP/seq/s_%03d.png" \
-  -vf "$BASE,scale=480:792:flags=lanczos,unsharp=5:5:0.25" \
-  -c:v libwebp -quality 76 -compression_level 6 -start_number 0 "$OUT/m/%03d.webp"
+ffmpeg -v error -y -framerate 24 -i "$TMP/alpha/s_%03d.png" \
+  -vf "scale=600:990:flags=lanczos,unsharp=5:5:0.3" -pix_fmt yuva420p \
+  -c:v libwebp -quality 82 -compression_level 6 -start_number 0 "$OUT/d/%03d.webp"
+ffmpeg -v error -y -framerate 24 -i "$TMP/alpha/s_%03d.png" \
+  -vf "scale=480:792:flags=lanczos,unsharp=5:5:0.22" -pix_fmt yuva420p \
+  -c:v libwebp -quality 78 -compression_level 6 -start_number 0 "$OUT/m/%03d.webp"
 echo "Creati $n frame in $OUT"

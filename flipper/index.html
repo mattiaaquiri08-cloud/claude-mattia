@@ -9,8 +9,8 @@
       content="FLIPPER è il ricambio brevettato in gomma TPU che sostituisce il perno rotto delle infradito. Universale, si monta in pochi secondi. Ideato e prodotto in Italia."
     />
     <link rel="canonical" href="https://www.flippersalvainfradito.it/" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#FFD23F" />
+    <meta name="color-scheme" content="light" />
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="it_IT" />
@@ -70,6 +70,8 @@
         </ul>
       </nav>
     </header>
+
+    <div class="bg-layer" aria-hidden="true"></div>
 
     <!-- L'unico FLIPPER della pagina: un canvas fisso che si aggancia ai "dock" del layout. -->
     <div class="product-layer" aria-hidden="true">
@@ -175,7 +177,7 @@
           <div class="dock dock--aside" data-dock></div>
         </div>
 
-        <section id="come-funziona" class="chapter" data-region="how">
+        <section id="come-funziona" class="chapter" data-region="how" data-bg="#FFC2D9" data-tint="#3EB3D3">
           <div class="dock dock--m" data-dock aria-hidden="true"></div>
           <h2 class="chapter-title" data-reveal>Tre gesti. Pochi secondi.</h2>
           <ol class="steps">
@@ -194,7 +196,7 @@
           </ol>
         </section>
 
-        <section id="compatibilita" class="chapter" data-region="fit">
+        <section id="compatibilita" class="chapter" data-region="fit" data-bg="#9AD7FF" data-tint="#EE7A2B">
           <div class="dock dock--m" data-dock aria-hidden="true"></div>
           <p class="figure" data-reveal data-frame="160">
             <span class="figure-num">15</span><span class="figure-unit">mm</span>
@@ -206,37 +208,37 @@
           </p>
         </section>
 
-        <section id="colori" class="chapter" data-region="colors">
+        <section id="colori" class="chapter" data-region="colors" data-bg="#FFE36E" data-tint="pick">
           <div class="dock dock--m" data-dock aria-hidden="true"></div>
           <h2 class="chapter-title" data-reveal data-frame="100">Argento è solo l'inizio.</h2>
           <p class="chapter-copy" data-reveal>
-            Abbina FLIPPER alle tue infradito o scegli un contrasto deciso. La disponibilità dei colori può variare.
+            Tocca un colore e guarda FLIPPER cambiare. Abbinalo alle tue infradito o scegli un contrasto deciso. La disponibilità dei colori può variare.
           </p>
           <div class="palette" data-reveal>
             <ul class="swatches" aria-label="Collezione">
-              <li><span class="sw" style="--c: #c3c5c6"></span>Argento</li>
-              <li><span class="sw sw--edge" style="--c: #0d0d0d"></span>Nero</li>
-              <li><span class="sw" style="--c: #f1f1ef"></span>Bianco</li>
-              <li><span class="sw" style="--c: #1f4c9e"></span>Blu</li>
-              <li><span class="sw" style="--c: #3eb3d3"></span>Aqua</li>
-              <li><span class="sw" style="--c: #62c6b8"></span>Acqua Marina</li>
-              <li><span class="sw" style="--c: #ee7a2b"></span>Arancione</li>
-              <li><span class="sw" style="--c: #ef6f5c"></span>Corallo</li>
-              <li><span class="sw" style="--c: #d2357d"></span>Fucsia</li>
-              <li><span class="sw" style="--c: #f0cd2c"></span>Giallo</li>
-              <li><span class="sw" style="--c: #a46d3f"></span>Bronze</li>
+              <li><button type="button" class="swatch" data-color="#c3c5c6" data-mode="silver" aria-pressed="false"><span class="sw" style="--c: #c3c5c6"></span>Argento</button></li>
+              <li><button type="button" class="swatch" data-color="#0d0d0d" data-mode="black" aria-pressed="false"><span class="sw sw--edge" style="--c: #0d0d0d"></span>Nero</button></li>
+              <li><button type="button" class="swatch" data-color="#f1f1ef" data-mode="white" aria-pressed="false"><span class="sw" style="--c: #f1f1ef"></span>Bianco</button></li>
+              <li><button type="button" class="swatch" data-color="#1f4c9e" aria-pressed="false"><span class="sw" style="--c: #1f4c9e"></span>Blu</button></li>
+              <li><button type="button" class="swatch" data-color="#3eb3d3" aria-pressed="false"><span class="sw" style="--c: #3eb3d3"></span>Aqua</button></li>
+              <li><button type="button" class="swatch" data-color="#62c6b8" aria-pressed="false"><span class="sw" style="--c: #62c6b8"></span>Acqua Marina</button></li>
+              <li><button type="button" class="swatch" data-color="#ee7a2b" aria-pressed="false"><span class="sw" style="--c: #ee7a2b"></span>Arancione</button></li>
+              <li><button type="button" class="swatch" data-color="#ef6f5c" aria-pressed="false"><span class="sw" style="--c: #ef6f5c"></span>Corallo</button></li>
+              <li><button type="button" class="swatch" data-color="#d2357d" aria-pressed="true"><span class="sw" style="--c: #d2357d"></span>Fucsia</button></li>
+              <li><button type="button" class="swatch" data-color="#f0cd2c" aria-pressed="false"><span class="sw" style="--c: #f0cd2c"></span>Giallo</button></li>
+              <li><button type="button" class="swatch" data-color="#a46d3f" aria-pressed="false"><span class="sw" style="--c: #a46d3f"></span>Bronze</button></li>
             </ul>
             <p class="palette-label">Collezione Glamorous</p>
             <ul class="swatches" aria-label="Collezione Glamorous">
-              <li><span class="sw" style="--c: #c9a64e"></span>Oro</li>
-              <li><span class="sw sw--glitter" style="--c: #d8d2c6"></span>Glitter</li>
-              <li><span class="sw" style="--c: #c3c5c6"></span>Argento</li>
+              <li><button type="button" class="swatch" data-color="#c9a64e" aria-pressed="false"><span class="sw" style="--c: #c9a64e"></span>Oro</button></li>
+              <li><button type="button" class="swatch" data-color="#d8d2c6" aria-pressed="false"><span class="sw sw--glitter" style="--c: #d8d2c6"></span>Glitter</button></li>
+              <li><button type="button" class="swatch" data-color="#c3c5c6" data-mode="silver" aria-pressed="false"><span class="sw" style="--c: #c3c5c6"></span>Argento</button></li>
             </ul>
           </div>
         </section>
       </div>
 
-      <section id="acquista" class="buy" data-region="buy">
+      <section id="acquista" class="buy" data-region="buy" data-bg="#FF5A5F" data-tint="#F0CD2C">
         <div class="dock dock--buy" data-dock data-frame="32" aria-hidden="true"></div>
         <div class="buy-copy">
           <h2 class="buy-title" data-reveal>Rimetti in strada le tue infradito.</h2>
@@ -254,7 +256,7 @@
         </div>
       </section>
 
-      <section id="domande" class="faq" aria-labelledby="faq-title">
+      <section id="domande" class="faq" aria-labelledby="faq-title" data-bg="#E3F6EA">
         <h2 id="faq-title" class="faq-title">Domande frequenti</h2>
         <div class="faq-list">
           <details>

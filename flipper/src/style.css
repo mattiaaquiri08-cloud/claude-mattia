@@ -1,13 +1,16 @@
 /* FLIPPER, il Salva Infradito
-   Un solo tema (nero da studio fotografico): lo sfondo è #000 per fondersi
-   esattamente con il nero dei frame del prodotto. */
+   Un solo tema, colori dell'estate brasiliana: lo sfondo cambia scena per
+   scena (lo gestisce main.ts sul livello .bg-layer), l'inchiostro resta scuro. */
 
+/* Layout: palco fisso per la storia, colonna di testo + FLIPPER a destra nei capitoli. */
 :root {
-  --bg: #000;
-  --fg: #f4f4f2;
-  --fg-2: #a3a3a0;
-  --fg-3: #7f7f7c;
-  --line: #1d1d1c;
+  --bg: #ffd23f;
+  --fg: #111;
+  --fg-2: rgb(17 17 17 / 0.76);
+  --fg-3: rgb(17 17 17 / 0.62);
+  --line: rgb(17 17 17 / 0.16);
+  --paper: #fff;
+  --f-display: "Bricolage Grotesque Variable", "Geist Variable", ui-sans-serif, system-ui, sans-serif;
   --f-sans: "Geist Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --f-mono: "Geist Mono Variable", ui-monospace, "SFMono-Regular", Menlo, monospace;
   --gutter: clamp(1.25rem, 5vw, 5.5rem);
@@ -21,7 +24,7 @@
   --dock-side-h: 76svh;
   --dock-mid-h: 50svh;
   --side-x: 71%;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 *,
@@ -134,7 +137,7 @@ canvas {
   position: absolute;
   inset: 0 0 -24px 0;
   z-index: -1;
-  background: linear-gradient(#000 55%, rgb(0 0 0 / 0));
+  background: linear-gradient(var(--nav-bg, transparent) 55%, transparent);
   pointer-events: none;
 }
 
@@ -164,7 +167,7 @@ canvas {
 .nav-links .nav-cta {
   color: var(--fg);
   padding: 0.5rem 1rem;
-  border: 1px solid #3a3a38;
+  border: 1.5px solid var(--fg);
   border-radius: 999px;
   transition:
     background-color 0.3s var(--ease),
@@ -554,11 +557,11 @@ main,
   height: 1.25rem;
   border-radius: 999px;
   background: var(--c);
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
+  box-shadow: inset 0 0 0 1.5px rgb(17 17 17 / 0.2);
 }
 
 .sw--edge {
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.28);
+  box-shadow: inset 0 0 0 1.5px rgb(255 255 255 / 0.3);
 }
 
 .sw--glitter {
@@ -625,7 +628,7 @@ main,
   padding: 0 1.75rem;
   border-radius: 999px;
   background: var(--fg);
-  color: #0a0a0a;
+  color: var(--paper);
   font-size: 0.9375rem;
   font-weight: 500;
   white-space: nowrap;
@@ -635,7 +638,7 @@ main,
 }
 
 .btn:hover {
-  background: #fff;
+  background: #2b2b2b;
 }
 
 .btn:active {
@@ -752,7 +755,7 @@ main,
   font-weight: 600;
   letter-spacing: -0.06em;
   line-height: 0.8;
-  color: #161616;
+  color: rgb(17 17 17 / 0.1);
   margin-left: -0.05em;
 }
 
@@ -978,4 +981,155 @@ main,
   translate: none;
   width: auto;
   max-width: 48rem;
+}
+
+/* ----------------------------------------------------- COLORI E DISPLAY */
+
+/* Lo sfondo vive su un livello fisso: cambiarne il colore ridisegna solo lui. */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--bg);
+  pointer-events: none;
+}
+
+.js .product-layer {
+  transition: opacity 0.9s var(--ease);
+}
+
+.poster {
+  transition: opacity 0.9s var(--ease);
+}
+
+.poster.is-hidden {
+  visibility: visible;
+  opacity: 0;
+}
+
+.wordmark,
+.hero-line,
+.say,
+.chapter-title,
+.step-verb,
+.buy-title,
+.faq-title,
+.footer-mark,
+.figure-num {
+  font-family: var(--f-display);
+  font-optical-sizing: auto;
+}
+
+.wordmark {
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  margin-right: -0.22em;
+}
+
+.hero-line {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.say,
+.chapter-title,
+.buy-title,
+.faq-title {
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+.say--xl,
+.step-verb {
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+
+.figure-num {
+  font-weight: 800;
+  letter-spacing: -0.06em;
+}
+
+.footer-mark {
+  font-weight: 800;
+}
+
+.hero-sub,
+.meta,
+.aside-copy,
+.chapter-copy,
+.step p,
+.faq-list details p,
+.footer {
+  color: var(--fg-2);
+}
+
+.nav-links {
+  color: var(--fg-2);
+}
+
+.nav-links .nav-cta {
+  font-weight: 500;
+}
+
+.nav-links .nav-cta:hover {
+  background: var(--fg);
+  border-color: var(--fg);
+  color: var(--paper);
+}
+
+.step {
+  opacity: 0.32;
+}
+
+/* Campioni colore: sono bottoni, toccandoli FLIPPER cambia colore. */
+.swatches li {
+  display: block;
+}
+
+.swatch {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  padding: 0.45rem 0.7rem 0.45rem 0.45rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color 0.25s var(--ease),
+    transform 0.25s var(--ease);
+}
+
+.swatch:hover {
+  background: rgb(17 17 17 / 0.07);
+}
+
+.swatch:active {
+  transform: scale(0.97);
+}
+
+.swatch[aria-pressed="true"] {
+  background: var(--fg);
+  color: var(--paper);
+}
+
+.swatch[aria-pressed="true"] .sw {
+  box-shadow:
+    inset 0 0 0 1.5px rgb(255 255 255 / 0.4),
+    0 0 0 2px var(--fg);
+}
+
+.sw {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+::selection {
+  background: var(--fg);
+  color: var(--paper);
 }
