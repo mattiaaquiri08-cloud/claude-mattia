@@ -61,6 +61,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Stile FLIPPER scelto dall'utente: colori allegri stile estate brasiliana (Havaianas), sfondo che
   cambia colore scena per scena e FLIPPER colorato nei suoi colori reali (`STORY_COLORS`).
   La prima versione era nera e argento (vedi la storia git).
+- Effetto metallico solo per FLIPPER Argento e Oro; tutti gli altri colori sono resi come gomma
+  opaca (campo `metal` della tinta in `src/main.ts`).
 - Anteprima pubblica: artifact claude.ai/artifact/DfobVxATYQyPtxJf4uYM62 (si ripubblica allo
   stesso link; l'utente lo rende pubblico dal menu Condividi).
 - Il video 360° di FLIPPER non chiude perfettamente il giro: usare `flipper/scripts/estrai-frame.sh`,

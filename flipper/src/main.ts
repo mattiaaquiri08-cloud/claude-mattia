@@ -86,8 +86,9 @@ const lerpRect = (a: Rect, b: Rect, t: number): Rect => ({
 });
 type RGB = [number, number, number];
 /* Colore di FLIPPER: tinta "color" (s = intensità), più due ritocchi per i
- * colori che una tinta non può dare: Bianco (lift) e Nero (dark). */
-type Tint = { c: RGB; s: number; lift: number; dark: number };
+ * colori che una tinta non può dare: Bianco (lift) e Nero (dark).
+ * metal = 1 solo per Argento e Oro: gli altri colori sono gomma opaca. */
+type Tint = { c: RGB; s: number; lift: number; dark: number; metal: number };
 const hex = (h: string): RGB => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16)) as RGB;
 const mixRGB = (a: RGB, b: RGB, t: number): RGB => [lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t)];
 const mixTint = (a: Tint, b: Tint, t: number): Tint => ({
@@ -95,13 +96,15 @@ const mixTint = (a: Tint, b: Tint, t: number): Tint => ({
   s: lerp(a.s, b.s, t),
   lift: lerp(a.lift, b.lift, t),
   dark: lerp(a.dark, b.dark, t),
+  metal: lerp(a.metal, b.metal, t),
 });
 const css = (c: RGB) => `rgb(${Math.round(c[0])}, ${Math.round(c[1])}, ${Math.round(c[2])})`;
 function tintOf(color: string, mode = ""): Tint {
-  if (mode === "silver") return { c: [190, 190, 190], s: 0, lift: 0, dark: 0 };
-  if (mode === "white") return { c: [255, 255, 255], s: 0, lift: 0.55, dark: 0 };
-  if (mode === "black") return { c: [30, 30, 30], s: 0, lift: 0, dark: 0.8 };
-  return { c: hex(color), s: 1, lift: 0, dark: 0 };
+  if (mode === "silver") return { c: [190, 190, 190], s: 0, lift: 0, dark: 0, metal: 1 };
+  if (mode === "gold") return { c: hex(color), s: 1, lift: 0, dark: 0, metal: 1 };
+  if (mode === "white") return { c: [255, 255, 255], s: 0, lift: 0.5, dark: 0, metal: 0 };
+  if (mode === "black") return { c: [30, 30, 30], s: 0, lift: 0, dark: 0.8, metal: 0 };
+  return { c: hex(color), s: 1, lift: 0, dark: 0, metal: 0 };
 }
 
 const toRect = (r: DOMRect): Rect => ({ cx: r.left + r.width / 2, cy: r.top + r.height / 2, h: r.height });
@@ -184,7 +187,7 @@ function draw(frame: number, tint: Tint) {
   if (!a) return;
   const b = mix > 0 ? seq.exact((i0 + 1) % FRAMES) : null;
 
-  const key = `${seq.has(i0) ? i0 : "x" + seq.loaded}|${b ? mix : 0}|${css(tint.c)}|${tint.s.toFixed(3)}|${tint.lift.toFixed(3)}|${tint.dark.toFixed(3)}`;
+  const key = `${seq.has(i0) ? i0 : "x" + seq.loaded}|${b ? mix : 0}|${css(tint.c)}|${tint.s.toFixed(3)}|${tint.lift.toFixed(3)}|${tint.dark.toFixed(3)}|${tint.metal.toFixed(3)}`;
   if (key === drawnKey) return;
   drawnKey = key;
 
@@ -206,12 +209,26 @@ function draw(frame: number, tint: Tint) {
   ctx.clearRect(0, 0, CW, CH);
   ctx.drawImage(prod, 0, 0);
 
-  // Colore: la tinta "color" tiene luci e ombre dell'argento e ne cambia la tinta.
+  // Gomma opaca: si appiattiscono i riflessi dell'argento verso un grigio medio.
+  const matte = 1 - tint.metal;
+  if (matte > 0.001) {
+    ctx.globalCompositeOperation = "source-atop";
+    ctx.globalAlpha = 0.6 * matte;
+    ctx.fillStyle = "#9a9a9a";
+    ctx.fillRect(0, 0, w, h);
+  }
+  // Colore: la tinta "color" tiene luci e ombre e ne cambia la tinta; sulla
+  // gomma un "multiply" in più rende il colore pieno.
   if (tint.s > 0.001) {
     ctx.globalCompositeOperation = "color";
     ctx.globalAlpha = tint.s;
     ctx.fillStyle = css(tint.c);
     ctx.fillRect(0, 0, w, h);
+    if (matte > 0.001) {
+      ctx.globalCompositeOperation = "multiply";
+      ctx.globalAlpha = 0.45 * matte * tint.s;
+      ctx.fillRect(0, 0, w, h);
+    }
   }
   if (tint.lift > 0.001) {
     ctx.globalCompositeOperation = "screen";
