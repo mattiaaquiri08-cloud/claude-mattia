@@ -19,13 +19,13 @@ export function SalonPicture({
   style?: React.CSSProperties
 }) {
   const set = (ext: string) =>
-    [768, 1280, 1672].map((w) => `/images/salone-${w}.${ext} ${w}w`).join(', ')
+    [768, 1280, 1672].map((w) => `images/salone-${w}.${ext} ${w}w`).join(', ')
   return (
     <picture className="contents">
       <source type="image/avif" srcSet={set('avif')} sizes={sizes} />
       <source type="image/webp" srcSet={set('webp')} sizes={sizes} />
       <img
-        src="/images/salone-1280.webp"
+        src="images/salone-1280.webp"
         width={1672}
         height={941}
         alt={alt}

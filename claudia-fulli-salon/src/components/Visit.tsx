@@ -19,6 +19,9 @@ function useOpenStatus() {
   return { status, today }
 }
 
+// Nell'anteprima condivisa (build "artifact") le mappe incorporate sono bloccate: si apre Google Maps.
+const CAN_EMBED_MAP = import.meta.env.MODE !== 'artifact'
+
 /** Mappa Google caricata solo su richiesta: niente cookie di terze parti finché non serve. */
 function MapEmbed() {
   const [loaded, setLoaded] = useState(false)
@@ -39,7 +42,7 @@ function MapEmbed() {
       ) : (
         <div className="absolute inset-0 flex flex-col items-start justify-end gap-5 p-6 md:p-8">
           <img
-            src="/images/marmo.webp"
+            src="images/marmo.webp"
             width={1200}
             height={451}
             alt=""
@@ -50,15 +53,29 @@ function MapEmbed() {
           <div className="absolute inset-0 bg-gradient-to-t from-night via-night/40 to-transparent" aria-hidden />
           <MapPin size={28} weight="fill" className="relative text-sun" aria-hidden />
           <p className="relative max-w-[28ch] text-[0.9375rem] leading-relaxed text-night-muted">
-            La mappa è fornita da Google. Si carica solo se la apri.
+            {CAN_EMBED_MAP
+              ? 'La mappa è fornita da Google. Si carica solo se la apri.'
+              : 'Via Ruggero Fauro 1, Parioli. La posizione si apre su Google Maps.'}
           </p>
-          <button
-            type="button"
-            onClick={() => setLoaded(true)}
-            className="relative inline-flex h-11 items-center gap-2 rounded-full px-5 text-[0.9375rem] font-medium text-paper ring-1 ring-inset ring-paper/30 transition-[box-shadow,transform] duration-300 hover:ring-paper active:scale-[0.97]"
-          >
-            Mostra la mappa
-          </button>
+          {CAN_EMBED_MAP ? (
+            <button
+              type="button"
+              onClick={() => setLoaded(true)}
+              className="relative inline-flex h-11 items-center gap-2 rounded-full px-5 text-[0.9375rem] font-medium text-paper ring-1 ring-inset ring-paper/30 transition-[box-shadow,transform] duration-300 hover:ring-paper active:scale-[0.97]"
+            >
+              Mostra la mappa
+            </button>
+          ) : (
+            <a
+              href={salon.googleUrl}
+              target="_blank"
+              rel="noopener"
+              className="relative inline-flex h-11 items-center gap-2 rounded-full px-5 text-[0.9375rem] font-medium text-paper ring-1 ring-inset ring-paper/30 transition-[box-shadow,transform] duration-300 hover:ring-paper active:scale-[0.97]"
+            >
+              Apri in Google Maps
+              <ArrowUpRight size={15} aria-hidden />
+            </a>
+          )}
         </div>
       )}
     </div>

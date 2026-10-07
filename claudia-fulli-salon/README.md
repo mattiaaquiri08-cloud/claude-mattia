@@ -11,6 +11,9 @@ npm run build    # versione di produzione in dist/
 npm run preview  # anteprima della build
 ```
 
+`npm run build:artifact` crea in `dist-artifact/` un unico file HTML (JS, CSS e font inclusi) usato per
+l'anteprima condivisa su claude.ai; lì la mappa incorporata è sostituita da un link a Google Maps.
+
 La cartella `dist/` è un sito statico: si pubblica così com'è su Vercel, Netlify o qualsiasi hosting.
 
 ## Tecnologie

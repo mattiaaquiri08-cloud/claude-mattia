@@ -46,7 +46,11 @@ export function scrollToHash(hash: string) {
     // Porta anche il focus della tastiera sulla sezione raggiunta.
     if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1')
     target.focus({ preventScroll: true })
-    history.replaceState(null, '', hash)
+    try {
+      history.replaceState(null, '', hash)
+    } catch {
+      // In alcune anteprime (iframe protetti) la cronologia non è modificabile: si ignora.
+    }
   }
 }
 
