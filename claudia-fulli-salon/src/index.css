@@ -1,0 +1,119 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/albert-sans/wght.css';
+@import '@fontsource-variable/albert-sans/wght-italic.css';
+
+/*
+  Identità visiva presa dal salone:
+  - paper  : le pareti bianche e luminose
+  - stone  : la pietra chiara delle postazioni
+  - ink    : le poltrone nere
+  - sun    : le poltrone gialle (unico accento, usato solo come riempimento o su fondo scuro)
+  - night  : il pavimento nero venato (blocco finale "Contatti")
+
+  Forme: foto e pannelli a spigolo vivo, elementi interattivi (bottoni, chip) a pillola.
+  Livelli z: nav 40, barra mobile 30, menu mobile 50.
+
+  Il tema è volutamente chiaro (la luminosità è parte del marchio): una sola sezione scura,
+  i contatti, che richiama il pavimento.
+*/
+
+@theme {
+  --font-sans: 'Albert Sans Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --color-paper: #f6f6f3;
+  --color-stone: #ebe8e1;
+  --color-mist: #efede8;
+  --color-line: #d8d5ce;
+  --color-ink: #141413;
+  --color-muted: #5d5a54;
+  --color-sun: #e6bd3c;
+  --color-sun-deep: #d2a522;
+  --color-night: #121110;
+  --color-night-soft: #1c1b19;
+  --color-night-line: #34322e;
+  --color-night-muted: #aaa69d;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink;
+    font-feature-settings: 'ss01' on;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a,
+  button {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  ::selection {
+    background: var(--color-sun);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+
+  .on-night :focus-visible {
+    outline-color: var(--color-sun);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html:not(.lenis) {
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .text-display {
+    font-weight: 300;
+    letter-spacing: -0.045em;
+    line-height: 0.9;
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}

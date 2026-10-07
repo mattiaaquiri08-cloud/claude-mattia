@@ -55,3 +55,14 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
 - Semplicità e complessità: 50 e 50. Proponi la soluzione più adatta, ma se è complessa
   offri anche un'alternativa semplice e lascia scegliere all'utente.
+- Progetto `claudia-fulli-salon/` (sito del salone di Claudia Fulli, Parioli): Vite + React +
+  Tailwind v4 + Motion + Lenis. I dati stanno in `src/data/salon.ts` e vengono solo dalle schede
+  Treatwell e Google: non inventare servizi, prezzi, recensioni o persone.
+- Il listino completo di un salone su Treatwell sta nel JSON-LD della pagina (`OfferCatalog`):
+  scaricare l'HTML con curl ed estrarlo è più affidabile del riassunto di WebFetch.
+- Animazioni a maschera (testo che sale da `overflow-hidden`): mettere `whileInView` sul
+  contenitore, non sulla riga nascosta, altrimenti l'animazione non parte mai.
+- Griglie su mobile con contenuti a scorrimento orizzontale (chip, caroselli): usare
+  `grid-cols-1` e `min-w-0`, altrimenti la pagina si allarga oltre lo schermo.
+- Con Lenis, sbloccare lo scroll prima di chiamare `scrollTo` (es. dal menu mobile).
+- Per gli screenshot: Playwright è in `/opt/node-tools/node_modules/playwright/index.mjs`.
