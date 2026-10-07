@@ -208,8 +208,8 @@ export const tourStops = [
 
 export const navLinks = [
   { href: '#salone', label: 'Il salone' },
+  { href: '#claudia', label: 'Claudia' },
   { href: '#servizi', label: 'Servizi' },
-  { href: '#team', label: 'Team' },
   { href: '#recensioni', label: 'Recensioni' },
   { href: '#contatti', label: 'Contatti' },
 ] as const

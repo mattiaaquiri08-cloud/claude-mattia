@@ -3,6 +3,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { ArrowUp } from '@phosphor-icons/react'
 import { navLinks, salon } from '../data/salon'
 import { handleAnchorClick } from '../lib/smooth-scroll'
+import { IS_PREVIEW } from '../lib/utils'
 
 const YEAR = new Date().getFullYear()
 
@@ -67,6 +68,12 @@ export function Footer() {
         </div>
 
         <p className="mt-8 text-[0.8125rem] text-night-muted">© {YEAR} {salon.name}. Tutti i diritti riservati.</p>
+        {IS_PREVIEW && (
+          <p className="mt-2 text-[0.8125rem] text-night-muted">
+            Bozza di proposta per {salon.name}: non è il sito ufficiale del salone. Prenotazioni e recensioni rimandano
+            alle pagine pubbliche su Treatwell e Google.
+          </p>
+        )}
       </div>
     </footer>
   )

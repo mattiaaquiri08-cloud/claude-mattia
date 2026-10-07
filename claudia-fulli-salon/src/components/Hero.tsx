@@ -8,6 +8,7 @@ import {
 } from 'motion/react'
 import { ArrowRight, Phone } from '@phosphor-icons/react'
 import { salon } from '../data/salon'
+import { useIntroDone } from '../lib/intro'
 import { ButtonLink, SalonPicture } from './ui'
 import { EASE } from '../lib/utils'
 
@@ -29,6 +30,7 @@ const WORDMARK = 'Claudia Fulli'
 
 export function Hero() {
   const reduce = useReducedMotion()
+  const ready = useIntroDone()
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const imageY = useTransform(scrollYProgress, [0, 1], ['0%', reduce ? '0%' : '14%'])
@@ -46,14 +48,14 @@ export function Hero() {
       <motion.div
         className="relative mx-2 min-h-[46dvh] flex-1 overflow-hidden bg-stone md:mx-4"
         initial={reduce ? false : { clipPath: 'inset(7% 9% 7% 9%)' }}
-        animate={{ clipPath: 'inset(0% 0% 0% 0%)' }}
+        animate={ready ? { clipPath: 'inset(0% 0% 0% 0%)' } : undefined}
         transition={{ duration: 1.6, ease: EASE }}
       >
         <motion.div className="absolute inset-0" style={{ y: imageY, scale: imageScale }}>
           <motion.div
             className="h-full w-full"
             initial={reduce ? false : { scale: 1.18 }}
-            animate={{ scale: 1 }}
+            animate={ready ? { scale: 1 } : undefined}
             transition={{ duration: 2.2, ease: EASE }}
           >
             <SalonPicture
@@ -77,7 +79,7 @@ export function Hero() {
                 key={i}
                 className="inline-block"
                 initial={reduce ? false : { y: '105%' }}
-                animate={{ y: '0%' }}
+                animate={ready ? { y: '0%' } : undefined}
                 transition={{ duration: 1.2, delay: 0.35 + i * 0.035, ease: EASE }}
               >
                 {char === ' ' ? ' ' : char}
@@ -91,7 +93,7 @@ export function Hero() {
             custom={0}
             variants={copy}
             initial={reduce ? false : 'hidden'}
-            animate="visible"
+            animate={ready ? 'visible' : 'hidden'}
             className="max-w-[26rem] text-[1.0625rem] leading-relaxed text-muted md:text-lg"
           >
             Hair studio a Parioli. Taglio, colore, effetti luce e piega in un salone luminoso di{' '}
@@ -101,7 +103,7 @@ export function Hero() {
             custom={1}
             variants={copy}
             initial={reduce ? false : 'hidden'}
-            animate="visible"
+            animate={ready ? 'visible' : 'hidden'}
             className="flex flex-wrap items-center gap-3"
           >
             <ButtonLink href={salon.bookingUrl} tone="sun" icon={<ArrowRight size={16} weight="bold" />}>

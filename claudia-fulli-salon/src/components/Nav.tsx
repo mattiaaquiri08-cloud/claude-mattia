@@ -8,6 +8,7 @@ import {
 } from 'motion/react'
 import { ArrowUpRight, List, Phone, X } from '@phosphor-icons/react'
 import { navLinks, salon } from '../data/salon'
+import { useIntroDone } from '../lib/intro'
 import { handleAnchorClick, setScrollLocked } from '../lib/smooth-scroll'
 import { ButtonLink } from './ui'
 import { EASE, cn } from '../lib/utils'
@@ -76,6 +77,7 @@ function useNightUnderNav() {
 
 export function Nav() {
   const reduce = useReducedMotion()
+  const ready = useIntroDone()
   const { scrollY } = useScroll()
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
@@ -126,8 +128,8 @@ export function Nav() {
         )}
         onFocusCapture={() => setHidden(false)}
         initial={reduce ? false : { y: -24, opacity: 0 }}
-        animate={{ y: hidden ? '-100%' : 0, opacity: 1 }}
-        transition={{ duration: hidden ? 0.45 : 0.7, ease: EASE }}
+        animate={ready ? { y: hidden ? '-100%' : 0, opacity: 1 } : undefined}
+        transition={{ duration: hidden ? 0.45 : 0.7, delay: ready && !scrolled ? 0.3 : 0, ease: EASE }}
       >
         <nav
           aria-label="Principale"

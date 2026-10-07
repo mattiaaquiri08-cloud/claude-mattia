@@ -60,8 +60,11 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Treatwell e Google: non inventare servizi, prezzi, recensioni o persone.
 - Il listino completo di un salone su Treatwell sta nel JSON-LD della pagina (`OfferCatalog`):
   scaricare l'HTML con curl ed estrarlo è più affidabile del riassunto di WebFetch.
-- Animazioni a maschera (testo che sale da `overflow-hidden`): mettere `whileInView` sul
-  contenitore, non sulla riga nascosta, altrimenti l'animazione non parte mai.
+- Animazioni a maschera (testo che sale da `overflow-hidden`, foto che si apre con `clip-path`):
+  mettere `whileInView` sul contenitore, non sull'elemento nascosto, altrimenti non parte mai.
+- Le anteprime da condividere (`npm run build:artifact`, link claude.ai) devono dire chiaramente
+  che sono una bozza di proposta e non il sito ufficiale del salone. Il link si rende pubblico
+  solo dal menu "Condividi" della pagina: Claude non può farlo.
 - Griglie su mobile con contenuti a scorrimento orizzontale (chip, caroselli): usare
   `grid-cols-1` e `min-w-0`, altrimenti la pagina si allarga oltre lo schermo.
 - Con Lenis, sbloccare lo scroll prima di chiamare `scrollTo` (es. dal menu mobile).
