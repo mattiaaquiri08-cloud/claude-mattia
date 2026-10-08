@@ -55,3 +55,13 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
 - Semplicità e complessità: 50 e 50. Proponi la soluzione più adatta, ma se è complessa
   offri anche un'alternativa semplice e lascia scegliere all'utente.
+- Stack usato per i siti: Vite + React + Tailwind v4 + Motion + icone Phosphor, contenuti in un
+  unico file dati (es. `oma/sito/src/data/site.ts`) così si aggiornano senza toccare i componenti.
+- Prenotazioni dei ristoranti: modulo che apre WhatsApp con il messaggio già compilato, mai
+  conferme simulate.
+- Progetto OMA Osteria Moderna (cartella `oma/`): tema scuro, accento ocra del logo (#d2772c),
+  font Bricolage Grotesque + Geist. WhatsApp prenotazioni: 377 301 7230 (fornito dall'utente).
+- Le foto di Google Maps non si scaricano in automatico (la pagina non carica in headless):
+  chiedere le foto all'utente.
+- Con la CLI 21st la chiave si passa con `API_KEY_21ST` (già letta in automatico).
+- Negli screenshot automatici aspetta la fine delle animazioni prima di giudicare un bug.
