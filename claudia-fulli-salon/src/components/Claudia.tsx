@@ -1,24 +1,20 @@
-import { useRef } from 'react'
-import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
-import { ArrowRight } from '@phosphor-icons/react'
+import { motion, useReducedMotion } from 'motion/react'
+import { ArrowRight, Camera } from '@phosphor-icons/react'
 import { salon, team } from '../data/salon'
 import { EASE, cn } from '../lib/utils'
 import { ButtonLink, Reveal } from './ui'
 
 const HEADLINE = ['“Chi ha Claudia', 'non trema!”']
 
-/** Sezione dedicata alla titolare: ritratto, la frase più citata dalle clienti, il team. */
+/** Sezione dedicata alla titolare: spazio per il ritratto, la frase più citata dalle clienti, il team. */
 export function Claudia() {
   const reduce = useReducedMotion()
-  const portrait = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({ target: portrait, offset: ['start end', 'end start'] })
-  const imageY = useTransform(scrollYProgress, [0, 1], reduce ? ['0%', '0%'] : ['-6%', '6%'])
   const [claudia, lella] = team
 
   return (
     <section id="claudia" aria-labelledby="claudia-titolo" className="bg-paper px-4 pb-28 md:px-8 md:pb-40">
       <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-14 border-t border-line pt-24 md:pt-36 lg:grid-cols-12 lg:gap-8">
-        {/* Ritratto: si apre dal basso, poi scorre appena più lento della pagina */}
+        {/* Riquadro del ritratto: si apre dal basso quando entra nello schermo */}
         {/* L'osservatore sta sulla colonna: un elemento ritagliato del tutto non risulta mai visibile */}
         <motion.div
           className="lg:col-span-5 lg:col-start-1 xl:col-span-4 xl:col-start-2"
@@ -27,27 +23,22 @@ export function Claudia() {
           viewport={{ once: true, amount: 0.2 }}
         >
           <motion.div
-            ref={portrait}
             className="relative mx-auto aspect-[408/512] w-full max-w-[26rem] overflow-hidden bg-stone lg:sticky lg:top-28"
             variants={{
               hidden: { clipPath: 'inset(100% 0% 0% 0%)' },
               shown: { clipPath: 'inset(0% 0% 0% 0%)', transition: { duration: 1.4, ease: EASE } },
             }}
           >
-            <motion.div className="absolute -inset-y-[7%] inset-x-0" style={{ y: imageY }}>
-              <picture className="contents">
-                <source type="image/avif" srcSet="images/claudia.avif" />
-                <img
-                  src="images/claudia.webp"
-                  width={408}
-                  height={512}
-                  alt="Ritratto di Claudia Fulli, titolare del salone."
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-cover object-top"
-                />
-              </picture>
-            </motion.div>
+            {/* Segnaposto: qui andrà il ritratto di Claudia */}
+            <div
+              role="img"
+              aria-label="Spazio per la foto di Claudia Fulli"
+              className="absolute inset-3 flex flex-col items-center justify-center gap-4 border border-dashed border-ink/25 text-center"
+            >
+              <Camera size={36} weight="light" aria-hidden className="text-muted" />
+              <p className="text-[1.375rem] font-light tracking-[-0.02em]">La foto di Claudia</p>
+              <p className="max-w-[22ch] text-[0.8125rem] leading-relaxed text-muted">Ritratto verticale, da inserire qui</p>
+            </div>
           </motion.div>
         </motion.div>
 
