@@ -60,8 +60,16 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Prenotazioni dei ristoranti: modulo che apre WhatsApp con il messaggio già compilato, mai
   conferme simulate.
 - Progetto OMA Osteria Moderna (cartella `oma/`): tema scuro, accento ocra del logo (#d2772c),
-  font Bricolage Grotesque + Geist. WhatsApp prenotazioni: 377 301 7230 (fornito dall'utente).
+  font Bricolage Grotesque + Geist. WhatsApp prenotazioni: 377 301 7230 (confermato dall'utente).
+  Referente: Alessio. Preventivo: Completo 550 €, Base 450 €.
 - Le foto di Google Maps non si scaricano in automatico (la pagina non carica in headless):
   chiedere le foto all'utente.
 - Con la CLI 21st la chiave si passa con `API_KEY_21ST` (già letta in automatico).
 - Negli screenshot automatici aspetta la fine delle animazioni prima di giudicare un bug.
+- Bozze per i clienti: due file HTML unici offline (PC e smartphone con cornice di telefono) in
+  `consegna/`, creati con `npm run bozze`; link pubblici con
+  `https://rawcdn.githack.com/mattiaaquiri08-cloud/claude-mattia/<SHA-commit>/consegna/<file>.html`
+  (nuovo SHA a ogni aggiornamento). Le immagini di `public/` vanno incorporate dallo script.
+- Preventivi: modello = il documento Claude Docs "Preventivo sito web Claudia Fulli Salon"
+  (Oggetto, Il progetto, Le due opzioni Completo/Base, Costi a parte, Tempi, Accettazione);
+  si crea un nuovo documento con la stessa struttura e i prezzi indicati dall'utente.
