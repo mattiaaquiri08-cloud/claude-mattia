@@ -2,12 +2,12 @@ import { useCallback, useEffect, useState } from 'react'
 import { AnimatePresence, MotionConfig } from 'motion/react'
 import { Claudia } from './components/Claudia'
 import { Footer } from './components/Footer'
+import { Gallery } from './components/Gallery'
 import { Hero } from './components/Hero'
 import { Manifesto } from './components/Manifesto'
 import { MobileBookingBar } from './components/MobileBookingBar'
 import { Nav } from './components/Nav'
 import { Reviews } from './components/Reviews'
-import { SalonTour } from './components/SalonTour'
 import { Services } from './components/Services'
 import { Splash } from './components/Splash'
 import { Visit } from './components/Visit'
@@ -43,7 +43,7 @@ export default function App() {
         <main id="contenuto">
           <Hero />
           <Manifesto />
-          <SalonTour />
+          <Gallery />
           <Claudia />
           <Services />
           <Reviews />

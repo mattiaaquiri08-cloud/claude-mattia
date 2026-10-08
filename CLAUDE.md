@@ -57,7 +57,10 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   offri anche un'alternativa semplice e lascia scegliere all'utente.
 - Progetto `claudia-fulli-salon/` (sito del salone di Claudia Fulli, Parioli): Vite + React +
   Tailwind v4 + Motion + Lenis. I dati stanno in `src/data/salon.ts` e vengono solo dalle schede
-  Treatwell e Google: non inventare servizi, prezzi, recensioni o persone.
+  Treatwell e Google: non inventare servizi, prezzi, recensioni o persone. La galleria lavori
+  (`galleryItems`) e la foto di Claudia sono segnaposto in attesa delle foto vere.
+- L'utente non vuole sezioni che dirottano lo scroll verticale: le gallerie si sfogliano in
+  orizzontale (scroll-snap, frecce, trascinamento).
 - Il listino completo di un salone su Treatwell sta nel JSON-LD della pagina (`OfferCatalog`):
   scaricare l'HTML con curl ed estrarlo è più affidabile del riassunto di WebFetch.
 - Animazioni a maschera (testo che sale da `overflow-hidden`, foto che si apre con `clip-path`):

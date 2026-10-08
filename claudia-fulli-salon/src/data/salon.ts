@@ -167,44 +167,26 @@ export const team = [
   },
 ] as const
 
-/** Punti della foto (in % della larghezza e altezza) mostrati nella visita del salone. */
-export const tourStops = [
-  {
-    id: 'insieme',
-    title: 'Il salone',
-    text: 'Pareti bianche, luce naturale dalle finestre e faretti dalla luce calda.',
-    focus: { x: 0.5, y: 0.5 },
-    zoom: 1,
-  },
-  {
-    id: 'poltrone',
-    title: 'Le poltrone gialle',
-    text: 'Il colore del salone, davanti agli specchi con la luce integrata.',
-    focus: { x: 0.15, y: 0.66 },
-    zoom: 1.75,
-  },
-  {
-    id: 'postazioni',
-    title: 'Quattro postazioni',
-    text: 'Un unico piano in pietra chiara e specchi a tutta parete.',
-    focus: { x: 0.48, y: 0.55 },
-    zoom: 1.6,
-  },
-  {
-    id: 'pavimento',
-    title: 'Il pavimento nero',
-    text: 'Una superficie lucida e venata che riflette la luce dei faretti.',
-    focus: { x: 0.56, y: 0.84 },
-    zoom: 1.7,
-  },
-  {
-    id: 'finestre',
-    title: 'Le sedute alla finestra',
-    text: 'Cuscini ocra sotto le finestre, lo stesso tono delle poltrone.',
-    focus: { x: 0.8, y: 0.52 },
-    zoom: 1.8,
-  },
-] as const
+export type GalleryItem = {
+  id: string
+  category: 'Acconciatura' | 'Trucco' | 'Acconciatura sposa' | 'Trucco sposa'
+  /** Formato del riquadro nella galleria */
+  shape: 'tall' | 'wide' | 'slim'
+  /** Percorso della foto, da aggiungere quando arriva (ora si mostra un segnaposto) */
+  src?: string
+}
+
+// Galleria dei lavori: per ora solo segnaposto "Foto progetti modello".
+export const galleryItems: GalleryItem[] = [
+  { id: 'lavoro-1', category: 'Acconciatura', shape: 'tall' },
+  { id: 'lavoro-2', category: 'Trucco', shape: 'slim' },
+  { id: 'lavoro-3', category: 'Acconciatura sposa', shape: 'wide' },
+  { id: 'lavoro-4', category: 'Trucco', shape: 'tall' },
+  { id: 'lavoro-5', category: 'Acconciatura', shape: 'slim' },
+  { id: 'lavoro-6', category: 'Trucco sposa', shape: 'wide' },
+  { id: 'lavoro-7', category: 'Acconciatura', shape: 'tall' },
+  { id: 'lavoro-8', category: 'Trucco', shape: 'slim' },
+]
 
 export const navLinks = [
   { href: '#salone', label: 'Il salone' },

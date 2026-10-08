@@ -54,12 +54,6 @@ export function scrollToHash(hash: string) {
   }
 }
 
-/** Scorre a una posizione assoluta della pagina. */
-export function scrollToY(y: number) {
-  if (lenis) lenis.scrollTo(y)
-  else window.scrollTo({ top: y, behavior: 'smooth' })
-}
-
 /** Gestore per i link interni: usa lo scroll morbido invece del salto. */
 export function handleAnchorClick(event: React.MouseEvent<HTMLAnchorElement>) {
   const href = event.currentTarget.getAttribute('href')
