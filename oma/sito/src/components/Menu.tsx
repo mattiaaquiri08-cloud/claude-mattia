@@ -103,12 +103,12 @@ export function Menu() {
 
             <div className="mt-10 hidden overflow-hidden rounded-[var(--radius-media)] md:block">
               <img
-                src="./img/g-tavolo.webp"
-                alt="Un tavolo di OMA apparecchiato per la cena"
-                width={880}
-                height={740}
+                src="./img/p-rigatoni.webp"
+                alt="Un piatto di rigatoni al sugo, servito nei piatti a fiori di OMA"
+                width={344}
+                height={448}
                 loading="lazy"
-                className="aspect-[5/4] w-full object-cover"
+                className="aspect-[4/5] w-full object-cover"
               />
             </div>
           </aside>

@@ -60,7 +60,7 @@ export function Gallery() {
           <div>
             <h2 className="font-display text-5xl leading-none font-semibold tracking-[-0.03em] md:text-7xl">Dentro OMA</h2>
             <p className="mt-5 max-w-[46ch] text-lg leading-relaxed text-cream/75">
-              Luci basse, velluto arancio e una vetrata sulla strada. Tocca una foto per guardarla da vicino.
+              I piatti e la sala, come li trovi a tavola. Tocca una foto per guardarla da vicino.
             </p>
           </div>
           <a
@@ -74,7 +74,7 @@ export function Gallery() {
           </a>
         </div>
 
-        <ul className="grid auto-rows-[44vw] grid-cols-2 gap-3 md:auto-rows-[clamp(180px,17vw,260px)] md:grid-cols-4 md:gap-4">
+        <ul className="grid grid-flow-row-dense auto-rows-[44vw] grid-cols-2 gap-3 md:auto-rows-[clamp(180px,17vw,260px)] md:grid-cols-4 md:gap-4">
           {GALLERY.map((p, i) => (
             <motion.li
               key={p.src}

@@ -225,11 +225,11 @@ export type Photo = {
 
 export const GALLERY: Photo[] = [
   { src: './img/g-sala.webp', alt: 'La sala di OMA: pareti nere, luci ambra e sedie in velluto arancio', width: 1400, height: 787, area: 'col-span-2 md:row-span-2' },
-  { src: './img/g-sala-verticale.webp', alt: 'I tavoli lungo la vetrata su Via Costantino Maes', width: 940, height: 1672, area: 'row-span-2' },
-  { src: './img/g-pampas.webp', alt: "L'erba pampas all'ingresso del locale", width: 462, height: 760, area: 'row-span-2' },
-  { src: './img/g-leonardo-alessio.webp', alt: 'Leonardo e Alessio a tavola con un piatto e un calice di vino', width: 1200, height: 1200, area: 'col-span-2' },
-  { src: './img/g-tavolo.webp', alt: 'Un tavolo apparecchiato con calici e fiori secchi', width: 880, height: 740, area: '' },
-  { src: './img/g-luci.webp', alt: 'Le lampade a sospensione sopra la sala', width: 700, height: 560, area: '' },
+  { src: './img/p-battuta.webp', alt: 'La battuta di manzo, condita al momento', width: 344, height: 412, area: 'row-span-2' },
+  { src: './img/p-tiramisu.webp', alt: 'Il tiramisù servito in sala, accanto al calice di OMA', width: 344, height: 448, area: 'row-span-2' },
+  { src: './img/p-rigatoni.webp', alt: 'Un piatto di rigatoni al sugo con formaggio grattugiato', width: 344, height: 448, area: 'row-span-2' },
+  { src: './img/p-tavola.webp', alt: 'La tavola apparecchiata con i piatti della nonna: salumi, crostoni, polpette e battuta', width: 344, height: 420, area: 'col-span-2 md:row-span-2' },
+  { src: './img/p-crudo.webp', alt: 'Un piatto di stagione servito nei piatti a fiori', width: 344, height: 448, area: 'row-span-2' },
 ]
 
 /* ---------- Recensioni (fonte: Google Maps) ---------- */
