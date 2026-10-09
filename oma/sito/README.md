@@ -15,6 +15,16 @@ npm run preview   # prova la versione finale
 La cartella `dist/` è statica: si pubblica così com'è su Netlify (trascinandola su app.netlify.com/drop),
 Vercel, GitHub Pages o qualunque hosting. I percorsi sono relativi, quindi funziona anche in una sottocartella.
 
+## Menu, orari e avviso: li aggiorna il ristorante
+
+Il sito legge il Foglio Google **"OMA - Menu e orari del sito"** (id in `SITE.sheetId`), con quattro schede:
+`Menu` (Portata, Sezione, Piatto, Descrizione, Prezzo €, Visibile), `Orari` (Giorno, Pranzo, Cena),
+`Avviso` (testo della fascia in alto) e `Come si usa`. Le modifiche compaiono alla visita successiva.
+
+Il foglio deve essere condiviso come **"Chiunque abbia il link: visualizzatore"**, e chi lo aggiorna va
+aggiunto come editor. Se il foglio non risponde, il sito usa l'ultimo caricamento riuscito oppure i dati
+di `src/data/site.ts`. Il codice è in `src/lib/live-data.ts`.
+
 ## Dove si cambiano i contenuti
 
 Tutto è in **`src/data/site.ts`**:

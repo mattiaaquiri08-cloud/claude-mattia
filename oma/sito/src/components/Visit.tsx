@@ -3,17 +3,18 @@ import { useEffect, useState } from 'react'
 import { NavigationArrow, Phone, WhatsappLogo } from '@phosphor-icons/react'
 import { DAY_NAMES, SITE, WEEK_ORDER } from '../data/site'
 import { formatDayHours, openStatus, romeNow } from '../lib/hours'
+import { useLiveData } from '../lib/live-data'
 
 export function Visit() {
   const reduce = useReducedMotion()
-  const [status, setStatus] = useState(openStatus)
-  const [today, setToday] = useState(() => romeNow().weekday)
+  // ridisegna quando arrivano gli orari dal foglio e una volta al minuto
+  useLiveData()
+  const [, setTick] = useState(0)
+  const status = openStatus()
+  const today = romeNow().weekday
 
   useEffect(() => {
-    const t = window.setInterval(() => {
-      setStatus(openStatus())
-      setToday(romeNow().weekday)
-    }, 60_000)
+    const t = window.setInterval(() => setTick((n) => n + 1), 60_000)
     return () => window.clearInterval(t)
   }, [])
 

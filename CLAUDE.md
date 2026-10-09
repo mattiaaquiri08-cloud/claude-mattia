@@ -62,6 +62,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Progetto OMA Osteria Moderna (cartella `oma/`): tema scuro, accento ocra del logo (#d2772c),
   font Bricolage Grotesque + Geist. WhatsApp prenotazioni: 377 301 7230 (confermato dall'utente).
   Referente: Alessio. Preventivo: Completo 550 €, Base 450 €.
+  Il menu cambia ogni settimana: menu, orari e avviso li aggiorna il ristorante dal Foglio Google
+  "OMA - Menu e orari del sito" (Drive dell'utente, id in `SITE.sheetId`), incluso nel Completo.
+  Il foglio va condiviso "chiunque abbia il link: visualizzatore", altrimenti il sito usa i dati salvati.
 - Le foto di Google Maps non si scaricano in automatico (la pagina non carica in headless):
   chiedere le foto all'utente.
 - Con la CLI 21st la chiave si passa con `API_KEY_21ST` (già letta in automatico).
@@ -73,3 +76,6 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Preventivi: modello = il documento Claude Docs "Preventivo sito web Claudia Fulli Salon"
   (Oggetto, Il progetto, Le due opzioni Completo/Base, Costi a parte, Tempi, Accettazione);
   si crea un nuovo documento con la stessa struttura e i prezzi indicati dall'utente.
+- Contenuti che il cliente vuole cambiare da solo (menu, orari): Foglio Google letto dal sito
+  (endpoint `gviz/tq?tqx=out:csv&sheet=<scheda>`), con copia locale e dati di riserva nel codice.
+  Il connettore Drive non può rendere pubblico un file: lo deve fare l'utente da Condividi.

@@ -1,9 +1,10 @@
 import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll } from 'motion/react'
 import { useEffect, useState } from 'react'
-import { InstagramLogo, List, Phone, X } from '@phosphor-icons/react'
+import { Info, InstagramLogo, List, Phone, X } from '@phosphor-icons/react'
 import { useBooking } from './booking-context'
 import { SITE } from '../data/site'
 import { scrollToId } from '../lib/scroll'
+import { useLiveData } from '../lib/live-data'
 
 const LINKS = [
   { id: 'chi-siamo', label: 'Chi siamo' },
@@ -19,6 +20,7 @@ export function Nav({ revealed }: { revealed: boolean }) {
   const { scrollY } = useScroll()
   const [solid, setSolid] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const { notice } = useLiveData()
 
   useMotionValueEvent(scrollY, 'change', (v) => {
     const next = v > 40
@@ -51,6 +53,16 @@ export function Nav({ revealed }: { revealed: boolean }) {
         animate={revealed ? { y: 0, opacity: 1 } : undefined}
         transition={{ duration: 0.9, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
       >
+        {/* Avviso scritto dal ristorante nel foglio (ferie, chiusure, serate speciali) */}
+        {notice && (
+          <p
+            role="status"
+            className="flex items-center justify-center gap-2 bg-ochre px-4 py-2 text-center text-sm font-medium text-balance text-ink"
+          >
+            <Info size={16} weight="bold" className="shrink-0" />
+            {notice}
+          </p>
+        )}
         <div
           className={`transition-[background-color,border-color,backdrop-filter] duration-500 ${
             solid || menuOpen ? 'border-b border-line/70 bg-ink/80 backdrop-blur-xl' : 'border-b border-transparent'

@@ -12,7 +12,7 @@ import {
 } from '@phosphor-icons/react'
 import { SITE } from '../data/site'
 import { bookingSlots, longDate, nextDays, weekdayOf } from '../lib/hours'
-import { HOURS } from '../data/site'
+import { getHours } from '../lib/live-data'
 
 type Props = { open: boolean; onClose: () => void }
 
@@ -35,7 +35,7 @@ function validate(f: Form): Errors {
   const e: Errors = {}
   if (f.name.trim().length < 2) e.name = 'Scrivi il tuo nome.'
   if (!f.date) e.date = 'Scegli il giorno.'
-  else if (HOURS[weekdayOf(f.date)].length === 0) e.date = 'Il mercoledì siamo chiusi. Scegli un altro giorno.'
+  else if (getHours()[weekdayOf(f.date)].length === 0) e.date = 'Quel giorno siamo chiusi. Scegli un altro giorno.'
   if (!f.time) e.time = "Scegli l'orario."
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email.trim())) e.email = "Controlla l'indirizzo email."
   if (f.phone.replace(/\D/g, '').length < 8) e.phone = 'Inserisci un numero di telefono valido.'
@@ -326,7 +326,7 @@ export function BookingDialog({ open, onClose }: Props) {
                                 aria-checked={active}
                                 disabled={d.closed}
                                 onClick={() => set('date', d.iso)}
-                                title={d.closed ? 'Chiuso il mercoledì' : undefined}
+                                title={d.closed ? 'Giorno di chiusura' : undefined}
                                 className={`flex w-[68px] shrink-0 snap-start flex-col items-center rounded-[16px] border px-2 py-3 transition-[background-color,border-color,transform] duration-200 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-35 ${
                                   active
                                     ? 'border-ochre bg-ochre text-ink'

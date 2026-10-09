@@ -1,11 +1,15 @@
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'motion/react'
 import { useRef, useState, type KeyboardEvent } from 'react'
+import { useLiveData } from '../lib/live-data'
 import { FilePdf, Heart } from '@phosphor-icons/react'
-import { MENU, type Dish } from '../data/site'
+import { type Dish } from '../data/site'
 
 export function Menu() {
   const reduce = useReducedMotion()
-  const [active, setActive] = useState(MENU[0].id)
+  const { menu: MENU } = useLiveData()
+  const [chosen, setActive] = useState(MENU[0].id)
+  // se la portata scelta sparisce dal foglio si torna alla prima
+  const active = MENU.some((s) => s.id === chosen) ? chosen : MENU[0].id
   const tabsRef = useRef<HTMLDivElement>(null)
   const section = MENU.find((s) => s.id === active)!
   const count = section.groups.reduce((n, g) => n + g.dishes.length, 0)

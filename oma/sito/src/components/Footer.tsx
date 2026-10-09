@@ -1,9 +1,13 @@
 import { InstagramLogo, Phone, WhatsappLogo } from '@phosphor-icons/react'
-import { SITE } from '../data/site'
+import { DAY_NAMES, SITE, WEEK_ORDER } from '../data/site'
+import { useLiveData } from '../lib/live-data'
 
 const YEAR = new Date().getFullYear()
 
 export function Footer() {
+  const { hours } = useLiveData()
+  const closed = WEEK_ORDER.filter((d) => hours[d].length === 0).map((d) => DAY_NAMES[d])
+
   return (
     <footer className="border-t border-line px-4 pt-16 pb-10 md:px-8">
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 md:grid-cols-12">
@@ -76,7 +80,7 @@ export function Footer() {
 
       <div className="mx-auto mt-16 flex max-w-[1400px] flex-col gap-3 border-t border-line pt-6 text-sm text-mute sm:flex-row sm:justify-between">
         <p>© {YEAR} {SITE.name}</p>
-        <p>Mercoledì chiuso</p>
+        {closed.length > 0 && <p>{closed.join(' e ')} chiuso</p>}
       </div>
     </footer>
   )

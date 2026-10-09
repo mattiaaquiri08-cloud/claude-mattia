@@ -18,6 +18,8 @@ export const SITE = {
   directionsUrl: 'https://www.google.com/maps/dir/?api=1&destination=Via+Costantino+Maes+78,+00162+Roma',
   mapEmbed: 'https://www.google.com/maps?q=Oma+osteria+moderna,+Via+Costantino+Maes+78,+00162+Roma&z=16&output=embed',
   priceRange: '20-30 € a persona',
+  // Foglio Google "OMA - Menu e orari del sito": menu, orari e avviso modificabili dal ristorante
+  sheetId: '1omQ0g1XPfdXOwEmJykII2BDh1DOqi2_z0fcROg64AUk',
 } as const
 
 /* ---------- Orari (fonte: scheda Google) ---------- */
