@@ -2,17 +2,21 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 const RISE = [0.16, 1, 0.3, 1] as const
-const AWNING = [0.76, 0, 0.24, 1] as const
-/** Quanto resta a schermo prima che la tenda si alzi (in tutto circa 3 secondi) */
-const HOLD_MS = 2300
-const HOLD_REDUCED_MS = 1100
+const ROLL = [0.7, 0, 0.2, 1] as const
+/** Quanto resta giù la tenda prima di alzarsi (in tutto circa 3 secondi) */
+const HOLD_MS = 2100
+const HOLD_REDUCED_MS = 1300
 
-const WORD = 'DA MARIO'.split('')
+/* I colori della tenda vera di Via Silvio Spaventa: tela avorio, scritta scura */
+const CANVAS = '#ebe4d5'
+const CANVAS_SHADE = '#ddd3bf'
+const VALANCE = '#e7dfcd'
+const INK_ON_CANVAS = '#2a2420'
 
 /**
- * Splash: le lettere romane di "da MARIO" salgono come incise, sotto si accende una linea di brace,
- * poi il pannello si alza come la tenda bianca del locale (con il suo bordo a festoni) e scopre la hero.
- * Con "riduci movimento": scritta ferma e dissolvenza breve. Un clic o un tasto la chiude subito.
+ * Splash: la tenda di Da Mario a tutto schermo. In alto il tubo di ferro, la tela avorio con la cucitura,
+ * la mantovana con la scritta "da MARIO" e il bordo a festoni. Dopo la scritta la tenda si alza
+ * e scopre la sala. Con "riduci movimento": tenda ferma e dissolvenza breve. Un tocco o un tasto la chiude.
  */
 export function Splash({ onReveal }: { onReveal: () => void }) {
   const reduce = useReducedMotion()
@@ -36,7 +40,7 @@ export function Splash({ onReveal }: { onReveal: () => void }) {
     }
   }, [finish, reduce])
 
-  // niente scroll della pagina mentre la splash è a schermo
+  // niente scroll della pagina mentre la tenda è giù
   useEffect(() => {
     if (!visible) return
     const html = document.documentElement
@@ -52,76 +56,100 @@ export function Splash({ onReveal }: { onReveal: () => void }) {
       {visible && (
         <motion.div
           key="splash"
-          className="fixed inset-0 z-[90] cursor-pointer select-none"
+          className="fixed inset-0 z-[90] cursor-pointer overflow-hidden select-none"
           onClick={finish}
           aria-hidden="true"
           translate="no"
           initial={false}
-          exit={reduce ? { opacity: 0 } : { y: 'calc(-100% - 26px)' }}
-          transition={reduce ? { duration: 0.45 } : { duration: 0.95, ease: AWNING }}
+          exit={{ opacity: 1 }}
+          transition={{ duration: reduce ? 0.45 : 1.25 }}
         >
-          <div className="absolute inset-0 bg-ink" />
-
-          {/* bagliore della brace, fermo */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%]"
-            style={{ background: 'radial-gradient(60% 70% at 50% 100%, color-mix(in srgb, var(--color-fill) 18%, transparent), transparent 70%)' }}
+          {/* il buio della porta sotto la tenda: sparisce mentre la tenda sale */}
+          <motion.div
+            className="absolute inset-0 bg-ink"
+            exit={{ opacity: 0 }}
+            transition={{ duration: reduce ? 0.45 : 0.7, delay: reduce ? 0 : 0.25 }}
           />
 
+          {/* la tenda */}
           <motion.div
-            className="relative flex h-full flex-col items-center justify-center px-6 text-center"
-            exit={reduce ? undefined : { y: -40, opacity: 0 }}
-            transition={{ duration: 0.5, ease: AWNING }}
+            className="absolute inset-x-0 top-0 h-[calc(100%-clamp(28px,5vw,44px))]"
+            exit={reduce ? { opacity: 0 } : { y: '-112%' }}
+            transition={reduce ? { duration: 0.45 } : { duration: 1.15, ease: ROLL }}
           >
-            <motion.p
-              className="font-sans text-[0.7rem] font-semibold text-mute uppercase sm:text-xs"
-              initial={reduce ? false : { opacity: 0, letterSpacing: '0.9em' }}
-              animate={{ opacity: 1, letterSpacing: '0.55em' }}
-              transition={{ duration: 1.2, ease: RISE, delay: 0.1 }}
+            {/* tela inclinata: luce dall'alto, cucitura centrale, pieghe leggere */}
+            <div
+              className="absolute inset-x-0 top-0 h-[58%]"
+              style={{
+                background: `linear-gradient(180deg, ${CANVAS_SHADE} 0%, ${CANVAS} 30%, ${CANVAS} 85%, ${CANVAS_SHADE} 100%)`,
+              }}
             >
-              Ristorante
-            </motion.p>
+              <div
+                className="absolute inset-0 opacity-60"
+                style={{
+                  background:
+                    'repeating-linear-gradient(90deg, transparent 0 calc(16.66% - 1px), rgb(42 36 32 / 0.06) calc(16.66% - 1px) 16.66%)',
+                }}
+              />
+              <div className="absolute inset-y-0 left-1/2 w-px bg-[rgb(42_36_32/0.14)]" />
+              {/* il tubo di ferro in alto */}
+              <div className="absolute inset-x-0 top-0 h-3 bg-[#2b2622] shadow-[0_3px_10px_rgb(0_0_0/0.35)] sm:h-4" />
+              <motion.p
+                className="absolute inset-x-0 bottom-[14%] text-center font-sans text-[0.68rem] font-semibold uppercase sm:text-xs"
+                style={{ color: INK_ON_CANVAS, opacity: 0.55 }}
+                initial={reduce ? false : { opacity: 0, letterSpacing: '0.9em' }}
+                animate={{ opacity: 0.55, letterSpacing: '0.6em' }}
+                transition={{ duration: 1.1, ease: RISE, delay: 0.15 }}
+              >
+                Ristorante
+              </motion.p>
+            </div>
 
-            <p
-              className="mt-4 flex font-display text-[clamp(3.4rem,15vw,9.5rem)] leading-[0.9] font-medium tracking-[0.04em] text-bone"
-            >
-              {WORD.map((ch, i) => (
-                <span key={i} className="inline-block overflow-hidden pb-[0.06em]" aria-hidden="true">
-                  <motion.span
-                    className="inline-block"
-                    initial={reduce ? false : { y: '105%' }}
-                    animate={{ y: '0%' }}
-                    transition={{ duration: 0.9, ease: RISE, delay: 0.3 + i * 0.055 }}
-                  >
-                    {ch === ' ' ? ' ' : ch}
-                  </motion.span>
-                </span>
-              ))}
-            </p>
+            {/* la piega dove la tela diventa mantovana */}
+            <div className="absolute inset-x-0 top-[58%] h-3 bg-gradient-to-b from-[rgb(42_36_32/0.16)] to-transparent" />
 
-            {/* la linea di brace che si accende */}
-            <motion.span
-              aria-hidden="true"
-              className="mt-5 block h-px w-[min(62vw,420px)] origin-center bg-ember"
-              style={{ boxShadow: '0 0 18px 2px color-mix(in srgb, var(--color-ember) 55%, transparent)' }}
-              initial={reduce ? false : { scaleX: 0, opacity: 0 }}
-              animate={{ scaleX: 1, opacity: 1 }}
-              transition={{ duration: 0.8, ease: RISE, delay: 1.0 }}
+            {/* la mantovana con la scritta, come sulla tenda vera */}
+            <div className="absolute inset-x-0 top-[58%] bottom-0 flex flex-col items-center justify-center px-6" style={{ background: VALANCE }}>
+              <p
+                className="flex items-baseline font-display leading-none font-medium"
+                style={{ color: INK_ON_CANVAS }}
+              >
+                <motion.span
+                  className="mr-[0.45em] text-[clamp(2.6rem,11vw,6.8rem)]"
+                  initial={reduce ? false : { opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, ease: RISE, delay: 0.35 }}
+                >
+                  da
+                </motion.span>
+                <motion.span
+                  className="text-[clamp(3.4rem,15vw,9.5rem)] tracking-[0.04em]"
+                  initial={reduce ? false : { opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.9, ease: RISE, delay: 0.5 }}
+                >
+                  MARIO
+                </motion.span>
+              </p>
+              <motion.p
+                className="mt-[0.6em] font-display text-[clamp(1.25rem,3.4vw,2rem)] italic"
+                style={{ color: 'var(--color-fill)' }}
+                initial={reduce ? false : { opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: RISE, delay: 1.0 }}
+              >
+                di Valerio Palermo
+              </motion.p>
+            </div>
+
+            {/* il bordo a festoni, ben visibile sopra il buio della porta */}
+            <div
+              className="absolute inset-x-0 top-full h-[clamp(28px,5vw,44px)] drop-shadow-[0_8px_10px_rgb(0_0_0/0.35)]"
+              style={{
+                background: `radial-gradient(ellipse 50% 100% at 50% 0, ${VALANCE} 98%, transparent 100%) 0 0 / clamp(56px,10vw,88px) 100% repeat-x`,
+              }}
             />
-
-            <motion.p
-              className="mt-5 font-display text-2xl text-bone/85 italic sm:text-3xl"
-              initial={reduce ? false : { opacity: 0, y: 10, filter: 'blur(6px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              transition={{ duration: 0.8, ease: RISE, delay: 1.35 }}
-            >
-              di Valerio Palermo
-            </motion.p>
           </motion.div>
-
-          {/* il bordo a festoni della tenda, visibile mentre si alza */}
-          <div aria-hidden="true" className="scallop absolute inset-x-0 top-full h-[22px]" />
         </motion.div>
       )}
     </AnimatePresence>
