@@ -3,10 +3,10 @@ Buongiorno Valerio, sono Mattia.
 Come promesso le mando la bozza del nuovo sito del Ristorante da Mario, in due versioni da aprire con un tocco:
 
 💻 *Versione computer*
-https://rawcdn.githack.com/mattiaaquiri08-cloud/claude-mattia/2ed4d02efffce982e6c99fd7228b96af05ba0d98/consegna/DaMario_bozza_PC.html
+https://rawcdn.githack.com/mattiaaquiri08-cloud/claude-mattia/3638a21ba7ff1417856acf14dbdf07b6e463433a/consegna/DaMario_bozza_PC.html
 
 📱 *Versione smartphone*
-https://rawcdn.githack.com/mattiaaquiri08-cloud/claude-mattia/2ed4d02efffce982e6c99fd7228b96af05ba0d98/consegna/DaMario_bozza_smartphone.html
+https://rawcdn.githack.com/mattiaaquiri08-cloud/claude-mattia/3638a21ba7ff1417856acf14dbdf07b6e463433a/consegna/DaMario_bozza_smartphone.html
 
 Cosa trova nel sito:
 • l'apertura con l'insegna "da MARIO" e la tenda che si alza
