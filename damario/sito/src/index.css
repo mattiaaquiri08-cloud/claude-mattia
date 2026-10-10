@@ -1,0 +1,221 @@
+@import 'tailwindcss';
+
+/*
+  Da Mario: palette presa dalla sala e dal forno a carbone.
+  Fondo carbone (freddo, non marrone), testo color tovaglia, un solo accento: la brace.
+  Tema scuro unico: è la sera romana, la luce calda delle lampade sulle pareti di legno.
+
+  Tipografia: serif romano (Cormorant Garamond) come la scritta "da MARIO" sulla tenda,
+  sans (Hanken Grotesk) per testi, prezzi e interfaccia.
+
+  Forme: pulsanti a pillola, foto e pannelli 18px, campi del modulo 12px.
+*/
+@theme {
+  --color-ink: #0d0e10;
+  --color-coal: #15161a;
+  --color-smoke: #1f2025;
+  --color-line: #2c2d33;
+  --color-bone: #ede8e0;
+  --color-mute: #a7a199;
+  --color-ember: #e3683a;
+  --color-ember-soft: #f0855a;
+  --color-ember-deep: #8f2f12;
+  --color-danger: #f29482;
+  --color-ok: #8fcf9d;
+  --color-whatsapp: #5fe08f;
+
+  --font-display: 'Cormorant Garamond Variable', 'Cormorant Garamond', ui-serif, Georgia, serif;
+  --font-sans: 'Hanken Grotesk Variable', 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+
+  --radius-media: 18px;
+  --radius-field: 12px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-awning: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    background: var(--color-ink);
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 84px;
+  }
+
+  body {
+    background: var(--color-ink);
+    color: var(--color-bone);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--color-ember);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ember);
+    outline-offset: 3px;
+  }
+
+  img {
+    -webkit-user-drag: none;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  label {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgb(227 104 58 / 0.15);
+  }
+
+  input[type='date']::-webkit-calendar-picker-indicator {
+    filter: invert(0.85);
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  /* Pulsante principale: pieno brace, testo carbone (contrasto 6,3:1) */
+  .btn-primary {
+    @apply inline-flex min-h-12 items-center justify-center gap-2.5 rounded-full bg-ember px-7 py-4 text-[0.8rem] font-semibold tracking-[0.16em] whitespace-nowrap text-ink uppercase transition-[background-color,transform,box-shadow] duration-300 ease-out-expo hover:bg-ember-soft active:scale-[0.98];
+    box-shadow: 0 14px 44px -14px rgb(227 104 58 / 0.6);
+  }
+
+  /* Pulsante secondario: vetro scuro con bordo, leggibile sopra le foto */
+  .btn-ghost {
+    @apply inline-flex min-h-12 items-center justify-center gap-2.5 rounded-full border border-bone/35 bg-ink/50 px-7 py-4 text-[0.8rem] font-semibold tracking-[0.16em] whitespace-nowrap text-bone uppercase backdrop-blur-md transition-[background-color,border-color,transform] duration-300 ease-out-expo hover:border-bone/70 hover:bg-ink/70 active:scale-[0.98];
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08);
+  }
+
+  .btn-line {
+    @apply inline-flex min-h-11 items-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm font-medium text-bone transition-[border-color,background-color,transform] duration-200 hover:border-mute hover:bg-smoke active:scale-[0.98];
+  }
+
+  .field {
+    @apply w-full rounded-[var(--radius-field)] border border-line bg-ink px-4 py-3.5 text-base text-bone transition-[border-color,box-shadow] duration-200 placeholder:text-mute/75 hover:border-mute/60 focus-visible:border-ember focus-visible:ring-3 focus-visible:ring-ember/25 focus-visible:outline-none;
+  }
+
+  .field[aria-invalid='true'] {
+    @apply border-danger;
+  }
+
+  .chip {
+    @apply inline-flex min-h-11 items-center justify-center rounded-full border border-line px-4 text-sm font-medium text-bone transition-[background-color,border-color,color,transform] duration-200 hover:border-mute active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:border-line;
+  }
+
+  .chip[aria-pressed='true'],
+  .chip[aria-checked='true'] {
+    @apply border-ember bg-ember text-ink;
+  }
+
+  /* Titoli di sezione: serif romano, medio, stretto */
+  .h-section {
+    @apply font-display text-[2.6rem] leading-[1.02] font-medium tracking-[-0.01em] text-balance sm:text-6xl lg:text-[4.5rem];
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Linea puntinata tra piatto e prezzo, come nei menù stampati */
+  .leader {
+    background-image: radial-gradient(circle, rgb(167 161 153 / 0.5) 1px, transparent 1.3px);
+    background-size: 7px 3px;
+    background-repeat: repeat-x;
+    background-position: 0 100%;
+  }
+
+  /* Il bordo a festoni della tenda di Da Mario */
+  .scallop {
+    background: radial-gradient(circle at 50% 0, var(--scallop-color, var(--color-ink)) 70%, transparent 71%) 0 0 / 44px 22px
+      repeat-x;
+  }
+}
+
+/* Numeri allineati anche nel serif (Cormorant usa cifre "antiche" di default) */
+.font-display,
+.h-section,
+.font-display * {
+  font-variant-numeric: lining-nums;
+}
+
+/* La brace: carbone che si accende, senza foto. Gradiente fermo, nessuna animazione infinita. */
+.embers {
+  background:
+    radial-gradient(70% 55% at 50% 112%, rgb(240 133 90 / 0.62), transparent 70%),
+    radial-gradient(45% 35% at 18% 104%, rgb(227 104 58 / 0.5), transparent 70%),
+    radial-gradient(40% 32% at 84% 106%, rgb(143 47 18 / 0.8), transparent 72%),
+    radial-gradient(90% 70% at 50% 100%, rgb(143 47 18 / 0.55), transparent 70%),
+    radial-gradient(60% 40% at 70% 0%, rgb(227 104 58 / 0.1), transparent 70%),
+    linear-gradient(180deg, #141518 0%, #1a1210 55%, #2a140b 100%);
+}
+
+/* Grana leggera su tutta la pagina: elemento fisso, nessun ridisegno durante lo scroll */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .btn-ghost {
+    background: var(--color-ink);
+    backdrop-filter: none;
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(143 207 157 / 0.55);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgb(143 207 157 / 0);
+  }
+}
+
+.live-dot {
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}

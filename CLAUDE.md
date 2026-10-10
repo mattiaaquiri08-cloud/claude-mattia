@@ -55,3 +55,20 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
 - Semplicità e complessità: 50 e 50. Proponi la soluzione più adatta, ma se è complessa
   offri anche un'alternativa semplice e lascia scegliere all'utente.
+- Stack dei siti: Vite + React + Tailwind v4 + Motion + icone Phosphor, contenuti in un file dati
+  (`src/data/site.ts` + `ui.ts` per i testi bilingue). Prenotazioni ristoranti: modulo che apre
+  WhatsApp con il messaggio compilato (modello OMA, branch `claude/vigilant-edison-50pdj9`).
+- Bozze per il cliente: `npm run bozze` crea due HTML offline in `consegna/` (PC e smartphone con cornice).
+- Progetto Da Mario (`damario/sito`): tema scuro carbone, accento brace #e3683a, Cormorant Garamond +
+  Hanken Grotesk, splash con la tenda a festoni. WhatsApp prenotazioni NON confermato (provvisorio il fisso).
+  Instagram/Facebook non verificati: non mostrati finché l'utente non dà gli URL.
+- Ricerca dati: Google Maps via curl (`/maps/place/...` poi l'URL `preview/place?...` contenuto nella pagina:
+  voto, numero recensioni, orari, recensioni con autori e risposte del titolare, foto con autore).
+  TheFork e Tripadvisor bloccano (captcha/403): il menù TheFork si ricava solo dalle ricerche web.
+  Le foto caricate dal proprietario hanno l'etichetta `bizbuilder` nei dati Google.
+  Il sito su Aruba funziona senza `www` quando il `www` non risponde.
+- Errore da evitare: elementi `sr-only` (position absolute) dentro un contenitore a scorrimento orizzontale
+  senza `relative` allargano la pagina su smartphone. Mettere `relative` sui contenitori `overflow-x-auto`
+  e `grid-cols-1` sulle griglie che diventano a più colonne solo da md/lg.
+- Più componenti con lo stesso `layoutId` di Motion montati insieme si rubano l'animazione: usare `useId`.
+- Non usare `pkill -f` con un testo presente nel comando stesso: termina anche la shell.
