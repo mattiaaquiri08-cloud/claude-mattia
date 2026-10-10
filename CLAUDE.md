@@ -59,8 +59,10 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   (`src/data/site.ts` + `ui.ts` per i testi bilingue). Prenotazioni ristoranti: modulo che apre
   WhatsApp con il messaggio compilato (modello OMA, branch `claude/vigilant-edison-50pdj9`).
 - Bozze per il cliente: `npm run bozze` crea due HTML offline in `consegna/` (PC e smartphone con cornice).
-- Progetto Da Mario (`damario/sito`): tema scuro carbone, accento brace #e3683a, Cormorant Garamond +
-  Hanken Grotesk, splash con la tenda a festoni. WhatsApp prenotazioni NON confermato (provvisorio il fisso).
+- Progetto Da Mario (`damario/sito`): tema scuro, accento ROSSO VINO scelto dall'utente (l'arancione brace
+  non gli piaceva: "orrendo"), Cormorant Garamond + Hanken Grotesk, splash con la tenda a festoni.
+  Colori in token (`ember` = accento su fondo scuro, `fill`/`on-fill` = pulsante, `radius-btn`).
+  Foto dei piatti e della sala fornite dall'utente in `public/img/` (WebP + AVIF). WhatsApp prenotazioni NON confermato (provvisorio il fisso).
   Instagram/Facebook non verificati: non mostrati finché l'utente non dà gli URL.
 - Ricerca dati: Google Maps via curl (`/maps/place/...` poi l'URL `preview/place?...` contenuto nella pagina:
   voto, numero recensioni, orari, recensioni con autori e risposte del titolare, foto con autore).
@@ -72,3 +74,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   e `grid-cols-1` sulle griglie che diventano a più colonne solo da md/lg.
 - Più componenti con lo stesso `layoutId` di Motion montati insieme si rubano l'animazione: usare `useId`.
 - Non usare `pkill -f` con un testo presente nel comando stesso: termina anche la shell.
+- Scelte visive (colori, stile): proporre SEMPRE 2-3 varianti con screenshot affiancati (`21st-ui-explore`)
+  prima di fissarne una; mai decidere da solo il colore d'accento.
+- Le immagini inviate dall'utente mentre lavoro (messaggio a metà turno) non vengono salvate su disco:
+  si vedono ma non si possono usare. Chiedere di rimandarle in un messaggio nuovo.

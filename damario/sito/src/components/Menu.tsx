@@ -7,24 +7,22 @@ import { MENU_EVENT, useBooking } from '../lib/booking'
 import { formatPrice } from '../lib/hours'
 import { useI18n } from '../lib/i18n'
 
-/** Il fondo della colonna di sinistra per le portate dei tre pilastri */
-function PillarVisual({ course }: { course: Course }) {
-  if (course.pillar === 'brace') return <div aria-hidden="true" className="embers absolute inset-0" />
-  const base = course.pillar === 'tartufo' ? 'tartufo' : 'sala'
-  const w = course.pillar === 'tartufo' ? 900 : 700
+/** La foto della portata nella colonna del titolo; senza foto, il bagliore della brace */
+function CourseVisual({ course }: { course: Course }) {
+  const photo = course.photo
+  if (!photo) return <div aria-hidden="true" className="embers absolute inset-0" />
   return (
     <picture>
-      <source type="image/avif" srcSet={`./img/${base}-${w}.avif`} />
+      <source type="image/avif" srcSet={`./img/${photo.base}-${photo.width}.avif`} />
       <img
-        src={`./img/${base}-${w}.webp`}
+        src={`./img/${photo.base}-${photo.width}.webp`}
         alt=""
-        width={w}
-        height={Math.round((w * 2) / 3)}
+        width={photo.width}
+        height={Math.round((photo.width * 4) / 3)}
         loading="lazy"
         decoding="async"
-        className={`absolute inset-0 h-full w-full object-cover ${
-          course.pillar === 'vino' ? 'scale-[1.4] object-[30%_15%]' : 'object-[45%_50%]'
-        }`}
+        className="absolute inset-0 h-full w-full object-cover"
+        style={{ objectPosition: photo.position ?? '50% 50%' }}
       />
     </picture>
   )
@@ -145,9 +143,9 @@ export function Menu() {
             {/* Colonna titolo */}
             <div className="md:col-span-5 lg:col-span-4">
               <div className="md:sticky md:top-[160px]">
-                {course.pillar ? (
+                {course.pillar || course.photo ? (
                   <div className="relative isolate flex min-h-[260px] flex-col justify-end overflow-hidden rounded-[var(--radius-media)] bg-coal p-6 sm:min-h-[320px] sm:p-8">
-                    <PillarVisual course={course} />
+                    <CourseVisual course={course} />
                     <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/10" />
                     <h3 className="relative font-display text-[2.6rem] leading-[1] font-medium text-balance sm:text-5xl">{t(course.title)}</h3>
                     {course.intro && <p className="relative mt-4 max-w-[38ch] leading-relaxed text-bone/85">{t(course.intro)}</p>}

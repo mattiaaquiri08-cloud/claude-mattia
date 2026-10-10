@@ -6,7 +6,8 @@
  *  - Scheda Google Maps "Ristorante da Mario - di Valerio Palermo": indirizzo, telefono, orari,
  *    voto 4,7 su 491 recensioni, descrizione del ristorante, recensioni e risposte del titolare.
  *  - Menù pubblicato dal ristorante su TheFork (aggiornato al 5 gennaio 2026) e piatti indicati dal cliente.
- *  - Foto: hero fornite dal cliente; "sala" e "tartufo" pubblicate dal ristorante sulla sua scheda Google.
+ *  - Foto: hero e foto dei piatti, della sala e dell'ingresso fornite dal cliente;
+ *    "sala" e "tartufo" pubblicate dal ristorante sulla sua scheda Google.
  */
 
 export type Lang = 'it' | 'en'
@@ -84,12 +85,15 @@ export type Course = {
   intro?: T
   /** BRACE, VINO, TARTUFO: le portate dei tre pilastri */
   pillar?: 'brace' | 'vino' | 'tartufo'
+  /** Foto della colonna del titolo (file in public/img) e inquadratura */
+  photo?: { base: string; width: number; position?: string }
   dishes: Dish[]
 }
 
 export const MENU: Course[] = [
   {
     id: 'antipasti',
+    photo: { base: 'prosciutto', width: 640, position: '40% 40%' },
     title: { it: 'Antipasti', en: 'Starters' },
     dishes: [
       { name: 'Prosciutto al coltello', en: 'Hand-carved prosciutto', price: 14 },
@@ -112,6 +116,7 @@ export const MENU: Course[] = [
   },
   {
     id: 'brace',
+    photo: { base: 'fiorentine', width: 640, position: '50% 70%' },
     pillar: 'brace',
     title: { it: 'La brace del forno Josper', en: 'From the Josper charcoal oven' },
     intro: {
@@ -142,6 +147,7 @@ export const MENU: Course[] = [
   },
   {
     id: 'primi',
+    photo: { base: 'carbonara', width: 640, position: '50% 45%' },
     title: { it: 'Primi della tradizione romana', en: 'Roman pasta classics' },
     dishes: [
       {
@@ -169,6 +175,7 @@ export const MENU: Course[] = [
   },
   {
     id: 'tartufo',
+    photo: { base: 'fettuccine-tartufo', width: 640, position: '50% 62%' },
     pillar: 'tartufo',
     title: { it: 'Il tartufo fresco', en: 'Fresh truffle' },
     intro: {
@@ -197,6 +204,7 @@ export const MENU: Course[] = [
   },
   {
     id: 'carne',
+    photo: { base: 'costata', width: 640, position: '50% 40%' },
     title: { it: 'Secondi di carne', en: 'Meat mains' },
     dishes: [
       { name: 'Filetto di manzo al pepe verde', en: 'Beef fillet with green peppercorn sauce', price: 26 },
@@ -260,6 +268,7 @@ export const MENU: Course[] = [
   },
   {
     id: 'vini',
+    photo: { base: 'cannonau', width: 640, position: '40% 50%' },
     pillar: 'vino',
     title: { it: 'Vini', en: 'Wines' },
     intro: {
@@ -354,14 +363,52 @@ export const GALLERY: Photo[] = [
     },
   },
   {
-    base: 'hero-mobile',
-    widths: [640, 941],
-    width: 941,
-    height: 1672,
+    base: 'carbonara-vino',
+    widths: [640, 836],
+    width: 836,
+    height: 1349,
     alt: {
-      it: 'L\'ingresso di Da Mario in Via Silvio Spaventa, con la tenda bianca e la porta a vetri',
-      en: 'The entrance of Da Mario on Via Silvio Spaventa, with its white awning and glazed door',
+      it: 'Spaghetti alla carbonara con guanciale croccante, e in tavola un Cannonau di Sardegna',
+      en: 'Spaghetti alla carbonara with crispy guanciale, and a Cannonau di Sardegna on the table',
     },
+  },
+  {
+    base: 'fiorentine',
+    widths: [640, 1400],
+    width: 1400,
+    height: 1050,
+    alt: { it: 'Due fiorentine alla brace sui taglieri di legno', en: 'Two Florentine T-bone steaks from the grill on wooden boards' },
+  },
+  {
+    base: 'prosciutto',
+    widths: [640, 1400],
+    width: 1400,
+    height: 933,
+    alt: { it: 'Il prosciutto tagliato al coltello', en: 'Prosciutto carved by hand' },
+  },
+  {
+    base: 'fettuccine-tartufo',
+    widths: [640, 1100],
+    width: 1100,
+    height: 1467,
+    alt: { it: 'Fettuccine con lamelle di tartufo nero', en: 'Fettuccine with shavings of black truffle' },
+  },
+  {
+    base: 'ingresso-giorno',
+    widths: [640, 1400],
+    width: 1400,
+    height: 1050,
+    alt: {
+      it: 'Le due tende di Ristorante da Mario al civico 19 di Via Silvio Spaventa, con i vasi di erbe aromatiche',
+      en: 'The two awnings of Ristorante da Mario at number 19, Via Silvio Spaventa, with planters of fresh herbs',
+    },
+  },
+  {
+    base: 'gricia',
+    widths: [640, 1100],
+    width: 1100,
+    height: 1576,
+    alt: { it: 'Spaghetti con guanciale croccante, pecorino e pepe', en: 'Spaghetti with crispy guanciale, pecorino and black pepper' },
   },
   {
     base: 'tartufo',
@@ -371,38 +418,38 @@ export const GALLERY: Photo[] = [
     alt: { it: 'Tartufi neri freschi su un piatto bianco', en: 'Fresh black truffles on a white plate' },
   },
   {
-    base: 'hero-desktop',
-    widths: [800, 1280, 1672],
-    width: 1672,
-    height: 941,
+    base: 'sala-tavoli',
+    widths: [640, 1400],
+    width: 1400,
+    height: 933,
     alt: {
-      it: 'La sala apparecchiata alla luce delle candele, con le bottiglie esposte sotto l\'arco',
-      en: 'The dining room set by candlelight, with bottles displayed under the arch',
+      it: 'I tavoli apparecchiati, con l\'olio extravergine in tavola',
+      en: 'Tables set for service, with extra virgin olive oil on each one',
     },
   },
   {
-    base: null,
-    widths: [],
-    width: 1200,
-    height: 1000,
-    alt: { it: 'Spaghetti alla carbonara', en: 'Spaghetti alla carbonara' },
-    slot: { it: 'La carbonara', en: 'The carbonara' },
+    base: 'costata',
+    widths: [640, 1100],
+    width: 1100,
+    height: 1467,
+    alt: { it: 'Una costata alla brace con insalata e limone', en: 'A grilled rib steak with salad and lemon' },
   },
   {
-    base: null,
-    widths: [],
-    width: 1600,
-    height: 1000,
-    alt: { it: 'Una costata dal forno Josper', en: 'A rib steak from the Josper oven' },
-    slot: { it: 'La brace del Josper', en: 'The Josper grill' },
+    base: 'cannonau',
+    widths: [640, 1100],
+    width: 1100,
+    height: 1467,
+    alt: { it: 'Una bottiglia di Cannonau di Sardegna DOC in tavola', en: 'A bottle of Cannonau di Sardegna DOC on the table' },
   },
   {
-    base: null,
-    widths: [],
-    width: 1200,
-    height: 1000,
-    alt: { it: 'La tartare preparata al tavolo', en: 'Tartare prepared at the table' },
-    slot: { it: 'La tartare al tavolo', en: 'Tartare at the table' },
+    base: 'hero-mobile',
+    widths: [640, 941],
+    width: 941,
+    height: 1672,
+    alt: {
+      it: 'L\'ingresso di Da Mario la sera, con la tenda bianca e la porta a vetri illuminata',
+      en: 'The entrance of Da Mario in the evening, with its white awning and lit glazed door',
+    },
   },
 ]
 

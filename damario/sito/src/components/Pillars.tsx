@@ -15,7 +15,23 @@ const PILLARS: { key: Key; menuId: string; word: string }[] = [
 ]
 
 function Visual({ k }: { k: Key }) {
-  if (k === 'brace') return <div className="embers absolute inset-0" aria-hidden="true" />
+  if (k === 'brace')
+    return (
+      <picture>
+        <source type="image/avif" srcSet="./img/fiorentine-640.avif 640w, ./img/fiorentine-1400.avif 1400w" sizes="(min-width: 1024px) 50vw, 100vw" />
+        <img
+          src="./img/fiorentine-1400.webp"
+          srcSet="./img/fiorentine-640.webp 640w, ./img/fiorentine-1400.webp 1400w"
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          alt=""
+          width={1400}
+          height={1050}
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full scale-[1.1] object-cover object-[50%_70%] transition-transform duration-[1.4s] ease-out-expo group-hover:scale-[1.16]"
+        />
+      </picture>
+    )
   if (k === 'vino')
     return (
       <picture>
@@ -94,7 +110,7 @@ export function Pillars() {
                 <Visual k={p.key} />
                 <div
                   aria-hidden="true"
-                  className={`absolute inset-0 bg-gradient-to-t ${p.key === 'brace' ? 'from-ink/60 via-transparent to-transparent' : 'from-ink via-ink/55 to-ink/5'}`}
+                  className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/5"
                 />
 
                 <div className="relative mt-auto flex w-full flex-col p-6 sm:p-8 lg:p-10">

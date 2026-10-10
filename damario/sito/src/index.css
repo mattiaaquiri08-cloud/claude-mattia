@@ -5,8 +5,7 @@
   Tipografia: serif romano (Cormorant Garamond) come la scritta "da MARIO" sulla tenda,
   sans (Hanken Grotesk) per testi, prezzi e interfaccia.
 
-  Tre direzioni a confronto (html[data-theme]): "vino" (predefinita), "oliva", "tovaglia".
-  Ogni direzione cambia colori, forma dei pulsanti e trattamento dei titoli.
+  Direzione scelta dal cliente: "Cantina", rosso vino (Amarone) su nero caldo.
   Token: ember = accento leggibile su fondo scuro (testi, linee, focus);
          fill / on-fill = pulsante principale e il suo testo; radius-btn = forma dei controlli.
 */
@@ -36,43 +35,6 @@
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-awning: cubic-bezier(0.76, 0, 0.24, 1);
-}
-
-/* Orto e olio: il verde dei vasi all'ingresso e dell'extravergine. Pulsanti a spigolo morbido, nessun vetro. */
-:root[data-theme='oliva'] {
-  --color-ink: #0d0f0d;
-  --color-coal: #151815;
-  --color-smoke: #1f231f;
-  --color-line: #2e332d;
-  --color-bone: #ece9df;
-  --color-mute: #a5a697;
-  --color-ember: #b9c193;
-  --color-ember-soft: #cdd4aa;
-  --color-ember-deep: #353d22;
-  --color-fill: #a8b17f;
-  --color-fill-soft: #bac292;
-  --color-on-fill: #12140f;
-  --radius-btn: 10px;
-  --radius-media: 12px;
-}
-
-/* Tovaglia bianca: nessun colore, solo avorio su carbone. Controlli quasi squadrati, titoli in capitali romane. */
-:root[data-theme='tovaglia'] {
-  --color-ink: #0d0e10;
-  --color-coal: #15161a;
-  --color-smoke: #1f2025;
-  --color-line: #2c2d33;
-  --color-bone: #ede8e0;
-  --color-mute: #a7a199;
-  --color-ember: #ede8e0;
-  --color-ember-soft: #f7f3ec;
-  --color-ember-deep: #3a3936;
-  --color-fill: #ede8e0;
-  --color-fill-soft: #f7f3ec;
-  --color-on-fill: #0d0e10;
-  --radius-btn: 3px;
-  --radius-media: 4px;
-  --radius-field: 4px;
 }
 
 @layer base {
@@ -165,15 +127,6 @@
     @apply font-display text-[2.6rem] leading-[1.02] font-medium tracking-[-0.01em] text-balance sm:text-6xl lg:text-[4.5rem];
   }
 
-  /* Tovaglia: titoli in capitali romane spaziate, come l'insegna */
-  :root[data-theme='tovaglia'] .h-section {
-    @apply text-[2.1rem] leading-[1.05] tracking-[0.06em] uppercase sm:text-5xl lg:text-[3.6rem];
-  }
-
-  /* Oliva: niente vetro sui pulsanti secondari, fondo pieno */
-  :root[data-theme='oliva'] .btn-ghost {
-    @apply border-line bg-coal backdrop-blur-none hover:border-mute hover:bg-smoke;
-  }
 }
 
 @layer utilities {

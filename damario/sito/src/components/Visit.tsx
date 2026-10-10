@@ -122,17 +122,20 @@ export function Visit() {
             ) : (
               <>
                 <picture>
-                  <source type="image/avif" srcSet="./img/hero-mobile-640.avif 640w, ./img/hero-mobile-941.avif 941w" sizes="(min-width: 1024px) 55vw, 100vw" />
+                  <source type="image/avif" srcSet="./img/ingresso-giorno-640.avif 640w, ./img/ingresso-giorno-1400.avif 1400w" sizes="(min-width: 1024px) 55vw, 100vw" />
                   <img
-                    src="./img/hero-mobile-941.webp"
-                    srcSet="./img/hero-mobile-640.webp 640w, ./img/hero-mobile-941.webp 941w"
+                    src="./img/ingresso-giorno-1400.webp"
+                    srcSet="./img/ingresso-giorno-640.webp 640w, ./img/ingresso-giorno-1400.webp 1400w"
                     sizes="(min-width: 1024px) 55vw, 100vw"
-                    alt={t({ it: 'La tenda e la porta di Da Mario in Via Silvio Spaventa 19', en: 'The awning and door of Da Mario at Via Silvio Spaventa 19' })}
-                    width={941}
-                    height={1672}
+                    alt={t({
+                      it: 'L\'ingresso di Ristorante da Mario al civico 19 di Via Silvio Spaventa',
+                      en: 'The entrance of Ristorante da Mario at number 19, Via Silvio Spaventa',
+                    })}
+                    width={1400}
+                    height={1050}
                     loading="lazy"
                     decoding="async"
-                    className="absolute inset-0 h-full w-full object-cover object-[50%_28%]"
+                    className="absolute inset-0 h-full w-full object-cover object-[30%_50%]"
                   />
                 </picture>
                 <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent" />
