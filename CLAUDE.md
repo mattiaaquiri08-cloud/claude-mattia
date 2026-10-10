@@ -63,7 +63,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   non gli piaceva: "orrendo"), Cormorant Garamond + Hanken Grotesk, splash con la tenda a festoni.
   Colori in token (`ember` = accento su fondo scuro, `fill`/`on-fill` = pulsante, `radius-btn`).
   Foto dei piatti e della sala fornite dall'utente in `public/img/` (WebP + AVIF).
-  Preventivo Da Mario: Completo 690 €, Base 500 € (doc Claude Docs "Preventivo sito web Ristorante da Mario",
+  Preventivo Da Mario: Completo 690 € (IT+EN, tenda che si alza, sezioni Brace/Vino/Tartufo), Base 500 €
+  (solo italiano, apertura semplice senza tenda; bozza "senza tenda" = commit 2ed4d02) (doc Claude Docs "Preventivo sito web Ristorante da Mario",
   PDF in `consegna/`). Messaggio WhatsApp per Valerio in `consegna/Messaggio_WhatsApp_Valerio.txt`.
   Valerio Palermo è chef E proprietario (stessa persona nelle foto `valerio` e `valerio-carrello`). WhatsApp prenotazioni NON confermato (provvisorio il fisso).
   Instagram/Facebook non verificati: non mostrati finché l'utente non dà gli URL.
