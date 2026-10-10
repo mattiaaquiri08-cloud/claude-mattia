@@ -1,0 +1,26 @@
+Buongiorno Valerio, sono Mattia.
+
+Come promesso le mando la bozza del nuovo sito del Ristorante da Mario, in due versioni da aprire con un tocco:
+
+💻 *Versione computer*
+https://rawcdn.githack.com/mattiaaquiri08-cloud/claude-mattia/2ed4d02efffce982e6c99fd7228b96af05ba0d98/consegna/DaMario_bozza_PC.html
+
+📱 *Versione smartphone*
+https://rawcdn.githack.com/mattiaaquiri08-cloud/claude-mattia/2ed4d02efffce982e6c99fd7228b96af05ba0d98/consegna/DaMario_bozza_smartphone.html
+
+Cosa trova nel sito:
+• l'apertura con l'insegna "da MARIO" e la tenda che si alza
+• Brace, Vino e Tartufo, con le foto dei vostri piatti
+• il menù completo a schede, in italiano e in inglese per i turisti
+• una sezione dedicata a lei, chef e padrone di casa
+• le recensioni di Google, gli orari e la mappa
+• la prenotazione del tavolo: il cliente compila i dati e il messaggio arriva a voi su WhatsApp, già pronto
+
+In allegato trova anche il preventivo, con due opzioni:
+• *Completo, 690 €*: tutto quello che vede nella bozza
+• *Base, 500 €*: il sito senza animazioni d'apertura e senza le sezioni Brace, Vino e Tartufo, con una galleria più piccola
+
+Per completare il sito mi servono solo il numero WhatsApp su cui ricevere le prenotazioni e la conferma di menù e prezzi.
+
+Resto a disposizione per qualsiasi modifica. A presto!
+Mattia

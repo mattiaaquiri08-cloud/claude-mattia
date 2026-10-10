@@ -63,6 +63,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   non gli piaceva: "orrendo"), Cormorant Garamond + Hanken Grotesk, splash con la tenda a festoni.
   Colori in token (`ember` = accento su fondo scuro, `fill`/`on-fill` = pulsante, `radius-btn`).
   Foto dei piatti e della sala fornite dall'utente in `public/img/` (WebP + AVIF).
+  Preventivo Da Mario: Completo 690 €, Base 500 € (doc Claude Docs "Preventivo sito web Ristorante da Mario",
+  PDF in `consegna/`). Messaggio WhatsApp per Valerio in `consegna/Messaggio_WhatsApp_Valerio.txt`.
   Valerio Palermo è chef E proprietario (stessa persona nelle foto `valerio` e `valerio-carrello`). WhatsApp prenotazioni NON confermato (provvisorio il fisso).
   Instagram/Facebook non verificati: non mostrati finché l'utente non dà gli URL.
 - Ricerca dati: Google Maps via curl (`/maps/place/...` poi l'URL `preview/place?...` contenuto nella pagina:
@@ -77,5 +79,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Non usare `pkill -f` con un testo presente nel comando stesso: termina anche la shell.
 - Scelte visive (colori, stile): proporre SEMPRE 2-3 varianti con screenshot affiancati (`21st-ui-explore`)
   prima di fissarne una; mai decidere da solo il colore d'accento.
+- Preventivi: stessa struttura del documento Claude Docs "Preventivo sito web OMA Osteria Moderna"
+  (Oggetto, Il progetto, Le due opzioni Completo/Base, Costi a parte, Tempi, Accettazione); esportato in PDF
+  in `consegna/`. Al cliente si manda un messaggio WhatsApp con i link githack alle due bozze (PC e
+  smartphone), cosa contiene il sito, le due opzioni e cosa serve; il PDF lo allega l'utente.
 - Le immagini inviate dall'utente mentre lavoro (messaggio a metà turno) non vengono salvate su disco:
   si vedono ma non si possono usare. Chiedere di rimandarle in un messaggio nuovo.
