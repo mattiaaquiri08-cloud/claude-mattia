@@ -187,8 +187,15 @@ export function BookingDialog({ open, onClose }: Props) {
             {/* Colonna foto (solo desktop): la porta sotto la tenda */}
             <div className="relative hidden overflow-hidden md:block">
               <picture>
-                <source type="image/avif" srcSet="./img/hero-mobile-640.avif" />
-                <img src="./img/hero-mobile-640.webp" alt="" width={640} height={1137} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[50%_35%]" />
+                <source type="image/avif" srcSet="./img/valerio-640.avif" />
+                <img
+                  src="./img/valerio-640.webp"
+                  alt=""
+                  width={640}
+                  height={759}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover object-[30%_30%]"
+                />
               </picture>
               <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/35 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-8">

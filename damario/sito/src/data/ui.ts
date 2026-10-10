@@ -99,11 +99,11 @@ export const UI = {
     },
   },
   valerio: {
-    eyebrow: { it: 'Il padrone di casa', en: 'Your host' },
+    eyebrow: { it: 'Chef e padrone di casa', en: 'Chef and host' },
     heading: { it: 'Valerio Palermo', en: 'Valerio Palermo' },
     lead: {
-      it: 'Da Mario ha un nome storico e un volto preciso: quello di Valerio Palermo, che accoglie gli ospiti e segue la sala.',
-      en: 'Da Mario has a historic name and a familiar face: Valerio Palermo, who welcomes every guest and looks after the room.',
+      it: 'Da Mario ha un nome storico e un volto preciso: quello di Valerio Palermo, chef e padrone di casa. Accoglie gli ospiti, segue la sala e il tartufo lo porta fino al tavolo.',
+      en: 'Da Mario has a historic name and a familiar face: Valerio Palermo, chef and host. He welcomes every guest, looks after the room and brings the truffle right to your table.',
     },
     body: {
       it: 'Chi viene qui lo racconta così: il titolare cordiale, professionale ed efficiente, il pane caldo e l\'extravergine portati appena seduti, la tartare preparata davanti agli ospiti. Una sala dove ci si sente ospiti, non clienti.',
@@ -119,7 +119,15 @@ export const UI = {
       it: 'Valerio, rispondendo a un ospite su Google',
       en: 'Valerio, replying to a guest on Google',
     },
-    photoPending: { it: 'Ritratto di Valerio in arrivo', en: 'Portrait of Valerio coming soon' },
+    photoMain: {
+      it: 'Valerio Palermo sorridente in sala, mentre finisce un piatto di pasta al tavolo',
+      en: 'Valerio Palermo smiling in the dining room as he finishes a pasta dish at the table',
+    },
+    photoTruffle: {
+      it: 'Valerio lamella il tartufo nero al carrello, accanto alla padella di rame',
+      en: 'Valerio shaving black truffle at the service trolley, beside a copper pan',
+    },
+    caption: { it: 'Valerio in sala: il tartufo si lamella al tavolo.', en: 'Valerio in the dining room: truffle is shaved at the table.' },
   },
   gallery: {
     heading: { it: 'La sala, la tenda, la tavola', en: 'The room, the awning, the table' },

@@ -62,7 +62,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Progetto Da Mario (`damario/sito`): tema scuro, accento ROSSO VINO scelto dall'utente (l'arancione brace
   non gli piaceva: "orrendo"), Cormorant Garamond + Hanken Grotesk, splash con la tenda a festoni.
   Colori in token (`ember` = accento su fondo scuro, `fill`/`on-fill` = pulsante, `radius-btn`).
-  Foto dei piatti e della sala fornite dall'utente in `public/img/` (WebP + AVIF). WhatsApp prenotazioni NON confermato (provvisorio il fisso).
+  Foto dei piatti e della sala fornite dall'utente in `public/img/` (WebP + AVIF).
+  Valerio Palermo è chef E proprietario (stessa persona nelle foto `valerio` e `valerio-carrello`). WhatsApp prenotazioni NON confermato (provvisorio il fisso).
   Instagram/Facebook non verificati: non mostrati finché l'utente non dà gli URL.
 - Ricerca dati: Google Maps via curl (`/maps/place/...` poi l'URL `preview/place?...` contenuto nella pagina:
   voto, numero recensioni, orari, recensioni con autori e risposte del titolare, foto con autore).

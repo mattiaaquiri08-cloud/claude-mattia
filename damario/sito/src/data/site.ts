@@ -175,7 +175,7 @@ export const MENU: Course[] = [
   },
   {
     id: 'tartufo',
-    photo: { base: 'fettuccine-tartufo', width: 640, position: '50% 62%' },
+    photo: { base: 'uova-tartufo', width: 640, position: '50% 50%' },
     pillar: 'tartufo',
     title: { it: 'Il tartufo fresco', en: 'Fresh truffle' },
     intro: {
@@ -387,7 +387,7 @@ export const GALLERY: Photo[] = [
     alt: { it: 'Il prosciutto tagliato al coltello', en: 'Prosciutto carved by hand' },
   },
   {
-    base: 'fettuccine-tartufo',
+    base: 'tagliatelle-tartufo',
     widths: [640, 1100],
     width: 1100,
     height: 1467,
@@ -416,6 +416,23 @@ export const GALLERY: Photo[] = [
     width: 1600,
     height: 1200,
     alt: { it: 'Tartufi neri freschi su un piatto bianco', en: 'Fresh black truffles on a white plate' },
+  },
+  {
+    base: 'uova-tartufo',
+    widths: [640, 1400],
+    width: 1400,
+    height: 1050,
+    alt: {
+      it: 'Uova al tegamino con fonduta di pecorino romano e tartufo',
+      en: 'Pan-fried eggs with pecorino romano fondue and truffle',
+    },
+  },
+  {
+    base: 'parete-vini',
+    widths: [640, 1100],
+    width: 1100,
+    height: 1467,
+    alt: { it: 'La parete delle bottiglie sotto l\'arco della sala', en: 'The wall of wine bottles under the arch of the dining room' },
   },
   {
     base: 'sala-tavoli',
@@ -452,8 +469,5 @@ export const GALLERY: Photo[] = [
     },
   },
 ]
-
-/** Ritratto di Valerio: null finché il cliente non manda la foto (file in public/img). */
-export const VALERIO_PHOTO: { base: string; widths: number[]; width: number; height: number } | null = null
 
 export const NEARBY = ['Stazione Termini', 'Via XX Settembre', 'Via Veneto', 'Piazza Barberini', 'Piazza Fiume', 'Piazza della Repubblica']

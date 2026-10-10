@@ -32,36 +32,24 @@ function Visual({ k }: { k: Key }) {
         />
       </picture>
     )
-  if (k === 'vino')
-    return (
-      <picture>
-        <source type="image/avif" srcSet="./img/sala-700.avif 700w, ./img/sala-1200.avif 1200w" sizes="(min-width: 1024px) 50vw, 100vw" />
-        <img
-          src="./img/sala-1200.webp"
-          srcSet="./img/sala-700.webp 700w, ./img/sala-1200.webp 1200w"
-          sizes="(min-width: 1024px) 50vw, 100vw"
-          alt=""
-          width={1200}
-          height={800}
-          loading="lazy"
-          decoding="async"
-          className="absolute inset-0 h-full w-full scale-[1.35] object-cover object-[30%_18%] transition-transform duration-[1.4s] ease-out-expo group-hover:scale-[1.42]"
-        />
-      </picture>
-    )
+  const photo =
+    k === 'vino'
+      ? { base: 'parete-vini', pos: '45% 30%' }
+      : { base: 'tagliatelle-tartufo', pos: '50% 55%' }
   return (
     <picture>
-      <source type="image/avif" srcSet="./img/tartufo-900.avif 900w, ./img/tartufo-1600.avif 1600w" sizes="(min-width: 1024px) 50vw, 100vw" />
+      <source type="image/avif" srcSet={`./img/${photo.base}-640.avif 640w, ./img/${photo.base}-1100.avif 1100w`} sizes="(min-width: 1024px) 50vw, 100vw" />
       <img
-        src="./img/tartufo-900.webp"
-        srcSet="./img/tartufo-900.webp 900w, ./img/tartufo-1600.webp 1600w"
+        src={`./img/${photo.base}-1100.webp`}
+        srcSet={`./img/${photo.base}-640.webp 640w, ./img/${photo.base}-1100.webp 1100w`}
         sizes="(min-width: 1024px) 50vw, 100vw"
         alt=""
-        width={900}
-        height={675}
+        width={1100}
+        height={1467}
         loading="lazy"
         decoding="async"
-        className="absolute inset-0 h-full w-full scale-[1.15] object-cover object-[45%_48%] transition-transform duration-[1.4s] ease-out-expo group-hover:scale-[1.22]"
+        className="absolute inset-0 h-full w-full scale-[1.05] object-cover transition-transform duration-[1.4s] ease-out-expo group-hover:scale-[1.11]"
+        style={{ objectPosition: photo.pos }}
       />
     </picture>
   )

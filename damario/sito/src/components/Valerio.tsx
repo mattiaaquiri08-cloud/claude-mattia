@@ -1,64 +1,97 @@
-import { Camera } from '@phosphor-icons/react'
-import { motion } from 'motion/react'
-import { REVIEWS, VALERIO_PHOTO } from '../data/site'
+import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
+import { useRef } from 'react'
+import { REVIEWS } from '../data/site'
 import { UI } from '../data/ui'
 import { useI18n } from '../lib/i18n'
 
 /* Le risposte di Valerio agli ospiti su Google: la sua voce, con le sue parole. */
 const REPLIES = REVIEWS.filter((r) => r.reply).map((r) => r.reply as string)
 
+function Photo({ base, widths, width, height, alt, sizes, className }: {
+  base: string
+  widths: number[]
+  width: number
+  height: number
+  alt: string
+  sizes: string
+  className?: string
+}) {
+  return (
+    <picture>
+      <source type="image/avif" srcSet={widths.map((w) => `./img/${base}-${w}.avif ${w}w`).join(', ')} sizes={sizes} />
+      <img
+        src={`./img/${base}-${widths[widths.length - 1]}.webp`}
+        srcSet={widths.map((w) => `./img/${base}-${w}.webp ${w}w`).join(', ')}
+        sizes={sizes}
+        alt={alt}
+        width={width}
+        height={height}
+        loading="lazy"
+        decoding="async"
+        className={className}
+      />
+    </picture>
+  )
+}
+
+/**
+ * Valerio: il ritratto in sala e, in sovrapposizione, il momento del tartufo al carrello.
+ * La seconda foto scorre appena più veloce della prima: profondità, non spettacolo.
+ */
 export function Valerio() {
   const { t } = useI18n()
-  const photo = VALERIO_PHOTO
+  const reduce = useReducedMotion()
+  const ref = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
+  const y = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [50, -50])
 
   return (
     <section id="valerio" className="relative px-4 py-24 sm:px-6 md:py-36 lg:px-10" aria-labelledby="valerio-title">
-      <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-12 md:grid-cols-12 md:gap-10 lg:gap-16">
-        {/* Ritratto */}
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-16 md:grid-cols-12 md:gap-10 lg:gap-16">
+        {/* Le due foto */}
         <motion.div
-          className="md:col-span-5"
+          ref={ref}
+          className="relative pr-[14%] pb-[22%] md:col-span-6 md:pr-[16%]"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          <figure className="relative mx-auto aspect-[4/5] w-full max-w-[520px] overflow-hidden rounded-[var(--radius-media)] bg-coal">
-            {photo ? (
-              <picture>
-                <source
-                  type="image/avif"
-                  srcSet={photo.widths.map((w) => `./img/${photo.base}-${w}.avif ${w}w`).join(', ')}
-                  sizes="(min-width: 768px) 40vw, 100vw"
-                />
-                <img
-                  src={`./img/${photo.base}-${photo.widths[photo.widths.length - 1]}.webp`}
-                  srcSet={photo.widths.map((w) => `./img/${photo.base}-${w}.webp ${w}w`).join(', ')}
-                  sizes="(min-width: 768px) 40vw, 100vw"
-                  alt="Valerio Palermo"
-                  width={photo.width}
-                  height={photo.height}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-              </picture>
-            ) : (
-              /* Spazio pronto per il ritratto: quando arriva la foto si imposta VALERIO_PHOTO in site.ts */
-              <div className="flex h-full flex-col items-center justify-center border border-dashed border-line p-8 text-center">
-                <span className="font-display text-[7rem] leading-none font-medium text-bone/10 italic select-none" aria-hidden="true">
-                  VP
-                </span>
-                <span className="mt-6 inline-flex items-center gap-2 text-sm text-mute">
-                  <Camera size={18} />
-                  {t(UI.valerio.photoPending)}
-                </span>
-              </div>
-            )}
+          <figure className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-media)] bg-coal">
+            <Photo
+              base="valerio"
+              widths={[640, 1152]}
+              width={1152}
+              height={1366}
+              alt={t(UI.valerio.photoMain)}
+              sizes="(min-width: 768px) 42vw, 86vw"
+              className="h-full w-full object-cover object-[35%_30%]"
+            />
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-[var(--radius-media)] ring-1 ring-bone/10 ring-inset" />
           </figure>
+
+          <motion.figure
+            style={{ y }}
+            className="absolute right-0 bottom-0 aspect-[3/4] w-[46%] overflow-hidden rounded-[var(--radius-media)] bg-coal shadow-[0_30px_80px_-20px_rgb(0_0_0/0.75)] ring-[6px] ring-ink"
+          >
+            <Photo
+              base="valerio-carrello"
+              widths={[640, 1086]}
+              width={1086}
+              height={1448}
+              alt={t(UI.valerio.photoTruffle)}
+              sizes="(min-width: 768px) 20vw, 40vw"
+              className="h-full w-full object-cover object-[55%_40%]"
+            />
+          </motion.figure>
+
+          <p className="absolute bottom-0 left-0 max-w-[50%] pr-5 font-display text-[1.05rem] leading-snug text-mute italic sm:text-[1.2rem]">
+            {t(UI.valerio.caption)}
+          </p>
         </motion.div>
 
         {/* Racconto */}
-        <div className="md:col-span-7">
+        <div className="md:col-span-6">
           <p className="text-[0.72rem] font-semibold tracking-[0.24em] text-ember uppercase">{t(UI.valerio.eyebrow)}</p>
           <h2 id="valerio-title" className="h-section mt-4">
             {t(UI.valerio.heading)}
