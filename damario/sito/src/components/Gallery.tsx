@@ -103,7 +103,7 @@ export function Gallery() {
                       className="h-full w-full object-cover transition-transform duration-[1.2s] ease-out-expo group-hover:scale-[1.04]"
                     />
                   </picture>
-                  <span className="absolute right-3 bottom-3 grid size-10 place-items-center rounded-full bg-ink/60 text-bone opacity-0 backdrop-blur-md transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                  <span className="absolute right-3 bottom-3 grid size-10 place-items-center rounded-[var(--radius-btn)] bg-ink/60 text-bone opacity-0 backdrop-blur-md transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
                     <MagnifyingGlassPlus size={18} weight="bold" />
                   </span>
                 </button>
@@ -140,7 +140,7 @@ export function Gallery() {
                 type="button"
                 onClick={close}
                 aria-label={t(UI.gallery.close)}
-                className="grid size-12 place-items-center rounded-full border border-line text-bone transition-colors hover:border-mute hover:bg-smoke"
+                className="grid size-12 place-items-center rounded-[var(--radius-btn)] border border-line text-bone transition-colors hover:border-mute hover:bg-smoke"
               >
                 <X size={20} weight="bold" />
               </button>
@@ -181,7 +181,7 @@ export function Gallery() {
                     type="button"
                     onClick={() => go(-1)}
                     aria-label={t(UI.gallery.prev)}
-                    className="absolute left-5 hidden size-12 place-items-center rounded-full border border-line bg-ink/70 text-bone backdrop-blur-md transition-colors hover:border-mute sm:grid"
+                    className="absolute left-5 hidden size-12 place-items-center rounded-[var(--radius-btn)] border border-line bg-ink/70 text-bone backdrop-blur-md transition-colors hover:border-mute sm:grid"
                   >
                     <CaretLeft size={20} weight="bold" />
                   </button>
@@ -189,7 +189,7 @@ export function Gallery() {
                     type="button"
                     onClick={() => go(1)}
                     aria-label={t(UI.gallery.next)}
-                    className="absolute right-5 hidden size-12 place-items-center rounded-full border border-line bg-ink/70 text-bone backdrop-blur-md transition-colors hover:border-mute sm:grid"
+                    className="absolute right-5 hidden size-12 place-items-center rounded-[var(--radius-btn)] border border-line bg-ink/70 text-bone backdrop-blur-md transition-colors hover:border-mute sm:grid"
                   >
                     <CaretRight size={20} weight="bold" />
                   </button>
@@ -202,7 +202,7 @@ export function Gallery() {
                 type="button"
                 onClick={() => go(-1)}
                 aria-label={t(UI.gallery.prev)}
-                className="grid size-12 shrink-0 place-items-center rounded-full border border-line text-bone sm:hidden"
+                className="grid size-12 shrink-0 place-items-center rounded-[var(--radius-btn)] border border-line text-bone sm:hidden"
               >
                 <CaretLeft size={20} weight="bold" />
               </button>
@@ -211,7 +211,7 @@ export function Gallery() {
                 type="button"
                 onClick={() => go(1)}
                 aria-label={t(UI.gallery.next)}
-                className="grid size-12 shrink-0 place-items-center rounded-full border border-line text-bone sm:hidden"
+                className="grid size-12 shrink-0 place-items-center rounded-[var(--radius-btn)] border border-line text-bone sm:hidden"
               >
                 <CaretRight size={20} weight="bold" />
               </button>

@@ -1,25 +1,28 @@
 @import 'tailwindcss';
 
 /*
-  Da Mario: palette presa dalla sala e dal forno a carbone.
-  Fondo carbone (freddo, non marrone), testo color tovaglia, un solo accento: la brace.
-  Tema scuro unico: è la sera romana, la luce calda delle lampade sulle pareti di legno.
-
+  Da Mario: tema scuro unico (la sera romana), testo color tovaglia, un solo accento.
   Tipografia: serif romano (Cormorant Garamond) come la scritta "da MARIO" sulla tenda,
   sans (Hanken Grotesk) per testi, prezzi e interfaccia.
 
-  Forme: pulsanti a pillola, foto e pannelli 18px, campi del modulo 12px.
+  Tre direzioni a confronto (html[data-theme]): "vino" (predefinita), "oliva", "tovaglia".
+  Ogni direzione cambia colori, forma dei pulsanti e trattamento dei titoli.
+  Token: ember = accento leggibile su fondo scuro (testi, linee, focus);
+         fill / on-fill = pulsante principale e il suo testo; radius-btn = forma dei controlli.
 */
 @theme {
-  --color-ink: #0d0e10;
-  --color-coal: #15161a;
-  --color-smoke: #1f2025;
-  --color-line: #2c2d33;
-  --color-bone: #ede8e0;
-  --color-mute: #a7a199;
-  --color-ember: #e3683a;
-  --color-ember-soft: #f0855a;
-  --color-ember-deep: #8f2f12;
+  --color-ink: #0e0c0d;
+  --color-coal: #171314;
+  --color-smoke: #231d1f;
+  --color-line: #34292d;
+  --color-bone: #efe8e2;
+  --color-mute: #ab9fa0;
+  --color-ember: #d9838b;
+  --color-ember-soft: #e8a0a6;
+  --color-ember-deep: #4a0f18;
+  --color-fill: #8e2a36;
+  --color-fill-soft: #a5343f;
+  --color-on-fill: #f6efe9;
   --color-danger: #f29482;
   --color-ok: #8fcf9d;
   --color-whatsapp: #5fe08f;
@@ -29,9 +32,47 @@
 
   --radius-media: 18px;
   --radius-field: 12px;
+  --radius-btn: 999px;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-awning: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* Orto e olio: il verde dei vasi all'ingresso e dell'extravergine. Pulsanti a spigolo morbido, nessun vetro. */
+:root[data-theme='oliva'] {
+  --color-ink: #0d0f0d;
+  --color-coal: #151815;
+  --color-smoke: #1f231f;
+  --color-line: #2e332d;
+  --color-bone: #ece9df;
+  --color-mute: #a5a697;
+  --color-ember: #b9c193;
+  --color-ember-soft: #cdd4aa;
+  --color-ember-deep: #353d22;
+  --color-fill: #a8b17f;
+  --color-fill-soft: #bac292;
+  --color-on-fill: #12140f;
+  --radius-btn: 10px;
+  --radius-media: 12px;
+}
+
+/* Tovaglia bianca: nessun colore, solo avorio su carbone. Controlli quasi squadrati, titoli in capitali romane. */
+:root[data-theme='tovaglia'] {
+  --color-ink: #0d0e10;
+  --color-coal: #15161a;
+  --color-smoke: #1f2025;
+  --color-line: #2c2d33;
+  --color-bone: #ede8e0;
+  --color-mute: #a7a199;
+  --color-ember: #ede8e0;
+  --color-ember-soft: #f7f3ec;
+  --color-ember-deep: #3a3936;
+  --color-fill: #ede8e0;
+  --color-fill-soft: #f7f3ec;
+  --color-on-fill: #0d0e10;
+  --radius-btn: 3px;
+  --radius-media: 4px;
+  --radius-field: 4px;
 }
 
 @layer base {
@@ -53,8 +94,8 @@
   }
 
   ::selection {
-    background: var(--color-ember);
-    color: var(--color-ink);
+    background: var(--color-fill);
+    color: var(--color-on-fill);
   }
 
   :focus-visible {
@@ -76,7 +117,7 @@
   textarea,
   label {
     touch-action: manipulation;
-    -webkit-tap-highlight-color: rgb(227 104 58 / 0.15);
+    -webkit-tap-highlight-color: color-mix(in srgb, var(--color-fill) 20%, transparent);
   }
 
   input[type='date']::-webkit-calendar-picker-indicator {
@@ -86,20 +127,20 @@
 }
 
 @layer components {
-  /* Pulsante principale: pieno brace, testo carbone (contrasto 6,3:1) */
+  /* Pulsante principale: pieno nel colore della direzione (contrasto testo sempre sopra 7:1) */
   .btn-primary {
-    @apply inline-flex min-h-12 items-center justify-center gap-2.5 rounded-full bg-ember px-7 py-4 text-[0.8rem] font-semibold tracking-[0.16em] whitespace-nowrap text-ink uppercase transition-[background-color,transform,box-shadow] duration-300 ease-out-expo hover:bg-ember-soft active:scale-[0.98];
-    box-shadow: 0 14px 44px -14px rgb(227 104 58 / 0.6);
+    @apply inline-flex min-h-12 items-center justify-center gap-2.5 rounded-[var(--radius-btn)] bg-fill px-7 py-4 text-[0.8rem] font-semibold tracking-[0.16em] whitespace-nowrap text-on-fill uppercase transition-[background-color,transform,box-shadow] duration-300 ease-out-expo hover:bg-fill-soft active:scale-[0.98];
+    box-shadow: 0 14px 44px -16px color-mix(in srgb, var(--color-fill) 70%, transparent);
   }
 
   /* Pulsante secondario: vetro scuro con bordo, leggibile sopra le foto */
   .btn-ghost {
-    @apply inline-flex min-h-12 items-center justify-center gap-2.5 rounded-full border border-bone/35 bg-ink/50 px-7 py-4 text-[0.8rem] font-semibold tracking-[0.16em] whitespace-nowrap text-bone uppercase backdrop-blur-md transition-[background-color,border-color,transform] duration-300 ease-out-expo hover:border-bone/70 hover:bg-ink/70 active:scale-[0.98];
+    @apply inline-flex min-h-12 items-center justify-center gap-2.5 rounded-[var(--radius-btn)] border border-bone/35 bg-ink/50 px-7 py-4 text-[0.8rem] font-semibold tracking-[0.16em] whitespace-nowrap text-bone uppercase backdrop-blur-md transition-[background-color,border-color,transform] duration-300 ease-out-expo hover:border-bone/70 hover:bg-ink/70 active:scale-[0.98];
     box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08);
   }
 
   .btn-line {
-    @apply inline-flex min-h-11 items-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm font-medium text-bone transition-[border-color,background-color,transform] duration-200 hover:border-mute hover:bg-smoke active:scale-[0.98];
+    @apply inline-flex min-h-11 items-center gap-2 rounded-[var(--radius-btn)] border border-line px-5 py-2.5 text-sm font-medium text-bone transition-[border-color,background-color,transform] duration-200 hover:border-mute hover:bg-smoke active:scale-[0.98];
   }
 
   .field {
@@ -111,17 +152,27 @@
   }
 
   .chip {
-    @apply inline-flex min-h-11 items-center justify-center rounded-full border border-line px-4 text-sm font-medium text-bone transition-[background-color,border-color,color,transform] duration-200 hover:border-mute active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:border-line;
+    @apply inline-flex min-h-11 items-center justify-center rounded-[var(--radius-btn)] border border-line px-4 text-sm font-medium text-bone transition-[background-color,border-color,color,transform] duration-200 hover:border-mute active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:border-line;
   }
 
   .chip[aria-pressed='true'],
   .chip[aria-checked='true'] {
-    @apply border-ember bg-ember text-ink;
+    @apply border-fill bg-fill text-on-fill;
   }
 
   /* Titoli di sezione: serif romano, medio, stretto */
   .h-section {
     @apply font-display text-[2.6rem] leading-[1.02] font-medium tracking-[-0.01em] text-balance sm:text-6xl lg:text-[4.5rem];
+  }
+
+  /* Tovaglia: titoli in capitali romane spaziate, come l'insegna */
+  :root[data-theme='tovaglia'] .h-section {
+    @apply text-[2.1rem] leading-[1.05] tracking-[0.06em] uppercase sm:text-5xl lg:text-[3.6rem];
+  }
+
+  /* Oliva: niente vetro sui pulsanti secondari, fondo pieno */
+  :root[data-theme='oliva'] .btn-ghost {
+    @apply border-line bg-coal backdrop-blur-none hover:border-mute hover:bg-smoke;
   }
 }
 
@@ -164,15 +215,15 @@
   font-variant-numeric: lining-nums;
 }
 
-/* La brace: carbone che si accende, senza foto. Gradiente fermo, nessuna animazione infinita. */
+/* Il pannello della brace, senza foto: bagliore fermo nel colore della direzione. */
 .embers {
   background:
-    radial-gradient(70% 55% at 50% 112%, rgb(240 133 90 / 0.62), transparent 70%),
-    radial-gradient(45% 35% at 18% 104%, rgb(227 104 58 / 0.5), transparent 70%),
-    radial-gradient(40% 32% at 84% 106%, rgb(143 47 18 / 0.8), transparent 72%),
-    radial-gradient(90% 70% at 50% 100%, rgb(143 47 18 / 0.55), transparent 70%),
-    radial-gradient(60% 40% at 70% 0%, rgb(227 104 58 / 0.1), transparent 70%),
-    linear-gradient(180deg, #141518 0%, #1a1210 55%, #2a140b 100%);
+    radial-gradient(70% 55% at 50% 112%, color-mix(in srgb, var(--color-fill-soft) 62%, transparent), transparent 70%),
+    radial-gradient(45% 35% at 18% 104%, color-mix(in srgb, var(--color-fill) 50%, transparent), transparent 70%),
+    radial-gradient(40% 32% at 84% 106%, color-mix(in srgb, var(--color-ember-deep) 85%, transparent), transparent 72%),
+    radial-gradient(90% 70% at 50% 100%, color-mix(in srgb, var(--color-ember-deep) 60%, transparent), transparent 70%),
+    radial-gradient(60% 40% at 70% 0%, color-mix(in srgb, var(--color-fill) 10%, transparent), transparent 70%),
+    linear-gradient(180deg, var(--color-coal) 0%, color-mix(in srgb, var(--color-ember-deep) 30%, var(--color-coal)) 60%, color-mix(in srgb, var(--color-ember-deep) 70%, var(--color-coal)) 100%);
 }
 
 /* Grana leggera su tutta la pagina: elemento fisso, nessun ridisegno durante lo scroll */

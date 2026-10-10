@@ -114,7 +114,7 @@ export function Footer() {
         </p>
         <div className="flex items-center gap-3">
           <LangSwitch />
-          <a href="#top" className="inline-flex min-h-11 items-center gap-2 rounded-full px-3 hover:text-bone">
+          <a href="#top" className="inline-flex min-h-11 items-center gap-2 rounded-[var(--radius-btn)] px-3 hover:text-bone">
             <ArrowUp size={16} weight="bold" />
             {t(UI.footer.top)}
           </a>

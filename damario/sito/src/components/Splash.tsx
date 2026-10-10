@@ -66,7 +66,7 @@ export function Splash({ onReveal }: { onReveal: () => void }) {
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%]"
-            style={{ background: 'radial-gradient(60% 70% at 50% 100%, rgb(227 104 58 / 0.16), transparent 70%)' }}
+            style={{ background: 'radial-gradient(60% 70% at 50% 100%, color-mix(in srgb, var(--color-fill) 18%, transparent), transparent 70%)' }}
           />
 
           <motion.div
@@ -104,7 +104,7 @@ export function Splash({ onReveal }: { onReveal: () => void }) {
             <motion.span
               aria-hidden="true"
               className="mt-5 block h-px w-[min(62vw,420px)] origin-center bg-ember"
-              style={{ boxShadow: '0 0 18px 2px rgb(227 104 58 / 0.55)' }}
+              style={{ boxShadow: '0 0 18px 2px color-mix(in srgb, var(--color-ember) 55%, transparent)' }}
               initial={reduce ? false : { scaleX: 0, opacity: 0 }}
               animate={{ scaleX: 1, opacity: 1 }}
               transition={{ duration: 0.8, ease: RISE, delay: 1.0 }}

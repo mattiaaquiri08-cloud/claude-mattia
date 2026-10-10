@@ -22,7 +22,7 @@ export function LangSwitch({ className = '' }: { className?: string }) {
     <div
       role="group"
       aria-label={t(UI.nav.language)}
-      className={`relative inline-flex items-center rounded-full border border-bone/20 bg-ink/40 p-1 backdrop-blur-md ${className}`}
+      className={`relative inline-flex items-center rounded-[var(--radius-btn)] border border-bone/20 bg-ink/40 p-1 backdrop-blur-md ${className}`}
     >
       {(['it', 'en'] as Lang[]).map((l) => (
         <button
@@ -32,14 +32,14 @@ export function LangSwitch({ className = '' }: { className?: string }) {
           aria-pressed={lang === l}
           lang={l}
           aria-label={l === 'it' ? 'Italiano' : 'English'}
-          className={`relative z-10 grid h-9 min-w-11 place-items-center rounded-full px-3 text-xs font-semibold tracking-[0.14em] uppercase transition-colors duration-300 ${
+          className={`relative z-10 grid h-9 min-w-11 place-items-center rounded-[var(--radius-btn)] px-3 text-xs font-semibold tracking-[0.14em] uppercase transition-colors duration-300 ${
             lang === l ? 'text-ink' : 'text-bone/80 hover:text-bone'
           }`}
         >
           {lang === l && (
             <motion.span
               layoutId={`lang-pill-${pillId}`}
-              className="absolute inset-0 -z-10 rounded-full bg-bone"
+              className="absolute inset-0 -z-10 rounded-[var(--radius-btn)] bg-bone"
               transition={{ type: 'spring', stiffness: 420, damping: 34 }}
             />
           )}
@@ -158,7 +158,7 @@ export function Nav({ revealed }: { revealed: boolean }) {
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={open ? t(UI.nav.close) : t(UI.nav.open)}
-              className="grid size-11 place-items-center rounded-full border border-bone/25 bg-ink/40 text-bone backdrop-blur-md transition-colors hover:border-bone/60 xl:hidden"
+              className="grid size-11 place-items-center rounded-[var(--radius-btn)] border border-bone/25 bg-ink/40 text-bone backdrop-blur-md transition-colors hover:border-bone/60 xl:hidden"
             >
               {open ? <X size={20} weight="bold" /> : <List size={20} weight="bold" />}
             </button>

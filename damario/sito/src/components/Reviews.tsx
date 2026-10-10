@@ -137,10 +137,10 @@ export function Reviews() {
             ))}
           </div>
           <div className="mt-6 flex gap-2">
-            <button type="button" onClick={() => scrollBy(-1)} aria-label={t(UI.reviews.prev)} className="grid size-12 place-items-center rounded-full border border-line text-bone transition-colors hover:border-mute hover:bg-smoke">
+            <button type="button" onClick={() => scrollBy(-1)} aria-label={t(UI.reviews.prev)} className="grid size-12 place-items-center rounded-[var(--radius-btn)] border border-line text-bone transition-colors hover:border-mute hover:bg-smoke">
               <CaretLeft size={18} weight="bold" />
             </button>
-            <button type="button" onClick={() => scrollBy(1)} aria-label={t(UI.reviews.next)} className="grid size-12 place-items-center rounded-full border border-line text-bone transition-colors hover:border-mute hover:bg-smoke">
+            <button type="button" onClick={() => scrollBy(1)} aria-label={t(UI.reviews.next)} className="grid size-12 place-items-center rounded-[var(--radius-btn)] border border-line text-bone transition-colors hover:border-mute hover:bg-smoke">
               <CaretRight size={18} weight="bold" />
             </button>
           </div>

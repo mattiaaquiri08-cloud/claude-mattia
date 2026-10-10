@@ -54,7 +54,7 @@ export function Visit() {
             {t(UI.visit.near)} {NEARBY.join(', ')}.
           </p>
 
-          <p className="mt-8 inline-flex items-center gap-3 rounded-full border border-line px-4 py-2 text-sm text-bone" role="status">
+          <p className="mt-8 inline-flex items-center gap-3 rounded-[var(--radius-btn)] border border-line px-4 py-2 text-sm text-bone" role="status">
             <span className={`size-2 rounded-full ${status.open ? 'live-dot bg-ok' : 'bg-mute'}`} aria-hidden="true" />
             {status.label}
           </p>

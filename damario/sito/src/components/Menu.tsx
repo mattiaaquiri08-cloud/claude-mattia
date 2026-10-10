@@ -111,14 +111,14 @@ export function Menu() {
                 aria-controls="menu-panel"
                 tabIndex={on ? 0 : -1}
                 onClick={() => select(c.id, true)}
-                className={`relative min-h-11 shrink-0 snap-start rounded-full px-4 text-[0.9rem] font-medium whitespace-nowrap transition-colors duration-300 ${
+                className={`relative min-h-11 shrink-0 snap-start rounded-[var(--radius-btn)] px-4 text-[0.9rem] font-medium whitespace-nowrap transition-colors duration-300 ${
                   on ? 'text-ink' : 'text-bone/80 hover:text-bone'
                 } ${c.pillar && !on ? 'font-display text-[1.08rem] italic' : ''}`}
               >
                 {on && (
                   <motion.span
                     layoutId="menu-tab"
-                    className="absolute inset-0 -z-10 rounded-full bg-bone"
+                    className="absolute inset-0 -z-10 rounded-[var(--radius-btn)] bg-bone"
                     transition={{ type: 'spring', stiffness: 380, damping: 34 }}
                   />
                 )}

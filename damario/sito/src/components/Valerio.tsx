@@ -70,7 +70,7 @@ export function Valerio() {
             <p className="text-sm text-mute">{t(UI.valerio.traitsLabel)}</p>
             <ul className="mt-3 flex flex-wrap gap-2">
               {UI.valerio.traits.map((tr) => (
-                <li key={tr.it} className="rounded-full border border-line px-4 py-2 font-display text-[1.1rem] text-bone/90 italic">
+                <li key={tr.it} className="rounded-[var(--radius-btn)] border border-line px-4 py-2 font-display text-[1.1rem] text-bone/90 italic">
                   {t(tr)}
                 </li>
               ))}

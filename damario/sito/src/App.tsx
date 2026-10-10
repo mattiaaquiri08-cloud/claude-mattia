@@ -33,7 +33,7 @@ function Site() {
       <Splash onReveal={onReveal} />
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-full focus:bg-ember focus:px-5 focus:py-3 focus:text-ink"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-[var(--radius-btn)] focus:bg-fill focus:px-5 focus:py-3 focus:text-on-fill"
       >
         {t(UI.skip)}
       </a>

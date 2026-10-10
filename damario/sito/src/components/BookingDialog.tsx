@@ -209,7 +209,7 @@ export function BookingDialog({ open, onClose }: Props) {
                 <button
                   type="button"
                   onClick={resetAndClose}
-                  className="grid size-11 shrink-0 place-items-center rounded-full border border-line text-bone transition-colors hover:border-mute hover:bg-smoke"
+                  className="grid size-11 shrink-0 place-items-center rounded-[var(--radius-btn)] border border-line text-bone transition-colors hover:border-mute hover:bg-smoke"
                   aria-label={t(B.close)}
                 >
                   <X size={18} weight="bold" />
@@ -228,7 +228,7 @@ export function BookingDialog({ open, onClose }: Props) {
                       className="flex flex-col items-start py-6"
                       role="status"
                     >
-                      <span className="grid size-14 place-items-center rounded-full bg-whatsapp/15 text-whatsapp">
+                      <span className="grid size-14 place-items-center rounded-[var(--radius-btn)] bg-whatsapp/15 text-whatsapp">
                         <WhatsappLogo size={30} weight="fill" />
                       </span>
                       <h3 className="mt-6 font-display text-[2.2rem] leading-[1.05] font-medium text-balance">{t(B.sentTitle)}</h3>
@@ -306,12 +306,12 @@ export function BookingDialog({ open, onClose }: Props) {
                                 onClick={() => set('date', d.iso)}
                                 title={d.closed ? t(B.closedTitle) : undefined}
                                 className={`flex w-[70px] shrink-0 snap-start flex-col items-center rounded-[14px] border px-2 py-3 transition-[background-color,border-color,transform] duration-200 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-35 ${
-                                  active ? 'border-ember bg-ember text-ink' : 'border-line text-bone hover:border-mute disabled:hover:border-line'
+                                  active ? 'border-fill bg-fill text-on-fill' : 'border-line text-bone hover:border-mute disabled:hover:border-line'
                                 }`}
                               >
-                                <span className={`text-[11px] font-semibold uppercase ${active ? 'text-ink/80' : 'text-mute'}`}>{d.dayShort}</span>
+                                <span className={`text-[11px] font-semibold uppercase ${active ? 'text-on-fill/80' : 'text-mute'}`}>{d.dayShort}</span>
                                 <span className="font-display text-[1.7rem] leading-tight font-semibold">{d.dayNum}</span>
-                                <span className={`text-[11px] ${active ? 'text-ink/80' : 'text-mute'}`}>{d.closed ? t(B.closedDay) : d.month}</span>
+                                <span className={`text-[11px] ${active ? 'text-on-fill/80' : 'text-mute'}`}>{d.closed ? t(B.closedDay) : d.month}</span>
                               </button>
                             )
                           })}
@@ -388,10 +388,10 @@ export function BookingDialog({ open, onClose }: Props) {
                           {t(B.people)}
                         </span>
                         <div className="flex items-center gap-4">
-                          <div className="inline-flex items-center rounded-full border border-line bg-ink p-1" role="group" aria-labelledby="b-people-label">
+                          <div className="inline-flex items-center rounded-[var(--radius-btn)] border border-line bg-ink p-1" role="group" aria-labelledby="b-people-label">
                             <button
                               type="button"
-                              className="grid size-11 place-items-center rounded-full transition-colors hover:bg-smoke disabled:opacity-30"
+                              className="grid size-11 place-items-center rounded-[var(--radius-btn)] transition-colors hover:bg-smoke disabled:opacity-30"
                               onClick={() => set('people', Math.max(1, form.people - 1))}
                               disabled={form.people <= 1}
                               aria-label={t(B.less)}
@@ -403,7 +403,7 @@ export function BookingDialog({ open, onClose }: Props) {
                             </output>
                             <button
                               type="button"
-                              className="grid size-11 place-items-center rounded-full transition-colors hover:bg-smoke disabled:opacity-30"
+                              className="grid size-11 place-items-center rounded-[var(--radius-btn)] transition-colors hover:bg-smoke disabled:opacity-30"
                               onClick={() => set('people', Math.min(MAX_PEOPLE, form.people + 1))}
                               disabled={form.people >= MAX_PEOPLE}
                               aria-label={t(B.more)}
