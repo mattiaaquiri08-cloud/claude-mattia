@@ -55,3 +55,11 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
 - Semplicità e complessità: 50 e 50. Proponi la soluzione più adatta, ma se è complessa
   offri anche un'alternativa semplice e lascia scegliere all'utente.
+- Anche i brevi messaggi di avanzamento durante il lavoro vanno scritti in italiano (l'utente l'ha
+  dovuto ricordare una volta).
+- Progetto `nana-vini-e-cucina/` (sito di Nanà Vini e Cucina, Roma): Vite + React + Tailwind v4 + Motion,
+  prerenderizzato in IT (`/`) ed EN (`/en/`). Logo, menù e foto vengono dal sito ufficiale
+  (menù PDF giugno 2026); non inventare piatti, prezzi, servizi o recensioni: le fonti sono annotate
+  nei file in `src/data/`.
+- Ottimizzazione immagini (`npm run images`): AVIF è lento, lanciarla in background con timeout lungo;
+  lo script salta i file già generati (`--force` per rigenerare).

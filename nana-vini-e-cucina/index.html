@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="it" data-daypart="day">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Nanà Vini e Cucina</title>
+    <!--app-head-->
+    <meta name="theme-color" content="#527b6d" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script>
+      /*
+        Prima del rendering:
+        1. sceglie la foto della hero in base alla luce di Roma (giorno / sera),
+           con ?hero=giorno oppure ?hero=sera per forzarla;
+        2. salta la splash se è già stata vista in questa sessione (?splash per rivederla);
+        3. precarica soltanto la foto che verrà mostrata.
+      */
+      (function () {
+        var root = document.documentElement;
+        var q = new URLSearchParams(location.search);
+        var forced = q.get("hero");
+        var daypart = "day";
+        if (forced === "sera" || forced === "night") daypart = "night";
+        else if (forced !== "giorno" && forced !== "day") {
+          try {
+            var parts = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Rome", month: "numeric", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date());
+            var get = function (t) { for (var i = 0; i < parts.length; i++) if (parts[i].type === t) return +parts[i].value; return 0; };
+            var minutes = get("hour") * 60 + get("minute");
+            // tramonto medio a Roma per mese (ora locale), meno 20 minuti di luce dorata
+            var sunset = [1025, 1060, 1095, 1190, 1220, 1245, 1245, 1215, 1165, 1100, 1015, 1000][get("month") - 1];
+            daypart = minutes >= 420 && minutes < sunset - 20 ? "day" : "night";
+          } catch (e) {}
+        }
+        root.setAttribute("data-daypart", daypart);
+
+        try {
+          if (!q.has("splash") && sessionStorage.getItem("nana-splash-seen")) root.setAttribute("data-splash", "skip");
+        } catch (e) {}
+
+        var name = daypart === "day" ? "giorno" : "sera";
+        var mq = function (m) { return window.matchMedia && window.matchMedia(m).matches; };
+        var file;
+        if (mq("(orientation: portrait)")) {
+          file = name + "-verticale-" + (mq("(max-width: 420px) and (max-resolution: 1.5dppx)") ? 480 : 941);
+        } else {
+          file = name + "-orizzontale-" + (mq("(min-width: 1100px), (min-resolution: 2dppx) and (min-width: 700px)") ? 1672 : 1200);
+        }
+        var link = document.createElement("link");
+        link.rel = "preload";
+        link.as = "image";
+        link.type = "image/avif";
+        link.href = "/img/hero/" + file + ".avif";
+        link.setAttribute("fetchpriority", "high");
+        document.head.appendChild(link);
+      })();
+    </script>
+    <noscript><style>.splash{display:none!important}</style></noscript>
+  </head>
+  <body>
+    <div id="root"><!--app-html--></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

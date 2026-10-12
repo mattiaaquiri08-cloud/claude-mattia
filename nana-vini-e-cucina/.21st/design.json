@@ -1,0 +1,28 @@
+{
+  "project": "Nanà Vini e Cucina",
+  "stack": ["vite", "react", "typescript", "tailwindcss-v4", "motion"],
+  "tokens": {
+    "colors": {
+      "petrol-600": "#527b6d (colore esatto del logo, accento unico)",
+      "petrol-700": "#3d6356",
+      "petrol-800": "#26423a",
+      "crema": "#f8f6ef",
+      "bianco": "#fefefb",
+      "lino": "#efebe1",
+      "ink": "#15221f"
+    },
+    "fonts": {
+      "sign": "Amatic SC (lettering del logo e del menù cartaceo)",
+      "display": "Cormorant Garamond (titoli editoriali, nomi dei piatti)",
+      "sans": "Manrope (testo e interfaccia)"
+    },
+    "radii": "pulsanti a pillola; foto ad arco romano o 6px; pannelli e dialoghi 28px"
+  },
+  "decisions": [
+    "Logo: tracciati vettoriali originali estratti dal menù PDF ufficiale.",
+    "Hero: foto giorno/sera scelta in base all'ora di Roma (forzabile con ?hero=giorno|sera).",
+    "Dettagli floreali: rametti di gelsomino a filo e ghirlande come sul menù cartaceo, usati con parsimonia.",
+    "Tema chiaro unico; unico blocco colore petrolio per 'Dove siamo' e footer.",
+    "21st: 'Restaurant Menu Block' (olewandowski1) per le righe con puntini; 'Masonry Lightbox' (ayushmxxn) per la galleria, adattati."
+  ]
+}

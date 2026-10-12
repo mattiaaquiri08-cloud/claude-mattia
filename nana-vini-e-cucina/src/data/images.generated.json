@@ -1,0 +1,236 @@
+{
+  "hero/giorno-orizzontale": {
+    "width": 1672,
+    "height": 941,
+    "widths": [
+      480,
+      800,
+      1200,
+      1672
+    ],
+    "lqip": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADQAwCdASoYAA4APu1iqk2ppaQiMAgBMB2JYwCdAB6VjU5/MaDL1gAA/rDZgeJXsN3V6NRPtIjRT9byhuQSvx+zDkMhMCbkKNAGuVAA"
+  },
+  "hero/giorno-verticale": {
+    "width": 941,
+    "height": 1672,
+    "widths": [
+      480,
+      800,
+      941
+    ],
+    "lqip": "data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAABQBgCdASoYACsAPtVWpE2oJKOiOrmYAQAaiUAW33LYLgNrWYfx8JWYVMk7Z9u8V6MwESEXWcc4Gbe4AAD+O8s5gzVLL8OiUOl8PBC+a6W73yyIft2CugKWeZF0+jBGw+ePdaoDk8cHcRXatFV2f849bPDQywiJEEojg74tioiydI4CgNae4TMORJVpZtFbrNlH8nM7HVoU/kWnCUcqPQ9MFDV0hY7V8JJPPnTGTx9BjnIxufcAAA=="
+  },
+  "hero/sera-orizzontale": {
+    "width": 1672,
+    "height": 941,
+    "widths": [
+      480,
+      800,
+      1200,
+      1672
+    ],
+    "lqip": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACQAwCdASoYAA4APu1kqU2ppaOiMAgBMB2JQBOmUABedHW0C14AAP7Ngv7+5IZZ7VbyxcTdXTPf6pmmSPpJiAW0qtbVBOER/EIE67L8kAA="
+  },
+  "hero/sera-verticale": {
+    "width": 941,
+    "height": 1672,
+    "widths": [
+      480,
+      800,
+      941
+    ],
+    "lqip": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAACwBQCdASoYACsAPulcpU2pJKMiNVgIASAdCWUAuzOmgiaf8AkkSL3K2/hBJBqUn4qfH8AyowAA/uLzo2ovCY57O0YBNwgg4r5rxnjZRV/LBmdp2u3F+IkWSPKAtYANGxdS2m23zbnkFnL9zAxIJlLmMD9lLbr4sHl9zckGAVDWLL2BpXbdVfHAJKLTEHRJ+M2IpygAAAA="
+  },
+  "galleria/alici-fritte": {
+    "width": 2500,
+    "height": 1669,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      2500
+    ],
+    "lqip": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAABQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JagCdMoRwACWjMqagRi51S1jAAP7wMvnNsv+78NPU5wpAYTWuSTwlvpmxRcFNyhKACtOYm9Tl7mPWXWaIaTw9ZBS4UYPJbABLYvBJADiAAA=="
+  },
+  "galleria/calice": {
+    "width": 1709,
+    "height": 2560,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1709
+    ],
+    "lqip": "data:image/webp;base64,UklGRsQAAABXRUJQVlA4ILgAAADQBgCdASoYACQAPtVYok2oJSMiOrmYAQAaiWwAqSeR9ThIoveaKpmYpEBTSFs5NwnlQ3LJ6ONJQNi3Fk1qwAAA/u1IG8HMuqbsmGjFsx7Oenk75ffCPncsQt5u/6BUSRDhuu7Mec2EYZrjSXMbV17/+ynlzwzU9jmtoZtV9LAQ4T8MN6v4NLyyzw83WqTnwc7/Qz7zHfnQB0akHQprGCMtYX7PmBRWdwlK32V6nAGNtCOkQXtjAAAA"
+  },
+  "galleria/carne": {
+    "width": 1709,
+    "height": 2560,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1709
+    ],
+    "lqip": "data:image/webp;base64,UklGRuQAAABXRUJQVlA4INgAAADwBgCdASoYACQAPuVkpE2pJiMiNVgIASAciWwAnTM0RSgdAibdufDm03bsjjubIv+iyJefSr1RgDX8TfXZiU1gAPfWBkgF1exll2ZPKaxS6CNH3YTxaJoLLRDSsjoPaW5g3OeYT4/jtDF5ZdyEVKoYbiaq51P6oxjqhY7XQ5QFsLXjkVTYmdHD9yheeBOmW5FrGhYEQV33xubJoLq//x5NadBcUmZWj/kyZQHob5UyyMHSbcHyDe2mBeUsIoC1rxbixkJ+MXOQ1Hj/yjv2iKSAzls2dXyMAAA="
+  },
+  "galleria/ceramiche": {
+    "width": 2500,
+    "height": 1669,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      2500
+    ],
+    "lqip": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAwBACdASoYABAAPu1iqk2ppaQiMAgBMB2JbAC7ACFjbqsjSKHbj0atCoAA/lul4o6eryuAZk5hfMlElidE1ja6jop+FAF04L4NMF8So0N1BsTaYOM/ji/o/spbiC1vou78r276bNxmaX2ALAgAAA=="
+  },
+  "galleria/frittura": {
+    "width": 2500,
+    "height": 1669,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      2500
+    ],
+    "lqip": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAACwBACdASoYABAAPu1krU2ppaSiMAgBMB2JbACdMoRwN6SAXrYRi3AAtadJk94oAP7nNFe9sQjpSMqPX7WfJVVIYAydoMQ9GflA5+3tk0AtBfXWuh0JA2X4u3sDycbRvNHK6wuVKL9laKUdaMF4cVuyPTP74A/QJIeAbP+XgAA="
+  },
+  "galleria/insegna": {
+    "width": 1709,
+    "height": 2560,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1709
+    ],
+    "lqip": "data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAACwBgCdASoYACQAPu1orlCppaQipWzJMB2JYgCdM8fBMdOGBmNdY07hTLHEmqgG6RlC7TSvAXs1XyRqXUwqAAD+47atNPupLmEUdWDuTwpZXsILvHOObt3zujA5fkcwHhVj+EumI8MIWaSDW6Ip/OgWUzh3gbZaeMBo11Gnlvq1HMIzYIq+T/iMUm2HIbYeABVesdzu7j3QdjDadlDTZv22ORnTtFZDH+ZpXo2GHgFaPyQMCENoAA=="
+  },
+  "galleria/pasta-frutti-di-mare": {
+    "width": 1709,
+    "height": 2560,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1709
+    ],
+    "lqip": "data:image/webp;base64,UklGRvIAAABXRUJQVlA4IOYAAAAQBwCdASoYACQAPu1cpU2ppKMiMBqtUTAdiWwAsR9ib+ggW03N5caYRfJpJVVEuntNLm4pHZo8AIURPmknV9MIAAD+6GZeVMNot/jLbkyzx82iam2ysBQ7dXxqTzsCDyQg0/dzO/hK6NioaPNyhJTnYCMCQ8oLlBz5uEQOtIN36kEDR8cYfMz4wYDgkzL6lBVHoEmlgotA38VKsNnFFzgUTAkTEnwe+wKYG0H+sGyc4cENCLl3SPH2LqhhcusAtdSg9pZB85VTIbGnCNq17olaoF17JKNemoxKSHr6ZLXje0RcSAAAAA=="
+  },
+  "galleria/piatto-servito": {
+    "width": 1709,
+    "height": 2560,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1709
+    ],
+    "lqip": "data:image/webp;base64,UklGRtIAAABXRUJQVlA4IMYAAADwBgCdASoYACQAPuliqE2pJaQiNVgIASAdCWoAnTM9vuAUMXlpFfSCodfKPM9eHyN0o+gI7q5yJtCN6BB8A/CAAP7JniNsxGIBNeOy83yTlaKXsPWXMUwTgmmP7nR5ntaHdi75Hye1cheZt5NyL9RTlm584VM6onSoSXbIqDIKuqc/XlrdoIZuOidW+ocfqn/Xl9n1Wy4V/HV8YgqKSGwPWAPtUHX62xqENiMQW+BxZG0StMUtfdSPQgpWeBig12Y+5doAAAA="
+  },
+  "galleria/polpette": {
+    "width": 1709,
+    "height": 2560,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1709
+    ],
+    "lqip": "data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAADwBgCdASoYACQAPu1irVAppSQiqrgMATAdiWgAsR9QvSAmU9m1aadJJvkKA4jDz6KBvkGOrqyC0kiXxOJnqEWAAPbhcmewui3ZEzgaxekKvNKbMtvj54fdT5l5vseHc0DRS4N9pbSAPrlbO5ywfhCxOhEPzZ1lhcXEfBktt7Pssd0iNGsfep38HONDegzLyE6GQSynut2DuCUucADlzEwliPyk5f/v8/WBjMY3djo5qgSRxVx4HlzUencAAA=="
+  },
+  "galleria/polpo": {
+    "width": 2560,
+    "height": 1920,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      2560
+    ],
+    "lqip": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAABQBQCdASoYABIAPtlcpE2oJSOiN/qoAQAbCWMArDNad2APilXdQvi4Qj9M1jHpWeoA3nAA/uELA6h1AVvKnu5xwgR862bJaXCMSLrzS9w9FvUXZE7Yxb8P+J+RDxvIR5RfKiUTGf/AQYp0CHtvuK2O/boAAA=="
+  },
+  "galleria/sala-arco": {
+    "width": 2500,
+    "height": 1669,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      2500
+    ],
+    "lqip": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAQBACdASoYABAAPu1iqk2ppaQiMAgBMB2JaACdMoACa5rFh6/AVitRAAD9PJGLWNb/p6jnOR9dodjLoTUnCXYLX5UuAebe9n4CNu6k8zN/6ygkpEpKxMcJsiqM46guofwh2mkVcAA="
+  },
+  "galleria/sala-cucina-a-vista": {
+    "width": 1709,
+    "height": 2560,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1709
+    ],
+    "lqip": "data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAADQBgCdASoYACQAPu1eqU4ppKOiMBqqqTAdiUAUu3rI1kMJiMsoD//lCCuau6u6iuccLiOpZv3m7fTLugkypsAAyeO+iN0Gtvz8grLxHZ75vlcLNuiRu/eiT6wfBOrqgsgjgxyZkEpdvKkRxIAWS3h8aH7WF6nZGRKlvUtAGdW9E7/tVbF199iw7RDHyg5N+aZyWkfpTi9+NnFyXG1OrhDmb+9Y9hI/V35ylHGH88BvybB1dOkxf5kW0K7OFRFYYq28bHSB0XCAAA=="
+  },
+  "galleria/sala": {
+    "width": 1709,
+    "height": 2560,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1709
+    ],
+    "lqip": "data:image/webp;base64,UklGRsQAAABXRUJQVlA4ILgAAABQBgCdASoYACQAPu1mq1CppSOisBVYATAdiUAVhygqrABvG6L8DDBbo5+Jerh7mxhmSoGpNsIJ+f6cgAD7rb0mqzzQHatluhxSJyfemO0WMMavXV2eGQ1cDO8iEdMhJTmQMW5I4KgOw5lkWCNZFXrEEfp4rIqm1nj1XVUT+7B3FYs+HxQgbgBT0XPwc7sbDD7kCoZBD/S1rGinmsyxky/UukXAyCQB6lVROmN+Ck+YVdkjwG0idQAA"
+  },
+  "galleria/spaghetti-vongole": {
+    "width": 1709,
+    "height": 2560,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1709
+    ],
+    "lqip": "data:image/webp;base64,UklGRsQAAABXRUJQVlA4ILgAAADQBgCdASoYACQAPu1oq04ppiQiKqwBMB2JaAC7M1pI8BxnjVTGlxdbX4HqSPUNmJbqoosAshOn5rQDLGnoogAA/up8LPqsd6KKLiLQJ4fZ+BhXKD6/BMfSVYdw2iJKPt4reYNZaOWhADco3c/BMjMS/t/1Lqwr+HlHQlne5f9xR5TDd0pMw01jEEKNFK/fjMy1yfBDjht3j6IHwHfdlDjU4WiG31W1CbeCvKOhgy4Q7CHQ/ADy/MAA"
+  },
+  "galleria/tavola": {
+    "width": 1709,
+    "height": 2560,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1709
+    ],
+    "lqip": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAAAwBgCdASoYACQAPu1qrVAppiQipWzJMB2JZQDE2CyYIyMsNCDWWgjbT1mgoHU/NIoXQFitGkwaDcoAAP490Vzg+Zcy9DYIii+7fRB7EPXwo+39MohewAtIWVag42DwxO2bXtQkLa44Wq2GMQ78wx1fEIhIOC81CvpukeXqQ8HyJ8mJhTE2nT6pw5Q+3Ovy8Ur3r3aJAvgAAA=="
+  },
+  "galleria/tavolo-finestra": {
+    "width": 1709,
+    "height": 2560,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1709
+    ],
+    "lqip": "data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAAAQBgCdASoYACQAPu1oqE8ppiOiKqwBMB2JYwCuHA/tkZvFNtGJ7g6CI4dSldoNhqmNqf2enmUGfgAAzjzObyDNZfSMzqnGDDaVx1sId3iY7ZCx6DYV5TrE0GL8oYrg8GCWCMEIRUoDEJ3SvzJl99ie6Eys5I+CBw0udT8YSacHHyl2h35NlkkcDGDpEA5+B0XImcny63AqaUgAAAA="
+  }
+}
