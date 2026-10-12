@@ -1,6 +1,6 @@
 // Versione "file unico": un solo nana-vini-e-cucina.html con codice, stili, caratteri e foto incorporati.
 // Si apre con un doppio clic, senza server. Uso: npm run build:single
-import { readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
@@ -50,6 +50,14 @@ html = html
   .replace("<!--app-head-->", `<script>window.__NANA_IMG=${JSON.stringify(map)};</script>`)
   .replace("<!--app-html-->", "")
   .replace("</body>", () => `<script type="module">${safe(js)}</script>\n</body>`);
+
+if (PROPOSAL) {
+  // copia completa (pagina HTML standard) per l'anteprima via link al repository
+  const full = html.replace(/<title>.*?<\/title>/, '<title>Proposta Nanà Vini e Cucina</title>\n    <meta name="robots" content="noindex, nofollow" />');
+  await mkdir(path.join(ROOT, "anteprima"), { recursive: true });
+  await writeFile(path.join(ROOT, "anteprima", "index.html"), full);
+  console.log("anteprima completa: anteprima/index.html");
+}
 
 if (PROPOSAL) {
   // pagina da pubblicare come anteprima: niente involucro <html>/<head>/<body> (lo aggiunge la piattaforma),
