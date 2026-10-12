@@ -125,6 +125,26 @@
     ],
     "lqip": "data:image/webp;base64,UklGRvIAAABXRUJQVlA4IOYAAAAQBwCdASoYACQAPu1cpU2ppKMiMBqtUTAdiWwAsR9ib+ggW03N5caYRfJpJVVEuntNLm4pHZo8AIURPmknV9MIAAD+6GZeVMNot/jLbkyzx82iam2ysBQ7dXxqTzsCDyQg0/dzO/hK6NioaPNyhJTnYCMCQ8oLlBz5uEQOtIN36kEDR8cYfMz4wYDgkzL6lBVHoEmlgotA38VKsNnFFzgUTAkTEnwe+wKYG0H+sGyc4cENCLl3SPH2LqhhcusAtdSg9pZB85VTIbGnCNq17olaoF17JKNemoxKSHr6ZLXje0RcSAAAAA=="
   },
+  "galleria/pasta-ragu": {
+    "width": 1100,
+    "height": 1467,
+    "widths": [
+      480,
+      800,
+      1100
+    ],
+    "lqip": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAAAQBgCdASoYACAAPu1usFIppiSiqAgBMB2JZgCdMu0A/6mB19Ul9BoxEQ8gG3mWzdHXi3Hnkyj3QRYA/pfBCWB4SKiAUiS5YW3lGyPk2nDnDGOKzBpqZ9ZI1ohVtkxxp3eKJWQiqmzz2SLJ5Bi1Eb+ySIPgy2dFEJXlGc9gnGjFiIeIzE/I5K5Q7NymIgDapzHo05LKbD0EBiMLJyiKQnZ77d7+1ZmI4AA="
+  },
+  "galleria/pasta-romana": {
+    "width": 1100,
+    "height": 1467,
+    "widths": [
+      480,
+      800,
+      1100
+    ],
+    "lqip": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAABQBQCdASoYACAAPu1wsFKppiSiqAgBMB2JYgCdOUFSgAOMB//AsvXcKBdsdipCGqzQ4fgA+QSw4fXQZqTNeyucJDm9ei5WW/qr1hj+ez7pZuqWTyYtmfRkZGHbTmJi01IrpDigisf6HRQsAbYLOTbajRNIf+vCJwexgfdmLwOZj2EREZMmQaAA"
+  },
   "galleria/piatto-servito": {
     "width": 1709,
     "height": 2560,
@@ -136,6 +156,16 @@
       1709
     ],
     "lqip": "data:image/webp;base64,UklGRtIAAABXRUJQVlA4IMYAAADwBgCdASoYACQAPuliqE2pJaQiNVgIASAdCWoAnTM9vuAUMXlpFfSCodfKPM9eHyN0o+gI7q5yJtCN6BB8A/CAAP7JniNsxGIBNeOy83yTlaKXsPWXMUwTgmmP7nR5ntaHdi75Hye1cheZt5NyL9RTlm584VM6onSoSXbIqDIKuqc/XlrdoIZuOidW+ocfqn/Xl9n1Wy4V/HV8YgqKSGwPWAPtUHX62xqENiMQW+BxZG0StMUtfdSPQgpWeBig12Y+5doAAAA="
+  },
+  "galleria/polpette-vietri": {
+    "width": 1100,
+    "height": 1086,
+    "widths": [
+      480,
+      800,
+      1100
+    ],
+    "lqip": "data:image/webp;base64,UklGRroAAABXRUJQVlA4IK4AAABwBQCdASoYABgAPu1orVAppaQiqAqpMB2JbACdMoMulCRf47LjzwLnEoSPBjDlQp25bekAAP2N+IAcdek4STxZ2pR+o9c96egzn+GH2yU+6DWM6Rx7vdUkLgd+Q/yiSdF4vKcx9qUrqRVSpTh41J9GJPav+l9a9FV7nsMKtC1w7u39c7KvHVYkgXyFaN3hDS8nc5NQ1+PocHL5HfOCweIAoO+6JETjgKddlG3AAAA="
   },
   "galleria/polpette": {
     "width": 1709,
@@ -232,5 +262,17 @@
       1709
     ],
     "lqip": "data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAAAQBgCdASoYACQAPu1oqE8ppiOiKqwBMB2JYwCuHA/tkZvFNtGJ7g6CI4dSldoNhqmNqf2enmUGfgAAzjzObyDNZfSMzqnGDDaVx1sId3iY7ZCx6DYV5TrE0GL8oYrg8GCWCMEIRUoDEJ3SvzJl99ie6Eys5I+CBw0udT8YSacHHyl2h35NlkkcDGDpEA5+B0XImcny63AqaUgAAAA="
+  },
+  "galleria/tiramisu": {
+    "width": 2000,
+    "height": 2000,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      2000
+    ],
+    "lqip": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAACQBQCdASoYABgAPu1ur1IppiQiqAgBMB2JQAqkmbSFZ5kSgOoWbIdBq9KmoxyjNXOZTFxGgAD+4Jx2SQ4bdOM6qILMQE+OpF4/5afwM2mJ3zshyuJyMUuXUxehm+rjxH3fIIPYHd3Wpn9fCmm4V+OxNKGhy8per+xrRSNSOEKpG2fgAAA="
   }
 }

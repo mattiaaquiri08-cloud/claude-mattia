@@ -62,4 +62,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   (menù PDF giugno 2026); non inventare piatti, prezzi, servizi o recensioni: le fonti sono annotate
   nei file in `src/data/`.
 - Ottimizzazione immagini (`npm run images`): AVIF è lento, lanciarla in background con timeout lungo;
-  lo script salta i file già generati (`--force` per rigenerare).
+  lo script salta i file già generati (`--force` per rigenerare). Per attendere un processo non usare
+  `pgrep -f` con lo stesso testo del comando: trova anche il ciclo di attesa e non termina mai.
+- Siti di attività reali (nome, logo, prenotazioni veri): non si pubblicano come link claude.ai.
+  Si consegna il file unico (`npm run build:single` per Nanà) e decide l'utente.

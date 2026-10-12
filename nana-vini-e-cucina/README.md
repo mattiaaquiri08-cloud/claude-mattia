@@ -12,7 +12,11 @@ npm run build    # crea dist/ con le pagine IT ed EN già pronte (prerender)
 npm run preview  # prova in locale la versione di produzione
 npm run images   # rigenera le foto ottimizzate da assets-src/ (AVIF + WebP)
 npm run icons    # rigenera favicon e icone dal logo
+npm run build:single  # crea nana-vini-e-cucina.html: tutto il sito in un solo file (circa 4 MB)
 ```
+
+Il file unico si apre con un doppio clic, senza server: comodo per mostrare il sito in anteprima.
+In quella versione la lingua cambia senza modificare l'indirizzo e le foto sono a 800 px.
 
 La cartella `dist/` è un sito statico: si pubblica così com'è su Netlify, Vercel,
 Cloudflare Pages o su qualsiasi hosting.
@@ -25,6 +29,7 @@ Cloudflare Pages o su qualsiasi hosting.
 | Telefono, orari, link TheFork, social, mappe | `src/data/site.ts` |
 | Tutti i testi del sito (IT ed EN) e le recensioni | `src/i18n/dictionaries.ts` |
 | Foto della galleria e didascalie | `assets-src/galleria/` + `src/data/gallery.ts` |
+| Foto dei riquadri "tradizione napoletana / romana" | `src/components/Story.tsx` (pannelli `napoli` e `roma`) |
 | Foto della hero (giorno e sera) | `assets-src/hero/` |
 | Colori e caratteri | `src/index.css` (blocco `@theme`) |
 

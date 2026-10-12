@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# versione "file unico" generata da npm run build:single
+nana-vini-e-cucina.html

@@ -22,9 +22,12 @@ export function LangProvider({ initialLang, children }: { initialLang: Lang; chi
     } catch {
       /* archiviazione non disponibile: nessun problema */
     }
-    const url = new URL(window.location.href);
-    url.pathname = LANG_PATH[next];
-    window.history.replaceState(null, "", url);
+    // nella versione "file unico" l'indirizzo non cambia (non esiste /en/)
+    if (import.meta.env.VITE_SINGLE !== "1") {
+      const url = new URL(window.location.href);
+      url.pathname = LANG_PATH[next];
+      window.history.replaceState(null, "", url);
+    }
   }, []);
 
   // allinea <html lang>, titolo e descrizione alla lingua attiva

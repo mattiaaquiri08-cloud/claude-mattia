@@ -41,6 +41,7 @@
           if (!q.has("splash") && sessionStorage.getItem("nana-splash-seen")) root.setAttribute("data-splash", "skip");
         } catch (e) {}
 
+        if (window.__NANA_IMG) return; // versione "file unico": immagini già incorporate
         var name = daypart === "day" ? "giorno" : "sera";
         var mq = function (m) { return window.matchMedia && window.matchMedia(m).matches; };
         var file;

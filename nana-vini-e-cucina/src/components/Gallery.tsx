@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { GALLERY } from "../data/gallery";
 import { useLang } from "../i18n/context";
 import { useModal } from "../lib/useModal";
-import { Photo, photoMeta, photoSrc } from "./Photo";
+import { Photo, photoMeta, photoSrc, SINGLE_FILE } from "./Photo";
 
 /*
   Galleria a mosaico con visore a schermo intero.
@@ -156,8 +156,12 @@ function Lightbox({ index, onClose, onNav }: { index: number; onClose: () => voi
             className="flex max-h-full flex-col items-center"
           >
             <picture className="block overflow-hidden rounded-[6px]">
-              <source type="image/avif" srcSet={srcset("avif")} sizes="92vw" />
-              <source type="image/webp" srcSet={srcset("webp")} sizes="92vw" />
+              {SINGLE_FILE ? null : (
+                <>
+                  <source type="image/avif" srcSet={srcset("avif")} sizes="92vw" />
+                  <source type="image/webp" srcSet={srcset("webp")} sizes="92vw" />
+                </>
+              )}
               <img
                 src={photoSrc(item.id, meta.widths.find((w) => w >= 1200) ?? undefined, "webp")}
                 alt={item.alt[lang]}

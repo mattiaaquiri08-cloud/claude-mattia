@@ -76,6 +76,8 @@ const it = {
     intro: "Le paste della tradizione napoletana accanto ai grandi classici romani, a pochi passi da Fontana di Trevi.",
     napoli: { city: "Napoli", body: "Le ricette di casa, quelle che arrivano da Napoli." },
     roma: { city: "Roma", body: "I quattro classici della città che ci ospita." },
+    napoliPhotoAlt: "Pasta al ragù servita su un piatto di ceramica a righe",
+    romaPhotoAlt: "Pasta corta con crema d'uovo, guanciale e pecorino",
     cta: "Vedi nel menù",
   },
   menu: {
@@ -213,6 +215,8 @@ const en: Dictionary = {
     intro: "Traditional Neapolitan pastas alongside the great Roman classics, a short walk from the Trevi Fountain.",
     napoli: { city: "Naples", body: "Home recipes, the ones that come from Naples." },
     roma: { city: "Rome", body: "The four classics of the city we call home." },
+    napoliPhotoAlt: "Pasta with ragù on a striped ceramic plate",
+    romaPhotoAlt: "Short pasta with egg cream, guanciale and pecorino",
     cta: "See in the menu",
   },
   menu: {

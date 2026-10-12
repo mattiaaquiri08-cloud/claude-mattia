@@ -1,6 +1,7 @@
 /*
   Galleria: fotografie del ristorante pubblicate sul sito ufficiale nanaviniecucina.it
-  (servizio fotografico professionale nella sala di Via della Panetteria 37).
+  (servizio fotografico professionale nella sala di Via della Panetteria 37)
+  e foto di piatti fornite dal committente (pasta-romana, tiramisu, pasta-ragu, polpette-vietri).
   Le didascalie descrivono ciò che si vede; i nomi dei piatti compaiono solo dove sono certi.
 */
 
@@ -23,6 +24,10 @@ export const GALLERY: GalleryItem[] = [
     alt: { it: "Frittura di calamari e gamberi con limone", en: "Fried calamari and shrimp with lemon" },
   },
   {
+    id: "galleria/pasta-romana",
+    alt: { it: "Pasta corta con crema d'uovo, guanciale, pecorino e pepe", en: "Short pasta with egg cream, guanciale, pecorino and pepper" },
+  },
+  {
     id: "galleria/insegna",
     alt: { it: "La scritta Nanà sul vetro della cucina", en: "The Nanà lettering on the kitchen glass" },
   },
@@ -33,6 +38,10 @@ export const GALLERY: GalleryItem[] = [
   {
     id: "galleria/tavola",
     alt: { it: "Una tavola apparecchiata con le ceramiche dipinte a mano", en: "A table laid with hand-painted ceramics" },
+  },
+  {
+    id: "galleria/tiramisu",
+    alt: { it: "Tiramisù servito in coppa", en: "Tiramisù served in a glass" },
   },
   {
     id: "galleria/polpo",
@@ -47,12 +56,20 @@ export const GALLERY: GalleryItem[] = [
     alt: { it: "La sala con il grande finestrone ad arco", en: "The dining room with its large arched window" },
   },
   {
+    id: "galleria/pasta-ragu",
+    alt: { it: "Pasta al ragù con formaggio grattugiato", en: "Pasta with ragù and grated cheese" },
+  },
+  {
     id: "galleria/alici-fritte",
     alt: { it: "Alici fritte con uno spicchio di limone", en: "Fried anchovies with a wedge of lemon" },
   },
   {
     id: "galleria/calice",
     alt: { it: "Un antipasto con pomodori e un calice di vino bianco", en: "A starter with tomatoes and a glass of white wine" },
+  },
+  {
+    id: "galleria/polpette-vietri",
+    alt: { it: "Polpette dorate con salsa bianca su un piatto di ceramica dipinta", en: "Golden croquettes with a white sauce on a painted ceramic plate" },
   },
   {
     id: "galleria/tavolo-finestra",

@@ -88,8 +88,8 @@ function Traditions() {
   const [napoli, roma] = traditions.groups;
 
   const panels = [
-    { key: "napoli", group: napoli, text: t.traditions.napoli, tone: "petrol" as const },
-    { key: "roma", group: roma, text: t.traditions.roma, tone: "linen" as const },
+    { key: "napoli", group: napoli, text: t.traditions.napoli, tone: "petrol" as const, photo: "galleria/pasta-ragu", photoAlt: t.traditions.napoliPhotoAlt },
+    { key: "roma", group: roma, text: t.traditions.roma, tone: "linen" as const, photo: "galleria/pasta-romana", photoAlt: t.traditions.romaPhotoAlt },
   ];
 
   return (
@@ -100,7 +100,7 @@ function Traditions() {
       </motion.div>
 
       <div className="mt-14 grid gap-5 md:grid-cols-2 md:gap-6">
-        {panels.map(({ key, group, text, tone }, i) => (
+        {panels.map(({ key, group, text, tone, photo, photoAlt }, i) => (
           <motion.article
             key={key}
             initial={{ opacity: 0, y: 36 }}
@@ -111,12 +111,23 @@ function Traditions() {
               tone === "petrol" ? "bg-petrol-600 text-bianco" : "bg-lino text-ink ring-1 ring-petrol-600/10"
             }`}
           >
-            <Sprig className={`pointer-events-none absolute -top-2 -right-8 w-52 ${tone === "petrol" ? "text-white/30" : "text-petrol-300"}`} flip={i === 1} />
-            <p className={`text-[12px] font-semibold tracking-[0.2em] uppercase ${tone === "petrol" ? "text-white/75" : "text-petrol-500"}`}>{text.city}</p>
-            <h4 className={`sign-type mt-3 text-[44px] leading-none sm:text-[52px] ${tone === "petrol" ? "text-bianco" : "text-petrol-700"}`}>
-              {group.title?.[lang]}
-            </h4>
-            <p className={`mt-5 max-w-[40ch] text-[15px] leading-relaxed ${tone === "petrol" ? "text-white/85" : "text-ink-soft"}`}>{text.body}</p>
+            <div className="flex items-start gap-5 sm:gap-8">
+              <div className="min-w-0 flex-1">
+                <p className={`text-[12px] font-semibold tracking-[0.2em] uppercase ${tone === "petrol" ? "text-white/75" : "text-petrol-500"}`}>{text.city}</p>
+                <h4 className={`sign-type mt-3 text-[34px] leading-none sm:text-[52px] ${tone === "petrol" ? "text-bianco" : "text-petrol-700"}`}>
+                  {group.title?.[lang]}
+                </h4>
+                <p className={`mt-5 max-w-[40ch] text-[15px] leading-relaxed ${tone === "petrol" ? "text-white/85" : "text-ink-soft"}`}>{text.body}</p>
+              </div>
+              <Photo
+                id={photo}
+                alt={photoAlt}
+                sizes="(min-width: 640px) 160px, 104px"
+                intrinsic={false}
+                className={`w-22 shrink-0 rounded-[999px_999px_6px_6px] ring-4 sm:w-40 ${tone === "petrol" ? "ring-white/15" : "ring-bianco"}`}
+                imgClassName="aspect-[3/4]"
+              />
+            </div>
 
             <ul className="mt-8 grid gap-4">
               {group.dishes.map((d) => (
