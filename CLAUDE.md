@@ -64,5 +64,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Ottimizzazione immagini (`npm run images`): AVIF è lento, lanciarla in background con timeout lungo;
   lo script salta i file già generati (`--force` per rigenerare). Per attendere un processo non usare
   `pgrep -f` con lo stesso testo del comando: trova anche il ciclo di attesa e non termina mai.
+- Su smartphone non usare `100dvh` per sezioni alte quanto lo schermo: cambia con la barra del browser
+  e fa "rimbalzare" lo scroll. Usare `100svh` (altezza fissa).
+- Anteprime da condividere: link githack al file nel repository pubblico, usando lo SHA del commit
+  (githack mostra prima una pagina "Open the page"). Il link claude.ai della proposta Nanà appariva nero.
 - Siti di attività reali (nome, logo, prenotazioni veri): non si pubblicano come link claude.ai.
   Si consegna il file unico (`npm run build:single` per Nanà) e decide l'utente.

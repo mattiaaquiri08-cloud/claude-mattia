@@ -19,7 +19,7 @@ export function Hero() {
   const fade = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
-    <section ref={ref} id="top" className="relative isolate min-h-[100svh] overflow-hidden bg-petrol-900 supports-[height:100dvh]:min-h-[100dvh]">
+    <section ref={ref} id="top" className="relative isolate h-[100svh] min-h-[32rem] overflow-hidden bg-petrol-900">
       <h1 className="sr-only">{t.hero.h1}</h1>
 
       <motion.div style={{ y }} className="absolute inset-0 -z-20">

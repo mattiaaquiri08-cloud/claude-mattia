@@ -18,7 +18,8 @@ export function Header() {
 
   // la barra diventa piena solo quando si supera la foto principale
   useMotionValueEvent(scrollY, "change", (y) => {
-    const threshold = typeof window === "undefined" ? 600 : window.innerHeight * 0.82;
+    const hero = typeof document === "undefined" ? null : document.getElementById("top");
+    const threshold = hero ? hero.offsetHeight * 0.82 : 600;
     const next = y > threshold;
     setSolid((prev) => (prev === next ? prev : next));
   });
