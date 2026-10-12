@@ -7,6 +7,7 @@ import { useBooking } from "./booking";
 import { Sprig } from "./Botanical";
 import { LangSwitch } from "./LangSwitch";
 import { LogoMark } from "./Logo";
+import { ProposalBanner } from "./ProposalGuard";
 
 export function Header() {
   const { t } = useLang();
@@ -42,7 +43,7 @@ export function Header() {
         {t.nav.skip}
       </a>
       <header
-        className={`fixed inset-x-0 top-0 z-40 transition-[background-color,box-shadow,color] duration-500 ease-out ${
+        className={`fixed inset-x-0 top-0 z-40 pt-[env(safe-area-inset-top,0px)] transition-[background-color,box-shadow,color] duration-500 ease-out ${
           solid && !menuOpen
             ? "bg-crema/92 text-petrol-800 shadow-[0_1px_0_rgb(43_94_84/0.12)] backdrop-blur-md"
             : menuOpen
@@ -50,6 +51,7 @@ export function Header() {
               : "text-white [text-shadow:0_1px_12px_rgb(19_35_31/0.55)]"
         }`}
       >
+        <ProposalBanner />
         {onDark ? (
           <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-32 bg-gradient-to-b from-petrol-950/55 via-petrol-950/20 to-transparent" />
         ) : null}
@@ -123,7 +125,7 @@ function MobileMenu({ links, onClose }: { links: { href: string; label: string }
       role="dialog"
       aria-modal="true"
       aria-label={t.nav.label}
-      className="fixed inset-0 z-30 flex flex-col overflow-y-auto overscroll-contain bg-crema px-6 pt-24 pb-10 text-petrol-800 lg:hidden"
+      className="fixed inset-0 z-30 flex flex-col overflow-y-auto overscroll-contain bg-crema px-6 pt-[calc(6rem+var(--chrome-top))] pb-10 text-petrol-800 lg:hidden"
       initial={{ clipPath: "inset(0 0 100% 0)" }}
       animate={{ clipPath: "inset(0 0 0% 0)" }}
       exit={{ clipPath: "inset(0 0 100% 0)" }}

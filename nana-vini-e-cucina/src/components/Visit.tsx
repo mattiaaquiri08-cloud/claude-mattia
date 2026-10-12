@@ -20,6 +20,7 @@ import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { SITE } from "../data/site";
 import { useLang } from "../i18n/context";
+import { PROPOSAL } from "../lib/mode";
 import { Sprig } from "./Botanical";
 
 const ICONS: Record<string, Icon> = {
@@ -170,15 +171,31 @@ export function Visit() {
             ) : (
               <div className="map-cover absolute inset-0 flex flex-col items-center justify-end bg-cover bg-center p-8 text-center">
                 <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-petrol-950/85 via-petrol-950/25 to-transparent" />
-                <button
-                  type="button"
-                  onClick={() => setMapLoaded(true)}
-                  className="relative inline-flex h-12 cursor-pointer items-center gap-2 rounded-full bg-bianco px-6 text-[12.5px] font-bold tracking-[0.14em] text-petrol-800 uppercase transition-colors hover:bg-petrol-50"
-                >
-                  <MapPin size={18} weight="fill" aria-hidden />
-                  {t.visit.showMap}
-                </button>
-                <p className="relative mt-3 max-w-[34ch] text-[12px] leading-snug text-white/75">{t.visit.mapNote}</p>
+                {PROPOSAL ? (
+                  // nell'anteprima le mappe incorporate non si caricano: si apre Google Maps
+                  <a
+                    href={SITE.links.googleMaps}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative inline-flex h-12 items-center gap-2 rounded-full bg-bianco px-6 text-[12.5px] font-bold tracking-[0.14em] text-petrol-800 uppercase transition-colors hover:bg-petrol-50"
+                  >
+                    <MapPin size={18} weight="fill" aria-hidden />
+                    {t.visit.openMaps}
+                    <span className="sr-only">{t.common.newTab}</span>
+                  </a>
+                ) : (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => setMapLoaded(true)}
+                      className="relative inline-flex h-12 cursor-pointer items-center gap-2 rounded-full bg-bianco px-6 text-[12.5px] font-bold tracking-[0.14em] text-petrol-800 uppercase transition-colors hover:bg-petrol-50"
+                    >
+                      <MapPin size={18} weight="fill" aria-hidden />
+                      {t.visit.showMap}
+                    </button>
+                    <p className="relative mt-3 max-w-[34ch] text-[12px] leading-snug text-white/75">{t.visit.mapNote}</p>
+                  </>
+                )}
               </div>
             )}
           </div>

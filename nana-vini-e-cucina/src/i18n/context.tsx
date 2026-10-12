@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { PROPOSAL } from "../lib/mode";
 import { dictionaries, type Dictionary, type Lang } from "./dictionaries";
 
 type LangContextValue = {
@@ -33,7 +34,7 @@ export function LangProvider({ initialLang, children }: { initialLang: Lang; chi
   // allinea <html lang>, titolo e descrizione alla lingua attiva
   useEffect(() => {
     document.documentElement.lang = lang;
-    document.title = t.meta.title;
+    document.title = PROPOSAL ? t.proposal.title : t.meta.title;
     document.querySelector('meta[name="description"]')?.setAttribute("content", t.meta.description);
   }, [lang, t]);
 

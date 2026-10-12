@@ -6,6 +6,7 @@ import { Gallery } from "./components/Gallery";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { Menu } from "./components/Menu";
+import { ProposalGuard } from "./components/ProposalGuard";
 import { Reviews } from "./components/Reviews";
 import { Splash } from "./components/Splash";
 import { Story } from "./components/Story";
@@ -30,6 +31,7 @@ export default function App({ lang }: { lang: Lang }) {
           </main>
           <Footer />
           <BookingDialog />
+          <ProposalGuard />
         </BookingProvider>
       </LangProvider>
     </MotionConfig>

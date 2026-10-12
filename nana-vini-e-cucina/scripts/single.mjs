@@ -6,7 +6,8 @@ import path from "node:path";
 const ROOT = path.resolve(import.meta.dirname, "..");
 const DIST = path.join(ROOT, "dist-single");
 const PUB = path.join(ROOT, "public");
-const OUT = path.join(ROOT, "nana-vini-e-cucina.html");
+const PROPOSAL = process.argv.includes("--proposta");
+const OUT = path.join(ROOT, PROPOSAL ? "nana-proposta.html" : "nana-vini-e-cucina.html");
 
 const dataUri = async (rel) => `data:image/webp;base64,${(await readFile(path.join(PUB, rel))).toString("base64")}`;
 
@@ -49,6 +50,26 @@ html = html
   .replace("<!--app-head-->", `<script>window.__NANA_IMG=${JSON.stringify(map)};</script>`)
   .replace("<!--app-html-->", "")
   .replace("</body>", () => `<script type="module">${safe(js)}</script>\n</body>`);
+
+if (PROPOSAL) {
+  // pagina da pubblicare come anteprima: niente involucro <html>/<head>/<body> (lo aggiunge la piattaforma),
+  // titolo "Proposta" in testa e nessuna indicizzazione
+  html = html
+    .replace(/<!doctype html>\s*/i, "")
+    .replace(/<html[^>]*>\s*/i, "")
+    .replace(/<\/html>\s*$/i, "")
+    .replace(/<head>\s*/i, "")
+    .replace(/<\/head>\s*/i, "")
+    .replace(/<body>\s*/i, "")
+    .replace(/<\/body>\s*/i, "")
+    .replace(/<meta charset="UTF-8" \/>\s*/i, "")
+    .replace(/<meta name="viewport"[^>]*>\s*/i, "")
+    .replace(/<title>.*?<\/title>/, '<title>Proposta Nanà Vini e Cucina</title>\n<meta name="robots" content="noindex, nofollow" />');
+  html = html.replace(/^\s*(<title>[^<]*<\/title>)/, "$1");
+  // il <title> deve stare in cima al file
+  const title = html.match(/<title>.*?<\/title>\n<meta name="robots"[^>]*>/)[0];
+  html = title + "\n" + html.replace(title, "");
+}
 
 if (css.includes("/img/hero/") || /src="\/assets\/|href="\/assets\//.test(html)) throw new Error("Restano riferimenti a file esterni");
 await writeFile(OUT, html);

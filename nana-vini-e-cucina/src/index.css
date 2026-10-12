@@ -45,7 +45,9 @@
   html {
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
-    scroll-padding-top: 5.5rem;
+    scroll-padding-top: calc(5.5rem + var(--chrome-top));
+    --banner-h: 0px;
+    --chrome-top: calc(env(safe-area-inset-top, 0px) + var(--banner-h));
     background: var(--color-crema);
     color-scheme: light;
     touch-action: manipulation;
@@ -219,6 +221,11 @@
 }
 
 /* Splash: animazione in CSS puro, così parte prima ancora che React sia pronto */
+/* versione "proposta": spazio per la fascia in alto */
+:root.proposal {
+  --banner-h: 30px;
+}
+
 :root[data-splash="skip"] .splash {
   display: none;
 }

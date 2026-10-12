@@ -3,6 +3,9 @@ import { createRoot, hydrateRoot } from "react-dom/client";
 import App from "./App";
 import type { Lang } from "./i18n/dictionaries";
 import "./index.css";
+import { PROPOSAL } from "./lib/mode";
+
+if (PROPOSAL) document.documentElement.classList.add("proposal");
 
 const lang: Lang = window.location.pathname.startsWith("/en") ? "en" : "it";
 const root = document.getElementById("root")!;

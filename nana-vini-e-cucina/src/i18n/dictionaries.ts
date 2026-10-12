@@ -23,6 +23,12 @@ const it = {
   common: {
     newTab: "(si apre in una nuova scheda)",
   },
+  proposal: {
+    title: "Proposta Nanà Vini e Cucina",
+    banner: "Proposta di sito web per Nanà Vini e Cucina, anteprima non ufficiale",
+    bannerShort: "Proposta di sito web, anteprima non ufficiale",
+    toast: "Questa è un'anteprima: prenotazioni e chiamate non sono attive.",
+  },
   nav: {
     skip: "Vai al contenuto",
     label: "Navigazione principale",
@@ -161,6 +167,12 @@ const en: Dictionary = {
   },
   common: {
     newTab: "(opens in a new tab)",
+  },
+  proposal: {
+    title: "Nanà Vini e Cucina proposal",
+    banner: "Website proposal for Nanà Vini e Cucina, unofficial preview",
+    bannerShort: "Website proposal, unofficial preview",
+    toast: "This is a preview, so bookings and calls are not active.",
   },
   nav: {
     skip: "Skip to content",

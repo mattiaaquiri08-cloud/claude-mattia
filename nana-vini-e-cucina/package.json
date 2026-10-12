@@ -10,7 +10,8 @@
     "images": "node scripts/images.mjs",
     "icons": "node --experimental-strip-types scripts/icons.mjs",
     "lint": "oxlint",
-    "build:single": "VITE_SINGLE=1 vite build && node scripts/single.mjs"
+    "build:single": "VITE_SINGLE=1 vite build && node scripts/single.mjs",
+    "build:proposta": "VITE_SINGLE=1 VITE_PROPOSAL=1 vite build && node scripts/single.mjs --proposta"
   },
   "dependencies": {
     "@fontsource-variable/cormorant-garamond": "^5.3.0",

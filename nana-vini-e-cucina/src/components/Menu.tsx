@@ -78,8 +78,8 @@ export function Menu() {
         </div>
       </div>
 
-      <div data-menu-anchor className="scroll-mt-16 lg:scroll-mt-[72px]" />
-      <div className="sticky top-16 z-20 mt-12 border-y border-petrol-600/12 bg-bianco/94 backdrop-blur-md lg:top-[72px]">
+      <div data-menu-anchor className="scroll-mt-[calc(4rem+var(--chrome-top))] lg:scroll-mt-[calc(72px+var(--chrome-top))]" />
+      <div className="sticky top-[calc(4rem+var(--chrome-top))] z-20 mt-12 border-y border-petrol-600/12 bg-bianco/94 backdrop-blur-md lg:top-[calc(72px+var(--chrome-top))]">
         <div
           ref={tabsRef}
           role="tablist"
