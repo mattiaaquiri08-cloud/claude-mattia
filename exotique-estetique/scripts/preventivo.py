@@ -78,7 +78,7 @@ text(M, y - 36, 'entrambi della durata di due anni.', 'Times-Roman', 13)
 # Pacchetti: due riquadri affiancati
 y -= 78
 box_w = (W - 2 * M - 20) / 2
-box_h = 190
+box_h = 176
 packs = [
     ('Pacchetto Base', '3', '300', False),
     ('Pacchetto Plus', '6', '450', True),
@@ -96,10 +96,10 @@ for i, (name, n, price, accent) in enumerate(packs):
     c.rect(bx, y - 3, box_w, 3, stroke=0, fill=1)
     text(bx + 22, y - 36, name, 'Times-Roman', 18, fg)
     text(bx + 22, y - 54, '2 anni di servizio', 'Helvetica', 9, sub)
-    text(bx + 22, y - 112, price, 'Times-Roman', 54, fg)
+    text(bx + 22, y - 106, price, 'Times-Roman', 54, fg)
     pw = c.stringWidth(price, 'Times-Roman', 54)
-    text(bx + 26 + pw, y - 112, '€', 'Times-Roman', 26, fg)
-    text(bx + 22, y - 132, 'in unica soluzione', 'Helvetica', 9, sub)
+    text(bx + 26 + pw, y - 106, '€', 'Times-Roman', 26, fg)
+    text(bx + 22, y - 124, 'in unica soluzione', 'Helvetica', 9, sub)
     rule(by + 44, color=(LINE if not accent else HexColor('#3a3836')), x1=bx + 22, x2=bx + box_w - 22)
     text(bx + 22, by + 22, f'{n} modifiche al mese', 'Helvetica-Bold', 10.5, fg)
 
@@ -124,9 +124,14 @@ text(x2c, y, 'PAGAMENTO', 'Helvetica-Bold', 7.5, SOFT)
 text(x2c, y - 22, 'In un’unica soluzione,', 'Helvetica', 10.5)
 text(x2c, y - 40, 'all’inizio del servizio.', 'Helvetica', 10.5)
 text(x2c, y - 58, 'Non sono previsti pagamenti mensili.', 'Helvetica-Bold', 10.5)
+# Confronto: lo stesso servizio a rate costerebbe il doppio
+c.setFillColor(LACCA)
+c.rect(x2c, y - 99, 1.4, 26, stroke=0, fill=1)
+text(x2c + 10, y - 82, 'A 25 \u20ac al mese per 24 mesi spenderesti 600 \u20ac,', 'Helvetica', 9.5, INK)
+text(x2c + 10, y - 96, 'il doppio del Pacchetto Base.', 'Helvetica-Bold', 9.5, LACCA)
 
 # Accettazione
-y -= 120
+y -= 134
 rule(y + 18)
 text(M, y, 'PER ACCETTAZIONE', 'Helvetica-Bold', 7.5, SOFT)
 text(M, y - 22, 'Pacchetto scelto:', 'Helvetica', 10, SOFT)
@@ -143,9 +148,9 @@ text(x2c, y - 60, 'Firma', 'Helvetica', 9, SOFT)
 rule(y - 64, color=INK, x1=x2c + 32, x2=W - M, width=0.5)
 
 # Piede
-rule(46)
-text(M, 30, 'Preventivo per Exotique & Estetique, Via Giuseppe Calenzuoli 3, 00123 Roma', 'Helvetica', 7.5, SOFT)
-text(W - M, 30, 'Mattia', 'Times-Italic', 11, INK, 'right')
+rule(36)
+text(M, 22, 'Preventivo per Exotique & Estetique, Via Giuseppe Calenzuoli 3, 00123 Roma', 'Helvetica', 7.5, SOFT)
+text(W - M, 22, 'Mattia', 'Times-Italic', 11, INK, 'right')
 
 c.showPage()
 c.save()
