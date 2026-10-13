@@ -79,6 +79,10 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Preventivi: modello = il documento Claude Docs "Preventivo sito web Claudia Fulli Salon"
   (Oggetto, Il progetto, Le due opzioni Completo/Base, Costi a parte, Tempi, Accettazione);
   si crea un nuovo documento con la stessa struttura e i prezzi indicati dall'utente.
+  Il prezzo del sito lo decide sempre l'utente in base al cliente: non proporne uno di testa propria.
+  In "Tempi, pagamento e condizioni" va sempre la voce: "Importi: i prezzi indicati sono lordi, soggetti
+  a ritenuta d'acconto del 20% se dovuta; marca da bollo di 2 € a carico del cliente." (l'utente lavora
+  senza partita IVA, con ricevuta per prestazione occasionale; per incassare X netti il lordo è X / 0,8).
 - Contenuti che il cliente vuole cambiare da solo (menu, orari): Foglio Google letto dal sito
   (endpoint `gviz/tq?tqx=out:csv&sheet=<scheda>`), con copia locale e dati di riserva nel codice.
   Il connettore Drive non può rendere pubblico un file: lo deve fare l'utente da Condividi.
