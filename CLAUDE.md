@@ -61,7 +61,10 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   conferme simulate.
 - Progetto OMA Osteria Moderna (cartella `oma/`): tema scuro, accento ocra del logo (#d2772c),
   font Bricolage Grotesque + Geist. WhatsApp prenotazioni: 377 301 7230 (confermato dall'utente).
-  Referente: Alessio. Preventivo: Completo 550 €, Base 450 €.
+  Referente: Alessio. Preventivo: Completo 550 €, Base 450 €. Il 13/10/2026 hanno scelto il Completo,
+  dominio omaosteriamoderna.com (libero a quella data, da registrare a nome del ristorante).
+  Il menu della settimana resta il loro PDF su Linktree (stesso link del QR): sul sito va un pulsante verso
+  quel link; il Foglio Google resta per orari e avvisi.
   Il menu cambia ogni settimana: menu, orari e avviso li aggiorna il ristorante dal Foglio Google
   "OMA - Menu e orari del sito" (Drive dell'utente, id in `SITE.sheetId`), incluso nel Completo.
   Il foglio va condiviso "chiunque abbia il link: visualizzatore", altrimenti il sito usa i dati salvati.
