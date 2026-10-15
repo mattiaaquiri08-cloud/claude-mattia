@@ -67,6 +67,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   messaggio WhatsApp personalizzato e il link wa.me con il testo già pronto; l'utente lo invia e, se dice
   "manda un altro" passo al successivo. Segno l'esito nella colonna "Stato contatto" del file in `lead/`.
   Il messaggio è firmato "Mattia": chiedere conferma del nome se non è già confermato.
+- Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
+  voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
 - Semplicità e complessità: 50 e 50. Proponi la soluzione più adatta, ma se è complessa
   offri anche un'alternativa semplice e lascia scegliere all'utente.
