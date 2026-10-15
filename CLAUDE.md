@@ -75,6 +75,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   giovane (estetica, nail, parrucchieri/barbieri, palestre, padel, ristoranti/wine bar, centri benessere,
   tatuaggi, officine, autolavaggi/detailing, termoidraulica), non botteghe tradizionali. Serve un
   cellulare su Google per WhatsApp. Lista verificata nel foglio "Lead strutturati". Consegna a blocchi da 10.
+  Dal blocco 4: SOLO CENTRO di Roma (entro ~3,5 km da Piazza Venezia), soprattutto ristoranti, wine bar,
+  enoteche e attività a cui serve davvero un sito; NO autolavaggi o attività "da quattro soldi" fuori Roma.
+  In centro ~55% dei ristoranti ha già un sito: controllarne molti (500+) per trovarne 10.
 - Messaggi: seguono lo schema del testo chiamate (cercato su Google, ottime recensioni, nessun sito "come
   mai?", mi occupo di questo, anteprima del sito su Zoom, nessun impegno, se piace si tratta il prezzo,
   può chiamarmi), dando del Lei. Incentivare il "sì": guardare la bozza non costa nulla e non toglie niente,
