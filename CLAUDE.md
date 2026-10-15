@@ -88,6 +88,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   scheda Google; WebSearch "nome + via"; pagine Fresha/Treatwell/Playtomic (i dati "sameAs" di Fresha
   danno Instagram e Facebook); domini nome.it/.com confermati solo se riportano lo stesso telefono o
   indirizzo. Nel messaggio scrivere "cercando online non sono riuscito a trovare un vostro sito".
+  Citare SEMPRE social/app di prenotazione: se verificati, "vedo che siete già attivi sui social";
+  se non verificati, "immagino che siate presenti anche sui social o su qualche app di prenotazione"
+  (formula vera in ogni caso, scelta dall'utente per non affermare cose non viste).
   Lezione: Padel CAT sembrava senza sito ma aveva padelcatroma.it; dimensionebellezza.it era di un altro salone.
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
