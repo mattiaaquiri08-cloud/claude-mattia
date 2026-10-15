@@ -61,7 +61,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   dalla rete; Nominatim non fa ricerche per categoria; Clay ha solo aziende LinkedIn (inutile qui).
   OSM non ha le recensioni: si controllano a mano su Google Maps.
 - Contatti, come vuole lavorare: gli do UN lead alla volta (preferibilmente con cellulare) con un
-  messaggio WhatsApp personalizzato e il link wa.me con il testo già pronto; lui lo invia, e se dice
+  messaggio WhatsApp personalizzato e il link wa.me con il testo già pronto; l'utente lo invia e, se dice
   "manda un altro" passo al successivo. Segno l'esito nella colonna "Stato contatto" del file in `lead/`.
   Il messaggio è firmato "Mattia": chiedere conferma del nome se non è già confermato.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
