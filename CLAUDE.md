@@ -52,6 +52,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 
 ## Preferenze e lezioni apprese
 
+- Lavoro dell'utente: crea siti web per business locali che non ne hanno ancora uno.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
 - Semplicità e complessità: 50 e 50. Proponi la soluzione più adatta, ma se è complessa
   offri anche un'alternativa semplice e lascia scegliere all'utente.
