@@ -83,6 +83,12 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Formato: una scheda per attività con controllo Google, testo completo e link wa.me ben visibile (no tabelle). Non scrivere "l'ho già preparato" se la bozza non esiste.
 - Contenuti del sito proposto (nei messaggi e nelle bozze): includere SEMPRE una parte dedicata al
   titolare: la sua storia, il suo percorso, la sua immagine.
+- Presenza online (prima di ogni messaggio): verificare dove è DAVVERO online l'attività e citarlo nel
+  messaggio ("l'ho trovata su Google, Instagram, Treatwell…"), solo cose verificate. Fonti: link nella
+  scheda Google; WebSearch "nome + via"; pagine Fresha/Treatwell/Playtomic (i dati "sameAs" di Fresha
+  danno Instagram e Facebook); domini nome.it/.com confermati solo se riportano lo stesso telefono o
+  indirizzo. Nel messaggio scrivere "cercando online non sono riuscito a trovare un vostro sito".
+  Lezione: Padel CAT sembrava senza sito ma aveva padelcatroma.it; dimensionebellezza.it era di un altro salone.
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
