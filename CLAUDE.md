@@ -77,7 +77,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   cellulare su Google per WhatsApp. Lista verificata nel foglio "Lead strutturati". Consegna a blocchi da 10.
 - Messaggi: seguono lo schema del testo chiamate (cercato su Google, ottime recensioni, nessun sito "come
   mai?", mi occupo di questo, anteprima del sito su Zoom, nessun impegno, se piace si tratta il prezzo,
-  può chiamarmi), dando del Lei. Inizia con "Salve" e dice "ho trovato [attività] su Google" (non "ho cercato").
+  può chiamarmi), dando del Lei. Incentivare il "sì": guardare la bozza non costa nulla e non toglie niente,
+  basta un sì e gliela manda; se piace si parla di prezzo, se non piace non paga nulla. Inizia con "Salve" e dice "ho trovato [attività] su Google" (non "ho cercato").
   Formato: una scheda per attività con controllo Google, testo completo e link wa.me ben visibile (no tabelle). Non scrivere "l'ho già preparato" se la bozza non esiste.
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
