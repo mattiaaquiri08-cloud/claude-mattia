@@ -67,6 +67,10 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   messaggio WhatsApp personalizzato e il link wa.me con il testo già pronto; l'utente lo invia e, se dice
   "manda un altro" passo al successivo. Segno l'esito nella colonna "Stato contatto" del file in `lead/`.
   Il messaggio è firmato "Mattia": chiedere conferma del nome se non è già confermato.
+- Offerta dell'utente (da mettere in ogni messaggio): anteprima del sito totalmente gratuita; se non
+  piace non si paga niente, se piace si tratta il prezzo; disponibile per una chiamata, il cliente può
+  chiamarlo a quel numero. Il sito di prova si mostra su Zoom. Testo delle chiamate in
+  `lead/script-chiamata.md`. Al telefono dice "te ne ho già preparato uno": la bozza va fatta PRIMA della call.
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
