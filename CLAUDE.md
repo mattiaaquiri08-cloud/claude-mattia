@@ -53,6 +53,13 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 ## Preferenze e lezioni apprese
 
 - Lavoro dell'utente: crea siti web per business locali che non ne hanno ancora uno.
+- Ricerca clienti: preferisce attività di nicchia "che non contatta nessuno" (artigiani, botteghe,
+  servizi), in centro e periferia di Roma e provincia, con poche recensioni. Elenco in `lead/`.
+- Come trovare attività senza sito: scaricare l'estratto OSM della provincia da
+  osmit-estratti.wmcloud.org (`/output/pbf/province/058_Roma_Capitale.osm.pbf`) e filtrarlo con
+  `osmium` in Python. Pagine Gialle, Paginebianche e Cylex (403), Overpass e Geofabrik sono bloccati
+  dalla rete; Nominatim non fa ricerche per categoria; Clay ha solo aziende LinkedIn (inutile qui).
+  OSM non ha le recensioni: si controllano a mano su Google Maps.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
 - Semplicità e complessità: 50 e 50. Proponi la soluzione più adatta, ma se è complessa
   offri anche un'alternativa semplice e lascia scegliere all'utente.
