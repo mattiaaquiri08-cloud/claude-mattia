@@ -62,7 +62,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   OSM non ha le recensioni. Le verifico io su Google Maps con curl: pagina
   `google.com/maps/search/?api=1&hl=it&query=...` → URL `/search?tbm=map...` → JSON con "N recensioni",
   voto, sito; se contiene "Riapri l'attività" il luogo è segnato chiuso. Verificare SEMPRE prima di
-  proporre un lead: più di metà dei lead OSM era chiusa o aveva già un sito.
+  proporre un lead: su 37 lead OSM, circa 1 su 4 era chiuso o aveva già un sito.
 - Contatti, come vuole lavorare: gli do UN lead alla volta (preferibilmente con cellulare) con un
   messaggio WhatsApp personalizzato e il link wa.me con il testo già pronto; l'utente lo invia e, se dice
   "manda un altro" passo al successivo. Segno l'esito nella colonna "Stato contatto" del file in `lead/`.
