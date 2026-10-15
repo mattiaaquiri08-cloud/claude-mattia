@@ -71,6 +71,13 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   piace non si paga niente, se piace si tratta il prezzo; disponibile per una chiamata, il cliente può
   chiamarlo a quel numero. Il sito di prova si mostra su Zoom. Testo delle chiamate in
   `lead/script-chiamata.md`. Al telefono dice "te ne ho già preparato uno": la bozza va fatta PRIMA della call.
+- Lead preferiti (dal 15/10): attività più strutturate, 70–200 recensioni, settori moderni con gestione
+  giovane (estetica, nail, parrucchieri/barbieri, palestre, padel, ristoranti/wine bar, centri benessere,
+  tatuaggi, officine, autolavaggi/detailing, termoidraulica), non botteghe tradizionali. Serve un
+  cellulare su Google per WhatsApp. Lista verificata nel foglio "Lead strutturati". Consegna a blocchi da 10.
+- Messaggi: seguono lo schema del testo chiamate (cercato su Google, ottime recensioni, nessun sito "come
+  mai?", mi occupo di questo, anteprima del sito su Zoom, nessun impegno, se piace si tratta il prezzo,
+  può chiamarmi), dando del Lei. Non scrivere "l'ho già preparato" se la bozza non esiste.
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
