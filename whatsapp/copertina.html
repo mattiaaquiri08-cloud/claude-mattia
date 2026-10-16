@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=block" rel="stylesheet">
+<style>
+:root{--ink:#16181c;--cream:#f2ece2;--paper:#fbf8f3;--terra:#c2502e;--olive:#5c6b4a;--mute:#6f6a62}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden}
+body{background:var(--cream);font-family:Inter,sans-serif;color:var(--ink);position:relative}
+/* trama leggera */
+body:before{content:"";position:absolute;left:0;top:0;width:1920px;height:1080px;background:
+ radial-gradient(1200px 700px at 78% 45%,#e9dfd0 0,transparent 70%),
+ repeating-linear-gradient(90deg,transparent 0 119px,rgba(22,24,28,.035) 119px 120px);}
+.wrap{position:absolute;inset:0;display:flex;align-items:center;padding:0 150px;gap:70px}
+.txt{width:820px;position:relative;z-index:2;margin-top:-60px}
+.kick{display:inline-flex;align-items:center;gap:14px;font-size:24px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--terra)}
+.kick i{width:46px;height:2px;background:var(--terra);display:block}
+h1{font-family:"Instrument Serif",serif;font-weight:400;font-size:112px;line-height:.98;letter-spacing:-.01em;margin:26px 0 30px}
+h1 em{color:var(--terra)}
+.sub{font-size:31px;line-height:1.4;color:var(--mute);max-width:700px}
+.sub b{color:var(--ink);font-weight:600}
+.tags{display:flex;gap:12px;margin-top:38px;flex-wrap:wrap}
+.tags span{font-size:21px;font-weight:500;padding:10px 20px;border:1.5px solid rgba(22,24,28,.18);border-radius:100px;background:rgba(251,248,243,.6)}
+/* mockup */
+.stage{position:relative;width:820px;height:600px;z-index:1;margin-top:-60px}
+.browser{position:absolute;right:0;top:20px;width:720px;height:480px;background:var(--paper);border-radius:18px;box-shadow:0 40px 80px -30px rgba(40,30,20,.45),0 0 0 1px rgba(22,24,28,.08);overflow:hidden}
+.bar{height:44px;background:#e8e1d6;display:flex;align-items:center;gap:8px;padding:0 18px}
+.bar i{width:12px;height:12px;border-radius:50%;background:#cfc5b6;display:block}
+.bar .url{margin-left:18px;flex:1;height:24px;border-radius:7px;background:var(--paper);font-size:13px;color:var(--mute);display:flex;align-items:center;padding-left:12px}
+.site{position:relative;height:436px}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:20px 34px;font-size:14px}
+.nav .logo{font-family:"Instrument Serif";font-size:26px}
+.nav .links{display:flex;gap:22px;color:var(--mute)}
+.nav .btn{background:var(--ink);color:#fff;padding:8px 16px;border-radius:30px;font-size:13px}
+.hero{display:flex;gap:26px;padding:16px 34px}
+.hero .l{flex:1;padding-top:18px;padding-left:6px}
+.hero .l small{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--olive);font-weight:600}
+.hero .l h2{font-family:"Instrument Serif";font-weight:400;font-size:46px;line-height:1;margin:12px 0 14px}
+.hero .l p{font-size:13.5px;color:var(--mute);line-height:1.5;max-width:270px}
+.hero .l .c{display:flex;gap:10px;margin-top:20px}
+.hero .l .c span{font-size:12.5px;padding:9px 15px;border-radius:30px;background:var(--terra);color:#fff}
+.hero .l .c span+span{background:none;color:var(--ink);border:1px solid rgba(22,24,28,.2)}
+.ph{flex:none;width:300px;height:300px;border-radius:14px;position:relative;overflow:hidden;
+ background:linear-gradient(160deg,#c9774f 0%,#8e3d22 55%,#4a2416 100%)}
+.ph:before{content:"";position:absolute;width:190px;height:190px;border-radius:50%;left:55px;top:70px;background:radial-gradient(circle at 40% 35%,#f6efe4 0 46%,#e6dccb 47% 62%,transparent 63%);box-shadow:0 18px 30px rgba(0,0,0,.25)}
+.ph:after{content:"";position:absolute;width:104px;height:104px;border-radius:50%;left:98px;top:113px;background:repeating-radial-gradient(circle at 48% 52%,#c8452a 0 5px,#a8321c 5px 8px);filter:blur(.4px)}
+.ph s{position:absolute;z-index:2;width:16px;height:10px;border-radius:50% 0;background:#4f7a35;left:150px;top:140px;transform:rotate(-20deg)}
+.ph s+s{left:128px;top:168px;transform:rotate(30deg)}.ph s+s+s{left:166px;top:172px;transform:rotate(80deg)}
+.strip{position:absolute;left:34px;right:34px;bottom:22px;display:flex;gap:14px}
+.strip div{flex:1;height:22px;border-radius:6px;background:#ece5d9}
+/* telefono */
+.phone{position:absolute;left:0;top:150px;width:210px;height:420px;border-radius:34px;background:var(--ink);padding:10px;box-shadow:0 40px 70px -25px rgba(40,30,20,.55)}
+.scr{width:100%;height:100%;border-radius:26px;background:var(--paper);overflow:hidden;position:relative}
+.scr .n{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-family:"Instrument Serif";font-size:19px}
+.scr .n i{width:18px;height:2px;background:var(--ink);display:block;box-shadow:0 6px 0 var(--ink)}
+.scr .ow{margin:6px 14px;height:150px;border-radius:12px;background:linear-gradient(150deg,#7f8f6a,#3f4a33)}
+.scr .ow2{position:relative;margin:-38px 0 0 28px;width:64px;height:64px;border-radius:50%;background:linear-gradient(160deg,#e3c7a9,#b98b66);border:4px solid var(--paper)}
+.scr h4{font-family:"Instrument Serif";font-weight:400;font-size:22px;margin:8px 16px 4px}
+.scr p{font-size:10.5px;color:var(--mute);margin:0 16px;line-height:1.45}
+.scr .ln{height:8px;border-radius:4px;background:#ece5d9;margin:8px 16px}
+.scr .wa{position:absolute;bottom:14px;left:14px;right:14px;height:38px;border-radius:20px;background:#25D366;color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.badge{position:absolute;right:-18px;bottom:40px;background:var(--ink);color:var(--paper);padding:18px 24px;border-radius:16px;font-size:18px;line-height:1.35;box-shadow:0 20px 40px -18px rgba(0,0,0,.5)}
+.badge b{display:block;font-family:"Instrument Serif";font-weight:400;font-size:30px;color:#f0b49a}
+</style></head><body>
+<div class="wrap">
+  <div class="txt">
+    <div class="kick"><i></i>Roma e provincia</div>
+    <h1>Siti web per<br><em>attività locali</em></h1>
+    <p class="sub">Le preparo una <b>bozza gratuita</b> del suo sito. Se le piace parliamo del prezzo, se non le piace <b>non paga nulla</b>.</p>
+    <div class="tags"><span>Ristoranti</span><span>Saloni</span><span>Palestre</span><span>Studi</span><span>Botteghe</span></div>
+  </div>
+  <div class="stage">
+    <div class="browser">
+      <div class="bar"><i></i><i></i><i></i><div class="url">www.lasuaattivita.it</div></div>
+      <div class="site">
+        <div class="nav"><span class="logo">Osteria Monti</span><span class="links"><span>Menu</span><span>La nostra storia</span><span>Dove siamo</span></span><span class="btn">Prenota</span></div>
+        <div class="hero">
+          <div class="ph"><s></s><s></s><s></s></div>
+          <div class="l"><small>Dal 1998 · Rione Monti</small><h2>Cucina romana,<br>fatta in casa.</h2><p>La storia di Marco, il suo percorso tra le cucine di Roma e i piatti di sua nonna.</p><div class="c"><span>Prenota un tavolo</span><span>Vedi il menu</span></div></div>
+        </div>
+        <div class="strip"><div></div><div></div><div></div></div>
+      </div>
+    </div>
+    <div class="phone"><div class="scr">
+      <div class="n">Studio Aura<i></i></div>
+      <div class="ow"></div><div class="ow2"></div>
+      <h4>Ciao, sono Giulia</h4>
+      <p>Estetista da 12 anni. Ecco il mio percorso e i miei trattamenti.</p>
+      <div class="ln"></div><div class="ln" style="width:60%"></div>
+      <div class="wa">Prenota su WhatsApp</div>
+    </div></div>
+    <div class="badge"><b>Bozza gratuita</b>nessun impegno</div>
+  </div>
+</div>
+</body></html>
