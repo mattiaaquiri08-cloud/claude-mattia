@@ -105,7 +105,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   In Italia i messaggi commerciali non richiesti richiedono il consenso (Codice privacy art. 130).
 - Email ai titolari (quando la reception al telefono dice di scrivere via email): stesso schema dei messaggi
   WhatsApp, citando che la reception ha indicato l'email; firma "Mattia Aquiri, Siti web per attività locali".
-  Preferisce che crei la BOZZA in Gmail (non l'invio diretto): la controlla, aggiunge il numero e invia lui.
+  Se dice "manda", invio direttamente da Gmail; altrimenti preparo la bozza in Gmail. Firma: "Mattia Aquiri,
+  MAQ Web Design, Siti web per le attività di Roma"; recapito = rispondere all'email (numero non ancora nel sito).
   Profilo WhatsApp Business: copertine "Grow Online" in `whatsapp/` (usa quella bianca, scritta centrata,
   "Web Design" e "Based in Rome" in basso).
 - Brand dell'utente (16/10): nome scelto **MAQ Web Design** (MAQ = Mattia AQuiri), slogan "Grow Online",
