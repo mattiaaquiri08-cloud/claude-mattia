@@ -107,6 +107,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   WhatsApp, citando che la reception ha indicato l'email; firma "Mattia Aquiri, Siti web per attività locali".
   Se dice "manda", invio direttamente da Gmail; altrimenti preparo la bozza in Gmail. Firma: "Mattia Aquiri,
   MAQ Web Design, Siti web per le attività di Roma"; recapito = rispondere all'email (numero non ancora nel sito).
+  Allegati: copiare a mano il base64 non funziona (errori). Le immagini vanno messe nel repo (pubblico) e
+  inserite nell'HTML con URL raw.githubusercontent.com fissato su un commit (es. brand/email-anteprima-sito.jpg).
   Profilo WhatsApp Business: copertine "Grow Online" in `whatsapp/` (usa quella bianca, scritta centrata,
   "Web Design" e "Based in Rome" in basso).
 - Brand dell'utente (16/10): nome scelto **MAQ Web Design** (MAQ = Mattia AQuiri), slogan "Grow Online",
