@@ -1,0 +1,50 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MAQ Web Design – splash</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;800&display=block" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07050d;--fg:#fff;--mu:#a49dbb;--vl:#3a3350}
+body.light{--bg:#fff;--fg:#0f0b1a;--mu:#6b6580;--vl:#ddd7e8}
+html,body{height:100%;background:var(--bg);font-family:Sora,sans-serif;color:var(--fg)}
+.stage{height:100%;display:flex;align-items:center;justify-content:center}
+.logo{display:flex;align-items:center;gap:46px}
+.left{display:flex;flex-direction:column}
+.m{font-size:170px;letter-spacing:.02em;line-height:1.1;white-space:nowrap}
+.m .a{font-weight:300}
+.m .q{font-weight:800;padding-right:.04em;background:linear-gradient(90deg,#6d28f6,#b05ce6 35%,#f08ac6 70%,#f6b48a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bar{height:2px;border-radius:2px;margin-top:22px;background:linear-gradient(90deg,#6d28f6,#b05ce6 35%,#f08ac6 70%,#f6b48a);transform-origin:left center}
+.center .bar{transform-origin:center}
+.sl{margin-top:22px;font-size:23px;font-weight:300;letter-spacing:.38em;text-transform:uppercase;color:var(--mu);white-space:nowrap}
+.vl{width:1.5px;align-self:stretch;margin:26px 0 78px;background:var(--vl)}
+.tx{font-size:31px;font-weight:400;letter-spacing:.34em;line-height:1.75;text-transform:uppercase;color:var(--mu);margin-bottom:62px}
+/* animazione splash */
+.anim .m{animation:in .7s cubic-bezier(.2,.7,.2,1) both}
+.anim .vl,.anim .tx{animation:fade .6s .35s ease both}
+.anim .bar{animation:grow .9s .6s cubic-bezier(.65,0,.35,1) both}
+.anim .sl{animation:fade .6s 1.35s ease both}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.anim *{animation:none!important}}
+@media (max-width:640px){.logo{transform:scale(.4)}}
+</style></head>
+<body><div class="stage"><div class="logo anim" id="logo">
+  <div class="left">
+    <div class="m"><span class="a">MA</span><span class="q">Q</span></div>
+    <div class="bar"></div>
+    <div class="sl">Grow Online / Roma</div>
+  </div>
+  <div class="vl"></div>
+  <div class="tx">Web<br>Design</div>
+</div></div>
+<script>
+// opzioni via URL: ?modo=centro (barra dal centro), ?tema=chiaro, ?p=0..1 (fotogramma fisso per l'export)
+const u=new URLSearchParams(location.search),L=document.getElementById('logo');
+if(u.get('modo')==='centro')L.classList.add('center');
+if(u.get('tema')==='chiaro')document.body.classList.add('light');
+if(u.has('p')){
+  const T=2.0*parseFloat(u.get('p'));
+  document.getAnimations().forEach(a=>{a.pause();a.currentTime=T*1000;});
+}
+</script></body></html>
