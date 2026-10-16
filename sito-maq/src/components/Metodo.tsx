@@ -5,7 +5,7 @@ const PASSI = [
   {
     n: "01",
     titolo: "Mi scrivete",
-    testo: "Richiedete la bozza dal sito, su WhatsApp o per email: bastano il vostro nome e quello dell’attività.",
+    testo: "Cliccate il tasto «Richiedi la bozza» qui sotto: la vostra richiesta mi arriva subito. Bastano il vostro nome e quello dell’attività.",
   },
   {
     n: "02",
