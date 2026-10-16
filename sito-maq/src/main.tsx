@@ -2,6 +2,7 @@ import { createRoot, hydrateRoot } from "react-dom/client";
 import "./index.css";
 import { Sito } from "./Sito";
 import { PAGINE } from "./pagine";
+import { attivaScorrimentoCentrato } from "./scorrimento";
 
 const radice = document.getElementById("root")!;
 // La pagina è scritta nell’HTML già pronto; in sviluppo la ricavo dall’indirizzo.
@@ -28,6 +29,17 @@ if (!window.location.hash && navigazione?.type !== "back_forward") {
     },
     { once: true },
   );
+}
+
+attivaScorrimentoCentrato();
+
+// chi entra nel sito da una pagina interna l'ha già "aperto": tornando alla home niente splash
+if (slug) {
+  try {
+    sessionStorage.setItem("maq-splash", "1");
+  } catch {
+    // memoria del browser non disponibile
+  }
 }
 
 if (radice.hasChildNodes()) {
