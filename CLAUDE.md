@@ -68,7 +68,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Pagamenti OMA: 2 ricevute per prestazione occasionale (acconto e saldo, 275 € lordi ciascuna).
   Al 16/10/2026 nulla pagato: si attendono ragione sociale, P.IVA, sede di OMA e risposta del loro
   commercialista sulla ritenuta. Il 16/10/2026 confermato: ritenuta 20% sì. Per ogni rata: lordo 275 €,
-  ritenuta 55 €, netto 220 € + 2 € rimborso bollo = 222 € di bonifico. Committente: OMA SRL, Via
+  ritenuta 55 €, netto 220 € + 2 € rimborso bollo = 222 € di bonifico. Ricevuta n. 1/2026 (acconto) inviata
+  il 16/10/2026; al saldo va la n. 2/2026, uguale (i dati personali dell'utente vanno richiesti di nuovo).
+  Incontro di persona da OMA lunedì 19/10/2026: firma preventivo, dominio, QR, foto, mail Google. Committente: OMA SRL, Via
   Costantino Maes 78, 00162 Roma, P.IVA 18018171001, PEC oma@pecimprese.it, cod. univoco W7YVJK9.
 - Ricevute e documenti con dati personali (codice fiscale, IBAN, indirizzo dell'utente) NON vanno mai
   nel repository, che è pubblico: si generano nella scratchpad e si mandano all'utente come file.
