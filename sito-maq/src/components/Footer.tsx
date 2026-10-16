@@ -1,4 +1,4 @@
-import { EnvelopeSimple, InstagramLogo, WhatsappLogo } from "@phosphor-icons/react";
+import { EnvelopeSimple, InstagramLogo, Phone, WhatsappLogo } from "@phosphor-icons/react";
 import { CONTATTI, NOME, TITOLARE } from "../config";
 import { Logo } from "./Logo";
 
@@ -40,6 +40,13 @@ export function Footer() {
         <div>
           <p className="text-sm font-semibold">Contatti</p>
           <ul className="mt-4 space-y-3 text-sm text-tenue">
+            {CONTATTI.telefono && (
+              <li>
+                <a className="fuoco inline-flex items-center gap-2 rounded hover:text-testo" href={`tel:${CONTATTI.telefono.replace(/\s/g, "")}`}>
+                  <Phone size={18} /> {CONTATTI.telefono}
+                </a>
+              </li>
+            )}
             {CONTATTI.whatsapp && (
               <li>
                 <a className="fuoco inline-flex items-center gap-2 rounded hover:text-testo" href={`https://wa.me/${CONTATTI.whatsapp}`} target="_blank" rel="noopener noreferrer">

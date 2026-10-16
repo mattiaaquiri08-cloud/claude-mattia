@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { EnvelopeSimple, InstagramLogo, WhatsappLogo } from "@phosphor-icons/react";
+import { EnvelopeSimple, InstagramLogo, Phone, WhatsappLogo } from "@phosphor-icons/react";
 import { CONTATTI } from "../config";
 import { Appare, Titolo } from "./ui";
 
@@ -136,6 +136,17 @@ export function Contatti() {
 
             {(CONTATTI.whatsapp || CONTATTI.email || CONTATTI.instagram) && (
               <ul className="mt-10 space-y-4">
+                {CONTATTI.telefono && (
+                  <li>
+                    <a
+                      className="fuoco inline-flex items-center gap-3 rounded text-lg hover:text-rosa"
+                      href={`tel:${CONTATTI.telefono.replace(/\s/g, "")}`}
+                    >
+                      <Phone size={26} weight="light" className="text-rosa" />
+                      {CONTATTI.telefono}
+                    </a>
+                  </li>
+                )}
                 {CONTATTI.whatsapp && (
                   <li>
                     <a

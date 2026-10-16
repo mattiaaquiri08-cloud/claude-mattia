@@ -2,7 +2,9 @@
 // tutti i pulsanti, il modulo e il footer del sito.
 export const CONTATTI = {
   // numero WhatsApp Business in formato internazionale, solo cifre (es. 393331234567)
-  whatsapp: "",
+  whatsapp: "393281026484",
+  // numero di telefono da mostrare e chiamare
+  telefono: "+39 328 102 6484",
   // email professionale
   email: "maq.webdesign@outlook.it",
   // profilo Instagram senza @ (es. maqwebdesign)

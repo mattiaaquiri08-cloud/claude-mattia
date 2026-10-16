@@ -109,7 +109,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   connessione predefinita già impostata), NON dal vecchio Gmail. Allegati: campo "file" con URL pubblico
   (immagini nel repo pubblico, link raw.githubusercontent.com fissato su un commit). Gmail con alias Outlook
   non funziona (Microsoft ha disattivato SMTP con password). Se dice "manda" invio, altrimenti chiedo prima. Firma: "Mattia Aquiri,
-  MAQ Web Design, Siti web per le attività di Roma"; recapito = rispondere all'email. Email di lavoro: maq.webdesign@outlook.it (inserita nel sito il 16/10).
+  MAQ Web Design, Siti web per le attività di Roma"; recapito: telefono e WhatsApp +39 328 102 6484, email maq.webdesign@outlook.it (entrambi nel sito dal 16/10).
   Allegati: copiare a mano il base64 non funziona (errori). Le immagini vanno messe nel repo (pubblico) e
   inserite nell'HTML con URL raw.githubusercontent.com fissato su un commit (es. brand/email-anteprima-sito.jpg).
   Profilo WhatsApp Business: copertine "Grow Online" in `whatsapp/` (usa quella bianca, scritta centrata,
