@@ -4,7 +4,7 @@ export const CONTATTI = {
   // numero WhatsApp Business in formato internazionale, solo cifre (es. 393331234567)
   whatsapp: "",
   // email professionale
-  email: "maq.webdesign@outlook.com",
+  email: "maq.webdesign@outlook.it",
   // profilo Instagram senza @ (es. maqwebdesign)
   instagram: "",
 };

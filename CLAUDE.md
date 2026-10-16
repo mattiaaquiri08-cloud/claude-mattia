@@ -105,8 +105,11 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   In Italia i messaggi commerciali non richiesti richiedono il consenso (Codice privacy art. 130).
 - Email ai titolari (quando la reception al telefono dice di scrivere via email): stesso schema dei messaggi
   WhatsApp, citando che la reception ha indicato l'email; firma "Mattia Aquiri, Siti web per attività locali".
-  Se dice "manda", invio direttamente da Gmail; altrimenti preparo la bozza in Gmail. Firma: "Mattia Aquiri,
-  MAQ Web Design, Siti web per le attività di Roma"; recapito = rispondere all'email. Email di lavoro: maq.webdesign@outlook.com (inserita nel sito il 16/10).
+  INVIO EMAIL: sempre da maq.webdesign@outlook.it tramite Zapier (app Microsoft Outlook, azione send_email,
+  connessione predefinita già impostata), NON dal vecchio Gmail. Allegati: campo "file" con URL pubblico
+  (immagini nel repo pubblico, link raw.githubusercontent.com fissato su un commit). Gmail con alias Outlook
+  non funziona (Microsoft ha disattivato SMTP con password). Se dice "manda" invio, altrimenti chiedo prima. Firma: "Mattia Aquiri,
+  MAQ Web Design, Siti web per le attività di Roma"; recapito = rispondere all'email. Email di lavoro: maq.webdesign@outlook.it (inserita nel sito il 16/10).
   Allegati: copiare a mano il base64 non funziona (errori). Le immagini vanno messe nel repo (pubblico) e
   inserite nell'HTML con URL raw.githubusercontent.com fissato su un commit (es. brand/email-anteprima-sito.jpg).
   Profilo WhatsApp Business: copertine "Grow Online" in `whatsapp/` (usa quella bianca, scritta centrata,
