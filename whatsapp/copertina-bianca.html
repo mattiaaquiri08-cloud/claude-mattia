@@ -15,10 +15,14 @@ h1{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-alig
  font-weight:800;font-size:200px;letter-spacing:-.045em;line-height:1;color:#0f0b1a}
 h1 span{background:linear-gradient(90deg,#6d28f6 0%,#b05ce6 38%,#f08ac6 72%,#f6b48a 100%);
  -webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.06em;margin-right:-.06em}
+.tag{position:absolute;top:978px;font-family:Sora,sans-serif;font-weight:700;font-size:36px;letter-spacing:.2em;text-transform:uppercase;color:#4b4560;display:flex;align-items:center;gap:18px}
+.tag i{width:14px;height:14px;border-radius:50%;background:linear-gradient(90deg,#6d28f6,#f08ac6);display:block}
+.tl{left:110px}.tr{right:110px}
 </style></head><body>
 <div class="glow"></div>
 <canvas id="c" width="1920" height="1080"></canvas>
 <div class="vig"></div>
+<div class="tag tl"><i></i>Web Design</div><div class="tag tr">Based in Rome<i></i></div>
 <h1>Grow <span>Online</span></h1>
 <script>
 const c=document.getElementById('c'),x=c.getContext('2d');
