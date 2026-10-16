@@ -78,6 +78,10 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Dal blocco 4: SOLO CENTRO di Roma (entro ~3,5 km da Piazza Venezia), soprattutto ristoranti, wine bar,
   enoteche e attività a cui serve davvero un sito; NO autolavaggi o attività "da quattro soldi" fuori Roma.
   In centro ~55% dei ristoranti ha già un sito: controllarne molti (500+) per trovarne 10.
+  Dal blocco 6: MIX di tutti i settori (palestre, pilates, estetica, nail, massaggi, tatuaggi, ristoranti,
+  bistrot, officine, studi professionali…) e mix centro/periferia, con gestione giovane (proxy: attivi su
+  Instagram/Facebook/Treatwell). Metodo migliore: ricerca DIRETTA su Google Maps "categoria + quartiere"
+  (20 risultati per ricerca) con lo script del blocco 6: trova molte più attività di OSM.
 - Messaggi: seguono lo schema del testo chiamate (cercato su Google, ottime recensioni, nessun sito "come
   mai?", mi occupo di questo, anteprima del sito su Zoom, nessun impegno, se piace si tratta il prezzo,
   può chiamarmi), dando del Lei. Incentivare il "sì": guardare la bozza non costa nulla e non toglie niente,
