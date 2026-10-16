@@ -67,7 +67,11 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   quel link; il Foglio Google resta per orari e avvisi.
   Pagamenti OMA: 2 ricevute per prestazione occasionale (acconto e saldo, 275 € lordi ciascuna).
   Al 16/10/2026 nulla pagato: si attendono ragione sociale, P.IVA, sede di OMA e risposta del loro
-  commercialista sulla ritenuta (con ritenuta: bonifico 220 € + 55 € versati da loro; senza: 275 €).
+  commercialista sulla ritenuta. Il 16/10/2026 confermato: ritenuta 20% sì. Per ogni rata: lordo 275 €,
+  ritenuta 55 €, netto 220 € + 2 € rimborso bollo = 222 € di bonifico. Committente: OMA SRL, Via
+  Costantino Maes 78, 00162 Roma, P.IVA 18018171001, PEC oma@pecimprese.it, cod. univoco W7YVJK9.
+- Ricevute e documenti con dati personali (codice fiscale, IBAN, indirizzo dell'utente) NON vanno mai
+  nel repository, che è pubblico: si generano nella scratchpad e si mandano all'utente come file.
   Il menu cambia ogni settimana: menu, orari e avviso li aggiorna il ristorante dal Foglio Google
   "OMA - Menu e orari del sito" (Drive dell'utente, id in `SITE.sheetId`), incluso nel Completo.
   Il foglio va condiviso "chiunque abbia il link: visualizzatore", altrimenti il sito usa i dati salvati.
