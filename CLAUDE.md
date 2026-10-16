@@ -63,8 +63,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   font Bricolage Grotesque + Geist. WhatsApp prenotazioni: 377 301 7230 (confermato dall'utente).
   Referente: Alessio. Preventivo: Completo 550 €, Base 450 €. Il 13/10/2026 hanno scelto il Completo,
   dominio omaosteriamoderna.com (libero a quella data, da registrare a nome del ristorante).
-  Il menu della settimana resta il loro PDF su Linktree (stesso link del QR): sul sito va un pulsante verso
-  quel link; il Foglio Google resta per orari e avvisi.
+  Il menu della settimana resta il loro PDF su Linktree (stesso link del QR, `SITE.menuUrl`, da confermare
+  lunedì 19/10 fotografando il QR): sul sito c'è il pulsante "Apri il menu"; nel sito restano solo vini e
+  drink (filtro in Menu.tsx). Il Foglio Google resta per orari, avvisi, vini e drink.
   Pagamenti OMA: 2 ricevute per prestazione occasionale (acconto e saldo, 275 € lordi ciascuna).
   Al 16/10/2026 nulla pagato: si attendono ragione sociale, P.IVA, sede di OMA e risposta del loro
   commercialista sulla ritenuta. Il 16/10/2026 confermato: ritenuta 20% sì. Per ogni rata: lordo 275 €,

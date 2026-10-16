@@ -1,12 +1,17 @@
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'motion/react'
 import { useRef, useState, type KeyboardEvent } from 'react'
 import { useLiveData } from '../lib/live-data'
-import { FilePdf, Heart } from '@phosphor-icons/react'
-import { type Dish } from '../data/site'
+import { ArrowUpRight, FilePdf, Heart } from '@phosphor-icons/react'
+import { SITE, type Dish } from '../data/site'
+
+// Il cibo cambia ogni settimana e sta nel PDF del ristorante (link del QR): sul sito restano vini e drink
+const DRINK_SECTIONS = new Set(['vini', 'drink'])
 
 export function Menu() {
   const reduce = useReducedMotion()
-  const { menu: MENU } = useLiveData()
+  const { menu } = useLiveData()
+  const drinks = menu.filter((s) => DRINK_SECTIONS.has(s.id))
+  const MENU = drinks.length ? drinks : menu
   const [chosen, setActive] = useState(MENU[0].id)
   // se la portata scelta sparisce dal foglio si torna alla prima
   const active = MENU.some((s) => s.id === chosen) ? chosen : MENU[0].id
@@ -41,18 +46,53 @@ export function Menu() {
         <div className="flex flex-col gap-4">
           <h2 className="font-display text-5xl leading-none font-semibold tracking-[-0.03em] md:text-7xl">Il menu</h2>
           <p className="max-w-[52ch] text-lg leading-relaxed text-cream/75">
-            Cambia con le stagioni. Questo è quello che trovi in tavola adesso.
+            Cambia ogni settimana, con quello che offre la stagione.
           </p>
         </div>
+
+        {/* Menu della settimana: porta allo stesso link del QR code al tavolo */}
+        <motion.div
+          className="mt-12 grid grid-cols-1 overflow-hidden rounded-[var(--radius-media)] border border-line bg-ink md:mt-16 md:grid-cols-12"
+          initial={reduce ? false : { opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="relative h-56 md:col-span-5 md:h-auto md:min-h-[360px]">
+            <img
+              src="./img/p-tavola.webp"
+              alt="La tavola di OMA con i piatti del giorno: salumi, crostoni, polpette e battuta"
+              width={344}
+              height={420}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </div>
+          <div className="flex flex-col justify-center gap-5 p-7 md:col-span-7 md:p-12">
+            <h3 className="font-display text-3xl leading-tight font-semibold tracking-tight text-balance md:text-5xl">
+              Il menu della settimana
+            </h3>
+            <p className="max-w-[46ch] text-lg leading-relaxed text-cream/75">
+              Antipasti, primi, secondi e dolci cambiano ogni settimana. Qui trovi sempre quello aggiornato, lo
+              stesso del QR code che trovi al tavolo.
+            </p>
+            <a href={SITE.menuUrl} target="_blank" rel="noopener noreferrer" className="btn-primary self-start">
+              Apri il menu
+              <ArrowUpRight size={18} weight="bold" />
+            </a>
+          </div>
+        </motion.div>
+
+        <h3 className="mt-24 font-display text-3xl font-semibold tracking-tight md:mt-32 md:text-4xl">Vini e drink</h3>
 
         {/* Schede delle portate */}
         <LayoutGroup id="menu-tabs">
           <div
             ref={tabsRef}
             role="tablist"
-            aria-label="Portate del menu"
+            aria-label="Vini e drink"
             onKeyDown={onKeyDown}
-            className="no-scrollbar -mx-4 mt-12 flex snap-x gap-1 overflow-x-auto border-b border-line px-4 md:mx-0 md:px-0"
+            className="no-scrollbar -mx-4 mt-8 flex snap-x gap-1 overflow-x-auto border-b border-line px-4 md:mx-0 md:px-0"
           >
             {MENU.map((s) => {
               const isActive = s.id === active
@@ -107,8 +147,8 @@ export function Menu() {
 
             <div className="mt-10 hidden overflow-hidden rounded-[var(--radius-media)] md:block">
               <img
-                src="./img/p-rigatoni.webp"
-                alt="Un piatto di rigatoni al sugo, servito nei piatti a fiori di OMA"
+                src="./img/p-tiramisu.webp"
+                alt="Il tiramisù servito in sala, accanto al calice di OMA"
                 width={344}
                 height={448}
                 loading="lazy"
@@ -156,15 +196,6 @@ export function Menu() {
                 Allergie o intolleranze? Diccelo prima di ordinare. Sul menu in sala trovi la lista dei 14 allergeni.
               </p>
               <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium">
-                <a
-                  href="./menu/menu-oma.pdf"
-                  target="_blank"
-                  rel="noopener"
-                  className="inline-flex min-h-11 items-center gap-2 text-cream underline decoration-line underline-offset-[6px] transition-colors hover:text-ochre hover:decoration-ochre"
-                >
-                  <FilePdf size={20} />
-                  Menu in PDF
-                </a>
                 <a
                   href="./menu/vini-e-bevande.pdf"
                   target="_blank"
