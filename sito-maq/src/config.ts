@@ -14,24 +14,10 @@ export const CONTATTI = {
 export const NOME = "MAQ Web Design";
 export const TITOLARE = "Mattia Aquiri";
 
-const MESSAGGIO_BOZZA =
-  "Salve Mattia, ho visto il sito di MAQ Web Design e vorrei ricevere la bozza gratuita del sito per la mia attività.";
-
-// Link principale per chiedere la bozza: WhatsApp se c’è il numero, altrimenti email,
-// altrimenti la sezione contatti della pagina.
-export function linkBozza(testo: string = MESSAGGIO_BOZZA): string {
-  if (CONTATTI.whatsapp) {
-    return `https://wa.me/${CONTATTI.whatsapp}?text=${encodeURIComponent(testo)}`;
-  }
-  if (CONTATTI.email) {
-    return `mailto:${CONTATTI.email}?subject=${encodeURIComponent("Richiesta bozza gratuita")}&body=${encodeURIComponent(testo)}`;
-  }
-  return "#contatti";
-}
-
-export function apreAltraScheda(link: string): boolean {
-  return link.startsWith("http");
-}
+// Chiave del modulo "Richiedi la bozza" (servizio gratuito Web3Forms, web3forms.com):
+// con la chiave le richieste arrivano in automatico all’email di registrazione.
+// Non è segreta: è fatta apposta per stare nel sito. Se è vuota, il modulo apre WhatsApp.
+export const CHIAVE_MODULO = "";
 
 // Indirizzo definitivo del sito (dominio da acquistare): serve a Google per i link canonici,
 // la mappa del sito e l’anteprima sui social.

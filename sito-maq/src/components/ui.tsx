@@ -1,16 +1,20 @@
 import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { apreAltraScheda, linkBozza } from "../config";
 
-// Pulsante principale: sempre e solo "Richiedi la bozza".
-export function PulsanteBozza({ largo = false, className = "" }: { largo?: boolean; className?: string }) {
-  const link = linkBozza();
-  const esterno = apreAltraScheda(link);
+// Pulsante principale: sempre e solo "Richiedi la bozza". Porta al modulo in fondo alla pagina.
+export function PulsanteBozza({
+  largo = false,
+  className = "",
+  onClick,
+}: {
+  largo?: boolean;
+  className?: string;
+  onClick?: () => void;
+}) {
   return (
     <a
-      href={link}
-      target={esterno ? "_blank" : undefined}
-      rel={esterno ? "noopener noreferrer" : undefined}
+      href="#modulo"
+      onClick={onClick}
       className={`fuoco inline-flex items-center justify-center rounded-full sfondo-sfumato px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.2em] sm:px-8 sm:text-[13px] sm:tracking-[0.28em] whitespace-nowrap text-white shadow-[0_18px_40px_-18px_rgba(176,92,230,0.75)] transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ${
         largo ? "w-full" : ""
       } ${className}`}
@@ -20,7 +24,15 @@ export function PulsanteBozza({ largo = false, className = "" }: { largo?: boole
   );
 }
 
-export function PulsanteSecondario({ href, children, largo = false }: { href: string; children: ReactNode; largo?: boolean }) {
+export function PulsanteSecondario({
+  href,
+  children,
+  largo = false,
+}: {
+  href: string;
+  children: ReactNode;
+  largo?: boolean;
+}) {
   return (
     <a
       href={href}
@@ -34,7 +46,15 @@ export function PulsanteSecondario({ href, children, largo = false }: { href: st
 }
 
 // Comparsa morbida quando la sezione entra nello schermo.
-export function Appare({ children, ritardo = 0, className = "" }: { children: ReactNode; ritardo?: number; className?: string }) {
+export function Appare({
+  children,
+  ritardo = 0,
+  className = "",
+}: {
+  children: ReactNode;
+  ritardo?: number;
+  className?: string;
+}) {
   const ridotto = useReducedMotion();
   return (
     <motion.div
@@ -51,7 +71,9 @@ export function Appare({ children, ritardo = 0, className = "" }: { children: Re
 
 export function Titolo({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <h2 className={`text-3xl font-bold leading-[1.15] tracking-tight text-balance sm:text-4xl lg:text-[44px] ${className}`}>
+    <h2
+      className={`text-3xl font-bold leading-[1.15] tracking-tight text-balance sm:text-4xl lg:text-[44px] ${className}`}
+    >
       {children}
     </h2>
   );

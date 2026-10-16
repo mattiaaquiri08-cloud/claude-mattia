@@ -105,7 +105,7 @@ export function Header() {
               ))}
             </nav>
             <div className="mt-auto">
-              <PulsanteBozza largo />
+              <PulsanteBozza largo onClick={() => setAperto(false)} />
             </div>
           </motion.div>
         )}

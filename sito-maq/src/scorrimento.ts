@@ -31,7 +31,7 @@ export function scorriA(id: string, fluido = true) {
     return true;
   }
   const el = document.getElementById(id);
-  if (!el || el.tagName !== "SECTION") return false;
+  if (!el || !["SECTION", "FORM"].includes(el.tagName)) return false;
   const ridotto = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   window.scrollTo({ top: posizioneCentrata(el), behavior: fluido && !ridotto ? "smooth" : "instant" });
   return true;
@@ -44,7 +44,11 @@ export function attivaScorrimentoCentrato() {
     if (!link) return;
     const id = decodeURIComponent(link.getAttribute("href")!.slice(1));
     // aspetto un fotogramma: il menu del telefono deve prima chiudersi e sbloccare lo scorrimento
-    if (!document.getElementById(id) || (id !== "inizio" && document.getElementById(id)!.tagName !== "SECTION")) return;
+    if (
+      !document.getElementById(id) ||
+      (id !== "inizio" && !["SECTION", "FORM"].includes(document.getElementById(id)!.tagName))
+    )
+      return;
     e.preventDefault();
     history.pushState(null, "", `#${id}`);
     requestAnimationFrame(() => requestAnimationFrame(() => scorriA(id)));
