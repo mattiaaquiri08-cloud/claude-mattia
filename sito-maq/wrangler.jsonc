@@ -1,0 +1,9 @@
+// Pubblicazione su Cloudflare (Workers): carica solo il sito già pronto della cartella dist.
+// Il nome deve restare uguale a quello del progetto su Cloudflare.
+{
+  "name": "claude-mattia",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist"
+  }
+}
