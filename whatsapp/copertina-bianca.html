@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&display=block" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#ffffff}
+body{position:relative;font-family:Sora,sans-serif}
+.glow{position:absolute;inset:0;background:
+ radial-gradient(900px 420px at 50% 40%,rgba(124,58,237,.10),transparent 70%),
+ radial-gradient(700px 360px at 72% 40%,rgba(236,72,153,.08),transparent 70%),
+ radial-gradient(600px 300px at 28% 40%,rgba(99,102,241,.07),transparent 70%)}
+canvas{position:absolute;inset:0}
+.vig{position:absolute;inset:0;background:radial-gradient(1400px 800px at 50% 50%,transparent 45%,#ffffff 100%)}
+h1{position:absolute;left:0;right:0;top:295px;transform:translateY(-50%);text-align:center;
+ font-weight:800;font-size:200px;letter-spacing:-.045em;line-height:1;color:#0f0b1a}
+h1 span{background:linear-gradient(90deg,#6d28f6 0%,#b05ce6 38%,#f08ac6 72%,#f6b48a 100%);
+ -webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.06em;margin-right:-.06em}
+</style></head><body>
+<div class="glow"></div>
+<canvas id="c" width="1920" height="1080"></canvas>
+<div class="vig"></div>
+<h1>Grow <span>Online</span></h1>
+<script>
+const c=document.getElementById('c'),x=c.getContext('2d');
+const cols=170,rows=46;
+for(let j=0;j<rows;j++){
+  const z=j/(rows-1);                       // 0 lontano, 1 vicino
+  const persp=.35+z*1.25;
+  for(let i=0;i<cols;i++){
+    const u=i/(cols-1)-.5;
+    const wave=Math.sin(u*6+z*5)*70+Math.cos(u*11-z*4)*26;
+    const px=960+u*1920*persp*1.1;
+    const py=640+z*z*420+wave*persp*.9-60*(1-z);
+    if(px<-20||px>1940||py>1100)continue;
+    const a=(.10+.55*z)*(1-Math.abs(u)*1.2);
+    if(a<=0)continue;
+    const t=i/(cols-1);
+    const r=Math.round(120+t*110),g=Math.round(60+t*50),b=Math.round(235-t*60);
+    x.fillStyle=`rgba(${r},${g},${b},${a})`;
+    x.beginPath();x.arc(px,py,.7+z*1.9,0,7);x.fill();
+  }
+}
+</script>
+</body></html>
