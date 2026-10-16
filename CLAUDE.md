@@ -106,7 +106,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Email ai titolari (quando la reception al telefono dice di scrivere via email): stesso schema dei messaggi
   WhatsApp, citando che la reception ha indicato l'email; firma "Mattia Aquiri, Siti web per attività locali".
   Se dice "manda", invio direttamente da Gmail; altrimenti preparo la bozza in Gmail. Firma: "Mattia Aquiri,
-  MAQ Web Design, Siti web per le attività di Roma"; recapito = rispondere all'email (numero non ancora nel sito).
+  MAQ Web Design, Siti web per le attività di Roma"; recapito = rispondere all'email. Email di lavoro: maq.webdesign@outlook.com (inserita nel sito il 16/10).
   Allegati: copiare a mano il base64 non funziona (errori). Le immagini vanno messe nel repo (pubblico) e
   inserite nell'HTML con URL raw.githubusercontent.com fissato su un commit (es. brand/email-anteprima-sito.jpg).
   Profilo WhatsApp Business: copertine "Grow Online" in `whatsapp/` (usa quella bianca, scritta centrata,
