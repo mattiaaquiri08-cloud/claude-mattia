@@ -99,6 +99,10 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   se non verificati, "immagino che siate presenti anche sui social o su qualche app di prenotazione"
   (formula vera in ogni caso, scelta dall'utente per non affermare cose non viste).
   Lezione: Padel CAT sembrava senza sito ma aveva padelcatroma.it; dimensionebellezza.it era di un altro salone.
+- LEZIONE (16/10): dopo ~40 messaggi WhatsApp a numeri sconosciuti l'account dell'utente è stato
+  limitato da WhatsApp. Non proporre più invii a freddo in serie: primo contatto con telefonata o visita,
+  WhatsApp solo dopo un "sì, mi scriva" al telefono, max ~5-10 al giorno, testo breve, niente link.
+  In Italia i messaggi commerciali non richiesti richiedono il consenso (Codice privacy art. 130).
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
