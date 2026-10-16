@@ -81,7 +81,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Dal blocco 6: MIX di tutti i settori (palestre, pilates, estetica, nail, massaggi, tatuaggi, ristoranti,
   bistrot, officine, studi professionali…) e mix centro/periferia, con gestione giovane (proxy: attivi su
   Instagram/Facebook/Treatwell). Metodo migliore: ricerca DIRETTA su Google Maps "categoria + quartiere"
-  (20 risultati per ricerca) con lo script del blocco 6: trova molte più attività di OSM.
+  (20 risultati per ricerca) con `lead/strumenti/gmaps_search.py` (verifica singola: `lead/strumenti/gcheck.py`): trova molte più attività di OSM.
 - Messaggi: seguono lo schema del testo chiamate (cercato su Google, ottime recensioni, nessun sito "come
   mai?", mi occupo di questo, anteprima del sito su Zoom, nessun impegno, se piace si tratta il prezzo,
   può chiamarmi), dando del Lei. Incentivare il "sì": guardare la bozza non costa nulla e non toglie niente,
