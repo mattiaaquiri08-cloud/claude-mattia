@@ -103,44 +103,46 @@ function RicercaGoogle() {
 
 export function TrovatiSuGoogle() {
   return (
-    <section id="google" className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32" aria-labelledby="titolo-google">
-      <div className="grid grid-cols-[minmax(0,1fr)] items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        <Appare>
-          <Etichetta>Perché serve un sito</Etichetta>
-          <Titolo className="mt-6">
-            <span id="titolo-google">
-              Quando vi cercano su Google, <span className="testo-sfumato">dovete esserci voi</span>
-            </span>
-          </Titolo>
-          <p className="mt-6 text-lg leading-relaxed text-tenue">
-            Oggi chi ha bisogno di un calzolaio a Talenti o di un bar a Trastevere non chiede in giro: apre Google e
-            scrive cosa cerca e dove. I primi risultati si prendono il cliente.
-          </p>
-          <p className="mt-4 text-lg leading-relaxed text-tenue">
-            Il sito che preparo è costruito anche per questo (la cosiddetta SEO): testi chiari sul vostro lavoro e sulla
-            vostra zona, pagine veloci e leggibili dal telefono, collegate alla vostra scheda Google. Così è più facile
-            che chi cerca trovi voi, e non{" "}
-            <span className="text-white">regaliate clienti all’attività della porta a fianco</span>.
-          </p>
-        </Appare>
-
-        <Appare ritardo={0.1}>
-          <RicercaGoogle />
-        </Appare>
-      </div>
-
-      <div className="mt-16 grid gap-5 md:grid-cols-3">
-        {MOTIVI.map(({ icona: Icona, titolo, testo }, i) => (
-          <Appare key={titolo} ritardo={0.08 * i}>
-            <div className="h-full rounded-[24px] border border-linea bg-scheda p-7">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full sfondo-sfumato">
-                <Icona size={22} weight="bold" className="text-white" />
+    <section id="google" className="border-y border-linea bg-notte-2" aria-labelledby="titolo-google">
+      <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32">
+        <div className="grid grid-cols-[minmax(0,1fr)] items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <Appare>
+            <Etichetta>Perché serve un sito</Etichetta>
+            <Titolo className="mt-6">
+              <span id="titolo-google">
+                Quando vi cercano su Google, <span className="testo-sfumato">dovete esserci voi</span>
               </span>
-              <h3 className="mt-5 text-xl font-bold">{titolo}</h3>
-              <p className="mt-3 leading-relaxed text-tenue">{testo}</p>
-            </div>
+            </Titolo>
+            <p className="mt-6 text-lg leading-relaxed text-tenue">
+              Oggi chi ha bisogno di un calzolaio a Talenti o di un bar a Trastevere non chiede in giro: apre Google e
+              scrive cosa cerca e dove. I primi risultati si prendono il cliente.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-tenue">
+              Il sito che preparo è costruito anche per questo (la cosiddetta SEO): testi chiari sul vostro lavoro e
+              sulla vostra zona, pagine veloci e leggibili dal telefono, collegate alla vostra scheda Google. Così è più
+              facile che chi cerca trovi voi, e non{" "}
+              <span className="text-white">regaliate clienti all’attività della porta a fianco</span>.
+            </p>
           </Appare>
-        ))}
+
+          <Appare ritardo={0.1}>
+            <RicercaGoogle />
+          </Appare>
+        </div>
+
+        <div className="mt-16 grid gap-5 md:grid-cols-3">
+          {MOTIVI.map(({ icona: Icona, titolo, testo }, i) => (
+            <Appare key={titolo} ritardo={0.08 * i}>
+              <div className="h-full rounded-[24px] border border-linea bg-scheda p-7">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full sfondo-sfumato">
+                  <Icona size={22} weight="bold" className="text-white" />
+                </span>
+                <h3 className="mt-5 text-xl font-bold">{titolo}</h3>
+                <p className="mt-3 leading-relaxed text-tenue">{testo}</p>
+              </div>
+            </Appare>
+          ))}
+        </div>
       </div>
     </section>
   );

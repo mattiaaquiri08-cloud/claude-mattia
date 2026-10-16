@@ -6,9 +6,9 @@ import { PulsanteBozza } from "./ui";
 import { useAncora, useRadice } from "../radice";
 
 const VOCI = [
+  { id: "metodo", etichetta: "Come funziona" },
   { id: "servizi", etichetta: "Servizi" },
   { id: "chi-sono", etichetta: "Chi sono" },
-  { id: "metodo", etichetta: "Come funziona" },
   { id: "domande", etichetta: "Domande" },
   { id: "contatti", etichetta: "Contatti" },
 ];

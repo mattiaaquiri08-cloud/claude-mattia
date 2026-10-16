@@ -24,10 +24,10 @@ export default function App() {
       <main id="contenuto">
         <Hero />
         <Settori />
-        <TrovatiSuGoogle />
-        <Servizi />
-        <ChiSono />
         <Metodo />
+        <Servizi />
+        <TrovatiSuGoogle />
+        <ChiSono />
         <Domande />
         <Contatti />
       </main>

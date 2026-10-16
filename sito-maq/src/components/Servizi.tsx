@@ -52,7 +52,7 @@ const SERVIZI: Servizio[] = [
 export function Servizi() {
   const linkPagina = useLinkPagina();
   return (
-    <section id="servizi" className="border-y border-linea bg-notte-2" aria-labelledby="titolo-servizi">
+    <section id="servizi" aria-labelledby="titolo-servizi">
       <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32">
         <Appare className="max-w-3xl">
           <Etichetta>Servizi</Etichetta>
