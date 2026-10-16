@@ -1,28 +1,16 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
-const CHIAVE = "maq-splash-vista";
 const DURATA_MS = 2600;
 
 // Schermata d’apertura: il logo compare, la barra sfumata si apre dal centro
-// verso i lati, poi appare lo slogan. Si vede una sola volta per sessione.
+// verso i lati, poi appare lo slogan. Si vede ogni volta che si apre il sito.
 export function Splash() {
   const ridotto = useReducedMotion();
-  const [visibile, setVisibile] = useState(() => {
-    try {
-      return sessionStorage.getItem(CHIAVE) !== "1";
-    } catch {
-      return true;
-    }
-  });
+  const [visibile, setVisibile] = useState(true);
 
   useEffect(() => {
     if (!visibile) return;
-    try {
-      sessionStorage.setItem(CHIAVE, "1");
-    } catch {
-      /* archivio non disponibile: la splash si rivedrà, nessun problema */
-    }
     const t = window.setTimeout(() => setVisibile(false), ridotto ? 600 : DURATA_MS);
     document.body.style.overflow = "hidden";
     return () => {

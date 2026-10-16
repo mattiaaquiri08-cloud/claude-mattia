@@ -116,7 +116,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   "Web Design" e "Based in Rome" in basso).
 - Brand dell'utente (16/10): nome scelto **MAQ Web Design** (MAQ = Mattia AQuiri), slogan "Grow Online",
   stile: bianco/nero con sfumatura viola→rosa→pesca, font Sora. Dominio maqwebdesign.com libero al 16/10.
-  Scartati: nomi con "AQ" (troppe aziende omonime), "Digital Studio". Proposte logo in `brand/`: scelto lo stile "MA sottile + Q spessa sfumata" (varianti in `brand/logo8-varianti.png`). Logo definitivo: versione orizzontale "MAQ | Web Design" con barra sfumata sottilissima lunga tutto il logo (sotto MAQ e Web Design) e "Grow Online / Roma" centrato sotto; splash animata in `brand/logo-maq-splash.html` (barra da sinistra o dal centro).
+  Scartati: nomi con "AQ" (troppe aziende omonime), "Digital Studio". Proposte logo in `brand/`: scelto lo stile "MA sottile + Q spessa sfumata" (varianti in `brand/logo8-varianti.png`). Logo definitivo: versione orizzontale "MAQ | Web Design" con barra sfumata sottilissima lunga tutto il logo (sotto MAQ e Web Design) e "Grow Online / Roma" centrato sotto; splash animata in `brand/logo-maq-splash.html` (scelta: barra dal centro); nel sito si vede a ogni apertura.
 - Sito personale (16/10): `sito-maq/` (Vite + React + Tailwind v4 + Motion, font Sora), scuro e molto simile a
   edlu.it come richiesto (pillola in alto, titolo centrato, pulsanti sfumati a pillola, schede scure). Testi al "voi",
   solo cose vere: niente numeri inventati, recensioni o clienti finti. Contatti (WhatsApp, email, Instagram) in
