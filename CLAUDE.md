@@ -103,6 +103,10 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   limitato da WhatsApp. Non proporre più invii a freddo in serie: primo contatto con telefonata o visita,
   WhatsApp solo dopo un "sì, mi scriva" al telefono, max ~5-10 al giorno, testo breve, niente link.
   In Italia i messaggi commerciali non richiesti richiedono il consenso (Codice privacy art. 130).
+- Email ai titolari (quando la reception al telefono dice di scrivere via email): stesso schema dei messaggi
+  WhatsApp, citando che la reception ha indicato l'email; firma "Mattia Aquiri, Siti web per attività locali".
+  Preferisce che crei la BOZZA in Gmail (non l'invio diretto): la controlla, aggiunge il numero e invia lui.
+  Profilo WhatsApp Business: copertina scura "Grow Online" in `whatsapp/`.
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
