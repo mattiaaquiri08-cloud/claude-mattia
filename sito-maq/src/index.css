@@ -1,0 +1,87 @@
+@import "@fontsource/sora/300.css";
+@import "@fontsource/sora/400.css";
+@import "@fontsource/sora/600.css";
+@import "@fontsource/sora/700.css";
+@import "@fontsource/sora/800.css";
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Sora", ui-sans-serif, system-ui, sans-serif;
+
+  --color-notte: #0b0816;
+  --color-notte-2: #120e20;
+  --color-scheda: #18142a;
+  --color-scheda-2: #1f1a34;
+  --color-linea: rgb(255 255 255 / 0.09);
+  --color-testo: #f4f2f8;
+  --color-tenue: #aaa3c2;
+  --color-viola: #6d28f6;
+  --color-orchidea: #b05ce6;
+  --color-rosa: #f08ac6;
+  --color-pesca: #f6b48a;
+}
+
+:root {
+  color-scheme: dark;
+  --sfumatura: linear-gradient(90deg, #6d28f6 0%, #b05ce6 35%, #f08ac6 70%, #f6b48a 100%);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  background: var(--color-notte);
+  color: var(--color-testo);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgb(176 92 230 / 0.45);
+}
+
+@utility testo-sfumato {
+  background: var(--sfumatura);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-right: 0.04em;
+}
+
+@utility sfondo-sfumato {
+  background: var(--sfumatura);
+}
+
+/* bordo sottile sfumato, usato per la pillola in alto e il pulsante secondario */
+@utility bordo-sfumato {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--color-notte), var(--color-notte)) padding-box,
+    var(--sfumatura) border-box;
+}
+
+@utility fuoco {
+  outline: none;
+  &:focus-visible {
+    outline: 2px solid #f08ac6;
+    outline-offset: 3px;
+  }
+}
+
+@keyframes scorri {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.nastro {
+  animation: scorri 38s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .nastro { animation: none; }
+}
