@@ -61,12 +61,12 @@ export function ChiSono() {
           </Titolo>
           <div className="mt-7 max-w-[60ch] space-y-5 text-lg leading-relaxed text-tenue">
             <p>
-              Sono Mattia Aquiri e con MAQ Web Design creo siti per le attività di Roma: ristoranti, saloni, palestre,
-              studi e botteghe che hanno clienti contenti e ottime recensioni, ma ancora nessun sito.
+              Sono Mattia Aquiri e con MAQ Web Design creo siti per le attività locali: ristoranti, saloni, palestre,
+              studi e botteghe che hanno clienti contenti e ottime recensioni, ma ancora nessun sito. Sono di Roma e
+              lavoro in tutta Roma e provincia, ma la mia disponibilità si estende a tutta Italia.
             </p>
             <p>
-              Preferisco conoscervi di persona, anche davanti a un piatto di spaghetti. Ascolto la vostra storia e la
-              trasformo in un sito che vi somiglia, con una parte dedicata proprio a voi: il vostro percorso e la
+              Ascolto la vostra storia e la trasformo in un sito che vi somiglia, con una parte dedicata proprio a voi: il vostro percorso e la
               vostra immagine.
             </p>
           </div>

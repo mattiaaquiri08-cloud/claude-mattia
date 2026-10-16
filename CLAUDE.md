@@ -119,7 +119,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Scartati: nomi con "AQ" (troppe aziende omonime), "Digital Studio". Proposte logo in `brand/`: scelto lo stile "MA sottile + Q spessa sfumata" (varianti in `brand/logo8-varianti.png`). Logo definitivo: versione orizzontale "MAQ | Web Design" con barra sfumata sottilissima lunga tutto il logo (sotto MAQ e Web Design) e "Grow Online / Roma" centrato sotto; splash animata in `brand/logo-maq-splash.html` (scelta: barra dal centro); nel sito si vede a ogni apertura.
 - Sito personale (16/10): `sito-maq/` (Vite + React + Tailwind v4 + Motion, font Sora), scuro e molto simile a
   edlu.it come richiesto (pillola in alto, titolo centrato, pulsanti sfumati a pillola, schede scure). Testi al "voi",
-  solo cose vere: niente numeri inventati, recensioni o clienti finti. Contatti (WhatsApp, email, Instagram) in
+  solo cose vere: niente numeri inventati, recensioni o clienti finti. Zona: di Roma, lavora in Roma e
+  provincia ma è disponibile in tutta Italia (fuori Roma: telefono + bozza su Zoom). Niente "piatto di spaghetti" nel sito. Contatti (WhatsApp, email, Instagram) in
   `sito-maq/src/config.ts`; foto del titolare: `sito-maq/public/mattia.jpg`. Build: `npm run build` in `sito-maq/`.
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.

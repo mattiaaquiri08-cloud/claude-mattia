@@ -126,7 +126,7 @@ export function Contatti() {
           <div>
             <Titolo>
               <span id="titolo-contatti">
-                Avete un’attività a Roma senza sito?{" "}
+                Avete un’attività senza sito?{" "}
                 <span className="testo-sfumato">Vediamo cosa possiamo fare insieme.</span>
               </span>
             </Titolo>

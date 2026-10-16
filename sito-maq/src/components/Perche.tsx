@@ -5,7 +5,7 @@ import { TITOLARE } from "../config";
 const PUNTI = [
   "Un solo referente: parlate sempre direttamente con me",
   "Parole semplici, niente tecnicismi",
-  "Vengo a conoscervi di persona, qui a Roma",
+  "A Roma e provincia vengo di persona, in tutta Italia lavoriamo in videochiamata",
   "Vedete il sito prima di decidere, senza impegno",
   "Un sito che vi somiglia, non un modello uguale per tutti",
 ];

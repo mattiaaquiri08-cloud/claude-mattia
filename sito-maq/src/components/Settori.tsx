@@ -53,7 +53,7 @@ export function Settori() {
       <Appare className="mx-auto max-w-7xl overflow-hidden rounded-[28px] border border-linea bg-scheda py-14 sm:py-16">
         <Titolo className="mx-auto max-w-3xl px-6 text-center">
           <span id="titolo-settori">
-            Siti su misura per le attività di Roma che meritano di farsi trovare online
+            Siti su misura per le attività che meritano di farsi trovare online
           </span>
         </Titolo>
         <div className="relative mt-12 overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]">

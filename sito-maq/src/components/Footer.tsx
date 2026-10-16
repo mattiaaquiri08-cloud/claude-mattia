@@ -19,7 +19,7 @@ export function Footer() {
         <div>
           <Logo conSlogan />
           <p className="mt-6 max-w-[38ch] text-sm leading-relaxed text-tenue">
-            Siti web su misura per le attività di Roma. Bozza gratuita e senza impegno: decidete solo dopo averla
+            Siti web su misura per le attività di Roma e di tutta Italia. Bozza gratuita e senza impegno: decidete solo dopo averla
             vista.
           </p>
         </div>
@@ -61,7 +61,7 @@ export function Footer() {
                 </a>
               </li>
             )}
-            <li>Roma e provincia</li>
+            <li>Roma e provincia, disponibile in tutta Italia</li>
           </ul>
         </div>
       </div>

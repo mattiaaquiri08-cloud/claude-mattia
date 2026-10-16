@@ -22,7 +22,7 @@ const DOMANDE = [
   },
   {
     d: "Lavorate solo a Roma?",
-    r: "Lavoro soprattutto con attività di Roma e provincia, perché mi piace conoscere di persona chi c’è dietro ogni sito.",
+    r: "Sono di Roma e lavoro in tutta Roma e provincia, dove posso venire a conoscervi di persona. Sono disponibile anche in tutta Italia: ci sentiamo al telefono e vi mostro la bozza in videochiamata su Zoom.",
   },
 ];
 
