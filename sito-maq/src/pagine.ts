@@ -38,7 +38,7 @@ export type Pagina = PaginaHome | PaginaSettore | PaginaGuida;
 
 const PREZZO: Domanda = {
   d: "Quanto costa?",
-  r: "Prima vi mostro la bozza gratuita, poi decidiamo il prezzo insieme in base a ciò che serve davvero alla vostra attività. Se la bozza non vi piace, non pagate nulla.",
+  r: "Indicativamente dai 390 ai 690 €: il prezzo esatto dipende dal preventivo, che cambia da attività ad attività. Prima vi mostro la bozza gratuita, poi decidiamo insieme. Se la bozza non vi piace, non pagate nulla.",
 };
 
 export const HOME: PaginaHome = {
@@ -233,13 +233,20 @@ export const GUIDA_COSTI: PaginaGuida = {
   etichetta: "Quanto costa un sito web",
   titoloSeo: "Quanto costa un sito web a Roma? Guida per le attività | MAQ",
   descrizione:
-    "Quanto costa un sito web per un’attività a Roma: da cosa dipende il prezzo, i costi fissi di ogni anno e le domande da fare prima di firmare.",
+    "Quanto costa un sito web per un’attività a Roma: con MAQ indicativamente dai 390 ai 690 €. Da cosa dipende il prezzo, i costi fissi e cosa chiedere prima di firmare.",
   pillola: "Guida",
   h1: ["Quanto costa un sito web ", "per la vostra attività?"],
   intro:
     "È la prima domanda che mi fanno. La risposta onesta è: dipende da cosa vi serve. Qui vi spiego da cosa dipende il prezzo, quali costi mettere in conto ogni anno e cosa chiedere prima di firmare, così potete confrontare le offerte con tranquillità.",
   pubblicata: "2026-10-16",
   sezioni: [
+    {
+      titolo: "Quanto costa con me",
+      paragrafi: [
+        "Un sito web realizzato da me costa indicativamente dai 390 ai 690 €. Il prezzo esatto dipende dal preventivo, che cambia da attività ad attività: un sito di una pagina per una bottega non è come un sito con menù, galleria e prenotazioni per un ristorante.",
+        "In ogni caso vedete prima la bozza gratuita: il preventivo lo facciamo insieme solo dopo, se vi piace.",
+      ],
+    },
     {
       titolo: "Da cosa dipende il prezzo",
       paragrafi: [
@@ -285,7 +292,7 @@ export const GUIDA_COSTI: PaginaGuida = {
     {
       titolo: "Come lavoro io",
       paragrafi: [
-        "Prima vi preparo una bozza gratuita del vostro sito e ve la mostro su Zoom o di persona. Se vi piace, parliamo del prezzo in base a ciò che vi serve davvero. Se non vi piace, non pagate nulla.",
+        "Prima vi preparo una bozza gratuita del vostro sito e ve la mostro su Zoom o di persona. Se vi piace, vi faccio un preventivo chiaro, indicativamente tra 390 e 690 €, in base a ciò che vi serve davvero. Se non vi piace, non pagate nulla.",
       ],
     },
   ],

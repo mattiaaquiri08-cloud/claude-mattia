@@ -11,7 +11,7 @@ const DOMANDE: Domanda[] = [
   },
   {
     d: "Quanto costa il sito?",
-    r: "Dipende da cosa serve alla vostra attività. Prima vedete la bozza, poi decidiamo insieme il prezzo, senza sorprese.",
+    r: "Indicativamente dai 390 ai 690 €: il prezzo esatto dipende dal preventivo, che cambia da attività ad attività. Prima vedete la bozza gratuita, poi decidiamo insieme, senza sorprese.",
   },
   {
     d: "Ho già Instagram, Facebook o un’app di prenotazione. Mi serve un sito?",

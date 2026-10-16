@@ -126,7 +126,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   ogni pagina (`scripts/prerender.mjs`: titolo, descrizione, canonical, dati strutturati, sitemap.xml, robots.txt).
   Pagine definite in `src/pagine.ts` (home + settori ristoranti, saloni/estetica, palestre + guida "Quanto costa un
   sito web"): per aggiungerne una basta un nuovo oggetto lì. Dominio previsto in `SITO_URL` (config.ts). Mai promettere
-  "primi su Google". Da fare dall'utente: comprare il dominio, scheda Google Business "Designer di siti web", recensioni.
+  "primi su Google". Prezzi (16/10): sito indicativamente 390–690 €, il preventivo cambia da attività ad attività (nella guida costi, nelle FAQ e nei dati per Google). Da fare dall'utente: comprare il dominio, scheda Google Business "Designer di siti web", recensioni.
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
