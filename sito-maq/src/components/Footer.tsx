@@ -19,8 +19,8 @@ export function Footer() {
         <div>
           <Logo conSlogan />
           <p className="mt-6 max-w-[38ch] text-sm leading-relaxed text-tenue">
-            Siti web su misura per le attività di Roma. La bozza è gratuita: se vi piace parliamo del prezzo, se non
-            vi piace non pagate nulla.
+            Siti web su misura per le attività di Roma. Bozza gratuita e senza impegno: decidete solo dopo averla
+            vista.
           </p>
         </div>
 

@@ -38,7 +38,7 @@ export function Hero() {
         </motion.h1>
 
         <motion.p {...entra(0.32)} className="mt-7 max-w-[40ch] text-lg leading-relaxed text-tenue sm:text-xl">
-          Vi preparo una bozza gratuita del sito. Se vi piace parliamo del prezzo, se non vi piace non pagate nulla.
+          Realizzo siti web su misura per la vostra attività. Vi presento una bozza gratuita e senza impegno: decidete solo dopo averla vista.
         </motion.p>
 
         <motion.div {...entra(0.44)} className="mt-11 flex w-full max-w-xl flex-col gap-4 sm:flex-row">
