@@ -17,7 +17,7 @@ export const TITOLARE = "Mattia Aquiri";
 // Chiave del modulo "Richiedi la bozza" (servizio gratuito Web3Forms, web3forms.com):
 // con la chiave le richieste arrivano in automatico all’email di registrazione.
 // Non è segreta: è fatta apposta per stare nel sito. Se è vuota, il modulo apre WhatsApp.
-export const CHIAVE_MODULO = "";
+export const CHIAVE_MODULO = "c6f9b640-f58f-47a8-b911-5b6320b1b357";
 
 // Indirizzo definitivo del sito (dominio da acquistare): serve a Google per i link canonici,
 // la mappa del sito e l’anteprima sui social.
