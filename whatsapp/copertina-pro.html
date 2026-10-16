@@ -1,0 +1,47 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;800&display=block" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#0b0816;font-family:Sora,sans-serif;color:#fff}
+.layer{position:absolute;left:0;top:0;width:1920px;height:1080px}
+.glow{background:
+ radial-gradient(1000px 420px at 50% 33%,rgba(124,58,237,.24),transparent 70%),
+ radial-gradient(700px 320px at 80% 20%,rgba(236,72,153,.12),transparent 70%),
+ radial-gradient(700px 320px at 18% 25%,rgba(99,102,241,.12),transparent 70%)}
+.vig{background:radial-gradient(1500px 820px at 50% 45%,transparent 55%,#0b0816 100%)}
+.logo{position:absolute;left:50%;top:335px;transform:translate(-50%,-50%);display:inline-flex;flex-direction:column}
+.top{display:flex;align-items:center;gap:32px}
+.m{font-size:115px;letter-spacing:.02em;line-height:1.1;white-space:nowrap}
+.m .a{font-weight:300}
+.m .q{font-weight:800;padding-right:.04em;background:linear-gradient(90deg,#6d28f6,#b05ce6 35%,#f08ac6 70%,#f6b48a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.vl{width:1.5px;align-self:stretch;margin:24px 0 18px;background:rgba(255,255,255,.22)}
+.tx{font-size:21px;letter-spacing:.34em;line-height:1.75;text-transform:uppercase;color:#b3acc9;padding-top:12px}
+.bar{height:2px;margin-top:14px;background:linear-gradient(90deg,#6d28f6,#b05ce6 35%,#f08ac6 70%,#f6b48a);box-shadow:0 0 18px rgba(240,138,198,.45)}
+.sl{margin-top:16px;text-align:center;padding-left:.38em;font-size:16px;font-weight:300;letter-spacing:.38em;text-transform:uppercase;color:#b3acc9;white-space:nowrap}
+.tag{position:absolute;top:912px;display:flex;align-items:center;gap:16px;font-size:24px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#d6d0e6}
+.tag i{width:12px;height:12px;border-radius:50%;background:linear-gradient(90deg,#6d28f6,#f08ac6);display:block;box-shadow:0 0 12px rgba(240,138,198,.6)}
+.tl{left:120px}.tr{right:120px}
+</style></head><body>
+<div class="layer glow"></div>
+<canvas id="c" class="layer" width="1920" height="1080"></canvas>
+<div class="layer vig"></div>
+<div class="logo"><div class="top"><div class="m"><span class="a">MA</span><span class="q">Q</span></div><div class="vl"></div><div class="tx">Web<br>Design</div></div><div class="bar"></div><div class="sl">Grow Online / Roma</div></div>
+<div class="tag tl"><i></i>Siti su misura</div>
+<div class="tag tr">Bozza gratuita<i></i></div>
+<script>
+const c=document.getElementById('c'),x=c.getContext('2d');
+const cols=170,rows=44;
+for(let j=0;j<rows;j++){
+  const z=j/(rows-1),persp=.35+z*1.25;
+  for(let i=0;i<cols;i++){
+    const u=i/(cols-1)-.5;
+    const wave=Math.sin(u*6+z*5)*70+Math.cos(u*11-z*4)*26;
+    const px=960+u*1920*persp*1.1, py=560+z*z*520+wave*persp*.9-40*(1-z);
+    if(px<-20||px>1940||py>1100)continue;
+    const a=(.08+.5*z)*(1-Math.abs(u)*1.2); if(a<=0)continue;
+    const t=i/(cols-1);
+    x.fillStyle=`rgba(${Math.round(150+t*100)},${Math.round(110+t*60)},${Math.round(255-t*40)},${a})`;
+    x.beginPath();x.arc(px,py,.7+z*1.9,0,7);x.fill();
+  }
+}
+</script></body></html>
