@@ -65,6 +65,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   dominio omaosteriamoderna.com (libero a quella data, da registrare a nome del ristorante).
   Il menu della settimana resta il loro PDF su Linktree (stesso link del QR): sul sito va un pulsante verso
   quel link; il Foglio Google resta per orari e avvisi.
+  Pagamenti OMA: 2 ricevute per prestazione occasionale (acconto e saldo, 275 € lordi ciascuna).
+  Al 16/10/2026 nulla pagato: si attendono ragione sociale, P.IVA, sede di OMA e risposta del loro
+  commercialista sulla ritenuta (con ritenuta: bonifico 220 € + 55 € versati da loro; senza: 275 €).
   Il menu cambia ogni settimana: menu, orari e avviso li aggiorna il ristorante dal Foglio Google
   "OMA - Menu e orari del sito" (Drive dell'utente, id in `SITE.sheetId`), incluso nel Completo.
   Il foglio va condiviso "chiunque abbia il link: visualizzatore", altrimenti il sito usa i dati salvati.
