@@ -1,0 +1,56 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500;700&display=block" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:2400px;height:1260px;overflow:hidden;background:#f4f2f8;font-family:Sora,sans-serif}
+.grid{display:grid;grid-template-columns:repeat(4,600px);grid-template-rows:repeat(2,630px)}
+.t{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid #e7e3ee;background:#fff;color:#0f0b1a}
+.t.d{background:#07050d;color:#fff;border-color:#151020}
+.n{position:absolute;top:26px;left:30px;font-size:22px;font-weight:700;color:#b3adc4}
+.cap{position:absolute;bottom:26px;font-size:19px;color:#9a94ab;letter-spacing:.04em}
+.g{background:linear-gradient(90deg,#6d28f6 0%,#b05ce6 40%,#f08ac6 75%,#f6b48a 100%)}
+.gt{background:linear-gradient(90deg,#6d28f6 0%,#b05ce6 40%,#f08ac6 75%,#f6b48a 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.05em}
+/* 1 */
+.w1{font-weight:800;font-size:150px;letter-spacing:-.05em;line-height:1.2}
+.s1{font-weight:600;font-size:36px;margin-top:-8px}
+.k{font-size:17px;letter-spacing:.3em;text-transform:uppercase;color:#7a7390;margin-top:22px}
+/* 2 app icon */
+.app{width:260px;height:260px;border-radius:64px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:92px;letter-spacing:-.04em;box-shadow:0 30px 60px -25px rgba(109,40,246,.6)}
+.s2{margin-top:34px;font-weight:700;font-size:34px}
+/* 3 lowercase dot */
+.w3{font-weight:700;font-size:170px;letter-spacing:-.06em;line-height:1}
+.w3 i{display:inline-block;width:.2em;height:.2em;border-radius:50%;margin-left:.04em}
+.s3{font-size:24px;letter-spacing:.42em;text-transform:uppercase;margin-top:26px;font-weight:400}
+/* 4 browser */
+.br{width:380px;border-radius:22px;border:3px solid #0f0b1a;overflow:hidden}
+.br .bar{height:40px;border-bottom:3px solid #0f0b1a;display:flex;gap:9px;align-items:center;padding-left:16px}
+.br .bar i{width:11px;height:11px;border-radius:50%;background:#0f0b1a;display:block}
+.br .bar i:nth-child(1){background:#6d28f6}.br .bar i:nth-child(2){background:#f08ac6}.br .bar i:nth-child(3){background:#f6b48a}
+.br .in{height:170px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:96px;letter-spacing:-.04em}
+.s4{margin-top:28px;font-weight:600;font-size:30px}
+/* 5 serif */
+.w5{font-family:"Instrument Serif";font-style:italic;font-size:210px;line-height:1}
+.s5{font-size:20px;letter-spacing:.5em;text-transform:uppercase;margin-top:44px;font-weight:600}
+.bar5{width:230px;height:6px;border-radius:3px;margin-top:22px}
+/* 6 badge */
+.badge{position:relative;width:360px;height:360px}
+.badge svg{position:absolute;inset:0}
+.badge .c{position:absolute;inset:70px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:72px;letter-spacing:-.04em}
+/* 7 code */
+.w7{font-family:"JetBrains Mono";font-weight:700;font-size:96px;letter-spacing:-.02em}
+.w7 b{color:#6b6580;font-weight:500}
+.s7{font-family:"JetBrains Mono";font-size:24px;color:#a49dbb;margin-top:18px}
+/* 8 slash */
+.w8{font-weight:300;font-size:150px;letter-spacing:.02em;line-height:1.1}
+.w8 span{font-weight:800}
+.s8{font-size:22px;letter-spacing:.4em;text-transform:uppercase;margin-top:20px;color:#a49dbb}
+</style></head><body><div class="grid">
+<div class="t"><div class="n">1</div><div class="w1 gt">MAQ</div><div class="s1">Web Design</div><div class="k">Grow Online</div><div class="cap">Wordmark sfumato</div></div>
+<div class="t"><div class="n">2</div><div class="app g">MAQ</div><div class="s2">MAQ Web Design</div><div class="cap">Icona tipo app</div></div>
+<div class="t"><div class="n">3</div><div class="w3">maq<i class="g"></i></div><div class="s3">web design</div><div class="cap">Minimal, con il punto</div></div>
+<div class="t"><div class="n">4</div><div class="br"><div class="bar"><i></i><i></i><i></i></div><div class="in"><span class="gt">MAQ</span></div></div><div class="s4">Web Design</div><div class="cap">Finestra del browser</div></div>
+<div class="t d"><div class="n">5</div><div class="w5">maq</div><div class="s5">Web Design</div><div class="bar5 g"></div><div class="cap">Elegante, corsivo</div></div>
+<div class="t"><div class="n">6</div><div class="badge"><svg viewBox="0 0 360 360"><defs><path id="cp" d="M180,180 m-140,0 a140,140 0 1,1 280,0 a140,140 0 1,1 -280,0"/></defs><text font-family="Sora" font-size="25" font-weight="600" letter-spacing="7" fill="#0f0b1a"><textPath href="#cp" textLength="872" lengthAdjust="spacing">WEB DESIGN • GROW ONLINE • ROMA •</textPath></text></svg><div class="c g">MAQ</div></div><div class="cap">Timbro circolare</div></div>
+<div class="t d"><div class="n">7</div><div class="w7"><b>&lt;</b><span class="gt">MAQ</span><b>/&gt;</b></div><div class="s7">web design · grow online</div><div class="cap">Stile codice</div></div>
+<div class="t d"><div class="n">8</div><div class="w8">MA<span class="gt">Q</span></div><div class="s8">Web Design</div><div class="cap">Q in evidenza</div></div>
+</div></body></html>
