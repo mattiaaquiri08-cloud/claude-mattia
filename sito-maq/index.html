@@ -5,6 +5,12 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0b0816" />
+    <script>
+      // splash già vista in questa visita: nascosta subito, prima ancora che parta il sito
+      try {
+        if (sessionStorage.getItem("maq-splash") === "1") document.documentElement.classList.add("splash-vista");
+      } catch (e) {}
+    </script>
     <title>MAQ Web Design · Siti web a Roma e in tutta Italia</title>
     <meta name="description" content="MAQ Web Design di Mattia Aquiri: siti web su misura per ristoranti, saloni, palestre e attività di Roma e di tutta Italia. Bozza gratuita e senza impegno: decidete solo dopo averla vista." />
     <meta property="og:title" content="MAQ Web Design · Grow Online / Roma" />

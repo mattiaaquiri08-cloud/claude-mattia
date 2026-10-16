@@ -85,3 +85,8 @@ body {
   html { scroll-behavior: auto; }
   .nastro { animation: none; }
 }
+
+/* la splash si vede solo alla prima apertura del sito */
+.splash-vista .splash-maq {
+  display: none !important;
+}
