@@ -27,7 +27,7 @@ export function Hero() {
           {...entra(0.1)}
           className="bordo-sfumato rounded-full px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] sm:text-sm"
         >
-          Web design a Roma
+          Web designer a Roma
         </motion.p>
 
         <motion.h1

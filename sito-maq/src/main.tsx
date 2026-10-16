@@ -1,10 +1,17 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import { createRoot, hydrateRoot } from "react-dom/client";
+import "./index.css";
+import { Sito } from "./Sito";
+import { PAGINE } from "./pagine";
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+const radice = document.getElementById("root")!;
+// La pagina è scritta nell’HTML già pronto; in sviluppo la ricavo dall’indirizzo.
+const slug =
+  radice.dataset.pagina ??
+  PAGINE.find((p) => p.slug && window.location.pathname.includes(`/${p.slug}`))?.slug ??
+  "";
+
+if (radice.hasChildNodes()) {
+  hydrateRoot(radice, <Sito slug={slug} />);
+} else {
+  createRoot(radice).render(<Sito slug={slug} />);
+}

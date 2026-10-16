@@ -3,17 +3,21 @@ import { AnimatePresence, motion } from "motion/react";
 import { List, X } from "@phosphor-icons/react";
 import { Logo } from "./Logo";
 import { PulsanteBozza } from "./ui";
+import { useAncora, useRadice } from "../radice";
 
 const VOCI = [
-  { href: "#chi-sono", etichetta: "Chi sono" },
-  { href: "#servizi", etichetta: "Servizi" },
-  { href: "#metodo", etichetta: "Come funziona" },
-  { href: "#domande", etichetta: "Domande" },
-  { href: "#contatti", etichetta: "Contatti" },
+  { id: "chi-sono", etichetta: "Chi sono" },
+  { id: "servizi", etichetta: "Servizi" },
+  { id: "metodo", etichetta: "Come funziona" },
+  { id: "domande", etichetta: "Domande" },
+  { id: "contatti", etichetta: "Contatti" },
 ];
 
 export function Header() {
   const [aperto, setAperto] = useState(false);
+  const ancora = useAncora();
+  const radice = useRadice();
+  const home = radice === "./";
 
   useEffect(() => {
     if (!aperto) return;
@@ -29,15 +33,15 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-linea bg-notte/80 backdrop-blur-xl">
       <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 sm:px-8">
-        <a href="#inizio" className="fuoco rounded-md" aria-label="MAQ Web Design, torna all’inizio">
+        <a href={home ? "#inizio" : radice} className="fuoco rounded-md" aria-label="MAQ Web Design, torna all’inizio">
           <Logo />
         </a>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Menu principale">
           {VOCI.map((v) => (
             <a
-              key={v.href}
-              href={v.href}
+              key={v.id}
+              href={ancora(v.id)}
               className="fuoco rounded text-sm text-tenue transition-colors hover:text-testo"
             >
               {v.etichetta}
@@ -88,8 +92,8 @@ export function Header() {
             <nav className="mt-8 flex flex-col" aria-label="Menu principale">
               {VOCI.map((v, i) => (
                 <motion.a
-                  key={v.href}
-                  href={v.href}
+                  key={v.id}
+                  href={ancora(v.id)}
                   onClick={() => setAperto(false)}
                   className="fuoco border-b border-linea py-5 text-2xl font-semibold"
                   initial={{ opacity: 0, x: -12 }}

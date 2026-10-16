@@ -32,3 +32,7 @@ export function linkBozza(testo: string = MESSAGGIO_BOZZA): string {
 export function apreAltraScheda(link: string): boolean {
   return link.startsWith("http");
 }
+
+// Indirizzo definitivo del sito (dominio da acquistare): serve a Google per i link canonici,
+// la mappa del sito e l’anteprima sui social.
+export const SITO_URL = "https://maqwebdesign.com";

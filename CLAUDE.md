@@ -122,6 +122,11 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   solo cose vere: niente numeri inventati, recensioni o clienti finti. Zona: di Roma, lavora in Roma e
   provincia ma è disponibile in tutta Italia (fuori Roma: telefono + bozza su Zoom). Niente "piatto di spaghetti" nel sito. Contatti (WhatsApp, email, Instagram) in
   `sito-maq/src/config.ts`; foto del titolare: `sito-maq/public/mattia.jpg`. Build: `npm run build` in `sito-maq/`. Sezioni: Hero, Settori, "Perché serve un sito" (SEO: "calzolaio Talenti", "bar Trastevere", non regalare clienti alla porta accanto), Chi sono, Servizi, 4 passi (Mi scrivete → Ci conosciamo → Bozza gratuita → Online), Domande, Contatti. Scritta MAQ in SVG (`ScrittaMaq.tsx`): il font Sora lascia segni nella stanghetta della A.
+  SEO (16/10): obiettivo farsi trovare per "web designer Roma". La build (`npm run build`) genera HTML già pronto per
+  ogni pagina (`scripts/prerender.mjs`: titolo, descrizione, canonical, dati strutturati, sitemap.xml, robots.txt).
+  Pagine definite in `src/pagine.ts` (home + settori ristoranti, saloni/estetica, palestre + guida "Quanto costa un
+  sito web"): per aggiungerne una basta un nuovo oggetto lì. Dominio previsto in `SITO_URL` (config.ts). Mai promettere
+  "primi su Google". Da fare dall'utente: comprare il dominio, scheda Google Business "Designer di siti web", recensioni.
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).

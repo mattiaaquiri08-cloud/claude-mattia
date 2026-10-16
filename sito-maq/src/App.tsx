@@ -9,6 +9,7 @@ import { Servizi } from "./components/Servizi";
 import { Metodo } from "./components/Metodo";
 import { Perche } from "./components/Perche";
 import { Domande } from "./components/Domande";
+import { AltrePagine } from "./components/AltrePagine";
 import { Contatti } from "./components/Contatti";
 import { Footer } from "./components/Footer";
 
@@ -32,6 +33,7 @@ export default function App() {
         <Servizi />
         <Metodo />
         <Perche />
+        <AltrePagine />
         <Domande />
         <Contatti />
       </main>

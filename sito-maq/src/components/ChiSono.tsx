@@ -2,16 +2,18 @@ import { useState } from "react";
 import { Appare, Titolo } from "./ui";
 import { TITOLARE } from "../config";
 import { ScrittaMaq } from "./ScrittaMaq";
+import { useRadice } from "../radice";
 
 // Foto del titolare: basta mettere il file public/mattia.jpg. Finché non c’è,
 // al suo posto compare il monogramma MAQ.
 function FotoTitolare() {
   const [manca, setManca] = useState(false);
+  const radice = useRadice();
   return (
     <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[28px] border border-linea bg-scheda">
       {!manca ? (
         <img
-          src={`${import.meta.env.BASE_URL}mattia.jpg`}
+          src={`${radice}mattia.jpg`}
           alt={`${TITOLARE}, fondatore di MAQ Web Design`}
           width={800}
           height={1000}

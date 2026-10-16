@@ -2,8 +2,9 @@ import { useId, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Plus } from "@phosphor-icons/react";
 import { Appare, Titolo } from "./ui";
+import type { Domanda } from "../pagine";
 
-const DOMANDE = [
+const DOMANDE: Domanda[] = [
   {
     d: "La bozza è davvero gratuita?",
     r: "Sì. Preparo la bozza del vostro sito senza chiedervi nulla. Se vi piace parliamo del prezzo, se non vi piace non pagate niente.",
@@ -64,7 +65,7 @@ function Voce({ d, r }: { d: string; r: string }) {
   );
 }
 
-export function Domande() {
+export function Domande({ voci = DOMANDE }: { voci?: Domanda[] }) {
   return (
     <section id="domande" className="mx-auto max-w-3xl px-5 py-24 sm:px-8 lg:py-28" aria-labelledby="titolo-domande">
       <Appare>
@@ -73,7 +74,7 @@ export function Domande() {
         </Titolo>
       </Appare>
       <Appare ritardo={0.1} className="mt-12 border-t border-linea">
-        {DOMANDE.map((x) => (
+        {voci.map((x) => (
           <Voce key={x.d} {...x} />
         ))}
       </Appare>

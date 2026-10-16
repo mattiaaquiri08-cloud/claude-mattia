@@ -1,21 +1,25 @@
 import { EnvelopeSimple, InstagramLogo, Phone, WhatsappLogo } from "@phosphor-icons/react";
 import { CONTATTI, NOME, TITOLARE } from "../config";
 import { Logo } from "./Logo";
+import { PAGINE } from "../pagine";
+import { useAncora, useLinkPagina } from "../radice";
 
 const LINK = [
-  { href: "#chi-sono", etichetta: "Chi sono" },
-  { href: "#servizi", etichetta: "Servizi" },
-  { href: "#metodo", etichetta: "Come funziona" },
-  { href: "#domande", etichetta: "Domande" },
-  { href: "#contatti", etichetta: "Contatti" },
+  { id: "chi-sono", etichetta: "Chi sono" },
+  { id: "servizi", etichetta: "Servizi" },
+  { id: "metodo", etichetta: "Come funziona" },
+  { id: "domande", etichetta: "Domande" },
+  { id: "contatti", etichetta: "Contatti" },
 ];
 
 const ANNO = new Date().getFullYear();
 
 export function Footer() {
+  const ancora = useAncora();
+  const linkPagina = useLinkPagina();
   return (
     <footer className="border-t border-linea">
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-[2fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1.3fr_1.3fr]">
         <div>
           <Logo conSlogan />
           <p className="mt-6 max-w-[38ch] text-sm leading-relaxed text-tenue">
@@ -28,9 +32,22 @@ export function Footer() {
           <p className="text-sm font-semibold">Link utili</p>
           <ul className="mt-4 space-y-3">
             {LINK.map((l) => (
-              <li key={l.href}>
-                <a href={l.href} className="fuoco rounded text-sm text-tenue hover:text-testo">
+              <li key={l.id}>
+                <a href={ancora(l.id)} className="fuoco rounded text-sm text-tenue hover:text-testo">
                   {l.etichetta}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <nav aria-label="Siti web per settore e guide">
+          <p className="text-sm font-semibold">Siti web a Roma</p>
+          <ul className="mt-4 space-y-3">
+            {PAGINE.filter((p) => p.slug).map((p) => (
+              <li key={p.slug}>
+                <a href={linkPagina(p.slug)} className="fuoco rounded text-sm text-tenue hover:text-testo">
+                  {p.etichetta}
                 </a>
               </li>
             ))}
