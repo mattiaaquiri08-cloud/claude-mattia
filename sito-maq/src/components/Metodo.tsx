@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "motion/react";
-import { Appare, PulsanteBozza, Titolo } from "./ui";
+import { Appare, Etichetta, PulsanteBozza, Titolo } from "./ui";
 
 const PASSI = [
   {
@@ -30,7 +30,8 @@ export function Metodo() {
     <section id="metodo" className="relative overflow-hidden border-y border-linea bg-notte-2 py-24 lg:py-32" aria-labelledby="titolo-metodo">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Appare className="mx-auto max-w-3xl text-center">
-          <Titolo>
+          <Etichetta>Come funziona</Etichetta>
+          <Titolo className="mt-5">
             <span id="titolo-metodo">
               Iniziate con MAQ in <span className="testo-sfumato">4 semplici passi</span>
             </span>

@@ -56,3 +56,15 @@ export function Titolo({ children, className = "" }: { children: ReactNode; clas
     </h2>
   );
 }
+
+// Piccola etichetta sopra il titolo di ogni sezione, così le parti del sito si distinguono a colpo d’occhio.
+export function Etichetta({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return (
+    <p
+      className={`inline-flex items-center gap-2.5 text-[12px] font-semibold uppercase tracking-[0.24em] text-tenue ${className}`}
+    >
+      <span className="h-px w-6 sfondo-sfumato" aria-hidden="true" />
+      {children}
+    </p>
+  );
+}

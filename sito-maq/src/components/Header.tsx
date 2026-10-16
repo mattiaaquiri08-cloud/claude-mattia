@@ -6,8 +6,8 @@ import { PulsanteBozza } from "./ui";
 import { useAncora, useRadice } from "../radice";
 
 const VOCI = [
-  { id: "chi-sono", etichetta: "Chi sono" },
   { id: "servizi", etichetta: "Servizi" },
+  { id: "chi-sono", etichetta: "Chi sono" },
   { id: "metodo", etichetta: "Come funziona" },
   { id: "domande", etichetta: "Domande" },
   { id: "contatti", etichetta: "Contatti" },
@@ -31,7 +31,7 @@ export function Header() {
   }, [aperto]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-linea bg-notte/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-linea bg-notte/90 backdrop-blur-md">
       <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 sm:px-8">
         <a href={home ? "#inizio" : radice} className="fuoco rounded-md" aria-label="MAQ Web Design, torna all’inizio">
           <Logo />

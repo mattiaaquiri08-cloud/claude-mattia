@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { Clock, MagnifyingGlass, MapPin, Storefront } from "@phosphor-icons/react";
-import { Appare, PulsanteBozza, Titolo } from "./ui";
+import { Appare, Etichetta, Titolo } from "./ui";
 
 const RICERCHE = [
   { attivita: "Calzolaio", zona: "Talenti" },
@@ -58,48 +58,44 @@ function RicercaGoogle() {
   }, [lettere, testo, ridotto]);
 
   return (
-    <div className="relative overflow-hidden rounded-[28px] border border-linea bg-scheda p-5 sm:p-7" aria-hidden="true">
-      <div
-        className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full opacity-30 blur-3xl sfondo-sfumato"
-      />
+    <div
+      className="relative overflow-hidden rounded-[28px] border border-linea bg-scheda p-5 sm:p-7"
+      aria-hidden="true"
+    >
+      <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full opacity-30 blur-3xl sfondo-sfumato" />
       <div className="relative flex items-center gap-3 rounded-full bg-white px-5 py-3.5 text-[15px] text-notte shadow-[0_18px_40px_-20px_rgba(0,0,0,0.8)]">
         <MagnifyingGlass size={20} className="shrink-0 text-black/50" />
-        <span className="truncate">
+        <span className="min-w-0 truncate">
           {ridotto ? testo : testo.slice(0, lettere)}
           {!ridotto && <span className="ml-px inline-block h-[1.1em] w-px translate-y-[3px] animate-pulse bg-notte" />}
         </span>
       </div>
 
-      <div className="relative mt-6 min-h-[248px] space-y-3">
-        <AnimatePresence mode="wait">
-          {finito && (
-            <motion.div
-              key={indice}
-              className="space-y-3"
-              initial={ridotto ? false : { opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="bordo-sfumato rounded-2xl p-4">
-                <p className="text-xs text-tenue">www.la-vostra-attivita.it</p>
-                <p className="mt-1 text-lg font-semibold text-[#b9a6ff]">
-                  {ricerca.attivita} a {ricerca.zona} · Il vostro sito
-                </p>
-                <p className="mt-1 text-sm leading-relaxed text-tenue">
-                  Servizi, orari, foto e la storia del titolare. Chiamate o scrivete su WhatsApp con un tocco.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-linea p-4 opacity-60">
-                <p className="text-xs text-tenue">www.attivita-accanto.it</p>
-                <p className="mt-1 text-lg font-semibold text-white/80">L’attività della porta a fianco</p>
-                <p className="mt-1 flex items-center gap-1.5 text-sm text-tenue">
-                  <MapPin size={14} /> Stessa zona, stesso servizio
-                </p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+      {/* i risultati restano sempre al loro posto (cambia solo la trasparenza): così la pagina non salta */}
+      <div className="relative mt-6">
+        <motion.div
+          className="space-y-3"
+          initial={false}
+          animate={{ opacity: finito ? 1 : 0.15, y: finito || ridotto ? 0 : 8 }}
+          transition={{ duration: finito ? 0.45 : 0.2, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="bordo-sfumato rounded-2xl p-4">
+            <p className="text-xs text-tenue">www.la-vostra-attivita.it</p>
+            <p className="mt-1 truncate text-lg font-semibold text-[#b9a6ff]">
+              {ricerca.attivita} a {ricerca.zona} · Il vostro sito
+            </p>
+            <p className="mt-1 text-sm leading-relaxed text-tenue">
+              Servizi, orari, foto e la storia del titolare. Chiamate o scrivete su WhatsApp con un tocco.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-linea p-4 opacity-60">
+            <p className="text-xs text-tenue">www.attivita-accanto.it</p>
+            <p className="mt-1 text-lg font-semibold text-white/80">L’attività della porta a fianco</p>
+            <p className="mt-1 flex items-center gap-1.5 text-sm text-tenue">
+              <MapPin size={14} /> Stessa zona, stesso servizio
+            </p>
+          </div>
+        </motion.div>
       </div>
     </div>
   );
@@ -108,11 +104,9 @@ function RicercaGoogle() {
 export function TrovatiSuGoogle() {
   return (
     <section id="google" className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32" aria-labelledby="titolo-google">
-      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <div className="grid grid-cols-[minmax(0,1fr)] items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <Appare>
-          <span className="inline-flex rounded-full border border-white/15 px-4 py-1.5 text-[12px] font-semibold uppercase tracking-[0.24em] text-tenue">
-            Perché serve un sito
-          </span>
+          <Etichetta>Perché serve un sito</Etichetta>
           <Titolo className="mt-6">
             <span id="titolo-google">
               Quando vi cercano su Google, <span className="testo-sfumato">dovete esserci voi</span>
@@ -148,10 +142,6 @@ export function TrovatiSuGoogle() {
           </Appare>
         ))}
       </div>
-
-      <Appare className="mt-14 flex justify-center">
-        <PulsanteBozza />
-      </Appare>
     </section>
   );
 }

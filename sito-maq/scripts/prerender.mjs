@@ -1,6 +1,6 @@
 // Dopo la build crea un file HTML già pronto per ogni pagina, con titolo, descrizione,
 // link canonico, dati strutturati per Google, mappa del sito e robots.txt.
-import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -12,6 +12,11 @@ const { render, PAGINE, CONTATTI, NOME, TITOLARE, SITO_URL } = await import(
 );
 
 const modello = readFileSync(join(dist, "index.html"), "utf8");
+// I caratteri Sora vengono caricati subito: se arrivano in ritardo il testo cambia misura
+// e la pagina "salta" mentre si scorre.
+const caratteri = readdirSync(join(dist, "assets"))
+  .filter((f) => /^sora-latin-(300|400|600|700|800)-normal-.*\.woff2$/.test(f))
+  .map((f) => `<link rel="preload" href="./assets/${f}" as="font" type="font/woff2" crossorigin />`);
 const esc = (t) => t.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 const indirizzo = (slug) => `${SITO_URL}/${slug ? `${slug}/` : ""}`;
 
@@ -74,6 +79,7 @@ function testa(p) {
     `<title>${esc(p.titoloSeo)}</title>`,
     `<meta name="description" content="${esc(p.descrizione)}" />`,
     `<link rel="canonical" href="${url}" />`,
+    ...caratteri,
     `<meta property="og:type" content="${p.tipo === "guida" ? "article" : "website"}" />`,
     `<meta property="og:locale" content="it_IT" />`,
     `<meta property="og:site_name" content="${NOME}" />`,

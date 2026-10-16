@@ -4,12 +4,9 @@ import { Hero } from "./components/Hero";
 import { Settori } from "./components/Settori";
 import { TrovatiSuGoogle } from "./components/TrovatiSuGoogle";
 import { ChiSono } from "./components/ChiSono";
-import { Numeri } from "./components/Numeri";
 import { Servizi } from "./components/Servizi";
 import { Metodo } from "./components/Metodo";
-import { Perche } from "./components/Perche";
 import { Domande } from "./components/Domande";
-import { AltrePagine } from "./components/AltrePagine";
 import { Contatti } from "./components/Contatti";
 import { Footer } from "./components/Footer";
 
@@ -28,12 +25,9 @@ export default function App() {
         <Hero />
         <Settori />
         <TrovatiSuGoogle />
-        <ChiSono />
-        <Numeri />
         <Servizi />
+        <ChiSono />
         <Metodo />
-        <Perche />
-        <AltrePagine />
         <Domande />
         <Contatti />
       </main>

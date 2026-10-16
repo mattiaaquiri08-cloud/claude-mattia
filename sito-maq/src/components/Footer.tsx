@@ -5,8 +5,8 @@ import { PAGINE } from "../pagine";
 import { useAncora, useLinkPagina } from "../radice";
 
 const LINK = [
-  { id: "chi-sono", etichetta: "Chi sono" },
   { id: "servizi", etichetta: "Servizi" },
+  { id: "chi-sono", etichetta: "Chi sono" },
   { id: "metodo", etichetta: "Come funziona" },
   { id: "domande", etichetta: "Domande" },
   { id: "contatti", etichetta: "Contatti" },

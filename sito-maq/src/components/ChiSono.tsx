@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Appare, Titolo } from "./ui";
+import { Appare, Etichetta, Titolo } from "./ui";
 import { TITOLARE } from "../config";
 import { ScrittaMaq } from "./ScrittaMaq";
 import { useRadice } from "../radice";
@@ -56,7 +56,8 @@ export function ChiSono() {
           <FotoTitolare />
         </Appare>
         <Appare ritardo={0.1}>
-          <Titolo>
+          <Etichetta>Chi sono</Etichetta>
+          <Titolo className="mt-5">
             <span id="titolo-chi-sono">
               Prima conosco la vostra storia, <span className="testo-sfumato">poi costruisco il sito</span>
             </span>

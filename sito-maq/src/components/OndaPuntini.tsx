@@ -28,32 +28,49 @@ export function OndaPuntini({ className = "" }: { className?: string }) {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
+    // colori per colonna calcolati una volta sola: ridisegnare migliaia di puntini a ogni fotogramma
+    // con colori ricalcolati rendeva lo scroll a scatti sul telefono
+    let colori: string[] = [];
+    const preparaColori = (colonne: number) => {
+      if (colori.length === colonne) return;
+      colori = Array.from({ length: colonne }, (_, i) => {
+        const k = i / (colonne - 1);
+        return `rgb(${Math.round(150 + k * 100)},${Math.round(110 + k * 60)},${Math.round(255 - k * 40)})`;
+      });
+    };
+
     const disegna = (t: number) => {
       ctx.clearRect(0, 0, w, h);
-      const colonne = w < 700 ? 90 : 150;
-      const righe = 38;
+      const colonne = w < 700 ? 64 : 120;
+      const righe = w < 700 ? 26 : 34;
+      preparaColori(colonne);
       for (let j = 0; j < righe; j++) {
         const z = j / (righe - 1);
         const persp = 0.35 + z * 1.25;
+        const lato = 1.2 + z * 3;
         for (let i = 0; i < colonne; i++) {
           const u = i / (colonne - 1) - 0.5;
+          const a = (0.08 + 0.5 * z) * (1 - Math.abs(u) * 1.2);
+          if (a <= 0) continue;
           const onda = Math.sin(u * 6 + z * 5 + t * 0.35) * 0.07 + Math.cos(u * 11 - z * 4 + t * 0.22) * 0.025;
           const x = w / 2 + u * w * persp * 1.1;
           const y = h * 0.18 + z * z * h * 0.78 + onda * h * persp * 0.9;
           if (x < -10 || x > w + 10 || y > h + 10) continue;
-          const a = (0.08 + 0.5 * z) * (1 - Math.abs(u) * 1.2);
-          if (a <= 0) continue;
-          const k = i / (colonne - 1);
-          ctx.fillStyle = `rgba(${Math.round(150 + k * 100)},${Math.round(110 + k * 60)},${Math.round(255 - k * 40)},${a})`;
-          ctx.beginPath();
-          ctx.arc(x, y, 0.6 + z * 1.6, 0, Math.PI * 2);
-          ctx.fill();
+          ctx.globalAlpha = a;
+          ctx.fillStyle = colori[i];
+          ctx.fillRect(x - lato / 2, y - lato / 2, lato, lato);
         }
       }
+      ctx.globalAlpha = 1;
     };
 
+    // 30 fotogrammi al secondo bastano per un movimento così lento
+    let ultimo = 0;
     const ciclo = (ora: number) => {
-      if (visibile) disegna((ora - inizio) / 1000);
+      if (visibile && ora - ultimo >= 33) {
+        ultimo = ora;
+        disegna((ora - inizio) / 1000);
+      }
       raf = requestAnimationFrame(ciclo);
     };
 

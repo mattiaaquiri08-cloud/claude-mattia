@@ -1,7 +1,7 @@
 import { useId, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Plus } from "@phosphor-icons/react";
-import { Appare, Titolo } from "./ui";
+import { Appare, Etichetta, Titolo } from "./ui";
 import type { Domanda } from "../pagine";
 
 const DOMANDE: Domanda[] = [
@@ -68,8 +68,9 @@ function Voce({ d, r }: { d: string; r: string }) {
 export function Domande({ voci = DOMANDE }: { voci?: Domanda[] }) {
   return (
     <section id="domande" className="mx-auto max-w-3xl px-5 py-24 sm:px-8 lg:py-28" aria-labelledby="titolo-domande">
-      <Appare>
-        <Titolo className="text-center">
+      <Appare className="text-center">
+        <Etichetta>Domande</Etichetta>
+        <Titolo className="mt-5 text-center">
           <span id="titolo-domande">Domande frequenti</span>
         </Titolo>
       </Appare>

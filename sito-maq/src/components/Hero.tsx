@@ -22,7 +22,7 @@ export function Hero() {
       <OndaPuntini className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[62%] w-full" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-b from-transparent to-notte" />
 
-      <div className="mx-auto flex min-h-[calc(100dvh-76px)] max-w-4xl flex-col items-center justify-center px-5 pb-24 pt-16 text-center sm:px-8">
+      <div className="mx-auto flex min-h-[calc(100svh-76px)] max-w-4xl flex-col items-center justify-center px-5 pb-24 pt-16 text-center sm:px-8">
         <motion.p
           {...entra(0.1)}
           className="bordo-sfumato rounded-full px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] sm:text-sm"
