@@ -110,7 +110,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   "Web Design" e "Based in Rome" in basso).
 - Brand dell'utente (16/10): nome scelto **MAQ Web Design** (MAQ = Mattia AQuiri), slogan "Grow Online",
   stile: bianco/nero con sfumatura viola→rosa→pesca, font Sora. Dominio maqwebdesign.com libero al 16/10.
-  Scartati: nomi con "AQ" (troppe aziende omonime), "Digital Studio". Proposte logo in `brand/`.
+  Scartati: nomi con "AQ" (troppe aziende omonime), "Digital Studio". Proposte logo in `brand/`: scelto lo stile "MA sottile + Q spessa sfumata" (varianti in `brand/logo8-varianti.png`).
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).

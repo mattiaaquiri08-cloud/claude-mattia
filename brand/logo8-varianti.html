@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;600;700;800&display=block" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:2400px;height:1260px;overflow:hidden;background:#fff;font-family:Sora,sans-serif}
+.grid{display:grid;grid-template-columns:repeat(4,600px);grid-template-rows:repeat(2,630px)}
+.t{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid #e7e3ee;background:#fff;color:#0f0b1a}
+.t.d{background:#07050d;color:#fff;border-color:#151020}
+.t.gr{background:linear-gradient(135deg,#6d28f6 0%,#b05ce6 40%,#f08ac6 75%,#f6b48a 100%);color:#fff;border:none}
+.n{position:absolute;top:26px;left:30px;font-size:22px;font-weight:700;color:#b3adc4}
+.gr .n,.gr .cap{color:rgba(255,255,255,.75)}
+.cap{position:absolute;bottom:26px;font-size:19px;color:#9a94ab;letter-spacing:.04em}
+.G{background:linear-gradient(90deg,#6d28f6 0%,#b05ce6 35%,#f08ac6 70%,#f6b48a 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.m{font-size:150px;letter-spacing:.02em;line-height:1.15;white-space:nowrap}
+.m .a{font-weight:300}.m .q{font-weight:800;padding-right:.04em}
+.s{font-size:22px;letter-spacing:.4em;text-transform:uppercase;margin-top:14px;color:#a49dbb;padding-left:.4em}
+.t:not(.d):not(.gr) .s{color:#6b6580}
+.gr .s{color:#fff}
+/* 4 horizontal */
+.h{display:flex;align-items:center;gap:30px}
+.h .m{font-size:110px}
+.h .vl{width:2px;height:96px;background:#3a3350}
+.h .tx{font-size:22px;letter-spacing:.32em;line-height:1.7;text-transform:uppercase;color:#a49dbb}
+/* 5 icon Q */
+.qi{width:300px;height:300px;border-radius:50%;background:#07050d;display:flex;align-items:center;justify-content:center}
+.qi span{font-weight:800;font-size:220px;line-height:1.2;padding-right:.04em;margin-top:-6px;margin-left:22px}
+/* 6 outline */
+.o .q{font-weight:800;color:transparent;-webkit-text-stroke:5px #d070d8}
+/* 7 underline tail */
+.ul{width:440px;height:6px;border-radius:3px;margin-top:6px;background:linear-gradient(90deg,#6d28f6,#b05ce6 35%,#f08ac6 70%,#f6b48a)}
+/* 8 slogan */
+.sl{font-size:18px;letter-spacing:.34em;text-transform:uppercase;margin-top:28px;font-weight:300;color:#7d7692}
+</style></head><body><div class="grid">
+<div class="t d"><div class="n">A</div><div class="m"><span class="a">MA</span><span class="q G">Q</span></div><div class="s">Web Design</div><div class="cap">Originale, su nero</div></div>
+<div class="t"><div class="n">B</div><div class="m"><span class="a">MA</span><span class="q G">Q</span></div><div class="s">Web Design</div><div class="cap">Su bianco</div></div>
+<div class="t gr"><div class="n">C</div><div class="m"><span class="a">MA</span><span class="q">Q</span></div><div class="s">Web Design</div><div class="cap">Bianco su sfumatura</div></div>
+<div class="t d"><div class="n">D</div><div class="h"><div class="m"><span class="a">MA</span><span class="q G">Q</span></div><div class="vl"></div><div class="tx">Web<br>Design</div></div><div class="cap">Orizzontale (sito, email)</div></div>
+<div class="t"><div class="n">E</div><div class="qi"><span class="G">Q</span></div><div class="s" style="margin-top:30px">MAQ Web Design</div><div class="cap">Icona: solo la Q (foto profilo)</div></div>
+<div class="t d"><div class="n">F</div><div class="m"><span class="a G">MA</span><span class="q">Q</span></div><div class="s">Web Design</div><div class="cap">Invertito: MA sfumato, Q bianca</div></div>
+<div class="t d"><div class="n">G</div><div class="m"><span class="a">MA</span><span class="q G">Q</span></div><div class="ul"></div><div class="s" style="margin-top:22px">Web Design</div><div class="cap">Con linea sfumata</div></div>
+<div class="t d"><div class="n">H</div><div class="m"><span class="a">MA</span><span class="q G">Q</span></div><div class="s">Web Design</div><div class="sl">Grow Online · Roma</div><div class="cap">Con slogan</div></div>
+</div></body></html>
