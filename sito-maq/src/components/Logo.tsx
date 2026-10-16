@@ -1,3 +1,5 @@
+import { ScrittaMaq } from "./ScrittaMaq";
+
 type Props = {
   dimensione?: "piccolo" | "grande";
   conSlogan?: boolean;
@@ -14,8 +16,7 @@ export function Logo({ dimensione = "piccolo", conSlogan = false }: Props) {
             grande ? "text-[64px] sm:text-[120px]" : "text-[26px]"
           }`}
         >
-          <span className="font-light">MA</span>
-          <span className="font-extrabold testo-sfumato">Q</span>
+          <ScrittaMaq />
         </span>
         <span className={`w-px self-stretch bg-white/20 ${grande ? "my-5 sm:my-7" : "my-1.5"}`} />
         <span

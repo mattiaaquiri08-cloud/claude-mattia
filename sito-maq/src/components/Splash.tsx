@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { ScrittaMaq } from "./ScrittaMaq";
 
 const DURATA_MS = 2600;
 
@@ -40,8 +41,7 @@ export function Splash() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: facile }}
               >
-                <span className="font-light">MA</span>
-                <span className="font-extrabold testo-sfumato">Q</span>
+                <ScrittaMaq />
               </motion.span>
               <motion.span
                 className="w-px self-stretch my-7 bg-white/20"

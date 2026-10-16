@@ -121,7 +121,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   edlu.it come richiesto (pillola in alto, titolo centrato, pulsanti sfumati a pillola, schede scure). Testi al "voi",
   solo cose vere: niente numeri inventati, recensioni o clienti finti. Zona: di Roma, lavora in Roma e
   provincia ma è disponibile in tutta Italia (fuori Roma: telefono + bozza su Zoom). Niente "piatto di spaghetti" nel sito. Contatti (WhatsApp, email, Instagram) in
-  `sito-maq/src/config.ts`; foto del titolare: `sito-maq/public/mattia.jpg`. Build: `npm run build` in `sito-maq/`.
+  `sito-maq/src/config.ts`; foto del titolare: `sito-maq/public/mattia.jpg`. Build: `npm run build` in `sito-maq/`. Sezioni: Hero, Settori, "Perché serve un sito" (SEO: "calzolaio Talenti", "bar Trastevere", non regalare clienti alla porta accanto), Chi sono, Servizi, 4 passi (Mi scrivete → Ci conosciamo → Bozza gratuita → Online), Domande, Contatti. Scritta MAQ in SVG (`ScrittaMaq.tsx`): il font Sora lascia segni nella stanghetta della A.
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).

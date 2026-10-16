@@ -4,18 +4,18 @@ import { Appare, PulsanteBozza, Titolo } from "./ui";
 const PASSI = [
   {
     n: "01",
-    titolo: "Ci conosciamo",
-    testo: "Una telefonata o un incontro di persona: mi raccontate la vostra attività e cosa vi serve.",
+    titolo: "Mi scrivete",
+    testo: "Richiedete la bozza dal sito, su WhatsApp o per email: bastano il vostro nome e quello dell’attività.",
   },
   {
     n: "02",
-    titolo: "Bozza gratuita",
-    testo: "Preparo la bozza del vostro sito, con i vostri servizi e la vostra storia. Non pagate nulla.",
+    titolo: "Ci conosciamo",
+    testo: "Una telefonata o un incontro di persona: mi raccontate la vostra attività, la vostra storia e cosa vi serve.",
   },
   {
     n: "03",
-    titolo: "La guardiamo insieme",
-    testo: "Ve la mostro su Zoom o di persona e la sistemiamo finché non vi convince.",
+    titolo: "Bozza gratuita",
+    testo: "Preparo la bozza del vostro sito e ve la mostro su Zoom o di persona. Non pagate nulla.",
   },
   {
     n: "04",

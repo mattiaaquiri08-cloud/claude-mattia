@@ -2,6 +2,7 @@ import { Splash } from "./components/Splash";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { Settori } from "./components/Settori";
+import { TrovatiSuGoogle } from "./components/TrovatiSuGoogle";
 import { ChiSono } from "./components/ChiSono";
 import { Numeri } from "./components/Numeri";
 import { Servizi } from "./components/Servizi";
@@ -25,6 +26,7 @@ export default function App() {
       <main id="contenuto">
         <Hero />
         <Settori />
+        <TrovatiSuGoogle />
         <ChiSono />
         <Numeri />
         <Servizi />

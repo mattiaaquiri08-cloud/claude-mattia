@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Appare, Titolo } from "./ui";
 import { TITOLARE } from "../config";
+import { ScrittaMaq } from "./ScrittaMaq";
 
 // Foto del titolare: basta mettere il file public/mattia.jpg. Finché non c’è,
 // al suo posto compare il monogramma MAQ.
@@ -21,8 +22,7 @@ function FotoTitolare() {
       ) : (
         <div className="flex h-full w-full flex-col items-center justify-center gap-6 bg-[radial-gradient(420px_320px_at_50%_40%,rgba(176,92,230,.28),transparent_70%)]">
           <span className="text-[110px] leading-none tracking-[0.02em] sm:text-[140px]">
-            <span className="font-light">MA</span>
-            <span className="font-extrabold testo-sfumato">Q</span>
+            <ScrittaMaq />
           </span>
           <span className="text-sm uppercase tracking-[0.34em] text-tenue">{TITOLARE}</span>
         </div>
