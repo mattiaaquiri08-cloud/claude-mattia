@@ -17,8 +17,9 @@ export default function Hero() {
 
   return (
     <section id="inizio" className="relative flex min-h-[100svh] flex-col pt-16 md:pt-[72px]">
-      {/* telefono: foto pulita in alto, testo sotto su fondo chiaro; PC: testo sopra la foto */}
-      <div ref={cornice} className="relative mx-2 h-[54svh] flex-none overflow-hidden bg-notte md:mx-4 md:mb-4 md:h-auto md:flex-1">
+      {/* telefono: solo la foto e i due pulsanti centrati sotto (titolo visibile solo a lettori di schermo e Google);
+          PC: titolo, testo e pulsanti sopra la foto */}
+      <div ref={cornice} className="relative mx-2 flex-1 overflow-hidden bg-notte md:mx-4 md:mb-4">
         <motion.div className="absolute inset-0" style={{ y }}>
           <motion.picture
             className="block size-full"
@@ -49,16 +50,16 @@ export default function Hero() {
         />
       </div>
 
-      <div className="relative flex flex-1 flex-col justify-center px-4 pb-6 pt-6 md:absolute md:inset-x-4 md:bottom-4 md:block md:px-10 md:pb-10 md:pt-0 lg:px-14 lg:pb-14">
+      <div className="relative px-4 py-5 md:absolute md:inset-x-4 md:bottom-4 md:block md:px-10 md:pb-10 md:pt-0 lg:px-14 lg:pb-14">
           <motion.h1
-            className="stretto text-[clamp(2.3rem,9.6vw,5.2rem)] font-[720] uppercase leading-[0.9] text-inchiostro md:max-w-[24ch] md:text-insegna"
+            className="stretto sr-only text-[5.2rem] font-[720] uppercase leading-[0.9] text-insegna md:not-sr-only md:max-w-[24ch] md:text-[clamp(2.9rem,6vw,5.2rem)]"
             initial={ridotto ? false : { opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: R + 0.1, ease: EASE }}
           >
             {t.hero.titolo}
           </motion.h1>
-          <div className="mt-5 flex flex-col gap-7 md:mt-8 lg:flex-row lg:items-end lg:justify-between">
+          <div className="flex flex-col gap-7 md:mt-8 lg:flex-row lg:items-end lg:justify-between">
             <motion.p
               className="hidden max-w-[44ch] text-lg leading-relaxed text-insegna/85 md:block"
               initial={ridotto ? false : { opacity: 0, y: 20 }}
@@ -68,7 +69,7 @@ export default function Hero() {
               {t.hero.testo}
             </motion.p>
             <motion.div
-              className="flex flex-col gap-2.5 sm:flex-row sm:gap-3"
+              className="mx-auto flex w-full max-w-sm flex-col gap-2.5 sm:max-w-none sm:flex-row sm:justify-center sm:gap-3 md:mx-0 md:w-auto md:justify-start"
               initial={ridotto ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: R + 0.4, ease: EASE }}
