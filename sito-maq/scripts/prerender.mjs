@@ -26,7 +26,7 @@ const attivita = {
   name: NOME,
   url: `${SITO_URL}/`,
   image: `${SITO_URL}/anteprima.jpg`,
-  logo: `${SITO_URL}/favicon.svg`,
+  logo: `${SITO_URL}/icon-512.png`,
   description: "Web designer a Roma: siti web su misura per ristoranti, saloni, palestre e attività locali, con bozza gratuita e senza impegno.",
   slogan: "Grow Online",
   priceRange: "390 € - 690 €",
