@@ -23,6 +23,13 @@ npm run build    # sito pronto in dist/ (percorsi relativi: funziona in qualsias
 | Foto della galleria | `src/components/Galleria.tsx` (file in `public/foto/`) |
 | Foto di Luca Boccoli | `src/components/Luca.tsx` (`FOTO_LUCA`) |
 
+## Pubblicazione (link per i titolari)
+
+Online con GitHub Pages: https://mattiaaquiri08-cloud.github.io/claude-mattia/100c/
+Il ramo `gh-pages` contiene solo il sito pronto, nella cartella `100c/`. Per aggiornarlo:
+`npm run build`, copiare `dist/` in `100c/` sul ramo `gh-pages` e fare il push.
+Le prossime demo possono stare accanto (`/claude-mattia/nome-attivita/`).
+
 ## Menù ed eventi da Google Sheets
 
 Il sito legge due fogli Google (cartella Drive "100C Vino e Pesce - Sito"):
