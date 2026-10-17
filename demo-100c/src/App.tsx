@@ -6,6 +6,7 @@ import Eventi from "./components/Eventi";
 import Footer from "./components/Footer";
 import Galleria from "./components/Galleria";
 import Hero from "./components/Hero";
+import { HeroEditoriale, HeroFoto, HeroInsegna } from "./components/HeroVarianti";
 import Luca from "./components/Luca";
 import Manifesto from "./components/Manifesto";
 import Menu from "./components/Menu";
@@ -16,13 +17,17 @@ import Splash from "./components/Splash";
 import Vino from "./components/Vino";
 import { ProviderLingua } from "./lingua";
 
+// anteprima delle varianti dell'hero: ?hero=a|b|c (senza parametro, quella attuale)
+const VARIANTI = { a: HeroInsegna, b: HeroFoto, c: HeroEditoriale } as Record<string, () => React.JSX.Element>;
+const HeroScelta = VARIANTI[new URLSearchParams(location.search).get("hero") ?? ""] ?? Hero;
+
 export default function App() {
   return (
     <ProviderLingua>
       <Splash />
       <Navigazione />
       <main>
-        <Hero />
+        <HeroScelta />
         <Manifesto />
         <Vino />
         <Menu />
