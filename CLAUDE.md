@@ -133,7 +133,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   ramo va online da solo. Domini: maqwebdesign.com e www. Search Console verificata (proprietà Dominio), sitemap
   `https://maqwebdesign.com/sitemap.xml` (per le proprietà Dominio serve l'URL completo). Il modulo Web3Forms non si può
   provare dall'anteprima Claude né da questo server (Cloudflare di Web3Forms blocca i server): va provato dal browser
-  dell'utente. Da fare: scheda Google Business "Designer di siti web", recensioni.
+  dell'utente. Scheda Google Business "MAQ Web Design" creata il 17/10 (categoria Web Designer, zone Roma + Città
+  metropolitana, sede nascosta), verifica in corso (fino a 5 giorni); logo quadrato e copertina in `google-business/`.
+  Da fare: orari reali, descrizione, servizi, foto, poi chiedere recensioni vere.
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
