@@ -39,6 +39,8 @@ const attivita = {
     { "@type": "Country", name: "Italia" },
   ],
   knowsAbout: ["Web design", "Siti web", "SEO locale", "Google Business Profile"],
+  // profili social ufficiali: Google li collega al sito
+  sameAs: CONTATTI.instagram ? [`https://www.instagram.com/${CONTATTI.instagram}/`] : [],
 };
 
 function datiStrutturati(p) {

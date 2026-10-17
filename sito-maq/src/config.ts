@@ -8,7 +8,7 @@ export const CONTATTI = {
   // email professionale
   email: "maq.webdesign@outlook.it",
   // profilo Instagram senza @ (es. maqwebdesign)
-  instagram: "",
+  instagram: "maqwebdesign",
 };
 
 export const NOME = "MAQ Web Design";

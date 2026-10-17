@@ -136,6 +136,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   dell'utente. Scheda Google Business "MAQ Web Design" creata il 17/10 (categoria Web Designer, zone Roma + Città
   metropolitana, sede nascosta), verifica in corso (fino a 5 giorni); logo quadrato e copertina in `google-business/`.
   Da fare: orari reali, descrizione, servizi, foto, poi chiedere recensioni vere.
+  Instagram: @maqwebdesign (17/10), nome profilo "MAQ Web Design | Web Designer Roma"; nel sito (config.ts) e nei dati
+  Google (sameAs). Foto profilo: `google-business/foto-profilo-instagram.png`. Icone del sito in `sito-maq/public/`
+  (favicon.ico/svg, icon-192/512, apple-touch-icon), link con ?v=2 per forzare l'aggiornamento nei browser.
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
