@@ -1,0 +1,72 @@
+@import "@fontsource-variable/archivo/wdth.css";
+@import "tailwindcss";
+
+/* Identità ricavata dal locale: il bianco dell'insegna, il blu delle sedie e della scritta
+   "VINO E PESCE", il rosso del "100" e le cementine esagonali cotto e ardesia del pavimento. */
+@theme {
+  --font-sans: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-insegna: #f1f1ed;
+  --color-carta: #e6e6df;
+  --color-inchiostro: #16213a;
+  --color-mare: #1d2c4f;
+  --color-notte: #0f1830;
+  --color-rosso: #b4232c;
+  --color-rosso-scuro: #8f1a22;
+  --color-cotto: #b55e3e;
+  --color-ardesia: #4b5563;
+  --color-grigio: #5b6272;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    background: var(--color-insegna);
+    color: var(--color-inchiostro);
+    font-family: var(--font-sans);
+    font-variation-settings: "wdth" 100;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-rosso);
+    color: var(--color-insegna);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-rosso);
+    outline-offset: 3px;
+  }
+}
+
+/* caratteri stretti come l'insegna: stessa famiglia, larghezza ridotta */
+@utility stretto {
+  font-variation-settings: "wdth" 62;
+  font-stretch: 62%;
+}
+@utility semistretto {
+  font-variation-settings: "wdth" 80;
+  font-stretch: 80%;
+}
+
+/* motivo delle cementine esagonali del pavimento */
+@utility cementine {
+  background-color: var(--color-cotto);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2772.75%27 height=%2742.00%27 viewBox=%270 0 72.75 42.00%27%3E%3Cpath d=%27M0.00 -14.00 12.12 -7.00 12.12 7.00 0.00 14.00 -12.12 7.00 -12.12 -7.00z M0.00 28.00 12.12 35.00 12.12 49.00 0.00 56.00 -12.12 49.00 -12.12 35.00z M36.37 7.00 48.50 14.00 48.50 28.00 36.37 35.00 24.25 28.00 24.25 14.00z M72.75 -14.00 84.87 -7.00 84.87 7.00 72.75 14.00 60.62 7.00 60.62 -7.00z M72.75 28.00 84.87 35.00 84.87 49.00 72.75 56.00 60.62 49.00 60.62 35.00z M109.12 7.00 121.24 14.00 121.24 28.00 109.12 35.00 96.99 28.00 96.99 14.00z%27 fill=%27%234b5563%27/%3E%3Cpath d=%27M-24.25 -14.00 -12.12 -7.00 -12.12 7.00 -24.25 14.00 -36.37 7.00 -36.37 -7.00z M-24.25 28.00 -12.12 35.00 -12.12 49.00 -24.25 56.00 -36.37 49.00 -36.37 35.00z M-12.12 7.00 0.00 14.00 0.00 28.00 -12.12 35.00 -24.25 28.00 -24.25 14.00z M0.00 -14.00 12.12 -7.00 12.12 7.00 0.00 14.00 -12.12 7.00 -12.12 -7.00z M0.00 28.00 12.12 35.00 12.12 49.00 0.00 56.00 -12.12 49.00 -12.12 35.00z M12.12 7.00 24.25 14.00 24.25 28.00 12.12 35.00 -0.00 28.00 0.00 14.00z M24.25 -14.00 36.37 -7.00 36.37 7.00 24.25 14.00 12.12 7.00 12.12 -7.00z M24.25 28.00 36.37 35.00 36.37 49.00 24.25 56.00 12.12 49.00 12.12 35.00z M36.37 7.00 48.50 14.00 48.50 28.00 36.37 35.00 24.25 28.00 24.25 14.00z M48.50 -14.00 60.62 -7.00 60.62 7.00 48.50 14.00 36.37 7.00 36.37 -7.00z M48.50 28.00 60.62 35.00 60.62 49.00 48.50 56.00 36.37 49.00 36.37 35.00z M60.62 7.00 72.75 14.00 72.75 28.00 60.62 35.00 48.50 28.00 48.50 14.00z M72.75 -14.00 84.87 -7.00 84.87 7.00 72.75 14.00 60.62 7.00 60.62 -7.00z M72.75 28.00 84.87 35.00 84.87 49.00 72.75 56.00 60.62 49.00 60.62 35.00z M84.87 7.00 96.99 14.00 96.99 28.00 84.87 35.00 72.75 28.00 72.75 14.00z M96.99 -14.00 109.12 -7.00 109.12 7.00 96.99 14.00 84.87 7.00 84.87 -7.00z M96.99 28.00 109.12 35.00 109.12 49.00 96.99 56.00 84.87 49.00 84.87 35.00z M109.12 7.00 121.24 14.00 121.24 28.00 109.12 35.00 96.99 28.00 96.99 14.00z%27 fill=%27none%27 stroke=%27%23e9d9cc%27 stroke-opacity=%27.55%27 stroke-width=%271.6%27/%3E%3C/svg%3E");
+  background-size: 72.75px 42.00px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

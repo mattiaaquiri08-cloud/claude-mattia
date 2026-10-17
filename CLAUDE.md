@@ -147,6 +147,14 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   parola (dà del tu), con nome, recensioni e servizi inseriti; "te ne preparo uno" finché la bozza non esiste. Niente WhatsApp.
   Ristoranti appena aperti: ricerca Maps "ristorante/trattoria/bistrot… + quartiere", filtro 3–70 recensioni, voto ≥4,3,
   nessun sito (Linktree/TheFork non contano), va bene anche il fisso. Controllare domini nome.it/.com (KIN Ponte Milvio: "sito in costruzione").
+- Bozze dimostrative per i clienti (17/10): prima demo completa `demo-100c/` (100C Vino e Pesce, Centocelle):
+  Vite + React + Tailwind v4 + Motion, bilingue IT/EN, splash, menù ed eventi letti da Google Sheets (cartella
+  Drive "100C Vino e Pesce - Sito", CSV `export?format=csv&gid=0`, il foglio va condiviso "chiunque col link:
+  visualizzatore"), prenotazione con messaggio WhatsApp precompilato, footer "Concept dimostrativo... non
+  ufficiale", `noindex`. Istruzioni in `demo-100c/LEGGIMI.md`; riusarla come modello per le prossime demo.
+  Foto: le immagini mandate a metà lavoro NON vengono salvate su disco; gli originali delle foto di stampa si
+  ritrovano dagli URL negli articoli (Gambero Rosso static.gamberorosso.it, The Foodzilla wp-content). Su Google
+  Maps senza browser si leggono solo ~10 foto, tutte dei clienti nelle recensioni: non usarle.
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
