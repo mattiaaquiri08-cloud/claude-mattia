@@ -43,6 +43,16 @@ export default function Navigazione() {
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", (y) => setScorso(y > 24));
 
+  // sul telefono, in cima alla pagina, il menu è trasparente sopra la foto a tutto schermo
+  const [telefono, setTelefono] = useState(() => matchMedia("(max-width: 767px)").matches);
+  useEffect(() => {
+    const mq = matchMedia("(max-width: 767px)");
+    const cambia = () => setTelefono(mq.matches);
+    mq.addEventListener("change", cambia);
+    return () => mq.removeEventListener("change", cambia);
+  }, []);
+  const trasparente = telefono && !scorso && !aperto;
+
   const voci = [
     { href: "#vino", testo: t.nav.vino },
     { href: "#menu", testo: t.nav.menu },
@@ -66,12 +76,16 @@ export default function Navigazione() {
     <>
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-[background-color,box-shadow] duration-300 ${
-        scorso || aperto ? "bg-insegna/95 shadow-[0_1px_0_rgba(22,33,58,0.12)] backdrop-blur-md" : "bg-insegna"
+        trasparente
+          ? "bg-transparent"
+          : scorso || aperto
+            ? "bg-insegna/95 shadow-[0_1px_0_rgba(22,33,58,0.12)] backdrop-blur-md"
+            : "bg-insegna"
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between gap-6 px-4 md:h-[72px] md:px-8">
         <a href="#inizio" className="flex items-baseline gap-2.5" aria-label="100C Vino e Pesce, torna all'inizio">
-          <Marchio className="text-[2.1rem]" />
+          <Marchio className="text-[2.1rem]" chiaro={trasparente} />
           <span className="stretto hidden text-[0.95rem] font-[650] uppercase tracking-[0.14em] text-inchiostro sm:inline">
             Vino <span className="text-[0.75em]">e</span> Pesce
           </span>
@@ -91,7 +105,7 @@ export default function Navigazione() {
         </ul>
 
         <div className="flex items-center gap-3 md:gap-5">
-          <SceltaLingua />
+          <SceltaLingua chiara={trasparente} />
           <a
             href="#prenota"
             className="semistretto hidden min-h-11 items-center bg-rosso px-5 text-[0.9rem] font-semibold uppercase tracking-[0.08em] text-insegna transition-colors hover:bg-rosso-scuro active:scale-[0.98] md:inline-flex"
@@ -100,7 +114,7 @@ export default function Navigazione() {
           </a>
           <button
             type="button"
-            className="-mr-2 flex size-11 items-center justify-center text-inchiostro lg:hidden"
+            className={`-mr-2 flex size-11 items-center justify-center lg:hidden ${trasparente ? "text-insegna" : "text-inchiostro"}`}
             aria-expanded={aperto}
             aria-controls="menu-mobile"
             aria-label={aperto ? t.nav.chiudi : t.nav.apri}

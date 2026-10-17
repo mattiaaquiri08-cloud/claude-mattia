@@ -16,10 +16,10 @@ export default function Hero() {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", ridotto ? "0%" : "14%"]);
 
   return (
-    <section id="inizio" className="relative flex min-h-[100svh] flex-col pt-16 md:pt-[72px]">
-      {/* telefono: solo la foto con i due pulsanti centrati sopra la vetrina (titolo visibile solo a lettori di
-          schermo e Google); PC: titolo, testo e pulsanti sopra la foto */}
-      <div ref={cornice} className="relative mx-2 mb-2 flex-1 overflow-hidden bg-notte md:mx-4 md:mb-4">
+    <section id="inizio" className="relative flex min-h-[100svh] flex-col md:pt-[72px]">
+      {/* foto a tutto schermo. Telefono: sotto il menu trasparente, solo i due pulsanti centrati sopra la vetrina
+          (titolo visibile solo a lettori di schermo e Google). PC: sotto il menu, con titolo, testo e pulsanti */}
+      <div ref={cornice} className="relative flex-1 overflow-hidden bg-notte">
         <motion.div className="absolute inset-0" style={{ y }}>
           <motion.picture
             className="block size-full"
@@ -40,17 +40,17 @@ export default function Hero() {
               alt={t.hero.altFoto}
               fetchPriority="high"
               decoding="async"
-              className="size-full object-cover object-[54%_16%] md:object-[50%_22%]"
+              className="size-full object-cover object-[58%_16%] md:object-[50%_22%]"
             />
           </motion.picture>
         </motion.div>
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(to_top,rgba(15,24,48,0.6)_0%,rgba(15,24,48,0)_30%)] md:bg-[linear-gradient(to_top,rgba(15,24,48,0.92)_0%,rgba(15,24,48,0.55)_32%,rgba(15,24,48,0)_62%)]"
+          className="absolute inset-0 bg-[linear-gradient(to_top,rgba(15,24,48,0.6)_0%,rgba(15,24,48,0)_30%,rgba(15,24,48,0)_82%,rgba(15,24,48,0.55)_100%)] md:bg-[linear-gradient(to_top,rgba(15,24,48,0.92)_0%,rgba(15,24,48,0.55)_32%,rgba(15,24,48,0)_62%)]"
         />
       </div>
 
-      <div className="absolute inset-x-2 bottom-2 px-5 pb-7 md:inset-x-4 md:bottom-4 md:block md:px-10 md:pb-10 md:pt-0 lg:px-14 lg:pb-14">
+      <div className="absolute inset-x-0 bottom-0 px-5 pb-[max(1.75rem,env(safe-area-inset-bottom))] md:inset-x-0 md:bottom-0 md:block md:px-10 md:pb-10 md:pt-0 lg:px-14 lg:pb-14">
           <motion.h1
             className="stretto sr-only text-[5.2rem] font-[720] uppercase leading-[0.9] text-insegna md:not-sr-only md:max-w-[24ch] md:text-[clamp(2.9rem,6vw,5.2rem)]"
             initial={ridotto ? false : { opacity: 0, y: 30 }}
