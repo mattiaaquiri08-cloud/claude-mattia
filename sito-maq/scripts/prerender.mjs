@@ -42,7 +42,23 @@ const attivita = {
 };
 
 function datiStrutturati(p) {
-  if (p.tipo === "home") return { "@context": "https://schema.org", ...attivita };
+  if (p.tipo === "home")
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        attivita,
+        {
+          // nome del sito per Google: aiuta a distinguere "MAQ Web Design" da nomi simili
+          "@type": "WebSite",
+          "@id": `${SITO_URL}/#sito`,
+          name: NOME,
+          alternateName: ["MAQ", "maqwebdesign", "MAQ Web Design Roma"],
+          url: `${SITO_URL}/`,
+          inLanguage: "it-IT",
+          publisher: { "@id": attivita["@id"] },
+        },
+      ],
+    };
   const briciole = {
     "@type": "BreadcrumbList",
     itemListElement: [
