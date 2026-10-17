@@ -154,6 +154,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   ufficiale", `noindex`. Istruzioni in `demo-100c/LEGGIMI.md`; riusarla come modello per le prossime demo.
   Link demo per i clienti: GitHub Pages, ramo `gh-pages`, una cartella per attività
   (https://mattiaaquiri08-cloud.github.io/claude-mattia/100c/), scelta dell'utente (non sul sito MAQ).
+  Messaggio WhatsApp dopo la telefonata (il titolare ha detto sì): "Salve, sono Mattia di MAQ Web Design, ci siamo
+  sentiti al telefono. Come d'accordo le mando la bozza…", link come testo, elenco puntato di cosa c'è nella bozza,
+  "è una bozza, si sistema insieme", "se le piace le preparo un preventivo su misura", nessun impegno, recapito, firma.
   Foto: le immagini mandate a metà lavoro NON vengono salvate su disco; gli originali delle foto di stampa si
   ritrovano dagli URL negli articoli (Gambero Rosso static.gamberorosso.it, The Foodzilla wp-content). Su Google
   Maps senza browser si leggono solo ~10 foto, tutte dei clienti nelle recensioni: non usarle.
