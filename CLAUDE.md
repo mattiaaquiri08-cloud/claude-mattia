@@ -143,6 +143,10 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   botteghe (sarti, tappezzieri, calzolai, fabbri, fioristi, norcinerie, barberie di paese…) in periferia e provincia,
   12–80 recensioni, voto ≥4,3, nessun sito, cellulare; verificare con WebSearch che online ci sia solo Google. Le
   attività con 150+ recensioni in zone centrali sono già state chiamate da tanti: evitarle.
+- Lead da CHIAMARE (dal 17/10): per ogni attività link tel: e sotto il testo di `lead/script-chiamata.md` quasi parola per
+  parola (dà del tu), con nome, recensioni e servizi inseriti; "te ne preparo uno" finché la bozza non esiste. Niente WhatsApp.
+  Ristoranti appena aperti: ricerca Maps "ristorante/trattoria/bistrot… + quartiere", filtro 3–70 recensioni, voto ≥4,3,
+  nessun sito (Linktree/TheFork non contano), va bene anche il fisso. Controllare domini nome.it/.com (KIN Ponte Milvio: "sito in costruzione").
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
