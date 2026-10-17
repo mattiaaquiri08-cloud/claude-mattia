@@ -17,9 +17,9 @@ export default function Hero() {
 
   return (
     <section id="inizio" className="relative flex min-h-[100svh] flex-col pt-16 md:pt-[72px]">
-      {/* telefono: solo la foto e i due pulsanti centrati sotto (titolo visibile solo a lettori di schermo e Google);
-          PC: titolo, testo e pulsanti sopra la foto */}
-      <div ref={cornice} className="relative mx-2 flex-1 overflow-hidden bg-notte md:mx-4 md:mb-4">
+      {/* telefono: solo la foto con i due pulsanti centrati sopra la vetrina (titolo visibile solo a lettori di
+          schermo e Google); PC: titolo, testo e pulsanti sopra la foto */}
+      <div ref={cornice} className="relative mx-2 mb-2 flex-1 overflow-hidden bg-notte md:mx-4 md:mb-4">
         <motion.div className="absolute inset-0" style={{ y }}>
           <motion.picture
             className="block size-full"
@@ -46,11 +46,11 @@ export default function Hero() {
         </motion.div>
         <div
           aria-hidden="true"
-          className="absolute inset-0 hidden bg-[linear-gradient(to_top,rgba(15,24,48,0.92)_0%,rgba(15,24,48,0.55)_32%,rgba(15,24,48,0)_62%)] md:block"
+          className="absolute inset-0 bg-[linear-gradient(to_top,rgba(15,24,48,0.6)_0%,rgba(15,24,48,0)_30%)] md:bg-[linear-gradient(to_top,rgba(15,24,48,0.92)_0%,rgba(15,24,48,0.55)_32%,rgba(15,24,48,0)_62%)]"
         />
       </div>
 
-      <div className="relative px-4 py-5 md:absolute md:inset-x-4 md:bottom-4 md:block md:px-10 md:pb-10 md:pt-0 lg:px-14 lg:pb-14">
+      <div className="absolute inset-x-2 bottom-2 px-5 pb-7 md:inset-x-4 md:bottom-4 md:block md:px-10 md:pb-10 md:pt-0 lg:px-14 lg:pb-14">
           <motion.h1
             className="stretto sr-only text-[5.2rem] font-[720] uppercase leading-[0.9] text-insegna md:not-sr-only md:max-w-[24ch] md:text-[clamp(2.9rem,6vw,5.2rem)]"
             initial={ridotto ? false : { opacity: 0, y: 30 }}
@@ -75,7 +75,7 @@ export default function Hero() {
               transition={{ duration: 0.9, delay: R + 0.4, ease: EASE }}
             >
               <Pulsante href="#prenota">{t.hero.prenota}</Pulsante>
-              <Pulsante href="#menu" variante="chiaro" className="border border-inchiostro md:border-transparent">
+              <Pulsante href="#menu" variante="chiaro">
                 {t.hero.menu}
                 <ArrowDown size={18} weight="bold" aria-hidden="true" />
               </Pulsante>
