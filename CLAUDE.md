@@ -139,6 +139,10 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Instagram: @maqwebdesign (17/10), nome profilo "MAQ Web Design | Web Designer Roma"; nel sito (config.ts) e nei dati
   Google (sameAs). Foto profilo: `google-business/foto-profilo-instagram.png`. Icone del sito in `sito-maq/public/`
   (favicon.ico/svg, icon-192/512, apple-touch-icon), link con ?v=2 per forzare l'aggiornamento nei browser.
+- Lead "nascosti" (17/10, richiesta dell'utente: attività che nessuno contatta e che l'AI non mostra): artigiani e
+  botteghe (sarti, tappezzieri, calzolai, fabbri, fioristi, norcinerie, barberie di paese…) in periferia e provincia,
+  12–80 recensioni, voto ≥4,3, nessun sito, cellulare; verificare con WebSearch che online ci sia solo Google. Le
+  attività con 150+ recensioni in zone centrali sono già state chiamate da tanti: evitarle.
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
