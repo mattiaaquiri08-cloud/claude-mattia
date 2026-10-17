@@ -127,7 +127,13 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   ogni pagina (`scripts/prerender.mjs`: titolo, descrizione, canonical, dati strutturati, sitemap.xml, robots.txt).
   Pagine definite in `src/pagine.ts` (home + settori ristoranti, saloni/estetica, palestre + guida "Quanto costa un
   sito web"): per aggiungerne una basta un nuovo oggetto lì. Dominio previsto in `SITO_URL` (config.ts). Mai promettere
-  "primi su Google". Prezzi (16/10): sito indicativamente 390–690 €, il preventivo cambia da attività ad attività (nella guida costi, nelle FAQ e nei dati per Google). Da fare dall'utente: comprare il dominio, scheda Google Business "Designer di siti web", recensioni.
+  "primi su Google". Prezzi (16/10): sito indicativamente 390–690 €, il preventivo cambia da attività ad attività (nella guida costi, nelle FAQ e nei dati per Google). ONLINE dal 17/10: dominio maqwebdesign.com comprato su Cloudflare (intestato a Mattia, rinnovo automatico);
+  sito pubblicato con Cloudflare Workers (progetto "claude-mattia", root `sito-maq`, build `npm run build`, deploy
+  `npx wrangler deploy`, config `sito-maq/wrangler.jsonc`, ramo claude/intelligent-albattani-bti0iy): ogni push su quel
+  ramo va online da solo. Domini: maqwebdesign.com e www. Search Console verificata (proprietà Dominio), sitemap
+  `https://maqwebdesign.com/sitemap.xml` (per le proprietà Dominio serve l'URL completo). Il modulo Web3Forms non si può
+  provare dall'anteprima Claude né da questo server (Cloudflare di Web3Forms blocca i server): va provato dal browser
+  dell'utente. Da fare: scheda Google Business "Designer di siti web", recensioni.
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
