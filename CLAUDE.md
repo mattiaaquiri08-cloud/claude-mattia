@@ -131,9 +131,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   sito pubblicato con Cloudflare Workers (progetto "claude-mattia", root `sito-maq`, build `npm run build`, deploy
   `npx wrangler deploy`, config `sito-maq/wrangler.jsonc`, ramo claude/intelligent-albattani-bti0iy): ogni push su quel
   ramo va online da solo. Domini: maqwebdesign.com e www. Search Console verificata (proprietà Dominio), sitemap
-  `https://maqwebdesign.com/sitemap.xml` (per le proprietà Dominio serve l'URL completo). Il modulo Web3Forms non si può
-  provare dall'anteprima Claude né da questo server (Cloudflare di Web3Forms blocca i server): va provato dal browser
-  dell'utente. Scheda Google Business "MAQ Web Design" creata il 17/10 (categoria Web Designer, zone Roma + Città
+  `https://maqwebdesign.com/sitemap.xml` (per le proprietà Dominio serve l'URL completo). Il modulo Web3Forms FUNZIONA (provato
+  dall'utente il 18/10 dal sito online); non si può provare dall'anteprima Claude né da questo server (Cloudflare blocca i server). Scheda Google Business "MAQ Web Design" creata il 17/10 (categoria Web Designer, zone Roma + Città
   metropolitana, sede nascosta), verifica in corso (fino a 5 giorni); logo quadrato e copertina in `google-business/`.
   Da fare: orari reali, descrizione, servizi, foto, poi chiedere recensioni vere.
   Instagram: @maqwebdesign (17/10), nome profilo "MAQ Web Design | Web Designer Roma"; nel sito (config.ts) e nei dati
