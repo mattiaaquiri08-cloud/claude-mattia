@@ -98,6 +98,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Citare SEMPRE social/app di prenotazione: se verificati, "vedo che siete già attivi sui social";
   se non verificati, "immagino che siate presenti anche sui social o su qualche app di prenotazione"
   (formula vera in ogni caso, scelta dall'utente per non affermare cose non viste).
+  Siti già esistenti: giudicarli da uno SCREENSHOT (Chromium headless, desktop + telefono), mai solo dal testo HTML.
+  Lezione 18/10: BIG Cucina e Grill (EUR, big-grill.it su Wix) l'avevo detto "vecchio" dal codice, l'utente l'ha trovato molto bello.
   Lezione: Padel CAT sembrava senza sito ma aveva padelcatroma.it; dimensionebellezza.it era di un altro salone.
 - LEZIONE (16/10): dopo ~40 messaggi WhatsApp a numeri sconosciuti l'account dell'utente è stato
   limitato da WhatsApp. Non proporre più invii a freddo in serie: primo contatto con telefonata o visita,
