@@ -221,6 +221,14 @@
 }
 
 /* Splash: animazione in CSS puro, così parte prima ancora che React sia pronto */
+/* dentro il telefono della presentazione: niente barra di scorrimento del computer */
+:root.in-frame {
+  scrollbar-width: none;
+}
+:root.in-frame::-webkit-scrollbar {
+  display: none;
+}
+
 /* versione "proposta": spazio per la fascia in alto */
 :root.proposal {
   --banner-h: 30px;

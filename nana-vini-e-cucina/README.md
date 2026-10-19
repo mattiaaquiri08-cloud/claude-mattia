@@ -14,6 +14,8 @@ npm run images   # rigenera le foto ottimizzate da assets-src/ (AVIF + WebP)
 npm run icons    # rigenera favicon e icone dal logo
 npm run build:single  # crea nana-vini-e-cucina.html: tutto il sito in un solo file (circa 4 MB)
 npm run build:proposta  # crea nana-proposta.html: anteprima "proposta" con fascia in alto e prenotazioni disattivate
+                        # e anteprima/index.html: da computer mostra il sito dentro un telefono
+                        # (?desktop per la versione larga), da telefono si apre a schermo intero
 ```
 
 Il file unico si apre con un doppio clic, senza server: comodo per mostrare il sito in anteprima.
