@@ -80,7 +80,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   ritenuta 55 €, netto 220 € + 2 € rimborso bollo = 222 € di bonifico. Ricevuta n. 1/2026 (acconto) inviata
   il 16/10/2026; al saldo va la n. 2/2026, uguale (i dati personali dell'utente vanno richiesti di nuovo).
   Testi ufficiali del sito: li ha mandati Lilla Milli (social media manager di OMA, social@lillamilli.com) il
-  17/10 alla Outlook; sono in `TESTI` di site.ts, da non riscrivere. Le foto non sono ancora arrivate.
+  17/10 alla Outlook; sono in `TESTI` di site.ts, da non riscrivere. Foto chieste a Lilla il 19/10 (mail inviata):
+  scelte dallo shooting invernale di marzo 2026 + quelle autunnali del 19/10, tra cui la hero (Alessio e
+  Leonardo in piedi in sala con i calici). Devono arrivare per mail o WeTransfer, in qualità originale.
   Incontro di persona da OMA lunedì 19/10/2026: firma preventivo, dominio, QR, foto, mail Google. Committente: OMA SRL, Via
   Costantino Maes 78, 00162 Roma, P.IVA 18018171001, PEC oma@pecimprese.it, cod. univoco W7YVJK9.
 - Ricevute e documenti con dati personali (codice fiscale, IBAN, indirizzo dell'utente) NON vanno mai
