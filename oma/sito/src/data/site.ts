@@ -11,7 +11,7 @@ export const SITE = {
   phoneDisplay: '377 301 7230',
   phoneHref: 'tel:+393773017230',
   // Numero WhatsApp per le prenotazioni (prefisso internazionale, solo cifre)
-  whatsapp: '393773017230',
+  whatsapp: '393927641873',
   instagram: 'https://www.instagram.com/oma_osteriamoderna',
   instagramHandle: '@oma_osteriamoderna',
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Oma+osteria+moderna+Via+Costantino+Maes+78+Roma',
