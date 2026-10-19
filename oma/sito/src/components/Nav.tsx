@@ -109,6 +109,17 @@ export function Nav({ revealed }: { revealed: boolean }) {
             </ul>
 
             <div className="flex items-center gap-2">
+              <a
+                href={SITE.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Instagram di OMA (${SITE.instagramHandle})`}
+                className={`grid size-11 place-items-center rounded-full border backdrop-blur-md transition-colors ${
+                  onPhoto ? 'border-paper/40 bg-ink/30 text-paper hover:border-paper' : 'border-ink/20 text-ink hover:border-ink/50'
+                }`}
+              >
+                <InstagramLogo size={20} weight="bold" />
+              </a>
               <button
                 type="button"
                 onClick={openBooking}
