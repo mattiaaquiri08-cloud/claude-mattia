@@ -2,6 +2,12 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { LOGO_BUBBLES, LOGO_FISH, LOGO_TAGLINE, LOGO_WORD } from "../data/logo-paths";
 import { DISC } from "./Logo";
+import { SINGLE_FILE } from "./Photo";
+
+/** il sipario comincia ad alzarsi: parte l'ingresso della hero (vedi .hero-zoom e .hero-cta) */
+const startLeaving = () => {
+  if (document.documentElement.dataset.splash !== "skip") document.documentElement.dataset.splash = "leaving";
+};
 
 /*
   Splash di ~3 secondi costruita sul logo originale.
@@ -61,17 +67,21 @@ export function Splash() {
     }
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const total = reduce ? 1200 : TOTAL_MS;
-    // il conteggio parte dall'apertura della pagina, non da quando React è pronto
-    const elapsed = forced ? 0 : performance.now();
+    // il conteggio parte da quando la splash è comparsa: con l'HTML prerenderizzato è l'apertura
+    // della pagina; nella versione "file unico" la splash compare solo quando React è pronto
+    const elapsed = forced || SINGLE_FILE ? 0 : performance.now();
     const wait = Math.max(300, total - EXIT_S * 1000 - elapsed);
-    const timer = window.setTimeout(() => setVisible(false), wait);
+    const timer = window.setTimeout(() => {
+      startLeaving();
+      setVisible(false);
+    }, wait);
     return () => window.clearTimeout(timer);
   }, []);
 
   return (
     <AnimatePresence
       onExitComplete={() => {
-        if (document.documentElement.dataset.splash !== "skip") document.documentElement.dataset.splash = "done";
+        if (document.documentElement.dataset.splash === "leaving") document.documentElement.dataset.splash = "done";
       }}
     >
       {visible ? (
@@ -82,7 +92,7 @@ export function Splash() {
           exit={{ clipPath: "inset(0% 0% 100% 0%)" }}
           transition={{ duration: EXIT_S, ease: [0.76, 0, 0.24, 1] }}
           onClick={() => {
-            document.documentElement.dataset.splash = "done";
+            startLeaving();
             setVisible(false);
           }}
           aria-hidden

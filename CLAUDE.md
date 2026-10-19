@@ -64,6 +64,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Ottimizzazione immagini (`npm run images`): AVIF è lento, lanciarla in background con timeout lungo;
   lo script salta i file già generati (`--force` per rigenerare). Per attendere un processo non usare
   `pgrep -f` con lo stesso testo del comando: trova anche il ciclo di attesa e non termina mai.
+- Animazioni CSS legate alla splash: non cambiare mai `animation-delay` di un'animazione già partita
+  (salta di colpo alla fine: era lo "scatto" dopo la splash di Nanà). Tenerle in
+  `animation-play-state: paused` finché la splash è a schermo e farle ripartire all'uscita.
 - Su smartphone non usare `100dvh` per sezioni alte quanto lo schermo: cambia con la barra del browser
   e fa "rimbalzare" lo scroll. Usare `100svh` (altezza fissa).
 - Anteprime da condividere: link githack al file nel repository pubblico, usando lo SHA del commit

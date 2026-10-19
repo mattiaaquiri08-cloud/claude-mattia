@@ -37,9 +37,12 @@
         }
         root.setAttribute("data-daypart", daypart);
 
+        var seen = false;
         try {
-          if (!q.has("splash") && sessionStorage.getItem("nana-splash-seen")) root.setAttribute("data-splash", "skip");
+          seen = !q.has("splash") && !!sessionStorage.getItem("nana-splash-seen");
         } catch (e) {}
+        // "on": splash a schermo, l'ingresso della hero aspetta che il sipario si alzi
+        root.setAttribute("data-splash", seen ? "skip" : "on");
 
         if (window.__NANA_IMG) return; // versione "file unico": immagini già incorporate
         var name = daypart === "day" ? "giorno" : "sera";

@@ -230,20 +230,22 @@
   display: none;
 }
 
-/* Ingresso della hero, sincronizzato con l'uscita della splash (anche senza JavaScript) */
+/*
+  Ingresso della hero. Mentre la splash è a schermo (data-splash="on") le animazioni sono in pausa
+  sul primo fotogramma; ripartono nell'istante in cui il sipario si alza (data-splash="leaving"),
+  quindi non c'è nessun salto. Senza splash (già vista, o senza JavaScript) partono subito al caricamento.
+*/
 .hero-cta {
-  animation: hero-cta 0.9s 2.45s var(--ease-out-soft) both;
+  animation: hero-cta 0.9s 0.3s var(--ease-out-soft) both;
 }
 .hero-zoom {
-  animation: hero-zoom 2.8s 2.1s var(--ease-out-soft) both;
+  animation: hero-zoom 2.6s var(--ease-out-soft) both;
+  will-change: transform;
 }
-:root[data-splash="skip"] .hero-cta,
-:root[data-splash="done"] .hero-cta {
-  animation-delay: 0.25s;
-}
-:root[data-splash="skip"] .hero-zoom,
-:root[data-splash="done"] .hero-zoom {
-  animation-delay: 0s;
+:root[data-splash="on"] .hero-cta,
+:root[data-splash="on"] .hero-zoom {
+  /* in pausa sul primo fotogramma: quando il sipario si alza riprendono da lì, senza salti */
+  animation-play-state: paused;
 }
 @keyframes hero-cta {
   from {
