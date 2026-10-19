@@ -208,9 +208,9 @@ export function Menu() {
               </p>
               <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium">
                 <a
-                  href="./menu/vini-e-bevande.pdf"
+                  href={SITE.menuUrl}
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener noreferrer"
                   className="inline-flex min-h-11 items-center gap-2 text-cream underline decoration-line underline-offset-[6px] transition-colors hover:text-ochre hover:decoration-ochre"
                 >
                   <FilePdf size={20} />
