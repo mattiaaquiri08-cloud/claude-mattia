@@ -1,6 +1,6 @@
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from 'motion/react'
 import { useRef } from 'react'
-import { SITE } from '../data/site'
+import { SITE, TESTI } from '../data/site'
 
 const WORDS = `${SITE.slogan[0]} ${SITE.slogan[1]}`.split(' ')
 const ACCENT = new Set(["nonna.", "zia."])
@@ -66,19 +66,9 @@ export function Manifesto() {
               viewport={{ once: true, amount: 0.6 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              Oma vuol dire nonna. Il resto lo capisci al primo assaggio.
+              {TESTI.chiSiamo.titolo}
             </motion.h2>
-            <div className="mt-7 max-w-[56ch] space-y-5 text-lg leading-relaxed text-cream/80">
-              <p>
-                Leonardo e Alessio hanno aperto OMA in Via Costantino Maes con un'idea semplice:{' '}
-                <span className="text-cream">pochi piatti, fatti bene.</span> Le ricette di casa, rilette con il gusto di
-                oggi.
-              </p>
-              <p>
-                Materie prime scelte con cura, un menu che segue le stagioni e una carta di vini di piccoli produttori.
-                A pranzo, a cena e per l'aperitivo.
-              </p>
-            </div>
+            <p className="mt-7 max-w-[56ch] text-lg leading-relaxed text-cream/80">{TESTI.chiSiamo.testo}</p>
 
             <dl className="mt-12 grid grid-cols-3 gap-4 border-t border-line pt-8">
               {[

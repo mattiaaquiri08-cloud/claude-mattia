@@ -2,7 +2,7 @@ import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'motion/r
 import { useRef, useState, type KeyboardEvent } from 'react'
 import { useLiveData } from '../lib/live-data'
 import { ArrowUpRight, FilePdf, Heart } from '@phosphor-icons/react'
-import { SITE, type Dish } from '../data/site'
+import { SITE, TESTI, type Dish } from '../data/site'
 
 // Il cibo cambia ogni settimana e sta nel PDF del ristorante (link del QR): sul sito restano vini e drink
 const DRINK_SECTIONS = new Set(['vini', 'drink'])
@@ -43,11 +43,12 @@ export function Menu() {
   return (
     <section id="menu" className="relative border-t border-line bg-coal px-4 py-24 md:px-8 md:py-32">
       <div className="mx-auto max-w-[1400px]">
-        <div className="flex flex-col gap-4">
-          <h2 className="font-display text-5xl leading-none font-semibold tracking-[-0.03em] md:text-7xl">Il menu</h2>
-          <p className="max-w-[52ch] text-lg leading-relaxed text-cream/75">
-            Cambia ogni settimana, con quello che offre la stagione.
-          </p>
+        <div className="flex flex-col gap-5">
+          <p className="text-xs font-semibold tracking-[0.2em] text-ochre uppercase">Il menu</p>
+          <h2 className="max-w-[16ch] font-display text-4xl leading-[1.02] font-semibold tracking-[-0.03em] text-balance md:text-7xl">
+            {TESTI.menu.titolo}
+          </h2>
+          <p className="max-w-[60ch] text-lg leading-relaxed text-cream/75">{TESTI.menu.testo}</p>
         </div>
 
         {/* Menu della settimana: porta allo stesso link del QR code al tavolo */}
@@ -73,8 +74,8 @@ export function Menu() {
               Il menu della settimana
             </h3>
             <p className="max-w-[46ch] text-lg leading-relaxed text-cream/75">
-              Antipasti, primi, secondi e dolci cambiano ogni settimana. Qui trovi sempre quello aggiornato, lo
-              stesso del QR code che trovi al tavolo.
+              Antipasti, primi, secondi e dolci di questa settimana. Qui trovi sempre quello aggiornato, lo stesso
+              del QR code che trovi al tavolo.
             </p>
             <a href={SITE.menuUrl} target="_blank" rel="noopener noreferrer" className="btn-primary self-start">
               Apri il menu
@@ -83,7 +84,17 @@ export function Menu() {
           </div>
         </motion.div>
 
-        <h3 className="mt-24 font-display text-3xl font-semibold tracking-tight md:mt-32 md:text-4xl">Vini e drink</h3>
+        <div className="mt-24 grid grid-cols-1 gap-6 md:mt-32 md:grid-cols-12 md:items-end md:gap-8">
+          <div className="md:col-span-6">
+            <p className="mb-5 text-xs font-semibold tracking-[0.2em] text-ochre uppercase">Vini e drink</p>
+            <h3 className="font-display text-4xl leading-[1.02] font-semibold tracking-[-0.03em] text-balance md:text-6xl">
+              {TESTI.vino.titolo}
+            </h3>
+          </div>
+          <p className="max-w-[52ch] text-lg leading-relaxed text-cream/75 md:col-span-5 md:col-start-8">
+            {TESTI.vino.testo}
+          </p>
+        </div>
 
         {/* Schede delle portate */}
         <LayoutGroup id="menu-tabs">

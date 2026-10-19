@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from 'motion/react'
 import { Asterisk } from '@phosphor-icons/react'
-import { APERITIVO } from '../data/site'
+import { APERITIVO, TESTI } from '../data/site'
 
 /** Fascia ocra con l'unico marquee della pagina: i drink dell'aperitivo. */
 export function Aperitivo() {
@@ -18,11 +18,14 @@ export function Aperitivo() {
           viewport={{ once: true, amount: 0.6 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          {APERITIVO.title}: drink e tagliere a {APERITIVO.price} €
+          {TESTI.aperitivo.titolo}
         </motion.h2>
-        <p className="max-w-[30ch] text-lg leading-snug font-medium text-ink/80">
-          {APERITIVO.detail}, per cominciare bene la serata.
-        </p>
+        <div className="max-w-[46ch] space-y-3 text-lg leading-snug font-medium text-ink/80">
+          <p>{TESTI.aperitivo.testo}</p>
+          <p className="text-ink">
+            {APERITIVO.title}: {APERITIVO.detail.toLowerCase()} a {APERITIVO.price} €.
+          </p>
+        </div>
       </div>
 
       <div className="marquee mt-12 flex overflow-hidden border-y border-ink/15 py-5 md:mt-16" aria-hidden="true">

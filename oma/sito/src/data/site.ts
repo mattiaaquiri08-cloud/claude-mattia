@@ -24,6 +24,56 @@ export const SITE = {
   sheetId: '1omQ0g1XPfdXOwEmJykII2BDh1DOqi2_z0fcROg64AUk',
 } as const
 
+/* ---------- Testi del sito (forniti da Lilla Milli, social media manager di OMA) ---------- */
+
+export const TESTI = {
+  chiSiamo: {
+    titolo: 'Due teste diverse. Una stessa idea di cucina.',
+    testo:
+      'Siamo Alessio e Leonardo. OMA è la nostra Osteria Moderna: un posto dove la tradizione incontra tutto quello che ci piace mangiare, scoprire e sperimentare. Facciamo le cose a modo nostro. E ci mettiamo la faccia.',
+  },
+  cucina: [
+    {
+      etichetta: 'Food',
+      titolo: 'Una cucina povera. Di idee, mai.',
+      testo:
+        'La cucina di OMA è semplice, pura e autentica. Ingredienti buoni, zero sprechi e rispetto per la materia prima. Riscopriamo le ricette delle nostre nonne e le portiamo ai giorni nostri. Una cucina povera, vera e circolare, dove nulla si spreca e tutto si trasforma.',
+    },
+    {
+      etichetta: 'Il mercato',
+      titolo: 'Se non c’è, non c’è.',
+      testo:
+        'Ogni mattina il mercato decide. Noi seguiamo. Scegliamo le materie prime in base a quello che troviamo, non a quello che dobbiamo per forza avere in menù. Sulla qualità, invece, non trattiamo.',
+    },
+    {
+      etichetta: 'I nostri piatti',
+      titolo: 'Nonna approva. (Quasi sempre.)',
+      testo:
+        'Partiamo dai piatti con cui siamo cresciuti. Quelli delle nonne, delle domeniche in famiglia e delle pentole lasciate sul fuoco per ore. Poi ci mettiamo quello che abbiamo imparato viaggiando, assaggiando e sperimentando: tecniche nuove, abbinamenti diversi e qualche idea che a nonna forse non sarebbe venuta. La tradizione ci piace. Ma non significa fare sempre le stesse cose.',
+    },
+  ],
+  menu: {
+    titolo: 'Il menù c’ha rotto er c***o.',
+    testo:
+      'Il menù cambia ogni settimana. A volte anche prima. Ci piace lavorare con quello che offre la stagione, cambiare idea, provare ricette nuove e rimettere mano a quelle che già conoscete. Se trovi un piatto che ti piace, goditelo. Non è detto che la prossima volta ci sia.',
+  },
+  vino: {
+    titolo: 'Ci piace il vino. Di brutto.',
+    testo:
+      'La nostra carta dei vini non segue schemi tradizionali: niente classificazioni per stile, regione o gusto, ma una selezione in continua evoluzione. Ogni etichetta nasce da una scelta consapevole, fondata sul rispetto per i vignaioli, il loro lavoro e la storia che ogni bottiglia porta con sé.',
+  },
+  aperitivo: {
+    titolo: 'Il sabato si fa sul serio. Ma non troppo.',
+    testo:
+      'Il sabato da OMA è tapas, calici e voglia di stare insieme. Piccoli piatti da condividere, qualcosa di buono da bere e un aperitivo che vogliamo diventi un appuntamento fisso per il Quartiere Africano. E pure per chi arriva da un po’ più lontano.',
+  },
+  eventi: {
+    titolo: 'Ogni tanto ci inventiamo qualcosa.',
+    testo:
+      'Degustazioni, serate speciali, collaborazioni con produttori e amici che condividono la nostra stessa passione per il cibo e il vino. Ci piace creare occasioni per incontrarsi, conoscersi e passare una bella serata. Senza troppe cerimonie. Non abbiamo un calendario sempre uguale: per sapere cosa bolle in pentola, seguici su Instagram. Magari la prossima volta ci sei pure tu.',
+  },
+}
+
 /* ---------- Orari (fonte: scheda Google) ---------- */
 
 export type Slot = [open: string, close: string]

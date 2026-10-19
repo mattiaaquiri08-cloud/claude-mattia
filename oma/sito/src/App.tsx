@@ -4,6 +4,8 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Aperitivo } from './components/Aperitivo'
 import { BookingContext } from './components/booking-context'
 import { BookingDialog } from './components/BookingDialog'
+import { Cucina } from './components/Cucina'
+import { Eventi } from './components/Eventi'
 import { FinalCta } from './components/FinalCta'
 import { Footer } from './components/Footer'
 import { Gallery } from './components/Gallery'
@@ -47,8 +49,10 @@ export default function App() {
           <main id="main">
             <Hero revealed={revealed} />
             <Manifesto />
+            <Cucina />
             <Menu />
             <Aperitivo />
+            <Eventi />
             <Gallery />
             <Reviews />
             <Visit />

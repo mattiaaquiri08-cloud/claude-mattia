@@ -35,6 +35,7 @@ Tutto è in **`src/data/site.ts`**:
 | Telefono, indirizzo, Instagram | `SITE` |
 | Orari (usati anche per gli orari prenotabili) | `HOURS` |
 | Menu, vini e drink | `MENU` |
+| Testi delle sezioni (chi siamo, cucina, menu, vino, aperitivo, eventi) | `TESTI` |
 | Aperitivo | `APERITIVO` |
 | Foto della galleria | `GALLERY` (file in `public/img/`) |
 | Recensioni e voti | `REVIEWS`, `RATINGS` |
@@ -55,8 +56,10 @@ la richiesta parte solo quando il cliente preme Invia su WhatsApp. Il sito non m
 - `src/components/Splash.tsx`: intro con la scritta OMA "dipinta" e doppio sipario
 - `src/components/Hero.tsx`: foto a tutto schermo con i due pulsanti
 - `src/components/Manifesto.tsx`: slogan che si accende con lo scroll e la storia
-- `src/components/Menu.tsx`: menu a schede (antipasti, primi, secondi, contorni, dolci, vini, drink)
-- `src/components/Aperitivo.tsx`: fascia dell'aperitivo
+- `src/components/Cucina.tsx`: la filosofia in tre righe (Food, Il mercato, I nostri piatti)
+- `src/components/Menu.tsx`: pulsante del menu della settimana (link del QR) e carta di vini e drink a schede
+- `src/components/Aperitivo.tsx`: fascia dell'aperitivo del sabato
+- `src/components/Eventi.tsx`: eventi e serate, con rimando a Instagram
 - `src/components/Gallery.tsx`: griglia di foto con visore (frecce, tastiera, swipe)
 - `src/components/Reviews.tsx`: voto Google e mazzo di recensioni
 - `src/components/Visit.tsx`: indirizzo, mappa, orari con stato "aperto ora"
