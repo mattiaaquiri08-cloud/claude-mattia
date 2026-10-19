@@ -3,7 +3,9 @@
 /*
   OMA: palette e font del brand, gli stessi dei loro social (indicati dalla social media manager).
   Avorio per lo sfondo, nero principale, ocra per i dettagli. Tema chiaro unico.
-  Font: Playfair Display per i titoli, Urbanist per etichette e testo, alternati.
+  Font: titoli alternati tra Playfair Display e il pennello dei loro social (scritta a mano maiuscola,
+  come "A PRANZO E A CENA." nelle storie); testo in Urbanist. Il pennello per ora è Permanent Marker:
+  va sostituito con il file del font esatto quando lo manda la social media manager.
   L'ocra #AD6A21 su avorio ha contrasto 4:1: va bene per titoli e dettagli grandi;
   per testo piccolo si usa ochre-deep (5,7:1).
 
@@ -24,6 +26,7 @@
 
   --font-display: 'Playfair Display Variable', ui-serif, Georgia, serif;
   --font-sans: 'Urbanist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-pennello: 'Permanent Marker', 'Urbanist Variable', cursive;
 
   --radius-media: 20px;
   --radius-field: 14px;

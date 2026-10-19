@@ -5,8 +5,8 @@ import { SITE, TESTI, type Sezione } from '../data/site'
 
 /*
   Le macro-sezioni del sito, nell'ordine dei testi della social media manager.
-  Ogni sezione ha il nome (Urbanist maiuscolo), il titolo e il testo (Urbanist).
-  I titoli alternano i due font del brand: una sezione Playfair Display, la successiva Urbanist.
+  Ogni sezione ha il nome (a pennello, come nei loro post), il titolo e il testo (Urbanist).
+  I titoli alternano i due font del brand: una sezione Playfair Display, la successiva il pennello.
   Le foto sono provvisorie: verranno sostituite con quelle mandate dal ristorante.
 */
 
@@ -22,11 +22,11 @@ function useReveal(delay = 0) {
   } as const
 }
 
-/** Nome della sezione, come nei loro post: maiuscolo spaziato con un filo ocra. */
+/** Nome della sezione a pennello, come le scritte delle loro storie, con un filo ocra. */
 function Nome({ children, dark = false }: { children: ReactNode; dark?: boolean }) {
   return (
     <p
-      className={`flex items-center gap-3 text-[0.8rem] font-extrabold tracking-[0.22em] uppercase ${
+      className={`flex items-center gap-3 font-pennello text-xl tracking-[0.04em] uppercase md:text-2xl ${
         dark ? 'text-paper/80' : 'text-ochre-deep'
       }`}
     >
@@ -38,7 +38,7 @@ function Nome({ children, dark = false }: { children: ReactNode; dark?: boolean 
 
 /**
  * Titolo: dalla seconda frase in poi va in ocra (es. "Di idee, mai.").
- * serif = Playfair Display con la seconda frase in corsivo; sans = Urbanist extrabold.
+ * serif = Playfair Display con la seconda frase in corsivo; pennello = scritta a mano maiuscola.
  */
 function Titolo({
   testo,
@@ -47,7 +47,7 @@ function Titolo({
   id,
 }: {
   testo: string
-  font?: 'serif' | 'sans'
+  font?: 'serif' | 'pennello'
   className?: string
   id?: string
 }) {
@@ -61,7 +61,7 @@ function Titolo({
       className={`pb-1 text-balance ${
         serif
           ? 'font-display leading-[1.1] font-medium tracking-[-0.01em]'
-          : 'font-sans leading-[1.02] font-extrabold tracking-[-0.03em]'
+          : 'font-pennello leading-[1.08] tracking-[0.01em] uppercase'
       } ${className}`}
     >
       {first}
@@ -135,7 +135,7 @@ function Food({ s }: { s: Sezione }) {
       <div className="mx-auto max-w-[1400px]">
         <motion.div {...reveal}>
           <Nome>{s.nome}</Nome>
-          <Titolo id={`${s.id}-t`} testo={s.titolo} font="sans" className="mt-6 max-w-[14ch] text-5xl md:text-8xl" />
+          <Titolo id={`${s.id}-t`} testo={s.titolo} font="pennello" className="mt-6 max-w-[16ch] text-5xl md:text-7xl" />
         </motion.div>
         <div className="mt-14 grid grid-cols-1 gap-8 md:mt-20 md:grid-cols-12 md:items-end">
           <motion.div {...revealLate} className="grid grid-cols-2 gap-4 md:col-span-7">
@@ -188,7 +188,7 @@ function Menu({ s }: { s: Sezione }) {
         </div>
         <div className="flex flex-col justify-center gap-7 p-8 md:col-span-7 md:p-16">
           <Nome>{s.nome}</Nome>
-          <Titolo id={`${s.id}-t`} testo={s.titolo} font="sans" className="text-4xl md:text-6xl" />
+          <Titolo id={`${s.id}-t`} testo={s.titolo} font="pennello" className="text-4xl md:text-6xl" />
           <Testo>{s.testo}</Testo>
           <a href={SITE.menuUrl} target="_blank" rel="noopener noreferrer" className="btn-primary self-start">
             Menu
@@ -245,7 +245,7 @@ function Aperitivo({ s }: { s: Sezione }) {
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-12 md:grid-cols-12 md:gap-8">
         <motion.div {...reveal} className="md:col-span-6">
           <Nome dark>{s.nome}</Nome>
-          <Titolo id={`${s.id}-t`} testo={s.titolo} font="sans" className="mt-6 text-5xl md:text-7xl" />
+          <Titolo id={`${s.id}-t`} testo={s.titolo} font="pennello" className="mt-6 text-4xl md:text-6xl" />
           <p className="mt-8 max-w-[52ch] text-lg leading-relaxed font-medium text-paper/85">{s.testo}</p>
         </motion.div>
         <motion.div {...reveal} className="md:col-span-5 md:col-start-8">
@@ -289,7 +289,7 @@ function Eventi({ s }: { s: Sezione }) {
     <section id={s.id} aria-labelledby={`${s.id}-t`} className="border-t border-line px-4 py-24 md:px-8 md:py-32">
       <motion.div {...reveal} className="mx-auto max-w-[900px]">
         <Nome>{s.nome}</Nome>
-        <Titolo id={`${s.id}-t`} testo={s.titolo} font="sans" className="mt-6 text-5xl md:text-7xl" />
+        <Titolo id={`${s.id}-t`} testo={s.titolo} font="pennello" className="mt-6 text-4xl md:text-6xl" />
         <Testo className="mt-8">{s.testo}</Testo>
         <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" className="btn-primary mt-10">
           <InstagramLogo size={18} weight="bold" />
