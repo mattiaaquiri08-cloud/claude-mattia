@@ -5,7 +5,8 @@ import { SITE, TESTI, type Sezione } from '../data/site'
 
 /*
   Le macro-sezioni del sito, nell'ordine dei testi della social media manager.
-  Ogni sezione ha il nome (Urbanist maiuscolo), il titolo (Playfair Display) e il testo.
+  Ogni sezione ha il nome (Urbanist maiuscolo), il titolo e il testo (Urbanist).
+  I titoli alternano i due font del brand: una sezione Playfair Display, la successiva Urbanist.
   Le foto sono provvisorie: verranno sostituite con quelle mandate dal ristorante.
 */
 
@@ -35,18 +36,39 @@ function Nome({ children, dark = false }: { children: ReactNode; dark?: boolean 
   )
 }
 
-/** Titolo in Playfair: dalla seconda frase in poi va in corsivo ocra (es. "Di idee, mai."). */
-function Titolo({ testo, className = '', id }: { testo: string; className?: string; id?: string }) {
+/**
+ * Titolo: dalla seconda frase in poi va in ocra (es. "Di idee, mai.").
+ * serif = Playfair Display con la seconda frase in corsivo; sans = Urbanist extrabold.
+ */
+function Titolo({
+  testo,
+  font = 'serif',
+  className = '',
+  id,
+}: {
+  testo: string
+  font?: 'serif' | 'sans'
+  className?: string
+  id?: string
+}) {
   const cut = testo.indexOf('. ')
   const first = cut === -1 ? testo : testo.slice(0, cut + 1)
   const rest = cut === -1 ? '' : testo.slice(cut + 2)
+  const serif = font === 'serif'
   return (
-    <h2 id={id} className={`pb-1 font-display leading-[1.1] font-medium tracking-[-0.01em] text-balance ${className}`}>
+    <h2
+      id={id}
+      className={`pb-1 text-balance ${
+        serif
+          ? 'font-display leading-[1.1] font-medium tracking-[-0.01em]'
+          : 'font-sans leading-[1.02] font-extrabold tracking-[-0.03em]'
+      } ${className}`}
+    >
       {first}
       {rest && (
         <>
           {' '}
-          <em className="text-ochre">{rest}</em>
+          {serif ? <em className="text-ochre">{rest}</em> : <span className="text-ochre">{rest}</span>}
         </>
       )}
     </h2>
@@ -54,7 +76,7 @@ function Titolo({ testo, className = '', id }: { testo: string; className?: stri
 }
 
 function Testo({ children, className = '' }: { children: ReactNode; className?: string }) {
-  return <p className={`max-w-[56ch] text-lg leading-relaxed text-ink/80 ${className}`}>{children}</p>
+  return <p className={`max-w-[56ch] text-lg leading-relaxed font-medium text-ink/85 ${className}`}>{children}</p>
 }
 
 function Foto({ src, alt, w, h, className = '' }: { src: string; alt: string; w: number; h: number; className?: string }) {
@@ -113,7 +135,7 @@ function Food({ s }: { s: Sezione }) {
       <div className="mx-auto max-w-[1400px]">
         <motion.div {...reveal}>
           <Nome>{s.nome}</Nome>
-          <Titolo id={`${s.id}-t`} testo={s.titolo} className="mt-6 max-w-[14ch] text-5xl md:text-8xl" />
+          <Titolo id={`${s.id}-t`} testo={s.titolo} font="sans" className="mt-6 max-w-[14ch] text-5xl md:text-8xl" />
         </motion.div>
         <div className="mt-14 grid grid-cols-1 gap-8 md:mt-20 md:grid-cols-12 md:items-end">
           <motion.div {...revealLate} className="grid grid-cols-2 gap-4 md:col-span-7">
@@ -166,7 +188,7 @@ function Menu({ s }: { s: Sezione }) {
         </div>
         <div className="flex flex-col justify-center gap-7 p-8 md:col-span-7 md:p-16">
           <Nome>{s.nome}</Nome>
-          <Titolo id={`${s.id}-t`} testo={s.titolo} className="text-4xl md:text-6xl" />
+          <Titolo id={`${s.id}-t`} testo={s.titolo} font="sans" className="text-4xl md:text-6xl" />
           <Testo>{s.testo}</Testo>
           <a href={SITE.menuUrl} target="_blank" rel="noopener noreferrer" className="btn-primary self-start">
             Menu
@@ -223,8 +245,8 @@ function Aperitivo({ s }: { s: Sezione }) {
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-12 md:grid-cols-12 md:gap-8">
         <motion.div {...reveal} className="md:col-span-6">
           <Nome dark>{s.nome}</Nome>
-          <Titolo id={`${s.id}-t`} testo={s.titolo} className="mt-6 text-5xl md:text-7xl" />
-          <p className="mt-8 max-w-[52ch] text-lg leading-relaxed text-paper/80">{s.testo}</p>
+          <Titolo id={`${s.id}-t`} testo={s.titolo} font="sans" className="mt-6 text-5xl md:text-7xl" />
+          <p className="mt-8 max-w-[52ch] text-lg leading-relaxed font-medium text-paper/85">{s.testo}</p>
         </motion.div>
         <motion.div {...reveal} className="md:col-span-5 md:col-start-8">
           <Foto src="./img/g-sala.webp" alt="La sala di OMA la sera, con le luci ambra" w={1400} h={787} className="aspect-[4/3]" />
@@ -267,7 +289,7 @@ function Eventi({ s }: { s: Sezione }) {
     <section id={s.id} aria-labelledby={`${s.id}-t`} className="border-t border-line px-4 py-24 md:px-8 md:py-32">
       <motion.div {...reveal} className="mx-auto max-w-[900px]">
         <Nome>{s.nome}</Nome>
-        <Titolo id={`${s.id}-t`} testo={s.titolo} className="mt-6 text-5xl md:text-7xl" />
+        <Titolo id={`${s.id}-t`} testo={s.titolo} font="sans" className="mt-6 text-5xl md:text-7xl" />
         <Testo className="mt-8">{s.testo}</Testo>
         <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" className="btn-primary mt-10">
           <InstagramLogo size={18} weight="bold" />

@@ -64,8 +64,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Prenotazioni dei ristoranti: modulo che apre WhatsApp con il messaggio già compilato, mai
   conferme simulate.
 - Progetto OMA Osteria Moderna (cartella `oma/`): dal 19/10 brand dei loro social, deciso dalla social
-  media manager: sfondo avorio #f8f7e8, nero #171415 principale, ocra #AD6A21 per i dettagli; titoli Playfair
-  Display, testo Urbanist. Sito diviso nelle loro macro-sezioni (`TESTI` in site.ts, `Sezioni.tsx`); hero con
+  media manager: sfondo avorio #f8f7e8, nero #171415 principale, ocra #AD6A21 per i dettagli; titoli alternati
+  per sezione tra Playfair Display e Urbanist extrabold (l'utente vuole vedere Urbanist), testo Urbanist medium. Sito diviso nelle loro macro-sezioni (`TESTI` in site.ts, `Sezioni.tsx`); hero con
   Prenota ora + Menu (Linktree) affiancati. Hero e foto definitive le manda il ristorante (ora provvisorie). WhatsApp Business per le prenotazioni: +39 392 764 1873 (dal 19/10, `SITE.whatsapp`); il
   377 301 7230 resta come telefono per chiamare.
   Referente: Alessio. Preventivo: Completo 550 €, Base 450 €. Il 13/10/2026 hanno scelto il Completo,
