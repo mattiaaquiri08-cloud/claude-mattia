@@ -1,19 +1,12 @@
 import { IconContext } from '@phosphor-icons/react'
 import { MotionConfig } from 'motion/react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Aperitivo } from './components/Aperitivo'
 import { BookingContext } from './components/booking-context'
 import { BookingDialog } from './components/BookingDialog'
-import { Cucina } from './components/Cucina'
-import { Eventi } from './components/Eventi'
-import { FinalCta } from './components/FinalCta'
 import { Footer } from './components/Footer'
-import { Gallery } from './components/Gallery'
 import { Hero } from './components/Hero'
-import { Manifesto } from './components/Manifesto'
-import { Menu } from './components/Menu'
 import { Nav } from './components/Nav'
-import { Reviews } from './components/Reviews'
+import { Sezioni } from './components/Sezioni'
 import { Splash } from './components/Splash'
 import { Visit } from './components/Visit'
 import { loadLiveData } from './lib/live-data'
@@ -29,7 +22,7 @@ export default function App() {
   // le icone accompagnano sempre un testo o un aria-label: per gli screen reader sono decorative
   const icons = useMemo(() => ({ 'aria-hidden': true as const }), [])
 
-  // menu, orari e avviso aggiornati dal Foglio Google del ristorante
+  // orari e avviso aggiornati dal Foglio Google
   useEffect(() => {
     loadLiveData()
   }, [])
@@ -41,22 +34,15 @@ export default function App() {
           <Splash onReveal={onReveal} />
           <a
             href="#main"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-full focus:bg-ochre focus:px-5 focus:py-3 focus:text-ink"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-full focus:bg-ink focus:px-5 focus:py-3 focus:text-paper"
           >
             Vai al contenuto
           </a>
           <Nav revealed={revealed} />
           <main id="main">
             <Hero revealed={revealed} />
-            <Manifesto />
-            <Cucina />
-            <Menu />
-            <Aperitivo />
-            <Eventi />
-            <Gallery />
-            <Reviews />
+            <Sezioni />
             <Visit />
-            <FinalCta />
           </main>
           <Footer />
           <BookingDialog open={bookingOpen} onClose={closeBooking} />

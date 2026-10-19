@@ -63,14 +63,16 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   unico file dati (es. `oma/sito/src/data/site.ts`) così si aggiornano senza toccare i componenti.
 - Prenotazioni dei ristoranti: modulo che apre WhatsApp con il messaggio già compilato, mai
   conferme simulate.
-- Progetto OMA Osteria Moderna (cartella `oma/`): tema scuro, accento ocra del logo (#d2772c),
-  font Bricolage Grotesque + Geist. WhatsApp prenotazioni: 377 301 7230 (confermato dall'utente).
+- Progetto OMA Osteria Moderna (cartella `oma/`): dal 19/10 brand dei loro social, deciso dalla social
+  media manager: sfondo avorio #f8f7e8, nero #171415 principale, ocra #AD6A21 per i dettagli; titoli Playfair
+  Display, testo Urbanist. Sito diviso nelle loro macro-sezioni (`TESTI` in site.ts, `Sezioni.tsx`); hero con
+  Prenota ora + Menu (Linktree) affiancati. Hero e foto definitive le manda il ristorante (ora provvisorie). WhatsApp prenotazioni: 377 301 7230 (confermato dall'utente).
   Referente: Alessio. Preventivo: Completo 550 €, Base 450 €. Il 13/10/2026 hanno scelto il Completo,
   dominio omaosteriamoderna.com (libero a quella data, da registrare a nome del ristorante).
   Il menu della settimana resta il loro PDF su Linktree (stesso link del QR, `SITE.menuUrl` = linktr.ee/omaosteriamoderna,
   confermato dall'utente il 19/10; lì ci sono anche i PDF di vini e menu inglese; il QR è fatto con QR.io, quindi nel sito va la destinazione finale
-  e non il link qr.io, che smette di funzionare se scade il loro abbonamento): sul sito c'è il pulsante "Apri il menu"; nel sito restano solo vini e
-  drink (filtro in Menu.tsx). Il Foglio Google resta per orari, avvisi, vini e drink.
+  e non il link qr.io, che smette di funzionare se scade il loro abbonamento): i pulsanti "Menu" e "Carta dei vini" portano lì;
+  la carta dei vini non è più nel sito. Il Foglio Google serve solo per orari e avviso.
   Pagamenti OMA: 2 ricevute per prestazione occasionale (acconto e saldo, 275 € lordi ciascuna).
   Al 16/10/2026 nulla pagato: si attendono ragione sociale, P.IVA, sede di OMA e risposta del loro
   commercialista sulla ritenuta. Il 16/10/2026 confermato: ritenuta 20% sì. Per ogni rata: lordo 275 €,

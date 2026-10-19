@@ -8,9 +8,11 @@ import { useLiveData } from '../lib/live-data'
 
 const LINKS = [
   { id: 'chi-siamo', label: 'Chi siamo' },
-  { id: 'menu', label: 'Menu' },
-  { id: 'galleria', label: 'Galleria' },
-  { id: 'recensioni', label: 'Recensioni' },
+  { id: 'food', label: 'Food' },
+  { id: 'menu', label: 'Menù' },
+  { id: 'aperitivo', label: 'Aperitivo' },
+  { id: 'wine', label: 'Wine' },
+  { id: 'eventi', label: 'Eventi' },
   { id: 'dove-siamo', label: 'Dove siamo' },
 ]
 
@@ -21,6 +23,8 @@ export function Nav({ revealed }: { revealed: boolean }) {
   const [solid, setSolid] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const { notice } = useLiveData()
+  // sopra la foto della hero la barra è trasparente e chiara, poi diventa avorio
+  const onPhoto = !solid && !menuOpen
 
   useMotionValueEvent(scrollY, 'change', (v) => {
     const next = v > 40
@@ -57,7 +61,7 @@ export function Nav({ revealed }: { revealed: boolean }) {
         {notice && (
           <p
             role="status"
-            className="flex items-center justify-center gap-2 bg-ochre px-4 py-2 text-center text-sm font-medium text-balance text-ink"
+            className="flex items-center justify-center gap-2 bg-ink px-4 py-2 text-center text-sm font-medium text-balance text-paper"
           >
             <Info size={16} weight="bold" className="shrink-0" />
             {notice}
@@ -65,7 +69,7 @@ export function Nav({ revealed }: { revealed: boolean }) {
         )}
         <div
           className={`transition-[background-color,border-color,backdrop-filter] duration-500 ${
-            solid || menuOpen ? 'border-b border-line/70 bg-ink/80 backdrop-blur-xl' : 'border-b border-transparent'
+            onPhoto ? 'border-b border-transparent' : 'border-b border-line/70 bg-paper/85 backdrop-blur-xl'
           }`}
         >
           <nav
@@ -84,7 +88,7 @@ export function Nav({ revealed }: { revealed: boolean }) {
               <img src="./img/logo-oma.png" alt="" width={620} height={303} className="h-8 w-auto md:h-9" />
             </a>
 
-            <ul className="hidden items-center gap-1 lg:flex">
+            <ul className="hidden items-center gap-0.5 xl:flex">
               {LINKS.map((l) => (
                 <li key={l.id}>
                   <a
@@ -93,10 +97,12 @@ export function Nav({ revealed }: { revealed: boolean }) {
                       e.preventDefault()
                       go(l.id)
                     }}
-                    className="group relative rounded-full px-4 py-2.5 text-[0.92rem] font-medium text-cream/85 transition-colors hover:text-cream"
+                    className={`group relative rounded-full px-3.5 py-2.5 text-[0.95rem] font-semibold transition-colors ${
+                      onPhoto ? 'text-paper/90 hover:text-paper' : 'text-ink/80 hover:text-ink'
+                    }`}
                   >
                     {l.label}
-                    <span className="absolute inset-x-4 bottom-1.5 h-px origin-left scale-x-0 bg-ochre transition-transform duration-300 ease-out-expo group-hover:scale-x-100" />
+                    <span className="absolute inset-x-3.5 bottom-1.5 h-px origin-left scale-x-0 bg-ochre transition-transform duration-300 ease-out-expo group-hover:scale-x-100" />
                   </a>
                 </li>
               ))}
@@ -106,14 +112,16 @@ export function Nav({ revealed }: { revealed: boolean }) {
               <button
                 type="button"
                 onClick={openBooking}
-                className="btn-primary !px-5 !py-3 !text-[0.75rem] md:!px-6"
+                className={`${onPhoto ? 'btn-light' : 'btn-primary'} !px-5 !py-3 !text-[0.75rem] md:!px-6`}
               >
-                Prenota
+                Prenota ora
               </button>
               <button
                 type="button"
                 onClick={() => setMenuOpen((o) => !o)}
-                className="grid size-11 place-items-center rounded-full border border-cream/20 bg-ink/40 text-cream backdrop-blur-md transition-colors hover:border-cream/50 lg:hidden"
+                className={`grid size-11 place-items-center rounded-full border backdrop-blur-md transition-colors xl:hidden ${
+                  onPhoto ? 'border-paper/40 bg-ink/30 text-paper hover:border-paper' : 'border-ink/20 text-ink hover:border-ink/50'
+                }`}
                 aria-expanded={menuOpen}
                 aria-controls="menu-mobile"
                 aria-label={menuOpen ? 'Chiudi il menu' : 'Apri il menu'}
@@ -130,7 +138,7 @@ export function Nav({ revealed }: { revealed: boolean }) {
         {menuOpen && (
           <motion.div
             id="menu-mobile"
-            className="fixed inset-0 z-[55] flex flex-col bg-ink px-6 pt-[100px] pb-10 lg:hidden"
+            className="fixed inset-0 z-[55] flex flex-col bg-paper px-6 pt-[100px] pb-10 xl:hidden"
             initial={reduce ? { opacity: 0 } : { clipPath: 'inset(0% 0% 100% 0%)' }}
             animate={reduce ? { opacity: 1 } : { clipPath: 'inset(0% 0% 0% 0%)' }}
             exit={reduce ? { opacity: 0 } : { clipPath: 'inset(0% 0% 100% 0%)' }}
@@ -156,7 +164,7 @@ export function Nav({ revealed }: { revealed: boolean }) {
                       e.preventDefault()
                       go(l.id)
                     }}
-                    className="block py-2.5 font-display text-[2.6rem] leading-[1.1] font-semibold tracking-tight text-cream active:text-ochre"
+                    className="block py-1.5 font-display text-[2.3rem] leading-[1.15] font-medium text-ink active:text-ochre"
                   >
                     {l.label}
                   </a>
@@ -165,7 +173,7 @@ export function Nav({ revealed }: { revealed: boolean }) {
             </motion.ul>
 
             <motion.div
-              className="mt-auto flex flex-col gap-4 border-t border-line pt-6 text-cream/85"
+              className="mt-auto flex flex-col gap-4 border-t border-line pt-6 text-ink/85"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}

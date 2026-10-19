@@ -7,7 +7,7 @@ const HOLD_MS = 2150
 
 /**
  * Splash: la scritta OMA viene "dipinta" da sinistra a destra come una pennellata,
- * poi due sipari (nero e ocra) si alzano e scoprono la sala della hero.
+ * poi due sipari (avorio e ocra) si alzano e scoprono la sala della hero.
  */
 export function Splash({ onReveal }: { onReveal: () => void }) {
   const reduce = useReducedMotion()
@@ -64,16 +64,16 @@ export function Splash({ onReveal }: { onReveal: () => void }) {
             transition={{ duration: 0.95, ease: CURTAIN, delay: 0.18 }}
           />
 
-          {/* Sipario nero con il logo: si alza per primo */}
+          {/* Sipario avorio con il logo: si alza per primo */}
           <motion.div
-            className="absolute inset-0 flex items-center justify-center bg-ink"
+            className="absolute inset-0 flex items-center justify-center bg-paper"
             initial={{ clipPath: 'inset(0% 0% 0% 0%)' }}
             exit={{ clipPath: 'inset(0% 0% 100% 0%)' }}
             transition={{ duration: 0.9, ease: CURTAIN }}
           >
             <motion.div
               className="pointer-events-none absolute top-1/2 left-1/2 size-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full"
-              style={{ background: 'radial-gradient(circle, rgb(210 119 44 / 0.22), transparent 62%)' }}
+              style={{ background: 'radial-gradient(circle, rgb(173 106 33 / 0.16), transparent 62%)' }}
               initial={{ opacity: 0, scale: 0.7 }}
               animate={ready ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
@@ -99,7 +99,7 @@ export function Splash({ onReveal }: { onReveal: () => void }) {
                 }}
               />
               <motion.img
-                src="./img/logo-sottotitolo.png"
+                src="./img/logo-sottotitolo-nero.png"
                 alt=""
                 width={642}
                 height={70}
@@ -109,7 +109,7 @@ export function Splash({ onReveal }: { onReveal: () => void }) {
                 transition={{ duration: 0.7, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
               />
               <motion.img
-                src="./img/logo-pennellata.png"
+                src="./img/logo-pennellata-ocra.png"
                 alt=""
                 width={783}
                 height={187}

@@ -14,21 +14,21 @@ export function Footer() {
         <div className="md:col-span-5">
           <img src="./img/logo-oma.png" alt="OMA" width={620} height={303} loading="lazy" className="w-28" />
           <img
-            src="./img/logo-sottotitolo.png"
+            src="./img/logo-sottotitolo-nero.png"
             alt="osteria moderna"
             width={642}
             height={70}
             loading="lazy"
             className="mt-3 w-36 opacity-80"
           />
-          <p className="mt-6 max-w-[34ch] text-cream/70">
+          <p className="mt-6 max-w-[34ch] text-ink/70">
             {SITE.slogan[0]} {SITE.slogan[1]}
           </p>
         </div>
 
         <div className="md:col-span-3">
-          <h3 className="text-sm font-semibold text-cream">Indirizzo</h3>
-          <p className="mt-3 leading-relaxed text-cream/70">
+          <h3 className="text-sm font-semibold text-ink">Indirizzo</h3>
+          <p className="mt-3 leading-relaxed text-ink/70">
             {SITE.address}
             <br />
             {SITE.city}
@@ -37,17 +37,17 @@ export function Footer() {
             href={SITE.directionsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2 inline-flex min-h-11 items-center text-sm text-ochre underline-offset-4 hover:underline"
+            className="mt-2 inline-flex min-h-11 items-center text-sm text-ochre-deep underline-offset-4 hover:underline"
           >
             Apri in Google Maps
           </a>
         </div>
 
         <div className="md:col-span-4">
-          <h3 className="text-sm font-semibold text-cream">Contatti</h3>
-          <ul className="mt-3 flex flex-col gap-1 text-cream/70">
+          <h3 className="text-sm font-semibold text-ink">Contatti</h3>
+          <ul className="mt-3 flex flex-col gap-1 text-ink/70">
             <li>
-              <a href={SITE.phoneHref} className="inline-flex min-h-11 items-center gap-2.5 hover:text-cream">
+              <a href={SITE.phoneHref} className="inline-flex min-h-11 items-center gap-2.5 hover:text-ink">
                 <Phone size={18} />
                 {SITE.phoneDisplay}
               </a>
@@ -57,7 +57,7 @@ export function Footer() {
                 href={`https://wa.me/${SITE.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center gap-2.5 hover:text-cream"
+                className="inline-flex min-h-11 items-center gap-2.5 hover:text-ink"
               >
                 <WhatsappLogo size={18} />
                 WhatsApp
@@ -68,7 +68,7 @@ export function Footer() {
                 href={SITE.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center gap-2.5 hover:text-cream"
+                className="inline-flex min-h-11 items-center gap-2.5 hover:text-ink"
               >
                 <InstagramLogo size={18} />
                 {SITE.instagramHandle}

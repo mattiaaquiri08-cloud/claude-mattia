@@ -173,7 +173,7 @@ export function BookingDialog({ open, onClose }: Props) {
             type="button"
             aria-label="Chiudi la prenotazione"
             tabIndex={-1}
-            className="absolute inset-0 cursor-default bg-ink/75 backdrop-blur-md"
+            className="absolute inset-0 cursor-default bg-paper/75 backdrop-blur-md"
             onClick={resetAndClose}
           />
 
@@ -183,7 +183,7 @@ export function BookingDialog({ open, onClose }: Props) {
             aria-modal="true"
             aria-labelledby={titleId}
             tabIndex={-1}
-            className="relative grid h-[92dvh] outline-none focus-visible:ring-2 focus-visible:ring-ochre/60 w-full max-w-[1040px] grid-rows-[minmax(0,1fr)] overflow-hidden rounded-t-[28px] border border-line bg-coal shadow-[0_40px_120px_-30px_rgb(0_0_0/0.8)] md:h-[min(88dvh,860px)] md:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] md:rounded-[28px]"
+            className="relative grid h-[92dvh] outline-none focus-visible:ring-2 focus-visible:ring-ochre/60 w-full max-w-[1040px] grid-rows-[minmax(0,1fr)] overflow-hidden rounded-t-[28px] border border-line bg-paper-2 shadow-[0_40px_120px_-30px_rgb(23_20_21/0.35)] md:h-[min(88dvh,860px)] md:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] md:rounded-[28px]"
             initial={reduce ? { opacity: 0 } : { y: '100%', opacity: 0.6 }}
             animate={{ y: 0, opacity: 1 }}
             exit={reduce ? { opacity: 0 } : { y: '100%', opacity: 0.6 }}
@@ -199,13 +199,13 @@ export function BookingDialog({ open, onClose }: Props) {
                 className="absolute inset-0 h-full w-full object-cover"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-paper via-paper/30 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-8">
                 <img src="./img/logo-oma.png" alt="" width={620} height={303} className="mb-5 w-24" />
-                <p className="font-display text-2xl leading-tight font-semibold text-balance text-cream">
+                <p className="font-display text-2xl leading-tight font-semibold text-balance text-ink">
                   Ti teniamo un posto a tavola.
                 </p>
-                <p className="mt-3 max-w-[32ch] text-sm leading-relaxed text-cream/75">
+                <p className="mt-3 max-w-[32ch] text-sm leading-relaxed text-ink/75">
                   La richiesta arriva a noi su WhatsApp. Ti rispondiamo per confermare il tavolo.
                 </p>
               </div>
@@ -223,7 +223,7 @@ export function BookingDialog({ open, onClose }: Props) {
                 <button
                   type="button"
                   onClick={resetAndClose}
-                  className="grid size-11 shrink-0 place-items-center rounded-full border border-line text-cream transition-colors hover:border-mute hover:bg-smoke"
+                  className="grid size-11 shrink-0 place-items-center rounded-full border border-line text-ink transition-colors hover:border-mute hover:bg-paper-3"
                   aria-label="Chiudi"
                 >
                   <X size={18} weight="bold" />
@@ -252,7 +252,7 @@ export function BookingDialog({ open, onClose }: Props) {
                         Abbiamo preparato il messaggio con tutti i tuoi dati. La richiesta parte solo quando lo invii,
                         poi ti rispondiamo noi per confermare il tavolo.
                       </p>
-                      <ul className="mt-6 w-full space-y-2.5 rounded-[var(--radius-field)] border border-line bg-ink/60 p-5 text-sm">
+                      <ul className="mt-6 w-full space-y-2.5 rounded-[var(--radius-field)] border border-line bg-paper/60 p-5 text-sm">
                         <li className="flex justify-between gap-4">
                           <span className="text-mute">Giorno</span>
                           <span className="text-right capitalize">{longDate(form.date)}</span>
@@ -329,15 +329,15 @@ export function BookingDialog({ open, onClose }: Props) {
                                 title={d.closed ? 'Giorno di chiusura' : undefined}
                                 className={`flex w-[68px] shrink-0 snap-start flex-col items-center rounded-[16px] border px-2 py-3 transition-[background-color,border-color,transform] duration-200 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-35 ${
                                   active
-                                    ? 'border-ochre bg-ochre text-ink'
-                                    : 'border-line text-cream hover:border-mute disabled:hover:border-line'
+                                    ? 'border-ink bg-ink text-paper'
+                                    : 'border-line text-ink hover:border-mute disabled:hover:border-line'
                                 }`}
                               >
-                                <span className={`text-[11px] font-semibold uppercase ${active ? 'text-ink/80' : 'text-mute'}`}>
+                                <span className={`text-[11px] font-semibold uppercase ${active ? 'text-paper/80' : 'text-mute'}`}>
                                   {d.dayShort}
                                 </span>
                                 <span className="font-display text-2xl leading-tight font-semibold">{d.dayNum}</span>
-                                <span className={`text-[11px] ${active ? 'text-ink/80' : 'text-mute'}`}>
+                                <span className={`text-[11px] ${active ? 'text-paper/80' : 'text-mute'}`}>
                                   {d.closed ? 'chiuso' : d.month}
                                 </span>
                               </button>
@@ -349,7 +349,7 @@ export function BookingDialog({ open, onClose }: Props) {
                             <button
                               type="button"
                               onClick={() => setShowOtherDate(true)}
-                              className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-ochre underline-offset-4 hover:underline"
+                              className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-ochre-deep underline-offset-4 hover:underline"
                             >
                               <CalendarBlank size={18} />
                               Scegli un'altra data
@@ -371,7 +371,7 @@ export function BookingDialog({ open, onClose }: Props) {
                             </div>
                           )}
                           {form.date && !selectedDayIsInStrip && !errors.date && (
-                            <span className="text-sm text-cream capitalize">{longDate(form.date)}</span>
+                            <span className="text-sm text-ink capitalize">{longDate(form.date)}</span>
                           )}
                         </div>
                         <FieldError msg={errors.date} />
@@ -387,7 +387,7 @@ export function BookingDialog({ open, onClose }: Props) {
                         ) : noSlotsLeft ? (
                           <p className="rounded-[var(--radius-field)] border border-dashed border-line px-4 py-4 text-sm text-mute">
                             Per questo giorno non ci sono più orari prenotabili online. Scegli un altro giorno o chiamaci al{' '}
-                            <a href={SITE.phoneHref} className="text-ochre underline underline-offset-4">
+                            <a href={SITE.phoneHref} className="text-ochre-deep underline underline-offset-4">
                               {SITE.phoneDisplay}
                             </a>
                             .
@@ -428,13 +428,13 @@ export function BookingDialog({ open, onClose }: Props) {
                         </span>
                         <div className="flex items-center gap-4">
                           <div
-                            className="inline-flex items-center rounded-full border border-line bg-ink p-1"
+                            className="inline-flex items-center rounded-full border border-line bg-paper p-1"
                             role="group"
                             aria-labelledby="b-people-label"
                           >
                             <button
                               type="button"
-                              className="grid size-11 place-items-center rounded-full transition-colors hover:bg-smoke disabled:opacity-30"
+                              className="grid size-11 place-items-center rounded-full transition-colors hover:bg-paper-3 disabled:opacity-30"
                               onClick={() => set('people', Math.max(1, form.people - 1))}
                               disabled={form.people <= 1}
                               aria-label="Una persona in meno"
@@ -449,7 +449,7 @@ export function BookingDialog({ open, onClose }: Props) {
                             </output>
                             <button
                               type="button"
-                              className="grid size-11 place-items-center rounded-full transition-colors hover:bg-smoke disabled:opacity-30"
+                              className="grid size-11 place-items-center rounded-full transition-colors hover:bg-paper-3 disabled:opacity-30"
                               onClick={() => set('people', Math.min(MAX_PEOPLE, form.people + 1))}
                               disabled={form.people >= MAX_PEOPLE}
                               aria-label="Una persona in più"

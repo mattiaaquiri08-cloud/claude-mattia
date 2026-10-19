@@ -15,15 +15,21 @@ npm run preview   # prova la versione finale
 La cartella `dist/` è statica: si pubblica così com'è su Netlify (trascinandola su app.netlify.com/drop),
 Vercel, GitHub Pages o qualunque hosting. I percorsi sono relativi, quindi funziona anche in una sottocartella.
 
-## Menu, orari e avviso: li aggiorna il ristorante
+## Brand
 
-Il sito legge il Foglio Google **"OMA - Menu e orari del sito"** (id in `SITE.sheetId`), con quattro schede:
-`Menu` (Portata, Sezione, Piatto, Descrizione, Prezzo €, Visibile), `Orari` (Giorno, Pranzo, Cena),
-`Avviso` (testo della fascia in alto) e `Come si usa`. Le modifiche compaiono alla visita successiva.
+Colori e font sono quelli dei social di OMA, indicati dalla social media manager:
+avorio `#f8f7e8` per lo sfondo, nero `#171415` principale, ocra `#AD6A21` per i dettagli.
+Titoli in Playfair Display, etichette e testo in Urbanist. I token sono in `src/index.css`.
 
-Il foglio deve essere condiviso come **"Chiunque abbia il link: visualizzatore"**, e chi lo aggiorna va
-aggiunto come editor. Se il foglio non risponde, il sito usa l'ultimo caricamento riuscito oppure i dati
-di `src/data/site.ts`. Il codice è in `src/lib/live-data.ts`.
+## Menu, orari e avviso
+
+Il menu della settimana e la carta dei vini sono i PDF del ristorante su Linktree (`SITE.menuUrl`, lo stesso
+link del QR code al tavolo): i pulsanti "Menu" e "Carta dei vini" portano lì.
+
+Orari e avviso in alto arrivano dal Foglio Google **"OMA - Menu e orari del sito"** (id in `SITE.sheetId`,
+schede `Orari` e `Avviso`). Il foglio deve essere condiviso come **"Chiunque abbia il link: visualizzatore"**.
+Se il foglio non risponde, il sito usa l'ultimo caricamento riuscito oppure i dati di `src/data/site.ts`.
+Il codice è in `src/lib/live-data.ts`.
 
 ## Dove si cambiano i contenuti
 
@@ -31,17 +37,13 @@ Tutto è in **`src/data/site.ts`**:
 
 | Cosa | Voce |
 |---|---|
+| Testi delle macro-sezioni (chi siamo, food, mercato, menù, piatti, aperitivo, wine, eventi) | `TESTI` |
 | Numero WhatsApp delle prenotazioni | `SITE.whatsapp` (solo cifre, con 39 davanti) |
-| Telefono, indirizzo, Instagram | `SITE` |
+| Telefono, indirizzo, Instagram, link del menu | `SITE` |
 | Orari (usati anche per gli orari prenotabili) | `HOURS` |
-| Menu, vini e drink | `MENU` |
-| Testi delle sezioni (chi siamo, cucina, menu, vino, aperitivo, eventi) | `TESTI` |
-| Aperitivo | `APERITIVO` |
-| Foto della galleria | `GALLERY` (file in `public/img/`) |
-| Recensioni e voti | `REVIEWS`, `RATINGS` |
 
-I PDF del menu sono in `public/menu/`. Le foto della hero sono `public/img/hero-desktop.webp`
-(orizzontale) e `public/img/hero-mobile.webp` (verticale).
+Le foto sono in `public/img/`; quelle delle sezioni sono provvisorie, in attesa delle foto del ristorante.
+La hero usa `public/img/hero-desktop.webp` (orizzontale) e `public/img/hero-mobile.webp` (verticale).
 
 ## Come funziona la prenotazione
 
@@ -54,14 +56,9 @@ la richiesta parte solo quando il cliente preme Invia su WhatsApp. Il sito non m
 ## Struttura
 
 - `src/components/Splash.tsx`: intro con la scritta OMA "dipinta" e doppio sipario
-- `src/components/Hero.tsx`: foto a tutto schermo con i due pulsanti
-- `src/components/Manifesto.tsx`: slogan che si accende con lo scroll e la storia
-- `src/components/Cucina.tsx`: la filosofia in tre righe (Food, Il mercato, I nostri piatti)
-- `src/components/Menu.tsx`: pulsante del menu della settimana (link del QR) e carta di vini e drink a schede
-- `src/components/Aperitivo.tsx`: fascia dell'aperitivo del sabato
-- `src/components/Eventi.tsx`: eventi e serate, con rimando a Instagram
-- `src/components/Gallery.tsx`: griglia di foto con visore (frecce, tastiera, swipe)
-- `src/components/Reviews.tsx`: voto Google e mazzo di recensioni
+- `src/components/Hero.tsx`: foto a tutto schermo, OMA, slogan e i pulsanti Prenota ora e Menu
+- `src/components/Sezioni.tsx`: le macro-sezioni nell'ordine dei testi (Chi siamo, Food, Il mercato,
+  Il menù, I nostri piatti, L'aperitivo del sabato, Wine, Gli eventi)
 - `src/components/Visit.tsx`: indirizzo, mappa, orari con stato "aperto ora"
 - `src/components/BookingDialog.tsx`: modulo di prenotazione via WhatsApp
 

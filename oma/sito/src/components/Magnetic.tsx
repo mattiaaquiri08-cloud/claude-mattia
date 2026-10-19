@@ -2,7 +2,15 @@ import { motion, useMotionValue, useReducedMotion, useSpring } from 'motion/reac
 import type { PointerEvent, ReactNode } from 'react'
 
 /** Attira leggermente il contenuto verso il puntatore (solo mouse, mai su touch). */
-export function Magnetic({ children, strength = 0.28 }: { children: ReactNode; strength?: number }) {
+export function Magnetic({
+  children,
+  strength = 0.28,
+  className = 'inline-flex',
+}: {
+  children: ReactNode
+  strength?: number
+  className?: string
+}) {
   const reduce = useReducedMotion()
   const x = useMotionValue(0)
   const y = useMotionValue(0)
@@ -21,7 +29,7 @@ export function Magnetic({ children, strength = 0.28 }: { children: ReactNode; s
   }
 
   return (
-    <motion.div style={{ x: sx, y: sy }} onPointerMove={onMove} onPointerLeave={reset} className="inline-flex">
+    <motion.div style={{ x: sx, y: sy }} onPointerMove={onMove} onPointerLeave={reset} className={className}>
       {children}
     </motion.div>
   )

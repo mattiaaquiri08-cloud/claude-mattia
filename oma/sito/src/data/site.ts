@@ -5,7 +5,8 @@
 
 export const SITE = {
   name: 'OMA Osteria Moderna',
-  slogan: ["Mangi bene come da tu' nonna.", "Senza le domande de tu' zia."],
+  subtitle: 'Osteria Moderna',
+  slogan: ['Mangi bene come da tu’ nonna.', 'Senza le domande de tu’ zia.'],
   address: 'Via Costantino Maes 78',
   city: '00162 Roma',
   phoneDisplay: '377 301 7230',
@@ -24,55 +25,71 @@ export const SITE = {
   sheetId: '1omQ0g1XPfdXOwEmJykII2BDh1DOqi2_z0fcROg64AUk',
 } as const
 
-/* ---------- Testi del sito (forniti da Lilla Milli, social media manager di OMA) ---------- */
+/* ---------- Testi del sito ----------
+  Forniti dalla social media manager di OMA (Lilla Milli), in continuità con i loro social.
+  Ogni voce è una macro-sezione del sito, nell'ordine in cui compare. Non riscriverli.
+*/
+
+export type Sezione = { id: string; nome: string; titolo: string; testo: string }
 
 export const TESTI = {
   chiSiamo: {
+    id: 'chi-siamo',
+    nome: 'Chi siamo',
     titolo: 'Due teste diverse. Una stessa idea di cucina.',
     testo:
       'Siamo Alessio e Leonardo. OMA è la nostra Osteria Moderna: un posto dove la tradizione incontra tutto quello che ci piace mangiare, scoprire e sperimentare. Facciamo le cose a modo nostro. E ci mettiamo la faccia.',
   },
-  cucina: [
-    {
-      etichetta: 'Food',
-      titolo: 'Una cucina povera. Di idee, mai.',
-      testo:
-        'La cucina di OMA è semplice, pura e autentica. Ingredienti buoni, zero sprechi e rispetto per la materia prima. Riscopriamo le ricette delle nostre nonne e le portiamo ai giorni nostri. Una cucina povera, vera e circolare, dove nulla si spreca e tutto si trasforma.',
-    },
-    {
-      etichetta: 'Il mercato',
-      titolo: 'Se non c’è, non c’è.',
-      testo:
-        'Ogni mattina il mercato decide. Noi seguiamo. Scegliamo le materie prime in base a quello che troviamo, non a quello che dobbiamo per forza avere in menù. Sulla qualità, invece, non trattiamo.',
-    },
-    {
-      etichetta: 'I nostri piatti',
-      titolo: 'Nonna approva. (Quasi sempre.)',
-      testo:
-        'Partiamo dai piatti con cui siamo cresciuti. Quelli delle nonne, delle domeniche in famiglia e delle pentole lasciate sul fuoco per ore. Poi ci mettiamo quello che abbiamo imparato viaggiando, assaggiando e sperimentando: tecniche nuove, abbinamenti diversi e qualche idea che a nonna forse non sarebbe venuta. La tradizione ci piace. Ma non significa fare sempre le stesse cose.',
-    },
-  ],
+  food: {
+    id: 'food',
+    nome: 'Food',
+    titolo: 'Una cucina povera. Di idee, mai.',
+    testo:
+      'La cucina di OMA è semplice, pura e autentica. Ingredienti buoni, zero sprechi e rispetto per la materia prima. Riscopriamo le ricette delle nostre nonne e le portiamo ai giorni nostri. Una cucina povera, vera e circolare, dove nulla si spreca e tutto si trasforma.',
+  },
+  mercato: {
+    id: 'mercato',
+    nome: 'Il mercato',
+    titolo: 'Se non c’è, non c’è.',
+    testo:
+      'Ogni mattina il mercato decide. Noi seguiamo. Scegliamo le materie prime in base a quello che troviamo, non a quello che dobbiamo per forza avere in menù. Sulla qualità, invece, non trattiamo.',
+  },
   menu: {
+    id: 'menu',
+    nome: 'Il menù',
     titolo: 'Il menù c’ha rotto er c***o.',
     testo:
       'Il menù cambia ogni settimana. A volte anche prima. Ci piace lavorare con quello che offre la stagione, cambiare idea, provare ricette nuove e rimettere mano a quelle che già conoscete. Se trovi un piatto che ti piace, goditelo. Non è detto che la prossima volta ci sia.',
   },
-  vino: {
-    titolo: 'Ci piace il vino. Di brutto.',
+  piatti: {
+    id: 'piatti',
+    nome: 'I nostri piatti',
+    titolo: 'Nonna approva. (Quasi sempre.)',
     testo:
-      'La nostra carta dei vini non segue schemi tradizionali: niente classificazioni per stile, regione o gusto, ma una selezione in continua evoluzione. Ogni etichetta nasce da una scelta consapevole, fondata sul rispetto per i vignaioli, il loro lavoro e la storia che ogni bottiglia porta con sé.',
+      'Partiamo dai piatti con cui siamo cresciuti. Quelli delle nonne, delle domeniche in famiglia e delle pentole lasciate sul fuoco per ore. Poi ci mettiamo quello che abbiamo imparato viaggiando, assaggiando e sperimentando: tecniche nuove, abbinamenti diversi e qualche idea che a nonna forse non sarebbe venuta. La tradizione ci piace. Ma non significa fare sempre le stesse cose.',
   },
   aperitivo: {
+    id: 'aperitivo',
+    nome: 'L’aperitivo del sabato',
     titolo: 'Il sabato si fa sul serio. Ma non troppo.',
     testo:
       'Il sabato da OMA è tapas, calici e voglia di stare insieme. Piccoli piatti da condividere, qualcosa di buono da bere e un aperitivo che vogliamo diventi un appuntamento fisso per il Quartiere Africano. E pure per chi arriva da un po’ più lontano.',
   },
+  vino: {
+    id: 'wine',
+    nome: 'Wine',
+    titolo: 'Ci piace il vino. Di brutto.',
+    testo:
+      'La nostra carta dei vini non segue schemi tradizionali: niente classificazioni per stile, regione o gusto, ma una selezione in continua evoluzione. Ogni etichetta nasce da una scelta consapevole, fondata sul rispetto per i vignaioli, il loro lavoro e la storia che ogni bottiglia porta con sé.',
+  },
   eventi: {
+    id: 'eventi',
+    nome: 'Gli eventi',
     titolo: 'Ogni tanto ci inventiamo qualcosa.',
     testo:
       'Degustazioni, serate speciali, collaborazioni con produttori e amici che condividono la nostra stessa passione per il cibo e il vino. Ci piace creare occasioni per incontrarsi, conoscersi e passare una bella serata. Senza troppe cerimonie. Non abbiamo un calendario sempre uguale: per sapere cosa bolle in pentola, seguici su Instagram. Magari la prossima volta ci sei pure tu.',
   },
-}
+} satisfies Record<string, Sezione>
 
 /* ---------- Orari (fonte: scheda Google) ---------- */
 
@@ -256,72 +273,5 @@ export const MENU: MenuSection[] = [
         ],
       },
     ],
-  },
-]
-
-export const APERITIVO = {
-  title: 'Formula aperitivo',
-  detail: 'Un drink a scelta e un tagliere',
-  price: '12',
-  drinks: ['Oma Spicy', 'Negroni', 'Sage Paloma', 'Aperol Spritz', 'Orange Tonic', 'Americano', 'Hugo Spritz', 'Manhattan'],
-}
-
-/* ---------- Galleria ---------- */
-
-export type Photo = {
-  src: string
-  alt: string
-  width: number
-  height: number
-  // posizione nella griglia desktop (4 colonne) e mobile (2 colonne)
-  area: string
-}
-
-export const GALLERY: Photo[] = [
-  { src: './img/g-sala.webp', alt: 'La sala di OMA: pareti nere, luci ambra e sedie in velluto arancio', width: 1400, height: 787, area: 'col-span-2 md:row-span-2' },
-  { src: './img/p-battuta.webp', alt: 'La battuta di manzo, condita al momento', width: 344, height: 412, area: 'row-span-2' },
-  { src: './img/p-tiramisu.webp', alt: 'Il tiramisù servito in sala, accanto al calice di OMA', width: 344, height: 448, area: 'row-span-2' },
-  { src: './img/p-rigatoni.webp', alt: 'Un piatto di rigatoni al sugo con formaggio grattugiato', width: 344, height: 448, area: 'row-span-2' },
-  { src: './img/p-tavola.webp', alt: 'La tavola apparecchiata con i piatti della nonna: salumi, crostoni, polpette e battuta', width: 344, height: 420, area: 'col-span-2 md:row-span-2' },
-  { src: './img/p-crudo.webp', alt: 'Un piatto di stagione servito nei piatti a fiori', width: 344, height: 448, area: 'row-span-2' },
-]
-
-/* ---------- Recensioni (fonte: Google Maps) ---------- */
-
-export const RATINGS = [
-  { source: 'Google', value: '4,7', scale: 'su 5', count: '144 recensioni' },
-  { source: 'Tripadvisor', value: '5,0', scale: 'su 5', count: '' },
-  { source: 'TheFork', value: '8,6', scale: 'su 10', count: '' },
-]
-
-export const REVIEW_TAGS = ['materie prime', 'tiramisù', 'passione', 'tradizione']
-
-export type Review = { quote: string; author: string; meta: string }
-
-export const REVIEWS: Review[] = [
-  {
-    quote: 'Il locale è moderno, accogliente, elegante e tutti i dettagli sono ben curati. Il cibo è pazzesco!',
-    author: 'Valentina Amatulli',
-    meta: 'Local Guide su Google',
-  },
-  {
-    quote: 'I proprietari, Leonardo e Alessio, hanno davvero tanta passione per questo lavoro. Materie prime di qualità ottima, piatti equilibrati ed atmosfera rilassante.',
-    author: 'Riccardo De Lellis',
-    meta: 'Recensione su Google',
-  },
-  {
-    quote: 'Locale piccolino e molto accogliente, con prezzi veramente ottimi. Consigliatissima la battuta di manzo, MERAVIGLIOSA.',
-    author: 'Linda Allas',
-    meta: 'Local Guide su Google',
-  },
-  {
-    quote: 'Cuochi eccellenti e la magia di un menù romano con un tocco di raffinatezza!',
-    author: 'Cliente di OMA',
-    meta: 'Recensione su Google',
-  },
-  {
-    quote: 'I proprietari sono gentilissimi e servono dei taglieri buonissimi.',
-    author: 'Cliente di OMA',
-    meta: 'Recensione su Google',
   },
 ]

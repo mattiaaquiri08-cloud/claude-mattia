@@ -30,7 +30,7 @@ export function Visit() {
               <br />
               <span className="text-mute">{SITE.city}</span>
             </address>
-            <p className="mt-3 text-cream/70">Quartiere Nomentano, a due passi dalla Circonvallazione Nomentana.</p>
+            <p className="mt-3 text-ink/70">Nel Quartiere Africano.</p>
 
             <div className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
               <a href={SITE.directionsUrl} target="_blank" rel="noopener noreferrer" className="btn-primary col-span-2 !px-6">
@@ -57,7 +57,7 @@ export function Visit() {
             <div className="mt-14">
               <div className="flex items-center justify-between gap-4">
                 <h3 className="font-display text-2xl font-semibold tracking-tight">Orari</h3>
-                <p className="flex items-center gap-2.5 text-sm text-cream/85" aria-live="polite">
+                <p className="flex items-center gap-2.5 text-sm text-ink/85" aria-live="polite">
                   <span
                     className={`size-2 rounded-full ${status.open ? 'live-dot bg-ok' : 'bg-mute'}`}
                     aria-hidden="true"
@@ -73,14 +73,14 @@ export function Visit() {
                     <div
                       key={wd}
                       className={`flex items-baseline justify-between gap-4 rounded-[12px] px-4 py-2.5 ${
-                        isToday ? 'bg-smoke' : ''
+                        isToday ? 'bg-paper-3' : ''
                       }`}
                     >
-                      <dt className={isToday ? 'font-semibold text-cream' : 'text-cream/80'}>
+                      <dt className={isToday ? 'font-semibold text-ink' : 'text-ink/80'}>
                         {DAY_NAMES[wd]}
-                        {isToday && <span className="ml-2 text-xs font-medium text-ochre">oggi</span>}
+                        {isToday && <span className="ml-2 text-xs font-medium text-ochre-deep">oggi</span>}
                       </dt>
-                      <dd className={`text-right tabular-nums ${hours === 'Chiuso' ? 'text-mute' : 'text-cream/90'}`}>
+                      <dd className={`text-right tabular-nums ${hours === 'Chiuso' ? 'text-mute' : 'text-ink/90'}`}>
                         {hours}
                       </dd>
                     </div>
@@ -97,14 +97,14 @@ export function Visit() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="relative h-[380px] overflow-hidden rounded-[var(--radius-media)] border border-line bg-smoke md:h-full md:min-h-[560px]">
+            <div className="relative h-[380px] overflow-hidden rounded-[var(--radius-media)] border border-line bg-paper-3 md:h-full md:min-h-[560px]">
               <iframe
                 title="Mappa: OMA Osteria Moderna, Via Costantino Maes 78, Roma"
                 src={SITE.mapEmbed}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="absolute inset-0 h-full w-full border-0"
-                style={{ filter: 'invert(0.92) hue-rotate(180deg) saturate(0.55) contrast(0.92) brightness(0.95)' }}
+                style={{ filter: 'grayscale(0.4) sepia(0.12) contrast(0.95)' }}
                 allowFullScreen
               />
             </div>

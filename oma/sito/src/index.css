@@ -1,28 +1,29 @@
 @import 'tailwindcss';
 
 /*
-  OMA: palette presa dal locale e dal logo.
-  Pareti nere, sedie in velluto arancio, luci ambra, scritta OMA a pennello.
-  Un solo accento (ocra del logo). Tema scuro unico: è il carattere della sala.
+  OMA: palette e font del brand, gli stessi dei loro social (indicati dalla social media manager).
+  Avorio per lo sfondo, nero principale, ocra per i dettagli. Tema chiaro unico.
+  Font: Playfair Display per i titoli, Urbanist per etichette e testo, alternati.
+  L'ocra #AD6A21 su avorio ha contrasto 4:1: va bene per titoli e dettagli grandi;
+  per testo piccolo si usa ochre-deep (5,7:1).
 
   Forme: pulsanti a pillola, immagini e pannelli 20px, campi del modulo 14px.
 */
 @theme {
-  --color-ink: #0f0f11;
-  --color-coal: #17171a;
-  --color-smoke: #26262b;
-  --color-line: #2f2f35;
-  --color-cream: #f2eee8;
-  --color-mute: #a7a19b;
-  --color-ochre: #d2772c;
-  --color-ochre-soft: #e08d47;
-  --color-danger: #f08a7c;
-  --color-ok: #7ac78c;
-  --color-whatsapp: #5fe08f;
-  --color-deck: #1d1d21;
+  --color-paper: #f8f7e8;
+  --color-paper-2: #f0eedc;
+  --color-paper-3: #e7e4cd;
+  --color-line: #d8d4bf;
+  --color-ink: #171415;
+  --color-mute: #5e5852;
+  --color-ochre: #ad6a21;
+  --color-ochre-deep: #8a5218;
+  --color-danger: #a8321f;
+  --color-ok: #2f7a4a;
+  --color-whatsapp: #1e7b45;
 
-  --font-display: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Playfair Display Variable', ui-serif, Georgia, serif;
+  --font-sans: 'Urbanist Variable', ui-sans-serif, system-ui, sans-serif;
 
   --radius-media: 20px;
   --radius-field: 14px;
@@ -33,17 +34,16 @@
 
 @layer base {
   html {
-    color-scheme: dark;
-    background: var(--color-ink);
+    color-scheme: light;
+    background: var(--color-paper);
     -webkit-text-size-adjust: 100%;
     scroll-padding-top: 76px;
   }
 
   body {
-    background: var(--color-ink);
-    color: var(--color-cream);
+    background: var(--color-paper);
+    color: var(--color-ink);
     font-family: var(--font-sans);
-    font-feature-settings: 'ss01', 'cv11';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -52,11 +52,11 @@
 
   ::selection {
     background: var(--color-ochre);
-    color: var(--color-ink);
+    color: var(--color-paper);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-ochre);
+    outline: 2px solid var(--color-ochre-deep);
     outline-offset: 3px;
   }
 
@@ -74,47 +74,49 @@
   textarea,
   label {
     touch-action: manipulation;
-    -webkit-tap-highlight-color: rgb(210 119 44 / 0.15);
+    -webkit-tap-highlight-color: rgb(173 106 33 / 0.15);
   }
 
   input[type='date']::-webkit-calendar-picker-indicator {
-    filter: invert(0.85);
     cursor: pointer;
   }
 }
 
 @layer components {
-  .font-display {
-    font-variation-settings: 'wdth' 100;
-  }
-
-  /* Pulsante principale: pieno ocra, testo scuro (contrasto 5,8:1) */
+  /* Pulsante principale: pieno nero, testo avorio (17:1); al passaggio diventa ocra scuro */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2.5 rounded-full bg-ochre px-7 py-4 text-[0.82rem] font-semibold tracking-[0.14em] whitespace-nowrap text-ink uppercase transition-[background-color,transform,box-shadow] duration-300 ease-out-expo hover:bg-ochre-soft active:scale-[0.98];
-    box-shadow: 0 10px 40px -12px rgb(210 119 44 / 0.55);
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full bg-ink px-7 py-4 text-[0.82rem] font-bold tracking-[0.14em] whitespace-nowrap text-paper uppercase transition-[background-color,transform] duration-300 ease-out-expo hover:bg-ochre-deep active:scale-[0.98];
   }
 
-  /* Pulsante secondario: vetro scuro con bordo, leggibile sopra le foto */
+  /* Secondario: bordo nero su avorio */
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2.5 rounded-full border border-cream/30 bg-ink/45 px-7 py-4 text-[0.82rem] font-semibold tracking-[0.14em] whitespace-nowrap text-cream uppercase backdrop-blur-md transition-[background-color,border-color,transform] duration-300 ease-out-expo hover:border-cream/60 hover:bg-ink/65 active:scale-[0.98];
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08);
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full border border-ink/30 px-7 py-4 text-[0.82rem] font-bold tracking-[0.14em] whitespace-nowrap text-ink uppercase transition-[background-color,border-color,transform] duration-300 ease-out-expo hover:border-ink hover:bg-ink/5 active:scale-[0.98];
+  }
+
+  /* Sopra le foto: pieno avorio e vetro chiaro */
+  .btn-light {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full bg-paper px-7 py-4 text-[0.82rem] font-bold tracking-[0.14em] whitespace-nowrap text-ink uppercase transition-[background-color,color,transform] duration-300 ease-out-expo hover:bg-ochre hover:text-paper active:scale-[0.98];
+  }
+
+  .btn-glass {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full border border-paper/60 bg-ink/30 px-7 py-4 text-[0.82rem] font-bold tracking-[0.14em] whitespace-nowrap text-paper uppercase backdrop-blur-md transition-[background-color,border-color,transform] duration-300 ease-out-expo hover:border-paper hover:bg-ink/50 active:scale-[0.98];
   }
 
   .field {
-    @apply w-full rounded-[var(--radius-field)] border border-line bg-ink px-4 py-3.5 text-base text-cream transition-[border-color,box-shadow] duration-200 placeholder:text-mute/70 hover:border-mute/60 focus-visible:border-ochre focus-visible:ring-3 focus-visible:ring-ochre/25 focus-visible:outline-none;
+    @apply w-full rounded-[var(--radius-field)] border border-line bg-paper px-4 py-3.5 text-base text-ink transition-[border-color,box-shadow] duration-200 placeholder:text-mute/80 hover:border-mute/60 focus-visible:border-ochre-deep focus-visible:ring-3 focus-visible:ring-ochre/25 focus-visible:outline-none;
   }
 
-    .field[aria-invalid='true'] {
+  .field[aria-invalid='true'] {
     @apply border-danger;
   }
 
   .chip {
-    @apply inline-flex min-h-11 items-center justify-center rounded-full border border-line px-4 text-sm font-medium text-cream transition-[background-color,border-color,color,transform] duration-200 hover:border-mute active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:border-line;
+    @apply inline-flex min-h-11 items-center justify-center rounded-full border border-line px-4 text-sm font-medium text-ink transition-[background-color,border-color,color,transform] duration-200 hover:border-mute active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:border-line;
   }
 
   .chip[aria-pressed='true'],
   .chip[aria-checked='true'] {
-    @apply border-ochre bg-ochre text-ink;
+    @apply border-ink bg-ink text-paper;
   }
 }
 
@@ -135,12 +137,6 @@
     display: none;
   }
 
-  .leader {
-    background-image: radial-gradient(circle, rgb(167 161 155 / 0.45) 1px, transparent 1.3px);
-    background-size: 7px 3px;
-    background-repeat: repeat-x;
-    background-position: bottom;
-  }
 }
 
 /* Grana leggera su tutta la pagina: elemento fisso, nessun ridisegno durante lo scroll */
@@ -149,7 +145,8 @@
   inset: -50%;
   z-index: 70;
   pointer-events: none;
-  opacity: 0.06;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
@@ -167,30 +164,13 @@
   }
 }
 
-@keyframes marquee {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-.marquee-track {
-  animation: marquee 38s linear infinite;
-}
-
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
-}
-
 @keyframes pulse-dot {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgb(122 199 140 / 0.55);
+    box-shadow: 0 0 0 0 rgb(47 122 74 / 0.45);
   }
   50% {
-    box-shadow: 0 0 0 6px rgb(122 199 140 / 0);
+    box-shadow: 0 0 0 6px rgb(47 122 74 / 0);
   }
 }
 
