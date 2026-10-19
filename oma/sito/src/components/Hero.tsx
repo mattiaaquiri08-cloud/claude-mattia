@@ -12,7 +12,7 @@ const rise = {
 
 /*
   Hero: foto a tutto schermo (provvisoria, quella definitiva la manda la social media manager),
-  OMA, Osteria Moderna, lo slogan e due pulsanti affiancati: Prenota ora e Menu (Linktree).
+  e solo due pulsanti affiancati: Prenota ora e Menu (Linktree).
 */
 export function Hero({ revealed }: { revealed: boolean }) {
   const { openBooking } = useBooking()
@@ -51,8 +51,8 @@ export function Hero({ revealed }: { revealed: boolean }) {
         </motion.picture>
       </motion.div>
 
-      {/* Velatura nera del brand: tiene leggibili logo, slogan e pulsanti */}
-      <div className="pointer-events-none absolute inset-0 bg-ink/45" />
+      {/* Velatura leggera: la foto resta protagonista, i pulsanti restano leggibili */}
+      <div className="pointer-events-none absolute inset-0 bg-ink/25" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-ink/60 to-transparent" />
 
       <motion.div
@@ -62,25 +62,12 @@ export function Hero({ revealed }: { revealed: boolean }) {
         animate={reduce ? undefined : revealed ? 'show' : 'hidden'}
         variants={{ show: { transition: { staggerChildren: 0.12, delayChildren: 0.45 } } }}
       >
-        <motion.h1 id="hero-title" variants={rise} className="flex flex-col items-center">
-          <img src="./img/logo-oma.png" alt="OMA" width={620} height={303} className="w-[min(62vw,340px)]" />
-          <img
-            src="./img/logo-sottotitolo.png"
-            alt={SITE.subtitle}
-            width={642}
-            height={70}
-            className="mt-4 w-[min(56vw,300px)]"
-          />
-        </motion.h1>
+        {/* Nella hero solo i due pulsanti: il titolo resta per Google e per gli screen reader */}
+        <h1 id="hero-title" className="sr-only">
+          {SITE.name}. {SITE.slogan[0]} {SITE.slogan[1]}
+        </h1>
 
-        <motion.p
-          variants={rise}
-          className="mt-8 max-w-[24ch] font-display text-2xl leading-snug text-balance italic md:text-3xl"
-        >
-          {SITE.slogan[0]} {SITE.slogan[1]}
-        </motion.p>
-
-        <motion.div variants={rise} className="mt-10 grid w-full max-w-[420px] grid-cols-2 gap-3 sm:gap-4">
+        <motion.div variants={rise} className="grid w-full max-w-[420px] grid-cols-2 gap-3 sm:gap-4">
           <Magnetic className="flex">
             <button type="button" onClick={openBooking} className="btn-light w-full !px-4 sm:!px-7">
               <CalendarCheck size={19} weight="bold" />

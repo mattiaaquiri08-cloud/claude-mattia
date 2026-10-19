@@ -5,7 +5,6 @@
 
 export const SITE = {
   name: 'OMA Osteria Moderna',
-  subtitle: 'Osteria Moderna',
   slogan: ['Mangi bene come da tu’ nonna.', 'Senza le domande de tu’ zia.'],
   address: 'Via Costantino Maes 78',
   city: '00162 Roma',
