@@ -65,9 +65,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   conferme simulate.
 - Progetto OMA Osteria Moderna (cartella `oma/`): dal 19/10 brand dei loro social, deciso dalla social
   media manager: sfondo avorio #f8f7e8, nero #171415 principale, ocra #AD6A21 per i dettagli; font alternati
-  50 e 50: Sedgwick Ave Display (nomi delle sezioni e metà dei titoli) e Playfair Display (l'altra metà e i testi).
+  50 e 50: Permanent Marker (nomi delle sezioni e metà dei titoli) e Playfair Display (l'altra metà e i testi).
   Sui social usano Sprite Graffiti (Arsek & Erase, che l'utente chiama "Urban"), ma hanno solo la licenza social
-  (20/10): sul sito va il gratuito più simile, Sedgwick Ave Display (OFL). Lezione: i font commerciali dei clienti
+  (20/10): sul sito Permanent Marker, scelto dall'utente tra i gratuiti (preferito a Sedgwick Ave Display). Lezione: i font commerciali dei clienti
   non vanno mai nel repository pubblico né sul sito senza licenza web. Sito diviso nelle loro macro-sezioni (`TESTI` in site.ts, `Sezioni.tsx`); hero con
   Prenota ora + Menu (Linktree) affiancati. Hero e foto definitive le manda il ristorante (ora provvisorie). WhatsApp Business per le prenotazioni: +39 392 764 1873 (dal 19/10, `SITE.whatsapp`); il
   377 301 7230 resta come telefono per chiamare.
