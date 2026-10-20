@@ -1,21 +1,32 @@
 /*
-  Menu, orari e avviso letti dal Foglio Google di OMA (SITE.sheetId).
+  Menu, orari, avviso e lavagna letti dal Foglio Google di OMA (SITE.sheetId).
   - All'avvio il sito mostra subito i dati salvati (ultimo caricamento riuscito, oppure quelli in site.ts).
   - Poi legge il foglio: se la lettura va a buon fine aggiorna la pagina, altrimenti resta tutto com'è.
   Il foglio deve essere condiviso come "Chiunque abbia il link: visualizzatore".
 */
 import { useSyncExternalStore } from 'react'
-import { HOURS, MENU, SITE, type Dish, type MenuSection, type Slot } from '../data/site'
+import {
+  HOURS,
+  LAVAGNA,
+  MENU,
+  SITE,
+  type Dish,
+  type MenuSection,
+  type Slot,
+  type TipoLavagna,
+  type VoceLavagna,
+} from '../data/site'
 
 export type LiveData = {
   menu: MenuSection[]
   hours: Record<number, Slot[]>
   notice: string
+  lavagna: VoceLavagna[]
 }
 
-const CACHE_KEY = 'oma-dati-foglio-v1'
+const CACHE_KEY = 'oma-dati-foglio-v2'
 
-let data: LiveData = readCache() ?? { menu: MENU, hours: HOURS, notice: '' }
+let data: LiveData = readCache() ?? { menu: MENU, hours: HOURS, notice: '', lavagna: LAVAGNA }
 const listeners = new Set<() => void>()
 
 function emit(next: LiveData) {
@@ -35,6 +46,9 @@ export function useLiveData() {
 
 /** Orari correnti, per le funzioni che non sono componenti (stato aperto/chiuso, orari prenotabili). */
 export const getHours = () => data.hours
+
+/** Voci della lavagna correnti (servono anche per bloccare ferie e chiusure nelle prenotazioni). */
+export const getLavagna = () => data.lavagna
 
 /* ---------- Lettura del foglio ---------- */
 
@@ -56,10 +70,11 @@ export async function loadLiveData() {
   if (started || !SITE.sheetId) return
   started = true
   try {
-    const [menuRows, hourRows, noticeRows] = await Promise.all([
+    const [menuRows, hourRows, noticeRows, lavagnaRows] = await Promise.all([
       fetchTab('Menu'),
       fetchTab('Orari'),
       fetchTab('Avviso').catch(() => [] as string[][]),
+      fetchTab('Lavagna').catch(() => null),
     ])
     const menu = parseMenu(menuRows)
     const hours = parseHours(hourRows)
@@ -69,6 +84,8 @@ export async function loadLiveData() {
       hours: hours ?? data.hours,
       // la prima riga della scheda Avviso è l'intestazione con le istruzioni
       notice: noticeRows.map((r) => (r[0] ?? '').trim()).find((t) => t && !t.startsWith('Avviso sul sito')) ?? '',
+      // senza la scheda Lavagna restano le voci scritte in site.ts
+      lavagna: lavagnaRows ? parseLavagna(lavagnaRows) : data.lavagna,
     }
     writeCache(next)
     emit(next)
@@ -164,6 +181,45 @@ function parseHours(rows: string[][]): Record<number, Slot[]> | null {
   return Object.keys(out).length === 7 ? out : null
 }
 
+/** Data scritta come 24/12/2026, 24-12-2026 o 2026-12-24, convertita in AAAA-MM-GG. */
+function parseDate(raw: string) {
+  const t = raw.trim()
+  let m = t.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/)
+  if (m) return `${m[1]}-${two(m[2])}-${two(m[3])}`
+  m = t.match(/^(\d{1,2})[/.-](\d{1,2})[/.-](\d{2,4})$/)
+  if (m) return `${m[3].length === 2 ? `20${m[3]}` : m[3]}-${two(m[2])}-${two(m[1])}`
+  return null
+}
+
+function parseTipo(raw: string): TipoLavagna {
+  const t = norm(raw)
+  if (t.startsWith('feri')) return 'ferie'
+  if (t.startsWith('chius')) return 'chiuso'
+  if (t.startsWith('promo') || t.startsWith('offert')) return 'promo'
+  if (t.startsWith('event') || t.startsWith('serat')) return 'evento'
+  return 'avviso'
+}
+
+function parseLavagna(rows: string[][]): VoceLavagna[] {
+  if (rows.length < 1) return []
+  const header = rows[0].map(norm)
+  const col = (name: string) => header.findIndex((h) => h.startsWith(name))
+  const iDal = col('dal')
+  const iAl = col('al')
+  const iTipo = col('tipo')
+  const iTesto = col('testo')
+  if (iDal < 0 || iTesto < 0) return []
+  const out: VoceLavagna[] = []
+  for (const r of rows.slice(1)) {
+    const dal = parseDate(r[iDal] ?? '')
+    const testo = (r[iTesto] ?? '').trim()
+    if (!dal || !testo) continue
+    const al = iAl >= 0 ? parseDate(r[iAl] ?? '') : null
+    out.push({ dal, al: al && al > dal ? al : undefined, tipo: parseTipo(iTipo >= 0 ? (r[iTipo] ?? '') : ''), testo })
+  }
+  return out
+}
+
 /** CSV secondo RFC 4180: virgolette, virgole e a capo dentro le celle. */
 export function parseCsv(text: string): string[][] {
   const rows: string[][] = []
@@ -204,7 +260,7 @@ function readCache(): LiveData | null {
     const raw = localStorage.getItem(CACHE_KEY)
     if (!raw) return null
     const parsed = JSON.parse(raw) as LiveData
-    return parsed.menu?.length && parsed.hours ? parsed : null
+    return parsed.menu?.length && parsed.hours ? { ...parsed, lavagna: parsed.lavagna ?? LAVAGNA } : null
   } catch {
     return null
   }

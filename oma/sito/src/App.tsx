@@ -5,6 +5,7 @@ import { BookingContext } from './components/booking-context'
 import { BookingDialog } from './components/BookingDialog'
 import { Footer } from './components/Footer'
 import { Hero } from './components/Hero'
+import { Lavagna } from './components/Lavagna'
 import { Nav } from './components/Nav'
 import { Sezioni } from './components/Sezioni'
 import { Splash } from './components/Splash'
@@ -22,7 +23,7 @@ export default function App() {
   // le icone accompagnano sempre un testo o un aria-label: per gli screen reader sono decorative
   const icons = useMemo(() => ({ 'aria-hidden': true as const }), [])
 
-  // orari e avviso aggiornati dal Foglio Google
+  // orari, avviso e lavagna aggiornati dal Foglio Google
   useEffect(() => {
     loadLiveData()
   }, [])
@@ -41,6 +42,7 @@ export default function App() {
           <Nav revealed={revealed} />
           <main id="main">
             <Hero revealed={revealed} />
+            <Lavagna />
             <Sezioni />
             <Visit />
           </main>

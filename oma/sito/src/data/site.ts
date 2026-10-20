@@ -90,6 +90,17 @@ export const TESTI = {
   },
 } satisfies Record<string, Sezione>
 
+/* ---------- Lavagna: ferie, chiusure, promozioni, eventi ----------
+  Si mostrano solo le voci non ancora passate. Ferie e chiusure bloccano anche quei giorni nel modulo
+  di prenotazione. Le date sono AAAA-MM-GG; "al" si omette per un giorno solo.
+  Le stesse voci si possono scrivere nella scheda "Lavagna" del Foglio Google (colonne Dal, Al, Tipo, Testo).
+*/
+
+export type TipoLavagna = 'ferie' | 'chiuso' | 'promo' | 'evento' | 'avviso'
+export type VoceLavagna = { dal: string; al?: string; tipo: TipoLavagna; testo: string }
+
+export const LAVAGNA: VoceLavagna[] = []
+
 /* ---------- Orari (fonte: scheda Google) ---------- */
 
 export type Slot = [open: string, close: string]

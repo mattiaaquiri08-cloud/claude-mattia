@@ -1,5 +1,5 @@
 import { DAY_NAMES, type Slot } from '../data/site'
-import { getHours } from './live-data'
+import { getHours, getLavagna } from './live-data'
 
 const TZ = 'Europe/Rome'
 
@@ -42,6 +42,19 @@ export function parseISO(iso: string) {
 
 export const weekdayOf = (iso: string) => parseISO(iso).getUTCDay()
 
+export function addDays(iso: string, n: number) {
+  const d = parseISO(iso)
+  d.setUTCDate(d.getUTCDate() + n)
+  return toISO(d)
+}
+
+/** Ferie o chiusura scritta sulla lavagna per quel giorno. */
+export const lavagnaClosure = (iso: string) =>
+  getLavagna().find((v) => (v.tipo === 'ferie' || v.tipo === 'chiuso') && v.dal <= iso && iso <= (v.al ?? v.dal))
+
+/** Chiuso quel giorno: giorno di riposo settimanale oppure ferie/chiusura sulla lavagna. */
+export const isClosedOn = (iso: string) => getHours()[weekdayOf(iso)].length === 0 || !!lavagnaClosure(iso)
+
 export const formatSlot = ([a, b]: Slot) => `${a.replace(':00', '')}-${b.replace(':00', '')}`
 
 export function formatDayHours(weekday: number) {
@@ -53,7 +66,7 @@ export function formatDayHours(weekday: number) {
 /** Stato del locale adesso: aperto, in pausa o chiuso, con il prossimo orario utile. */
 export function openStatus() {
   const now = romeNow()
-  const today = getHours()[now.weekday]
+  const today = isClosedOn(now.iso) ? [] : getHours()[now.weekday]
   for (const [a, b] of today) {
     const open = toMinutes(a)
     const close = toMinutes(b)
@@ -64,14 +77,14 @@ export function openStatus() {
       return { open: false, label: `Chiuso ora, apre alle ${a}` }
     }
   }
-  // prossimo giorno con orari
-  for (let i = 1; i <= 7; i++) {
-    const wd = (now.weekday + i) % 7
+  // prossimo giorno aperto, saltando anche ferie e chiusure della lavagna
+  for (let i = 1; i <= 60; i++) {
+    const iso = addDays(now.iso, i)
+    if (isClosedOn(iso)) continue
+    const wd = weekdayOf(iso)
     const slots = getHours()[wd]
-    if (slots.length) {
-      const when = i === 1 ? 'domani' : DAY_NAMES[wd].toLowerCase()
-      return { open: false, label: `Chiuso ora, apre ${when} alle ${slots[0][0]}` }
-    }
+    const when = i === 1 ? 'domani' : i < 7 ? DAY_NAMES[wd].toLowerCase() : `il ${shortDate(iso)}`
+    return { open: false, label: `Chiuso ora, apre ${when} alle ${slots[0][0]}` }
   }
   return { open: false, label: 'Chiuso' }
 }
@@ -81,6 +94,7 @@ export function openStatus() {
  * Se il giorno è oggi, salta gli orari già passati (con 30 minuti di margine).
  */
 export function bookingSlots(iso: string) {
+  if (lavagnaClosure(iso)) return []
   const wd = weekdayOf(iso)
   const now = romeNow()
   const isToday = iso === now.iso
@@ -105,12 +119,17 @@ export function nextDays(count: number) {
     return {
       iso,
       weekday: wd,
-      closed: getHours()[wd].length === 0,
+      closed: isClosedOn(iso),
       dayShort: i === 0 ? 'Oggi' : i === 1 ? 'Domani' : DAY_NAMES[wd].slice(0, 3),
       dayNum: d.getUTCDate(),
       month: d.toLocaleDateString('it-IT', { month: 'short', timeZone: 'UTC' }).replace('.', ''),
     }
   })
+}
+
+/** "24 dic" */
+export function shortDate(iso: string) {
+  return parseISO(iso).toLocaleDateString('it-IT', { day: 'numeric', month: 'short', timeZone: 'UTC' }).replace('.', '')
 }
 
 export function longDate(iso: string) {

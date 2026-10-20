@@ -142,6 +142,15 @@
 
 }
 
+/* Lavagna: ardesia nera del brand con aloni di gesso */
+.lavagna {
+  background:
+    radial-gradient(ellipse 60% 50% at 18% 30%, rgb(248 247 232 / 0.06), transparent 70%),
+    radial-gradient(ellipse 50% 60% at 85% 75%, rgb(248 247 232 / 0.05), transparent 70%),
+    var(--color-ink);
+  box-shadow: inset 0 0 0 1px rgb(248 247 232 / 0.08), 0 30px 60px -40px rgb(23 20 21 / 0.6);
+}
+
 /* Grana leggera su tutta la pagina: elemento fisso, nessun ridisegno durante lo scroll */
 .grain {
   position: fixed;

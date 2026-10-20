@@ -76,7 +76,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Il menu della settimana resta il loro PDF su Linktree (stesso link del QR, `SITE.menuUrl` = linktr.ee/omaosteriamoderna,
   confermato dall'utente il 19/10; lì ci sono anche i PDF di vini e menu inglese; il QR è fatto con QR.io, quindi nel sito va la destinazione finale
   e non il link qr.io, che smette di funzionare se scade il loro abbonamento): i pulsanti "Menu" e "Carta dei vini" portano lì;
-  la carta dei vini non è più nel sito. Il Foglio Google serve solo per orari e avviso.
+  la carta dei vini non è più nel sito. Il Foglio Google serve solo per orari, avviso e lavagna.
+  Lavagna (20/10, sotto la hero): ferie, chiusure, promo, eventi in `LAVAGNA` di site.ts o scheda "Lavagna" del
+  foglio; ferie e chiusure bloccano quei giorni nelle prenotazioni. OMA scrive all'utente, l'utente lo dice a Claude.
   Pagamenti OMA: 2 ricevute per prestazione occasionale (acconto e saldo, 275 € lordi ciascuna).
   Al 16/10/2026 nulla pagato: si attendono ragione sociale, P.IVA, sede di OMA e risposta del loro
   commercialista sulla ritenuta. Il 16/10/2026 confermato: ritenuta 20% sì. Per ogni rata: lordo 275 €,

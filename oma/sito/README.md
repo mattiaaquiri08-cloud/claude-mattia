@@ -33,6 +33,14 @@ schede `Orari` e `Avviso`). Il foglio deve essere condiviso come **"Chiunque abb
 Se il foglio non risponde, il sito usa l'ultimo caricamento riuscito oppure i dati di `src/data/site.ts`.
 Il codice è in `src/lib/live-data.ts`.
 
+## La lavagna
+
+Sotto la hero c'è la lavagna con ferie, chiusure, promozioni ed eventi (`src/components/Lavagna.tsx`).
+Le voci sono in `LAVAGNA` di `src/data/site.ts` oppure nella scheda **"Lavagna"** del Foglio Google, con le colonne
+`Dal`, `Al` (facoltativa), `Tipo` (Ferie, Chiuso, Promo, Evento, Avviso) e `Testo`; le date si scrivono 24/12/2026.
+Le voci passate spariscono da sole. **Ferie e Chiuso bloccano anche quei giorni nel modulo di prenotazione**
+e nello stato "aperto ora". Senza voci la lavagna dice che il locale è aperto come sempre.
+
 ## Dove si cambiano i contenuti
 
 Tutto è in **`src/data/site.ts`**:
@@ -43,6 +51,7 @@ Tutto è in **`src/data/site.ts`**:
 | Numero WhatsApp delle prenotazioni | `SITE.whatsapp` (solo cifre, con 39 davanti) |
 | Telefono, indirizzo, Instagram, link del menu | `SITE` |
 | Orari (usati anche per gli orari prenotabili) | `HOURS` |
+| Ferie, chiusure, promozioni, eventi | `LAVAGNA` |
 
 Le foto sono in `public/img/`; quelle delle sezioni sono provvisorie, in attesa delle foto del ristorante.
 La hero usa `public/img/hero-desktop.webp` (orizzontale) e `public/img/hero-mobile.webp` (verticale).
