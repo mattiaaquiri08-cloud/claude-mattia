@@ -19,7 +19,11 @@ Vercel, GitHub Pages o qualunque hosting. I percorsi sono relativi, quindi funzi
 
 Colori e font sono quelli dei social di OMA, indicati dalla social media manager:
 avorio `#f8f7e8` per lo sfondo, nero `#171415` principale, ocra `#AD6A21` per i dettagli.
-Titoli in Playfair Display, etichette e testo in Urbanist. I token sono in `src/index.css`.
+Font alternati 50 e 50: Sprite Graffiti (nomi delle sezioni e metà dei titoli) e Playfair Display (l'altra
+metà dei titoli e i testi). I token sono in `src/index.css`.
+
+Sprite Graffiti è un font commerciale e non è nel repository: per vederlo va copiato il file
+`public/fonts/sprite-graffiti.woff2` (cartella esclusa da git). Senza il file il sito usa Permanent Marker.
 
 ## Menu, orari e avviso
 

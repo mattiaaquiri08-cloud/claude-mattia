@@ -5,7 +5,7 @@ import { SITE, TESTI, type Sezione } from '../data/site'
 
 /*
   Le macro-sezioni del sito, nell'ordine dei testi della social media manager.
-  Ogni sezione ha il nome (a pennello, come nei loro post), il titolo e il testo (Urbanist).
+  Ogni sezione ha il nome (a pennello, come nei loro post), il titolo e il testo (Playfair Display).
   I titoli alternano i due font del brand: una sezione Playfair Display, la successiva il pennello.
   Le foto sono provvisorie: verranno sostituite con quelle mandate dal ristorante.
 */
@@ -76,7 +76,7 @@ function Titolo({
 }
 
 function Testo({ children, className = '' }: { children: ReactNode; className?: string }) {
-  return <p className={`max-w-[56ch] text-lg leading-relaxed font-medium text-ink/85 ${className}`}>{children}</p>
+  return <p className={`max-w-[56ch] text-lg leading-relaxed text-ink/85 ${className}`}>{children}</p>
 }
 
 function Foto({ src, alt, w, h, className = '' }: { src: string; alt: string; w: number; h: number; className?: string }) {
@@ -135,7 +135,7 @@ function Food({ s }: { s: Sezione }) {
       <div className="mx-auto max-w-[1400px]">
         <motion.div {...reveal}>
           <Nome>{s.nome}</Nome>
-          <Titolo id={`${s.id}-t`} testo={s.titolo} font="pennello" className="mt-6 max-w-[16ch] text-5xl md:text-7xl" />
+          <Titolo id={`${s.id}-t`} testo={s.titolo} font="pennello" className="mt-6 max-w-[12em] text-5xl md:text-7xl" />
         </motion.div>
         <div className="mt-14 grid grid-cols-1 gap-8 md:mt-20 md:grid-cols-12 md:items-end">
           <motion.div {...revealLate} className="grid grid-cols-2 gap-4 md:col-span-7">
@@ -246,7 +246,7 @@ function Aperitivo({ s }: { s: Sezione }) {
         <motion.div {...reveal} className="md:col-span-6">
           <Nome dark>{s.nome}</Nome>
           <Titolo id={`${s.id}-t`} testo={s.titolo} font="pennello" className="mt-6 text-4xl md:text-6xl" />
-          <p className="mt-8 max-w-[52ch] text-lg leading-relaxed font-medium text-paper/85">{s.testo}</p>
+          <p className="mt-8 max-w-[52ch] text-lg leading-relaxed text-paper/85">{s.testo}</p>
         </motion.div>
         <motion.div {...reveal} className="md:col-span-5 md:col-start-8">
           <Foto src="./img/g-sala.webp" alt="La sala di OMA la sera, con le luci ambra" w={1400} h={787} className="aspect-[4/3]" />

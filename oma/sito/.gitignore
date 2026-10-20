@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 dist-single
+
+# Font commerciale Sprite Graffiti (Arsek & Erase): non va nel repository pubblico finché non è chiarita la licenza web
+public/fonts/
