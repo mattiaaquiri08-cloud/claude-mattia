@@ -3,20 +3,14 @@
 /*
   OMA: palette e font del brand, gli stessi dei loro social (indicati dalla social media manager).
   Avorio per lo sfondo, nero principale, ocra per i dettagli. Tema chiaro unico.
-  Font del brand, alternati 50 e 50: Sprite Graffiti (il pennello delle loro storie) e Playfair Display,
-  usato anche per il testo. Sprite Graffiti è un font commerciale: il file sta in public/fonts/, fuori dal
-  repository; se manca, al suo posto si vede Permanent Marker.
+  Font alternati 50 e 50: Sedgwick Ave Display e Playfair Display (usato anche per il testo).
+  Sui social OMA usa Sprite Graffiti, ma ha solo la licenza social: sul sito c'è Sedgwick Ave Display,
+  il gratuito più simile (licenza SIL OFL, libero anche per il web).
   L'ocra #AD6A21 su avorio ha contrasto 4:1: va bene per titoli e dettagli grandi;
   per testo piccolo si usa ochre-deep (5,7:1).
 
   Forme: pulsanti a pillola, immagini e pannelli 20px, campi del modulo 14px.
 */
-@font-face {
-  font-family: 'Sprite Graffiti';
-  src: url('/fonts/sprite-graffiti.woff2') format('woff2');
-  font-display: swap;
-}
-
 @theme {
   --color-paper: #f8f7e8;
   --color-paper-2: #f0eedc;
@@ -32,7 +26,7 @@
 
   --font-display: 'Playfair Display Variable', ui-serif, Georgia, serif;
   --font-sans: 'Playfair Display Variable', ui-serif, Georgia, serif;
-  --font-pennello: 'Sprite Graffiti', 'Permanent Marker', cursive;
+  --font-pennello: 'Sedgwick Ave Display', 'Playfair Display Variable', cursive;
 
   --radius-media: 20px;
   --radius-field: 14px;

@@ -64,11 +64,11 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Prenotazioni dei ristoranti: modulo che apre WhatsApp con il messaggio già compilato, mai
   conferme simulate.
 - Progetto OMA Osteria Moderna (cartella `oma/`): dal 19/10 brand dei loro social, deciso dalla social
-  media manager: sfondo avorio #f8f7e8, nero #171415 principale, ocra #AD6A21 per i dettagli; font del brand
-  (file mandati dall'utente il 20/10) alternati 50 e 50: Sprite Graffiti (Arsek & Erase, il "pennello" delle storie,
-  che l'utente chiama "Urban") per nomi delle sezioni e metà dei titoli, Playfair Display per l'altra metà e i testi.
-  Sprite Graffiti è commerciale ("All rights reserved"): il file sta in `public/fonts/` ESCLUSO da git (repo pubblico);
-  serve la conferma della licenza web prima di pubblicarlo. Senza file si vede Permanent Marker. Sito diviso nelle loro macro-sezioni (`TESTI` in site.ts, `Sezioni.tsx`); hero con
+  media manager: sfondo avorio #f8f7e8, nero #171415 principale, ocra #AD6A21 per i dettagli; font alternati
+  50 e 50: Sedgwick Ave Display (nomi delle sezioni e metà dei titoli) e Playfair Display (l'altra metà e i testi).
+  Sui social usano Sprite Graffiti (Arsek & Erase, che l'utente chiama "Urban"), ma hanno solo la licenza social
+  (20/10): sul sito va il gratuito più simile, Sedgwick Ave Display (OFL). Lezione: i font commerciali dei clienti
+  non vanno mai nel repository pubblico né sul sito senza licenza web. Sito diviso nelle loro macro-sezioni (`TESTI` in site.ts, `Sezioni.tsx`); hero con
   Prenota ora + Menu (Linktree) affiancati. Hero e foto definitive le manda il ristorante (ora provvisorie). WhatsApp Business per le prenotazioni: +39 392 764 1873 (dal 19/10, `SITE.whatsapp`); il
   377 301 7230 resta come telefono per chiamare.
   Referente: Alessio. Preventivo: Completo 550 €, Base 450 €. Il 13/10/2026 hanno scelto il Completo,
