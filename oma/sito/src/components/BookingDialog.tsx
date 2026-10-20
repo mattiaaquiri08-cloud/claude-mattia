@@ -4,6 +4,8 @@ import {
   ArrowLeft,
   ArrowSquareOut,
   CalendarBlank,
+  CaretLeft,
+  CaretRight,
   CheckCircle,
   Minus,
   Plus,
@@ -63,6 +65,7 @@ export function BookingDialog({ open, onClose }: Props) {
   const titleId = useId()
   const panelRef = useRef<HTMLDivElement>(null)
   const firstFieldRef = useRef<HTMLInputElement>(null)
+  const daysRef = useRef<HTMLDivElement>(null)
   const lastFocused = useRef<HTMLElement | null>(null)
 
   const [form, setForm] = useState<Form>(EMPTY)
@@ -308,11 +311,27 @@ export function BookingDialog({ open, onClose }: Props) {
                         <FieldError id="b-name-err" msg={errors.name} />
                       </div>
 
-                      {/* Giorno */}
-                      <fieldset className="flex flex-col gap-2" data-field="date">
+                      {/* Giorno: i giorni scorrono in orizzontale (min-w-0 evita che il fieldset si allarghi) */}
+                      <fieldset className="relative flex min-w-0 flex-col gap-2" data-field="date">
                         <legend className="mb-2 text-sm font-medium">Giorno</legend>
+                        <div className="absolute -top-11 right-0 flex gap-1.5">
+                          {([-1, 1] as const).map((dir) => (
+                            <button
+                              key={dir}
+                              type="button"
+                              onClick={() =>
+                                daysRef.current?.scrollBy({ left: dir * 228, behavior: reduce ? 'auto' : 'smooth' })
+                              }
+                              className="grid size-9 place-items-center rounded-full border border-line text-ink transition-colors hover:border-mute hover:bg-paper-3"
+                              aria-label={dir < 0 ? 'Giorni precedenti' : 'Giorni successivi'}
+                            >
+                              {dir < 0 ? <CaretLeft size={16} weight="bold" /> : <CaretRight size={16} weight="bold" />}
+                            </button>
+                          ))}
+                        </div>
                         <div
-                          className="no-scrollbar -mx-6 flex snap-x gap-2 overflow-x-auto px-6 pb-1 md:-mx-9 md:px-9"
+                          ref={daysRef}
+                          className="no-scrollbar -mx-6 flex snap-x scroll-px-6 gap-2 overflow-x-auto px-6 pb-1 md:-mx-9 md:scroll-px-9 md:px-9"
                           role="radiogroup"
                           aria-label="Prossimi giorni"
                         >
@@ -378,7 +397,7 @@ export function BookingDialog({ open, onClose }: Props) {
                       </fieldset>
 
                       {/* Orario */}
-                      <fieldset className="flex flex-col gap-2" data-field="time">
+                      <fieldset className="flex min-w-0 flex-col gap-2" data-field="time">
                         <legend className="mb-2 text-sm font-medium">Orario</legend>
                         {!form.date ? (
                           <p className="rounded-[var(--radius-field)] border border-dashed border-line px-4 py-4 text-sm text-mute">
