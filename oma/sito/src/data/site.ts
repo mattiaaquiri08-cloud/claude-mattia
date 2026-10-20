@@ -91,15 +91,22 @@ export const TESTI = {
 } satisfies Record<string, Sezione>
 
 /* ---------- Lavagna: ferie, chiusure, promozioni, eventi ----------
-  Si mostrano solo le voci non ancora passate. Ferie e chiusure bloccano anche quei giorni nel modulo
-  di prenotazione. Le date sono AAAA-MM-GG; "al" si omette per un giorno solo.
-  Le stesse voci si possono scrivere nella scheda "Lavagna" del Foglio Google (colonne Dal, Al, Tipo, Testo).
+  Si mostrano solo le voci non ancora passate. Ferie e chiusure bloccano anche quei giorni (o solo il
+  turno indicato) nel modulo di prenotazione. Date AAAA-MM-GG: "al" si omette per un giorno solo,
+  "dal" si omette per una voce sempre valida (es. una promozione fissa), da togliere quando finisce.
+  Le stesse voci si possono scrivere nella scheda "Lavagna" del Foglio Google (Dal, Al, Turno, Tipo, Testo).
 */
 
 export type TipoLavagna = 'ferie' | 'chiuso' | 'promo' | 'evento' | 'avviso'
-export type VoceLavagna = { dal: string; al?: string; tipo: TipoLavagna; testo: string }
+export type Turno = 'pranzo' | 'cena'
+export type VoceLavagna = { dal?: string; al?: string; turno?: Turno; tipo: TipoLavagna; testo: string }
 
-export const LAVAGNA: VoceLavagna[] = []
+export const LAVAGNA: VoceLavagna[] = [
+  { turno: 'pranzo', tipo: 'promo', testo: 'Un primo, acqua e caffè a 12\u00a0€.' },
+  { dal: '2026-10-22', turno: 'cena', tipo: 'chiuso', testo: 'a cena. A pranzo siamo aperti.' },
+  { dal: '2026-10-27', turno: 'cena', tipo: 'chiuso', testo: 'a cena. A pranzo siamo aperti.' },
+  { dal: '2026-11-12', turno: 'cena', tipo: 'chiuso', testo: 'a cena. A pranzo siamo aperti.' },
+]
 
 /* ---------- Orari (fonte: scheda Google) ---------- */
 

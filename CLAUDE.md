@@ -78,7 +78,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   e non il link qr.io, che smette di funzionare se scade il loro abbonamento): i pulsanti "Menu" e "Carta dei vini" portano lì;
   la carta dei vini non è più nel sito. Il Foglio Google serve solo per orari, avviso e lavagna.
   Lavagna (20/10, sotto la hero): ferie, chiusure, promo, eventi in `LAVAGNA` di site.ts o scheda "Lavagna" del
-  foglio; ferie e chiusure bloccano quei giorni nelle prenotazioni. OMA scrive all'utente, l'utente lo dice a Claude.
+  foglio; ferie e chiusure bloccano quei giorni (o solo pranzo/cena con `turno`) nelle prenotazioni. OMA scrive
+  all'utente, l'utente lo dice a Claude. Al 20/10: chiusi a cena 22/10, 27/10, 12/11; promo fissa a pranzo 12 €
+  (un primo, acqua e caffè), voce senza data da togliere quando finisce.
   Pagamenti OMA: 2 ricevute per prestazione occasionale (acconto e saldo, 275 € lordi ciascuna).
   Al 16/10/2026 nulla pagato: si attendono ragione sociale, P.IVA, sede di OMA e risposta del loro
   commercialista sulla ritenuta. Il 16/10/2026 confermato: ritenuta 20% sì. Per ogni rata: lordo 275 €,

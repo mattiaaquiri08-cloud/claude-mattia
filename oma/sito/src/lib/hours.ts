@@ -48,12 +48,25 @@ export function addDays(iso: string, n: number) {
   return toISO(d)
 }
 
-/** Ferie o chiusura scritta sulla lavagna per quel giorno. */
-export const lavagnaClosure = (iso: string) =>
-  getLavagna().find((v) => (v.tipo === 'ferie' || v.tipo === 'chiuso') && v.dal <= iso && iso <= (v.al ?? v.dal))
+const chiusureDel = (iso: string) =>
+  getLavagna().filter(
+    (v) => (v.tipo === 'ferie' || v.tipo === 'chiuso') && v.dal !== undefined && v.dal <= iso && iso <= (v.al ?? v.dal),
+  )
 
-/** Chiuso quel giorno: giorno di riposo settimanale oppure ferie/chiusura sulla lavagna. */
-export const isClosedOn = (iso: string) => getHours()[weekdayOf(iso)].length === 0 || !!lavagnaClosure(iso)
+/** Ferie o chiusura scritta sulla lavagna per tutto quel giorno. */
+export const lavagnaClosure = (iso: string) => chiusureDel(iso).find((v) => !v.turno)
+
+const turnoOf = ([a]: Slot) => (toMinutes(a) < 17 * 60 ? 'pranzo' : 'cena')
+
+/** Fasce orarie di quel giorno, tolte ferie e chiusure della lavagna (anche solo pranzo o solo cena). */
+export function openSlots(iso: string): Slot[] {
+  const chiusure = chiusureDel(iso)
+  if (chiusure.some((v) => !v.turno)) return []
+  return getHours()[weekdayOf(iso)].filter((s) => !chiusure.some((v) => v.turno === turnoOf(s)))
+}
+
+/** Chiuso quel giorno: giorno di riposo settimanale oppure chiusure della lavagna su tutti i turni. */
+export const isClosedOn = (iso: string) => openSlots(iso).length === 0
 
 export const formatSlot = ([a, b]: Slot) => `${a.replace(':00', '')}-${b.replace(':00', '')}`
 
@@ -66,7 +79,7 @@ export function formatDayHours(weekday: number) {
 /** Stato del locale adesso: aperto, in pausa o chiuso, con il prossimo orario utile. */
 export function openStatus() {
   const now = romeNow()
-  const today = isClosedOn(now.iso) ? [] : getHours()[now.weekday]
+  const today = openSlots(now.iso)
   for (const [a, b] of today) {
     const open = toMinutes(a)
     const close = toMinutes(b)
@@ -80,9 +93,9 @@ export function openStatus() {
   // prossimo giorno aperto, saltando anche ferie e chiusure della lavagna
   for (let i = 1; i <= 60; i++) {
     const iso = addDays(now.iso, i)
-    if (isClosedOn(iso)) continue
+    const slots = openSlots(iso)
+    if (!slots.length) continue
     const wd = weekdayOf(iso)
-    const slots = getHours()[wd]
     const when = i === 1 ? 'domani' : i < 7 ? DAY_NAMES[wd].toLowerCase() : `il ${shortDate(iso)}`
     return { open: false, label: `Chiuso ora, apre ${when} alle ${slots[0][0]}` }
   }
@@ -94,11 +107,9 @@ export function openStatus() {
  * Se il giorno è oggi, salta gli orari già passati (con 30 minuti di margine).
  */
 export function bookingSlots(iso: string) {
-  if (lavagnaClosure(iso)) return []
-  const wd = weekdayOf(iso)
   const now = romeNow()
   const isToday = iso === now.iso
-  return getHours()[wd].map(([a, b], i) => {
+  return openSlots(iso).map(([a, b], i) => {
     const times: string[] = []
     for (let t = toMinutes(a); t <= toMinutes(b) - 60; t += 30) {
       if (isToday && t < now.minutes + 30) continue

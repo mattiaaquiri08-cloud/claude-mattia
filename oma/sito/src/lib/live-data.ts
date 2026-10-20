@@ -14,6 +14,7 @@ import {
   type MenuSection,
   type Slot,
   type TipoLavagna,
+  type Turno,
   type VoceLavagna,
 } from '../data/site'
 
@@ -200,22 +201,37 @@ function parseTipo(raw: string): TipoLavagna {
   return 'avviso'
 }
 
+function parseTurno(raw: string): Turno | undefined {
+  const t = norm(raw)
+  if (t.includes('cena')) return 'cena'
+  if (t.includes('pranz')) return 'pranzo'
+  return undefined
+}
+
 function parseLavagna(rows: string[][]): VoceLavagna[] {
   if (rows.length < 1) return []
   const header = rows[0].map(norm)
   const col = (name: string) => header.findIndex((h) => h.startsWith(name))
   const iDal = col('dal')
   const iAl = col('al')
+  const iTurno = col('turno')
   const iTipo = col('tipo')
   const iTesto = col('testo')
-  if (iDal < 0 || iTesto < 0) return []
+  if (iTesto < 0) return []
   const out: VoceLavagna[] = []
   for (const r of rows.slice(1)) {
-    const dal = parseDate(r[iDal] ?? '')
     const testo = (r[iTesto] ?? '').trim()
-    if (!dal || !testo) continue
-    const al = iAl >= 0 ? parseDate(r[iAl] ?? '') : null
-    out.push({ dal, al: al && al > dal ? al : undefined, tipo: parseTipo(iTipo >= 0 ? (r[iTipo] ?? '') : ''), testo })
+    if (!testo) continue
+    // senza data la voce vale sempre (es. una promozione fissa)
+    const dal = iDal >= 0 ? (parseDate(r[iDal] ?? '') ?? undefined) : undefined
+    const al = dal && iAl >= 0 ? parseDate(r[iAl] ?? '') : null
+    out.push({
+      dal,
+      al: dal && al && al > dal ? al : undefined,
+      turno: iTurno >= 0 ? parseTurno(r[iTurno] ?? '') : undefined,
+      tipo: parseTipo(iTipo >= 0 ? (r[iTipo] ?? '') : ''),
+      testo,
+    })
   }
   return out
 }

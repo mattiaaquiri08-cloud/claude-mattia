@@ -2,6 +2,8 @@ import { motion, useReducedMotion } from 'motion/react'
 import { useLiveData } from '../lib/live-data'
 import { romeNow, shortDate, weekdayOf } from '../lib/hours'
 import { DAY_NAMES, type TipoLavagna, type VoceLavagna } from '../data/site'
+
+type Riga = VoceLavagna & { giorni: string[] }
 import { scrollToId } from '../lib/scroll'
 
 const ETICHETTA: Record<TipoLavagna, string> = {
@@ -12,10 +14,26 @@ const ETICHETTA: Record<TipoLavagna, string> = {
   avviso: 'Avviso',
 }
 
-/** "sab 25 ott" per un giorno, "dal 24 dic al 6 gen" per un periodo. */
-function quando(v: VoceLavagna) {
-  if (v.al) return `dal ${shortDate(v.dal)} al ${shortDate(v.al)}`
-  return `${DAY_NAMES[weekdayOf(v.dal)].slice(0, 3).toLowerCase()} ${shortDate(v.dal)}`
+const giorno = (iso: string) => `${DAY_NAMES[weekdayOf(iso)].slice(0, 3).toLowerCase()} ${shortDate(iso)}`
+
+/** "sab 25 ott", più giorni separati da virgole, "dal 24 dic al 6 gen"; senza data il turno ("a pranzo"). */
+function quando(r: Riga) {
+  if (!r.dal) return r.turno === 'cena' ? 'a cena' : r.turno === 'pranzo' ? 'a pranzo' : 'sempre'
+  if (r.al) return `dal ${shortDate(r.dal)} al ${shortDate(r.al)}`
+  return r.giorni.map(giorno).join(', ')
+}
+
+/** Le voci uguali su giorni diversi (es. tre chiusure a cena) diventano una riga sola. */
+function raggruppa(voci: VoceLavagna[]): Riga[] {
+  const righe: Riga[] = []
+  for (const v of voci) {
+    const simile = v.dal && !v.al
+      ? righe.find((r) => r.dal && !r.al && r.tipo === v.tipo && r.turno === v.turno && r.testo === v.testo)
+      : undefined
+    if (simile) simile.giorni.push(v.dal!)
+    else righe.push({ ...v, giorni: v.dal ? [v.dal] : [] })
+  }
+  return righe
 }
 
 /*
@@ -26,7 +44,12 @@ export function Lavagna() {
   const reduce = useReducedMotion()
   const { lavagna } = useLiveData()
   const oggi = romeNow().iso
-  const voci = lavagna.filter((v) => (v.al ?? v.dal) >= oggi).sort((a, b) => a.dal.localeCompare(b.dal))
+  // prima le voci sempre valide, poi le altre in ordine di data
+  const voci = raggruppa(
+    lavagna
+      .filter((v) => !v.dal || (v.al ?? v.dal) >= oggi)
+      .sort((a, b) => (a.dal ?? '').localeCompare(b.dal ?? '')),
+  )
 
   return (
     <section id="lavagna" aria-labelledby="lavagna-t" className="px-4 pt-20 md:px-8 md:pt-28">
@@ -49,7 +72,7 @@ export function Lavagna() {
             <ul className="flex flex-col divide-y divide-dashed divide-paper/20">
               {voci.map((v) => (
                 <li
-                  key={`${v.dal}-${v.testo}`}
+                  key={`${v.dal ?? 'sempre'}-${v.tipo}-${v.testo}`}
                   className="grid grid-cols-1 gap-x-6 gap-y-1 py-4 first:pt-0 last:pb-0 sm:grid-cols-[minmax(0,14rem)_minmax(0,1fr)]"
                 >
                   <p className="font-pennello text-xl leading-snug tracking-[0.02em] text-ochre uppercase">
