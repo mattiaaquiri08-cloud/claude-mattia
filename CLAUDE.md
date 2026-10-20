@@ -135,7 +135,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   ramo va online da solo. Domini: maqwebdesign.com e www. Search Console verificata (proprietà Dominio), sitemap
   `https://maqwebdesign.com/sitemap.xml` (per le proprietà Dominio serve l'URL completo). Il modulo Web3Forms FUNZIONA (provato
   dall'utente il 18/10 dal sito online); non si può provare dall'anteprima Claude né da questo server (Cloudflare blocca i server). Scheda Google Business "MAQ Web Design" creata il 17/10 (categoria Web Designer, zone Roma + Città
-  metropolitana, sede nascosta), VERIFICATA il 18/10 (spunta blu, 1 recensione 5★); orari, descrizione, logo e copertina
+  metropolitana, sede nascosta), spunta blu il 18/10 ma al 20/10 NON compare ancora nelle ricerche pubbliche (Maps "MAQ Web Design" = 0 risultati,
+  il profilo diceva "Non visibile pubblicamente"; 2 recensioni 5★); orari, descrizione, logo e copertina
   (`google-business/`) inseriti. Togliere i servizi suggeriti da Google che non fa (app, software). Prossimo passo:
   recensioni vere dai primi clienti. Su iPhone il pannello si apre meglio dall'app Google Maps (Safari dava errore).
   Instagram: @maqwebdesign (17/10), nome profilo "MAQ Web Design | Web Designer Roma"; nel sito (config.ts) e nei dati
