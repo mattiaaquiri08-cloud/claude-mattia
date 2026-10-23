@@ -167,6 +167,13 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Più schede/sessioni di Claude (18/10): NON comunicano tra loro; la memoria comune è questo repo. Ogni sessione lavora
   su un suo ramo `claude/...`: all'inizio fare `git fetch` e guardare gli altri rami recenti (es. `git log --all --since="2 days ago"`)
   per sapere cosa è già stato fatto, e riportare qui le lezioni utili. 100C: bozza fatta e inviata in un'altra sessione.
+- Sito per lo zio Enrico Picciolo (23/10): consulente finanziario Fineco, sito attuale enricopicciolo.it (WordPress,
+  lunghissimo da telefono, refusi, link a pagina vuota). Nuova versione sintetica in `demo-picciolo/` (ramo
+  `claude/demo-picciolo`), online su https://mattiaaquiri08-cloud.github.io/claude-mattia/picciolo/ ; blu notte + petrolio,
+  font Geist, tema chiaro/scuro, libro "Risparmiare, investire, proteggere" (Amazon amzn.eu/d/eKOfUQq), menu contatti flottante.
+  Foto e copertina scontornate prese dal suo sito (wp-content/uploads). Il modulo apre email/WhatsApp precompilati (nessun server).
+- 21st (23/10): `21st search` dà sempre "catalog search failed" da questo server (anche con TWENTYFIRST_TOKEN=$API_KEY_21ST),
+  `21st usage` e `21st review` funzionano. Se succede: costruire i componenti a mano e usare `21st review` alla fine.
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).

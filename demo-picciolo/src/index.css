@@ -1,0 +1,103 @@
+@import "@fontsource-variable/geist";
+@import "tailwindcss";
+
+/* Identità ripresa dal sito attuale di Enrico (blu notte Fineco + petrolio), resa più pulita.
+   Un solo colore d'accento (petrolio) su tutta la pagina; tema chiaro e scuro con le stesse regole.
+   Forme: schede 20px, campi 12px, pulsanti a pillola. */
+:root {
+  --sfondo: #f5f7fa;
+  --superficie: #ffffff;
+  --velo: #eaf0f6;
+  --testo: #0d1b2e;
+  --testo-2: #4b5a6e;
+  --linea: #d9e0e8;
+  --notte: #0b2545;
+  --accento: #0e7490;
+  --accento-forte: #155e75;
+  --su-accento: #ffffff;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sfondo: #08111f;
+    --superficie: #0f1b2d;
+    --velo: #13233a;
+    --testo: #e7edf5;
+    --testo-2: #a3b0c2;
+    --linea: #1f3049;
+    --notte: #0e2645;
+    --accento: #5cc8dc;
+    --accento-forte: #8adae8;
+    --su-accento: #04202b;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --color-sfondo: var(--sfondo);
+  --color-superficie: var(--superficie);
+  --color-velo: var(--velo);
+  --color-testo: var(--testo);
+  --color-testo-2: var(--testo-2);
+  --color-linea: var(--linea);
+  --color-notte: var(--notte);
+  --color-accento: var(--accento);
+  --color-accento-forte: var(--accento-forte);
+  --color-su-accento: var(--su-accento);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    background: var(--sfondo);
+    color: var(--testo);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--accento);
+    color: var(--su-accento);
+  }
+  :focus-visible {
+    outline: 2px solid var(--accento);
+    outline-offset: 3px;
+  }
+}
+
+/* nasconde la barra di scorrimento nelle strisce orizzontali (lo scorrimento resta) */
+@utility senza-barra {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
