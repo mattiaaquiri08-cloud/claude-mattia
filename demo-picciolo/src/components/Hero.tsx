@@ -1,5 +1,6 @@
 import { ArrowRight } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "motion/react";
+import { RITARDO_INGRESSO } from "../avvio";
 import { EASE, Pulsante, useMotivo } from "./ui";
 
 export default function Hero() {
@@ -11,7 +12,7 @@ export default function Hero() {
       : {
           initial: { opacity: 0, y: 18 },
           animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.8, delay: 0.1 + i * 0.09, ease: EASE },
+          transition: { duration: 0.8, delay: RITARDO_INGRESSO + 0.1 + i * 0.09, ease: EASE },
         };
 
   return (
@@ -49,7 +50,7 @@ export default function Hero() {
         <motion.div
           initial={ridotto ? false : { opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.25, ease: EASE }}
+          transition={{ duration: 1, delay: RITARDO_INGRESSO + 0.25, ease: EASE }}
           className="relative mx-auto w-full max-w-[520px]"
         >
           {/* pannello blu notte con la luce del faro del sito attuale, appena accennata */}
