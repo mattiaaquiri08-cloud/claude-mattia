@@ -30,7 +30,7 @@ const phone = `<!doctype html>
   * { box-sizing: border-box; margin: 0; }
   html, body { height: 100%; background: #151414; color: #eeebe6; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
   .stage { min-height: 100%; display: grid; grid-template-columns: minmax(0, 22rem) auto; gap: 5rem; align-items: center; justify-content: center; padding: 2rem; }
-  .intro h1 { font-family: Didot, "Bodoni 72", "Bodoni MT", Georgia, serif; font-weight: 400; font-size: 2.6rem; line-height: 1.05; letter-spacing: -0.02em; }
+  .intro h1 { font-family: "Cormorant Garamond", Garamond, Georgia, serif; font-weight: 500; font-size: 2.6rem; line-height: 1.05; letter-spacing: -0.02em; }
   .intro h1 em { color: #dd3f33; }
   .intro p { margin-top: 1.25rem; color: #a9a49e; line-height: 1.6; font-size: 0.95rem; max-width: 30ch; }
   .intro .tag { display: inline-block; margin-top: 2rem; padding: 0.5rem 0.9rem; border: 1px solid rgb(238 235 230 / 0.2); font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: #a9a49e; }

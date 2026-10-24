@@ -12,7 +12,7 @@ npm run preview  # anteprima della build
 ```
 
 Stack: Vite, React 19, TypeScript, Tailwind CSS v4, Motion (`motion/react`), Lenis, Phosphor Icons.
-Font self-hosted: Bodoni Moda (titoli) e Geist (testo).
+Font self-hosted: Cormorant Garamond (titoli, scelto dal cliente) e Geist (testo).
 
 ## Direzione visiva
 

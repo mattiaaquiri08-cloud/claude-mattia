@@ -27,7 +27,7 @@ function Row({ s }: { s: Service }) {
         <span className="min-w-0 text-[1rem] text-ink">{s.name}</span>
         <span className="leader text-ink" aria-hidden />
         {s.price !== null ? (
-          <span className="shrink-0 font-display text-[1.25rem] tabular-nums text-ink">
+          <span className="shrink-0 font-display text-[1.25rem] tabular-nums lining-nums text-ink">
             {s.from && <span className="mr-1 font-sans text-[0.75rem] text-ink-soft">da</span>}
             {euro.format(s.price)}
           </span>
@@ -52,7 +52,7 @@ function Highlights() {
         <p className="text-[0.75rem] font-medium uppercase tracking-[0.22em] text-lacca-glow">Offerta</p>
         <h3 className="font-display mt-3 text-[2rem] leading-tight">{laser.title}</h3>
         <p className="mt-4 flex items-baseline gap-2">
-          <span className="font-display opsz-xl text-[3.5rem] leading-none tabular-nums">{euro.format(laser.price)}</span>
+          <span className="font-display opsz-xl text-[3.5rem] leading-none tabular-nums lining-nums">{euro.format(laser.price)}</span>
           <span className="text-[0.9375rem] text-night-soft">{laser.unit}</span>
         </p>
         <ul className="mt-6 flex flex-wrap gap-2">
@@ -71,7 +71,7 @@ function Highlights() {
           {bbGlow.prices.map((pr) => (
             <div key={pr.label} className="flex items-baseline gap-2">
               <dt className="order-2 text-[0.875rem] text-ink-soft">{pr.label}</dt>
-              <dd className="font-display text-[1.75rem] leading-none tabular-nums">{euro.format(pr.value)}</dd>
+              <dd className="font-display text-[1.75rem] leading-none tabular-nums lining-nums">{euro.format(pr.value)}</dd>
             </div>
           ))}
         </dl>

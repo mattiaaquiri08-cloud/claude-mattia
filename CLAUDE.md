@@ -82,3 +82,5 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   possono allegare file di qualche MB: mandare i link, non gli allegati.
 - Non mandare email all'utente (né a emailpergiocare08@gmail.com né ad altri indirizzi) se non lo chiede
   esplicitamente in quel momento: i link aggiornati vanno solo in chat.
+- Exotique & Estetique: font dei titoli Cormorant Garamond (scelto dall'utente al posto di Bodoni Moda).
+  Ha numeri "all'antica": sui prezzi serve `lining-nums` accanto a `tabular-nums`.
