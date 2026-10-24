@@ -239,6 +239,12 @@ export const reviews: Review[] = [
   },
 ]
 
+/*
+ * Foto di Naomi: quando arriva, salvarla in src/assets/photo/naomi.webp, importarla qui
+ * e assegnarla. Finché è null il sito mostra una cornice segnaposto.
+ */
+export const naomiPhoto: string | null = null
+
 /* Dalla descrizione che Naomi ha scritto sulla scheda Google del centro. */
 export const naomiQuote =
   'Credo che la bellezza sia un riflesso del benessere interiore ed esteriore.'
