@@ -5,6 +5,7 @@ import { EASE, cn } from '../lib'
 import { useBooking } from './booking-context'
 import { Button } from './Button'
 import { MaskLines, Reveal } from './Reveal'
+import bbGlowImg from '../assets/photo/real/bbglow.webp'
 import { PRICE_EVENT } from './price-events'
 
 
@@ -46,8 +47,8 @@ function Row({ s }: { s: Service }) {
 function Highlights() {
   const { laser, bbGlow } = highlights
   return (
-    <div className="mt-14 grid gap-4 md:mt-16 md:grid-cols-2">
-      <Reveal className="relative overflow-hidden bg-night p-8 text-night-ink md:p-10">
+    <div className="mt-14 grid gap-4 md:mt-16 md:grid-cols-5">
+      <Reveal className="relative overflow-hidden bg-night p-8 text-night-ink md:col-span-2 md:p-10">
         <span aria-hidden className="absolute inset-y-0 left-0 w-[3px] bg-lacca-glow" />
         <p className="text-[0.75rem] font-medium uppercase tracking-[0.22em] text-lacca-glow">Offerta</p>
         <h3 className="font-display mt-3 text-[2rem] leading-tight">{laser.title}</h3>
@@ -63,26 +64,39 @@ function Highlights() {
           ))}
         </ul>
       </Reveal>
-      <Reveal className="border border-line bg-paper p-8 md:p-10" delay={0.08}>
-        <p className="text-[0.75rem] font-medium uppercase tracking-[0.22em] text-ink-soft">Viso</p>
-        <h3 className="font-display mt-3 text-[2rem] leading-tight">{bbGlow.title}</h3>
-        <p className="mt-1 font-display text-[1.125rem] italic text-ink-soft">{bbGlow.subtitle}</p>
-        <dl className="mt-5 flex flex-wrap gap-x-8 gap-y-2">
-          {bbGlow.prices.map((pr) => (
-            <div key={pr.label} className="flex items-baseline gap-2">
-              <dt className="order-2 text-[0.875rem] text-ink-soft">{pr.label}</dt>
-              <dd className="font-display text-[1.75rem] leading-none tabular-nums lining-nums">{euro.format(pr.value)}</dd>
-            </div>
-          ))}
-        </dl>
-        <ul className="mt-6 grid grid-cols-2 gap-x-6 gap-y-2.5 text-[0.9375rem]">
-          {bbGlow.points.map((pt) => (
-            <li key={pt} className="flex items-baseline gap-2.5">
-              <span aria-hidden className="h-px w-3 shrink-0 translate-y-[-0.3em] bg-lacca" />
-              {pt}
-            </li>
-          ))}
-        </ul>
+      <Reveal className="grid gap-6 border border-line bg-paper p-6 sm:grid-cols-[minmax(0,13rem)_1fr] sm:gap-8 md:col-span-3 md:p-8" delay={0.08}>
+        <div className="overflow-hidden border border-line bg-white">
+          <img
+            src={bbGlowImg}
+            alt="Lo stesso volto prima e dopo il trattamento BB Glow: a sinistra la pelle con macchie, a destra la pelle uniforme."
+            width={632}
+            height={516}
+            loading="lazy"
+            decoding="async"
+            className="aspect-[632/516] w-full object-cover sm:aspect-auto sm:h-full"
+          />
+        </div>
+        <div>
+          <p className="text-[0.75rem] font-medium uppercase tracking-[0.22em] text-ink-soft">Viso</p>
+          <h3 className="font-display mt-3 text-[2rem] leading-tight">{bbGlow.title}</h3>
+          <p className="mt-1 font-display text-[1.125rem] italic text-ink-soft">{bbGlow.subtitle}</p>
+          <dl className="mt-5 flex flex-wrap gap-x-8 gap-y-2">
+            {bbGlow.prices.map((pr) => (
+              <div key={pr.label} className="flex items-baseline gap-2">
+                <dt className="order-2 text-[0.875rem] text-ink-soft">{pr.label}</dt>
+                <dd className="font-display text-[1.75rem] leading-none tabular-nums lining-nums">{euro.format(pr.value)}</dd>
+              </div>
+            ))}
+          </dl>
+          <ul className="mt-6 grid grid-cols-2 gap-x-6 gap-y-2.5 text-[0.9375rem] md:grid-cols-1 xl:grid-cols-2">
+            {bbGlow.points.map((pt) => (
+              <li key={pt} className="flex items-baseline gap-2.5">
+                <span aria-hidden className="h-px w-3 shrink-0 translate-y-[-0.3em] bg-lacca" />
+                {pt}
+              </li>
+            ))}
+          </ul>
+        </div>
       </Reveal>
     </div>
   )
