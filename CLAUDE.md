@@ -80,3 +80,5 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   `https://rawcdn.githack.com/mattiaaquiri08-cloud/claude-mattia/<SHA-commit>/consegna/<file>.html`
   (serve l'HTML correttamente; nuovo SHA a ogni aggiornamento). Gmail e Drive via connettore non
   possono allegare file di qualche MB: mandare i link, non gli allegati.
+- Non mandare email all'utente (né a emailpergiocare08@gmail.com né ad altri indirizzi) se non lo chiede
+  esplicitamente in quel momento: i link aggiornati vanno solo in chat.
