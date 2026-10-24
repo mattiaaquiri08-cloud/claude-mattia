@@ -101,7 +101,8 @@ export const categories: Category[] = [
       p('Trattamento antirughe', 55),
       p('Trattamento couperose e macchie', 55),
       p('Trattamento acne', 60),
-      p('BB Glow, fondotinta semipermanente', null, null, { note: 'su richiesta' }),
+      p('BB Glow, seduta singola', 120),
+      p('BB Glow in pacchetto, a seduta', 80),
     ],
   },
   {
@@ -204,7 +205,7 @@ export const categories: Category[] = [
     imageAlt: 'La postazione lavatesta del centro.',
     services: [
       p('Donna taglio', 38),
-      p('Uomo taglio e shampoo', 35),
+      p('Uomo taglio e shampoo', 25),
       p('Piega', 18, null, da),
       p('Colore', 38, null, da),
       p('Bagno di colore', 22, null, da),
@@ -233,6 +234,11 @@ export const highlights = {
   bbGlow: {
     title: 'BB Glow',
     subtitle: 'Fondotinta semipermanente',
+    // Indicati da Naomi (24/10/2026)
+    prices: [
+      { label: 'in pacchetto, a seduta', value: 80 },
+      { label: 'seduta singola', value: 120 },
+    ],
     points: ['Pelle radiosa', 'Tono uniforme', 'Idratazione profonda', 'Effetto antiage', 'Minimizza i pori', 'Correzione delle discromie'],
   },
 }

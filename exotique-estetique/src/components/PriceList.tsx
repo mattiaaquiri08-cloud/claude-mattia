@@ -67,6 +67,14 @@ function Highlights() {
         <p className="text-[0.75rem] font-medium uppercase tracking-[0.22em] text-ink-soft">Viso</p>
         <h3 className="font-display mt-3 text-[2rem] leading-tight">{bbGlow.title}</h3>
         <p className="mt-1 font-display text-[1.125rem] italic text-ink-soft">{bbGlow.subtitle}</p>
+        <dl className="mt-5 flex flex-wrap gap-x-8 gap-y-2">
+          {bbGlow.prices.map((pr) => (
+            <div key={pr.label} className="flex items-baseline gap-2">
+              <dt className="order-2 text-[0.875rem] text-ink-soft">{pr.label}</dt>
+              <dd className="font-display text-[1.75rem] leading-none tabular-nums">{euro.format(pr.value)}</dd>
+            </div>
+          ))}
+        </dl>
         <ul className="mt-6 grid grid-cols-2 gap-x-6 gap-y-2.5 text-[0.9375rem]">
           {bbGlow.points.map((pt) => (
             <li key={pt} className="flex items-baseline gap-2.5">
