@@ -63,6 +63,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   non da Treatwell (lì il 10.00 nel JSON-LD è un segnaposto). Il sito sarà pubblicato su Cloudflare.
 - Passaggio dal vecchio sviluppatore (Marco): dominio .it su Register intestato a lui, sito sul suo
   server. Piano: cambio intestatario a Naomi restando su Register, DNS verso Cloudflare Pages.
+  L'email usata da Naomi è exotiqueestetique.roma@yahoo.com (Yahoo, non dipende dal dominio).
 - Sito Exotique & Estetique in `exotique-estetique/`: tutti i contenuti in `src/content.ts`;
   i dati non verificati restano `null` e il sito li gestisce senza inventare nulla.
   Dati verificati il 3/10/2026 (Google Maps e Treatwell), con fonte indicata nel file.
