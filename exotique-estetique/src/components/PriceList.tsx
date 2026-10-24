@@ -127,6 +127,7 @@ export function PriceList() {
         <Highlights />
 
         <div
+          id="listino-elenco"
           role="tablist"
           aria-label="Categorie del listino"
           className="no-scrollbar -mx-5 mt-14 flex gap-1 overflow-x-auto border-b border-line px-5 md:mx-0 md:mt-20 md:px-0"
