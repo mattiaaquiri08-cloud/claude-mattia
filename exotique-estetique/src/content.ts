@@ -4,7 +4,6 @@ import insegna from './assets/photo/real/insegna.webp'
 import smalti from './assets/photo/real/smalti.webp'
 import lavatesta from './assets/photo/real/lavatesta.webp'
 import vetrina from './assets/photo/vetrina.webp'
-import naomi from './assets/photo/real/naomi.webp'
 
 /*
  * Tutti i contenuti del sito vivono qui.
@@ -239,9 +238,6 @@ export const reviews: Review[] = [
     text: 'Naomi brava e cordiale. Ha rimesso a nuovo i miei piedi.',
   },
 ]
-
-/* Treatwell, foto del profilo. */
-export const naomiPhoto: string | null = naomi
 
 /* Dalla descrizione che Naomi ha scritto sulla scheda Google del centro. */
 export const naomiQuote =
