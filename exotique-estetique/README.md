@@ -37,12 +37,12 @@ Fonti verificate il 3 ottobre 2026:
 | Indirizzo, telefono 388 090 3695, orari mar-sab 9:30-18:00 | Google Maps | |
 | Valutazione 4,6 su 34 recensioni | Google Maps | |
 | Recensioni (4 estratti fedeli) | Google Maps | nomi abbreviati; per scelta del cliente nessuna recensione o link Treatwell |
-| Servizi e durate (84 trattamenti) | Treatwell | Treatwell non pubblica i prezzi: il listino mostra le durate |
+| Prezzi, trattamenti, offerta laser, email | Listino cartaceo del centro (ottobre 2026) | BB Glow e OPI dalle locandine in salone |
 | Foto del centro e di Naomi | Treatwell, Google Maps | |
 | Frase e principi di Naomi | descrizione scritta dalla titolare su Google | |
 | Prenotazione online | - | i profili Treatwell non accettano prenotazioni: le CTA aprono WhatsApp e telefono |
 
-Per aggiungere i prezzi basta compilare `price` nei servizi: il listino li mostra al posto della durata.
+Per cambiare un prezzo basta modificare il numero del servizio in `src/content.ts`.
 
 ## Pubblicazione su Cloudflare Pages
 

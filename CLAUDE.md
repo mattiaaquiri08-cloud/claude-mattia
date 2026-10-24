@@ -59,8 +59,10 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   (`*.treatwell.it`, `*.treatwell.net`, `*.google.com`, `*.googleusercontent.com`): il dominio
   nudo da solo non basta. Chromium di Playwright non si fida del certificato del proxy: per Google
   Maps usare curl (la risposta `search?tbm=map&pb=...` contiene valutazione, orari, recensioni).
-- Exotique & Estetique: Treatwell non mostra prezzi (nel JSON-LD c'è 10.00 fisso, è un segnaposto:
-  non usarlo) e i profili non accettano prenotazioni. Il sito sarà pubblicato dall'utente su Cloudflare.
+- Exotique & Estetique: i prezzi del sito vengono dal listino cartaceo del centro (foto del 24/10/2026),
+  non da Treatwell (lì il 10.00 nel JSON-LD è un segnaposto). Il sito sarà pubblicato su Cloudflare.
+- Passaggio dal vecchio sviluppatore (Marco): dominio .it su Register intestato a lui, sito sul suo
+  server. Piano: cambio intestatario a Naomi restando su Register, DNS verso Cloudflare Pages.
 - Sito Exotique & Estetique in `exotique-estetique/`: tutti i contenuti in `src/content.ts`;
   i dati non verificati restano `null` e il sito li gestisce senza inventare nulla.
   Dati verificati il 3/10/2026 (Google Maps e Treatwell), con fonte indicata nel file.

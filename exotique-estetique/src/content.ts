@@ -18,15 +18,20 @@ import vetrina from './assets/photo/vetrina.webp'
  *  - Treatwell, profili "exotique-estetique" ed "exotique-estetique-1": elenco dei
  *    servizi con durata, foto del centro e di Naomi.
  *    Treatwell non mostra prezzi e i profili non accettano prenotazioni.
+ *  - Listino cartaceo del centro (foto del 24 ottobre 2026): prezzi, durate dei
+ *    trattamenti corpo, offerta laser, email; locandine in salone: BB Glow, OPI.
  */
 
 export type Service = {
   name: string
-  /** Prezzo in euro. null = non pubblicato (Treatwell non mostra prezzi). */
+  /** Prezzo in euro dal listino cartaceo. null = non indicato. */
   price: number | null
-  /** Durata in minuti, dal listino Treatwell. */
+  /** Durata in minuti, solo dove il listino la riporta. */
   duration: number | null
+  /** Prezzo "a partire da". */
   from?: boolean
+  /** Testo al posto del prezzo (es. "dopo consulto gratuito"). */
+  note?: string
 }
 
 export type Category = {
@@ -45,7 +50,14 @@ export type Review = {
   source: 'Google'
 }
 
-const s = (name: string, duration: number | null): Service => ({ name, duration, price: null })
+/* p(nome, prezzo, durata?, opzioni?) */
+const p = (name: string, price: number | null, duration: number | null = null, extra: Partial<Service> = {}): Service => ({
+  name,
+  price,
+  duration,
+  ...extra,
+})
+const da = { from: true }
 
 export const business = {
   name: 'Exotique & Estetique',
@@ -54,6 +66,9 @@ export const business = {
   postalCode: '00123',
   city: 'Roma',
   district: 'La Storta',
+  // Listino cartaceo
+  directions: 'traversa di Via Valle della Storta, zona Cassia / Olgiata',
+  email: 'exotiqueestetique.roma@yahoo.com',
   // Google Maps
   mobile: { display: '388 090 3695', href: 'tel:+393880903695', whatsapp: 'https://wa.me/393880903695' },
   // Google Maps
@@ -73,20 +88,20 @@ export const business = {
   facebookUrl: 'https://www.facebook.com/Exotique.Estetique/',
 }
 
-/* Listino: servizi e durate dal profilo Treatwell più recente ("exotique-estetique-1"). */
+/* Listino: prezzi dal listino cartaceo del centro (ottobre 2026). */
 export const categories: Category[] = [
   {
     id: 'viso',
     title: 'Viso',
-    intro: 'Pulizia, trattamenti antietà, couperose e acne: ogni trattamento parte da come sta la tua pelle oggi.',
+    intro: 'Pulizia, trattamenti antietà, couperose e acne, e il BB Glow per una pelle radiosa e uniforme.',
     image: cabina,
     imageAlt: 'La cabina dei trattamenti, con lettino in legno e parete in pietra.',
     services: [
-      s('Pulizia viso con massaggio', 60),
-      s('Trattamento viso antirughe', 60),
-      s('Trattamento couperose e macchie', 60),
-      s("Trattamento viso all'acqua termale", 60),
-      s('Trattamento viso antiacne', 60),
+      p('Pulizia viso con massaggio', 55),
+      p('Trattamento antirughe', 55),
+      p('Trattamento couperose e macchie', 55),
+      p('Trattamento acne', 60),
+      p('BB Glow, fondotinta semipermanente', null, null, { note: 'su richiesta' }),
     ],
   },
   {
@@ -96,124 +111,131 @@ export const categories: Category[] = [
     image: massaggi,
     imageAlt: 'Il lettino da massaggio in una luce soffusa.',
     services: [
-      s('Massaggio Exotique Estetique', 60),
-      s('Massaggio rilassante', 60),
-      s('Massaggio californiano', 60),
-      s('Massaggio ayurvedico', 60),
-      s('Massaggio shiatsu', 60),
-      s('Massaggio tonificante', 60),
-      s('Massaggio anticellulite', 60),
-      s('Massaggio circolatorio', 60),
-      s('Linfodrenaggio', 60),
-      s('Massaggio gambe', 30),
-      s('Massaggio schiena', 30),
-      s('Scrub rinfrescante', 30),
-      s('Scrub anticellulite', 30),
-      s('Scrub antigonfiore', 30),
-      s('Fanghi', 30),
-      s('Bendaggi', 45),
+      p('Massaggio Exotique Estetique', 95, 50),
+      p('Massaggio rilassante', 80, 50),
+      p('Massaggio tonificante', 85, 50),
+      p('Massaggio anticellulite', 85, 50),
+      p('Massaggio ayurvedico', 90, 50),
+      p('Massaggio circolatorio', 85, 50),
+      p('Linfodrenaggio', 90, 60),
+      p('Shiatsu', 95, 60),
+      p('Massaggio californiano', 95, 60),
+      p('Massaggio gambe', 55, 30),
+      p('Massaggio schiena', 55, 30),
+      p('Scrub corpo: tonificante, anticellulite, antigonfiore', 45, 30),
+      p('Fanghi: anticellulite, snellente minerale', 55, 30),
+      p('Bendaggi: riducente, tonificante', 55, 40),
     ],
   },
   {
     id: 'epilazione',
     title: 'Epilazione',
-    intro: 'Laser a diodo per l’epilazione definitiva, uomo e donna, e ceretta per ogni zona.',
+    intro: 'Laser a diodo per l\u2019epilazione definitiva, uomo e donna, con prima prova gratuita, e ceretta per ogni zona.',
     image: insegna,
     imageAlt: "L'ingresso del centro in Via Calenzuoli, con l'insegna e la vetrina dedicata al laser a diodo.",
     services: [
-      s('Epilazione laser', 15),
-      s('Ceretta gamba intera', 30),
-      s('Ceretta gamba intera e inguine', 45),
-      s('Ceretta mezza gamba', 30),
-      s('Ceretta inguine', 15),
-      s('Ceretta inguine totale', 15),
-      s('Ceretta top inguine', 15),
-      s('Ceretta ascelle', 15),
-      s('Ceretta braccia', 15),
-      s('Ceretta glutei', 15),
-      s('Ceretta labbro superiore', 15),
-      s('Ceretta mento', 15),
-      s('Ceretta sopracciglia', 15),
-      s('Ceretta schiena uomo', 30),
-      s('Ceretta petto uomo', 30),
+      p('Laser a diodo, a zona (offerta)', 14.9),
+      p('Ceretta gamba intera e inguine', 38),
+      p('Ceretta gamba intera', 30),
+      p('Ceretta mezza gamba', 20),
+      p('Ceretta inguine', 13),
+      p('Ceretta top inguine', 18),
+      p('Ceretta inguine totale', 21),
+      p('Ceretta ascelle', 13),
+      p('Ceretta braccia', 18),
+      p('Ceretta glutei', 15),
+      p('Ceretta labbro superiore', 7),
+      p('Ceretta mento', 7),
+      p('Ceretta petto uomo', 28),
+      p('Ceretta schiena', 28),
     ],
   },
   {
     id: 'mani-piedi',
     title: 'Mani e piedi',
-    intro: 'Manicure, semipermanente, ricostruzione in gel e acrilico, pedicure estetico e curativo.',
+    intro: 'Manicure, semipermanente e ricostruzione con Original Gel American System e smalti OPI, pedicure estetico e curativo.',
     image: smalti,
     imageAlt: 'La cartella colori degli smalti del centro.',
     services: [
-      s('Manicure', 30),
-      s('Manicure french', 30),
-      s('Applicazione smalto', 15),
-      s('Applicazione smalto french', 15),
-      s('Smalto semipermanente', 60),
-      s('Gel smalto color', 90),
-      s('Gel smalto french', 90),
-      s('Rinforzo gel unghie naturali', 90),
-      s('Ricostruzione unghie gel tip e french', 90),
-      s('Allungamento in gel', 90),
-      s('Ritocco gel', 90),
-      s('Ritocco con acrilico', 90),
-      s('Ricostruzione unghia singola', 15),
-      s('Rimozione gel', 15),
-      s('Pedicure estetico', 45),
-      s('Pedicure curativo', 60),
-      s('Pedicure french', 60),
-      s('Semipermanente piedi', 15),
-      s('Ricostruzione unghie piedi', 60),
+      p('Applicazione smalto', 10),
+      p('Applicazione smalto french', 15),
+      p('Manicure semplice', 18),
+      p('French manicure', 20),
+      p('Gel smalto semipermanente', 28),
+      p('Ricostruzione unghie', 90),
+      p('Ricostruzione di un\u2019unghia', 15),
+      p('Riparazione di un\u2019unghia naturale', 20),
+      p('Ritocco gel', 45),
+      p('Ritocco con acrilico', 60),
+      p('Ritocco acrilico french', 65),
+      p('Pedicure estetico', 35),
+      p('French pedicure', 40),
+      p('Pedicure curativo', 45),
+      p('Riparazione di un\u2019unghia naturale (piedi)', 20),
     ],
   },
   {
     id: 'sguardo',
     title: 'Sguardo e trucco',
-    intro: 'Ciglia, sopracciglia e trucco per ogni occasione, fino al trucco sposa con tre prove.',
+    intro: 'Ciglia, sopracciglia e trucco per ogni occasione, fino al trucco sposa con tre prove e al trucco semipermanente.',
     image: vetrina,
     imageAlt: 'La vetrina dei prodotti del centro.',
     services: [
-      s('Permanente ciglia', 60),
-      s('Extension ciglia a ciuffetti', 90),
-      s('Extension ciglia one to one', 90),
-      s('Colore ciglia', 15),
-      s('Colore sopracciglia', 15),
-      s('Trucco giorno', 30),
-      s('Trucco occhi', 30),
-      s('Trucco sera', 45),
-      s('Trucco antietà', 45),
-      s('Trucco sposa con tre prove', 60),
-      s('Trucco semipermanente sopracciglia', 180),
-      s('Trucco semipermanente labbra', 120),
-      s('Trucco permanente occhi', 90),
+      p('Tintura sopracciglia', 18),
+      p('Tintura ciglia', 23),
+      p('Permanente ciglia', 55),
+      p('Extension ciglia', 90),
+      p('Ritocco ciglia', 60),
+      p('Trucco occhi', 35),
+      p('Trucco giorno', 45),
+      p('Trucco sera', 60),
+      p('Trucco antietà (pelle grassa, secca, impura)', 60),
+      p('Trucco sposa con 3 prove', 460),
+      p('Trucco semipermanente sopracciglia', 350, null, da),
+      p('Trucco semipermanente occhi', 300, null, da),
+      p('Trucco permanente labbra', 380, null, da),
     ],
   },
   {
     id: 'capelli',
     title: 'Capelli',
-    intro: 'Taglio, piega, colore e schiariture, trattamenti alla cheratina ed extension.',
+    intro: 'Taglio, piega, colore e schiariture, cheratina ed extension di ogni tipo, con consulto gratuito.',
     image: lavatesta,
     imageAlt: 'La postazione lavatesta del centro.',
     services: [
-      s('Taglio', 60),
-      s('Piega', 30),
-      s('Piega con piastra', 30),
-      s('Colore', 75),
-      s('Bagno di colore', 75),
-      s('Mèches', 120),
-      s('Colpi di luce', 120),
-      s('Shatush', 120),
-      s('Degradè', 120),
-      s('Decapage', 120),
-      s('Permanente', 150),
-      s('Lisciatura', 150),
-      s('Tiraggio', 135),
-      s('Trattamento cheratina', 75),
-      s('Extension a ciocca', 60),
-      s('Taglio uomo', 30),
+      p('Donna taglio', 38),
+      p('Uomo taglio e shampoo', 35),
+      p('Piega', 18, null, da),
+      p('Colore', 38, null, da),
+      p('Bagno di colore', 22, null, da),
+      p('Mèches', 60, null, da),
+      p('Colpi di luce', 55, null, da),
+      p('Shatush', 55, null, da),
+      p('Degradé', 60, null, da),
+      p('Decapage', 60, null, da),
+      p('Permanente', 55, null, da),
+      p('Tiraggio', 60, null, da),
+      p('Allisciatura', 60, null, da),
+      p('Trattamento cheratina curativo', 65, null, da),
+      p('Extension: cucitura, ciocca a ciocca, cheratina, treccine', null, null, { note: 'dopo consulto gratuito' }),
     ],
   },
 ]
+
+/* In evidenza nel listino (listino cartaceo e locandine in salone). */
+export const highlights = {
+  laser: {
+    title: 'Laser a diodo',
+    price: 14.9,
+    unit: 'a zona',
+    points: ['Una prova gratuita', 'Sconto 20% per junior'],
+  },
+  bbGlow: {
+    title: 'BB Glow',
+    subtitle: 'Fondotinta semipermanente',
+    points: ['Pelle radiosa', 'Tono uniforme', 'Idratazione profonda', 'Effetto antiage', 'Minimizza i pori', 'Correzione delle discromie'],
+  },
+}
 
 /* Recensioni reali dalla scheda Google Maps del centro (scelta dell'utente: niente Treatwell). */
 export const reviews: Review[] = [

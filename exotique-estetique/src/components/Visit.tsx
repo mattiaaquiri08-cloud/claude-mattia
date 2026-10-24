@@ -1,4 +1,4 @@
-import { ArrowUpRight, Clock, MapPin, Phone } from '@phosphor-icons/react'
+import { ArrowUpRight, Clock, EnvelopeSimple, MapPin, Phone } from '@phosphor-icons/react'
 import { forwardRef } from 'react'
 import { business } from '../content'
 import { useBooking } from './booking-context'
@@ -53,6 +53,7 @@ export const Visit = forwardRef<HTMLElement>(function Visit(_, ref) {
                       <br />
                       {business.postalCode} {business.city}, {business.district}
                     </a>
+                    <span className="mt-1 block text-[0.9375rem] text-night-soft">{business.directions}</span>
                   </dd>
                 </div>
               </div>
@@ -63,6 +64,17 @@ export const Visit = forwardRef<HTMLElement>(function Visit(_, ref) {
                   <dd className="mt-1 flex flex-col gap-1">
                     <a href={business.mobile.href} className="tabular-nums transition-opacity hover:opacity-70">
                       {business.mobile.display}
+                    </a>
+                  </dd>
+                </div>
+              </div>
+              <div className="flex gap-4 border-t border-night-line pt-6">
+                <EnvelopeSimple size={22} weight="light" className="mt-0.5 shrink-0 text-night-soft" aria-hidden />
+                <div>
+                  <dt className="text-[0.8125rem] text-night-soft">Email</dt>
+                  <dd className="mt-1 break-all">
+                    <a href={`mailto:${business.email}`} className="transition-opacity hover:opacity-70">
+                      {business.email}
                     </a>
                   </dd>
                 </div>
