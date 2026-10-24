@@ -48,8 +48,8 @@ c.rect(M, H - 150, 1.4, 150, stroke=0, fill=1)  # la linea rossa dello specchio
 
 text(M + 20, H - 78, 'Exotique', 'Times-Roman', 30, HexColor('#eeebe6'))
 w1 = c.stringWidth('Exotique ', 'Times-Roman', 30)
-text(M + 20 + w1, H - 78, '&', 'Times-Italic', 30, HexColor('#dd3f33'))
-w2 = c.stringWidth('& ', 'Times-Italic', 30)
+text(M + 20 + w1, H - 78, '&', 'Times-Roman', 30, HexColor('#dd3f33'))
+w2 = c.stringWidth('& ', 'Times-Roman', 30)
 text(M + 20 + w1 + w2, H - 78, 'Estetique', 'Times-Roman', 30, HexColor('#eeebe6'))
 text(M + 20, H - 104, 'CENTRO ESTETICO A LA STORTA, ROMA', 'Helvetica', 7.5, HexColor('#a9a49e'))
 text(W - M, H - 78, 'Preventivo', 'Times-Italic', 22, HexColor('#eeebe6'), 'right')

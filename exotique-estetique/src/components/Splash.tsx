@@ -78,15 +78,15 @@ export function Splash({ onDone }: { onDone: () => void }) {
               />
               <p className="font-display opsz-xl grid grid-cols-[1fr_auto_1fr] items-baseline gap-[0.22em] whitespace-nowrap text-[clamp(2.1rem,7.5vw,6.5rem)] leading-none tracking-[-0.02em]">
                 <Letters text="Exotique" delay={0.55} align="justify-self-end" />
-                <motion.em
+                <motion.span
                   aria-hidden
-                  className="inline-block text-lacca-glow"
+                  className="inline-block not-italic text-lacca-glow"
                   initial={{ opacity: 0, scale: 0.6, rotate: -8 }}
                   animate={{ opacity: 1, scale: 1, rotate: 0 }}
                   transition={{ duration: 1, delay: 0.95, ease: EASE }}
                 >
                   &amp;
-                </motion.em>
+                </motion.span>
                 <Letters text="Estetique" delay={0.75} align="justify-self-start" />
               </p>
             </div>
