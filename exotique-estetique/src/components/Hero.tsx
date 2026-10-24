@@ -1,11 +1,11 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { useRef } from 'react'
 import { ArrowDownRight } from '@phosphor-icons/react'
-import avif1584 from '../assets/photo/salone-1584.avif'
-import avif1024 from '../assets/photo/salone-1024.avif'
-import webp1584 from '../assets/photo/salone-1584.webp'
-import webp1024 from '../assets/photo/salone-1024.webp'
-import webp640 from '../assets/photo/salone-640.webp'
+import deskAvif from '../assets/photo/hero/desktop-1189.avif'
+import deskWebp from '../assets/photo/hero/desktop-1189.webp'
+import deskWebp800 from '../assets/photo/hero/desktop-800.webp'
+import mobAvif from '../assets/photo/hero/mobile-472.avif'
+import mobWebp from '../assets/photo/hero/mobile-472.webp'
 import { business } from '../content'
 import { CURTAIN, EASE } from '../lib'
 import { useBooking } from './booking-context'
@@ -14,8 +14,7 @@ import { MaskLines } from './Reveal'
 import { useIntroDone } from './intro-context'
 
 /*
- * La fotografia si apre da una fessura verticale con le proporzioni degli
- * specchi del salone, poi si allarga a tutto schermo.
+ * La fotografia si apre da una fessura verticale, poi si allarga a tutto schermo.
  */
 export function Hero() {
   const { open } = useBooking()
@@ -47,25 +46,24 @@ export function Hero() {
             animate={ready ? { scale: 1.06 } : undefined}
             transition={{ duration: 2.2, delay: 0.15, ease: EASE }}
           >
-            <source type="image/avif" srcSet={`${avif1024} 1024w, ${avif1584} 1584w`} sizes="100vw" />
-            <source
-              type="image/webp"
-              srcSet={`${webp640} 640w, ${webp1024} 1024w, ${webp1584} 1584w`}
-              sizes="100vw"
-            />
+            {/* Foto verticale sugli smartphone, orizzontale da tablet e computer */}
+            <source media="(max-width: 767px)" type="image/avif" srcSet={mobAvif} />
+            <source media="(max-width: 767px)" type="image/webp" srcSet={mobWebp} />
+            <source type="image/avif" srcSet={deskAvif} />
+            <source type="image/webp" srcSet={`${deskWebp800} 800w, ${deskWebp} 1189w`} sizes="100vw" />
             <img
-              src={webp1584}
-              alt="L'interno di Exotique & Estetique: specchi a tutta altezza con cornice nera, poltrone in pelle, la vetrina dei prodotti e la postazione unghie."
-              className="size-full object-cover object-[56%_50%] md:object-center"
+              src={deskWebp}
+              alt="L'interno di Exotique & Estetique: poltrone in pelle nera, specchi, la parete in pietra con l'orologio, il lavatesta e il divano d'attesa."
+              className="size-full object-cover object-center"
               fetchPriority="high"
               decoding="async"
-              width={1584}
-              height={993}
+              width={1189}
+              height={941}
             />
           </motion.picture>
         </motion.div>
         {/* Velature per la leggibilità: in alto per la navigazione, in basso a sinistra per il testo */}
-        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/45 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-black/65 to-transparent md:h-40 md:from-black/45" />
         <div className="absolute inset-0 bg-[linear-gradient(to_top,rgb(12_11_11/0.92)_0%,rgb(12_11_11/0.55)_38%,rgb(12_11_11/0)_70%)]" />
         <div className="absolute inset-0 hidden bg-[linear-gradient(to_right,rgb(12_11_11/0.55)_0%,rgb(12_11_11/0)_55%)] md:block" />
       </motion.div>
