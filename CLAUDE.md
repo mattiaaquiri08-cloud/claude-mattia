@@ -67,7 +67,10 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Con Motion, `whileInView` va messo su un contenitore non mascherato: un elemento traslato
   dentro un `overflow-hidden` non risulta mai visibile e l'animazione non parte.
 - Treatwell per Exotique & Estetique non funziona: niente link né recensioni Treatwell sul sito
-  (le foto dei profili pubblici si possono usare).
+  (le foto del centro dai profili pubblici si possono usare; la foto di Naomi no, tolta su richiesta).
+- Exotique & Estetique: in sospeso la scelta di Naomi tra sito nuovo (messo online gratis, paga solo
+  la manutenzione 300/450 €) e manutenzione del suo vecchio sito. Il preventivo PDF va bene per
+  entrambi i casi (`exotique-estetique/scripts/preventivo.py`).
 - Bozze da mandare al cliente: file HTML unici offline (`npm run bozze` in `exotique-estetique/`),
   una versione PC e una smartphone con cornice di telefono. Preferenza dell'utente.
 - Link pubblici alle bozze: il repository è pubblico, quindi si usa
