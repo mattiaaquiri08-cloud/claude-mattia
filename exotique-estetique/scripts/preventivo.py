@@ -53,7 +53,7 @@ w2 = c.stringWidth('& ', 'Times-Italic', 30)
 text(M + 20 + w1 + w2, H - 78, 'Estetique', 'Times-Roman', 30, HexColor('#eeebe6'))
 text(M + 20, H - 104, 'CENTRO ESTETICO A LA STORTA, ROMA', 'Helvetica', 7.5, HexColor('#a9a49e'))
 text(W - M, H - 78, 'Preventivo', 'Times-Italic', 22, HexColor('#eeebe6'), 'right')
-text(W - M, H - 104, '13 ottobre 2026', 'Helvetica', 9, HexColor('#a9a49e'), 'right')
+text(W - M, H - 104, '24 ottobre 2026', 'Helvetica', 9, HexColor('#a9a49e'), 'right')
 
 # Intestazione: cliente e oggetto
 y = H - 200
