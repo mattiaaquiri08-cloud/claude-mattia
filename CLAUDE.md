@@ -70,7 +70,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Con Motion, `whileInView` va messo su un contenitore non mascherato: un elemento traslato
   dentro un `overflow-hidden` non risulta mai visibile e l'animazione non parte.
 - Treatwell per Exotique & Estetique non funziona: niente link né recensioni Treatwell sul sito
-  (le foto del centro dai profili pubblici si possono usare; la foto di Naomi no, tolta su richiesta).
+  (le foto del centro dai profili pubblici si possono usare). La foto di Naomi è quella fornita
+  dall'utente il 25/10/2026 (`real/naomi.webp`, al lavoro con il laser); non usarne altre.
 - Exotique & Estetique: in sospeso la scelta di Naomi tra sito nuovo (messo online gratis, paga solo
   la manutenzione 300/450 €) e manutenzione del suo vecchio sito. Il preventivo PDF va bene per
   entrambi i casi (`exotique-estetique/scripts/preventivo.py`).

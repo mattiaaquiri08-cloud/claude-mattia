@@ -1,4 +1,5 @@
 import cabina from './assets/photo/real/cabina.webp'
+import naomiFoto from './assets/photo/real/naomi.webp'
 import massaggi from './assets/photo/real/massaggi.webp'
 import insegna from './assets/photo/real/insegna.webp'
 import smalti from './assets/photo/real/smalti.webp'
@@ -267,11 +268,8 @@ export const reviews: Review[] = [
   },
 ]
 
-/*
- * Foto di Naomi: quando arriva, salvarla in src/assets/photo/naomi.webp, importarla qui
- * e assegnarla. Finché è null il sito mostra una cornice segnaposto.
- */
-export const naomiPhoto: string | null = null
+/* Foto di Naomi al lavoro con il laser, fornita dal centro il 25/10/2026. */
+export const naomiPhoto: string | null = naomiFoto
 
 /* Dalla descrizione che Naomi ha scritto sulla scheda Google del centro. */
 export const naomiQuote =

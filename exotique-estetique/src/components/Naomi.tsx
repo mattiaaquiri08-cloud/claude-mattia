@@ -20,7 +20,7 @@ export function Naomi() {
               {naomiPhoto ? (
                 <img
                   src={naomiPhoto}
-                  alt={`Naomi, titolare di ${business.name}.`}
+                  alt={`Naomi, titolare di ${business.name}, durante un trattamento laser.`}
                   className="size-full object-cover"
                   loading="lazy"
                   decoding="async"
