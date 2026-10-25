@@ -11,6 +11,7 @@ const links = [
   { href: '#trattamenti', label: 'Trattamenti' },
   { href: '#spazio', label: 'Lo spazio' },
   { href: '#naomi', label: 'Naomi' },
+  { href: '#lavori', label: 'Lavori' },
   { href: '#listino', label: 'Listino' },
   { href: '#visita', label: 'Contatti' },
 ]

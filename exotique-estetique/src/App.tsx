@@ -12,6 +12,7 @@ import { MobileBar } from './components/MobileBar'
 import { Naomi } from './components/Naomi'
 import { Nav } from './components/Nav'
 import { PriceList } from './components/PriceList'
+import { Works } from './components/Works'
 import { Reviews } from './components/Reviews'
 import { Treatments } from './components/Treatments'
 import { Visit } from './components/Visit'
@@ -98,6 +99,7 @@ export default function App() {
           <Treatments />
           <Gallery />
           <Naomi />
+          <Works />
           <PriceList />
           <Reviews />
           <Visit ref={visitRef} />

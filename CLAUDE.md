@@ -86,6 +86,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Ha numeri "all'antica": sui prezzi serve `lining-nums` accanto a `tabular-nums`.
 - `exotique-estetique/DESIGN.md` (skill `stitch-design-taste`) descrive il sistema di design del sito
   attuale: va seguito e aggiornato quando cambiano colori, font o componenti.
+- Sezione «I lavori di Naomi» (`Works.tsx`, foto in `assets/photo/lavori/`, fornite dal centro il
+  25/10/2026). Le immagini mandate mentre lavoro non arrivano su disco: chiedere di rimandarle.
 - La skill `design-taste-frontend` non è più installata (è nel cestino delle skill): se serve,
   chiedere all'utente di reinstallarla.
 - Mobile: un elemento più largo dello schermo allarga tutta la pagina; provare 320, 360, 390 px e
