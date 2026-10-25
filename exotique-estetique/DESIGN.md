@@ -11,7 +11,7 @@ mai invadente), **Densità 3** (arioso, da galleria).
 
 Un salone caldo e accogliente: crema rosata, cacao al posto del nero e un solo tocco di rosa
 antico, come uno smalto nude. L'interfaccia è editoriale e calma, con
-molto spazio vuoto, titoli serif grandi e righe sottili al posto delle card. La sensazione è quella
+molto spazio vuoto, titoli serif grandi e pieni e righe sottili al posto delle card. La sensazione è quella
 di una rivista di bellezza stampata su carta opaca: angoli vivi ovunque (raggio zero, come le
 cornici degli specchi), grana leggera fissa sullo sfondo e fotografie reali del centro come
 protagoniste. Niente immagini di repertorio, niente decorazioni senza funzione.
@@ -51,18 +51,16 @@ che servono a leggere il testo.
 
 ## 3. Tipografia
 
-- **Display:** `Cormorant Garamond` (variabile, Google Fonts), peso 500 ai corpi medi e 450 ai corpi
-  molto grandi. Interlinea molto stretta nei titoli grandi (0.64 nella hero), tracking leggermente
-  negativo (-0.025em). Il corsivo serve per la seconda riga dei titoli («su misura.»).
-  Ha numeri «all'antica»: sui prezzi va sempre `lining-nums`, anche accanto a `tabular-nums`.
+- **Display:** `DM Serif Display` (Google Fonts), scelto dal cliente il 25/10/2026 al posto di
+  Cormorant Garamond. Un solo peso (400), tratti pieni e contrastati: si legge bene anche sul
+  telefono. Interlinea stretta nei titoli grandi (0.78 nella hero), tracking leggermente negativo.
+  Il corsivo serve per la seconda riga dei titoli («su misura.»). Numeri sempre `lining-nums`.
 - **Testo:** `Geist` (variabile), 15–17px, interlinea rilassata, massimo 65 caratteri per riga.
   Etichette e pulsanti in maiuscoletto: 12–13px, tracking ampio (0.14–0.22em), peso 500.
 - **Scala dei titoli** (sempre con `clamp()`): hero `clamp(3.1rem, 13vw, 8.5rem)`, titoli di
   sezione `clamp(2.6rem, 6vw, 5.25rem)`, titoli di scheda 1.75–2rem.
 - **Il simbolo «&»** nel logo è dritto, non corsivo, in rosa antico (rosa cipria su scuro).
-- **Eccezione consapevole:** la regola generale vieta i serif «Garamond». Qui Cormorant Garamond è
-  una scelta esplicita del cliente (preferito a Bodoni Moda) e resta. Non usare Inter, Times o
-  font di sistema come display.
+- Non usare Inter, Times o font di sistema come display.
 
 ## 4. Componenti
 

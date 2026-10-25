@@ -83,8 +83,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   possono allegare file di qualche MB: mandare i link, non gli allegati.
 - Non mandare email all'utente (né a emailpergiocare08@gmail.com né ad altri indirizzi) se non lo chiede
   esplicitamente in quel momento: i link aggiornati vanno solo in chat.
-- Exotique & Estetique: font dei titoli Cormorant Garamond (scelto dall'utente al posto di Bodoni Moda).
-  Ha numeri "all'antica": sui prezzi serve `lining-nums` accanto a `tabular-nums`.
+- Exotique & Estetique: font dei titoli DM Serif Display (scelto il 25/10/2026; scartati Bodoni Moda e
+  Cormorant Garamond). Un solo peso 400. Per scegliere i font: tavole con la hero vera in 5-6 font.
+  Sui prezzi tenere `lining-nums` accanto a `tabular-nums`.
 - Palette Exotique & Estetique: «nude e rosa antico» (crema #F7F1EB, cacao #3B2C27, accento #9E5A55,
   rosa cipria #D99A93 su scuro), scelta il 25/10/2026; nero e rosso non piacevano. Le variabili
   CSS si chiamano ancora `lacca`/`night`. Per proporre palette: tavole con screenshot del sito vero.
@@ -95,7 +96,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Social: Facebook e Instagram (`instagram.com/exotiqueestetique`, dato dall'utente) in `content.ts`;
   icone nell'header (da 360 px in su), nel menu mobile, nei contatti e in fondo. Mai salvare o usare password ricevute in chat.
 - Galleria «Le stanze del centro»: foto dei locali fornite dall'utente il 25/10/2026 in
-  `assets/photo/locali/` (sala, cabine, pedicure, unghie, smalti, attesa, lavatesta), più insegna e vetrate.
+  `assets/photo/locali/` (sala, cabine, pedicure, unghie, smalti, attesa, lavatesta), più l'insegna (in arrivo una foto
+  nuova). Tolta la foto «vetrate»: non era questo centro.
   L'utente ne manderà altre.
 - Trattamenti: niente foto (tolte su richiesta sia su PC sia su smartphone); elenco a tutta larghezza.
 - La skill `design-taste-frontend` non è più installata (è nel cestino delle skill): se serve,

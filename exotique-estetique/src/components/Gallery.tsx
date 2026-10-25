@@ -1,7 +1,6 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { useLayoutEffect, useRef, useState } from 'react'
 import insegna from '../assets/photo/real/insegna.webp'
-import ingresso from '../assets/photo/real/ingresso.webp'
 import sala from '../assets/photo/locali/sala.webp'
 import cabinaVerde from '../assets/photo/locali/cabina-verde.webp'
 import cabinaViso from '../assets/photo/locali/cabina-viso.webp'
@@ -14,7 +13,7 @@ import { MaskLines } from './Reveal'
 
 /*
  * Fotografie reali del centro: le stanze fornite dal centro il 25/10/2026,
- * più insegna e vetrate dai profili pubblici (Treatwell e Google Maps).
+ * più l'insegna dai profili pubblici (in attesa della foto nuova) (Treatwell e Google Maps).
  */
 const photos = [
   { src: sala, portrait: true, caption: 'La sala, con le postazioni capelli e unghie', alt: 'La sala principale con specchi a parete, poltrone nere, smalti, il casco e il lavatesta in fondo davanti alla parete in pietra.' },
@@ -26,7 +25,6 @@ const photos = [
   { src: attesa, portrait: true, caption: "L'attesa, con la vetrina dei prodotti", alt: 'Divano nero davanti alla vetrina illuminata dei prodotti per capelli; in fondo il lavatesta.' },
   { src: lavatesta, portrait: true, caption: 'Il lavatesta', alt: 'Poltrona lavatesta in pelle nera con lavabo nero, davanti alla parete in pietra.' },
   { src: insegna, portrait: false, caption: "L'ingresso in Via Calenzuoli", alt: "La facciata del centro con l'insegna Exotique Estetique, centro estetico e parrucchiere." },
-  { src: ingresso, portrait: false, caption: 'Luce naturale dalle vetrate', alt: 'La sala vista verso le vetrate su strada.' },
 ]
 
 function Item({ p }: { p: (typeof photos)[number] }) {
