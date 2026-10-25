@@ -20,7 +20,9 @@ Quando ti viene chiesto di creare un sito, una pagina o un componente UI, usa le
 
 Insieme a 21st usa anche queste skill del profilo:
 - **`design-taste-frontend`** — sempre, per landing page, portfolio e restyling: fai la "design read",
-  imposta i tre parametri ed evita i cliché da sito generato dall'AI.
+  imposta i tre parametri ed evita i cliché da sito generato dall'AI. Dal 25/10 la versione aggiornata
+  (tasteskill v2.1.5, da github.com/Leonxlnx/taste-skill) è nel repo in `.claude/skills/design-taste-frontend/`:
+  usare quella. Script con Node 22+ e Chromium (già presente nelle sessioni cloud).
 - **`redesign-existing-projects`** — quando si migliora un sito già esistente.
 - Skill di stile, solo se l'utente chiede quello stile: `minimalist-ui`, `high-end-visual-design`,
   `industrial-brutalist-ui`, `gpt-taste`.
