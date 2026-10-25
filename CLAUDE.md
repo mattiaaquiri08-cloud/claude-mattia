@@ -8,6 +8,15 @@ tutto ciò che deve valere sempre va scritto qui.
 - Rispondi sempre in italiano.
 - Rivolgiti sempre all'utente chiamandolo "signore".
 
+## Nuovo sito per un cliente: skill `nuovo-sito`
+
+Quando l'utente chiede un nuovo sito, una bozza o una demo per un'attività, usa SEMPRE la skill
+**`nuovo-sito`** (`.claude/skills/nuovo-sito/SKILL.md`): capisce il settore (o lo chiede), propone i 2-3
+stili più adatti tra gli 84 DESIGN.md di `design-references/` (indice per settore in
+`design-references/INDICE.md`), aspetta la scelta, adatta colori e font al cliente (solo Google Fonts,
+tabella in `.claude/skills/nuovo-sito/font-google.md`) e costruisce il sito con `design-taste-frontend`,
+responsive e in italiano. Le regole qui sotto (21st, Motion, sezione del titolare…) restano valide.
+
 ## Creazione di siti e interfacce: usa 21st
 
 Quando ti viene chiesto di creare un sito, una pagina o un componente UI, usa le skill di 21st:
@@ -167,6 +176,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Foto: le immagini mandate a metà lavoro NON vengono salvate su disco; gli originali delle foto di stampa si
   ritrovano dagli URL negli articoli (Gambero Rosso static.gamberorosso.it, The Foodzilla wp-content). Su Google
   Maps senza browser si leggono solo ~10 foto, tutte dei clienti nelle recensioni: non usarle.
+- Ramo principale (25/10): il repo NON ha un ramo `main`; il ramo predefinito ("main" di fatto) è
+  `claude/intelligent-albattani-bti0iy`, da cui partono le nuove sessioni e che va online da solo su Cloudflare.
+  "Unisci al main" = unire lì (fast-forward), così skill e file nuovi arrivano alle sessioni future.
 - Più schede/sessioni di Claude (18/10): NON comunicano tra loro; la memoria comune è questo repo. Ogni sessione lavora
   su un suo ramo `claude/...`: all'inizio fare `git fetch` e guardare gli altri rami recenti (es. `git log --all --since="2 days ago"`)
   per sapere cosa è già stato fatto, e riportare qui le lezioni utili. 100C: bozza fatta e inviata in un'altra sessione.
