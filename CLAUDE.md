@@ -18,11 +18,11 @@ Quando ti viene chiesto di creare un sito, una pagina o un componente UI, usa le
    Cerca sempre nel catalogo prima di scrivere un componente da zero.
 4. **`21st-ui-review`** — alla fine, controlla accessibilità, responsive e coerenza.
 
-Insieme a 21st usa anche queste skill del profilo:
-- **`design-taste-frontend`** — sempre, per landing page, portfolio e restyling: fai la "design read",
-  imposta i tre parametri ed evita i cliché da sito generato dall'AI. Dal 25/10 la versione aggiornata
-  (tasteskill v2.1.5, da github.com/Leonxlnx/taste-skill) è nel repo in `.claude/skills/design-taste-frontend/`:
-  usare quella. Script con Node 22+ e Chromium (già presente nelle sessioni cloud).
+Insieme a 21st usa anche queste skill:
+- **`design-taste-frontend`** — sempre, per siti, landing page, portfolio, restyling e interfacce. È la
+  tasteskill v2.1.5 (github.com/Leonxlnx/taste-skill) salvata nel repo in `.claude/skills/design-taste-frontend/`;
+  script con Node 22+ e Chromium (già presente nelle sessioni cloud). Le versioni vecchie del profilo
+  (`design-taste-frontend` e `-v1`) sono state disattivate dall'utente il 25/10: non usarle.
 - **`redesign-existing-projects`** — quando si migliora un sito già esistente.
 - Skill di stile, solo se l'utente chiede quello stile: `minimalist-ui`, `high-end-visual-design`,
   `industrial-brutalist-ui`, `gpt-taste`.
@@ -30,8 +30,7 @@ Insieme a 21st usa anche queste skill del profilo:
   import da `motion/react`, mai `framer-motion` nei progetti nuovi.
 - **`full-output-enforcement`** — scrivi sempre il codice completo, senza segnaposto.
 - **`web-design-guidelines`** — alla fine, controlla i file con le linee guida di Vercel.
-- Non usare `design-taste-frontend-v1` (versione vecchia, in conflitto con la principale) né le
-  skill che generano immagini (`imagegen-frontend-*`, `image-to-code`, `brandkit`): qui non
+- Non usare le skill che generano immagini (`imagegen-frontend-*`, `image-to-code`, `brandkit`): qui non
   è possibile generare immagini.
 
 Account e limiti (piano free):
