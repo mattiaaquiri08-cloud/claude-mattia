@@ -23,6 +23,8 @@ Insieme a 21st usa anche queste skill:
   tasteskill v2.1.5 (github.com/Leonxlnx/taste-skill) salvata nel repo in `.claude/skills/design-taste-frontend/`;
   script con Node 22+ e Chromium (già presente nelle sessioni cloud). Le versioni vecchie del profilo
   (`design-taste-frontend` e `-v1`) sono state disattivate dall'utente il 25/10: non usarle.
+- **`impeccable`** — (v4.7.1, github.com/pbakaus/impeccable, nel repo in `.claude/skills/impeccable/`, dal 25/10)
+  per revisionare e rifinire un'interfaccia: `audit`, `critique`, `polish`, `typeset`, `layout`, `harden`…
 - **`redesign-existing-projects`** — quando si migliora un sito già esistente.
 - Skill di stile, solo se l'utente chiede quello stile: `minimalist-ui`, `high-end-visual-design`,
   `industrial-brutalist-ui`, `gpt-taste`.
