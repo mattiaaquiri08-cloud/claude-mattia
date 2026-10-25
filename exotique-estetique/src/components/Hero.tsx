@@ -81,7 +81,7 @@ export function Hero() {
           Centro estetico a {business.district}, {business.city}
         </motion.p>
 
-        <h1 className="font-display opsz-xl max-w-[14ch] text-[clamp(3.1rem,13vw,8.5rem)] font-normal leading-[0.84] tracking-[-0.025em]">
+        <h1 className="font-display opsz-xl max-w-[14ch] text-[clamp(3.1rem,13vw,8.5rem)] font-normal leading-[0.64] tracking-[-0.025em]">
           <MaskLines
             animateOnMount
             play={ready}

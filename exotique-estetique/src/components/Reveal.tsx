@@ -60,7 +60,7 @@ export function MaskLines({
       {...(animateOnMount ? { animate: play ? 'show' : 'hidden' } : { whileInView: 'show', viewport: { once: true, amount: 0.4 } })}
     >
       {lines.map((l, i) => (
-        <span key={i} className="block overflow-hidden pt-[0.1em] -mt-[0.1em] pb-[0.14em] -mb-[0.14em]">
+        <span key={i} className="block overflow-hidden pt-[0.22em] -mt-[0.22em] pb-[0.2em] -mb-[0.2em]">
           <motion.span className="block will-change-transform" variants={line} custom={i}>
             {l}
           </motion.span>
