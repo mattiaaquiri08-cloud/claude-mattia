@@ -99,6 +99,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   `assets/photo/locali/` (sala, cabine, pedicure, unghie, smalti, attesa, lavatesta), più l'ingresso con l'insegna (foto
   nuova del 25/10/2026). Tolta la foto «vetrate»: non era questo centro.
   L'utente ne manderà altre.
+- Hero su smartphone: l'utente la trovava confusionaria; ora solo etichetta, titolo e «Prenota ora»
+  con velo uniforme (descrizione e secondo pulsante solo da tablet). Tenerla essenziale.
 - Trattamenti: niente foto (tolte su richiesta sia su PC sia su smartphone); elenco a tutta larghezza.
 - La skill `design-taste-frontend` non è più installata (è nel cestino delle skill): se serve,
   chiedere all'utente di reinstallarla.

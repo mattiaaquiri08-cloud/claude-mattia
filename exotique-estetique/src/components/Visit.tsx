@@ -137,7 +137,7 @@ export const Visit = forwardRef<HTMLElement>(function Visit(_, ref) {
         </div>
 
         <footer className="mt-28 border-t border-night-line pt-10 md:mt-40">
-          <p aria-hidden className="text-[clamp(2.2rem,8.6vw,9.5rem)] leading-none [&_.amp]:text-lacca-glow">
+          <p aria-hidden className="text-[clamp(1.75rem,7.6vw,9.5rem)] leading-none [&_.amp]:text-lacca-glow">
             <Wordmark />
           </p>
           <div className="mt-10 flex flex-col gap-4 text-[0.875rem] text-night-soft md:flex-row md:items-center md:justify-between">

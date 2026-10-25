@@ -66,14 +66,16 @@ export function Hero() {
         <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-[rgb(36_25_22/0.65)] to-transparent md:h-40 md:from-[rgb(36_25_22/0.45)]" />
         <div className="absolute inset-0 bg-[linear-gradient(to_top,rgb(36_25_22/0.92)_0%,rgb(36_25_22/0.55)_38%,rgb(36_25_22/0)_70%)]" />
         <div className="absolute inset-0 hidden bg-[linear-gradient(to_right,rgb(36_25_22/0.55)_0%,rgb(36_25_22/0)_55%)] md:block" />
+        {/* Su smartphone la foto è più fitta: un velo uniforme la calma e lascia parlare il titolo */}
+        <div className="absolute inset-0 bg-[rgb(36_25_22/0.38)] md:hidden" />
       </motion.div>
 
       <motion.div
-        className="wrap relative pb-10 pt-32 md:pb-16 lg:pb-20"
+        className="wrap relative pb-12 pt-32 md:pb-16 lg:pb-20"
         style={reduce ? undefined : { y: contentY, opacity: contentOpacity }}
       >
         <motion.p
-          className="mb-6 text-[0.75rem] font-medium uppercase tracking-[0.22em] text-white/80"
+          className="mb-5 text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-white/80 md:mb-6 md:text-[0.75rem]"
           initial={{ opacity: 0 }}
           animate={ready ? { opacity: 1 } : undefined}
           transition={{ duration: 0.8, delay: 1.2 }}
@@ -95,9 +97,9 @@ export function Hero() {
           />
         </h1>
 
-        <div className="mt-8 grid gap-8 md:mt-10 md:grid-cols-[minmax(0,26rem)_auto] md:items-end md:justify-between">
+        <div className="mt-7 grid gap-8 md:mt-10 md:grid-cols-[minmax(0,26rem)_auto] md:items-end md:justify-between">
           <motion.p
-            className="max-w-[26rem] text-[1.0625rem] leading-relaxed text-white/85"
+            className="hidden max-w-[26rem] text-[1.0625rem] leading-relaxed text-white/85 md:block"
             initial={{ opacity: 0, y: 16 }}
             animate={ready ? { opacity: 1, y: 0 } : undefined}
             transition={{ duration: 0.9, delay: 1.35, ease: EASE }}
@@ -112,10 +114,13 @@ export function Hero() {
             transition={{ duration: 0.9, delay: 1.5, ease: EASE }}
           >
             <Button onClick={() => open()}>Prenota ora</Button>
-            <ButtonLink href="#trattamenti" variant="ghost-light">
-              I trattamenti
-              <ArrowDownRight size={16} weight="regular" aria-hidden />
-            </ButtonLink>
+            {/* Su smartphone un solo invito all'azione: i trattamenti sono subito sotto */}
+            <span className="hidden md:block">
+              <ButtonLink href="#trattamenti" variant="ghost-light">
+                I trattamenti
+                <ArrowDownRight size={16} weight="regular" aria-hidden />
+              </ButtonLink>
+            </span>
           </motion.div>
         </div>
       </motion.div>
