@@ -113,7 +113,7 @@ export function Treatments() {
                               <a
                                 href="#listino-elenco"
                                 onClick={() => showInPriceList(c.id)}
-                                className="mt-4 inline-block text-[0.875rem] text-ink underline decoration-line underline-offset-4 transition-colors hover:decoration-ink"
+                                className="mt-1 inline-flex min-h-11 items-center text-[0.875rem] text-ink underline decoration-line underline-offset-4 transition-colors hover:decoration-ink"
                               >
                                 Tutti i {c.services.length} trattamenti nel listino
                               </a>

@@ -10,7 +10,7 @@ const variants: Record<Variant, string> = {
   lacca: 'bg-lacca text-lacca-ink',
   ink: 'bg-ink text-paper',
   'ghost-light':
-    'border border-white/55 text-white backdrop-blur-[2px] bg-black/10 hover:border-white',
+    'border border-white/55 text-white backdrop-blur-[2px] bg-[rgb(12_11_11/0.1)] hover:border-white',
   ghost: 'border border-ink/35 text-ink hover:border-ink',
 }
 

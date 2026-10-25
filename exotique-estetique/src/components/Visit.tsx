@@ -62,7 +62,7 @@ export const Visit = forwardRef<HTMLElement>(function Visit(_, ref) {
                 <div>
                   <dt className="text-[0.8125rem] text-night-soft">Telefono</dt>
                   <dd className="mt-1 flex flex-col gap-1">
-                    <a href={business.mobile.href} className="tabular-nums transition-opacity hover:opacity-70">
+                    <a href={business.mobile.href} className="inline-flex min-h-11 items-center tabular-nums transition-opacity hover:opacity-70">
                       {business.mobile.display}
                     </a>
                   </dd>
@@ -73,7 +73,7 @@ export const Visit = forwardRef<HTMLElement>(function Visit(_, ref) {
                 <div>
                   <dt className="text-[0.8125rem] text-night-soft">Email</dt>
                   <dd className="mt-1 break-all">
-                    <a href={`mailto:${business.email}`} className="transition-opacity hover:opacity-70">
+                    <a href={`mailto:${business.email}`} className="inline-flex min-h-11 items-center break-all transition-opacity hover:opacity-70">
                       {business.email}
                     </a>
                   </dd>
@@ -111,14 +111,14 @@ export const Visit = forwardRef<HTMLElement>(function Visit(_, ref) {
             <p>
               &copy; {YEAR} {business.name}. {business.street}, {business.postalCode} {business.city}.
             </p>
-            <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            <ul className="flex flex-wrap gap-x-6">
               <li>
-                <a href={business.facebookUrl} target="_blank" rel="noopener noreferrer" className="hover:text-night-ink">
+                <a href={business.facebookUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center hover:text-night-ink">
                   Facebook
                 </a>
               </li>
               <li>
-                <a href="#top" className="hover:text-night-ink">
+                <a href="#top" className="inline-flex min-h-11 items-center hover:text-night-ink">
                   Torna su
                 </a>
               </li>

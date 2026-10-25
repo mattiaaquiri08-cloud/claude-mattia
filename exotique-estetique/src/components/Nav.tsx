@@ -62,7 +62,7 @@ export function Nav() {
             light ? 'text-white' : 'text-ink',
           )}
         >
-          <a href="#top" className="text-[1.15rem] md:text-[1.3rem]" aria-label={`${business.name}, torna all'inizio`}>
+          <a href="#top" className="inline-flex min-h-11 items-center text-[1.15rem] md:text-[1.3rem]" aria-label={`${business.name}, torna all'inizio`}>
             <Wordmark />
           </a>
 
