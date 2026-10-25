@@ -84,9 +84,6 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   esplicitamente in quel momento: i link aggiornati vanno solo in chat.
 - Exotique & Estetique: font dei titoli Cormorant Garamond (scelto dall'utente al posto di Bodoni Moda).
   Ha numeri "all'antica": sui prezzi serve `lining-nums` accanto a `tabular-nums`.
-- `DESIGN.md` nella radice: sistema di design adattato da Clay (VoltAgent, MIT) con palette nude,
-  cipria e crema, Cormorant Garamond + Jost. `homepage-nude/` è la homepage costruita su quel file;
-  riusa dati e foto di `exotique-estetique/` (non duplicarli). `npm run build:single` crea la bozza unica.
 - La skill `design-taste-frontend` non è più installata (è nel cestino delle skill): se serve,
   chiedere all'utente di reinstallarla.
 - Mobile: un elemento più largo dello schermo allarga tutta la pagina; provare 320, 360, 390 px e
