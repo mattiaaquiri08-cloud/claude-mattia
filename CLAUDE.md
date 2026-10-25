@@ -61,8 +61,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Maps usare curl (la risposta `search?tbm=map&pb=...` contiene valutazione, orari, recensioni).
 - Exotique & Estetique: i prezzi del sito vengono dal listino cartaceo del centro (foto del 24/10/2026),
   non da Treatwell (lì il 10.00 nel JSON-LD è un segnaposto). Il sito sarà pubblicato su Cloudflare.
-- Passaggio dal vecchio sviluppatore (Marco): dominio .it su Register intestato a lui, sito sul suo
-  server. Piano: cambio intestatario a Naomi restando su Register, DNS verso Cloudflare Pages.
+- Dominio: Naomi ha scelto un dominio nuovo, exotiqueestetique.com (libero al 25/10/2026), da
+  registrare su Cloudflare con un account a nome suo; il vecchio .it di Marco va lasciato scadere.
   L'email usata da Naomi è exotiqueestetique.roma@yahoo.com (Yahoo, non dipende dal dominio).
 - Sito Exotique & Estetique in `exotique-estetique/`: tutti i contenuti in `src/content.ts`;
   i dati non verificati restano `null` e il sito li gestisce senza inventare nulla.
@@ -84,3 +84,10 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   esplicitamente in quel momento: i link aggiornati vanno solo in chat.
 - Exotique & Estetique: font dei titoli Cormorant Garamond (scelto dall'utente al posto di Bodoni Moda).
   Ha numeri "all'antica": sui prezzi serve `lining-nums` accanto a `tabular-nums`.
+- `DESIGN.md` nella radice: sistema di design adattato da Clay (VoltAgent, MIT) con palette nude,
+  cipria e crema, Cormorant Garamond + Jost. `homepage-nude/` è la homepage costruita su quel file;
+  riusa dati e foto di `exotique-estetique/` (non duplicarli). `npm run build:single` crea la bozza unica.
+- La skill `design-taste-frontend` non è più installata (è nel cestino delle skill): se serve,
+  chiedere all'utente di reinstallarla.
+- Mobile: con il viewport da telefono un elemento più largo dello schermo (es. il logo nella nav)
+  allarga tutta la pagina; controllare che `innerWidth` resti 390.
