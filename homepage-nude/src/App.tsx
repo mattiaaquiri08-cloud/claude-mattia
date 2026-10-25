@@ -84,7 +84,7 @@ function Nav() {
   return (
     <header className="sticky top-0 z-40 border-b border-hairline/70 bg-canvas/90 backdrop-blur-md">
       <nav aria-label="Principale" className="wrap flex h-[72px] items-center justify-between gap-4">
-        <a href="#top" className="whitespace-nowrap text-[1.3rem] text-ink sm:text-[1.45rem]" aria-label="Exotique & Estetique, torna all'inizio">
+        <a href="#top" className="whitespace-nowrap text-[1.3rem] md:text-[1.45rem] text-ink" aria-label="Exotique & Estetique, torna all'inizio">
           <Logo />
         </a>
         <ul className="hidden items-center gap-8 lg:flex">
@@ -97,9 +97,12 @@ function Nav() {
           ))}
         </ul>
         <div className="flex items-center gap-2">
-          <PrimaryButton href={whatsappLink()} className="hidden h-11 px-5 md:inline-flex">
-            Prenota ora
-          </PrimaryButton>
+          {/* Su mobile c'è già la barra in basso: il pulsante compare da tablet in su */}
+          <div className="hidden md:block">
+            <PrimaryButton href={whatsappLink()} className="h-11 px-5">
+              Prenota ora
+            </PrimaryButton>
+          </div>
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}
