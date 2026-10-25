@@ -99,7 +99,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   `assets/photo/locali/` (sala, cabine, pedicure, unghie, smalti, attesa, lavatesta), più l'ingresso con l'insegna (foto
   nuova del 25/10/2026). Tolta la foto «vetrate»: non era questo centro.
   L'utente ne manderà altre.
-- Hero su smartphone: l'utente la trovava confusionaria; ora solo etichetta, titolo e «Prenota ora»
+- Hero su smartphone: l'utente la trovava confusionaria; ora centrata, titolo su una riga e «Prenota ora»
   con velo uniforme (descrizione e secondo pulsante solo da tablet). Tenerla essenziale.
 - Prodotti usati: `business.brands` in `content.ts` (OPI, Original Gel American System), mostrati
   nel blocco «Il centro». Aggiungere lì altri marchi solo se l'utente li conferma.

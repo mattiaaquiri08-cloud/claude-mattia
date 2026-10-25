@@ -38,12 +38,15 @@ export function Reveal({
 export function MaskLines({
   lines,
   className,
+  lineClassName,
   delay = 0,
   animateOnMount = false,
   play = true,
 }: {
   lines: ReactNode[]
   className?: string
+  /** Classi aggiuntive per ogni riga (es. righe affiancate su smartphone). */
+  lineClassName?: string
   delay?: number
   animateOnMount?: boolean
   /** Con animateOnMount: parte solo quando diventa true. */
@@ -60,7 +63,7 @@ export function MaskLines({
       {...(animateOnMount ? { animate: play ? 'show' : 'hidden' } : { whileInView: 'show', viewport: { once: true, amount: 0.4 } })}
     >
       {lines.map((l, i) => (
-        <span key={i} className="block overflow-hidden pt-[0.22em] -mt-[0.22em] pb-[0.2em] -mb-[0.2em]">
+        <span key={i} className={cn('block overflow-hidden pt-[0.22em] -mt-[0.22em] pb-[0.2em] -mb-[0.2em]', lineClassName)}>
           <motion.span className="block will-change-transform" variants={line} custom={i}>
             {l}
           </motion.span>

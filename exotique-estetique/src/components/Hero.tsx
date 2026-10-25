@@ -75,7 +75,7 @@ export function Hero() {
         style={reduce ? undefined : { y: contentY, opacity: contentOpacity }}
       >
         <motion.p
-          className="mb-5 text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-white/80 md:mb-6 md:text-[0.75rem]"
+          className="mb-5 text-center text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-white/80 md:mb-6 md:text-left md:text-[0.75rem]"
           initial={{ opacity: 0 }}
           animate={ready ? { opacity: 1 } : undefined}
           transition={{ duration: 0.8, delay: 1.2 }}
@@ -83,11 +83,12 @@ export function Hero() {
           Centro estetico a {business.district}, {business.city}
         </motion.p>
 
-        <h1 className="font-display opsz-xl max-w-[14ch] text-[clamp(3.1rem,13vw,8.5rem)] font-normal leading-[0.78] tracking-[-0.025em]">
+        <h1 className="font-display opsz-xl whitespace-nowrap text-center text-[10.4vw] font-normal leading-[0.78] tracking-[-0.025em] md:max-w-[14ch] md:whitespace-normal md:text-left md:text-[clamp(3.1rem,13vw,8.5rem)]">
           <MaskLines
             animateOnMount
             play={ready}
             delay={0.9}
+            lineClassName="max-md:inline-block max-md:mr-[0.24em] max-md:last:mr-0"
             lines={[
               'Bellezza,',
               <em key="i" className="italic">
@@ -108,7 +109,7 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            className="flex flex-wrap gap-3"
+            className="flex flex-wrap justify-center gap-3 md:justify-start"
             initial={{ opacity: 0, y: 16 }}
             animate={ready ? { opacity: 1, y: 0 } : undefined}
             transition={{ duration: 0.9, delay: 1.5, ease: EASE }}

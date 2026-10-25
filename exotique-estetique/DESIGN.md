@@ -88,8 +88,8 @@ che servono a leggere il testo.
   (verticale) e desktop (orizzontale) con `<picture>`. Il testo è allineato a sinistra e in
   basso, sopra un velo scuro che garantisce il contrasto. È l'unico punto dove testo e immagine
   si sovrappongono, ed è voluto.
-- Hero su smartphone essenziale: solo etichetta, titolo e un pulsante «Prenota ora», con un velo
-  cacao uniforme sulla foto. Descrizione e «I trattamenti» compaiono da tablet in su.
+- Hero su smartphone essenziale e centrata: etichetta, titolo su una sola riga («Bellezza, su
+  misura.», 10.4vw) e un pulsante «Prenota ora» al centro, con un velo cacao uniforme sulla foto. Descrizione e «I trattamenti» compaiono da tablet in su.
 - Griglie asimmetriche (per esempio 2 + 3 colonne nelle offerte); mai tre card uguali in fila.
 - Sotto i 768px tutto collassa in una colonna; le schede del listino scorrono in orizzontale.
 - Nessuno scorrimento orizzontale della pagina: provare a 320, 360 e 390px.
