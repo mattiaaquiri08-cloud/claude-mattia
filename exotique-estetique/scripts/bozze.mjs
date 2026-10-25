@@ -22,13 +22,13 @@ const phone = `<!doctype html>
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#151414" />
+<meta name="theme-color" content="#3b2c27" />
 <link rel="icon" href="${favicon}" />
 <title>Exotique &amp; Estetique | Bozza smartphone</title>
 <style>
   :root { color-scheme: dark; }
   * { box-sizing: border-box; margin: 0; }
-  html, body { height: 100%; background: #151414; color: #eeebe6; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  html, body { height: 100%; background: #3b2c27; color: #f4ece5; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
   .stage { min-height: 100%; display: grid; grid-template-columns: minmax(0, 22rem) auto; gap: 5rem; align-items: center; justify-content: center; padding: 2rem; }
   .intro h1 { font-family: "Cormorant Garamond", Garamond, Georgia, serif; font-weight: 500; font-size: 2.6rem; line-height: 1.05; letter-spacing: -0.02em; }
   .intro h1 em { color: #dd3f33; font-style: normal; }
@@ -41,7 +41,7 @@ const phone = `<!doctype html>
   .status { position: absolute; top: 0; left: 0; right: 0; height: 46px; display: flex; align-items: center; justify-content: space-between; padding: 6px 30px 0 34px; font-size: 14px; font-weight: 600; color: #eeebe6; }
   .status i { display: inline-block; width: 24px; height: 11px; border: 1.5px solid #eeebe6; border-radius: 3px; position: relative; }
   .status i::after { content: ""; position: absolute; inset: 1.5px 5px 1.5px 1.5px; background: #eeebe6; border-radius: 1px; }
-  .phone iframe { width: 100%; height: 100%; border: 0; background: #151414; display: block; }
+  .phone iframe { width: 100%; height: 100%; border: 0; background: #f7f1eb; display: block; }
   @media (max-width: 760px), (pointer: coarse) and (max-width: 1024px) {
     .stage { display: block; padding: 0; }
     .intro { display: none; }

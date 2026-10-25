@@ -85,6 +85,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   esplicitamente in quel momento: i link aggiornati vanno solo in chat.
 - Exotique & Estetique: font dei titoli Cormorant Garamond (scelto dall'utente al posto di Bodoni Moda).
   Ha numeri "all'antica": sui prezzi serve `lining-nums` accanto a `tabular-nums`.
+- Palette Exotique & Estetique: «nude e rosa antico» (crema #F7F1EB, cacao #3B2C27, accento #9E5A55,
+  rosa cipria #D99A93 su scuro), scelta il 25/10/2026; nero e rosso non piacevano. Le variabili
+  CSS si chiamano ancora `lacca`/`night`. Per proporre palette: tavole con screenshot del sito vero.
 - `exotique-estetique/DESIGN.md` (skill `stitch-design-taste`) descrive il sistema di design del sito
   attuale: va seguito e aggiornato quando cambiano colori, font o componenti.
 - Sezione «I lavori di Naomi» (`Works.tsx`, foto in `assets/photo/lavori/`, fornite dal centro il

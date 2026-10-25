@@ -20,7 +20,7 @@ const links = [
 export function Wordmark({ className }: { className?: string }) {
   return (
     <span translate="no" className={cn('font-display whitespace-nowrap tracking-[-0.01em]', className)}>
-      Exotique <span className="text-lacca">&amp;</span> Estetique
+      Exotique <span className="amp text-lacca">&amp;</span> Estetique
     </span>
   )
 }
@@ -61,7 +61,7 @@ export function Nav() {
           aria-label="Principale"
           className={cn(
             'wrap relative flex h-16 items-center justify-between gap-3 transition-colors md:gap-6 duration-500 md:h-[4.5rem]',
-            light ? 'text-white' : 'text-ink',
+            light ? 'text-white [&_.amp]:text-lacca-glow' : 'text-ink',
           )}
         >
           <a href="#top" className="inline-flex min-h-11 items-center text-[1.15rem] md:text-[1.3rem]" aria-label={`${business.name}, torna all'inizio`}>

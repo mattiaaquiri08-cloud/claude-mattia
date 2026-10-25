@@ -63,9 +63,9 @@ export function Hero() {
           </motion.picture>
         </motion.div>
         {/* Velature per la leggibilità: in alto per la navigazione, in basso a sinistra per il testo */}
-        <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-[rgb(12_11_11/0.65)] to-transparent md:h-40 md:from-[rgb(12_11_11/0.45)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_top,rgb(12_11_11/0.92)_0%,rgb(12_11_11/0.55)_38%,rgb(12_11_11/0)_70%)]" />
-        <div className="absolute inset-0 hidden bg-[linear-gradient(to_right,rgb(12_11_11/0.55)_0%,rgb(12_11_11/0)_55%)] md:block" />
+        <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-[rgb(36_25_22/0.65)] to-transparent md:h-40 md:from-[rgb(36_25_22/0.45)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_top,rgb(36_25_22/0.92)_0%,rgb(36_25_22/0.55)_38%,rgb(36_25_22/0)_70%)]" />
+        <div className="absolute inset-0 hidden bg-[linear-gradient(to_right,rgb(36_25_22/0.55)_0%,rgb(36_25_22/0)_55%)] md:block" />
       </motion.div>
 
       <motion.div

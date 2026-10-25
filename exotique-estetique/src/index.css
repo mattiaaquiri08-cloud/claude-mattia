@@ -4,39 +4,39 @@
 @import 'tailwindcss';
 
 /*
- * Palette ricavata dalla fotografia del centro:
- * pareti porcellana, cornici e poltrone nere, cassettiera e smalti rosso lacca.
- * Una sola tinta d'accento (lacca) su tutto il sito. Raggi a zero ovunque,
+ * Palette «nude e rosa antico» scelta dall'utente il 25/10/2026: crema rosata,
+ * cacao scuro al posto del nero, un solo accento rosa antico (variabile «lacca»,
+ * nome storico mantenuto per non toccare i componenti). Raggi a zero ovunque,
  * come le cornici degli specchi.
  */
 :root {
-  --paper: #f3f2ef;
-  --paper-2: #e8e6e1;
-  --ink: #151414;
-  --ink-soft: #4b4846;
-  --line: rgb(21 20 20 / 0.14);
-  --lacca: #b3201c;
+  --paper: #f7f1eb;
+  --paper-2: #eee3d9;
+  --ink: #3b2c27;
+  --ink-soft: #6e5a52;
+  --line: rgb(59 44 39 / 0.14);
+  --lacca: #9e5a55;
   --lacca-ink: #fbf8f5;
-  --night: #151414;
-  --night-2: #1f1d1c;
-  --night-ink: #eeebe6;
-  --night-soft: #a9a49e;
-  --night-line: rgb(238 235 230 / 0.16);
-  --lacca-glow: #dd3f33;
+  --night: #3b2c27;
+  --night-2: #46352f;
+  --night-ink: #f4ece5;
+  --night-soft: #cdbbb0;
+  --night-line: rgb(244 236 229 / 0.18);
+  --lacca-glow: #d99a93;
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #121111;
-    --paper-2: #1c1b1a;
-    --ink: #eeebe6;
-    --ink-soft: #a9a49e;
-    --line: rgb(238 235 230 / 0.14);
-    --lacca: #dd3f33;
-    --lacca-ink: #fbf8f5;
-    --night: #0c0b0b;
-    --night-2: #181716;
+    --paper: #1f1715;
+    --paper-2: #2a201d;
+    --ink: #f4ece5;
+    --ink-soft: #cdbbb0;
+    --line: rgb(244 236 229 / 0.14);
+    --lacca: #d99a93;
+    --lacca-ink: #2a1e1b;
+    --night: #170f0d;
+    --night-2: #241a17;
     color-scheme: dark;
   }
 }

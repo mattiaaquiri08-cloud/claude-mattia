@@ -10,7 +10,7 @@ const variants: Record<Variant, string> = {
   lacca: 'bg-lacca text-lacca-ink',
   ink: 'bg-ink text-paper',
   'ghost-light':
-    'border border-white/55 text-white backdrop-blur-[2px] bg-[rgb(12_11_11/0.1)] hover:border-white',
+    'border border-white/55 text-white backdrop-blur-[2px] bg-[rgb(36_25_22/0.1)] hover:border-white',
   ghost: 'border border-ink/35 text-ink hover:border-ink',
 }
 
@@ -24,7 +24,7 @@ const fills: Record<Variant, string> = {
 const hoverText: Record<Variant, string> = {
   lacca: 'group-hover:text-paper',
   ink: 'group-hover:text-lacca-ink',
-  'ghost-light': 'group-hover:text-[#151414]',
+  'ghost-light': 'group-hover:text-[#3b2c27]',
   ghost: 'group-hover:text-paper',
 }
 

@@ -94,7 +94,7 @@ function Sheet({ initialCategory, onClose }: { initialCategory?: string; onClose
   return (
     <div className="fixed inset-0 z-60" role="presentation">
       <motion.div
-        className="absolute inset-0 bg-[rgb(12_11_11/0.55)] backdrop-blur-[3px]"
+        className="absolute inset-0 bg-[rgb(36_25_22/0.55)] backdrop-blur-[3px]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}

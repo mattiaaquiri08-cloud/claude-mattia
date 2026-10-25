@@ -9,8 +9,8 @@ mai invadente), **Densità 3** (arioso, da galleria).
 
 ## 1. Atmosfera visiva
 
-Un salone fotografato di sera: pareti porcellana, cornici e poltrone nere, e un solo tocco di
-rosso lacca, quello della cassettiera e degli smalti. L'interfaccia è editoriale e calma, con
+Un salone caldo e accogliente: crema rosata, cacao al posto del nero e un solo tocco di rosa
+antico, come uno smalto nude. L'interfaccia è editoriale e calma, con
 molto spazio vuoto, titoli serif grandi e righe sottili al posto delle card. La sensazione è quella
 di una rivista di bellezza stampata su carta opaca: angoli vivi ovunque (raggio zero, come le
 cornici degli specchi), grana leggera fissa sullo sfondo e fotografie reali del centro come
@@ -18,29 +18,36 @@ protagoniste. Niente immagini di repertorio, niente decorazioni senza funzione.
 
 ## 2. Palette e ruoli
 
+Palette «nude e rosa antico», scelta dal cliente il 25/10/2026 al posto di nero e rosso lacca.
+Nel codice l'accento si chiama ancora `lacca` (nome storico delle variabili CSS).
+
 Tema chiaro (predefinito):
-- **Carta porcellana** (#F3F2EF) — sfondo principale di tutte le sezioni chiare
-- **Carta ombra** (#E8E6E1) — superfici secondarie, fasce alternate, riempimenti delle foto in caricamento
-- **Inchiostro** (#151414) — testo principale, pulsanti scuri, cornici. Mai nero puro
-- **Inchiostro tenue** (#4B4846) — testi descrittivi, didascalie, metadati
-- **Filo** (rgba(21,20,20,0.14)) — righe da 1px che separano voci di listino, sezioni e colonne
-- **Rosso lacca** (#B3201C) — l'unico accento: pulsante principale, «&» del logo, stato attivo,
+- **Crema rosata** (#F7F1EB) — sfondo principale di tutte le sezioni chiare
+- **Nude** (#EEE3D9) — superfici secondarie, fasce alternate, riempimenti delle foto in caricamento
+- **Cacao** (#3B2C27) — testo principale, pulsanti scuri, cornici. Mai nero puro
+- **Cacao tenue** (#6E5A52) — testi descrittivi, didascalie, metadati
+- **Filo** (rgba(59,44,39,0.14)) — righe da 1px che separano voci di listino, sezioni e colonne
+- **Rosa antico** (#9E5A55) — l'unico accento: pulsante principale, «&» del logo, stato attivo,
   anello di focus, selezione del testo
-- **Avorio su lacca** (#FBF8F5) — testo sopra il rosso lacca
+- **Avorio su rosa** (#FBF8F5) — testo sopra il rosa antico
 
-Sezioni notte (hero, splash, fasce scure):
-- **Notte** (#151414) e **Notte rialzata** (#1F1D1C) — sfondi scuri
-- **Avorio notte** (#EEEBE6) — testo su scuro
-- **Cenere** (#A9A49E) — testo secondario su scuro
-- **Filo notte** (rgba(238,235,230,0.16)) — righe su scuro
+Sezioni scure (splash, contatti, card offerta):
+- **Cacao** (#3B2C27) e **Cacao rialzato** (#46352F) — sfondi scuri
+- **Avorio** (#F4ECE5) — testo su scuro
+- **Cipria scura** (#CDBBB0) — testo secondario su scuro
+- **Filo chiaro** (rgba(244,236,229,0.18)) — righe su scuro
+- **Rosa cipria** (#D99A93) — l'accento su fondo scuro o sopra la foto (la «&» del logo, l'etichetta
+  «Offerta»), perché il rosa antico lì non avrebbe contrasto
 
-Tema scuro automatico (`prefers-color-scheme: dark`): carta #121111, carta ombra #1C1B1A,
-inchiostro #EEEBE6, inchiostro tenue #A9A49E, lacca schiarita **Lacca accesa** (#DD3F33) per
-mantenere il contrasto.
+Tema scuro automatico (`prefers-color-scheme: dark`): sfondo #1F1715, superficie #2A201D, testo
+#F4ECE5, testo secondario #CDBBB0, accento rosa cipria #D99A93 con testo cacao #2A1E1B sopra.
 
-Regole: un solo accento, il rosso lacca. Niente grigi freddi accanto a quelli caldi. Niente
-gradienti colorati: le sole sfumature ammesse sono i veli scuri sopra la foto della hero, che
-servono a leggere il testo.
+Contrasti verificati: cacao su crema 11.9:1, cacao tenue su crema 5.8:1, rosa antico su crema 4.6:1,
+avorio su rosa antico 4.9:1.
+
+Regole: un solo accento, il rosa antico. Niente grigi freddi: tutti i neutri tendono al caldo.
+Niente gradienti colorati: le sole sfumature ammesse sono i veli cacao sopra la foto della hero,
+che servono a leggere il testo.
 
 ## 3. Tipografia
 
@@ -52,7 +59,7 @@ servono a leggere il testo.
   Etichette e pulsanti in maiuscoletto: 12–13px, tracking ampio (0.14–0.22em), peso 500.
 - **Scala dei titoli** (sempre con `clamp()`): hero `clamp(3.1rem, 13vw, 8.5rem)`, titoli di
   sezione `clamp(2.6rem, 6vw, 5.25rem)`, titoli di scheda 1.75–2rem.
-- **Il simbolo «&»** nel logo è dritto, non corsivo, in rosso lacca.
+- **Il simbolo «&»** nel logo è dritto, non corsivo, in rosa antico (rosa cipria su scuro).
 - **Eccezione consapevole:** la regola generale vieta i serif «Garamond». Qui Cormorant Garamond è
   una scelta esplicita del cliente (preferito a Bodoni Moda) e resta. Non usare Inter, Times o
   font di sistema come display.
@@ -61,7 +68,7 @@ servono a leggere il testo.
 
 - **Pulsanti:** rettangoli ad angoli vivi, altezza 48px, testo in maiuscoletto. Al passaggio del
   mouse un riempimento sale dal basso (500ms, curva expo) e il testo cambia colore; alla pressione
-  scala a 0.98. Varianti: lacca (principale), inchiostro, contorno scuro, contorno chiaro sopra
+  scala a 0.98. Varianti: rosa antico (principale), inchiostro, contorno scuro, contorno chiaro sopra
   la foto. Nessun bagliore, nessun cursore personalizzato. Un solo pulsante principale per vista.
 - **Card:** quasi assenti. La gerarchia si fa con righe da 1px, spazio vuoto e fotografie. Le
   poche superfici evidenziate (offerte laser e BB Glow) sono rettangoli pieni senza ombra.
@@ -73,7 +80,7 @@ servono a leggere il testo.
   contatti. Contiene «Prenota ora» e il pulsante per chiamare.
 - **Foto in arrivo:** dove manca una foto vera (es. Naomi) si usa una cornice con la dicitura
   «Foto in arrivo», mai un'immagine inventata o di repertorio.
-- **Focus:** anello di 2px in rosso lacca, distanziato di 3px.
+- **Focus:** anello di 2px in rosa antico, distanziato di 3px.
 
 ## 5. Layout
 
@@ -107,7 +114,7 @@ servono a leggere il testo.
 - Nessun dato inventato: prezzi solo dal listino cartaceo del centro, orari e recensioni solo da
   Google. Ciò che non è verificato resta vuoto.
 - Niente link o recensioni Treatwell; niente foto di Naomi finché non la fornisce lei.
-- Niente nero puro (#000000), niente bagliori al neon, niente viola o blu «da AI».
+- Niente nero e rosso (palette scartata dal cliente), niente nero puro (#000000), niente bagliori al neon, niente viola o blu «da AI».
 - Niente angoli arrotondati: il raggio è zero ovunque.
 - Niente gradienti sul testo, niente cursori personalizzati.
 - Niente tre card uguali in orizzontale.
