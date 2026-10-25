@@ -11,10 +11,7 @@ import postazioneUnghie from '../assets/photo/locali/postazione-unghie.webp'
 import smalti from '../assets/photo/locali/smalti.webp'
 import { MaskLines } from './Reveal'
 
-/*
- * Fotografie reali del centro: le stanze fornite dal centro il 25/10/2026,
- * più l'insegna dai profili pubblici (in attesa della foto nuova) (Treatwell e Google Maps).
- */
+/* Fotografie reali del centro, fornite dall'utente il 25/10/2026 (stanze e ingresso). */
 const photos = [
   { src: sala, portrait: true, caption: 'La sala, con le postazioni capelli e unghie', alt: 'La sala principale con specchi a parete, poltrone nere, smalti, il casco e il lavatesta in fondo davanti alla parete in pietra.' },
   { src: cabinaVerde, portrait: false, caption: 'La cabina verde, per laser e trattamenti corpo', alt: 'Cabina con pareti verdi, lettino in legno, apparecchiature per laser e trattamenti corpo, asciugamani piegati.' },
