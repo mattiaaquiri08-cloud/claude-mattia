@@ -56,7 +56,15 @@ export function Manifesto() {
             </div>
             <div className="col-span-2 border-t border-line pt-4 md:col-span-1">
               <dt className="text-ink-soft">Prodotti</dt>
-              <dd className="mt-1 text-ink">{business.brands.join(' · ')}</dd>
+              <dd className="mt-1">
+                <ul className="flex flex-col gap-1">
+                  {business.brands.map((b) => (
+                    <li key={b.name} className="text-ink">
+                      {b.name} <span className="text-ink-soft">· {b.use}</span>
+                    </li>
+                  ))}
+                </ul>
+              </dd>
             </div>
           </motion.dl>
         </div>
