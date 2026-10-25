@@ -71,7 +71,7 @@ che servono a leggere il testo.
 - **Card:** quasi assenti. La gerarchia si fa con righe da 1px, spazio vuoto e fotografie. Le
   poche superfici evidenziate (offerte laser e BB Glow) sono rettangoli pieni senza ombra.
 - **Listino prezzi:** schede per categoria, voci con nome a sinistra, linea puntinata di guida e
-  prezzo a destra in Cormorant con numeri allineati. «da» indica un prezzo minimo.
+  prezzo a destra in DM Serif Display con numeri allineati. «da» indica un prezzo minimo.
 - **Pannello di prenotazione:** foglio che sale dal basso su mobile e si apre di lato su desktop,
   con la scelta del trattamento e il messaggio WhatsApp già scritto.
 - **Barra mobile:** fissa in basso solo su smartphone, compare dopo la hero e sparisce vicino ai
