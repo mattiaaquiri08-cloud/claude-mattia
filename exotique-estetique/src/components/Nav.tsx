@@ -5,6 +5,7 @@ import { business } from '../content'
 import { CURTAIN, EASE, cn } from '../lib'
 import { useBooking } from './booking-context'
 import { Button } from './Button'
+import { socials } from './social'
 
 const links = [
   { href: '#centro', label: 'Il centro' },
@@ -59,7 +60,7 @@ export function Nav() {
         <nav
           aria-label="Principale"
           className={cn(
-            'wrap relative flex h-16 items-center justify-between gap-6 transition-colors duration-500 md:h-[4.5rem]',
+            'wrap relative flex h-16 items-center justify-between gap-3 transition-colors md:gap-6 duration-500 md:h-[4.5rem]',
             light ? 'text-white' : 'text-ink',
           )}
         >
@@ -67,12 +68,12 @@ export function Nav() {
             <Wordmark />
           </a>
 
-          <ul className="hidden items-center gap-8 lg:flex">
+          <ul className="hidden items-center gap-5 lg:flex xl:gap-8">
             {links.map((l) => (
               <li key={l.href}>
                 <a
                   href={l.href}
-                  className="group relative text-[0.8125rem] tracking-[0.04em] opacity-85 transition-opacity hover:opacity-100"
+                  className="group relative whitespace-nowrap text-[0.8125rem] tracking-[0.04em] opacity-85 transition-opacity hover:opacity-100"
                 >
                   {l.label}
                   <span className="absolute -bottom-1 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-500 ease-out-expo group-hover:origin-left group-hover:scale-x-100" />
@@ -81,7 +82,22 @@ export function Nav() {
             ))}
           </ul>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 md:gap-2">
+            <ul className="hidden items-center min-[360px]:flex">
+              {socials.map(({ label, href, Icon }) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${business.name} su ${label}`}
+                    className="grid size-11 place-items-center transition-colors duration-500 hover:text-lacca"
+                  >
+                    <Icon size={22} weight="regular" aria-hidden />
+                  </a>
+                </li>
+              ))}
+            </ul>
             <span className="hidden md:block">
               <Button variant={light ? 'ghost-light' : 'lacca'} className="h-10 px-5" onClick={() => open()}>
                 Prenota ora
@@ -143,9 +159,26 @@ export function Nav() {
               >
                 Prenota ora
               </Button>
-              <p className="text-sm text-ink-soft">
-                {business.street}, {business.district}, {business.city}
-              </p>
+              <div className="flex items-center justify-between gap-4">
+                <p className="text-sm text-ink-soft">
+                  {business.street}, {business.district}, {business.city}
+                </p>
+                <ul className="-mr-2 flex shrink-0">
+                  {socials.map(({ label, href, Icon }) => (
+                    <li key={label}>
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${business.name} su ${label}`}
+                        className="grid size-11 place-items-center text-ink transition-colors hover:text-lacca"
+                      >
+                        <Icon size={24} weight="regular" aria-hidden />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </motion.div>
           </motion.div>
         )}

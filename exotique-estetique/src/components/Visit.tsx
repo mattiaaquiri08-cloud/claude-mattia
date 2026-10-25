@@ -1,18 +1,13 @@
-import { ArrowUpRight, Clock, EnvelopeSimple, FacebookLogo, InstagramLogo, MapPin, Phone } from '@phosphor-icons/react'
+import { ArrowUpRight, Clock, EnvelopeSimple, MapPin, Phone } from '@phosphor-icons/react'
 import { forwardRef } from 'react'
 import { business } from '../content'
 import { useBooking } from './booking-context'
 import { Button, ButtonLink } from './Button'
 import { MaskLines, Reveal } from './Reveal'
 import { Wordmark } from './Nav'
+import { socials } from './social'
 
 const YEAR = new Date().getFullYear()
-
-/* Profili social del centro: compaiono solo quelli con un link verificato. */
-const socials = [
-  { label: 'Facebook', href: business.facebookUrl, Icon: FacebookLogo },
-  { label: 'Instagram', href: business.instagramUrl, Icon: InstagramLogo },
-].filter((s): s is { label: string; href: string; Icon: typeof FacebookLogo } => Boolean(s.href))
 
 function SocialLinks({ withLabel = false }: { withLabel?: boolean }) {
   return (

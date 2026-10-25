@@ -90,7 +90,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Sezione «I lavori di Naomi» (`Works.tsx`, foto in `assets/photo/lavori/`, fornite dal centro il
   25/10/2026). Le immagini mandate mentre lavoro non arrivano su disco: chiedere di rimandarle.
 - Social: Facebook e Instagram (`instagram.com/exotiqueestetique`, dato dall'utente) in `content.ts`;
-  le icone compaiono solo per i link non `null`. Mai salvare o usare password ricevute in chat.
+  icone nell'header (da 360 px in su), nel menu mobile, nei contatti e in fondo. Mai salvare o usare password ricevute in chat.
 - Trattamenti: niente foto (tolte su richiesta sia su PC sia su smartphone); elenco a tutta larghezza.
 - La skill `design-taste-frontend` non è più installata (è nel cestino delle skill): se serve,
   chiedere all'utente di reinstallarla.
