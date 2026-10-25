@@ -1,42 +1,45 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { useLayoutEffect, useRef, useState } from 'react'
-import interno from '../assets/photo/real/interno.webp'
 import insegna from '../assets/photo/real/insegna.webp'
-import cabina from '../assets/photo/real/cabina.webp'
-import pedicure from '../assets/photo/real/pedicure.webp'
 import ingresso from '../assets/photo/real/ingresso.webp'
-import macchinari from '../assets/photo/real/macchinari.webp'
-import cabina2 from '../assets/photo/real/cabina2.webp'
 import prodotti from '../assets/photo/real/prodotti.webp'
+import sala from '../assets/photo/locali/sala.webp'
+import cabinaVerde from '../assets/photo/locali/cabina-verde.webp'
+import cabinaViso from '../assets/photo/locali/cabina-viso.webp'
+import pedicure from '../assets/photo/locali/pedicure.webp'
+import lavatesta from '../assets/photo/locali/lavatesta.webp'
 import { MaskLines } from './Reveal'
 
-/* Fotografie reali del centro (Treatwell e Google Maps). */
+/*
+ * Fotografie reali del centro: le stanze fornite dal centro il 25/10/2026,
+ * più insegna, vetrate e prodotti dai profili pubblici (Treatwell e Google Maps).
+ */
 const photos = [
-  { src: insegna, caption: "L'ingresso in Via Calenzuoli", alt: "La facciata del centro con l'insegna Exotique Estetique, centro estetico e parrucchiere." },
-  { src: interno, caption: 'La sala, con le postazioni capelli e unghie', alt: 'La sala principale con specchi, poltrone nere e la postazione unghie.' },
-  { src: cabina, caption: 'La cabina dei trattamenti viso e corpo', alt: 'Cabina con lettino in legno, lavabo e parete in pietra.' },
-  { src: pedicure, caption: 'La poltrona pedicure', alt: 'Poltrona pedicure in pelle nera con vaschetta.' },
-  { src: macchinari, caption: 'Le apparecchiature per viso e corpo', alt: 'Vaporizzatore e apparecchiatura per trattamenti corpo davanti alla parete in pietra.' },
-  { src: cabina2, caption: 'La cabina verde, per massaggi e trattamenti', alt: 'Cabina con pareti verdi, lettino e apparecchiature.' },
-  { src: ingresso, caption: 'Luce naturale dalle vetrate', alt: 'La sala vista verso le vetrate su strada.' },
-  { src: prodotti, caption: 'I prodotti professionali', alt: 'Flaconi di prodotti professionali per capelli.' },
+  { src: sala, portrait: true, caption: 'La sala, con le postazioni capelli e unghie', alt: 'La sala principale con specchi a parete, poltrone nere, smalti, il casco e il lavatesta in fondo davanti alla parete in pietra.' },
+  { src: cabinaVerde, portrait: false, caption: 'La cabina verde, per laser e trattamenti corpo', alt: 'Cabina con pareti verdi, lettino in legno, apparecchiature per laser e trattamenti corpo, asciugamani piegati.' },
+  { src: cabinaViso, portrait: true, caption: 'La cabina viso e massaggi', alt: 'Cabina con lettino in legno, lavabo, parete in pietra con orologio e una pianta.' },
+  { src: pedicure, portrait: false, caption: 'La poltrona pedicure', alt: 'Poltrona pedicure in pelle nera con vaschetta idromassaggio, accanto agli scaffali degli smalti.' },
+  { src: lavatesta, portrait: true, caption: 'Il lavatesta', alt: 'Poltrona lavatesta in pelle nera con lavabo nero, davanti alla parete in pietra.' },
+  { src: insegna, portrait: false, caption: "L'ingresso in Via Calenzuoli", alt: "La facciata del centro con l'insegna Exotique Estetique, centro estetico e parrucchiere." },
+  { src: ingresso, portrait: false, caption: 'Luce naturale dalle vetrate', alt: 'La sala vista verso le vetrate su strada.' },
+  { src: prodotti, portrait: false, caption: 'I prodotti professionali', alt: 'Flaconi di prodotti professionali per capelli.' },
 ]
 
 function Item({ p }: { p: (typeof photos)[number] }) {
   return (
-    <figure className="w-[78vw] shrink-0 snap-start sm:w-[52vw] md:w-auto">
-      <div className="aspect-[3/2] overflow-hidden bg-night md:h-[min(56vh,480px)]">
+    <figure className={`shrink-0 snap-start md:w-auto ${p.portrait ? 'w-[58vw] sm:w-[38vw]' : 'w-[78vw] sm:w-[52vw]'}`}>
+      <div className={`overflow-hidden bg-night md:h-[min(56vh,480px)] ${p.portrait ? 'aspect-[3/4]' : 'aspect-[4/3]'}`}>
         <img
           src={p.src}
           alt={p.alt}
-          width={720}
-          height={480}
+          width={p.portrait ? 900 : 1200}
+          height={p.portrait ? 1200 : 900}
           loading="lazy"
           decoding="async"
           className="size-full object-cover"
         />
       </div>
-      <figcaption className="mt-3 text-[0.875rem] text-ink-soft">{p.caption}</figcaption>
+      <figcaption className="mt-3 max-w-[32ch] text-[0.875rem] text-ink-soft">{p.caption}</figcaption>
     </figure>
   )
 }
@@ -92,7 +95,7 @@ export function Gallery() {
           className={
             pinned
               ? 'mt-10 flex w-max gap-6 pl-[max(2.5rem,calc((100vw-1400px)/2+4rem))] pr-16 will-change-transform'
-              : 'no-scrollbar mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2'
+              : 'no-scrollbar mt-10 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 pb-2'
           }
         >
           {photos.map((p) => (
