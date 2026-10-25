@@ -10,6 +10,8 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 const favicon = 'data:image/svg+xml;base64,' + readFileSync('public/favicon.svg').toString('base64')
 // Nel file unico l'icona va incorporata, altrimenti offline non si trova.
 const site = readFileSync('dist-single/index.html', 'utf8').replace(/href="\.?\/?favicon\.svg"/, `href="${favicon}"`)
+  // Le bozze non devono finire su Google al posto del sito vero
+  .replace('<meta name="robots" content="index, follow, max-image-preview:large" />', '<meta name="robots" content="noindex, nofollow" />')
 const out = '../consegna'
 mkdirSync(out, { recursive: true })
 
@@ -20,6 +22,7 @@ const b64 = Buffer.from(site, 'utf8').toString('base64')
 const phone = `<!doctype html>
 <html lang="it">
 <head>
+<meta name="robots" content="noindex, nofollow" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#3b2c27" />

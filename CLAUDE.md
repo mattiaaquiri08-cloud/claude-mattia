@@ -105,6 +105,10 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Prodotti usati: `business.brands` in `content.ts` (OPI smalti, Clear System tinta capelli, Sea of Life
   Mar Morto viso e corpo; nomi confermati dall'utente),
   mostrati nel blocco «Il centro». Aggiungere altri marchi solo se l'utente li conferma.
+- SEO: `npm run build` fa anche `scripts/prerender.mjs` (HTML già renderizzato in dist/index.html,
+  JSON-LD BeautySalon con listino da `content.ts`, robots.txt, sitemap.xml). Dominio nel codice:
+  `https://exotiqueestetique.com` (canonical, og, sitemap). Le bozze hanno `noindex`. Niente
+  aggregateRating nel JSON-LD (Google non mostra stelle per recensioni del proprio sito).
 - Trattamenti: niente foto (tolte su richiesta sia su PC sia su smartphone); elenco a tutta larghezza.
 - La skill `design-taste-frontend` non è più installata (è nel cestino delle skill): se serve,
   chiedere all'utente di reinstallarla.

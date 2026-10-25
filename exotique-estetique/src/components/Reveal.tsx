@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import type { ReactNode } from 'react'
+import { Fragment, type ReactNode } from 'react'
 import { CURTAIN, EASE, cn } from '../lib'
 
 /* Comparsa allo scroll: leggero sollevamento e dissolvenza, una sola volta. */
@@ -63,11 +63,15 @@ export function MaskLines({
       {...(animateOnMount ? { animate: play ? 'show' : 'hidden' } : { whileInView: 'show', viewport: { once: true, amount: 0.4 } })}
     >
       {lines.map((l, i) => (
-        <span key={i} className={cn('block overflow-hidden pt-[0.22em] -mt-[0.22em] pb-[0.2em] -mb-[0.2em]', lineClassName)}>
-          <motion.span className="block will-change-transform" variants={line} custom={i}>
-            {l}
-          </motion.span>
-        </span>
+        <Fragment key={i}>
+          <span className={cn('block overflow-hidden pt-[0.22em] -mt-[0.22em] pb-[0.2em] -mb-[0.2em]', lineClassName)}>
+            <motion.span className="block will-change-transform" variants={line} custom={i}>
+              {l}
+            </motion.span>
+          </span>
+          {/* Spazio tra le righe nel testo: Google e i lettori di schermo leggono «Bellezza, su misura» */}
+          {i < lines.length - 1 && ' '}
+        </Fragment>
       ))}
     </motion.span>
   )
