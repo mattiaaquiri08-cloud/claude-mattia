@@ -89,5 +89,6 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   riusa dati e foto di `exotique-estetique/` (non duplicarli). `npm run build:single` crea la bozza unica.
 - La skill `design-taste-frontend` non è più installata (è nel cestino delle skill): se serve,
   chiedere all'utente di reinstallarla.
-- Mobile: con il viewport da telefono un elemento più largo dello schermo (es. il logo nella nav)
-  allarga tutta la pagina; controllare che `innerWidth` resti 390.
+- Mobile: un elemento più largo dello schermo allarga tutta la pagina; provare 320, 360, 390 px e
+  controllare che `innerWidth` resti uguale alla larghezza. Non passare `hidden` a un componente che
+  ha già `inline-flex` (vince inline-flex): avvolgerlo in un `div hidden md:block`.
