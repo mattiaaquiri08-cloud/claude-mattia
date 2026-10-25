@@ -99,7 +99,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   `assets/photo/locali/` (sala, cabine, pedicure, unghie, smalti, attesa, lavatesta), più l'ingresso con l'insegna (foto
   nuova del 25/10/2026). Tolta la foto «vetrate»: non era questo centro.
   L'utente ne manderà altre.
-- Hero su smartphone: l'utente la trovava confusionaria; ora centrata, titolo su una riga e «Prenota ora»
+- Hero su smartphone: l'utente la trovava confusionaria; ora centrata, titolo su una riga e due pulsanti
+  affiancati («Prenota ora», «I trattamenti»). In Tailwind v4 `max-[359px]:` non batte `max-md:`: serve `!`.
   con velo uniforme (descrizione e secondo pulsante solo da tablet). Tenerla essenziale.
 - Prodotti usati: `business.brands` in `content.ts` (OPI smalti, Clear System tinta capelli, Sea of Life
   Mar Morto viso e corpo; nomi scritti dall'utente «clear sistem» e «dea of life», grafia da confermare),

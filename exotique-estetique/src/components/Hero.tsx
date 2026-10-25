@@ -109,19 +109,23 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            className="flex flex-wrap justify-center gap-3 md:justify-start"
+            className="flex flex-nowrap justify-center gap-2.5 md:flex-wrap md:justify-start md:gap-3"
             initial={{ opacity: 0, y: 16 }}
             animate={ready ? { opacity: 1, y: 0 } : undefined}
             transition={{ duration: 0.9, delay: 1.5, ease: EASE }}
           >
-            <Button onClick={() => open()}>Prenota ora</Button>
-            {/* Su smartphone un solo invito all'azione: i trattamenti sono subito sotto */}
-            <span className="hidden md:block">
-              <ButtonLink href="#trattamenti" variant="ghost-light">
-                I trattamenti
-                <ArrowDownRight size={16} weight="regular" aria-hidden />
-              </ButtonLink>
-            </span>
+            {/* Su smartphone i due pulsanti stanno affiancati e centrati: padding e testo più stretti */}
+            <Button onClick={() => open()} className="max-md:gap-2 max-md:px-4 max-md:text-[0.75rem] max-md:tracking-[0.1em] max-[359px]:px-3! max-[359px]:tracking-[0.05em]!">
+              Prenota ora
+            </Button>
+            <ButtonLink
+              href="#trattamenti"
+              variant="ghost-light"
+              className="max-md:gap-2 max-md:px-4 max-md:text-[0.75rem] max-md:tracking-[0.1em] max-[359px]:px-3! max-[359px]:tracking-[0.05em]!"
+            >
+              I trattamenti
+              <ArrowDownRight size={16} weight="regular" aria-hidden />
+            </ButtonLink>
           </motion.div>
         </div>
       </motion.div>
