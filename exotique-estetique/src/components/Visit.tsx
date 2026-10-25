@@ -1,4 +1,4 @@
-import { ArrowUpRight, Clock, EnvelopeSimple, MapPin, Phone } from '@phosphor-icons/react'
+import { ArrowUpRight, Clock, EnvelopeSimple, FacebookLogo, InstagramLogo, MapPin, Phone } from '@phosphor-icons/react'
 import { forwardRef } from 'react'
 import { business } from '../content'
 import { useBooking } from './booking-context'
@@ -7,6 +7,35 @@ import { MaskLines, Reveal } from './Reveal'
 import { Wordmark } from './Nav'
 
 const YEAR = new Date().getFullYear()
+
+/* Profili social del centro: compaiono solo quelli con un link verificato. */
+const socials = [
+  { label: 'Facebook', href: business.facebookUrl, Icon: FacebookLogo },
+  { label: 'Instagram', href: business.instagramUrl, Icon: InstagramLogo },
+].filter((s): s is { label: string; href: string; Icon: typeof FacebookLogo } => Boolean(s.href))
+
+function SocialLinks({ withLabel = false }: { withLabel?: boolean }) {
+  return (
+    <ul className="flex flex-wrap gap-3">
+      {socials.map(({ label, href, Icon }) => (
+        <li key={label}>
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${business.name} su ${label}`}
+            className={`inline-flex h-12 items-center justify-center gap-3 border border-night-ink/40 text-night-ink transition-colors duration-500 ease-out-expo hover:border-lacca hover:bg-lacca hover:text-lacca-ink ${
+              withLabel ? 'px-5 text-[0.8125rem] font-medium uppercase tracking-[0.14em]' : 'w-12'
+            }`}
+          >
+            <Icon size={withLabel ? 22 : 24} weight="regular" aria-hidden />
+            {withLabel && <span aria-hidden>{label}</span>}
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}
 
 /* L'unico blocco scuro della pagina: la chiusura, dove si prenota. */
 export const Visit = forwardRef<HTMLElement>(function Visit(_, ref) {
@@ -99,6 +128,15 @@ export const Visit = forwardRef<HTMLElement>(function Visit(_, ref) {
                   </dd>
                 </div>
               </div>
+              <div className="flex gap-4 border-t border-night-line pt-6">
+                <span className="w-[22px] shrink-0" aria-hidden />
+                <div>
+                  <dt className="text-[0.8125rem] text-night-soft">Seguici</dt>
+                  <dd className="mt-3">
+                    <SocialLinks withLabel />
+                  </dd>
+                </div>
+              </div>
             </dl>
           </Reveal>
         </div>
@@ -111,11 +149,9 @@ export const Visit = forwardRef<HTMLElement>(function Visit(_, ref) {
             <p>
               &copy; {YEAR} {business.name}. {business.street}, {business.postalCode} {business.city}.
             </p>
-            <ul className="flex flex-wrap gap-x-6">
+            <ul className="flex flex-wrap items-center gap-x-6 gap-y-4">
               <li>
-                <a href={business.facebookUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center hover:text-night-ink">
-                  Facebook
-                </a>
+                <SocialLinks />
               </li>
               <li>
                 <a href="#top" className="inline-flex min-h-11 items-center hover:text-night-ink">

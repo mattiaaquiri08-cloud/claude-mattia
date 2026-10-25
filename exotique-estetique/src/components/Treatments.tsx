@@ -1,9 +1,8 @@
 import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
-import type { Category } from '../content'
 import { Plus } from '@phosphor-icons/react'
 import { categories } from '../content'
-import { CURTAIN, EASE, cn } from '../lib'
+import { EASE, cn } from '../lib'
 import { useBooking } from './booking-context'
 import { Button } from './Button'
 import { MaskLines } from './Reveal'
@@ -16,8 +15,6 @@ function plural(n: number) {
 export function Treatments() {
   const { open } = useBooking()
   const [active, setActive] = useState(0)
-  const [hover, setHover] = useState<number | null>(null)
-  const preview = categories[Math.max(0, hover ?? active)]
 
   return (
     <section id="trattamenti" aria-labelledby="trattamenti-titolo" className="border-t border-line bg-paper-2/60">
@@ -29,8 +26,8 @@ export function Treatments() {
           <MaskLines lines={['Sei mondi,', <em key="e">una sola cura.</em>]} />
         </h2>
 
-        <div className="mt-16 grid gap-12 md:mt-24 lg:grid-cols-12 lg:gap-16">
-          <ul className="lg:col-span-7" onMouseLeave={() => setHover(null)}>
+        <div className="mt-16 md:mt-24">
+          <ul>
             {categories.map((c, i) => {
               const isOpen = active === i
               return (
@@ -42,8 +39,6 @@ export function Treatments() {
                       aria-expanded={isOpen}
                       aria-controls={`tratt-panel-${c.id}`}
                       onClick={() => setActive(isOpen ? -1 : i)}
-                      onMouseEnter={() => setHover(i)}
-                      onFocus={() => setHover(i)}
                       className="group flex w-full items-center gap-6 py-6 text-left md:py-8"
                     >
                       <span
@@ -131,50 +126,8 @@ export function Treatments() {
             })}
           </ul>
 
-          <div className="hidden lg:col-span-5 lg:block">
-            <div className="sticky top-28">
-              <PreviewFrame index={hover ?? active} />
-              <p className="mt-4 text-[0.8125rem] text-ink-soft">{preview?.imageAlt}</p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
-  )
-}
-
-/*
- * Cornice "a specchio": la nuova immagine scende come una tenda sopra la
- * precedente, che resta ferma sotto finché la transizione non è finita.
- */
-function PreviewFrame({ index }: { index: number }) {
-  const safe = index < 0 ? 0 : index
-  const [pair, setPair] = useState<{ cur: number; prev: number | null }>({ cur: safe, prev: null })
-  if (pair.cur !== safe) setPair({ cur: safe, prev: pair.cur })
-  const cur: Category = categories[pair.cur]
-  const prev = pair.prev !== null ? categories[pair.prev] : null
-
-  return (
-    <div className="relative aspect-[4/5] overflow-hidden border-[6px] border-ink bg-ink">
-      {prev && (
-        <img
-          key={`prev-${prev.id}`}
-          src={prev.image}
-          alt=""
-          aria-hidden
-          className="absolute inset-0 z-[1] size-full object-cover"
-        />
-      )}
-      <motion.img
-        key={cur.id}
-        src={cur.image}
-        alt={cur.imageAlt}
-        className="absolute inset-0 z-[2] size-full object-cover"
-        initial={prev ? { clipPath: 'inset(0% 0% 100% 0%)', scale: 1.12 } : false}
-        animate={{ clipPath: 'inset(0% 0% 0% 0%)', scale: 1 }}
-        transition={{ duration: 0.9, ease: CURTAIN }}
-        decoding="async"
-      />
-    </div>
   )
 }
