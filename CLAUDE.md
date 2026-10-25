@@ -103,7 +103,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   affiancati («Prenota ora», «I trattamenti»). In Tailwind v4 `max-[359px]:` non batte `max-md:`: serve `!`.
   Velo uniforme sulla foto, descrizione solo da tablet. Tenerla essenziale.
 - Prodotti usati: `business.brands` in `content.ts` (OPI smalti, Clear System tinta capelli, Sea of Life
-  Mar Morto viso e corpo; nomi scritti dall'utente «clear sistem» e «dea of life», grafia da confermare),
+  Mar Morto viso e corpo, confermato; «Clear System» scritto «clear sistem», grafia da confermare),
   mostrati nel blocco «Il centro». Aggiungere altri marchi solo se l'utente li conferma.
 - Trattamenti: niente foto (tolte su richiesta sia su PC sia su smartphone); elenco a tutta larghezza.
 - La skill `design-taste-frontend` non è più installata (è nel cestino delle skill): se serve,
