@@ -91,7 +91,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   25/10/2026). Le immagini mandate mentre lavoro non arrivano su disco: chiedere di rimandarle.
 - Social: Facebook verificato; Instagram in `content.ts` resta `null` finché l'utente non dà il link
   pubblico del profilo (l'icona compare da sola). Mai salvare o usare password ricevute in chat.
-- Trattamenti: tolta su richiesta la foto di anteprima a destra (desktop); l'elenco è a tutta larghezza.
+- Trattamenti: niente foto (tolte su richiesta sia su PC sia su smartphone); elenco a tutta larghezza.
 - La skill `design-taste-frontend` non è più installata (è nel cestino delle skill): se serve,
   chiedere all'utente di reinstallarla.
 - Mobile: un elemento più largo dello schermo allarga tutta la pagina; provare 320, 360, 390 px e

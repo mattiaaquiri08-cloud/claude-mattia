@@ -84,15 +84,6 @@ export function Treatments() {
                       >
                         <div className="grid gap-8 pb-10 sm:grid-cols-[1fr_auto] sm:items-end">
                           <div>
-                            <div className="mb-6 aspect-[4/3] overflow-hidden lg:hidden">
-                              <img
-                                src={c.image}
-                                alt={c.imageAlt}
-                                className="size-full object-cover"
-                                loading="lazy"
-                                decoding="async"
-                              />
-                            </div>
                             <p className="max-w-[46ch] text-[1.0625rem] leading-relaxed text-ink-soft">{c.intro}</p>
                             <ul className="mt-6 flex flex-wrap gap-2">
                               {c.services.slice(0, 5).map((s) => (
