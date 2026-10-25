@@ -92,7 +92,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Social: Facebook e Instagram (`instagram.com/exotiqueestetique`, dato dall'utente) in `content.ts`;
   icone nell'header (da 360 px in su), nel menu mobile, nei contatti e in fondo. Mai salvare o usare password ricevute in chat.
 - Galleria «Le stanze del centro»: foto dei locali fornite dall'utente il 25/10/2026 in
-  `assets/photo/locali/` (sala, cabine, pedicure, lavatesta), più insegna, vetrate e prodotti.
+  `assets/photo/locali/` (sala, cabine, pedicure, unghie, smalti, attesa, lavatesta), più insegna e vetrate.
   L'utente ne manderà altre.
 - Trattamenti: niente foto (tolte su richiesta sia su PC sia su smartphone); elenco a tutta larghezza.
 - La skill `design-taste-frontend` non è più installata (è nel cestino delle skill): se serve,

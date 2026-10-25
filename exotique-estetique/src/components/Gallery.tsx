@@ -2,27 +2,31 @@ import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { useLayoutEffect, useRef, useState } from 'react'
 import insegna from '../assets/photo/real/insegna.webp'
 import ingresso from '../assets/photo/real/ingresso.webp'
-import prodotti from '../assets/photo/real/prodotti.webp'
 import sala from '../assets/photo/locali/sala.webp'
 import cabinaVerde from '../assets/photo/locali/cabina-verde.webp'
 import cabinaViso from '../assets/photo/locali/cabina-viso.webp'
 import pedicure from '../assets/photo/locali/pedicure.webp'
 import lavatesta from '../assets/photo/locali/lavatesta.webp'
+import attesa from '../assets/photo/locali/attesa.webp'
+import postazioneUnghie from '../assets/photo/locali/postazione-unghie.webp'
+import smalti from '../assets/photo/locali/smalti.webp'
 import { MaskLines } from './Reveal'
 
 /*
  * Fotografie reali del centro: le stanze fornite dal centro il 25/10/2026,
- * più insegna, vetrate e prodotti dai profili pubblici (Treatwell e Google Maps).
+ * più insegna e vetrate dai profili pubblici (Treatwell e Google Maps).
  */
 const photos = [
   { src: sala, portrait: true, caption: 'La sala, con le postazioni capelli e unghie', alt: 'La sala principale con specchi a parete, poltrone nere, smalti, il casco e il lavatesta in fondo davanti alla parete in pietra.' },
   { src: cabinaVerde, portrait: false, caption: 'La cabina verde, per laser e trattamenti corpo', alt: 'Cabina con pareti verdi, lettino in legno, apparecchiature per laser e trattamenti corpo, asciugamani piegati.' },
   { src: cabinaViso, portrait: true, caption: 'La cabina viso e massaggi', alt: 'Cabina con lettino in legno, lavabo, parete in pietra con orologio e una pianta.' },
   { src: pedicure, portrait: false, caption: 'La poltrona pedicure', alt: 'Poltrona pedicure in pelle nera con vaschetta idromassaggio, accanto agli scaffali degli smalti.' },
+  { src: postazioneUnghie, portrait: true, caption: 'La postazione unghie', alt: 'Tavolo bianco per la manicure con lampade, scaffale di smalti, casco e la porta in legno sulla parete in pietra.' },
+  { src: smalti, portrait: true, caption: 'Smalti e gel', alt: 'Scaffale nero con smalti, gel e creme per mani e unghie, con piante pendenti.' },
+  { src: attesa, portrait: true, caption: "L'attesa, con la vetrina dei prodotti", alt: 'Divano nero davanti alla vetrina illuminata dei prodotti per capelli; in fondo il lavatesta.' },
   { src: lavatesta, portrait: true, caption: 'Il lavatesta', alt: 'Poltrona lavatesta in pelle nera con lavabo nero, davanti alla parete in pietra.' },
   { src: insegna, portrait: false, caption: "L'ingresso in Via Calenzuoli", alt: "La facciata del centro con l'insegna Exotique Estetique, centro estetico e parrucchiere." },
   { src: ingresso, portrait: false, caption: 'Luce naturale dalle vetrate', alt: 'La sala vista verso le vetrate su strada.' },
-  { src: prodotti, portrait: false, caption: 'I prodotti professionali', alt: 'Flaconi di prodotti professionali per capelli.' },
 ]
 
 function Item({ p }: { p: (typeof photos)[number] }) {
