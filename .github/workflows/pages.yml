@@ -1,0 +1,45 @@
+name: Pubblica su GitHub Pages
+
+on:
+  push:
+    branches: [claude/intelligent-albattani-bti0iy]
+    paths: ["flipper/**", ".github/workflows/pages.yml"]
+  pull_request:
+    paths: ["flipper/**", ".github/workflows/pages.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: flipper
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: flipper/package-lock.json
+
+      - run: npm ci
+      - run: npm run build
+
+      # Solo dal branch principale: pubblica dist/ sul branch gh-pages
+      - name: Pubblica sul branch gh-pages
+        if: github.event_name != 'pull_request'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: flipper/dist
+          publish_branch: gh-pages
+          force_orphan: true
+          commit_message: "Pubblica la bozza FLIPPER"
