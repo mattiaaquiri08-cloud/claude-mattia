@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform, type MotionValue } from 'motion/react'
 import { useRef } from 'react'
+import { business } from '../content'
 import { EASE } from '../lib'
 
 const text =
@@ -39,7 +40,7 @@ export function Manifesto() {
           </p>
 
           <motion.dl
-            className="mt-14 grid max-w-xl grid-cols-2 gap-x-8 gap-y-6 text-[0.9375rem] md:mt-20"
+            className="mt-14 grid max-w-3xl grid-cols-2 gap-x-8 gap-y-6 text-[0.9375rem] md:mt-20 md:grid-cols-3"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
@@ -52,6 +53,10 @@ export function Manifesto() {
             <div className="border-t border-line pt-4">
               <dt className="text-ink-soft">Cosa</dt>
               <dd className="mt-1 text-ink">Centro estetico e parrucchiere</dd>
+            </div>
+            <div className="col-span-2 border-t border-line pt-4 md:col-span-1">
+              <dt className="text-ink-soft">Prodotti</dt>
+              <dd className="mt-1 text-ink">{business.brands.join(' · ')}</dd>
             </div>
           </motion.dl>
         </div>

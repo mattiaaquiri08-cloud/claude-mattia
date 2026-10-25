@@ -101,6 +101,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   L'utente ne manderà altre.
 - Hero su smartphone: l'utente la trovava confusionaria; ora solo etichetta, titolo e «Prenota ora»
   con velo uniforme (descrizione e secondo pulsante solo da tablet). Tenerla essenziale.
+- Prodotti usati: `business.brands` in `content.ts` (OPI, Original Gel American System), mostrati
+  nel blocco «Il centro». Aggiungere lì altri marchi solo se l'utente li conferma.
 - Trattamenti: niente foto (tolte su richiesta sia su PC sia su smartphone); elenco a tutta larghezza.
 - La skill `design-taste-frontend` non è più installata (è nel cestino delle skill): se serve,
   chiedere all'utente di reinstallarla.

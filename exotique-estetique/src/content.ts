@@ -87,6 +87,8 @@ export const business = {
   directionsUrl:
     'https://www.google.com/maps/dir/?api=1&destination=Exotique%20%26%20Estetique&destination_place_id=ChIJ0z_MP-9cLxMRyb_HBQZJnOE',
   facebookUrl: 'https://www.facebook.com/Exotique.Estetique/',
+  // Marchi professionali usati in salone (espositore OPI fotografato il 25/10/2026, listino cartaceo).
+  brands: ['OPI', 'Original Gel American System'],
   // Profilo Instagram indicato dall'utente il 25/10/2026.
   instagramUrl: 'https://www.instagram.com/exotiqueestetique/' as string | null,
 }
