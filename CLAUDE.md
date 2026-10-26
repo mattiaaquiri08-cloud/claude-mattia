@@ -72,8 +72,11 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   la foto di Alessio e Leonardo (originali in alta risoluzione: orizzontale su PC, verticale 4:5 su smartphone con
   i pulsanti sotto) + Prenota ora e Menu (Linktree). Splash (27/10): logo tondo con le onde (quello delle magliette),
   non nella hero; l'utente ha scartato il rosso perché non c'entra coi colori del sito: versione "urban" (serigrafia
-  granulosa, bordo irregolare) con onde ocra, scritte avorio, disco nero (`img/logo-tondo-urban.webp`), sfondo avorio.
-  Ricavata da un'immagine di 447 px: col file originale del logo verrebbe più nitida. Le foto delle sezioni sono ancora provvisorie. WhatsApp Business per le prenotazioni: +39 392 764 1873 (dal 19/10, `SITE.whatsapp`); il
+  granulosa, bordo irregolare) con onde ocra, scritte avorio, disco nero, sfondo avorio. Il logo si MONTA pezzo per
+  pezzo (disco, onde, perle, lettere O-M-A a timbro, sottotitolo): pezzi in `img/logo-pezzo-*.webp`, posizioni in
+  `src/data/logo-pezzi.ts`, generati da uno script Python (scipy) dall'immagine di 447 px; approvato dall'utente
+  ("è bellissimo"). Col file originale del logo verrebbe più nitido. Per le anteprime di animazioni, un video mp4
+  registrato con Playwright (recordVideo + ffmpeg) è piaciuto più degli screenshot. Le foto delle sezioni sono ancora provvisorie. WhatsApp Business per le prenotazioni: +39 392 764 1873 (dal 19/10, `SITE.whatsapp`); il
   377 301 7230 resta come telefono per chiamare.
   Referente: Alessio. Preventivo: Completo 550 €, Base 450 €. Il 13/10/2026 hanno scelto il Completo,
   dominio omaosteriamoderna.com (libero a quella data, da registrare a nome del ristorante).

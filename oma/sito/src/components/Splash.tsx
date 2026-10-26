@@ -1,14 +1,60 @@
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { AnimatePresence, motion, useReducedMotion, type TargetAndTransition, type Transition } from 'motion/react'
 import { useEffect, useState } from 'react'
+import { LOGO_PEZZI, type PezzoLogo } from '../data/logo-pezzi'
 
-const PAINT = [0.65, 0, 0.35, 1] as const
 const CURTAIN = [0.76, 0, 0.24, 1] as const
-const HOLD_MS = 2150
-const LOGO = './img/logo-tondo-urban.webp'
+const OUT = [0.16, 1, 0.3, 1] as const
+const HOLD_MS = 3300
+
+// Quando parte ogni gruppo di pezzi (secondi) e quanto aspetta tra un pezzo e il successivo
+const TEMPI = {
+  disco: { start: 0, step: 0 },
+  onda: { start: 0.3, step: 0.22 },
+  perla: { start: 1.25, step: 0.08 },
+  lettera: { start: 1.6, step: 0.14 },
+  riga: { start: 2.1, step: 0.14 },
+} as const
+
+/** Come entra ogni pezzo: il disco si apre, le onde girano al loro posto, le perle saltano fuori, le lettere si stampano. */
+function montaggio(p: PezzoLogo, i: number) {
+  const n = LOGO_PEZZI.slice(0, i).filter((q) => q.tipo === p.tipo).length
+  const delay = TEMPI[p.tipo].start + TEMPI[p.tipo].step * n
+  // le onde ruotano attorno al centro del logo, non al proprio
+  const centro = `${((50 - p.x) / p.w) * 100}% ${((50 - p.y) / p.h) * 100}%`
+  let from: TargetAndTransition
+  let to: TargetAndTransition = { opacity: 1, scale: 1, rotate: 0 }
+  let transition: Transition
+  let origin = '50% 50%'
+  switch (p.tipo) {
+    case 'disco':
+      from = { opacity: 0, scale: 0.35, rotate: -25 }
+      transition = { duration: 0.6, ease: OUT, delay }
+      break
+    case 'onda':
+      origin = centro
+      from = { opacity: 0, scale: 0.72, rotate: -75 }
+      transition = { duration: 0.85, ease: OUT, delay }
+      break
+    case 'perla':
+      from = { opacity: 0, scale: 0 }
+      transition = { type: 'spring', stiffness: 520, damping: 16, delay }
+      break
+    case 'lettera':
+      from = { opacity: 0, scale: 1.9 }
+      transition = { duration: 0.32, ease: [0.3, 1.4, 0.5, 1], delay }
+      break
+    case 'riga':
+      from = { opacity: 0, clipPath: 'inset(0% 100% 0% 0%)' }
+      to = { opacity: 1, clipPath: 'inset(0% 0% 0% 0%)' }
+      transition = { duration: 0.5, ease: [0.65, 0, 0.35, 1], delay }
+      break
+  }
+  return { from, to, transition, origin }
+}
 
 /**
- * Splash: il logo tondo di OMA (versione urban: ocra e avorio sul nero) si apre dal centro,
- * poi due sipari (avorio e ocra) si alzano e scoprono la sala della hero.
+ * Splash: il logo tondo di OMA (versione urban) si monta un pezzo alla volta: disco, onde, perle,
+ * lettere e sottotitolo. Poi due sipari (avorio e ocra) si alzano e scoprono la sala della hero.
  */
 export function Splash({ onReveal }: { onReveal: () => void }) {
   const reduce = useReducedMotion()
@@ -20,17 +66,29 @@ export function Splash({ onReveal }: { onReveal: () => void }) {
     if (reduce) onReveal()
   }, [reduce, onReveal])
 
-  // Aspetta il logo (al massimo 1,2 s) per non animare un'immagine vuota
+  // Aspetta tutti i pezzi del logo (al massimo 1,5 s) per non montare immagini vuote
   useEffect(() => {
     if (reduce) return
-    const img = new Image()
-    const fallback = window.setTimeout(() => setReady(true), 1200)
-    img.onload = () => {
-      window.clearTimeout(fallback)
-      setReady(true)
+    let done = false
+    const go = () => {
+      if (!done) setReady(true)
+      done = true
     }
-    img.src = LOGO
-    return () => window.clearTimeout(fallback)
+    const fallback = window.setTimeout(go, 1500)
+    Promise.all(
+      LOGO_PEZZI.map(
+        (p) =>
+          new Promise<void>((res) => {
+            const img = new Image()
+            img.onload = img.onerror = () => res()
+            img.src = p.src
+          }),
+      ),
+    ).then(go)
+    return () => {
+      done = true
+      window.clearTimeout(fallback)
+    }
   }, [reduce])
 
   useEffect(() => {
@@ -81,25 +139,32 @@ export function Splash({ onReveal }: { onReveal: () => void }) {
             />
 
             <motion.div
-              className="relative w-[min(72vw,60vh,420px)]"
+              className="relative aspect-square w-[min(72vw,60vh,420px)]"
               exit={{ y: -60, opacity: 0 }}
               transition={{ duration: 0.6, ease: CURTAIN }}
             >
-              {/* Il disco si apre dal centro mentre le onde ruotano al loro posto */}
-              <motion.img
-                src={LOGO}
-                alt=""
-                width={800}
-                height={800}
-                className="w-full"
-                initial={{ clipPath: 'circle(0% at 50% 50%)', rotate: -40, scale: 0.86 }}
-                animate={ready ? { clipPath: 'circle(50% at 50% 50%)', rotate: 0, scale: 1 } : {}}
-                transition={{
-                  clipPath: { duration: 1.05, ease: PAINT },
-                  rotate: { duration: 1.6, ease: [0.16, 1, 0.3, 1] },
-                  scale: { duration: 1.6, ease: [0.16, 1, 0.3, 1] },
-                }}
-              />
+              {LOGO_PEZZI.map((p, i) => {
+                const anim = montaggio(p, i)
+                return (
+                  <motion.img
+                    key={p.src}
+                    src={p.src}
+                    alt=""
+                    draggable={false}
+                    className="absolute max-w-none select-none"
+                    style={{
+                      left: `${p.x}%`,
+                      top: `${p.y}%`,
+                      width: `${p.w}%`,
+                      height: `${p.h}%`,
+                      transformOrigin: anim.origin,
+                    }}
+                    initial={anim.from}
+                    animate={ready ? anim.to : {}}
+                    transition={anim.transition}
+                  />
+                )
+              })}
             </motion.div>
           </motion.div>
         </motion.div>
