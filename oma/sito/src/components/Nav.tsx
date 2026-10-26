@@ -16,15 +16,15 @@ const LINKS = [
   { id: 'dove-siamo', label: 'Dove siamo' },
 ]
 
-export function Nav({ revealed }: { revealed: boolean }) {
+export function Nav() {
   const { openBooking } = useBooking()
   const reduce = useReducedMotion()
   const { scrollY } = useScroll()
   const [solid, setSolid] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const { notice } = useLiveData()
-  // sopra la foto della hero la barra è trasparente e chiara, poi diventa avorio
-  const onPhoto = !solid && !menuOpen
+  // in cima la barra è trasparente sull'avorio della hero, scorrendo diventa un vetro avorio
+  const bar = solid || menuOpen
 
   useMotionValueEvent(scrollY, 'change', (v) => {
     const next = v > 40
@@ -54,7 +54,7 @@ export function Nav({ revealed }: { revealed: boolean }) {
       <motion.header
         className="fixed inset-x-0 top-0 z-[60]"
         initial={reduce ? false : { y: -90, opacity: 0 }}
-        animate={revealed ? { y: 0, opacity: 1 } : undefined}
+        animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.9, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
       >
         {/* Avviso scritto dal ristorante nel foglio (ferie, chiusure, serate speciali) */}
@@ -69,7 +69,7 @@ export function Nav({ revealed }: { revealed: boolean }) {
         )}
         <div
           className={`transition-[background-color,border-color,backdrop-filter] duration-500 ${
-            onPhoto ? 'border-b border-transparent' : 'border-b border-line/70 bg-paper/85 backdrop-blur-xl'
+            bar ? 'border-b border-line/70 bg-paper/85 backdrop-blur-xl' : 'border-b border-transparent'
           }`}
         >
           <nav
@@ -85,7 +85,14 @@ export function Nav({ revealed }: { revealed: boolean }) {
               className="flex items-center"
               aria-label="OMA Osteria Moderna, torna all'inizio"
             >
-              <img src="./img/logo-oma.png" alt="" width={620} height={303} className="h-8 w-auto md:h-9" />
+              {/* in cima c'è già il logo grande della hero: quello piccolo compare quando si scorre */}
+              <img
+                src="./img/logo-oma.png"
+                alt=""
+                width={620}
+                height={303}
+                className={`h-8 w-auto transition-opacity duration-500 md:h-9 ${bar ? 'opacity-100' : 'opacity-0'}`}
+              />
             </a>
 
             <ul className="hidden items-center gap-0.5 xl:flex">
@@ -97,9 +104,7 @@ export function Nav({ revealed }: { revealed: boolean }) {
                       e.preventDefault()
                       go(l.id)
                     }}
-                    className={`group relative rounded-full px-3.5 py-2.5 text-[0.95rem] font-semibold transition-colors ${
-                      onPhoto ? 'text-paper/90 hover:text-paper' : 'text-ink/80 hover:text-ink'
-                    }`}
+                    className="group relative rounded-full px-3.5 py-2.5 text-[0.95rem] font-semibold text-ink/80 transition-colors hover:text-ink"
                   >
                     {l.label}
                     <span className="absolute inset-x-3.5 bottom-1.5 h-px origin-left scale-x-0 bg-ochre transition-transform duration-300 ease-out-expo group-hover:scale-x-100" />
@@ -114,25 +119,21 @@ export function Nav({ revealed }: { revealed: boolean }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Instagram di OMA (${SITE.instagramHandle})`}
-                className={`grid size-11 place-items-center rounded-full border backdrop-blur-md transition-colors ${
-                  onPhoto ? 'border-paper/40 bg-ink/30 text-paper hover:border-paper' : 'border-ink/20 text-ink hover:border-ink/50'
-                }`}
+                className="grid size-11 place-items-center rounded-full border border-ink/20 text-ink transition-colors hover:border-ink/50"
               >
                 <InstagramLogo size={20} weight="bold" />
               </a>
               <button
                 type="button"
                 onClick={openBooking}
-                className={`${onPhoto ? 'btn-light' : 'btn-primary'} !px-5 !py-3 !text-[0.75rem] md:!px-6`}
+                className="btn-primary !px-5 !py-3 !text-[0.75rem] md:!px-6"
               >
                 Prenota ora
               </button>
               <button
                 type="button"
                 onClick={() => setMenuOpen((o) => !o)}
-                className={`grid size-11 place-items-center rounded-full border backdrop-blur-md transition-colors xl:hidden ${
-                  onPhoto ? 'border-paper/40 bg-ink/30 text-paper hover:border-paper' : 'border-ink/20 text-ink hover:border-ink/50'
-                }`}
+                className="grid size-11 place-items-center rounded-full border border-ink/20 text-ink transition-colors hover:border-ink/50 xl:hidden"
                 aria-expanded={menuOpen}
                 aria-controls="menu-mobile"
                 aria-label={menuOpen ? 'Chiudi il menu' : 'Apri il menu'}

@@ -66,8 +66,8 @@ la richiesta parte solo quando il cliente preme Invia su WhatsApp. Il sito non m
 
 ## Struttura
 
-- `src/components/Splash.tsx`: intro con la scritta OMA "dipinta" e doppio sipario
-- `src/components/Hero.tsx`: foto a tutto schermo, OMA, slogan e i pulsanti Prenota ora e Menu
+- `src/components/Hero.tsx`: hero avorio con il logo OMA che si dipinge, schizzi di vernice e i pulsanti
+  Prenota ora e Menu; sotto, la foto dei titolari a tutta larghezza (`FotoTitolari`)
 - `src/components/Sezioni.tsx`: le macro-sezioni nell'ordine dei testi (Chi siamo, Food, Il mercato,
   Il menù, I nostri piatti, L'aperitivo del sabato, Wine, Gli eventi)
 - `src/components/Visit.tsx`: indirizzo, mappa, orari con stato "aperto ora"

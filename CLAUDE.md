@@ -68,9 +68,11 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   50 e 50: Permanent Marker (nomi delle sezioni e metà dei titoli) e Playfair Display (l'altra metà e i testi).
   Sui social usano Sprite Graffiti (Arsek & Erase, che l'utente chiama "Urban"), ma hanno solo la licenza social
   (20/10): sul sito Permanent Marker, scelto dall'utente tra i gratuiti (preferito a Sedgwick Ave Display). Lezione: i font commerciali dei clienti
-  non vanno mai nel repository pubblico né sul sito senza licenza web. Sito diviso nelle loro macro-sezioni (`TESTI` in site.ts, `Sezioni.tsx`); hero con
-  Prenota ora + Menu (Linktree) affiancati. Hero definitiva dal 26/10 (Alessio e Leonardo a tavola: orizzontale su PC, verticale 4:5
-  intera su smartphone con i pulsanti sotto); le altre foto delle sezioni sono ancora provvisorie. WhatsApp Business per le prenotazioni: +39 392 764 1873 (dal 19/10, `SITE.whatsapp`); il
+  non vanno mai nel repository pubblico né sul sito senza licenza web. Sito diviso nelle loro macro-sezioni (`TESTI` in site.ts, `Sezioni.tsx`); hero (27/10)
+  "urban" come la foto profilo IG: sfondo avorio, logo OMA al centro con pennellata nera, schizzi di vernice
+  ocra/neri generati (`public/img/schizzo-*.webp`), Prenota ora + Menu (Linktree) sotto; niente splash (il logo
+  si dipinge nella hero). Subito sotto la foto di Alessio e Leonardo a tutta larghezza (`FotoTitolari`, originali
+  in alta risoluzione: orizzontale su PC, verticale 4:5 su smartphone). Le foto delle sezioni sono ancora provvisorie. WhatsApp Business per le prenotazioni: +39 392 764 1873 (dal 19/10, `SITE.whatsapp`); il
   377 301 7230 resta come telefono per chiamare.
   Referente: Alessio. Preventivo: Completo 550 €, Base 450 €. Il 13/10/2026 hanno scelto il Completo,
   dominio omaosteriamoderna.com (libero a quella data, da registrare a nome del ristorante).
