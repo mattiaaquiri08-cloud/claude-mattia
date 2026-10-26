@@ -12,14 +12,14 @@ export function Footer() {
     <footer className="border-t border-line px-4 pt-16 pb-10 md:px-8">
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 md:grid-cols-12">
         <div className="md:col-span-5">
-          <img src="./img/logo-oma.png" alt="OMA" width={620} height={303} loading="lazy" className="w-28" />
+          {/* Il logo tondo della splash, come firma in fondo al sito */}
           <img
-            src="./img/logo-sottotitolo-nero.png"
-            alt="osteria moderna"
-            width={642}
-            height={70}
+            src="./img/logo-tondo.webp"
+            alt="OMA Osteria Moderna Tradizione"
+            width={640}
+            height={640}
             loading="lazy"
-            className="mt-3 w-36 opacity-80"
+            className="w-40 md:w-48"
           />
           <p className="mt-6 max-w-[34ch] text-ink/70">
             {SITE.slogan[0]} {SITE.slogan[1]}
