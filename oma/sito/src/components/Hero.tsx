@@ -11,7 +11,8 @@ const rise = {
 
 /*
   Hero: Alessio e Leonardo a tavola in sala. Su desktop la foto orizzontale è a tutto schermo; su smartphone
-  quella verticale si vede intera (4:5), così non si taglia nessuno dei due, con i pulsanti subito sotto.
+  quella verticale si vede intera (4:5), così non si taglia nessuno dei due, con i pulsanti subito sotto;
+  la foto parte sotto la barra (fascia nera in alto) così scende fino alla lavagna.
   Un solo pulsante al centro: Menu (Linktree). Prenota ora sta nella barra in alto.
 */
 export function Hero({ revealed }: { revealed: boolean }) {
@@ -23,7 +24,7 @@ export function Hero({ revealed }: { revealed: boolean }) {
   const contentY = useTransform(scrollYProgress, [0, 0.5], ['0px', reduce ? '0px' : '-40px'])
 
   return (
-    <section ref={ref} id="top" className="relative overflow-hidden bg-ink md:min-h-[100dvh]" aria-labelledby="hero-title">
+    <section ref={ref} id="top" className="relative overflow-hidden bg-ink pt-[68px] md:min-h-[100dvh] md:pt-0" aria-labelledby="hero-title">
       <motion.div
         className="relative aspect-[4/5] w-full md:absolute md:inset-0 md:aspect-auto"
         style={{ y: imgY }}
@@ -53,6 +54,7 @@ export function Hero({ revealed }: { revealed: boolean }) {
             decoding="async"
           />
         </motion.picture>
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-1/6 bg-gradient-to-b from-ink to-transparent md:hidden" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-ink to-transparent md:hidden" />
       </motion.div>
 
