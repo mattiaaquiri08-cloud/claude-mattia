@@ -37,7 +37,7 @@ function raggruppa(voci: VoceLavagna[]): Riga[] {
 }
 
 /*
-  La lavagna di OMA: ferie, giorni di chiusura, promozioni ed eventi, scritti a gessetto.
+  La lavagna di OMA (bianca, scritta a pennarello): ferie, giorni di chiusura, promozioni ed eventi.
   Le voci passate spariscono da sole; senza voci la lavagna dice che si è aperti come sempre.
   Sta sul nero, attaccata alla hero, senza la fascia avorio in mezzo.
 */
@@ -55,7 +55,7 @@ export function Lavagna() {
   return (
     <section id="lavagna" aria-labelledby="lavagna-t" className="bg-ink px-4 pt-2 pb-16 md:px-8 md:pt-6 md:pb-24">
       <motion.div
-        className="lavagna relative mx-auto grid max-w-[1400px] grid-cols-1 gap-8 overflow-hidden rounded-[var(--radius-media)] p-7 text-paper md:grid-cols-12 md:gap-8 md:p-12"
+        className="lavagna relative mx-auto grid max-w-[1400px] grid-cols-1 gap-8 overflow-hidden rounded-[var(--radius-media)] p-7 text-ink md:grid-cols-12 md:gap-8 md:p-12"
         initial={reduce ? false : { opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -65,22 +65,22 @@ export function Lavagna() {
           <h2 id="lavagna-t" className="font-pennello text-4xl tracking-[0.02em] uppercase md:text-5xl">
             La lavagna
           </h2>
-          <p className="mt-3 max-w-[30ch] text-paper/70 italic">Ferie, chiusure, promozioni e serate speciali.</p>
+          <p className="mt-3 max-w-[30ch] text-ink/65 italic">Ferie, chiusure, promozioni e serate speciali.</p>
         </div>
 
         <div className="md:col-span-8">
           {voci.length ? (
-            <ul className="flex flex-col divide-y divide-dashed divide-paper/20">
+            <ul className="flex flex-col divide-y divide-dashed divide-ink/20">
               {voci.map((v) => (
                 <li
                   key={`${v.dal ?? 'sempre'}-${v.tipo}-${v.testo}`}
                   className="grid grid-cols-1 gap-x-6 gap-y-1 py-4 first:pt-0 last:pb-0 sm:grid-cols-[minmax(0,14rem)_minmax(0,1fr)]"
                 >
-                  <p className="font-pennello text-xl leading-snug tracking-[0.02em] text-ochre uppercase">
+                  <p className="font-pennello text-xl leading-snug tracking-[0.02em] text-ochre-deep uppercase">
                     {quando(v)}
                   </p>
-                  <p className="text-lg leading-snug text-paper/90">
-                    <span className="mr-2 font-pennello tracking-[0.04em] text-paper/60 uppercase">
+                  <p className="text-lg leading-snug text-ink/85">
+                    <span className="mr-2 font-pennello tracking-[0.04em] text-ink/50 uppercase">
                       {ETICHETTA[v.tipo]}
                     </span>
                     {v.testo}
@@ -89,7 +89,7 @@ export function Lavagna() {
               ))}
             </ul>
           ) : (
-            <p className="text-lg leading-relaxed text-paper/85">
+            <p className="text-lg leading-relaxed text-ink/80">
               Niente da segnalare: siamo aperti come sempre.{' '}
               <a
                 href="#dove-siamo"
@@ -97,7 +97,7 @@ export function Lavagna() {
                   e.preventDefault()
                   scrollToId('dove-siamo')
                 }}
-                className="text-paper underline decoration-ochre underline-offset-4 hover:text-ochre"
+                className="text-ink underline decoration-ochre underline-offset-4 hover:text-ochre-deep"
               >
                 Guarda gli orari
               </a>

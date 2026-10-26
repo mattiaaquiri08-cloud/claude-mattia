@@ -143,12 +143,13 @@
 }
 
 /* Lavagna: ardesia nera del brand con aloni di gesso */
+/* Lavagna bianca: riflesso lucido e cornice grigia come una lavagna da pennarello */
 .lavagna {
   background:
-    radial-gradient(ellipse 60% 50% at 18% 30%, rgb(248 247 232 / 0.06), transparent 70%),
-    radial-gradient(ellipse 50% 60% at 85% 75%, rgb(248 247 232 / 0.05), transparent 70%),
-    var(--color-ink);
-  box-shadow: inset 0 0 0 1px rgb(248 247 232 / 0.08), 0 30px 60px -40px rgb(23 20 21 / 0.6);
+    linear-gradient(115deg, transparent 30%, rgb(255 255 255 / 0.7) 45%, transparent 60%),
+    radial-gradient(ellipse 70% 60% at 85% 80%, rgb(23 20 21 / 0.04), transparent 70%),
+    #fdfcf6;
+  box-shadow: inset 0 0 0 6px #d9d7cf, inset 0 0 0 7px rgb(23 20 21 / 0.12), 0 30px 60px -30px rgb(0 0 0 / 0.6);
 }
 
 /* Grana leggera su tutta la pagina: elemento fisso, nessun ridisegno durante lo scroll */
