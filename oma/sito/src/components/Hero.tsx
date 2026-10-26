@@ -56,9 +56,9 @@ export function Hero({ revealed }: { revealed: boolean }) {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-ink to-transparent md:hidden" />
       </motion.div>
 
-      {/* Sfumature solo in alto (barra) e in basso (pulsanti): i volti restano liberi */}
+      {/* Sfumature solo in alto (barra) e in basso (pulsanti, fino al nero pieno della lavagna): i volti restano liberi */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-ink/60 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-2/5 bg-gradient-to-t from-ink/75 to-transparent md:block" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-2/5 bg-gradient-to-t from-ink via-ink/55 to-transparent md:block" />
 
       <motion.div
         className="relative z-10 flex flex-col items-center px-6 pt-2 pb-8 text-center text-paper md:absolute md:inset-x-0 md:bottom-0 md:pt-0 md:pb-14"

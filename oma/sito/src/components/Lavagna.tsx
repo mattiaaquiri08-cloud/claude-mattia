@@ -39,6 +39,7 @@ function raggruppa(voci: VoceLavagna[]): Riga[] {
 /*
   La lavagna di OMA: ferie, giorni di chiusura, promozioni ed eventi, scritti a gessetto.
   Le voci passate spariscono da sole; senza voci la lavagna dice che si è aperti come sempre.
+  Sta sul nero, attaccata alla hero, senza la fascia avorio in mezzo.
 */
 export function Lavagna() {
   const reduce = useReducedMotion()
@@ -52,7 +53,7 @@ export function Lavagna() {
   )
 
   return (
-    <section id="lavagna" aria-labelledby="lavagna-t" className="px-4 pt-20 md:px-8 md:pt-28">
+    <section id="lavagna" aria-labelledby="lavagna-t" className="bg-ink px-4 pt-2 pb-16 md:px-8 md:pt-6 md:pb-24">
       <motion.div
         className="lavagna relative mx-auto grid max-w-[1400px] grid-cols-1 gap-8 overflow-hidden rounded-[var(--radius-media)] p-7 text-paper md:grid-cols-12 md:gap-8 md:p-12"
         initial={reduce ? false : { opacity: 0, y: 24 }}
