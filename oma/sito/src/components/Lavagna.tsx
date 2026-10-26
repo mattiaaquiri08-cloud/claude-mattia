@@ -2,9 +2,9 @@ import { motion, useReducedMotion } from 'motion/react'
 import { useLiveData } from '../lib/live-data'
 import { romeNow, shortDate, weekdayOf } from '../lib/hours'
 import { DAY_NAMES, type TipoLavagna, type VoceLavagna } from '../data/site'
+import { scrollToId } from '../lib/scroll'
 
 type Riga = VoceLavagna & { giorni: string[] }
-import { scrollToId } from '../lib/scroll'
 
 const ETICHETTA: Record<TipoLavagna, string> = {
   ferie: 'Ferie',

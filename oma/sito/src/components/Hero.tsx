@@ -11,8 +11,9 @@ const rise = {
 }
 
 /*
-  Hero: foto a tutto schermo (provvisoria, quella definitiva la manda la social media manager),
-  e solo due pulsanti affiancati: Prenota ora e Menu (Linktree).
+  Hero: Alessio e Leonardo a tavola in sala. Su desktop la foto orizzontale è a tutto schermo; su smartphone
+  quella verticale si vede intera (4:5), così non si taglia nessuno dei due, con i pulsanti subito sotto.
+  Solo due pulsanti affiancati: Prenota ora e Menu (Linktree).
 */
 export function Hero({ revealed }: { revealed: boolean }) {
   const { openBooking } = useBooking()
@@ -25,8 +26,11 @@ export function Hero({ revealed }: { revealed: boolean }) {
   const contentY = useTransform(scrollYProgress, [0, 0.5], ['0px', reduce ? '0px' : '-40px'])
 
   return (
-    <section ref={ref} id="top" className="relative min-h-[100dvh] overflow-hidden bg-ink" aria-labelledby="hero-title">
-      <motion.div className="absolute inset-0 will-change-transform" style={{ y: imgY, scale: imgScale }}>
+    <section ref={ref} id="top" className="relative overflow-hidden bg-ink md:min-h-[100dvh]" aria-labelledby="hero-title">
+      <motion.div
+        className="relative aspect-[4/5] w-full will-change-transform md:absolute md:inset-0 md:aspect-auto"
+        style={{ y: imgY, scale: imgScale }}
+      >
         <motion.picture
           className="block h-full w-full"
           initial={reduce ? false : { scale: 1.16 }}
@@ -35,28 +39,29 @@ export function Hero({ revealed }: { revealed: boolean }) {
         >
           <source
             media="(max-width: 767px)"
-            srcSet="./img/hero-mobile-sm.webp 627w, ./img/hero-mobile.webp 940w"
+            srcSet="./img/hero-mobile-sm.webp 750w, ./img/hero-mobile.webp 1200w"
             sizes="100vw"
           />
-          <source srcSet="./img/hero-desktop-sm.webp 1115w, ./img/hero-desktop.webp 1672w" sizes="100vw" />
+          <source srcSet="./img/hero-desktop-sm.webp 1200w, ./img/hero-desktop.webp 2000w" sizes="100vw" />
           <img
             src="./img/hero-desktop.webp"
-            alt="La sala di OMA Osteria Moderna"
-            className="h-full w-full object-cover object-[50%_60%] md:object-center"
-            width={1672}
-            height={940}
+            alt="Alessio e Leonardo, i titolari di OMA, a tavola in sala con due piatti di pasta e i calici di vino rosso"
+            className="h-full w-full object-cover md:object-[50%_40%]"
+            width={2000}
+            height={1333}
             fetchPriority="high"
             decoding="async"
           />
         </motion.picture>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-ink to-transparent md:hidden" />
       </motion.div>
 
-      {/* Velatura leggera: la foto resta protagonista, i pulsanti restano leggibili */}
-      <div className="pointer-events-none absolute inset-0 bg-ink/25" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-ink/60 to-transparent" />
+      {/* Sfumature solo in alto (barra) e in basso (pulsanti): i volti restano liberi */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-ink/60 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-2/5 bg-gradient-to-t from-ink/75 to-transparent md:block" />
 
       <motion.div
-        className="relative z-10 flex min-h-[100dvh] flex-col items-center justify-center px-6 pt-20 pb-16 text-center text-paper"
+        className="relative z-10 flex flex-col items-center px-6 pt-2 pb-8 text-center text-paper md:absolute md:inset-x-0 md:bottom-0 md:pt-0 md:pb-14"
         style={{ opacity: contentOpacity, y: contentY }}
         initial={reduce ? false : 'hidden'}
         animate={reduce ? undefined : revealed ? 'show' : 'hidden'}
