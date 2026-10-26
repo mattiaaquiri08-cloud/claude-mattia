@@ -21,28 +21,27 @@ export function Hero({ revealed }: { revealed: boolean }) {
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const imgY = useTransform(scrollYProgress, [0, 1], ['0%', reduce ? '0%' : '18%'])
-  const imgScale = useTransform(scrollYProgress, [0, 1], [1, reduce ? 1 : 1.08])
   const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
   const contentY = useTransform(scrollYProgress, [0, 0.5], ['0px', reduce ? '0px' : '-40px'])
 
   return (
     <section ref={ref} id="top" className="relative overflow-hidden bg-ink md:min-h-[100dvh]" aria-labelledby="hero-title">
       <motion.div
-        className="relative aspect-[4/5] w-full will-change-transform md:absolute md:inset-0 md:aspect-auto"
-        style={{ y: imgY, scale: imgScale }}
+        className="relative aspect-[4/5] w-full md:absolute md:inset-0 md:aspect-auto"
+        style={{ y: imgY }}
       >
         <motion.picture
           className="block h-full w-full"
-          initial={reduce ? false : { scale: 1.16 }}
+          initial={reduce ? false : { scale: 1.06 }}
           animate={revealed ? { scale: 1 } : undefined}
           transition={{ duration: 2.2, ease: [0.16, 1, 0.3, 1] }}
         >
           <source
             media="(max-width: 767px)"
-            srcSet="./img/hero-mobile-sm.webp 750w, ./img/hero-mobile.webp 1200w"
+            srcSet="./img/hero-mobile-sm.webp 1080w, ./img/hero-mobile.webp 1600w"
             sizes="100vw"
           />
-          <source srcSet="./img/hero-desktop-sm.webp 1200w, ./img/hero-desktop.webp 2000w" sizes="100vw" />
+          <source srcSet="./img/hero-desktop-sm.webp 1400w, ./img/hero-desktop.webp 2000w" sizes="100vw" />
           <img
             src="./img/hero-desktop.webp"
             alt="Alessio e Leonardo, i titolari di OMA, a tavola in sala con due piatti di pasta e i calici di vino rosso"
