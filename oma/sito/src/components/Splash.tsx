@@ -4,15 +4,16 @@ import { LOGO_PEZZI, type PezzoLogo } from '../data/logo-pezzi'
 
 const CURTAIN = [0.76, 0, 0.24, 1] as const
 const OUT = [0.16, 1, 0.3, 1] as const
-const HOLD_MS = 1950
+// pezzi montati in ~1,3 s, poi il logo completo resta ~1,2 s per leggere la scritta
+const HOLD_MS = 2450
 
 // Quando parte ogni gruppo di pezzi (secondi) e quanto aspetta tra un pezzo e il successivo
 const TEMPI = {
   disco: { start: 0, step: 0 },
-  onda: { start: 0.12, step: 0.11 },
-  perla: { start: 0.62, step: 0.045 },
-  lettera: { start: 0.78, step: 0.08 },
-  riga: { start: 1.08, step: 0.09 },
+  onda: { start: 0.1, step: 0.09 },
+  perla: { start: 0.5, step: 0.04 },
+  lettera: { start: 0.65, step: 0.07 },
+  riga: { start: 0.9, step: 0.08 },
 } as const
 
 /** Come entra ogni pezzo: il disco si apre, le onde girano al loro posto, le perle saltano fuori, le lettere si stampano. */
@@ -33,7 +34,7 @@ function montaggio(p: PezzoLogo, i: number) {
     case 'onda':
       origin = centro
       from = { opacity: 0, scale: 0.72, rotate: -75 }
-      transition = { duration: 0.55, ease: OUT, delay }
+      transition = { duration: 0.5, ease: OUT, delay }
       break
     case 'perla':
       from = { opacity: 0, scale: 0 }
@@ -46,7 +47,7 @@ function montaggio(p: PezzoLogo, i: number) {
     case 'riga':
       from = { opacity: 0, clipPath: 'inset(0% 100% 0% 0%)' }
       to = { opacity: 1, clipPath: 'inset(0% 0% 0% 0%)' }
-      transition = { duration: 0.32, ease: [0.65, 0, 0.35, 1], delay }
+      transition = { duration: 0.3, ease: [0.65, 0, 0.35, 1], delay }
       break
   }
   return { from, to, transition, origin }

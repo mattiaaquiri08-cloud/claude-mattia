@@ -75,7 +75,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   granulosa, bordo irregolare) con onde ocra, scritte avorio, disco nero, sfondo avorio. Il logo si MONTA pezzo per
   pezzo (disco, onde, perle, lettere O-M-A a timbro, sottotitolo): pezzi in `img/logo-pezzo-*.webp`, posizioni in
   `src/data/logo-pezzi.ts`, generati da uno script Python (scipy) dall'immagine di 447 px; approvato dall'utente
-  ("è bellissimo"), poi velocizzato (~2 s). Lo stesso logo tondo (`img/logo-tondo.webp`) è in alto a sinistra nella barra. Col file originale del logo verrebbe più nitido. Per le anteprime di animazioni, un video mp4
+  ("è bellissimo"), poi velocizzato: pezzi montati in ~1,3 s, poi il logo completo resta ~1,2 s per leggere la scritta (richiesta utente). Lo stesso logo tondo (`img/logo-tondo.webp`) è in alto a sinistra nella barra. Col file originale del logo verrebbe più nitido. Per le anteprime di animazioni, un video mp4
   registrato con Playwright (recordVideo + ffmpeg) è piaciuto più degli screenshot. Le foto delle sezioni sono ancora provvisorie. WhatsApp Business per le prenotazioni: +39 392 764 1873 (dal 19/10, `SITE.whatsapp`); il
   377 301 7230 resta come telefono per chiamare.
   Referente: Alessio. Preventivo: Completo 550 €, Base 450 €. Il 13/10/2026 hanno scelto il Completo,
