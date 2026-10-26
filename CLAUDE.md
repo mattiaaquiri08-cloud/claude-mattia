@@ -98,6 +98,11 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Il menu cambia ogni settimana: menu, orari e avviso li aggiorna il ristorante dal Foglio Google
   "OMA - Menu e orari del sito" (Drive dell'utente, id in `SITE.sheetId`), incluso nel Completo.
   Il foglio va condiviso "chiunque abbia il link: visualizzatore", altrimenti il sito usa i dati salvati.
+- Foto originali di OMA (shooting 19/10, dal Dropbox di Lilla): cartella Drive "2026 10 19 OMA JPEG ALTA"
+  dell'utente (id 1aQS_1ytOh3UInFx46PGL2HdFfJb2W7yK, sottocartelle "1 JPEG"… "7 JPEG"). Lezioni: le immagini incollate
+  o trascinate in chat arrivano ridotte a 2000 px; il connettore Drive scarica solo file fino a 10 MB, per quelli
+  più grandi l'utente li condivide "Chiunque abbia il link" e si scaricano con
+  `curl -L "https://drive.usercontent.google.com/download?id=<ID>&export=download&confirm=t"`.
 - Le foto di Google Maps non si scaricano in automatico (la pagina non carica in headless):
   chiedere le foto all'utente.
 - Con la CLI 21st la chiave si passa con `API_KEY_21ST` (già letta in automatico).

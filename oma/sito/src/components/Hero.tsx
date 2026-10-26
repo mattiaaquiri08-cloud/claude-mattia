@@ -41,13 +41,16 @@ export function Hero({ revealed }: { revealed: boolean }) {
             srcSet="./img/hero-mobile-sm.webp 1080w, ./img/hero-mobile.webp 1600w"
             sizes="100vw"
           />
-          <source srcSet="./img/hero-desktop-sm.webp 1400w, ./img/hero-desktop.webp 2000w" sizes="100vw" />
+          <source
+            srcSet="./img/hero-desktop-sm.webp 1600w, ./img/hero-desktop-md.webp 2400w, ./img/hero-desktop.webp 3200w"
+            sizes="100vw"
+          />
           <img
             src="./img/hero-desktop.webp"
             alt="Alessio e Leonardo, i titolari di OMA, a tavola in sala con due piatti di pasta e i calici di vino rosso"
             className="h-full w-full object-cover md:object-[50%_40%]"
-            width={2000}
-            height={1333}
+            width={3200}
+            height={2133}
             fetchPriority="high"
             decoding="async"
           />
