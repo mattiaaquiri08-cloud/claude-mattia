@@ -70,7 +70,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   (20/10): sul sito Permanent Marker, scelto dall'utente tra i gratuiti (preferito a Sedgwick Ave Display). Lezione: i font commerciali dei clienti
   non vanno mai nel repository pubblico né sul sito senza licenza web. Sito diviso nelle loro macro-sezioni (`TESTI` in site.ts, `Sezioni.tsx`); hero con
   la foto di Alessio e Leonardo (originali in alta risoluzione: orizzontale su PC, verticale 4:5 su smartphone con
-  i pulsanti sotto) + Prenota ora e Menu (Linktree); nella barra in alto niente Prenota ora (26/10: c'è già nella hero). Splash (27/10): logo tondo con le onde (quello delle magliette),
+  i pulsanti sotto); dal 26/10 nella hero solo il pulsante Menu (Linktree) al centro, Prenota ora sta nella barra in alto. Splash (27/10): logo tondo con le onde (quello delle magliette),
   non nella hero; l'utente ha scartato il rosso perché non c'entra coi colori del sito: versione "urban" (serigrafia
   granulosa, bordo irregolare) con onde ocra, scritte avorio, disco nero, sfondo avorio. Il logo si MONTA pezzo per
   pezzo (disco, onde, perle, lettere O-M-A a timbro, sottotitolo): pezzi in `img/logo-pezzo-*.webp`, posizioni in

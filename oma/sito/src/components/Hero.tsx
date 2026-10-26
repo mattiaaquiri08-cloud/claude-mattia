@@ -1,7 +1,6 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { useRef } from 'react'
-import { ArrowUpRight, CalendarCheck } from '@phosphor-icons/react'
-import { useBooking } from './booking-context'
+import { ArrowUpRight } from '@phosphor-icons/react'
 import { Magnetic } from './Magnetic'
 import { SITE } from '../data/site'
 
@@ -13,10 +12,9 @@ const rise = {
 /*
   Hero: Alessio e Leonardo a tavola in sala. Su desktop la foto orizzontale è a tutto schermo; su smartphone
   quella verticale si vede intera (4:5), così non si taglia nessuno dei due, con i pulsanti subito sotto.
-  Solo due pulsanti affiancati: Prenota ora e Menu (Linktree).
+  Un solo pulsante al centro: Menu (Linktree). Prenota ora sta nella barra in alto.
 */
 export function Hero({ revealed }: { revealed: boolean }) {
-  const { openBooking } = useBooking()
   const reduce = useReducedMotion()
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
@@ -69,24 +67,18 @@ export function Hero({ revealed }: { revealed: boolean }) {
         animate={reduce ? undefined : revealed ? 'show' : 'hidden'}
         variants={{ show: { transition: { staggerChildren: 0.12, delayChildren: 0.45 } } }}
       >
-        {/* Nella hero solo i due pulsanti: il titolo resta per Google e per gli screen reader */}
+        {/* Nella hero solo il pulsante del menu: il titolo resta per Google e per gli screen reader */}
         <h1 id="hero-title" className="sr-only">
           {SITE.name}. {SITE.slogan[0]} {SITE.slogan[1]}
         </h1>
 
-        <motion.div variants={rise} className="grid w-full max-w-[420px] grid-cols-2 gap-3 sm:gap-4">
-          <Magnetic className="flex">
-            <button type="button" onClick={openBooking} className="btn-light w-full !px-4 sm:!px-7">
-              <CalendarCheck size={19} weight="bold" />
-              Prenota ora
-            </button>
-          </Magnetic>
-          <Magnetic className="flex">
+        <motion.div variants={rise} className="flex w-full justify-center">
+          <Magnetic className="flex w-full max-w-[220px]">
             <a
               href={SITE.menuUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-glass w-full !px-4 sm:!px-7"
+              className="btn-glass w-full !px-7"
             >
               Menu
               <ArrowUpRight size={19} weight="bold" />

@@ -1,6 +1,7 @@
 import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll } from 'motion/react'
 import { useEffect, useState } from 'react'
 import { Info, InstagramLogo, List, Phone, X } from '@phosphor-icons/react'
+import { useBooking } from './booking-context'
 import { SITE } from '../data/site'
 import { scrollToId } from '../lib/scroll'
 import { useLiveData } from '../lib/live-data'
@@ -16,6 +17,7 @@ const LINKS = [
 ]
 
 export function Nav({ revealed }: { revealed: boolean }) {
+  const { openBooking } = useBooking()
   const reduce = useReducedMotion()
   const { scrollY } = useScroll()
   const [solid, setSolid] = useState(false)
@@ -118,6 +120,13 @@ export function Nav({ revealed }: { revealed: boolean }) {
               >
                 <InstagramLogo size={20} weight="bold" />
               </a>
+              <button
+                type="button"
+                onClick={openBooking}
+                className={`${onPhoto ? 'btn-light' : 'btn-primary'} !px-5 !py-3 !text-[0.75rem] md:!px-6`}
+              >
+                Prenota ora
+              </button>
               <button
                 type="button"
                 onClick={() => setMenuOpen((o) => !o)}
