@@ -4,9 +4,10 @@ import { useEffect, useState } from 'react'
 const PAINT = [0.65, 0, 0.35, 1] as const
 const CURTAIN = [0.76, 0, 0.24, 1] as const
 const HOLD_MS = 2150
+const LOGO = './img/logo-tondo-urban.webp'
 
 /**
- * Splash: la scritta OMA viene "dipinta" da sinistra a destra come una pennellata,
+ * Splash: il logo tondo di OMA (versione urban: ocra e avorio sul nero) si apre dal centro,
  * poi due sipari (avorio e ocra) si alzano e scoprono la sala della hero.
  */
 export function Splash({ onReveal }: { onReveal: () => void }) {
@@ -28,7 +29,7 @@ export function Splash({ onReveal }: { onReveal: () => void }) {
       window.clearTimeout(fallback)
       setReady(true)
     }
-    img.src = './img/logo-oma.png'
+    img.src = LOGO
     return () => window.clearTimeout(fallback)
   }, [reduce])
 
@@ -64,7 +65,7 @@ export function Splash({ onReveal }: { onReveal: () => void }) {
             transition={{ duration: 0.95, ease: CURTAIN, delay: 0.18 }}
           />
 
-          {/* Sipario avorio con il logo: si alza per primo */}
+          {/* Sipario avorio con il logo tondo: si alza per primo */}
           <motion.div
             className="absolute inset-0 flex items-center justify-center bg-paper"
             initial={{ clipPath: 'inset(0% 0% 0% 0%)' }}
@@ -72,7 +73,7 @@ export function Splash({ onReveal }: { onReveal: () => void }) {
             transition={{ duration: 0.9, ease: CURTAIN }}
           >
             <motion.div
-              className="pointer-events-none absolute top-1/2 left-1/2 size-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full"
+              className="pointer-events-none absolute top-1/2 left-1/2 size-[90vmin] -translate-x-1/2 -translate-y-1/2 rounded-full"
               style={{ background: 'radial-gradient(circle, rgb(173 106 33 / 0.16), transparent 62%)' }}
               initial={{ opacity: 0, scale: 0.7 }}
               animate={ready ? { opacity: 1, scale: 1 } : {}}
@@ -80,43 +81,24 @@ export function Splash({ onReveal }: { onReveal: () => void }) {
             />
 
             <motion.div
-              className="relative flex w-[min(78vw,440px)] flex-col items-center"
+              className="relative w-[min(72vw,60vh,420px)]"
               exit={{ y: -60, opacity: 0 }}
               transition={{ duration: 0.6, ease: CURTAIN }}
             >
+              {/* Il disco si apre dal centro mentre le onde ruotano al loro posto */}
               <motion.img
-                src="./img/logo-oma.png"
+                src={LOGO}
                 alt=""
-                width={620}
-                height={303}
+                width={800}
+                height={800}
                 className="w-full"
-                initial={{ clipPath: 'inset(0% 100% 0% 0%)', rotate: -3, scale: 1.06 }}
-                animate={ready ? { clipPath: 'inset(0% 0% 0% 0%)', rotate: 0, scale: 1 } : {}}
+                initial={{ clipPath: 'circle(0% at 50% 50%)', rotate: -40, scale: 0.86 }}
+                animate={ready ? { clipPath: 'circle(50% at 50% 50%)', rotate: 0, scale: 1 } : {}}
                 transition={{
-                  clipPath: { duration: 0.95, ease: PAINT },
-                  rotate: { duration: 1.4, ease: [0.16, 1, 0.3, 1] },
-                  scale: { duration: 1.4, ease: [0.16, 1, 0.3, 1] },
+                  clipPath: { duration: 1.05, ease: PAINT },
+                  rotate: { duration: 1.6, ease: [0.16, 1, 0.3, 1] },
+                  scale: { duration: 1.6, ease: [0.16, 1, 0.3, 1] },
                 }}
-              />
-              <motion.img
-                src="./img/logo-sottotitolo-nero.png"
-                alt=""
-                width={642}
-                height={70}
-                className="mt-[4%] w-[92%]"
-                initial={{ opacity: 0, y: 12, filter: 'blur(8px)' }}
-                animate={ready ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
-                transition={{ duration: 0.7, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
-              />
-              <motion.img
-                src="./img/logo-pennellata-ocra.png"
-                alt=""
-                width={783}
-                height={187}
-                className="mt-[3%] w-[108%] max-w-none opacity-90"
-                initial={{ clipPath: 'inset(0% 100% 0% 0%)' }}
-                animate={ready ? { clipPath: 'inset(0% 0% 0% 0%)' } : {}}
-                transition={{ duration: 0.55, delay: 1.05, ease: [0.7, 0, 0.3, 1] }}
               />
             </motion.div>
           </motion.div>

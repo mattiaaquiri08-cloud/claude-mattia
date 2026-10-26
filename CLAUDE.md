@@ -70,9 +70,10 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   (20/10): sul sito Permanent Marker, scelto dall'utente tra i gratuiti (preferito a Sedgwick Ave Display). Lezione: i font commerciali dei clienti
   non vanno mai nel repository pubblico né sul sito senza licenza web. Sito diviso nelle loro macro-sezioni (`TESTI` in site.ts, `Sezioni.tsx`); hero con
   la foto di Alessio e Leonardo (originali in alta risoluzione: orizzontale su PC, verticale 4:5 su smartphone con
-  i pulsanti sotto) + Prenota ora e Menu (Linktree). Il 27/10 l'utente ha chiarito: il logo tondo rosso con le onde
-  (quello delle magliette nere) va nella SPLASH, non nella hero; serve il file originale (non c'è online né pulito
-  nelle foto). Le foto delle sezioni sono ancora provvisorie. WhatsApp Business per le prenotazioni: +39 392 764 1873 (dal 19/10, `SITE.whatsapp`); il
+  i pulsanti sotto) + Prenota ora e Menu (Linktree). Splash (27/10): logo tondo con le onde (quello delle magliette),
+  non nella hero; l'utente ha scartato il rosso perché non c'entra coi colori del sito: versione "urban" (serigrafia
+  granulosa, bordo irregolare) con onde ocra, scritte avorio, disco nero (`img/logo-tondo-urban.webp`), sfondo avorio.
+  Ricavata da un'immagine di 447 px: col file originale del logo verrebbe più nitida. Le foto delle sezioni sono ancora provvisorie. WhatsApp Business per le prenotazioni: +39 392 764 1873 (dal 19/10, `SITE.whatsapp`); il
   377 301 7230 resta come telefono per chiamare.
   Referente: Alessio. Preventivo: Completo 550 €, Base 450 €. Il 13/10/2026 hanno scelto il Completo,
   dominio omaosteriamoderna.com (libero a quella data, da registrare a nome del ristorante).
