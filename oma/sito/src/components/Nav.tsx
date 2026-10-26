@@ -82,10 +82,17 @@ export function Nav({ revealed }: { revealed: boolean }) {
                 e.preventDefault()
                 go('top')
               }}
-              className="flex items-center"
+              className="group flex items-center"
               aria-label="OMA Osteria Moderna, torna all'inizio"
             >
-              <img src="./img/logo-oma.png" alt="" width={620} height={303} className="h-8 w-auto md:h-9" />
+              {/* Il logo tondo della splash, piccolo: gira un poco al passaggio del mouse */}
+              <img
+                src="./img/logo-tondo.webp"
+                alt=""
+                width={256}
+                height={256}
+                className="size-12 drop-shadow-[0_2px_6px_rgb(23_20_21/0.35)] transition-transform duration-500 ease-out-expo group-hover:rotate-[-14deg] md:size-14"
+              />
             </a>
 
             <ul className="hidden items-center gap-0.5 xl:flex">

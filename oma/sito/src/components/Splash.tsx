@@ -4,15 +4,15 @@ import { LOGO_PEZZI, type PezzoLogo } from '../data/logo-pezzi'
 
 const CURTAIN = [0.76, 0, 0.24, 1] as const
 const OUT = [0.16, 1, 0.3, 1] as const
-const HOLD_MS = 3300
+const HOLD_MS = 1950
 
 // Quando parte ogni gruppo di pezzi (secondi) e quanto aspetta tra un pezzo e il successivo
 const TEMPI = {
   disco: { start: 0, step: 0 },
-  onda: { start: 0.3, step: 0.22 },
-  perla: { start: 1.25, step: 0.08 },
-  lettera: { start: 1.6, step: 0.14 },
-  riga: { start: 2.1, step: 0.14 },
+  onda: { start: 0.12, step: 0.11 },
+  perla: { start: 0.62, step: 0.045 },
+  lettera: { start: 0.78, step: 0.08 },
+  riga: { start: 1.08, step: 0.09 },
 } as const
 
 /** Come entra ogni pezzo: il disco si apre, le onde girano al loro posto, le perle saltano fuori, le lettere si stampano. */
@@ -28,25 +28,25 @@ function montaggio(p: PezzoLogo, i: number) {
   switch (p.tipo) {
     case 'disco':
       from = { opacity: 0, scale: 0.35, rotate: -25 }
-      transition = { duration: 0.6, ease: OUT, delay }
+      transition = { duration: 0.4, ease: OUT, delay }
       break
     case 'onda':
       origin = centro
       from = { opacity: 0, scale: 0.72, rotate: -75 }
-      transition = { duration: 0.85, ease: OUT, delay }
+      transition = { duration: 0.55, ease: OUT, delay }
       break
     case 'perla':
       from = { opacity: 0, scale: 0 }
-      transition = { type: 'spring', stiffness: 520, damping: 16, delay }
+      transition = { type: 'spring', stiffness: 640, damping: 18, delay }
       break
     case 'lettera':
       from = { opacity: 0, scale: 1.9 }
-      transition = { duration: 0.32, ease: [0.3, 1.4, 0.5, 1], delay }
+      transition = { duration: 0.24, ease: [0.3, 1.4, 0.5, 1], delay }
       break
     case 'riga':
       from = { opacity: 0, clipPath: 'inset(0% 100% 0% 0%)' }
       to = { opacity: 1, clipPath: 'inset(0% 0% 0% 0%)' }
-      transition = { duration: 0.5, ease: [0.65, 0, 0.35, 1], delay }
+      transition = { duration: 0.32, ease: [0.65, 0, 0.35, 1], delay }
       break
   }
   return { from, to, transition, origin }
@@ -66,7 +66,7 @@ export function Splash({ onReveal }: { onReveal: () => void }) {
     if (reduce) onReveal()
   }, [reduce, onReveal])
 
-  // Aspetta tutti i pezzi del logo (al massimo 1,5 s) per non montare immagini vuote
+  // Aspetta tutti i pezzi del logo (al massimo 1,2 s) per non montare immagini vuote
   useEffect(() => {
     if (reduce) return
     let done = false
@@ -74,7 +74,7 @@ export function Splash({ onReveal }: { onReveal: () => void }) {
       if (!done) setReady(true)
       done = true
     }
-    const fallback = window.setTimeout(go, 1500)
+    const fallback = window.setTimeout(go, 1200)
     Promise.all(
       LOGO_PEZZI.map(
         (p) =>
@@ -114,13 +114,13 @@ export function Splash({ onReveal }: { onReveal: () => void }) {
   return (
     <AnimatePresence>
       {visible && !reduce && (
-        <motion.div key="splash" className="fixed inset-0 z-[90]" aria-hidden="true" exit={{ opacity: 1 }} transition={{ duration: 1.25 }}>
+        <motion.div key="splash" className="fixed inset-0 z-[90]" aria-hidden="true" exit={{ opacity: 1 }} transition={{ duration: 1 }}>
           {/* Sipario ocra: si alza per secondo */}
           <motion.div
             className="absolute inset-0 bg-ochre"
             initial={{ clipPath: 'inset(0% 0% 0% 0%)' }}
             exit={{ clipPath: 'inset(0% 0% 100% 0%)' }}
-            transition={{ duration: 0.95, ease: CURTAIN, delay: 0.18 }}
+            transition={{ duration: 0.8, ease: CURTAIN, delay: 0.14 }}
           />
 
           {/* Sipario avorio con il logo tondo: si alza per primo */}
@@ -128,7 +128,7 @@ export function Splash({ onReveal }: { onReveal: () => void }) {
             className="absolute inset-0 flex items-center justify-center bg-paper"
             initial={{ clipPath: 'inset(0% 0% 0% 0%)' }}
             exit={{ clipPath: 'inset(0% 0% 100% 0%)' }}
-            transition={{ duration: 0.9, ease: CURTAIN }}
+            transition={{ duration: 0.75, ease: CURTAIN }}
           >
             <motion.div
               className="pointer-events-none absolute top-1/2 left-1/2 size-[90vmin] -translate-x-1/2 -translate-y-1/2 rounded-full"
