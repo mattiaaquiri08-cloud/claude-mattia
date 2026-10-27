@@ -65,7 +65,7 @@ export function Lavagna() {
           <h2 id="lavagna-t" className="font-pennello text-4xl tracking-[0.02em] uppercase md:text-5xl">
             La lavagna
           </h2>
-          <p className="mt-3 max-w-[30ch] text-ink/65 italic">Ferie, chiusure, promozioni e serate speciali.</p>
+          <p className="mt-3 max-w-[30ch] text-ink italic">Ferie, chiusure, promozioni e serate speciali.</p>
         </div>
 
         <div className="md:col-span-8">
@@ -79,8 +79,8 @@ export function Lavagna() {
                   <p className="font-pennello text-xl leading-snug tracking-[0.02em] text-ochre-deep uppercase">
                     {quando(v)}
                   </p>
-                  <p className="text-lg leading-snug text-ink/85">
-                    <span className="mr-2 font-pennello tracking-[0.04em] text-ink/50 uppercase">
+                  <p className="text-lg leading-snug text-ink">
+                    <span className="mr-2 font-pennello tracking-[0.04em] text-ink uppercase">
                       {ETICHETTA[v.tipo]}
                     </span>
                     {v.testo}
@@ -89,7 +89,7 @@ export function Lavagna() {
               ))}
             </ul>
           ) : (
-            <p className="text-lg leading-relaxed text-ink/80">
+            <p className="text-lg leading-relaxed text-ink">
               Niente da segnalare: siamo aperti come sempre.{' '}
               <a
                 href="#dove-siamo"

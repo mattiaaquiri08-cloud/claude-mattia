@@ -85,7 +85,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   confermato dall'utente il 19/10; lì ci sono anche i PDF di vini e menu inglese; il QR è fatto con QR.io, quindi nel sito va la destinazione finale
   e non il link qr.io, che smette di funzionare se scade il loro abbonamento): i pulsanti "Menu" e "Carta dei vini" portano lì;
   la carta dei vini non è più nel sito. Il Foglio Google serve solo per orari, avviso e lavagna.
-  Lavagna (20/10, sotto la hero): ferie, chiusure, promo, eventi in `LAVAGNA` di site.ts o scheda "Lavagna" del
+  Lavagna (20/10, sotto la hero; dal 27/10 bianca da pennarello sul nero, scritte nere e date in ocra scuro): ferie, chiusure, promo, eventi in `LAVAGNA` di site.ts o scheda "Lavagna" del
   foglio; ferie e chiusure bloccano quei giorni (o solo pranzo/cena con `turno`) nelle prenotazioni. OMA scrive
   all'utente, l'utente lo dice a Claude. Al 20/10: chiusi a cena 22/10, 27/10, 12/11; promo fissa a pranzo 12 €
   (un primo, acqua e caffè), voce senza data da togliere quando finisce.
