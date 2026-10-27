@@ -7,6 +7,7 @@ import { Footer } from './components/Footer'
 import { Hero } from './components/Hero'
 import { Lavagna } from './components/Lavagna'
 import { Nav } from './components/Nav'
+import { PrivacyDialog } from './components/Privacy'
 import { Sezioni } from './components/Sezioni'
 import { Splash } from './components/Splash'
 import { Visit } from './components/Visit'
@@ -48,6 +49,7 @@ export default function App() {
           </main>
           <Footer />
           <BookingDialog open={bookingOpen} onClose={closeBooking} />
+          <PrivacyDialog />
           <div className="grain" aria-hidden="true" />
         </BookingContext.Provider>
       </IconContext.Provider>

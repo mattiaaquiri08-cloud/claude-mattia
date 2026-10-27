@@ -101,6 +101,12 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Leonardo in piedi in sala con i calici). Devono arrivare per mail o WeTransfer, in qualità originale.
   Incontro di persona da OMA lunedì 19/10/2026: firma preventivo, dominio, QR, foto, mail Google. Committente: OMA SRL, Via
   Costantino Maes 78, 00162 Roma, P.IVA 18018171001, PEC oma@pecimprese.it, cod. univoco W7YVJK9.
+- Privacy e SEO di OMA (27/10): niente banner cookie perché non ci sono cookie di profilazione; la mappa Google si carica
+  solo col pulsante "Mostra la mappa"; informativa in finestra `#privacy` (`Privacy.tsx`), link nel footer e nel modulo;
+  footer con OMA SRL, sede e P.IVA (mancano REA e capitale sociale, da chiedere, e un'email normale per le richieste privacy).
+  SEO: canonical/og/robots.txt/sitemap su https://omaosteriamoderna.com/; JSON-LD Restaurant SENZA aggregateRating
+  (le recensioni auto-dichiarate violano le regole di Google sui dati strutturati). Se cambiano gli orari, aggiornare
+  anche il JSON-LD in index.html. Per salire nelle ricerche conta soprattutto la scheda Google Business di OMA.
 - Ricevute e documenti con dati personali (codice fiscale, IBAN, indirizzo dell'utente) NON vanno mai
   nel repository, che è pubblico: si generano nella scratchpad e si mandano all'utente come file.
   Il menu cambia ogni settimana: menu, orari e avviso li aggiorna il ristorante dal Foglio Google

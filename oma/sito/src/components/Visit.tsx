@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from 'motion/react'
 import { useEffect, useState } from 'react'
-import { NavigationArrow, Phone, WhatsappLogo } from '@phosphor-icons/react'
+import { MapPin, NavigationArrow, Phone, WhatsappLogo } from '@phosphor-icons/react'
 import { DAY_NAMES, SITE, WEEK_ORDER } from '../data/site'
 import { formatDayHours, openStatus, romeNow } from '../lib/hours'
 import { useLiveData } from '../lib/live-data'
@@ -10,6 +10,7 @@ export function Visit() {
   // ridisegna quando arrivano gli orari dal foglio e una volta al minuto
   useLiveData()
   const [, setTick] = useState(0)
+  const [mappa, setMappa] = useState(false)
   const status = openStatus()
   const today = romeNow().weekday
 
@@ -98,15 +99,35 @@ export function Visit() {
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="relative h-[380px] overflow-hidden rounded-[var(--radius-media)] border border-line bg-paper-3 md:h-full md:min-h-[560px]">
-              <iframe
-                title="Mappa: OMA Osteria Moderna, Via Costantino Maes 78, Roma"
-                src={SITE.mapEmbed}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="absolute inset-0 h-full w-full border-0"
-                style={{ filter: 'grayscale(0.4) sepia(0.12) contrast(0.95)' }}
-                allowFullScreen
-              />
+              {/* La mappa di Google usa i suoi cookie: si carica solo se il visitatore la chiede (niente banner) */}
+              {mappa ? (
+                <iframe
+                  title="Mappa: OMA Osteria Moderna, Via Costantino Maes 78, Roma"
+                  src={SITE.mapEmbed}
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0 h-full w-full border-0"
+                  style={{ filter: 'grayscale(0.4) sepia(0.12) contrast(0.95)' }}
+                  allowFullScreen
+                />
+              ) : (
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 p-8 text-center">
+                  <MapPin size={40} weight="duotone" className="text-ochre" />
+                  <p className="max-w-[34ch] text-ink/80">
+                    La mappa è di Google e usa i suoi cookie: la carichiamo solo se la chiedi.{' '}
+                    <a href="#privacy" className="underline underline-offset-2 hover:text-ink">
+                      Privacy
+                    </a>
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-3">
+                    <button type="button" onClick={() => setMappa(true)} className="btn-primary">
+                      Mostra la mappa
+                    </button>
+                    <a href={SITE.mapsUrl} target="_blank" rel="noopener noreferrer" className="btn-ghost">
+                      Apri in Google Maps
+                    </a>
+                  </div>
+                </div>
+              )}
             </div>
           </motion.div>
         </div>

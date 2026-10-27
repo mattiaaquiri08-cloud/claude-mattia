@@ -73,8 +73,15 @@ export function Footer() {
       </div>
 
       <div className="mx-auto mt-16 flex max-w-[1400px] flex-col gap-3 border-t border-line pt-6 text-sm text-mute sm:flex-row sm:justify-between">
-        <p>© {YEAR} {SITE.name}</p>
-        {closed.length > 0 && <p>{closed.join(' e ')} chiuso</p>}
+        <p>
+          © {YEAR} {SITE.name} · {SITE.ragioneSociale}, {SITE.address}, {SITE.city} · P.IVA {SITE.piva}
+        </p>
+        <div className="flex flex-wrap gap-x-6 gap-y-2">
+          {closed.length > 0 && <p>{closed.join(' e ')} chiuso</p>}
+          <a href="#privacy" className="underline-offset-4 hover:text-ink hover:underline">
+            Privacy e cookie
+          </a>
+        </div>
       </div>
     </footer>
   )

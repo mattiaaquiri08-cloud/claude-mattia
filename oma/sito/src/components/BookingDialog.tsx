@@ -553,6 +553,12 @@ export function BookingDialog({ open, onClose }: Props) {
                           Si apre WhatsApp con il messaggio già scritto: devi solo premere Invia. La prenotazione è
                           valida quando ti rispondiamo.
                         </p>
+                        <p className="text-xs leading-relaxed text-mute">
+                          Il sito non salva i tuoi dati: restano nella chat WhatsApp tra te e noi.{' '}
+                          <a href="#privacy" className="underline underline-offset-2 hover:text-ink">
+                            Privacy
+                          </a>
+                        </p>
                       </div>
                     </motion.form>
                   )}

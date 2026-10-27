@@ -3,21 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>OMA Osteria Moderna | Ristorante a Roma, Nomentano</title>
+    <title>OMA Osteria Moderna | Osteria a Roma, Quartiere Africano</title>
     <meta
       name="description"
-      content="OMA Osteria Moderna: le ricette di casa rilette con gusto di oggi. Pranzo, cena e aperitivo in Via Costantino Maes 78, Roma. Prenota un tavolo su WhatsApp."
+      content="OMA Osteria Moderna: cucina romana di stagione, menù che cambia ogni settimana e vini dei vignaioli. Pranzo, cena e aperitivo del sabato in Via Costantino Maes 78, Roma (Quartiere Africano). Prenota su WhatsApp."
     />
     <meta name="theme-color" content="#f8f7e8" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="color-scheme" content="light" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://omaosteriamoderna.com/" />
     <link rel="icon" type="image/png" href="./favicon.png" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
 
     <meta property="og:type" content="restaurant" />
+    <meta property="og:url" content="https://omaosteriamoderna.com/" />
+    <meta property="og:site_name" content="OMA Osteria Moderna" />
     <meta property="og:locale" content="it_IT" />
     <meta property="og:title" content="OMA Osteria Moderna, Roma" />
     <meta property="og:description" content="Mangi bene come da tu’ nonna. Senza le domande de tu’ zia. Pranzo, cena e aperitivo in Via Costantino Maes 78." />
-    <meta property="og:image" content="./og.jpg" />
+    <meta property="og:image" content="https://omaosteriamoderna.com/og.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="preload" as="image" href="./img/logo-oma.png" />
@@ -28,7 +32,12 @@
       {
         "@context": "https://schema.org",
         "@type": "Restaurant",
+        "@id": "https://omaosteriamoderna.com/#ristorante",
         "name": "OMA Osteria Moderna",
+        "url": "https://omaosteriamoderna.com/",
+        "image": "https://omaosteriamoderna.com/og.jpg",
+        "menu": "https://linktr.ee/omaosteriamoderna",
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=Oma+osteria+moderna+Via+Costantino+Maes+78+Roma",
         "servesCuisine": ["Italiana", "Romana"],
         "priceRange": "20-30 €",
         "telephone": "+39 377 301 7230",
@@ -50,9 +59,8 @@
           { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday", "Sunday"], "opens": "12:00", "closes": "15:00" },
           { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "18:00", "closes": "23:00" }
         ],
-        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "reviewCount": "144" },
         "sameAs": ["https://www.instagram.com/oma_osteriamoderna"],
-        "acceptsReservations": "True"
+        "acceptsReservations": true
       }
     </script>
   </head>
