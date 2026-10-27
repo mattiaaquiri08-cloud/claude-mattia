@@ -1,6 +1,7 @@
 import { InstagramLogo, Phone, WhatsappLogo } from '@phosphor-icons/react'
 import { DAY_NAMES, SITE, WEEK_ORDER } from '../data/site'
 import { useLiveData } from '../lib/live-data'
+import { LogoTondo } from './LogoTondo'
 
 const YEAR = new Date().getFullYear()
 
@@ -13,14 +14,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 md:grid-cols-12">
         <div className="md:col-span-5">
           {/* Il logo tondo della splash, come firma in fondo al sito */}
-          <img
-            src="./img/logo-tondo.webp"
-            alt="OMA Osteria Moderna Tradizione"
-            width={640}
-            height={640}
-            loading="lazy"
-            className="w-40 md:w-48"
-          />
+          <LogoTondo className="w-40 md:w-48" />
           <p className="mt-6 max-w-[34ch] text-ink/70">
             {SITE.slogan[0]} {SITE.slogan[1]}
           </p>

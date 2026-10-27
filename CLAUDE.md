@@ -74,7 +74,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   non nella hero; l'utente ha scartato il rosso perché non c'entra coi colori del sito: versione "urban" (serigrafia
   granulosa, bordo irregolare) con onde ocra, scritte avorio, disco nero, sfondo avorio. Il logo si MONTA pezzo per
   pezzo (disco, onde, perle, lettere O-M-A a timbro, sottotitolo): pezzi in `img/logo-pezzo-*.webp`, posizioni in
-  `src/data/logo-pezzi.ts`, generati da uno script Python (scipy) dall'immagine di 447 px; approvato dall'utente
+  `src/data/logo-pezzi.ts`; il sottotitolo "—OSTERIA— MODERNA TRADIZIONE" è testo SVG in Playfair
+  (`LogoTondo.tsx`, `data/logo-sottotitolo.ts`) perché dall'immagine veniva grosso e sfocato (27/10); generati da uno script Python (scipy) dall'immagine di 447 px; approvato dall'utente
   ("è bellissimo"), poi velocizzato: pezzi montati in ~1,3 s, poi il logo completo resta ~1,2 s per leggere la scritta (richiesta utente). In alto a sinistra resta la scritta OMA (a quella misura il logo tondo non si legge); il logo tondo
   (`img/logo-tondo.webp`) sta grande nel footer come firma. Scelta concordata il 26/10. Col file originale del logo verrebbe più nitido. Per le anteprime di animazioni, un video mp4
   registrato con Playwright (recordVideo + ffmpeg) è piaciuto più degli screenshot. Le foto delle sezioni sono ancora provvisorie. WhatsApp Business per le prenotazioni: +39 392 764 1873 (dal 19/10, `SITE.whatsapp`); il

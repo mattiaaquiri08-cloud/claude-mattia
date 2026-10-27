@@ -1,6 +1,8 @@
 import { AnimatePresence, motion, useReducedMotion, type TargetAndTransition, type Transition } from 'motion/react'
 import { useEffect, useState } from 'react'
 import { LOGO_PEZZI, type PezzoLogo } from '../data/logo-pezzi'
+import { RIGHE_LOGO, rigaBox } from '../data/logo-sottotitolo'
+import { RigaSottotitolo } from './LogoTondo'
 
 const CURTAIN = [0.76, 0, 0.24, 1] as const
 const OUT = [0.16, 1, 0.3, 1] as const
@@ -23,7 +25,7 @@ function montaggio(p: PezzoLogo, i: number) {
   // le onde ruotano attorno al centro del logo, non al proprio
   const centro = `${((50 - p.x) / p.w) * 100}% ${((50 - p.y) / p.h) * 100}%`
   let from: TargetAndTransition
-  let to: TargetAndTransition = { opacity: 1, scale: 1, rotate: 0 }
+  const to: TargetAndTransition = { opacity: 1, scale: 1, rotate: 0 }
   let transition: Transition
   let origin = '50% 50%'
   switch (p.tipo) {
@@ -43,11 +45,6 @@ function montaggio(p: PezzoLogo, i: number) {
     case 'lettera':
       from = { opacity: 0, scale: 1.9 }
       transition = { duration: 0.24, ease: [0.3, 1.4, 0.5, 1], delay }
-      break
-    case 'riga':
-      from = { opacity: 0, clipPath: 'inset(0% 100% 0% 0%)' }
-      to = { opacity: 1, clipPath: 'inset(0% 0% 0% 0%)' }
-      transition = { duration: 0.3, ease: [0.65, 0, 0.35, 1], delay }
       break
   }
   return { from, to, transition, origin }
@@ -166,6 +163,18 @@ export function Splash({ onReveal }: { onReveal: () => void }) {
                   />
                 )
               })}
+              {/* Il sottotitolo si scrive da sinistra a destra, in testo vero (nitido) */}
+              {RIGHE_LOGO.map((r, i) => (
+                <motion.div
+                  key={r.testo}
+                  style={{ ...rigaBox, top: `${r.top}%` }}
+                  initial={{ opacity: 0, clipPath: 'inset(0% 100% 0% 0%)' }}
+                  animate={ready ? { opacity: 1, clipPath: 'inset(0% 0% 0% 0%)' } : {}}
+                  transition={{ duration: 0.3, ease: [0.65, 0, 0.35, 1], delay: TEMPI.riga.start + TEMPI.riga.step * i }}
+                >
+                  <RigaSottotitolo riga={r} />
+                </motion.div>
+              ))}
             </motion.div>
           </motion.div>
         </motion.div>

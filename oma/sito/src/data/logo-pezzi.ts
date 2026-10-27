@@ -1,7 +1,7 @@
 // Generato da uno script: i pezzi del logo tondo (versione urban 1) da montare uno alla volta nella splash.
 // x, y, w, h sono in percentuale del riquadro del logo.
 export type PezzoLogo = {
-  tipo: 'disco' | 'onda' | 'perla' | 'lettera' | 'riga'
+  tipo: 'disco' | 'onda' | 'perla' | 'lettera'
   src: string
   x: number
   y: number
@@ -23,6 +23,4 @@ export const LOGO_PEZZI: PezzoLogo[] = [
   { tipo: 'lettera', src: './img/logo-pezzo-lettera-1.webp', x: 22.656, y: 36.426, w: 14.746, h: 14.453 },
   { tipo: 'lettera', src: './img/logo-pezzo-lettera-2.webp', x: 41.602, y: 35.84, w: 17.48, h: 14.746 },
   { tipo: 'lettera', src: './img/logo-pezzo-lettera-3.webp', x: 62.207, y: 35.156, w: 14.941, h: 15.527 },
-  { tipo: 'riga', src: './img/logo-pezzo-riga-1.webp', x: 38.086, y: 52.539, w: 23.73, h: 2.539 },
-  { tipo: 'riga', src: './img/logo-pezzo-riga-2.webp', x: 31.445, y: 56.836, w: 37.305, h: 2.539 },
 ]
