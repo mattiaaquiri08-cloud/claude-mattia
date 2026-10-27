@@ -72,8 +72,9 @@ che servono a leggere il testo.
   poche superfici evidenziate (offerte laser e BB Glow) sono rettangoli pieni senza ombra.
 - **Listino prezzi:** schede per categoria, voci con nome a sinistra, linea puntinata di guida e
   prezzo a destra in DM Serif Display con numeri allineati. «da» indica un prezzo minimo.
-- **Pannello di prenotazione:** foglio che sale dal basso su mobile e si apre di lato su desktop,
-  con la scelta del trattamento e il messaggio WhatsApp già scritto.
+- **Pannello di prenotazione:** foglio che sale dal basso su mobile e si apre di lato su desktop.
+  Si sceglie categoria e trattamento (con prezzo), giorno (domenica e lunedì bloccati) e orario
+  preferito, nome e note; la richiesta parte su WhatsApp o via email, oppure si chiama.
 - **Barra mobile:** fissa in basso solo su smartphone, compare dopo la hero e sparisce vicino ai
   contatti. Contiene «Prenota ora» e il pulsante per chiamare.
 - **Foto in arrivo:** dove manca una foto vera (es. Naomi) si usa una cornice con la dicitura
@@ -103,7 +104,8 @@ che servono a leggere il testo.
   `cubic-bezier(0.76, 0, 0.24, 1)` per aperture e splash. Durate tra 0.5 e 1.1s.
 - Titoli rivelati riga per riga da sotto una maschera; immagini che si scoprono come un sipario;
   liste in cascata con piccoli ritardi.
-- Splash iniziale di 3 secondi, una volta per sessione del browser.
+- Splash iniziale di circa 1,5 secondi, solo alla prima visita da quel browser (localStorage);
+  si salta con un clic o un tasto.
 - `whileInView` va sul contenitore non mascherato, mai sull'elemento traslato dentro un
   `overflow-hidden`, altrimenti l'animazione non parte.
 - Si animano solo `transform` e `opacity`. La grana è un livello fisso che non si ridisegna.

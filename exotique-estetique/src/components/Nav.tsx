@@ -8,12 +8,12 @@ import { Button } from './Button'
 import { socials } from './social'
 
 const links = [
-  { href: '#centro', label: 'Il centro' },
   { href: '#trattamenti', label: 'Trattamenti' },
+  { href: '#listino', label: 'Prezzi' },
+  { href: '#centro', label: 'Il centro' },
   { href: '#spazio', label: 'Lo spazio' },
   { href: '#naomi', label: 'Naomi' },
   { href: '#lavori', label: 'Lavori' },
-  { href: '#listino', label: 'Listino' },
   { href: '#visita', label: 'Contatti' },
 ]
 

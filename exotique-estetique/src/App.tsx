@@ -45,21 +45,21 @@ const SPLASH_KEY = 'ee-splash-vista'
 
 function splashAlreadySeen() {
   try {
-    return window.sessionStorage.getItem(SPLASH_KEY) === '1'
+    return window.localStorage.getItem(SPLASH_KEY) === '1'
   } catch {
     return false
   }
 }
 
 export default function App() {
-  // La splash compare una volta per sessione del browser.
+  // La splash compare solo alla prima visita da quel browser.
   const [introDone, setIntroDone] = useState(splashAlreadySeen)
   // Resta montata fino alla fine della sua animazione di uscita.
   const [needSplash] = useState(() => !splashAlreadySeen())
   const finishIntro = useCallback(() => {
     setIntroDone(true)
     try {
-      window.sessionStorage.setItem(SPLASH_KEY, '1')
+      window.localStorage.setItem(SPLASH_KEY, '1')
     } catch {
       /* archiviazione non disponibile: nessun problema */
     }
@@ -87,7 +87,7 @@ export default function App() {
       <IntroContext.Provider value={introDone}>
       <BookingContext.Provider value={api}>
         <a
-          href="#centro"
+          href="#trattamenti"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[80] focus:bg-ink focus:px-4 focus:py-3 focus:text-paper"
         >
           Vai al contenuto
@@ -95,12 +95,13 @@ export default function App() {
         <Nav />
         <main>
           <Hero />
-          <Manifesto />
+          {/* Trattamenti e prezzi subito dopo la hero: è quello che si cerca per primo */}
           <Treatments />
+          <PriceList />
+          <Manifesto />
           <Gallery />
           <Naomi />
           <Works />
-          <PriceList />
           <Reviews />
           <Visit ref={visitRef} />
         </main>

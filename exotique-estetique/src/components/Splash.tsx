@@ -2,8 +2,8 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { useEffect, useState } from 'react'
 import { CURTAIN, EASE, cn } from '../lib'
 
-const TOTAL = 3000 // durata complessiva in ms, uscita compresa
-const EXIT = 0.75 // durata della tenda in uscita, in s
+const TOTAL = 1600 // durata complessiva in ms, uscita compresa
+const EXIT = 0.55 // durata della tenda in uscita, in s
 
 function Letters({ text, delay, align }: { text: string; delay: number; align: string }) {
   return (
@@ -14,7 +14,7 @@ function Letters({ text, delay, align }: { text: string; delay: number; align: s
           className="inline-block"
           initial={{ y: '115%' }}
           animate={{ y: '0%' }}
-          transition={{ duration: 0.9, delay: delay + i * 0.035, ease: EASE }}
+          transition={{ duration: 0.6, delay: delay + i * 0.02, ease: EASE }}
         >
           {ch}
         </motion.span>
@@ -24,7 +24,8 @@ function Letters({ text, delay, align }: { text: string; delay: number; align: s
 }
 
 /*
- * Apertura del sito, circa 3 secondi.
+ * Apertura del sito, circa un secondo e mezzo, solo alla prima visita (ridotta su richiesta
+ * dell'utente: 3 secondi a ogni visita risultavano fastidiosi).
  * Una linea rossa verticale (la fessura dello specchio, come nella hero) diventa
  * la "&"; il nome sale lettera per lettera; poi la tenda si alza sulla foto.
  * Si salta con un clic o un tasto. Con "riduci movimento" dura meno di un secondo.
@@ -74,20 +75,20 @@ export function Splash({ onDone }: { onDone: () => void }) {
                 className="absolute h-[34vh] w-px origin-center bg-lacca-glow"
                 initial={{ scaleY: 0, opacity: 1 }}
                 animate={{ scaleY: [0, 1, 1, 0], opacity: [1, 1, 1, 0] }}
-                transition={{ duration: 1.25, times: [0, 0.45, 0.7, 1], ease: CURTAIN }}
+                transition={{ duration: 0.8, times: [0, 0.45, 0.7, 1], ease: CURTAIN }}
               />
               <p className="font-display opsz-xl grid grid-cols-[1fr_auto_1fr] items-baseline gap-[0.22em] whitespace-nowrap text-[clamp(2.1rem,7.5vw,6.5rem)] leading-none tracking-[-0.02em]">
-                <Letters text="Exotique" delay={0.55} align="justify-self-end" />
+                <Letters text="Exotique" delay={0.2} align="justify-self-end" />
                 <motion.span
                   aria-hidden
                   className="inline-block not-italic text-lacca-glow"
                   initial={{ opacity: 0, scale: 0.6, rotate: -8 }}
                   animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                  transition={{ duration: 1, delay: 0.95, ease: EASE }}
+                  transition={{ duration: 0.6, delay: 0.4, ease: EASE }}
                 >
                   &amp;
                 </motion.span>
-                <Letters text="Estetique" delay={0.75} align="justify-self-start" />
+                <Letters text="Estetique" delay={0.3} align="justify-self-start" />
               </p>
             </div>
 
@@ -96,7 +97,7 @@ export function Splash({ onDone }: { onDone: () => void }) {
               className="mt-8 text-[0.6875rem] font-medium uppercase tracking-[0.32em] text-night-soft md:text-[0.75rem]"
               initial={{ opacity: 0, letterSpacing: '0.5em' }}
               animate={{ opacity: 1, letterSpacing: '0.32em' }}
-              transition={{ duration: 1.1, delay: 1.35, ease: EASE }}
+              transition={{ duration: 0.6, delay: 0.5, ease: EASE }}
             >
               Centro estetico a La Storta, Roma
             </motion.p>

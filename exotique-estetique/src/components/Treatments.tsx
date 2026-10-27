@@ -8,6 +8,16 @@ import { Button } from './Button'
 import { MaskLines } from './Reveal'
 import { showInPriceList } from './price-events'
 
+const euroInt = new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 })
+const euroDec = new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2 })
+const euro = (n: number) => (Number.isInteger(n) ? euroInt : euroDec).format(n)
+
+/* Prezzo più basso della categoria, per il «da …» nell'elenco. */
+function fromPrice(c: (typeof categories)[number]) {
+  const prices = c.services.map((s) => s.price).filter((p): p is number => p !== null)
+  return prices.length ? Math.min(...prices) : null
+}
+
 function plural(n: number) {
   return n === 1 ? '1 servizio' : `${n} servizi`
 }
@@ -39,7 +49,7 @@ export function Treatments() {
                       aria-expanded={isOpen}
                       aria-controls={`tratt-panel-${c.id}`}
                       onClick={() => setActive(isOpen ? -1 : i)}
-                      className="group flex w-full items-center gap-6 py-6 text-left md:py-8"
+                      className="group flex w-full items-center gap-4 py-6 text-left md:gap-6 md:py-8"
                     >
                       <span
                         className={cn(
@@ -50,7 +60,16 @@ export function Treatments() {
                       >
                         {c.title}
                       </span>
-                      <span className="hidden text-[0.8125rem] text-ink-soft sm:block">{plural(c.services.length)}</span>
+                      <span className="hidden text-[0.8125rem] text-ink-soft md:block">{plural(c.services.length)}</span>
+                      {/* Prezzo minimo sempre visibile, anche a voce chiusa */}
+                      {fromPrice(c) !== null && (
+                        <span className="shrink-0 text-right text-[0.8125rem] text-ink-soft">
+                          da{' '}
+                          <span className="font-display text-[1.25rem] text-ink tabular-nums lining-nums md:text-[1.5rem]">
+                            {euro(fromPrice(c)!)}
+                          </span>
+                        </span>
+                      )}
                       <span
                         aria-hidden
                         className={cn(

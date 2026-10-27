@@ -109,6 +109,10 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   JSON-LD BeautySalon con listino da `content.ts`, robots.txt, sitemap.xml). Dominio nel codice:
   `https://exotiqueestetique.com` (canonical, og, sitemap). Le bozze hanno `noindex`. Niente
   aggregateRating nel JSON-LD (Google non mostra stelle per recensioni del proprio sito).
+- Revisione utente 27/10/2026: splash ridotta a ~1,5 s e solo alla prima visita; ordine sezioni
+  Hero → Trattamenti (con «da X €» in ogni voce) → Prezzi → Il centro → resto; voce menu «Prezzi».
+  Prenotazione: trattamento + giorno + orario, invio WhatsApp/email (niente backend: la conferma
+  la dà Naomi). Interventi mirati, non stravolgere il progetto.
 - Trattamenti: niente foto (tolte su richiesta sia su PC sia su smartphone); elenco a tutta larghezza.
 - La skill `design-taste-frontend` non è più installata (è nel cestino delle skill): se serve,
   chiedere all'utente di reinstallarla.
