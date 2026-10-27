@@ -1,13 +1,14 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { useRef, type ReactNode } from 'react'
 import { ArrowUpRight, InstagramLogo } from '@phosphor-icons/react'
-import { SITE, TESTI, type Sezione } from '../data/site'
+import { FOTO_SEZIONI, SITE, TESTI, type Sezione } from '../data/site'
+import { Galleria } from './Galleria'
 
 /*
   Le macro-sezioni del sito, nell'ordine dei testi della social media manager.
   Ogni sezione ha il nome (a pennello, come nei loro post), il titolo e il testo (Playfair Display).
   I titoli alternano i due font del brand: una sezione Playfair Display, la successiva il pennello.
-  Le foto sono provvisorie: verranno sostituite con quelle mandate dal ristorante.
+  Ogni sezione ha tre foto dello shooting in una galleria che scorre (FOTO_SEZIONI in site.ts).
 */
 
 const EASE = [0.16, 1, 0.3, 1] as const
@@ -79,17 +80,9 @@ function Testo({ children, className = '' }: { children: ReactNode; className?: 
   return <p className={`max-w-[56ch] text-lg leading-relaxed text-ink/85 ${className}`}>{children}</p>
 }
 
-function Foto({ src, alt, w, h, className = '' }: { src: string; alt: string; w: number; h: number; className?: string }) {
-  return (
-    <img
-      src={src}
-      alt={alt}
-      width={w}
-      height={h}
-      loading="lazy"
-      className={`w-full rounded-[var(--radius-media)] object-cover ${className}`}
-    />
-  )
+/** La galleria delle tre foto di una sezione. */
+function Foto3({ s, className = '' }: { s: Sezione; className?: string }) {
+  return <Galleria foto={FOTO_SEZIONI[s.id]} label={`Foto: ${s.nome}`} className={className} />
 }
 
 /* ---------- Chi siamo: foto dei titolari e presentazione ---------- */
@@ -105,14 +98,8 @@ function ChiSiamo({ s }: { s: Sezione }) {
     <section id={s.id} aria-labelledby={`${s.id}-t`} className="px-4 py-24 md:px-8 md:py-36">
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-14 md:grid-cols-12 md:gap-8">
         <div ref={ref} className="md:col-span-5">
-          <motion.figure style={{ rotate }} className="mx-auto w-[86%] md:w-full">
-            <Foto
-              src="./img/g-leonardo-alessio.webp"
-              alt="Alessio e Leonardo, i titolari di OMA, a tavola con un piatto e un calice di vino"
-              w={1200}
-              h={1200}
-              className="aspect-square shadow-[0_40px_80px_-40px_rgb(23_20_21/0.45)]"
-            />
+          <motion.figure style={{ rotate }} className="mx-auto w-[86%] md:w-[88%]">
+            <Foto3 s={s} className="aspect-[4/5] shadow-[0_40px_80px_-40px_rgb(23_20_21/0.45)]" />
           </motion.figure>
         </div>
         <motion.div {...reveal} className="md:col-span-6 md:col-start-7">
@@ -125,70 +112,59 @@ function ChiSiamo({ s }: { s: Sezione }) {
   )
 }
 
-/* ---------- Food: titolo grande a tutta larghezza, due foto e il testo ---------- */
+/* ---------- Food: titolo e testo a sinistra, galleria compatta a destra ---------- */
 
 function Food({ s }: { s: Sezione }) {
   const reveal = useReveal()
   const revealLate = useReveal(0.15)
   return (
-    <section id={s.id} aria-labelledby={`${s.id}-t`} className="border-t border-line px-4 py-24 md:px-8 md:py-36">
-      <div className="mx-auto max-w-[1400px]">
-        <motion.div {...reveal}>
+    <section id={s.id} aria-labelledby={`${s.id}-t`} className="border-t border-line px-4 py-24 md:px-8 md:py-32">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-12 md:grid-cols-12 md:gap-8">
+        <motion.div {...reveal} className="md:col-span-6">
           <Nome>{s.nome}</Nome>
-          <Titolo id={`${s.id}-t`} testo={s.titolo} font="pennello" className="mt-6 max-w-[12em] text-5xl md:text-7xl" />
+          <Titolo id={`${s.id}-t`} testo={s.titolo} font="pennello" className="mt-6 text-[1.75rem] md:text-5xl" />
+          <Testo className="mt-7">{s.testo}</Testo>
         </motion.div>
-        <div className="mt-14 grid grid-cols-1 gap-8 md:mt-20 md:grid-cols-12 md:items-end">
-          <motion.div {...revealLate} className="grid grid-cols-2 gap-4 md:col-span-7">
-            <Foto src="./img/p-tavola.webp" alt="La tavola di OMA con salumi, crostoni, polpette e battuta" w={344} h={420} className="aspect-[4/5]" />
-            <Foto src="./img/p-crudo.webp" alt="Un piatto di stagione servito nei piatti a fiori" w={344} h={448} className="aspect-[4/5] md:translate-y-12" />
-          </motion.div>
-          <motion.div {...revealLate} className="md:col-span-4 md:col-start-9">
-            <Testo>{s.testo}</Testo>
-          </motion.div>
-        </div>
+        <motion.div {...revealLate} className="mx-auto w-[78%] max-w-[360px] md:col-span-4 md:col-start-8 md:w-full md:max-w-none">
+          <Foto3 s={s} className="aspect-[4/5]" />
+        </motion.div>
       </div>
     </section>
   )
 }
 
-/* ---------- Il mercato: manifesto tipografico centrato ---------- */
+/* ---------- Il mercato: manifesto tipografico centrato, con una galleria piccola ---------- */
 
 function Mercato({ s }: { s: Sezione }) {
   const reveal = useReveal()
   return (
-    <section id={s.id} aria-labelledby={`${s.id}-t`} className="bg-paper-2 px-4 py-28 md:px-8 md:py-44">
+    <section id={s.id} aria-labelledby={`${s.id}-t`} className="bg-paper-2 px-4 py-20 md:px-8 md:py-28">
       <motion.div {...reveal} className="mx-auto flex max-w-[1100px] flex-col items-center text-center">
         <Nome>{s.nome}</Nome>
-        <Titolo id={`${s.id}-t`} testo={s.titolo} className="mt-8 text-6xl italic md:text-9xl" />
-        <Testo className="mt-10 max-w-[52ch]">{s.testo}</Testo>
+        <Titolo id={`${s.id}-t`} testo={s.titolo} className="mt-6 text-5xl italic md:text-7xl" />
+        <Testo className="mt-7 max-w-[52ch]">{s.testo}</Testo>
+        <Foto3 s={s} className="mt-10 aspect-[4/5] w-[78%] max-w-[320px]" />
       </motion.div>
     </section>
   )
 }
 
-/* ---------- Il menù: pannello con foto e pulsante verso il menu della settimana ---------- */
+/* ---------- Il menù: pannello compatto con galleria e pulsante verso il menu della settimana ---------- */
 
 function Menu({ s }: { s: Sezione }) {
   const reveal = useReveal()
   return (
-    <section id={s.id} aria-labelledby={`${s.id}-t`} className="px-4 py-24 md:px-8 md:py-36">
+    <section id={s.id} aria-labelledby={`${s.id}-t`} className="px-4 py-20 md:px-8 md:py-28">
       <motion.div
         {...reveal}
-        className="mx-auto grid max-w-[1400px] grid-cols-1 overflow-hidden rounded-[var(--radius-media)] border border-line md:grid-cols-12"
+        className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-8 rounded-[var(--radius-media)] border border-line p-6 md:grid-cols-12 md:gap-12 md:p-10"
       >
-        <div className="relative h-72 md:col-span-5 md:h-auto md:min-h-[520px]">
-          <img
-            src="./img/p-rigatoni.webp"
-            alt="Un piatto di rigatoni al sugo con formaggio grattugiato"
-            width={344}
-            height={448}
-            loading="lazy"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
+        <div className="mx-auto w-[78%] max-w-[320px] md:col-span-4 md:w-full md:max-w-none">
+          <Foto3 s={s} className="aspect-[4/5]" />
         </div>
-        <div className="flex flex-col justify-center gap-7 p-8 md:col-span-7 md:p-16">
+        <div className="flex flex-col gap-6 md:col-span-8">
           <Nome>{s.nome}</Nome>
-          <Titolo id={`${s.id}-t`} testo={s.titolo} font="pennello" className="text-4xl md:text-6xl" />
+          <Titolo id={`${s.id}-t`} testo={s.titolo} font="pennello" className="text-[1.75rem] md:text-5xl" />
           <Testo>{s.testo}</Testo>
           <a href={SITE.menuUrl} target="_blank" rel="noopener noreferrer" className="btn-primary self-start">
             Menu
@@ -204,11 +180,6 @@ function Menu({ s }: { s: Sezione }) {
 
 function Piatti({ s }: { s: Sezione }) {
   const reveal = useReveal()
-  const foto = [
-    { src: './img/p-battuta.webp', alt: 'La battuta di manzo, condita al momento', w: 344, h: 412, cls: 'col-span-2 row-span-2 aspect-[4/5] md:aspect-auto md:h-full' },
-    { src: './img/p-tiramisu.webp', alt: 'Il tiramisù servito in sala, accanto al calice', w: 344, h: 448, cls: 'aspect-[4/5]' },
-    { src: './img/g-sala.webp', alt: 'La sala di OMA con le luci accese', w: 1400, h: 787, cls: 'aspect-[4/5]' },
-  ]
   return (
     <section id={s.id} aria-labelledby={`${s.id}-t`} className="border-t border-line px-4 py-24 md:px-8 md:py-36">
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-14 md:grid-cols-12 md:gap-8">
@@ -217,20 +188,9 @@ function Piatti({ s }: { s: Sezione }) {
           <Titolo id={`${s.id}-t`} testo={s.titolo} className="mt-6 text-4xl md:text-6xl" />
           <Testo className="mt-7">{s.testo}</Testo>
         </motion.div>
-        <div className="grid grid-cols-3 grid-rows-2 gap-4 md:col-span-6 md:col-start-7">
-          {foto.map((f, i) => (
-            <motion.div
-              key={f.src}
-              className={f.cls}
-              initial={reveal.initial === false ? false : { opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.8, delay: i * 0.1, ease: EASE }}
-            >
-              <Foto src={f.src} alt={f.alt} w={f.w} h={f.h} className="h-full" />
-            </motion.div>
-          ))}
-        </div>
+        <motion.div {...reveal} className="md:col-span-5 md:col-start-8">
+          <Foto3 s={s} className="aspect-[4/5]" />
+        </motion.div>
       </div>
     </section>
   )
@@ -249,7 +209,7 @@ function Aperitivo({ s }: { s: Sezione }) {
           <p className="mt-8 max-w-[52ch] text-lg leading-relaxed text-paper/85">{s.testo}</p>
         </motion.div>
         <motion.div {...reveal} className="md:col-span-5 md:col-start-8">
-          <Foto src="./img/g-sala.webp" alt="La sala di OMA la sera, con le luci ambra" w={1400} h={787} className="aspect-[4/3]" />
+          <Foto3 s={s} className="aspect-[4/5]" />
         </motion.div>
       </div>
     </section>
@@ -274,7 +234,7 @@ function Vino({ s }: { s: Sezione }) {
           </a>
         </motion.div>
         <motion.div {...revealLate} className="mx-auto w-[78%] md:col-span-4 md:col-start-9 md:w-full">
-          <Foto src="./img/g-sala-verticale.webp" alt="Calici e bottiglie nella sala di OMA" w={940} h={1672} className="aspect-[3/4]" />
+          <Foto3 s={s} className="aspect-[4/5]" />
         </motion.div>
       </div>
     </section>
@@ -287,15 +247,20 @@ function Eventi({ s }: { s: Sezione }) {
   const reveal = useReveal()
   return (
     <section id={s.id} aria-labelledby={`${s.id}-t`} className="border-t border-line px-4 py-24 md:px-8 md:py-32">
-      <motion.div {...reveal} className="mx-auto max-w-[900px]">
-        <Nome>{s.nome}</Nome>
-        <Titolo id={`${s.id}-t`} testo={s.titolo} font="pennello" className="mt-6 text-4xl md:text-6xl" />
-        <Testo className="mt-8">{s.testo}</Testo>
-        <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" className="btn-primary mt-10">
-          <InstagramLogo size={18} weight="bold" />
-          Seguici su Instagram
-        </a>
-      </motion.div>
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-14 md:grid-cols-12 md:gap-8">
+        <motion.div {...reveal} className="md:col-span-6">
+          <Nome>{s.nome}</Nome>
+          <Titolo id={`${s.id}-t`} testo={s.titolo} font="pennello" className="mt-6 text-4xl md:text-6xl" />
+          <Testo className="mt-8">{s.testo}</Testo>
+          <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" className="btn-primary mt-10">
+            <InstagramLogo size={18} weight="bold" />
+            Seguici su Instagram
+          </a>
+        </motion.div>
+        <motion.div {...reveal} className="mx-auto w-[78%] max-w-[360px] md:col-span-4 md:col-start-8 md:w-full md:max-w-none">
+          <Foto3 s={s} className="aspect-[4/5]" />
+        </motion.div>
+      </div>
     </section>
   )
 }
