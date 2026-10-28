@@ -109,6 +109,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   SEO: canonical/og/robots.txt/sitemap su https://omaosteriamoderna.com/; JSON-LD Restaurant SENZA aggregateRating
   (le recensioni auto-dichiarate violano le regole di Google sui dati strutturati). Se cambiano gli orari, aggiornare
   anche il JSON-LD in index.html. Per salire nelle ricerche conta soprattutto la scheda Google Business di OMA.
+  "Nel Quartiere Africano" sotto Dove siamo resta (28/10, per le ricerche locali), anche se OMA aveva chiesto di toglierlo.
 - Ricevute e documenti con dati personali (codice fiscale, IBAN, indirizzo dell'utente) NON vanno mai
   nel repository, che è pubblico: si generano nella scratchpad e si mandano all'utente come file.
   Il menu cambia ogni settimana: menu, orari e avviso li aggiorna il ristorante dal Foglio Google
