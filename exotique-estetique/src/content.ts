@@ -140,7 +140,7 @@ export const categories: Category[] = [
   {
     id: 'epilazione',
     title: 'Epilazione',
-    intro: 'Laser a diodo per l\u2019epilazione definitiva, uomo e donna, con prima prova gratuita, e ceretta per ogni zona.',
+    intro: 'Laser a diodo per uomo e donna, con valutazione di pelle e pelo e prima prova gratuita, e ceretta per ogni zona.',
     image: insegna,
     imageAlt: "L'ingresso del centro in Via Calenzuoli, con l'insegna e la vetrina dedicata al laser a diodo.",
     services: [
@@ -239,6 +239,12 @@ export const highlights = {
     price: 14.9,
     unit: 'a zona',
     points: ['Una prova gratuita', 'Sconto 20% per junior'],
+    // Dal testo di Naomi (28/10/2026)
+    intro:
+      'Prima si valutano pelle e pelo, poi si decide il percorso più adatto. Con una macchina di qualità i primi cambiamenti si vedono già dalle prime sedute; i risultati variano da persona a persona.',
+    quote: 'Ero scettica verso i macchinari: con questo laser ho cambiato idea.',
+    caution:
+      'In gravidanza, in allattamento e con alcune terapie o condizioni particolari il trattamento va valutato con attenzione, seguendo le indicazioni del medico e del produttore.',
   },
   bbGlow: {
     title: 'BB Glow',
@@ -279,6 +285,16 @@ export const reviews: Review[] = [
 /* Foto di Naomi al lavoro con il laser, fornita dal centro il 25/10/2026. */
 export const naomiPhoto: string | null = naomiFoto
 
-/* Dalla descrizione che Naomi ha scritto sulla scheda Google del centro. */
-export const naomiQuote =
-  'Credo che la bellezza sia un riflesso del benessere interiore ed esteriore.'
+/* Testi di Naomi, dal suo racconto inviato dall'utente il 28/10/2026 (riassunti, parole sue). */
+export const naomiQuote = 'Questo per me non è solo un lavoro: è una passione che mi accompagna ogni giorno.'
+
+export const naomiStory = [
+  'Sono estetista e parrucchiera da quando avevo 16 anni: oltre trent\u2019anni di mestiere e tre attività a Roma, sempre con anima, cuore e tanta energia. Poi, per motivi familiari, mi sono trasferita a La Storta, dove continuo a fare il mio lavoro con lo stesso amore.',
+  'Alcuni clienti mi chiamano \u201cNaomi con dieci mani\u201d, perché mi piace prendermi cura delle persone e dare sempre il massimo. Lavoro da sola per seguire ogni cliente con attenzione e dedicargli il tempo che merita.',
+]
+
+export const naomiValues = [
+  { word: 'Sincerità', text: 'Ti dico sempre come stanno le cose, anche di no quando un trattamento non è adatto a te.' },
+  { word: 'Su misura', text: 'Ogni pelle e ogni esigenza sono diverse: per questo ogni cliente ha il suo protocollo personalizzato.' },
+  { word: 'Tempo', text: 'Niente trattamenti frettolosi o uguali per tutti: ascolto, esperienza e un rapporto che cresce giorno dopo giorno.' },
+]

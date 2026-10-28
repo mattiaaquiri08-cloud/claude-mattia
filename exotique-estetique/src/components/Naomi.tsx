@@ -1,16 +1,12 @@
 import { motion } from 'motion/react'
-import { business, naomiPhoto, naomiQuote } from '../content'
+import { business, naomiPhoto, naomiQuote, naomiStory, naomiValues } from '../content'
 import { EASE } from '../lib'
+import { useBooking } from './booking-context'
+import { Button } from './Button'
 import { ClipReveal, MaskLines, Reveal } from './Reveal'
 
-/* Dalla descrizione scritta da Naomi sulla scheda Google del centro. */
-const principles = [
-  { word: 'Qualità', text: 'Solo prodotti e trattamenti di alta qualità, che rispettano la salute della pelle e del corpo.' },
-  { word: 'Accoglienza', text: 'Un ambiente accogliente e un servizio curato, che riflette la passione per l\u2019estetica.' },
-  { word: 'Benessere', text: 'Non solo migliorare l\u2019aspetto esteriore, ma promuovere il benessere generale di chi viene in salone.' },
-]
-
 export function Naomi() {
+  const { open } = useBooking()
   return (
     <section id="naomi" aria-labelledby="naomi-titolo" className="border-t border-line py-24 md:py-36">
       <div className="wrap grid gap-12 md:grid-cols-12 md:gap-10">
@@ -49,11 +45,12 @@ export function Naomi() {
           >
             <MaskLines lines={[<em key="n">Naomi</em>]} />
           </h2>
-          <Reveal className="max-w-[46ch]">
-            <p className="text-[1.1875rem] leading-relaxed text-ink">
-              Capelli, unghie, massaggi, laser, ciglia: dietro ogni trattamento di {business.name} c&apos;è Naomi.
-              Una cliente l&apos;ha descritta così: &ldquo;lei è 10 persone in una&rdquo;.
-            </p>
+          <Reveal className="flex max-w-[46ch] flex-col gap-5">
+            {naomiStory.map((para, i) => (
+              <p key={i} className={i === 0 ? 'text-[1.1875rem] leading-relaxed text-ink' : 'text-[1.0625rem] leading-relaxed text-ink-soft'}>
+                {para}
+              </p>
+            ))}
           </Reveal>
 
           <Reveal className="mt-12" delay={0.1}>
@@ -66,7 +63,7 @@ export function Naomi() {
           </Reveal>
 
           <ul className="mt-14 border-t border-line">
-            {principles.map((p, i) => (
+            {naomiValues.map((p, i) => (
               <motion.li
                 key={p.word}
                 className="grid gap-2 border-b border-line py-6 sm:grid-cols-[11rem_1fr] sm:items-baseline sm:gap-8"
@@ -80,6 +77,15 @@ export function Naomi() {
               </motion.li>
             ))}
           </ul>
+
+          <Reveal className="mt-12">
+            <p className="max-w-[46ch] text-[1.0625rem] leading-relaxed text-ink">
+              Vieni a trovarmi: valuteremo insieme la tua pelle e capiremo qual è il percorso più adatto a te.
+            </p>
+            <div className="mt-6">
+              <Button onClick={() => open()}>Prenota una consulenza</Button>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

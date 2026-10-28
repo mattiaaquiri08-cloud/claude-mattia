@@ -56,6 +56,11 @@ function Highlights() {
           <span className="font-display opsz-xl text-[3.5rem] leading-none tabular-nums lining-nums">{euro.format(laser.price)}</span>
           <span className="text-[0.9375rem] text-night-soft">{laser.unit}</span>
         </p>
+        <p className="mt-5 text-[0.9375rem] leading-relaxed text-night-ink/90">{laser.intro}</p>
+        <blockquote className="font-display mt-5 border-l-2 border-lacca-glow pl-4 text-[1.25rem] italic leading-snug">
+          &ldquo;{laser.quote}&rdquo;
+          <footer className="mt-1 font-sans text-[0.8125rem] not-italic text-night-soft">Naomi</footer>
+        </blockquote>
         <ul className="mt-6 flex flex-wrap gap-2">
           {laser.points.map((pt) => (
             <li key={pt} className="border border-night-line px-3.5 py-2 text-[0.875rem]">
@@ -63,6 +68,7 @@ function Highlights() {
             </li>
           ))}
         </ul>
+        <p className="mt-6 text-[0.8125rem] leading-relaxed text-night-soft">{laser.caution}</p>
       </Reveal>
       <Reveal className="grid gap-6 border border-line bg-paper p-6 sm:grid-cols-[minmax(0,13rem)_1fr] sm:gap-8 md:col-span-3 md:p-8" delay={0.08}>
         <div className="overflow-hidden border border-line bg-white">

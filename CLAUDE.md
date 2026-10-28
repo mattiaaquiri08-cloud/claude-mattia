@@ -113,6 +113,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Hero → Trattamenti (con «da X €» in ogni voce) → Prezzi → Il centro → resto; voce menu «Prezzi».
   Prenotazione: trattamento + giorno + orario, invio WhatsApp/email (niente backend: la conferma
   la dà Naomi). Interventi mirati, non stravolgere il progetto.
+- Testi di Naomi (28/10/2026): in `content.ts` `naomiStory`, `naomiValues`, `naomiQuote` e i campi
+  `intro`/`quote`/`caution` del laser. Riassunti fedeli in prima persona, senza emoji; precauzioni
+  del laser sempre visibili. «Prenota una consulenza» in fondo alla sezione Naomi.
 - Trattamenti: niente foto (tolte su richiesta sia su PC sia su smartphone); elenco a tutta larghezza.
 - La skill `design-taste-frontend` non è più installata (è nel cestino delle skill): se serve,
   chiedere all'utente di reinstallarla.
