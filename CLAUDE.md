@@ -103,7 +103,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Costantino Maes 78, 00162 Roma, P.IVA 18018171001, PEC oma@pecimprese.it, cod. univoco W7YVJK9.
 - Privacy e SEO di OMA (27/10): niente banner cookie perché non ci sono cookie di profilazione; la mappa Google si carica
   solo col pulsante "Mostra la mappa"; informativa in finestra `#privacy` (`Privacy.tsx`), link nel footer e nel modulo;
-  footer con OMA SRL, sede e P.IVA (mancano REA e capitale sociale, da chiedere, e un'email normale per le richieste privacy).
+  footer con i dati della visura camerale (28/10): OMA S.R.L., sede legale Via Costantino Maes 74-80 (il civico del
+  ristorante resta 78), P.IVA e C.F. 18018171001, REA RM-1756118, capitale 5.000 € i.v. (`SITE` in site.ts). Manca ancora
+  un'email normale di OMA per le richieste privacy. La visura contiene codici fiscali e indirizzi di casa dei soci: mai nel repo.
   SEO: canonical/og/robots.txt/sitemap su https://omaosteriamoderna.com/; JSON-LD Restaurant SENZA aggregateRating
   (le recensioni auto-dichiarate violano le regole di Google sui dati strutturati). Se cambiano gli orari, aggiornare
   anche il JSON-LD in index.html. Per salire nelle ricerche conta soprattutto la scheda Google Business di OMA.

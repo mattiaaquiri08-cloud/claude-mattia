@@ -5,9 +5,12 @@
 
 export const SITE = {
   name: 'OMA Osteria Moderna',
-  // Dati legali (footer e informativa privacy)
-  ragioneSociale: 'OMA SRL',
+  // Dati legali dalla visura camerale (footer e informativa privacy)
+  ragioneSociale: 'OMA S.R.L.',
+  sedeLegale: 'Via Costantino Maes 74-80, 00162 Roma',
   piva: '18018171001',
+  rea: 'RM-1756118',
+  capitaleSociale: '5.000,00 € i.v.',
   pec: 'oma@pecimprese.it',
   slogan: ['Mangi bene come da tu’ nonna.', 'Senza le domande de tu’ zia.'],
   address: 'Via Costantino Maes 78',

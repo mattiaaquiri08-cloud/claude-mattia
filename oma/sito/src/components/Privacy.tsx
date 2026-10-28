@@ -65,7 +65,7 @@ export function PrivacyDialog() {
 
         <Voce titolo="Chi tratta i dati">
           <p>
-            {SITE.ragioneSociale}, {SITE.address}, {SITE.city}. P.IVA {SITE.piva}. PEC {SITE.pec}.
+            {SITE.ragioneSociale}, sede legale {SITE.sedeLegale}. P.IVA {SITE.piva}, REA {SITE.rea}. PEC {SITE.pec}.
           </p>
         </Voce>
 
