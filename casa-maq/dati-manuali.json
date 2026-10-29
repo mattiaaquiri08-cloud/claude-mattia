@@ -6,49 +6,58 @@
       "ramo": "claude/vigilant-edison-50pdj9",
       "stato": "Cliente",
       "tono": "ok",
-      "nota": "Sito in lavorazione, ricevuta d'acconto inviata"
+      "nota": "Sito in lavorazione, ricevuta d'acconto inviata",
+      "sigla": "OMA"
     },
     {
       "nome": "Exotique & Estetique",
       "ramo": "claude/nifty-fermi-4z2y3y",
       "stato": "Cliente",
       "tono": "ok",
-      "nota": "Preventivo firmato da Naomi"
+      "nota": "Preventivo firmato da Naomi",
+      "sigla": "Exotique"
     },
     {
       "nome": "Enrico Picciolo",
       "ramo": "claude/demo-picciolo",
       "stato": "Da completare",
       "tono": "lavoro",
-      "nota": "Il sito dello zio: da finire"
+      "nota": "Il sito dello zio: da finire",
+      "link": "https://mattiaaquiri08-cloud.github.io/claude-mattia/picciolo/",
+      "sigla": "Picciolo"
     },
     {
       "nome": "Nanà Vini e Cucina",
       "ramo": "claude/tender-fermat-6x29iw",
       "stato": "In attesa",
       "tono": "attesa",
-      "nota": "Aspetta la risposta di Giuseppe"
+      "nota": "Aspetta la risposta di Giuseppe",
+      "sigla": "Nanà"
     },
     {
       "nome": "Claudia Fulli Salon",
       "ramo": "claude/hopeful-brown-39feqc",
       "stato": "In attesa",
       "tono": "attesa",
-      "nota": "Aspetta la risposta di Dario Fulli"
+      "nota": "Aspetta la risposta di Dario Fulli",
+      "sigla": "Claudia Fulli"
     },
     {
       "nome": "Ristorante Da Mario",
       "ramo": "claude/clever-davinci-dm707p",
       "stato": "In attesa",
       "tono": "attesa",
-      "nota": "Aspetta la risposta di Valerio (base 500 €, completo 690 €)"
+      "nota": "Aspetta la risposta di Valerio (base 500 €, completo 690 €)",
+      "sigla": "Da Mario"
     },
     {
       "nome": "MAQ Web Design",
       "ramo": "claude/intelligent-albattani-bti0iy",
       "stato": "Online",
       "tono": "ok",
-      "nota": "maqwebdesign.com"
+      "nota": "maqwebdesign.com",
+      "link": "https://maqwebdesign.com",
+      "sigla": "MAQ"
     }
   ],
   "promemoria": [

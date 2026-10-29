@@ -2,342 +2,444 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: sfondo scuro con le luci del marchio (viola, rosa, pesca) che si muovono piano;
-   sopra, pannelli di vetro smerigliato su una griglia a 12 colonne; chat di vetro fissa in basso. */
+/* Layout: come il reel "Glassy Dashboard": foto di un soggiorno al tramonto, barra in alto a tutta larghezza, dock
+   verticale a sinistra, schede di vetro grigio fumé su griglia a 12 colonne. Colori di sistema del Mac, font SF.
+   Ogni scheda si apre in un foglio di vetro con i semafori del Mac. */
 :root {
-  --bg: #07060b;
-  --fg: #f6f3fa;
-  --muted: rgba(246, 243, 250, .64);
-  --faint: rgba(246, 243, 250, .40);
-  --glass-top: rgba(255, 255, 255, .11);
-  --glass-bottom: rgba(255, 255, 255, .04);
-  --glass-hover: rgba(255, 255, 255, .14);
-  --edge: rgba(255, 255, 255, .14);
-  --edge-top: rgba(255, 255, 255, .30);
-  --viola: #8b5cf6;
-  --rosa: #ec4899;
-  --pesca: #fdba8c;
-  --ok: #6ee7b7;
-  --attesa: #fcd34d;
-  --bozza: #c4b5fd;
-  --spento: rgba(255, 255, 255, .16);
-  --grad: linear-gradient(90deg, var(--viola), var(--rosa) 55%, var(--pesca));
-  --font: "Sora", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --r: 26px;
+  --bg: #0b0b0d;
+  --fg: #f5f5f7;
+  --muted: rgba(245, 245, 247, .66);
+  --faint: rgba(245, 245, 247, .42);
+  --vetro: rgba(28, 28, 32, .40);
+  --vetro-forte: rgba(24, 24, 28, .62);
+  --riga: rgba(255, 255, 255, .06);
+  --riga-hover: rgba(255, 255, 255, .11);
+  --bordo: rgba(255, 255, 255, .12);
+  --bordo-alto: rgba(255, 255, 255, .22);
+  --arancio: #ff9f0a;
+  --verde: #30d158;
+  --blu: #0a84ff;
+  --viola: #bf5af2;
+  --rosa: #ff375f;
+  --giallo: #ffd60a;
+  --azzurro: #64d2ff;
+  --rosso: #ff453a;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", "Segoe UI", system-ui, sans-serif;
+  --r: 20px;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-body { background: var(--bg); color: var(--fg); font-family: var(--font); font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font); font-size: 14px; line-height: 1.45; -webkit-font-smoothing: antialiased; }
+button { font: inherit; color: inherit; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--blu); outline-offset: 2px; }
 
-/* --- Sfondo: luci sfumate --- */
-.sfondo { position: fixed; inset: 0; overflow: hidden; z-index: 0; background: radial-gradient(120% 90% at 50% 0%, #15102a 0%, var(--bg) 60%); }
-.luce { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .75; }
-.luce.l1 { width: 46vmax; height: 46vmax; left: -12vmax; top: -10vmax; background: var(--viola); opacity: .55; }
-.luce.l2 { width: 38vmax; height: 38vmax; right: -10vmax; top: 18vh; background: var(--rosa); opacity: .45; }
-.luce.l3 { width: 34vmax; height: 34vmax; left: 30vw; bottom: -14vmax; background: var(--pesca); opacity: .35; }
-.luce.l4 { width: 22vmax; height: 22vmax; left: 8vw; top: 55vh; background: #4f46e5; opacity: .40; }
-.sfondo::after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(80% 70% at 50% 30%, #000 30%, transparent 85%); }
-@media (prefers-reduced-motion: no-preference) {
-  .luce.l1 { animation: deriva1 26s ease-in-out infinite alternate; }
-  .luce.l2 { animation: deriva2 30s ease-in-out infinite alternate; }
-  .luce.l3 { animation: deriva1 34s ease-in-out infinite alternate-reverse; }
-  .luce.l4 { animation: deriva2 22s ease-in-out infinite alternate-reverse; }
-}
-@keyframes deriva1 { to { transform: translate(8vw, 6vh) scale(1.08); } }
-@keyframes deriva2 { to { transform: translate(-7vw, 8vh) scale(.94); } }
+/* Sfondo */
+.sfondo { position: fixed; inset: 0; z-index: 0; background: linear-gradient(180deg, rgba(8, 8, 10, .62) 0%, rgba(8, 8, 10, .38) 35%, rgba(8, 8, 10, .55) 70%, rgba(8, 8, 10, .82) 100%), url("__FOTO__") center 40% / cover no-repeat, var(--bg); }
 
-/* --- Vetro --- */
+/* Vetro */
 .vetro {
-  background: linear-gradient(180deg, var(--glass-top), var(--glass-bottom));
-  -webkit-backdrop-filter: blur(28px) saturate(160%);
-  backdrop-filter: blur(28px) saturate(160%);
-  border: 1px solid var(--edge);
-  border-top-color: var(--edge-top);
+  background: var(--vetro);
+  -webkit-backdrop-filter: blur(26px) saturate(160%);
+  backdrop-filter: blur(26px) saturate(160%);
+  border: 1px solid var(--bordo);
+  border-top-color: var(--bordo-alto);
   border-radius: var(--r);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .10);
+  box-shadow: 0 10px 34px rgba(0, 0, 0, .28), inset 0 1px 0 rgba(255, 255, 255, .07);
 }
+.tondo { width: 32px; height: 32px; border-radius: 50%; display: inline-grid; place-items: center; border: 1px solid var(--bordo); background: rgba(255, 255, 255, .08); cursor: pointer; position: relative; flex: none; transition: background .2s; }
+.tondo:hover { background: rgba(255, 255, 255, .16); }
+svg.i { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+svg.i.p { width: 14px; height: 14px; }
 
-.pagina { position: relative; z-index: 1; max-width: 1240px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 18px 150px; display: grid; gap: 18px; }
-
-/* --- Barra in alto --- */
-.barra { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 8px 8px 18px; border-radius: 999px; }
-.marchio { display: flex; align-items: baseline; gap: 10px; min-width: 0; }
-.marchio b { font-weight: 300; font-size: 20px; letter-spacing: .06em; }
-.marchio b span { font-weight: 700; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.marchio small { color: var(--faint); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; }
+/* Barra in alto */
+.barra { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; padding: 9px max(16px, env(safe-area-inset-right, 0px)) 9px max(16px, env(safe-area-inset-left, 0px)); background: rgba(18, 18, 22, .45); -webkit-backdrop-filter: blur(24px) saturate(160%); backdrop-filter: blur(24px) saturate(160%); border-bottom: 1px solid var(--bordo); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 21; background: rgba(18, 18, 22, .9); }
+.barra .sx, .barra .dx { display: flex; gap: 8px; align-items: center; }
+.barra .dx { justify-content: flex-end; }
 .nav { display: flex; gap: 6px; }
-.nav a { color: var(--muted); text-decoration: none; font-size: 13px; padding: 7px 14px; border-radius: 999px; border: 1px solid transparent; transition: background .2s, color .2s; }
-.nav a:hover, .nav a:focus-visible { color: var(--fg); background: rgba(255,255,255,.08); border-color: var(--edge); outline: none; }
-.nav a.attivo { color: var(--fg); background: rgba(255,255,255,.12); border-color: var(--edge); }
-.destra { display: flex; align-items: center; gap: 8px; }
-.chip-data { font-size: 12px; color: var(--muted); padding: 7px 12px; border-radius: 999px; background: rgba(255,255,255,.06); border: 1px solid var(--edge); white-space: nowrap; }
-.avatar { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-weight: 600; font-size: 13px; background: var(--grad); color: #160b1f; flex: none; }
+.nav a { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: 12.5px; color: var(--muted); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--bordo); background: rgba(255, 255, 255, .05); transition: background .2s, color .2s; }
+.nav a:hover { color: var(--fg); background: rgba(255, 255, 255, .12); }
+.nav a.attivo { color: var(--fg); background: rgba(255, 255, 255, .18); border-color: var(--bordo-alto); }
+.badge { position: absolute; top: -3px; right: -3px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 99px; background: var(--rosso); color: #fff; font-size: 10px; font-weight: 600; display: grid; place-items: center; }
+.avatar-io { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 600; color: #fff; background: linear-gradient(135deg, #ffb340, #ff7a00); box-shadow: 0 0 0 2px rgba(255, 255, 255, .15); position: relative; }
+.avatar-io::after { content: ""; position: absolute; right: 0; bottom: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--verde); border: 2px solid #1c1c1e; }
 
-/* --- Saluto --- */
-.saluto { display: flex; align-items: end; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 14px 6px 2px; }
-.saluto h1 { margin: 0; font-weight: 300; font-size: clamp(28px, 4.2vw, 44px); letter-spacing: -.02em; line-height: 1.1; text-wrap: balance; }
-.saluto h1 em { font-style: normal; font-weight: 600; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.saluto p { margin: 8px 0 0; color: var(--muted); max-width: 60ch; }
-.aggiornato { font-size: 12px; color: var(--faint); }
+/* Dock a sinistra */
+.dock { position: fixed; z-index: 15; left: max(18px, env(safe-area-inset-left, 0px)); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 8px; padding: 8px; border-radius: 999px; }
+.dock button { width: 36px; height: 36px; border-radius: 50%; border: 0; background: transparent; color: var(--muted); display: grid; place-items: center; cursor: pointer; position: relative; transition: background .2s, color .2s; }
+.dock button:hover, .dock button.attivo { background: rgba(255, 255, 255, .14); color: var(--fg); }
+.dock button::after { content: attr(data-etichetta); position: absolute; left: calc(100% + 10px); top: 50%; transform: translateY(-50%); white-space: nowrap; font-size: 11px; padding: 4px 9px; border-radius: 8px; background: rgba(28, 28, 32, .9); border: 1px solid var(--bordo); color: var(--fg); opacity: 0; pointer-events: none; transition: opacity .15s; }
+.dock button:hover::after, .dock button:focus-visible::after { opacity: 1; }
 
-/* --- Numeri --- */
-.numeri { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
-.numero { padding: 18px 20px 20px; display: grid; gap: 10px; transition: transform .35s cubic-bezier(.2,.8,.2,1), background .35s; }
-.numero:hover { transform: translateY(-5px); }
-.numero .testa { display: flex; align-items: center; justify-content: space-between; }
-.icona { width: 34px; height: 34px; border-radius: 11px; display: grid; place-items: center; background: rgba(255,255,255,.08); border: 1px solid var(--edge); }
-.icona svg { width: 17px; height: 17px; stroke: var(--fg); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.etichetta { color: var(--muted); font-size: 12px; letter-spacing: .04em; }
-.valore { font-size: 34px; font-weight: 500; letter-spacing: -.02em; line-height: 1; font-variant-numeric: tabular-nums; }
-.sotto { font-size: 12px; color: var(--faint); }
-.pillola { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; padding: 3px 9px; border-radius: 999px; background: rgba(255,255,255,.07); border: 1px solid var(--edge); color: var(--muted); white-space: nowrap; }
-.pillola i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-.pillola.ok { color: var(--ok); }
-.pillola.attesa { color: var(--attesa); }
-.pillola.bozza { color: var(--bozza); }
-.pillola.lavoro { color: var(--pesca); }
-.pillola.male { color: #fca5a5; }
+/* Pagina */
+.pagina { position: relative; z-index: 1; max-width: 1320px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 22px 150px; display: grid; gap: 16px; }
+@media (min-width: 1000px) { .pagina { padding-left: max(92px, env(safe-area-inset-left, 0px)); padding-right: max(28px, env(safe-area-inset-right, 0px)); } }
+.intro { display: flex; align-items: end; justify-content: space-between; gap: 14px; flex-wrap: wrap; padding: 2px 4px; }
+.intro h1 { margin: 0; font-size: clamp(22px, 2.6vw, 28px); font-weight: 600; letter-spacing: -.01em; text-wrap: balance; }
+.intro p { margin: 3px 0 0; color: var(--muted); font-size: 13px; }
+.intro .azioni { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.segmenti { display: inline-flex; padding: 3px; border-radius: 999px; background: rgba(255, 255, 255, .08); border: 1px solid var(--bordo); }
+.segmenti button { border: 0; background: transparent; color: var(--muted); font-size: 12px; padding: 5px 12px; border-radius: 999px; cursor: pointer; }
+.segmenti button[aria-pressed="true"] { background: #f5f5f7; color: #1c1c1e; font-weight: 600; }
+.bottone { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--bordo); background: rgba(255, 255, 255, .08); color: var(--fg); cursor: pointer; text-decoration: none; white-space: nowrap; }
+.bottone:hover { background: rgba(255, 255, 255, .16); }
 
-/* Chiamate di oggi */
-.saluto .oggi { color: var(--fg); }
-.saluto .oggi b { font-weight: 600; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.chiamate { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 10px; }
-.chiamata { display: grid; gap: 8px; padding: 13px 14px; border-radius: 18px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); transition: background .2s, opacity .3s; min-width: 0; }
-.chiamata:hover { background: rgba(255,255,255,.08); }
-.chiamata.fatta { opacity: .45; }
-.chiamata .riga { display: flex; align-items: start; justify-content: space-between; gap: 10px; min-width: 0; }
-.chiamata .nome { font-size: 14px; font-weight: 500; overflow-wrap: anywhere; }
-.chiamata .dove { font-size: 12px; color: var(--muted); }
-.chiamata .stelle { font-size: 12px; color: var(--attesa); white-space: nowrap; font-variant-numeric: tabular-nums; }
-.chiamata .stelle span { color: var(--faint); }
-.chiamata .tel { font-size: 15px; font-weight: 500; letter-spacing: .02em; font-variant-numeric: tabular-nums; user-select: all; }
-.chiamata .azioni { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
-.chip { display: inline-flex; align-items: center; gap: 5px; font: inherit; font-size: 11.5px; color: var(--muted); text-decoration: none; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--edge); background: rgba(255,255,255,.05); cursor: pointer; white-space: nowrap; }
-.chip:hover, .chip:focus-visible { color: var(--fg); background: rgba(255,255,255,.1); }
-.chip.fatto { color: var(--ok); border-color: rgba(110,231,183,.4); }
-.online { font-size: 11px; color: var(--faint); }
-.progresso { height: 6px; border-radius: 99px; background: rgba(255,255,255,.07); overflow: hidden; }
-.progresso i { display: block; height: 100%; width: 0; border-radius: 99px; background: var(--grad); transition: width .4s; }
+/* Numeri in alto */
+.kpi-riga { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.kpi { position: relative; text-align: left; padding: 16px 16px 14px; cursor: pointer; display: grid; gap: 2px; min-height: 132px; overflow: hidden; transition: transform .35s cubic-bezier(.2, .8, .2, 1), background .25s; }
+.kpi:hover { transform: translateY(-5px); background: rgba(40, 40, 46, .5); }
+.kpi .icona { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; margin-bottom: 10px; }
+.kpi .freccia { position: absolute; top: 14px; right: 14px; color: var(--faint); }
+.kpi .etichetta { font-size: 11.5px; color: var(--muted); }
+.kpi .valore { font-size: 26px; font-weight: 600; letter-spacing: -.01em; font-variant-numeric: tabular-nums; line-height: 1.2; }
+.kpi .pill { justify-self: start; margin-top: 6px; max-width: 54%; overflow: hidden; text-overflow: ellipsis; position: relative; z-index: 1; }
+.kpi .spark { position: absolute; right: 12px; bottom: 12px; width: 40%; height: 40px; }
+.pill { display: inline-flex; align-items: center; gap: 4px; font-size: 10.5px; font-weight: 500; padding: 2px 8px; border-radius: 999px; white-space: nowrap; background: rgba(255, 255, 255, .08); color: var(--muted); }
+.pill.verde { background: rgba(48, 209, 88, .16); color: #5be37f; }
+.pill.rossa { background: rgba(255, 69, 58, .16); color: #ff7a72; }
+.pill.blu { background: rgba(10, 132, 255, .18); color: #6cb4ff; }
+.pill.gialla { background: rgba(255, 214, 10, .14); color: var(--giallo); }
+.pill.arancio { background: rgba(255, 159, 10, .16); color: #ffb347; }
+.pill.viola { background: rgba(191, 90, 242, .16); color: #d892ff; }
 
-/* Sessioni con Claude */
-.sessioni li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; padding: 11px 14px; border-radius: 16px; background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.07); }
-.sessioni li.attuale { border-color: rgba(236,72,153,.45); background: rgba(236,72,153,.08); }
-.sessioni .titolo { font-size: 13.5px; font-weight: 500; overflow-wrap: anywhere; }
-.sessioni .riassunto { grid-column: 1 / -1; font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
-.sessioni .piede { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; font-size: 11px; color: var(--faint); }
-.avviso { font-size: 12.5px; color: var(--muted); padding: 12px 14px; border-radius: 14px; background: rgba(255,255,255,.04); border: 1px dashed var(--edge); }
+/* Griglia */
+.griglia { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; }
+.pannello { padding: 16px 18px 18px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+.pannello > header { display: flex; align-items: start; justify-content: space-between; gap: 10px; }
+.pannello h2 { margin: 0; font-size: 13.5px; font-weight: 600; }
+.pannello header p { margin: 1px 0 0; font-size: 11.5px; color: var(--faint); }
+.s3 { grid-column: span 3; } .s4 { grid-column: span 4; } .s5 { grid-column: span 5; } .s7 { grid-column: span 7; } .s8 { grid-column: span 8; } .s9 { grid-column: span 9; } .s12 { grid-column: span 12; }
+.lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.cliccabile { cursor: pointer; transition: background .2s; border-radius: 12px; }
+.cliccabile:hover { background: var(--riga-hover); }
 
-/* --- Griglia pannelli --- */
-.griglia { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 18px; }
-.pannello { padding: 20px 22px 22px; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
-.pannello > header { display: flex; align-items: start; justify-content: space-between; gap: 12px; }
-.pannello h2 { margin: 0; font-size: 15px; font-weight: 500; }
-.pannello header p { margin: 2px 0 0; font-size: 12px; color: var(--faint); }
-.s8 { grid-column: span 8; } .s4 { grid-column: span 4; } .s7 { grid-column: span 7; } .s5 { grid-column: span 5; } .s12 { grid-column: span 12; }
-
-/* Grafico a colonne di vetro */
-.grafico { position: relative; flex: 1; min-height: 250px; }
-.grafico svg { position: absolute; inset: 0; display: block; width: 100%; height: 100%; overflow: visible; }
-.grafico text { fill: var(--faint); font-family: var(--font); font-size: 11px; }
-.grafico text.forte { fill: var(--fg); font-weight: 600; font-size: 12px; }
-.colonna { fill: rgba(255,255,255,.10); stroke: rgba(255,255,255,.22); stroke-width: 1; transition: fill .2s; }
-.colonna.sopra { fill: rgba(255,255,255,.2); }
-.guida { stroke: rgba(255,255,255,.07); stroke-dasharray: 2 5; }
-.suggerimento { position: absolute; pointer-events: none; padding: 6px 10px; border-radius: 12px; font-size: 12px; background: rgba(20, 14, 32, .85); border: 1px solid var(--edge); white-space: nowrap; transform: translate(-50%, -110%); }
+/* Grafico */
+.grafico { position: relative; flex: 1; min-height: 300px; }
+.grafico svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.grafico text { fill: var(--faint); font-family: var(--font); font-size: 10.5px; }
+.grafico .valore-su { fill: var(--fg); font-weight: 600; font-size: 11px; }
+.colonna { cursor: pointer; }
+.colonna rect.vetro-col { fill: url(#g-vetro); stroke: rgba(255, 255, 255, .22); stroke-width: 1; transition: opacity .2s; }
+.colonna:hover rect.vetro-col { fill: url(#g-vetro-hover); }
+.griglia-linea { stroke: rgba(255, 255, 255, .07); }
+.suggerimento { position: absolute; pointer-events: none; padding: 6px 10px; border-radius: 10px; font-size: 11.5px; background: rgba(28, 28, 32, .92); border: 1px solid var(--bordo); white-space: nowrap; transform: translate(-50%, -115%); z-index: 2; }
 .suggerimento span { color: var(--muted); }
 
-/* Promemoria */
-.lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-.promemoria li { padding: 12px 14px; border-radius: 16px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); border-left: 3px solid transparent; border-image: none; position: relative; display: grid; gap: 4px; }
-.promemoria li::before { content: ""; position: absolute; left: -1px; top: 12px; bottom: 12px; width: 3px; border-radius: 3px; background: var(--grad); }
-.promemoria .quando { font-size: 11px; color: var(--pesca); letter-spacing: .04em; }
-.promemoria .cosa { font-size: 13px; color: var(--fg); }
+/* Oggi (agenda) */
+.agenda { display: grid; gap: 8px; }
+.agenda-voce { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 8px; align-items: start; }
+.agenda-voce .ora { font-size: 10.5px; color: var(--faint); padding-top: 10px; line-height: 1.25; }
+.agenda-voce .blocco { text-align: left; border: 0; width: 100%; padding: 9px 11px; border-radius: 12px; background: rgba(255, 255, 255, .07); border-left: 3px solid var(--c, var(--blu)); cursor: pointer; display: grid; gap: 3px; color: var(--fg); transition: background .2s; }
+.agenda-voce .blocco:hover { background: rgba(255, 255, 255, .13); }
+.agenda-voce .titolo { font-size: 12.5px; font-weight: 600; }
+.agenda-voce .sotto { font-size: 11px; color: var(--muted); }
+.facce { display: flex; margin-top: 3px; }
+.faccia { width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-size: 8.5px; font-weight: 700; color: #fff; border: 1.5px solid rgba(28, 28, 32, .9); margin-right: -5px; }
 
-/* Attività */
-.attivita li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: start; gap: 12px; padding: 10px 4px; border-bottom: 1px solid rgba(255,255,255,.06); }
-.attivita li:last-child { border-bottom: 0; }
-.punto { width: 9px; height: 9px; border-radius: 50%; margin-top: 7px; background: var(--grad); box-shadow: 0 0 12px rgba(236,72,153,.6); }
-.attivita .cosa { font-size: 13.5px; min-width: 0; overflow-wrap: anywhere; }
-.attivita .progetto { display: inline-block; font-size: 11px; color: var(--bozza); margin-right: 6px; }
-.attivita time { font-size: 11.5px; color: var(--faint); white-space: nowrap; padding-top: 2px; }
-.scorre { max-height: 430px; overflow: auto; margin-right: -8px; padding-right: 8px; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.2) transparent; }
+/* Righe con avatar (attività, siti) */
+.riga-av { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 7px 8px; }
+.av { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: 10px; font-weight: 700; color: #fff; flex: none; }
+.riga-av .testo { font-size: 12.5px; min-width: 0; overflow-wrap: anywhere; }
+.riga-av .testo b { font-weight: 600; }
+.riga-av .sotto { display: block; font-size: 11px; color: var(--faint); }
+.riga-av time, .riga-av .lato { font-size: 11px; color: var(--faint); white-space: nowrap; }
+.scorre { overflow: auto; scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, .2) transparent; }
 
-/* Siti */
-.siti li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 11px 14px; border-radius: 16px; background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.07); transition: background .2s; }
-.siti li:hover { background: rgba(255,255,255,.08); }
-.siti .nome { font-size: 13.5px; font-weight: 500; }
-.siti .nota { grid-column: 1 / -1; font-size: 12px; color: var(--muted); }
-.siti .quando { grid-column: 1 / -1; font-size: 11px; color: var(--faint); }
+/* Obiettivi */
+.obiettivo { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: center; padding: 8px; }
+.anello { position: relative; width: 46px; height: 46px; }
+.anello svg { width: 46px; height: 46px; transform: rotate(-90deg); }
+.anello b { position: absolute; inset: 0; display: grid; place-items: center; font-size: 11px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.obiettivo .nome { font-size: 12.5px; font-weight: 500; }
+.obiettivo .sotto { font-size: 11px; color: var(--faint); }
+
+/* Chiamate */
+.chiamate { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 10px; }
+.chiamata { text-align: left; border: 1px solid rgba(255, 255, 255, .08); background: rgba(255, 255, 255, .06); border-radius: 14px; padding: 12px 13px; display: grid; gap: 6px; cursor: pointer; color: var(--fg); transition: background .2s, opacity .3s, transform .3s; min-width: 0; }
+.chiamata:hover { background: rgba(255, 255, 255, .12); transform: translateY(-3px); }
+.chiamata.fatta { opacity: .45; }
+.chiamata .testa { display: flex; justify-content: space-between; gap: 8px; align-items: start; }
+.chiamata .nome { font-size: 13px; font-weight: 600; overflow-wrap: anywhere; }
+.chiamata .dove { font-size: 11px; color: var(--muted); }
+.chiamata .stelle { font-size: 11px; color: var(--giallo); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.chiamata .tel { font-size: 13.5px; font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+.barretta { height: 5px; border-radius: 99px; background: rgba(255, 255, 255, .08); overflow: hidden; }
+.barretta i { display: block; height: 100%; width: 0; border-radius: 99px; background: var(--viola); transition: width .4s; }
 
 /* Lead */
-.lead-corpo { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 28px; align-items: start; }
-.barra-lead { display: flex; height: 18px; border-radius: 999px; overflow: hidden; background: rgba(255,255,255,.06); border: 1px solid var(--edge); }
-.barra-lead span { display: block; height: 100%; }
-.legenda { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px 18px; margin-top: 16px; }
-.legenda div { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); }
+.lead-corpo { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 24px; }
+.totale-lead { display: flex; align-items: baseline; gap: 8px; }
+.totale-lead b { font-size: 30px; font-weight: 600; }
+.totale-lead span { color: var(--muted); font-size: 12.5px; }
+.barra-lead { display: flex; height: 14px; border-radius: 99px; overflow: hidden; background: rgba(255, 255, 255, .06); margin-top: 10px; }
+.barra-lead button { border: 0; padding: 0; height: 100%; cursor: pointer; transition: filter .2s; }
+.barra-lead button:hover { filter: brightness(1.3); }
+.legenda { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 4px 10px; margin-top: 10px; }
+.legenda button { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px; align-items: center; font-size: 12px; color: var(--muted); background: none; border: 0; padding: 6px 8px; border-radius: 10px; cursor: pointer; text-align: left; }
+.legenda button:hover { background: var(--riga-hover); color: var(--fg); }
 .legenda i { width: 9px; height: 9px; border-radius: 3px; }
-.legenda b { color: var(--fg); font-weight: 500; font-variant-numeric: tabular-nums; }
-.totale-lead { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; }
-.totale-lead b { font-size: 40px; font-weight: 500; letter-spacing: -.02em; line-height: 1; }
-.totale-lead span { color: var(--muted); font-size: 13px; }
-.settori { display: grid; gap: 9px; }
-.settori div { display: grid; grid-template-columns: minmax(0, 9rem) minmax(0, 1fr) 2.2rem; align-items: center; gap: 10px; font-size: 12.5px; color: var(--muted); }
-.settori .traccia { height: 8px; border-radius: 99px; background: rgba(255,255,255,.07); overflow: hidden; }
-.settori .traccia i { display: block; height: 100%; border-radius: 99px; background: var(--grad); }
-.settori b { color: var(--fg); font-weight: 500; text-align: right; font-variant-numeric: tabular-nums; }
+.legenda b, .settori b { color: var(--fg); font-weight: 600; font-variant-numeric: tabular-nums; }
+.titoletto { font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); margin: 0 0 6px; }
+.settori { display: grid; gap: 2px; }
+.settori button { display: grid; grid-template-columns: minmax(0, 8.5rem) minmax(0, 1fr) 2rem; align-items: center; gap: 10px; font-size: 12px; color: var(--muted); background: none; border: 0; padding: 5px 8px; border-radius: 10px; cursor: pointer; text-align: left; }
+.settori button:hover { background: var(--riga-hover); color: var(--fg); }
 .settori .nome { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.titoletto { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); margin: 0 0 12px; }
+.settori .traccia { height: 6px; border-radius: 99px; background: rgba(255, 255, 255, .07); overflow: hidden; }
+.settori .traccia i { display: block; height: 100%; border-radius: 99px; background: var(--blu); }
+.settori b { text-align: right; }
 
-/* --- Chat --- */
-.chat { position: fixed; z-index: 5; left: 50%; transform: translateX(-50%); bottom: calc(14px + env(safe-area-inset-bottom, 0px)); width: min(760px, calc(100% - 2 * max(16px, env(safe-area-inset-left, 0px)))); display: grid; gap: 10px; }
-.finestra { display: grid; grid-template-rows: auto minmax(0, 1fr); max-height: min(58vh, 560px); overflow: hidden; }
-.finestra-testa { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 12px 10px 16px; border-bottom: 1px solid rgba(255,255,255,.08); min-width: 0; }
-.finestra-testa .chi { display: flex; align-items: center; gap: 8px; min-width: 0; font-size: 13px; }
+/* Sessioni */
+.sessioni li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3px 10px; padding: 9px 10px; border-radius: 12px; background: rgba(255, 255, 255, .05); }
+.sessioni li.attuale { background: rgba(10, 132, 255, .14); box-shadow: inset 0 0 0 1px rgba(10, 132, 255, .4); }
+.sessioni .titolo { font-size: 12.5px; font-weight: 600; overflow-wrap: anywhere; }
+.sessioni .riassunto { grid-column: 1 / -1; font-size: 11.5px; color: var(--muted); overflow-wrap: anywhere; }
+.sessioni .piede { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; font-size: 10.5px; color: var(--faint); }
+.sessioni .azioni { display: flex; gap: 6px; }
+.pillola { display: inline-flex; align-items: center; gap: 5px; font-size: 10.5px; padding: 2px 8px; border-radius: 999px; background: rgba(255, 255, 255, .08); color: var(--muted); white-space: nowrap; }
+.pillola i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.pillola.ok { color: #5be37f; } .pillola.attesa { color: var(--giallo); } .pillola.bozza { color: #d892ff; } .pillola.lavoro { color: #ffb347; } .pillola.male { color: #ff7a72; }
+.chip { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; color: var(--muted); text-decoration: none; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--bordo); background: rgba(255, 255, 255, .06); cursor: pointer; white-space: nowrap; }
+.chip:hover { color: var(--fg); background: rgba(255, 255, 255, .13); }
+.chip.fatto { color: #5be37f; border-color: rgba(48, 209, 88, .45); }
+.avviso { font-size: 12px; color: var(--muted); padding: 10px 12px; border-radius: 12px; background: rgba(255, 255, 255, .04); border: 1px dashed var(--bordo); }
+
+/* Foglio di dettaglio (finestra Mac) */
+.velo { position: fixed; inset: 0; z-index: 40; background: rgba(0, 0, 0, .35); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+.foglio { position: fixed; z-index: 41; top: calc(64px + env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); width: min(520px, calc(100% - 32px)); display: grid; grid-template-rows: auto minmax(0, 1fr); background: rgba(30, 30, 34, .72); border-radius: 16px; overflow: hidden; }
+@media (prefers-reduced-motion: no-preference) { .foglio:not([hidden]) { animation: entra .32s cubic-bezier(.2, .8, .2, 1); } }
+@keyframes entra { from { transform: translateX(24px); opacity: .4; } }
+.foglio-testa { display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid var(--bordo); background: rgba(255, 255, 255, .04); }
+.semafori { display: flex; gap: 7px; }
+.sem { width: 12px; height: 12px; border-radius: 50%; border: 0; padding: 0; display: block; }
+.sem.rosso { background: #ff5f57; cursor: pointer; } .sem.giallo { background: #febc2e; } .sem.verde { background: #28c840; }
+.sem.rosso:hover { box-shadow: inset 0 0 0 3px rgba(0, 0, 0, .25); }
+.foglio-testa h2 { margin: 0; font-size: 13px; font-weight: 600; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 48px; }
+.indietro { border: 0; background: rgba(255, 255, 255, .08); border-radius: 8px; padding: 3px 9px; font-size: 12px; cursor: pointer; color: var(--muted); }
+.indietro:hover { color: var(--fg); background: rgba(255, 255, 255, .14); }
+.foglio-corpo { overflow: auto; padding: 16px; display: grid; gap: 14px; align-content: start; }
+.foglio-corpo h3 { margin: 4px 0 0; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); font-weight: 600; }
+.foglio-corpo p { margin: 0; color: var(--muted); font-size: 13px; }
+.scheda-testa { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: center; }
+.scheda-testa .av { width: 44px; height: 44px; font-size: 13px; }
+.scheda-testa .nome { font-size: 17px; font-weight: 600; overflow-wrap: anywhere; }
+.scheda-testa .sotto { font-size: 12px; color: var(--muted); }
+.dati { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; }
+.dato { padding: 10px 12px; border-radius: 12px; background: rgba(255, 255, 255, .06); display: grid; gap: 2px; min-width: 0; }
+.dato span { font-size: 10.5px; color: var(--faint); }
+.dato b { font-size: 14px; font-weight: 600; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.copione { white-space: pre-wrap; font-size: 13px; line-height: 1.6; padding: 12px 14px; border-radius: 12px; background: rgba(255, 255, 255, .06); color: var(--fg); }
+.azioni-foglio { display: flex; flex-wrap: wrap; gap: 8px; }
+.cerca { width: 100%; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--bordo); background: rgba(255, 255, 255, .07); color: var(--fg); font: inherit; font-size: 14px; }
+.cerca::placeholder { color: var(--faint); }
+
+/* Chat */
+.chat { position: fixed; z-index: 30; left: 50%; transform: translateX(-50%); bottom: calc(14px + env(safe-area-inset-bottom, 0px)); width: min(720px, calc(100% - 2 * max(16px, env(safe-area-inset-left, 0px)))); display: grid; gap: 10px; }
+.finestra { display: grid; grid-template-rows: auto minmax(0, 1fr); max-height: min(58vh, 560px); overflow: hidden; background: rgba(30, 30, 34, .72); border-radius: 16px; }
+.finestra-testa { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 12px 10px 14px; border-bottom: 1px solid var(--bordo); background: rgba(255, 255, 255, .04); min-width: 0; }
+.finestra-testa .chi { display: flex; align-items: center; gap: 10px; min-width: 0; font-size: 12.5px; font-weight: 600; }
 .finestra-testa .chi span:last-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .finestra-testa .bottoni { display: flex; gap: 6px; flex: none; }
 .stato-punto { width: 8px; height: 8px; border-radius: 50%; background: var(--faint); flex: none; }
-.stato-punto.lavora { background: var(--rosa); box-shadow: 0 0 10px var(--rosa); }
-.stato-punto.pronto { background: var(--ok); }
-.stato-punto.bloccato { background: var(--attesa); }
+.stato-punto.lavora { background: var(--blu); box-shadow: 0 0 10px var(--blu); }
+.stato-punto.pronto { background: var(--verde); }
+.stato-punto.bloccato { background: var(--giallo); }
 @media (prefers-reduced-motion: no-preference) { .stato-punto.lavora { animation: pulsa 1.2s ease-in-out infinite; } }
 @keyframes pulsa { 50% { opacity: .35; } }
-.conversazione { overflow: auto; padding: 16px; display: grid; gap: 12px; align-content: start; }
-.msg code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; background: rgba(0,0,0,.3); padding: 1px 5px; border-radius: 6px; }
+.conversazione { overflow: auto; padding: 14px; display: grid; gap: 10px; align-content: start; }
+.msg { max-width: 88%; font-size: 13.5px; line-height: 1.5; padding: 9px 13px; border-radius: 16px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.msg.io { justify-self: end; background: var(--blu); color: #fff; border-bottom-right-radius: 5px; }
+.msg.claude { justify-self: start; background: rgba(255, 255, 255, .1); border-bottom-left-radius: 5px; }
+.msg.nota { justify-self: center; font-size: 11.5px; color: var(--muted); background: none; padding: 2px 8px; }
+.msg.errore { color: var(--giallo); }
+.msg code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; background: rgba(0, 0, 0, .3); padding: 1px 5px; border-radius: 6px; }
 .msg strong { font-weight: 600; }
-.msg.nota { justify-self: center; font-size: 12px; color: var(--muted); background: none; padding: 2px 8px; }
-.msg { max-width: 88%; font-size: 14px; line-height: 1.55; padding: 10px 14px; border-radius: 18px; white-space: pre-wrap; overflow-wrap: anywhere; }
-.msg.io { justify-self: end; background: rgba(255,255,255,.14); border: 1px solid var(--edge); border-bottom-right-radius: 6px; }
-.msg.claude { justify-self: start; background: rgba(139, 92, 246, .16); border: 1px solid rgba(196, 181, 253, .22); border-bottom-left-radius: 6px; }
-.msg.errore { color: var(--attesa); }
-.scrivi { display: flex; align-items: center; gap: 8px; padding: 7px 7px 7px 18px; border-radius: 999px; }
-.scrivi input { flex: 1; min-width: 0; background: none; border: 0; color: var(--fg); font: inherit; font-size: 15px; padding: 10px 0; }
+.scrivi { display: flex; align-items: center; gap: 8px; padding: 6px 6px 6px 16px; border-radius: 999px; background: rgba(30, 30, 34, .6); }
+.scrivi input { flex: 1; min-width: 0; background: none; border: 0; color: var(--fg); font: inherit; font-size: 14px; padding: 9px 0; }
 .scrivi input::placeholder { color: var(--faint); }
 .scrivi input:focus { outline: none; }
-.scrivi:focus-within { border-color: rgba(236,72,153,.55); }
-.bottone-tondo { width: 42px; height: 42px; border-radius: 50%; border: 0; display: grid; place-items: center; cursor: pointer; background: var(--grad); color: #160b1f; flex: none; transition: transform .2s, opacity .2s; }
-.bottone-tondo:hover { transform: scale(1.06); }
-.bottone-tondo:disabled { opacity: .4; cursor: default; transform: none; }
-.bottone-tondo svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.apri-code { font: inherit; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); text-decoration: none; padding: 9px 12px; border-radius: 999px; border: 1px solid var(--edge); background: rgba(255,255,255,.05); white-space: nowrap; }
-.apri-code:hover, .apri-code:focus-visible { color: var(--fg); background: rgba(255,255,255,.1); outline: none; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--pesca); outline-offset: 2px; }
+.scrivi:focus-within { border-color: rgba(10, 132, 255, .6); }
+.invia { width: 36px; height: 36px; border-radius: 50%; border: 0; display: grid; place-items: center; cursor: pointer; background: var(--blu); color: #fff; flex: none; }
+.invia:disabled { opacity: .4; cursor: default; }
 
-@media (max-width: 960px) {
-  .s8, .s4, .s7, .s5 { grid-column: span 12; }
+@media (max-width: 1100px) {
+  .s3, .s4, .s5 { grid-column: span 6; } .s7, .s8, .s9 { grid-column: span 12; }
+  .griglia > .agenda-pannello { grid-column: span 12; }
+}
+@media (max-width: 999px) { .dock { display: none; } }
+@media (max-width: 820px) {
+  .nav a span { display: none; }
+  .s3, .s4, .s5 { grid-column: span 12; }
+  .kpi-riga { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .lead-corpo { grid-template-columns: minmax(0, 1fr); }
+  .barra { grid-template-columns: auto 1fr auto; }
+  .barra .sx .tondo:nth-child(2), .barra .dx .cerca-btn { display: none; }
+  .foglio { top: calc(10px + env(safe-area-inset-top, 0px)); bottom: calc(10px + env(safe-area-inset-bottom, 0px)); right: 10px; width: calc(100% - 20px); }
 }
-@media (max-width: 760px) {
-  .nav, .chip-data { display: none; }
-  .numeri { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  .valore { font-size: 28px; }
-  .apri-code .lungo { display: none; }
-}
-@media (max-width: 380px) {
-  .numeri { grid-template-columns: minmax(0, 1fr); }
-}
+@media (max-width: 420px) { .kpi .spark { width: 38%; } .kpi .valore { font-size: 22px; } }
 </style>
 
-<div class="sfondo" aria-hidden="true"><div class="luce l1"></div><div class="luce l2"></div><div class="luce l3"></div><div class="luce l4"></div></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></symbol>
+  <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3M13 15h4"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l.9-5.4A8 8 0 1 1 21 12z"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+</svg>
+
+<div class="sfondo" aria-hidden="true"></div>
+
+<header class="barra">
+  <div class="sx">
+    <button class="tondo" type="button" id="b-menu" aria-label="Vai in cima"><svg class="i p"><use href="#i-menu"/></svg></button>
+    <button class="tondo" type="button" data-apri="oggi" aria-label="Oggi"><svg class="i p"><use href="#i-calendar"/></svg></button>
+  </div>
+  <nav class="nav" aria-label="Sezioni">
+    <a href="#home" class="attivo" data-vai="home"><svg class="i p"><use href="#i-home"/></svg><span>Home</span></a>
+    <a href="#chiamate" data-vai="chiamate"><svg class="i p"><use href="#i-phone"/></svg><span>Chiamate</span></a>
+    <a href="#siti" data-vai="siti"><svg class="i p"><use href="#i-monitor"/></svg><span>Siti</span></a>
+    <a href="#lead" data-vai="lead"><svg class="i p"><use href="#i-users"/></svg><span>Lead</span></a>
+  </nav>
+  <div class="dx">
+    <button class="tondo" type="button" data-chat aria-label="Chat con Claude Code"><svg class="i p"><use href="#i-chat"/></svg></button>
+    <button class="tondo" type="button" data-apri="promemoria" aria-label="Promemoria"><svg class="i p"><use href="#i-bell"/></svg><span class="badge" id="badge-promemoria"></span></button>
+    <button class="tondo cerca-btn" type="button" data-apri="cerca" aria-label="Cerca"><svg class="i p"><use href="#i-search"/></svg></button>
+    <span class="avatar-io" aria-label="Mattia">MA</span>
+  </div>
+</header>
+
+<nav class="dock vetro" aria-label="Dock">
+  <button type="button" data-vai="home" data-etichetta="Home" aria-label="Home" class="attivo"><svg class="i"><use href="#i-home"/></svg></button>
+  <button type="button" data-chat data-etichetta="Chat con Claude" aria-label="Chat con Claude"><svg class="i"><use href="#i-chat"/></svg></button>
+  <button type="button" data-vai="chiamate" data-etichetta="Chiamate" aria-label="Chiamate"><svg class="i"><use href="#i-phone"/></svg></button>
+  <button type="button" data-vai="siti" data-etichetta="Siti" aria-label="Siti"><svg class="i"><use href="#i-monitor"/></svg></button>
+  <button type="button" data-vai="lead" data-etichetta="Lead" aria-label="Lead"><svg class="i"><use href="#i-users"/></svg></button>
+  <button type="button" data-vai="sessioni" data-etichetta="Sessioni di Claude" aria-label="Sessioni di Claude"><svg class="i"><use href="#i-terminal"/></svg></button>
+  <button type="button" data-apri="cerca" data-etichetta="Cerca" aria-label="Cerca"><svg class="i"><use href="#i-search"/></svg></button>
+</nav>
 
 <main class="pagina">
-  <nav class="barra vetro" aria-label="Casa MAQ">
-    <div class="marchio"><b>MA<span>Q</span></b><small>Grow Online · Roma</small></div>
-    <div class="nav">
-      <a href="#oggi" class="attivo">Oggi</a>
-      <a href="#siti">Siti</a>
-      <a href="#lead">Lead</a>
-    </div>
-    <div class="destra">
-      <span class="chip-data" id="data-oggi"></span>
-      <span class="avatar" aria-hidden="true">MA</span>
-    </div>
-  </nav>
-
-  <section class="saluto" id="oggi">
+  <section class="intro" id="home">
     <div>
-      <h1><span id="saluto">Buonasera</span>, <em>signore</em></h1>
-      <p class="oggi">Oggi tocca fare <b id="n-oggi">—</b> chiamate: le trova qui sotto, con il numero pronto.</p>
-      <p>Ecco cosa è successo nei suoi progetti e a che punto sono i contatti.</p>
+      <h1><span id="saluto">Buonasera</span>, signore</h1>
+      <p id="sottotitolo"></p>
     </div>
-    <span class="aggiornato" id="aggiornato"></span>
+    <div class="azioni">
+      <div class="segmenti" role="group" aria-label="Periodo">
+        <button type="button" data-periodo="7" aria-pressed="true">Settimana</button>
+        <button type="button" data-periodo="14" aria-pressed="false">2 settimane</button>
+        <button type="button" data-periodo="30" aria-pressed="false">Mese</button>
+      </div>
+      <button class="bottone" type="button" data-chat><svg class="i p"><use href="#i-chat"/></svg>Chiedi a Claude</button>
+    </div>
   </section>
 
-  <section class="numeri" aria-label="In breve">
-    <article class="numero vetro">
-      <div class="testa"><span class="icona"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg></span><span class="pillola bozza" id="n-siti-pill"><i></i>in corso</span></div>
-      <span class="etichetta">Siti in lavorazione</span>
-      <span class="valore" id="n-siti">—</span>
-      <span class="sotto" id="n-siti-sotto"></span>
-    </article>
-    <article class="numero vetro">
-      <div class="testa"><span class="icona"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></span><span class="pillola"><i></i>7 giorni</span></div>
-      <span class="etichetta">Modifiche ai siti</span>
-      <span class="valore" id="n-modifiche">—</span>
-      <span class="sotto" id="n-modifiche-sotto"></span>
-    </article>
-    <article class="numero vetro">
-      <div class="testa"><span class="icona"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><span class="pillola"><i></i>totale</span></div>
-      <span class="etichetta">Attività contattate</span>
-      <span class="valore" id="n-contattati">—</span>
-      <span class="sotto" id="n-contattati-sotto"></span>
-    </article>
-    <article class="numero vetro">
-      <div class="testa"><span class="icona"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span class="pillola ok"><i></i>sì</span></div>
-      <span class="etichetta">Risposte positive</span>
-      <span class="valore" id="n-positivi">—</span>
-      <span class="sotto" id="n-positivi-sotto"></span>
-    </article>
+  <section class="kpi-riga" aria-label="In breve">
+    <button class="kpi vetro" type="button" data-apri="clienti">
+      <span class="icona" style="background:rgba(255,159,10,.2);color:var(--arancio)"><svg class="i p"><use href="#i-briefcase"/></svg></span>
+      <svg class="i p freccia"><use href="#i-arrow"/></svg>
+      <span class="etichetta">Clienti</span>
+      <span class="valore" id="k-clienti">—</span>
+      <span class="pill arancio" id="k-clienti-pill"></span>
+      <svg class="spark" id="s-clienti" preserveAspectRatio="none"></svg>
+    </button>
+    <button class="kpi vetro" type="button" data-apri="modifiche">
+      <span class="icona" style="background:rgba(48,209,88,.2);color:var(--verde)"><svg class="i p"><use href="#i-activity"/></svg></span>
+      <svg class="i p freccia"><use href="#i-arrow"/></svg>
+      <span class="etichetta">Modifiche ai siti · 7 giorni</span>
+      <span class="valore" id="k-modifiche">—</span>
+      <span class="pill" id="k-modifiche-pill"></span>
+      <svg class="spark" id="s-modifiche" preserveAspectRatio="none"></svg>
+    </button>
+    <button class="kpi vetro" type="button" data-apri="attesa">
+      <span class="icona" style="background:rgba(10,132,255,.22);color:var(--blu)"><svg class="i p"><use href="#i-clock"/></svg></span>
+      <svg class="i p freccia"><use href="#i-arrow"/></svg>
+      <span class="etichetta">In attesa di risposta</span>
+      <span class="valore" id="k-attesa">—</span>
+      <span class="pill blu" id="k-attesa-pill"></span>
+      <svg class="spark" id="s-attesa" preserveAspectRatio="none"></svg>
+    </button>
+    <button class="kpi vetro" type="button" data-apri="chiamate">
+      <span class="icona" style="background:rgba(191,90,242,.2);color:var(--viola)"><svg class="i p"><use href="#i-phone"/></svg></span>
+      <svg class="i p freccia"><use href="#i-arrow"/></svg>
+      <span class="etichetta">Chiamate di oggi</span>
+      <span class="valore" id="k-chiamate">—</span>
+      <span class="pill viola" id="k-chiamate-pill"></span>
+      <svg class="spark" id="s-chiamate" preserveAspectRatio="none"></svg>
+    </button>
   </section>
 
   <section class="griglia">
-    <article class="pannello vetro s8" id="chiamate">
+    <article class="pannello vetro s8">
       <header>
-        <div><h2>Chiamate di oggi</h2><p>Gestioni nuove o poco conosciute, senza sito, con cellulare. Verificate su Google Maps.</p></div>
-        <span class="pillola lavoro" id="chiamate-conto"></span>
-      </header>
-      <div class="progresso" aria-hidden="true"><i id="chiamate-barra"></i></div>
-      <div class="chiamate" id="lista-chiamate"></div>
-    </article>
-
-    <article class="pannello vetro s4">
-      <header><div><h2>Da ricordare</h2><p>Cose in sospeso</p></div></header>
-      <ul class="lista promemoria" id="promemoria"></ul>
-    </article>
-
-    <article class="pannello vetro s7">
-      <header>
-        <div><h2>Lavoro sui siti</h2><p>Modifiche salvate ogni giorno, ultime due settimane</p></div>
-        <span class="pillola" id="lavoro-totale"></span>
+        <div><h2>Lavoro sui siti</h2><p id="grafico-sotto">Modifiche salvate ogni giorno</p></div>
+        <span class="pill" id="grafico-pill"></span>
       </header>
       <div class="grafico" id="grafico"></div>
     </article>
 
-    <article class="pannello vetro s5" id="siti">
-      <header><div><h2>I siti</h2><p>Stato di ogni progetto</p></div></header>
-      <div class="scorre"><ul class="lista siti" id="lista-siti"></ul></div>
-    </article>
-
-    <article class="pannello vetro s5" id="sessioni">
+    <article class="pannello vetro s4 agenda-pannello">
       <header>
-        <div><h2>Le sue sessioni con Claude</h2><p>Dal vivo: tocchi "Continua" per riprenderne una dalla chat</p></div>
+        <div><h2>Oggi</h2><p id="oggi-data"></p></div>
+        <button class="tondo" type="button" data-chat aria-label="Aggiungi con Claude"><svg class="i p"><use href="#i-plus"/></svg></button>
       </header>
-      <div class="scorre"><ul class="lista sessioni" id="lista-sessioni"><li class="avviso">Le sessioni compaiono aprendo la pagina su claude.ai.</li></ul></div>
+      <div class="agenda scorre" id="agenda"></div>
     </article>
 
-    <article class="pannello vetro s7">
-      <header><div><h2>Cosa è successo</h2><p>Le ultime modifiche ai siti, dalla più recente</p></div></header>
-      <div class="scorre"><ul class="lista attivita" id="attivita"></ul></div>
+    <article class="pannello vetro s5">
+      <header>
+        <div><h2>Attività recenti</h2><p>Le ultime modifiche ai siti</p></div>
+        <button class="chip" type="button" data-apri="modifiche-tutte">Vedi tutto <svg class="i p"><use href="#i-down"/></svg></button>
+      </header>
+      <ul class="lista scorre" id="attivita" style="max-height:300px"></ul>
     </article>
 
-    <article class="pannello vetro s12" id="lead">
-      <header><div><h2>Lead</h2><p>Attività verificate senza sito, dal foglio "Lead strutturati"</p></div></header>
+    <article class="pannello vetro s4" id="siti">
+      <header>
+        <div><h2>I siti</h2><p id="siti-sotto"></p></div>
+        <button class="tondo" type="button" data-apri="siti" aria-label="Tutti i siti"><svg class="i p"><use href="#i-arrow"/></svg></button>
+      </header>
+      <ul class="lista scorre" id="lista-siti" style="max-height:300px"></ul>
+    </article>
+
+    <article class="pannello vetro s3">
+      <header>
+        <div><h2>Obiettivi</h2><p>Di oggi e del mese</p></div>
+      </header>
+      <div class="lista" id="obiettivi"></div>
+    </article>
+
+    <article class="pannello vetro s12" id="chiamate">
+      <header>
+        <div><h2>Chiamate di oggi</h2><p>Gestioni nuove o poco conosciute, senza sito, con cellulare. Tocchi una scheda per il testo della chiamata.</p></div>
+        <span class="pill viola" id="chiamate-conto"></span>
+      </header>
+      <div class="barretta" aria-hidden="true"><i id="chiamate-barra"></i></div>
+      <div class="chiamate" id="lista-chiamate"></div>
+    </article>
+
+    <article class="pannello vetro s7" id="lead">
+      <header><div><h2>Lead</h2><p>Attività verificate senza sito: tocchi uno stato o un settore per vedere chi sono</p></div></header>
       <div class="lead-corpo">
         <div>
           <div class="totale-lead"><b id="lead-totale">—</b><span>attività in lista</span></div>
-          <div class="barra-lead" id="barra-lead" role="img" aria-label="Lead per stato"></div>
+          <div class="barra-lead" id="barra-lead"></div>
           <div class="legenda" id="legenda-lead"></div>
         </div>
         <div>
@@ -346,30 +448,41 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--pesca); outline
         </div>
       </div>
     </article>
+
+    <article class="pannello vetro s5" id="sessioni">
+      <header><div><h2>Le sue sessioni con Claude</h2><p>Dal vivo: "Continua" la riprende dalla chat</p></div></header>
+      <div class="scorre" style="max-height:340px"><ul class="lista sessioni" id="lista-sessioni"><li class="avviso">Le sessioni compaiono aprendo la pagina su claude.ai.</li></ul></div>
+    </article>
   </section>
+  <p class="avviso" style="justify-self:center;border:0;background:none" id="aggiornato"></p>
 </main>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="foglio vetro" id="foglio" hidden role="dialog" aria-modal="true" aria-labelledby="foglio-titolo">
+  <div class="foglio-testa">
+    <div class="semafori"><button class="sem rosso" type="button" id="chiudi" aria-label="Chiudi"></button><span class="sem giallo"></span><span class="sem verde"></span></div>
+    <button class="indietro" type="button" id="indietro">‹ Indietro</button>
+    <h2 id="foglio-titolo"></h2>
+  </div>
+  <div class="foglio-corpo" id="foglio-corpo"></div>
+</aside>
 
 <div class="chat">
   <section class="finestra vetro" id="finestra" hidden aria-label="Conversazione con Claude Code">
     <div class="finestra-testa">
-      <div class="chi"><span class="stato-punto" id="stato-punto"></span><span id="chat-titolo">Claude Code</span></div>
+      <div class="chi"><span class="semafori"><button class="sem rosso" type="button" id="riduci" aria-label="Riduci la chat"></button><span class="sem giallo"></span><span class="sem verde"></span></span><span class="stato-punto" id="stato-punto"></span><span id="chat-titolo">Claude Code</span></div>
       <div class="bottoni">
         <button class="chip" type="button" id="nuova-chat">Nuova chat</button>
         <a class="chip" id="apri-sessione" href="https://claude.ai/code" target="_blank" rel="noopener">Apri ↗</a>
-        <button class="chip" type="button" id="riduci" aria-label="Riduci la chat">—</button>
       </div>
     </div>
     <div class="conversazione" id="conversazione" aria-live="polite"></div>
   </section>
   <form class="scrivi vetro" id="modulo-chat">
-    <label for="domanda" class="visivamente-nascosto" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Scrivi a Claude Code</label>
+    <label for="domanda" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Scrivi a Claude Code</label>
     <input id="domanda" autocomplete="off" placeholder="Scrivi a Claude Code…">
-    <button class="apri-code" type="button" id="mostra-chat">
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l.9-5.4A8 8 0 1 1 21 12z"/></svg><span class="lungo">Chat</span>
-    </button>
-    <button class="bottone-tondo" id="invia" type="submit" aria-label="Invia">
-      <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-    </button>
+    <button class="tondo" type="button" id="mostra-chat" aria-label="Mostra la chat"><svg class="i p"><use href="#i-chat"/></svg></button>
+    <button class="invia" id="invia" type="submit" aria-label="Invia"><svg class="i"><use href="#i-up"/></svg></button>
   </form>
 </div>
 
@@ -379,201 +492,500 @@ const DATI = /*DATI*/null;
 const $ = (id) => document.getElementById(id);
 const el = (tag, cls, testo) => { const e = document.createElement(tag); if (cls) e.className = cls; if (testo != null) e.textContent = testo; return e; };
 const num = new Intl.NumberFormat('it-IT');
+const NS = 'http://www.w3.org/2000/svg';
+const svgEl = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
+const icona = (nome, cls = 'i p') => { const s = svgEl('svg', { class: cls }); s.appendChild(svgEl('use', { href: '#i-' + nome })); return s; };
+const COLORI = ['#ff9f0a', '#0a84ff', '#30d158', '#bf5af2', '#ff375f', '#64d2ff', '#ffd60a', '#ac8e68'];
+const coloreDi = (s) => COLORI[[...String(s)].reduce((a, c) => a + c.charCodeAt(0), 0) % COLORI.length];
+const sigla = (s) => String(s).replace(/[^\p{L}\p{N} ]/gu, ' ').trim().split(/\s+/).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
+function avatar(nome, cls = 'av') { const a = el('span', cls, sigla(nome)); a.style.background = coloreDi(nome); return a; }
 
 function quandoRelativo(iso) {
   const d = new Date(iso);
   const oggi = new Date(); oggi.setHours(0, 0, 0, 0);
-  const giorno = new Date(d); giorno.setHours(0, 0, 0, 0);
-  const diff = Math.round((oggi - giorno) / 86400000);
+  const g = new Date(d); g.setHours(0, 0, 0, 0);
+  const diff = Math.round((oggi - g) / 86400000);
   const ora = d.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
   if (diff <= 0) return 'oggi, ' + ora;
   if (diff === 1) return 'ieri, ' + ora;
   if (diff < 7) return diff + ' giorni fa';
   return d.toLocaleDateString('it-IT', { day: 'numeric', month: 'short' });
 }
+const giornoLungo = (g) => new Date(g + 'T12:00:00').toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'long' });
 
-/* Saluto e data */
+/* Dati derivati */
+const siti = DATI.progetti.filter((p) => p.nome !== 'MAQ Web Design');
+const clienti = siti.filter((p) => p.stato === 'Cliente');
+const inAttesaSiti = siti.filter((p) => p.stato === 'In attesa');
+const daCompletare = siti.filter((p) => p.stato === 'Da completare');
+const COMMIT = DATI.commit.map((c) => ({ ...c, giorno: c.quando.slice(0, 10) }));
+const C = DATI.chiamate;
+const progettoDaSigla = (s) => DATI.progetti.find((p) => p.sigla === s);
+
+/* Saluto */
 const ora = new Date().getHours();
 $('saluto').textContent = ora < 5 ? 'Buonanotte' : ora < 13 ? 'Buongiorno' : ora < 18 ? 'Buon pomeriggio' : 'Buonasera';
-$('data-oggi').textContent = new Date().toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'long' });
+$('sottotitolo').textContent = `Oggi tocca fare ${C.oggi.length} chiamate · ${clienti.length} clienti · ${inAttesaSiti.length} in attesa di risposta`;
+$('oggi-data').textContent = new Date().toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'short' });
 $('aggiornato').textContent = 'Dati aggiornati ' + quandoRelativo(DATI.generato);
+$('badge-promemoria').textContent = DATI.promemoria.length;
 
-/* Numeri */
-const siti = DATI.progetti.filter((p) => p.nome !== 'MAQ Web Design');
-const conta = (t) => siti.filter((p) => p.stato === t).length;
-$('n-siti').textContent = num.format(siti.length);
-$('n-siti-sotto').textContent = `${conta('Cliente')} clienti · ${conta('In attesa')} in attesa · ${conta('Da completare')} da completare`;
-const ultimi7 = DATI.giorni.slice(-7).reduce((s, g) => s + g.n, 0);
-const prima7 = DATI.giorni.slice(0, 7).reduce((s, g) => s + g.n, 0);
-$('n-modifiche').textContent = num.format(ultimi7);
-$('n-modifiche-sotto').textContent = `${prima7} la settimana prima`;
-const g = DATI.lead.gruppi;
-const contattati = (g.contattati || 0) + (g.positivi || 0);
-$('n-contattati').textContent = num.format(contattati);
-$('n-contattati-sotto').textContent = `${g.da_chiamare || 0} ancora da chiamare`;
-$('n-positivi').textContent = num.format(g.positivi || 0);
-$('n-positivi-sotto').textContent = contattati ? `${Math.round((g.positivi || 0) / contattati * 100)}% dei contattati` : '';
-
-/* Grafico a colonne di vetro */
-const NS = 'http://www.w3.org/2000/svg';
-const svgEl = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
-$('lavoro-totale').textContent = num.format(DATI.giorni.reduce((s, x) => s + x.n, 0)) + ' in 14 giorni';
-
-function disegnaGrafico() {
-  const box = $('grafico');
-  box.replaceChildren();
-  const W = Math.max(280, box.clientWidth), H = Math.max(250, box.clientHeight), top = 26, bottom = 40;
-  const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Modifiche ai siti per giorno' });
-  const defs = svgEl('defs', {});
-  const lg = svgEl('linearGradient', { id: 'g-colonna', x1: 0, y1: 0, x2: 0, y2: 1 });
-  [['0', '#fdba8c'], ['.45', '#ec4899'], ['1', '#8b5cf6']].forEach(([o, c]) => lg.appendChild(svgEl('stop', { offset: o, 'stop-color': c })));
-  defs.appendChild(lg); svg.appendChild(defs);
-  const n = DATI.giorni.length;
-  const max = Math.max(1, ...DATI.giorni.map((x) => x.n));
-  const passo = W / n;
-  const larg = Math.min(30, passo * .5);
-  const alt = H - top - bottom;
-  [0.5, 1].forEach((f) => svg.appendChild(svgEl('line', { class: 'guida', x1: 0, x2: W, y1: top + alt * (1 - f), y2: top + alt * (1 - f) })));
-  const iMax = DATI.giorni.reduce((b, x, i, a) => (x.n > a[b].n ? i : b), 0);
-  const tip = el('div', 'suggerimento'); tip.hidden = true;
-  DATI.giorni.forEach((x, i) => {
-    const cx = passo * i + passo / 2;
-    const h = Math.max(larg, (x.n / max) * alt);
-    const y = top + alt - h;
-    const forte = i === iMax && x.n > 0;
-    const r = svgEl('rect', { x: cx - larg / 2, y, width: larg, height: h, rx: larg / 2, class: forte ? '' : 'colonna' });
-    if (forte) { r.setAttribute('fill', 'url(#g-colonna)'); r.setAttribute('style', 'filter: drop-shadow(0 0 14px rgba(236,72,153,.55))'); }
-    if (x.n === 0) r.setAttribute('opacity', '.35');
-    svg.appendChild(r);
-    const d = new Date(x.giorno + 'T12:00:00');
-    const mostraEtichetta = n <= 10 || passo > 44 || i % 2 === (n - 1) % 2;
-    if (mostraEtichetta) {
-      const t1 = svgEl('text', { x: cx, y: H - 20, 'text-anchor': 'middle' });
-      t1.textContent = d.toLocaleDateString('it-IT', { weekday: 'short' }).replace('.', '');
-      const t2 = svgEl('text', { x: cx, y: H - 5, 'text-anchor': 'middle' });
-      t2.textContent = d.getDate();
-      svg.append(t1, t2);
-    }
-    if (forte) {
-      const v = svgEl('text', { x: cx, y: y - 9, 'text-anchor': 'middle', class: 'forte' });
-      v.textContent = x.n; svg.appendChild(v);
-    }
-    const area = svgEl('rect', { x: passo * i, y: 0, width: passo, height: H, fill: 'transparent' });
-    area.addEventListener('pointerenter', () => {
-      if (!forte) r.classList.add('sopra');
-      tip.replaceChildren(el('span', null, d.toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'short' }) + ' · '), document.createTextNode(x.n === 1 ? '1 modifica' : x.n + ' modifiche'));
-      tip.hidden = false;
-      const px = Math.min(Math.max(cx, 90), W - 90);
-      tip.style.left = (px / W * 100) + '%';
-      tip.style.top = Math.max(y, 40) + 'px';
-    });
-    area.addEventListener('pointerleave', () => { r.classList.remove('sopra'); tip.hidden = true; });
-    svg.appendChild(area);
-  });
-  box.append(svg, tip);
-}
-disegnaGrafico();
-let attesaRidisegno;
-new ResizeObserver(() => { clearTimeout(attesaRidisegno); attesaRidisegno = setTimeout(disegnaGrafico, 80); }).observe($('grafico'));
-
-/* Promemoria */
-DATI.promemoria.forEach((p) => {
-  const li = el('li');
-  li.append(el('span', 'quando', p.quando), el('span', 'cosa', p.testo));
-  $('promemoria').appendChild(li);
-});
-
-/* Attività */
-DATI.attivita.forEach((a) => {
-  const li = el('li');
-  const cosa = el('div', 'cosa');
-  cosa.append(el('span', 'progetto', a.progetto), document.createTextNode(a.testo));
-  const t = el('time', null, quandoRelativo(a.quando)); t.dateTime = a.quando;
-  li.append(el('span', 'punto'), cosa, t);
-  $('attivita').appendChild(li);
-});
-if (!DATI.attivita.length) $('attivita').appendChild(el('li', 'cosa', 'Nessuna modifica nelle ultime due settimane.'));
-
-/* Siti */
-DATI.progetti.forEach((p) => {
-  const li = el('li');
-  const pill = el('span', 'pillola ' + p.tono); pill.append(el('i'), document.createTextNode(p.stato));
-  li.append(el('span', 'nome', p.nome), pill, el('span', 'nota', p.nota));
-  if (p.aggiornato) li.append(el('span', 'quando', 'Ultima modifica ' + quandoRelativo(p.aggiornato)));
-  $('lista-siti').appendChild(li);
-});
-
-/* Lead */
-$('lead-totale').textContent = num.format(DATI.lead.totale);
-const STATI = [
-  ['positivi', 'Risposte positive', 'var(--ok)'],
-  ['contattati', 'Contattati', 'var(--rosa)'],
-  ['da_chiamare', 'Da chiamare', 'var(--pesca)'],
-  ['da_contattare', 'Da contattare', 'var(--viola)'],
-  ['hanno_sito', 'Hanno già il sito', 'var(--spento)'],
-];
-STATI.forEach(([k, nome, colore]) => {
-  const v = g[k] || 0;
-  if (v) { const s = el('span'); s.style.width = (v / DATI.lead.totale * 100) + '%'; s.style.background = colore; s.title = `${nome}: ${v}`; $('barra-lead').appendChild(s); }
-  const riga = el('div'); const i = el('i'); i.style.background = colore;
-  riga.append(i, el('span', null, nome), el('b', null, num.format(v)));
-  $('legenda-lead').appendChild(riga);
-});
-const maxSettore = Math.max(1, ...DATI.lead.settori.map((s) => s.n));
-DATI.lead.settori.forEach((s) => {
-  const riga = el('div'); const tr = el('span', 'traccia'); const b = el('i'); b.style.width = (s.n / maxSettore * 100) + '%'; tr.appendChild(b);
-  riga.append(el('span', 'nome', s.nome), tr, el('b', null, s.n));
-  $('settori').appendChild(riga);
-});
-
-/* Navigazione: voce attiva */
-document.querySelectorAll('.nav a').forEach((a) => a.addEventListener('click', () => {
-  document.querySelectorAll('.nav a').forEach((x) => x.classList.toggle('attivo', x === a));
-}));
-
-/* Chiamate di oggi */
-const C = DATI.chiamate;
-$('n-oggi').textContent = C.oggi.length;
+/* Chiamate fatte oggi (solo su questo dispositivo) */
 const chiaveOggi = 'casa-maq-fatte-' + new Date().toLocaleDateString('sv-SE');
 let fatte = new Set();
 try { fatte = new Set(JSON.parse(localStorage.getItem(chiaveOggi) || '[]')); } catch { fatte = new Set(); }
 const salvaFatte = () => { try { localStorage.setItem(chiaveOggi, JSON.stringify([...fatte])); } catch {} };
-function aggiornaConto() {
+function segnaFatta(nome) {
+  if (fatte.has(nome)) fatte.delete(nome); else fatte.add(nome);
+  salvaFatte(); disegnaChiamate(); disegnaKpi(); disegnaObiettivi();
+}
+
+/* Serie per giorno */
+function serie(giorni, filtro) {
+  const conta = {};
+  COMMIT.forEach((c) => { if (!filtro || filtro(c)) conta[c.giorno] = (conta[c.giorno] || 0) + 1; });
+  return DATI.giorni.slice(-giorni).map((g) => ({ giorno: g.giorno, n: filtro ? (conta[g.giorno] || 0) : g.n }));
+}
+function sparkline(svg, valori, colore) {
+  svg.replaceChildren();
+  const W = 100, H = 40, max = Math.max(1, ...valori);
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const pts = valori.map((v, i) => [i / Math.max(1, valori.length - 1) * W, H - 4 - v / max * (H - 8)]);
+  const id = 'sg' + Math.random().toString(36).slice(2, 7);
+  const grad = svgEl('linearGradient', { id, x1: 0, y1: 0, x2: 0, y2: 1 });
+  grad.append(svgEl('stop', { offset: 0, 'stop-color': colore, 'stop-opacity': .35 }), svgEl('stop', { offset: 1, 'stop-color': colore, 'stop-opacity': 0 }));
+  const defs = svgEl('defs', {}); defs.appendChild(grad); svg.appendChild(defs);
+  const d = pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
+  svg.append(svgEl('path', { d: d + ` L${W} ${H} L0 ${H} Z`, fill: `url(#${id})` }), svgEl('path', { d, fill: 'none', stroke: colore, 'stroke-width': 1.8, 'stroke-linejoin': 'round', 'stroke-linecap': 'round', 'vector-effect': 'non-scaling-stroke' }));
+}
+const variazione = (ora, prima) => (prima ? Math.round((ora - prima) / prima * 100) : null);
+
+/* Numeri in alto */
+function disegnaKpi() {
+  $('k-clienti').textContent = num.format(clienti.length);
+  $('k-clienti-pill').textContent = clienti.map((p) => p.sigla).join(' · ') || 'nessuno';
+  const sigleClienti = new Set(clienti.map((p) => p.sigla));
+  sparkline($('s-clienti'), serie(14, (c) => sigleClienti.has(c.progetto)).map((x) => x.n), '#ff9f0a');
+
+  const ultimi = DATI.giorni.slice(-7).reduce((s, g) => s + g.n, 0);
+  const prima = DATI.giorni.slice(-14, -7).reduce((s, g) => s + g.n, 0);
+  $('k-modifiche').textContent = num.format(ultimi);
+  const v = variazione(ultimi, prima);
+  const pm = $('k-modifiche-pill');
+  pm.className = 'pill ' + (v == null ? '' : v >= 0 ? 'verde' : 'rossa');
+  pm.textContent = v == null ? `${prima} sett. prima` : `${v >= 0 ? '↗ +' : '↘ '}${v}% vs sett. prima`;
+  sparkline($('s-modifiche'), serie(14).map((x) => x.n), '#30d158');
+
+  $('k-attesa').textContent = num.format(inAttesaSiti.length);
+  $('k-attesa-pill').textContent = inAttesaSiti.map((p) => p.sigla).join(' · ') || 'nessuno';
+  const sigleAttesa = new Set(inAttesaSiti.map((p) => p.sigla));
+  sparkline($('s-attesa'), serie(14, (c) => sigleAttesa.has(c.progetto)).map((x) => x.n), '#0a84ff');
+
+  const n = C.oggi.filter((l) => fatte.has(l.nome)).length;
+  $('k-chiamate').textContent = `${n}/${C.oggi.length}`;
+  $('k-chiamate-pill').textContent = `${C.in_coda} in lista`;
+  sparkline($('s-chiamate'), C.oggi.map((l, i) => C.oggi.slice(0, i + 1).filter((x) => fatte.has(x.nome)).length), '#bf5af2');
+}
+
+/* Grafico a colonne */
+let periodo = 7;
+function disegnaGrafico() {
+  const box = $('grafico');
+  box.replaceChildren();
+  const dati = DATI.giorni.slice(-periodo);
+  const W = Math.max(280, box.clientWidth), H = Math.max(260, box.clientHeight);
+  const sx = 30, top = 22, bottom = 34;
+  const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Modifiche ai siti per giorno' });
+  const defs = svgEl('defs', {});
+  const mk = (id, stops) => { const g = svgEl('linearGradient', { id, x1: 0, y1: 0, x2: 0, y2: 1 }); stops.forEach(([o, c, a]) => g.appendChild(svgEl('stop', { offset: o, 'stop-color': c, 'stop-opacity': a }))); defs.appendChild(g); };
+  mk('g-vetro', [[0, '#ffffff', .34], [1, '#ffffff', .07]]);
+  mk('g-vetro-hover', [[0, '#ffffff', .5], [1, '#ffffff', .14]]);
+  mk('g-blu', [[0, '#7cc0ff', 1], [.5, '#2f95ff', 1], [1, '#0a6cff', 1]]);
+  svg.appendChild(defs);
+  const max = Math.max(1, ...dati.map((x) => x.n));
+  const alt = H - top - bottom, larg = W - sx;
+  [0, .5, 1].forEach((f) => {
+    const y = top + alt * (1 - f);
+    svg.appendChild(svgEl('line', { class: 'griglia-linea', x1: sx, x2: W, y1: y, y2: y }));
+    const t = svgEl('text', { x: 0, y: y + 3 }); t.textContent = Math.round(max * f); svg.appendChild(t);
+  });
+  const passo = larg / dati.length;
+  const lb = Math.min(28, passo * .46);
+  const iMax = dati.reduce((b, x, i, a) => (x.n > a[b].n ? i : b), 0);
+  const tip = el('div', 'suggerimento'); tip.hidden = true;
+  const ogni = dati.length > 14 ? 5 : dati.length > 7 ? 2 : 1;
+  dati.forEach((x, i) => {
+    const cx = sx + passo * i + passo / 2;
+    const h = Math.max(lb, x.n / max * alt);
+    const y = top + alt - h;
+    const forte = i === iMax && x.n > 0;
+    const g = svgEl('g', { class: 'colonna', tabindex: 0, role: 'button', 'aria-label': `${giornoLungo(x.giorno)}: ${x.n} modifiche` });
+    const r = svgEl('rect', { x: cx - lb / 2, y, width: lb, height: h, rx: lb / 2, class: forte ? '' : 'vetro-col' });
+    if (forte) { r.setAttribute('fill', 'url(#g-blu)'); r.setAttribute('style', 'filter: drop-shadow(0 0 12px rgba(10,132,255,.6))'); }
+    if (x.n === 0) r.setAttribute('opacity', '.45');
+    g.appendChild(r);
+    g.appendChild(svgEl('rect', { x: sx + passo * i, y: 0, width: passo, height: H, fill: 'transparent' }));
+    const d = new Date(x.giorno + 'T12:00:00');
+    if ((dati.length - 1 - i) % ogni === 0) {
+      const t = svgEl('text', { x: cx, y: H - 12, 'text-anchor': 'middle' });
+      t.textContent = dati.length <= 7 ? d.toLocaleDateString('it-IT', { weekday: 'short' }).replace('.', '') : d.getDate() + '/' + (d.getMonth() + 1);
+      svg.appendChild(t);
+    }
+    if (forte) { const v = svgEl('text', { x: cx, y: y - 7, 'text-anchor': 'middle', class: 'valore-su' }); v.textContent = x.n; svg.appendChild(v); }
+    const apriGiorno = () => apri(() => foglioGiorno(x.giorno));
+    g.addEventListener('click', apriGiorno);
+    g.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); apriGiorno(); } });
+    g.addEventListener('pointerenter', () => {
+      tip.replaceChildren(el('span', null, d.toLocaleDateString('it-IT', { weekday: 'short', day: 'numeric', month: 'short' }) + ' · '), document.createTextNode(x.n === 1 ? '1 modifica' : x.n + ' modifiche'));
+      tip.hidden = false;
+      tip.style.left = (Math.min(Math.max(cx, 80), W - 80) / W * 100) + '%';
+      tip.style.top = Math.max(y, 30) + 'px';
+    });
+    g.addEventListener('pointerleave', () => { tip.hidden = true; });
+    svg.appendChild(g);
+  });
+  box.append(svg, tip);
+  const tot = dati.reduce((s, x) => s + x.n, 0);
+  const prec = DATI.giorni.slice(-periodo * 2, -periodo);
+  const v = prec.length === periodo ? variazione(tot, prec.reduce((s, x) => s + x.n, 0)) : null;
+  const pill = $('grafico-pill');
+  pill.className = 'pill ' + (v == null ? '' : v >= 0 ? 'verde' : 'rossa');
+  pill.textContent = v == null ? `${tot} modifiche` : `${v >= 0 ? '+' : ''}${v}% sul periodo prima`;
+  $('grafico-sotto').textContent = `${tot} modifiche salvate · ${periodo === 7 ? 'ultima settimana' : periodo === 14 ? 'ultime due settimane' : 'ultimo mese'} · tocchi una colonna`;
+}
+document.querySelectorAll('[data-periodo]').forEach((b) => b.addEventListener('click', () => {
+  periodo = Number(b.dataset.periodo);
+  document.querySelectorAll('[data-periodo]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+  disegnaGrafico();
+}));
+let attesaRidisegno;
+new ResizeObserver(() => { clearTimeout(attesaRidisegno); attesaRidisegno = setTimeout(disegnaGrafico, 80); }).observe($('grafico'));
+
+/* Agenda di oggi */
+const COLORE_QUANDO = (q) => (/fare/i.test(q) ? 'var(--arancio)' : /attesa/i.test(q) ? 'var(--giallo)' : /fissare/i.test(q) ? 'var(--rosa)' : /controllare/i.test(q) ? 'var(--azzurro)' : 'var(--viola)');
+function voceAgenda(ora, titolo, sotto, colore, facce, azione) {
+  const v = el('div', 'agenda-voce');
+  const b = el('button', 'blocco'); b.type = 'button'; b.style.setProperty('--c', colore);
+  b.append(el('span', 'titolo', titolo), el('span', 'sotto', sotto));
+  if (facce?.length) { const f = el('span', 'facce'); facce.forEach((n) => f.appendChild(avatar(n, 'faccia'))); b.appendChild(f); }
+  b.addEventListener('click', azione);
+  v.append(el('span', 'ora', ora), b);
+  return v;
+}
+function disegnaAgenda() {
+  const ag = $('agenda'); ag.replaceChildren();
+  if (C.oggi.length) {
+    const nomi = C.oggi.map((l) => l.nome);
+    ag.appendChild(voceAgenda('Oggi', `${C.oggi.length} chiamate da fare`, `${nomi.slice(0, 2).join(', ')} e altre ${Math.max(0, nomi.length - 2)}`, 'var(--blu)', nomi.slice(0, 4), () => apri(foglioChiamate)));
+  }
+  DATI.promemoria.forEach((p) => ag.appendChild(voceAgenda(p.quando, p.testo.split(':')[0], p.testo.includes(':') ? p.testo.split(':').slice(1).join(':').trim() : '', COLORE_QUANDO(p.quando), progettiCitati(p.testo).map((x) => x.sigla), () => apri(() => foglioPromemoria(p)))));
+}
+const progettiCitati = (testo) => DATI.progetti.filter((p) => testo.toLowerCase().includes(p.sigla.toLowerCase()) || testo.toLowerCase().includes(p.nome.split(' ')[0].toLowerCase()));
+
+/* Attività recenti */
+function rigaCommit(c) {
+  const li = el('li', 'riga-av cliccabile'); li.tabIndex = 0; li.setAttribute('role', 'button');
+  const t = el('span', 'testo'); t.append(el('b', null, c.progetto + ' '), document.createTextNode(c.testo));
+  const tm = el('time', null, quandoRelativo(c.quando)); tm.dateTime = c.quando;
+  li.append(avatar(c.progetto), t, tm);
+  const p = progettoDaSigla(c.progetto);
+  const azione = () => (p ? apri(() => foglioProgetto(p)) : apri(() => foglioGiorno(c.giorno)));
+  li.addEventListener('click', azione);
+  li.addEventListener('keydown', (e) => { if (e.key === 'Enter') azione(); });
+  return li;
+}
+function disegnaAttivita() {
+  const ul = $('attivita'); ul.replaceChildren();
+  COMMIT.slice(0, 12).forEach((c) => ul.appendChild(rigaCommit(c)));
+  if (!COMMIT.length) ul.appendChild(el('li', 'avviso', 'Nessuna modifica nell\'ultimo mese.'));
+}
+
+/* Siti */
+const TONO_PILL = { ok: 'verde', attesa: 'gialla', lavoro: 'arancio', bozza: 'viola' };
+function rigaSito(p) {
+  const li = el('li', 'riga-av cliccabile'); li.tabIndex = 0; li.setAttribute('role', 'button');
+  const t = el('span', 'testo'); t.append(el('b', null, p.nome)); t.appendChild(el('span', 'sotto', p.nota));
+  const pill = el('span', 'pill ' + (TONO_PILL[p.tono] || ''), p.stato);
+  li.append(avatar(p.sigla), t, pill);
+  li.addEventListener('click', () => apri(() => foglioProgetto(p)));
+  li.addEventListener('keydown', (e) => { if (e.key === 'Enter') apri(() => foglioProgetto(p)); });
+  return li;
+}
+function disegnaSiti() {
+  $('siti-sotto').textContent = `${clienti.length} clienti · ${inAttesaSiti.length} in attesa · ${daCompletare.length} da completare`;
+  const ul = $('lista-siti'); ul.replaceChildren();
+  DATI.progetti.forEach((p) => ul.appendChild(rigaSito(p)));
+}
+
+/* Obiettivi */
+function anello(perc, colore) {
+  const a = el('span', 'anello');
+  const s = svgEl('svg', { viewBox: '0 0 46 46' });
+  const r = 19, circ = 2 * Math.PI * r;
+  s.append(svgEl('circle', { cx: 23, cy: 23, r, fill: 'none', stroke: 'rgba(255,255,255,.1)', 'stroke-width': 4 }),
+    svgEl('circle', { cx: 23, cy: 23, r, fill: 'none', stroke: colore, 'stroke-width': 4, 'stroke-linecap': 'round', 'stroke-dasharray': `${circ * perc / 100} ${circ}` }));
+  a.append(s, el('b', null, perc + '%'));
+  return a;
+}
+function obiettivo(perc, colore, nome, sotto, azione) {
+  const o = el('button', 'obiettivo cliccabile'); o.type = 'button'; o.style.cssText = 'border:0;background:none;text-align:left;color:inherit';
+  const t = el('span'); t.append(el('div', 'nome', nome), el('div', 'sotto', sotto));
+  o.append(anello(perc, colore), t); o.addEventListener('click', azione);
+  return o;
+}
+function disegnaObiettivi() {
+  const box = $('obiettivi'); box.replaceChildren();
+  const n = C.oggi.filter((l) => fatte.has(l.nome)).length;
+  box.appendChild(obiettivo(C.oggi.length ? Math.round(n / C.oggi.length * 100) : 0, 'var(--arancio)', 'Chiamate di oggi', `${n} fatte su ${C.oggi.length}`, () => apri(foglioChiamate)));
+  box.appendChild(obiettivo(siti.length ? Math.round(clienti.length / siti.length * 100) : 0, 'var(--verde)', 'Siti diventati clienti', `${clienti.length} su ${siti.length} in corso`, () => apri(foglioClienti)));
+  const g = DATI.lead.gruppi, contattati = (g.contattati || 0) + (g.positivi || 0);
+  box.appendChild(obiettivo(Math.round(contattati / DATI.lead.totale * 100), 'var(--blu)', 'Lead contattati', `${contattati} su ${DATI.lead.totale}`, () => apri(() => foglioGruppo('contattati'))));
+}
+
+/* Chiamate */
+function disegnaChiamate() {
+  const box = $('lista-chiamate'); box.replaceChildren();
+  C.oggi.forEach((l) => {
+    const c = el('button', 'chiamata' + (fatte.has(l.nome) ? ' fatta' : '')); c.type = 'button';
+    const testa = el('div', 'testa');
+    const chi = el('div'); chi.append(el('div', 'nome', l.nome), el('div', 'dove', `${l.settore} · ${l.zona}`));
+    testa.append(chi, el('span', 'stelle', '★ ' + l.voto.toLocaleString('it-IT', { minimumFractionDigits: 1 }) + ` (${l.recensioni})`));
+    c.append(testa, el('span', 'tel', l.telefono), el('span', 'dove', (fatte.has(l.nome) ? '✓ Fatta · ' : '') + 'Online: ' + l.online.join(', ')));
+    c.addEventListener('click', () => apri(() => foglioChiamata(l)));
+    box.appendChild(c);
+  });
+  if (!C.oggi.length) box.appendChild(el('p', 'avviso', 'Nessuna chiamata in lista: chieda a Claude nuovi lead dalla chat.'));
   const n = C.oggi.filter((l) => fatte.has(l.nome)).length;
   $('chiamate-conto').textContent = `${n} di ${C.oggi.length} fatte · ${C.in_coda} in lista`;
   $('chiamate-barra').style.width = (C.oggi.length ? n / C.oggi.length * 100 : 0) + '%';
 }
-C.oggi.forEach((l) => {
-  const card = el('article', 'chiamata' + (fatte.has(l.nome) ? ' fatta' : ''));
-  const testa = el('div', 'riga');
-  const chi = el('div');
-  chi.append(el('div', 'nome', l.nome), el('div', 'dove', `${l.settore} · ${l.zona}`));
-  const stelle = el('span', 'stelle', '★ ' + l.voto.toLocaleString('it-IT', { minimumFractionDigits: 1 }) + ' ');
-  stelle.appendChild(el('span', null, `(${l.recensioni})`));
-  testa.append(chi, stelle);
-  const tel = el('div', 'riga');
-  tel.append(el('span', 'tel', l.telefono), el('span', 'online', 'Online: ' + l.online.join(', ')));
-  const azioni = el('div', 'azioni');
-  const chiamaLink = el('a', 'chip', 'Chiama'); chiamaLink.href = 'tel:' + l.telefono.replace(/\s/g, '');
-  const copia = el('button', 'chip', 'Copia numero'); copia.type = 'button';
-  copia.addEventListener('click', () => {
-    navigator.clipboard.writeText(l.telefono).then(() => { copia.textContent = 'Copiato'; setTimeout(() => { copia.textContent = 'Copia numero'; }, 1500); })
-      .catch(() => { const r = document.createRange(); r.selectNodeContents(tel.firstChild); const s = getSelection(); s.removeAllRanges(); s.addRange(r); });
+
+/* Lead */
+const STATI = [
+  ['positivi', 'Risposte positive', 'var(--verde)'],
+  ['contattati', 'Contattati', 'var(--blu)'],
+  ['da_chiamare', 'Da chiamare', 'var(--arancio)'],
+  ['da_contattare', 'Da contattare', 'var(--viola)'],
+  ['hanno_sito', 'Hanno già il sito', 'rgba(255,255,255,.25)'],
+];
+function disegnaLead() {
+  const g = DATI.lead.gruppi;
+  $('lead-totale').textContent = num.format(DATI.lead.totale);
+  const barra = $('barra-lead'), leg = $('legenda-lead'), set = $('settori');
+  barra.replaceChildren(); leg.replaceChildren(); set.replaceChildren();
+  STATI.forEach(([k, nome, colore]) => {
+    const v = g[k] || 0;
+    if (v) { const s = el('button'); s.type = 'button'; s.style.width = (v / DATI.lead.totale * 100) + '%'; s.style.background = colore; s.setAttribute('aria-label', `${nome}: ${v}`); s.addEventListener('click', () => apri(() => foglioGruppo(k))); barra.appendChild(s); }
+    const b = el('button'); b.type = 'button'; const i = el('i'); i.style.background = colore;
+    b.append(i, el('span', null, nome), el('b', null, num.format(v)));
+    b.addEventListener('click', () => apri(() => foglioGruppo(k)));
+    leg.appendChild(b);
   });
-  const maps = el('a', 'chip', 'Maps ↗'); maps.href = l.maps; maps.target = '_blank'; maps.rel = 'noopener';
-  const fatta = el('button', 'chip' + (fatte.has(l.nome) ? ' fatto' : ''), fatte.has(l.nome) ? '✓ Fatta' : 'Segna fatta'); fatta.type = 'button';
-  fatta.addEventListener('click', () => {
-    if (fatte.has(l.nome)) fatte.delete(l.nome); else fatte.add(l.nome);
-    const si = fatte.has(l.nome);
-    fatta.textContent = si ? '✓ Fatta' : 'Segna fatta'; fatta.classList.toggle('fatto', si); card.classList.toggle('fatta', si);
-    salvaFatte(); aggiornaConto();
+  const max = Math.max(1, ...DATI.lead.settori.map((s) => s.n));
+  DATI.lead.settori.forEach((s) => {
+    const b = el('button'); b.type = 'button';
+    const tr = el('span', 'traccia'); const f = el('i'); f.style.width = (s.n / max * 100) + '%'; tr.appendChild(f);
+    b.append(el('span', 'nome', s.nome), tr, el('b', null, s.n));
+    b.addEventListener('click', () => apri(() => foglioSettore(s.nome)));
+    set.appendChild(b);
   });
-  azioni.append(chiamaLink, copia, maps, fatta);
-  card.append(testa, tel, azioni);
-  $('lista-chiamate').appendChild(card);
-});
-if (!C.oggi.length) $('lista-chiamate').appendChild(el('p', 'avviso', 'Nessuna chiamata in lista: chieda a Claude nuovi lead dalla chat.'));
-aggiornaConto();
+}
+
+/* ---------- Fogli di dettaglio ---------- */
+const storia = [];
+let ultimoFuoco = null;
+function mostraFoglio(f) {
+  $('foglio-titolo').textContent = f.titolo;
+  $('foglio-corpo').replaceChildren(...f.corpo);
+  $('foglio-corpo').scrollTop = 0;
+  $('indietro').hidden = storia.length < 2;
+}
+function apri(costruttore) {
+  if ($('foglio').hidden) { storia.length = 0; ultimoFuoco = document.activeElement; }
+  storia.push(costruttore);
+  mostraFoglio(costruttore());
+  $('foglio').hidden = false; $('velo').hidden = false;
+  $('chiudi').focus();
+}
+function chiudi() {
+  $('foglio').hidden = true; $('velo').hidden = true; storia.length = 0;
+  if (ultimoFuoco?.focus) ultimoFuoco.focus();
+}
+$('chiudi').addEventListener('click', chiudi);
+$('velo').addEventListener('click', chiudi);
+$('indietro').addEventListener('click', () => { storia.pop(); mostraFoglio(storia[storia.length - 1]()); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !$('foglio').hidden) chiudi(); });
+
+const h3 = (t) => el('h3', null, t);
+const par = (t) => el('p', null, t);
+const dato = (etichetta, valore) => { const d = el('div', 'dato'); d.append(el('span', null, etichetta), el('b', null, valore)); return d; };
+const dati = (...coppie) => { const d = el('div', 'dati'); coppie.forEach(([a, b]) => d.appendChild(dato(a, b))); return d; };
+function testaScheda(nome, sotto, pill) {
+  const t = el('div', 'scheda-testa'); const s = el('div');
+  s.append(el('div', 'nome', nome), el('div', 'sotto', sotto));
+  if (pill) s.appendChild(pill);
+  t.append(avatar(nome), s); return t;
+}
+function bottoneChiedi(testo, etichetta = 'Chiedi a Claude') {
+  const b = el('button', 'bottone'); b.type = 'button'; b.append(icona('chat'), document.createTextNode(etichetta));
+  b.addEventListener('click', () => { chiudi(); apriChatCon(testo); });
+  return b;
+}
+function link(href, testo) { const a = el('a', 'bottone', testo); a.href = href; a.target = '_blank'; a.rel = 'noopener'; return a; }
+function lista(elementi) { const ul = el('ul', 'lista'); elementi.forEach((x) => ul.appendChild(x)); return ul; }
+const vuoto = (t) => el('p', 'avviso', t);
+
+function foglioProgetto(p) {
+  const cs = COMMIT.filter((c) => c.progetto === p.sigla);
+  const ult7 = cs.filter((c) => (Date.now() - new Date(c.quando)) < 7 * 864e5).length;
+  const corpo = [testaScheda(p.nome, p.nota, el('span', 'pill ' + (TONO_PILL[p.tono] || ''), p.stato)),
+    dati(['Stato', p.stato], ['Ultima modifica', p.aggiornato ? quandoRelativo(p.aggiornato) : '—'], ['Modifiche in 7 giorni', String(ult7)], ['Modifiche nel mese', String(cs.length)])];
+  const az = el('div', 'azioni-foglio');
+  if (p.link) az.appendChild(link(p.link, 'Apri il sito ↗'));
+  az.appendChild(bottoneChiedi(`Riguardo al sito ${p.nome}: `, 'Lavora su questo sito'));
+  corpo.push(az, h3('Ultime modifiche'), cs.length ? lista(cs.slice(0, 30).map(rigaCommit)) : vuoto('Nessuna modifica nell\'ultimo mese.'));
+  return { titolo: p.nome, corpo };
+}
+function foglioElencoSiti(titolo, testo, elenco) {
+  return { titolo, corpo: [par(testo), elenco.length ? lista(elenco.map(rigaSito)) : vuoto('Nessuno al momento.')] };
+}
+const foglioClienti = () => foglioElencoSiti('Clienti', `${clienti.length} siti certi: tocchi un nome per i dettagli.`, clienti);
+const foglioAttesa = () => foglioElencoSiti('In attesa di risposta', 'Bozze o preventivi mandati: si aspetta il sì del titolare.', inAttesaSiti);
+const foglioSiti = () => foglioElencoSiti('Tutti i siti', `${clienti.length} clienti · ${inAttesaSiti.length} in attesa · ${daCompletare.length} da completare`, DATI.progetti);
+function foglioGiorno(g) {
+  const cs = COMMIT.filter((c) => c.giorno === g);
+  return { titolo: giornoLungo(g), corpo: [par(cs.length === 1 ? '1 modifica salvata.' : `${cs.length} modifiche salvate.`), cs.length ? lista(cs.map(rigaCommit)) : vuoto('Nessuna modifica in questo giorno.')] };
+}
+function foglioModifiche(giorni) {
+  const da = DATI.giorni.slice(-giorni)[0].giorno;
+  const cs = COMMIT.filter((c) => c.giorno >= da);
+  const corpo = [par(`${cs.length} modifiche ${giorni === 7 ? 'negli ultimi 7 giorni' : 'nell\'ultimo mese'}, divise per giorno.`)];
+  const perGiorno = {};
+  cs.forEach((c) => (perGiorno[c.giorno] ||= []).push(c));
+  Object.keys(perGiorno).sort().reverse().forEach((g) => corpo.push(h3(giornoLungo(g) + ` · ${perGiorno[g].length}`), lista(perGiorno[g].map(rigaCommit))));
+  if (!cs.length) corpo.push(vuoto('Nessuna modifica.'));
+  return { titolo: giorni === 7 ? 'Modifiche della settimana' : 'Tutte le modifiche del mese', corpo };
+}
+function rigaLead(l) {
+  const li = el('li', 'riga-av');
+  const t = el('span', 'testo'); t.append(el('b', null, l.nome));
+  t.appendChild(el('span', 'sotto', [l.settore, l.indirizzo].filter(Boolean).join(' · ')));
+  if (l.nota) t.appendChild(el('span', 'sotto', l.nota));
+  li.append(avatar(l.nome), t, el('span', 'lato', l.recensioni ? `★ ${String(l.voto).replace('.', ',')} (${l.recensioni})` : ''));
+  return li;
+}
+function foglioGruppo(k) {
+  const [, nome] = STATI.find((s) => s[0] === k);
+  const elenco = DATI.lead.elenco.filter((l) => l.gruppo === k || (k === 'contattati' && l.gruppo === 'positivi'));
+  return { titolo: nome, corpo: [par(`${elenco.length} attività dal foglio "Lead strutturati".`), elenco.length ? lista(elenco.map(rigaLead)) : vuoto('Nessuna.')] };
+}
+function foglioSettore(s) {
+  const elenco = DATI.lead.elenco.filter((l) => l.settore === s);
+  return { titolo: s, corpo: [par(`${elenco.length} attività in questo settore.`), lista(elenco.map(rigaLead))] };
+}
+const voto = (v) => Number(v).toLocaleString('it-IT', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+function copione(l) {
+  return DATI.script.replace(/([^\n])\n(?!\n)/g, '$1 ')
+    .replace('ti ho cercato qua su Google', `ho trovato ${l.nome} qua su Google`)
+    .replace('le ottime recensioni', `le ottime recensioni (${l.recensioni} recensioni, media ${voto(l.voto)})`)
+    .replace('te ne ho già preparato uno e vorrei mostrartelo', 'te ne preparo uno e vorrei mostrartelo');
+}
+function foglioChiamata(l) {
+  const corpo = [testaScheda(l.nome, `${l.settore} · ${l.zona}`), dati(['Telefono', l.telefono], ['Google', `★ ${voto(l.voto)} · ${l.recensioni} recensioni`], ['Online', l.online.join(', ')], ['Verificato', new Date(l.verificato + 'T12:00:00').toLocaleDateString('it-IT')])];
+  if (l.indirizzo) corpo.push(par(l.indirizzo));
+  const az = el('div', 'azioni-foglio');
+  const tel = el('a', 'bottone'); tel.href = 'tel:' + l.telefono.replace(/\s/g, ''); tel.append(icona('phone'), document.createTextNode('Chiama'));
+  const copia = el('button', 'bottone', 'Copia numero'); copia.type = 'button';
+  copia.addEventListener('click', () => navigator.clipboard.writeText(l.telefono).then(() => { copia.textContent = 'Copiato'; }).catch(() => { copia.textContent = l.telefono; }));
+  const fatta = el('button', 'bottone', fatte.has(l.nome) ? '✓ Fatta' : 'Segna fatta'); fatta.type = 'button';
+  fatta.addEventListener('click', () => { segnaFatta(l.nome); fatta.textContent = fatte.has(l.nome) ? '✓ Fatta' : 'Segna fatta'; });
+  az.append(tel, copia, link(l.maps, 'Maps ↗'), fatta);
+  corpo.push(az, h3('Testo della chiamata'), el('div', 'copione', copione(l)), h3('Com\'è andata?'), par('Lo scriva a Claude: aggiorna la lista e la pagina.'));
+  const esiti = el('div', 'azioni-foglio');
+  [['Interessato', 'è interessato, preparare la bozza'], ['Richiamare', 'da richiamare'], ['Non interessato', 'non interessato'], ['Non risponde', 'non risponde, riprovare']].forEach(([e, t]) => esiti.appendChild(bottoneChiedi(`Esito chiamata ${l.nome}: ${t}. `, e)));
+  corpo.push(esiti);
+  return { titolo: l.nome, corpo };
+}
+function foglioChiamate() {
+  const righe = C.oggi.map((l) => {
+    const li = el('li', 'riga-av cliccabile'); li.tabIndex = 0;
+    const t = el('span', 'testo'); t.append(el('b', null, l.nome), el('span', 'sotto', `${l.settore} · ${l.zona} · ${l.telefono}`));
+    li.append(avatar(l.nome), t, el('span', 'lato', fatte.has(l.nome) ? '✓ fatta' : `★ ${String(l.voto).replace('.', ',')}`));
+    li.addEventListener('click', () => apri(() => foglioChiamata(l)));
+    return li;
+  });
+  return { titolo: 'Chiamate di oggi', corpo: [par(`${C.oggi.length} chiamate per oggi, ${C.in_coda} attività in lista in tutto. Tocchi un nome per il testo della chiamata.`), lista(righe)] };
+}
+function foglioPromemoria(p) {
+  const corpo = [testaScheda(p.quando, p.testo), par(p.testo)];
+  const citati = progettiCitati(p.testo);
+  if (citati.length) corpo.push(h3('Siti collegati'), lista(citati.map(rigaSito)));
+  corpo.push(el('div', 'azioni-foglio')); corpo[corpo.length - 1].appendChild(bottoneChiedi(`Riguardo al promemoria "${p.testo}": `));
+  return { titolo: p.quando, corpo };
+}
+function foglioTuttiPromemoria() {
+  return { titolo: 'Promemoria', corpo: [lista(DATI.promemoria.map((p) => {
+    const li = el('li', 'riga-av cliccabile'); const t = el('span', 'testo'); t.append(el('b', null, p.quando), el('span', 'sotto', p.testo));
+    const pallino = el('span', 'av'); pallino.style.background = COLORE_QUANDO(p.quando); pallino.appendChild(icona('bell'));
+    li.append(pallino, t, el('span'));
+    li.addEventListener('click', () => apri(() => foglioPromemoria(p)));
+    return li;
+  }))] };
+}
+function foglioOggi() {
+  const corpo = [par(new Date().toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'long' }))];
+  corpo.push(h3('Chiamate'), foglioChiamate().corpo[1]);
+  corpo.push(h3('Promemoria'), ...foglioTuttiPromemoria().corpo);
+  return { titolo: 'Oggi', corpo };
+}
+function foglioCerca() {
+  const input = el('input', 'cerca'); input.type = 'search'; input.placeholder = 'Cerchi un sito, un lead, una modifica…'; input.id = 'cerca-testo';
+  const risultati = el('div'); risultati.style.cssText = 'display:grid;gap:12px';
+  const aggiorna = () => {
+    const q = input.value.trim().toLowerCase();
+    risultati.replaceChildren();
+    if (q.length < 2) { risultati.appendChild(par('Scriva almeno due lettere.')); return; }
+    const s = DATI.progetti.filter((p) => (p.nome + ' ' + p.nota).toLowerCase().includes(q));
+    const ch = C.oggi.filter((l) => (l.nome + ' ' + l.settore + ' ' + l.zona).toLowerCase().includes(q));
+    const ld = DATI.lead.elenco.filter((l) => (l.nome + ' ' + l.settore + ' ' + l.indirizzo + ' ' + l.nota).toLowerCase().includes(q)).slice(0, 30);
+    const cm = COMMIT.filter((c) => (c.progetto + ' ' + c.testo).toLowerCase().includes(q)).slice(0, 20);
+    if (s.length) risultati.append(h3('Siti'), lista(s.map(rigaSito)));
+    if (ch.length) risultati.append(h3('Chiamate di oggi'), lista(ch.map((l) => { const li = rigaLead({ ...l, indirizzo: l.zona, nota: l.telefono }); li.classList.add('cliccabile'); li.addEventListener('click', () => apri(() => foglioChiamata(l))); return li; })));
+    if (ld.length) risultati.append(h3('Lead'), lista(ld.map(rigaLead)));
+    if (cm.length) risultati.append(h3('Modifiche'), lista(cm.map(rigaCommit)));
+    if (!s.length && !ch.length && !ld.length && !cm.length) risultati.appendChild(vuoto('Nessun risultato.'));
+  };
+  input.addEventListener('input', aggiorna);
+  setTimeout(() => input.focus(), 50);
+  aggiorna();
+  return { titolo: 'Cerca', corpo: [input, risultati] };
+}
+
+const FOGLI = {
+  clienti: foglioClienti, attesa: foglioAttesa, siti: foglioSiti, chiamate: foglioChiamate,
+  modifiche: () => foglioModifiche(7), 'modifiche-tutte': () => foglioModifiche(30),
+  promemoria: foglioTuttiPromemoria, oggi: foglioOggi, cerca: foglioCerca,
+};
+document.querySelectorAll('[data-apri]').forEach((b) => b.addEventListener('click', () => apri(FOGLI[b.dataset.apri])));
+
+/* Navigazione: barra in alto e dock */
+function vai(id) {
+  const t = $(id);
+  if (t) t.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+  document.querySelectorAll('[data-vai]').forEach((x) => x.classList.toggle('attivo', x.dataset.vai === id));
+}
+document.querySelectorAll('[data-vai]').forEach((b) => b.addEventListener('click', (e) => { e.preventDefault(); vai(b.dataset.vai); }));
+$('b-menu').addEventListener('click', () => vai('home'));
+document.querySelectorAll('[data-chat]').forEach((b) => b.addEventListener('click', () => apriChatCon('')));
+function apriChatCon(testo) {
+  if ($('finestra').hidden) $('mostra-chat').click();
+  const inp = $('domanda');
+  if (testo) inp.value = testo;
+  inp.focus();
+  inp.setSelectionRange(inp.value.length, inp.value.length);
+}
+
+disegnaKpi(); disegnaGrafico(); disegnaAgenda(); disegnaAttivita(); disegnaSiti(); disegnaObiettivi(); disegnaChiamate(); disegnaLead();
 
 /* Chat con Claude Code e sessioni, tramite il connettore "Claude Code Remote" */
 const SERVER = 'Claude Code Remote';

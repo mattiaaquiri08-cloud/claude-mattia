@@ -13,12 +13,14 @@ import pathlib
 import re
 import subprocess
 
+import base64
+
 import openpyxl
 
 QUI = pathlib.Path(__file__).resolve().parent
 REPO = QUI.parent
 PRINCIPALE = "claude/intelligent-albattani-bti0iy"
-GIORNI = 14
+GIORNI = 30
 
 
 def git(*args):
@@ -42,7 +44,17 @@ def lead():
         else:
             gruppi["contattati"] += 1
     settori = collections.Counter((r[1] or "Altro").strip() for r in righe)
+    elenco = []
+    for r in righe:
+        s = (r[10] or "").strip()
+        gruppo = ("da_chiamare" if s.startswith("Da chiamare") else "da_contattare" if s.startswith("Da contattare")
+                  else "positivi" if s.startswith(("Interessato", "Sì")) else "hanno_sito" if s.startswith("Ha già") else "contattati")
+        nota = (r[11] or "").strip()
+        elenco.append({"nome": r[0], "settore": (r[1] or "Altro").strip(), "indirizzo": r[3] or "",
+                       "recensioni": r[4], "voto": r[5], "stato": s, "gruppo": gruppo,
+                       "nota": nota[:180] + ("…" if len(nota) > 180 else "")})
     return {
+        "elenco": elenco,
         "totale": len(righe),
         "gruppi": dict(gruppi),
         "settori": [{"nome": n, "n": c} for n, c in settori.most_common(6)],
@@ -74,9 +86,16 @@ def lavoro(nomi_rami):
         per_progetto[v["progetto"]] += 1
         testo = re.sub(r"^[^:]{1,24}:\s*", "", v["testo"])
         attivita.append({**v, "testo": testo[:1].upper() + testo[1:]})
+    commit = []
+    for v in voci:
+        if v["testo"].startswith("Memoria"):
+            continue
+        testo = re.sub(r"^[^:]{1,24}:\s*", "", v["testo"])
+        commit.append({"quando": v["quando"], "progetto": v["progetto"], "testo": testo[:1].upper() + testo[1:]})
     return {
         "giorni": [{"giorno": g, "n": per_giorno.get(g, 0)} for g in giorni],
         "attivita": attivita[:14],
+        "commit": commit,
     }
 
 
@@ -111,11 +130,14 @@ def main():
         "promemoria": manuali["promemoria"],
         "lead": lead(),
         "chiamate": chiamate(),
+        "script": (REPO / "lead/script-chiamata.md").read_text().split("\n", 2)[-1].strip(),
         **lavoro(manuali["nomi_rami"]),
     }
     modello = (QUI / "modello.html").read_text()
     blob = json.dumps(dati, ensure_ascii=False).replace("</", "<\\/")
-    (QUI / "casa.html").write_text(modello.replace("/*DATI*/null", blob))
+    foto = base64.b64encode((QUI / "sfondo.jpg").read_bytes()).decode()
+    pagina = modello.replace("/*DATI*/null", blob).replace("__FOTO__", "data:image/jpeg;base64," + foto)
+    (QUI / "casa.html").write_text(pagina)
     print(f"casa.html generata: {len(dati['attivita'])} attività, {dati['lead']['totale']} lead, {len(progetti)} siti")
 
 
