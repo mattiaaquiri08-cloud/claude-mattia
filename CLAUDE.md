@@ -199,6 +199,10 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   che cercano chi gli offra questo servizio: ricerca Maps "categoria + quartiere" (`gmaps_search.py`), 12-60 recensioni,
   voto >= 4,8, nessun sito (controllare domini nome.it/.com: Reformer Hub ce l'ha, East End Tattoo "coming soon"),
   cellulare, aperte. Mix di settori e quartieri. Primo blocco di 19 in `casa-maq/chiamate.json`.
+- Aggiornamento automatico della Casa MAQ (30/10, richiesto dall'utente): attività programmata "Casa MAQ – aggiornamento
+  del mattino" (trig_01S68gU1gtQE9ACP9z5nGcAd), ogni giorno alle 8:40 ora di Roma, nuova sessione: legge gli esiti
+  dalle chat con tag casa-maq, aggiorna chiamate/siti/promemoria, cerca nuovi lead se ne restano meno di 20, ripubblica
+  la pagina e fa push sul ramo principale. Non ha connettori (non le servono). Gli esiti delle chiamate l'utente li dice in chat.
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
