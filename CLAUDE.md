@@ -182,6 +182,13 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Più schede/sessioni di Claude (18/10): NON comunicano tra loro; la memoria comune è questo repo. Ogni sessione lavora
   su un suo ramo `claude/...`: all'inizio fare `git fetch` e guardare gli altri rami recenti (es. `git log --all --since="2 days ago"`)
   per sapere cosa è già stato fatto, e riportare qui le lezioni utili. 100C: bozza fatta e inviata in un'altra sessione.
+- Casa MAQ (29/10): pagina privata "di vetro" (glassmorphism, sfondo con le luci viola/rosa/pesca, font Sora) che l'utente
+  apre all'inizio: lavoro recente dei siti (commit di tutti i rami), stato dei siti, promemoria, numeri dei lead e chat
+  con Claude dentro la pagina (capacità `sample`: conosce solo i dati della pagina). URL fisso:
+  https://claude.ai/artifact/7mNJKpYPCR3dh9ecbVfbTu . File in `casa-maq/`: `modello.html` (grafica), `dati-manuali.json`
+  (stato dei siti e promemoria, da tenere aggiornati), `aggiorna.py` (legge Excel dei lead + git e genera `casa.html`,
+  non committato). Per aggiornarla: `python3 casa-maq/aggiorna.py`, poi Artifact read di quell'URL e publish con
+  `url` + `file_path` casa-maq/casa.html. Farlo a fine lavoro quando cambia lo stato di un sito, un lead o un promemoria.
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).

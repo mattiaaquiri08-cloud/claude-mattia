@@ -1,0 +1,32 @@
+{
+  "_leggimi": "Dati scritti a mano per la Casa MAQ. Stato dei siti e promemoria: aggiornarli quando cambiano, poi lanciare python3 casa-maq/aggiorna.py.",
+  "progetti": [
+    {"nome": "OMA Osteria Moderna", "ramo": "claude/vigilant-edison-50pdj9", "stato": "Cliente", "tono": "ok", "nota": "Sito in lavorazione, ricevuta d'acconto inviata"},
+    {"nome": "Exotique & Estetique", "ramo": "claude/nifty-fermi-4z2y3y", "stato": "Preventivo", "tono": "attesa", "nota": "Si aspetta la scelta di Naomi: sito nuovo o manutenzione"},
+    {"nome": "Enrico Picciolo", "ramo": "claude/demo-picciolo", "stato": "Bozza online", "tono": "bozza", "nota": "Nuova versione su GitHub Pages"},
+    {"nome": "Nanà Vini e Cucina", "ramo": "claude/tender-fermat-6x29iw", "stato": "Bozza", "tono": "bozza", "nota": "Bilingue IT/EN, file unico pronto"},
+    {"nome": "100C Vino e Pesce", "ramo": "claude/friendly-cray-in10av", "stato": "Bozza inviata", "tono": "attesa", "nota": "Mandata su WhatsApp il 18/10 dopo il sì al telefono"},
+    {"nome": "Ristorante Da Mario", "ramo": "claude/clever-davinci-dm707p", "stato": "Preventivo", "tono": "attesa", "nota": "Base 500 €, completo 690 €, mandato a Valerio"},
+    {"nome": "Claudia Fulli Salon", "ramo": "claude/hopeful-brown-39feqc", "stato": "Bozza", "tono": "bozza", "nota": "Galleria e foto di Claudia in attesa delle foto vere"},
+    {"nome": "FLIPPER", "ramo": "claude/youthful-meitner-e8cwyn", "stato": "Bozza", "tono": "bozza", "nota": "Rotazione 3D guidata dallo scroll"},
+    {"nome": "MAQ Web Design", "ramo": "claude/intelligent-albattani-bti0iy", "stato": "Online", "tono": "ok", "nota": "maqwebdesign.com"}
+  ],
+  "promemoria": [
+    {"quando": "Da fissare", "testo": "Genny a San Lorenzo è interessato: fissare l'incontro e preparare la bozza prima"},
+    {"quando": "In attesa", "testo": "Exotique & Estetique: risposta di Naomi sul preventivo"},
+    {"quando": "In attesa", "testo": "Da Mario: esito del preventivo non ancora segnato"},
+    {"quando": "Da controllare", "testo": "Scheda Google MAQ: al 20/10 non compariva ancora nelle ricerche"},
+    {"quando": "Feb – mar 2027", "testo": "Richiamare H2O Italia Team Rescue prima della stagione"}
+  ],
+  "nomi_rami": {
+    "claude/vigilant-edison-50pdj9": "OMA",
+    "claude/nifty-fermi-4z2y3y": "Exotique",
+    "claude/demo-picciolo": "Picciolo",
+    "claude/tender-fermat-6x29iw": "Nanà",
+    "claude/friendly-cray-in10av": "100C",
+    "claude/clever-davinci-dm707p": "Da Mario",
+    "claude/hopeful-brown-39feqc": "Claudia Fulli",
+    "claude/youthful-meitner-e8cwyn": "FLIPPER",
+    "claude/intelligent-albattani-bti0iy": "MAQ"
+  }
+}
