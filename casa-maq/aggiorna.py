@@ -80,6 +80,22 @@ def lavoro(nomi_rami):
     }
 
 
+def chiamate():
+    """Lead nascosti da chiamare, mescolati per settore: i primi `al_giorno` sono quelli di oggi."""
+    c = json.loads((QUI / "chiamate.json").read_text())
+    gruppi = collections.defaultdict(list)
+    for l in c["lead"]:
+        gruppi[l["settore"]].append(l)
+    mescolati = []
+    while any(gruppi.values()):
+        for k in list(gruppi):
+            if gruppi[k]:
+                mescolati.append(gruppi[k].pop(0))
+    da_chiamare = [l for l in mescolati if l["stato"] == "Da chiamare"]
+    return {"al_giorno": c["al_giorno"], "oggi": da_chiamare[: c["al_giorno"]],
+            "in_coda": len(da_chiamare), "fatte": len(c["lead"]) - len(da_chiamare)}
+
+
 def ultimo_aggiornamento(ramo):
     return git("log", "-1", "--format=%aI", f"origin/{ramo}").strip()
 
@@ -94,6 +110,7 @@ def main():
         "progetti": progetti,
         "promemoria": manuali["promemoria"],
         "lead": lead(),
+        "chiamate": chiamate(),
         **lavoro(manuali["nomi_rami"]),
     }
     modello = (QUI / "modello.html").read_text()

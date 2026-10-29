@@ -1,0 +1,296 @@
+{
+ "_leggimi": "Lead nascosti da chiamare (gestioni giovani, 12-60 recensioni, voto >= 4,8, nessun sito, cellulare). Verificati su Google Maps il 30/10/2026 + domini nome.it/.com. Stato: Da chiamare / Chiamato / Richiamare / Interessato / No.",
+ "al_giorno": 10,
+ "lead": [
+  {
+   "nome": "Sicché - Roba Toscana",
+   "settore": "Ristorante italiano",
+   "zona": "Testaccio",
+   "indirizzo": "Via Beniamino Franklin, 12c, 00153 Roma RM",
+   "recensioni": 60,
+   "voto": 5.0,
+   "telefono": "+39 333 432 7944",
+   "online": [
+    "Google",
+    "Instagram"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Sicch%C3%A9+-+Roba+Toscana+Via+Beniamino+Franklin%2C+12c%2C+00153+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30"
+  },
+  {
+   "nome": "Allier",
+   "settore": "Ristorante romano",
+   "zona": "Ostiense",
+   "indirizzo": "Via dei Magazzini Generali, 4, 00154 Roma RM",
+   "recensioni": 29,
+   "voto": 5.0,
+   "telefono": "+39 375 878 2047",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Allier+Via+dei+Magazzini+Generali%2C+4%2C+00154+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30"
+  },
+  {
+   "nome": "Galvino Testaccio",
+   "settore": "Locale specializzato in cocktail",
+   "zona": "Testaccio",
+   "indirizzo": "Via Galvani, 33, 00153 Roma RM",
+   "recensioni": 22,
+   "voto": 5.0,
+   "telefono": "+39 340 644 3474",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Galvino+Testaccio+Via+Galvani%2C+33%2C+00153+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30"
+  },
+  {
+   "nome": "Cosetta",
+   "settore": "Enoteca",
+   "zona": "Prati",
+   "indirizzo": "Viale delle Milizie, 122, 00192 Roma RM",
+   "recensioni": 45,
+   "voto": 4.9,
+   "telefono": "+39 375 864 5245",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Cosetta+Viale+delle+Milizie%2C+122%2C+00192+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30"
+  },
+  {
+   "nome": "MaDai!",
+   "settore": "Enoteca",
+   "zona": "Centocelle",
+   "indirizzo": "Via dei Glicini, 70a, 00172 Roma RM",
+   "recensioni": 22,
+   "voto": 4.8,
+   "telefono": "+39 393 538 1528",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=MaDai%21+Via+dei+Glicini%2C+70a%2C+00172+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30"
+  },
+  {
+   "nome": "Les Amis",
+   "settore": "Enoteca",
+   "zona": "Tuscolano",
+   "indirizzo": "Via di Santa Maria Ausiliatrice, 15, 00181 Roma RM",
+   "recensioni": 47,
+   "voto": 4.9,
+   "telefono": "+39 339 650 4324",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Les+Amis+Via+di+Santa+Maria+Ausiliatrice%2C+15%2C+00181+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30"
+  },
+  {
+   "nome": "Club26 Centocelle",
+   "settore": "Ristorante",
+   "zona": "Centocelle",
+   "indirizzo": "Via dei Platani, 117, 00172 Roma RM",
+   "recensioni": 30,
+   "voto": 4.9,
+   "telefono": "+39 351 628 9382",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Club26+Centocelle+Via+dei+Platani%2C+117%2C+00172+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30"
+  },
+  {
+   "nome": "Fresh Barbershop Merulana",
+   "settore": "Barbiere",
+   "zona": "Monti",
+   "indirizzo": "Via Merulana, 114, 00185 Roma RM",
+   "recensioni": 45,
+   "voto": 5.0,
+   "telefono": "+39 351 435 2954",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Fresh+Barbershop+Merulana+Via+Merulana%2C+114%2C+00185+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30"
+  },
+  {
+   "nome": "Fade Barber Studio",
+   "settore": "Barbiere",
+   "zona": "Centocelle",
+   "indirizzo": "Via Delle Azalee, 73, 00172 Roma RM",
+   "recensioni": 26,
+   "voto": 5.0,
+   "telefono": "+39 334 919 6591",
+   "online": [
+    "Google",
+    "Instagram"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Fade+Barber+Studio+Via+Delle+Azalee%2C+73%2C+00172+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30"
+  },
+  {
+   "nome": "Hair Lab di Michaela",
+   "settore": "Parrucchiere",
+   "zona": "Pigneto",
+   "indirizzo": "Via Renzo da Ceri, 128, 00176 Roma RM",
+   "recensioni": 51,
+   "voto": 5.0,
+   "telefono": "+39 348 535 6117",
+   "online": [
+    "Google",
+    "Instagram"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Hair+Lab+di+Michaela+Via+Renzo+da+Ceri%2C+128%2C+00176+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30"
+  },
+  {
+   "nome": "BLOOM NAIL STUDIO",
+   "settore": "Salone di manicure",
+   "zona": "Testaccio",
+   "indirizzo": "Via Giovanni Branca, 54, 00153 Roma RM",
+   "recensioni": 22,
+   "voto": 5.0,
+   "telefono": "+39 371 177 5966",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=BLOOM+NAIL+STUDIO+Via+Giovanni+Branca%2C+54%2C+00153+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30"
+  },
+  {
+   "nome": "Salu.b estetica avanzata",
+   "settore": "Centro estetico",
+   "zona": "Garbatella",
+   "indirizzo": "Via Padre Semeria, 53, 00154 Roma RM",
+   "recensioni": 30,
+   "voto": 5.0,
+   "telefono": "+39 392 962 5380",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Salu.b+estetica+avanzata+Via+Padre+Semeria%2C+53%2C+00154+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30"
+  },
+  {
+   "nome": "Level Up Balduina",
+   "settore": "Palestra",
+   "zona": "Balduina",
+   "indirizzo": "Via Licinio Calvo, 63, 00136 Roma RM",
+   "recensioni": 53,
+   "voto": 5.0,
+   "telefono": "+39 328 361 6700",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Level+Up+Balduina+-+T%28h%29rust+your+body+Via+Licinio+Calvo%2C+63%2C+00136+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30"
+  },
+  {
+   "nome": "Studio 141 Pilates Garbatella",
+   "settore": "Pilates",
+   "zona": "Ostiense",
+   "indirizzo": "Via Carlo Citerni, 41, 00154 Roma RM",
+   "recensioni": 12,
+   "voto": 5.0,
+   "telefono": "+39 351 428 5310",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Studio+141+Pilates+Garbatella+Via+Carlo+Citerni%2C+41%2C+00154+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30"
+  },
+  {
+   "nome": "Higher Ground Tattoo",
+   "settore": "Studio di tatuaggi",
+   "zona": "Quadraro",
+   "indirizzo": "via, Via Giulio Curioni, 69, 00158 Roma RM",
+   "recensioni": 53,
+   "voto": 5.0,
+   "telefono": "+39 388 891 0947",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Higher+Ground+Tattoo+via%2C+Via+Giulio+Curioni%2C+69%2C+00158+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30"
+  },
+  {
+   "nome": "Officina Marafini",
+   "settore": "Meccanico",
+   "zona": "Tuscolano",
+   "indirizzo": "Via Tuscolana, 53, 00182 Roma RM",
+   "recensioni": 32,
+   "voto": 5.0,
+   "telefono": "+39 328 657 8174",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Officina+Marafini+Via+Tuscolana%2C+53%2C+00182+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30"
+  },
+  {
+   "nome": "Personal Studio Tortuga",
+   "settore": "Personal trainer",
+   "zona": "Centocelle",
+   "indirizzo": "Via dei Faggi, 45/47, 00172 Roma RM",
+   "recensioni": 50,
+   "voto": 5.0,
+   "telefono": "+39 380 646 6803",
+   "online": [
+    "Google",
+    "Facebook"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Personal+Studio+Tortuga+Via+dei+Faggi%2C+45%2F47%2C+00172+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30"
+  },
+  {
+   "nome": "Dresia Studio - Centro Pilates",
+   "settore": "Pilates",
+   "zona": "Monteverde",
+   "indirizzo": "Via di Monte Verde, 25, 00152 Roma RM",
+   "recensioni": 39,
+   "voto": 4.9,
+   "telefono": "+39 347 149 2054",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Dresia+Studio+-+Centro+Pilates+Via+di+Monte+Verde%2C+25%2C+00152+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30"
+  },
+  {
+   "nome": "Ramnes - Winebar",
+   "settore": "Bar",
+   "zona": "San Lorenzo",
+   "indirizzo": "Via dei Ramni, 28, 00185 Roma RM",
+   "recensioni": 42,
+   "voto": 4.9,
+   "telefono": "+39 327 771 6085",
+   "online": [
+    "Google",
+    "Instagram"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Ramnes+-+Winebar+Via+dei+Ramni%2C+28%2C+00185+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30"
+  }
+ ]
+}

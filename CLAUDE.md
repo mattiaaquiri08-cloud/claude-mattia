@@ -182,13 +182,23 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Più schede/sessioni di Claude (18/10): NON comunicano tra loro; la memoria comune è questo repo. Ogni sessione lavora
   su un suo ramo `claude/...`: all'inizio fare `git fetch` e guardare gli altri rami recenti (es. `git log --all --since="2 days ago"`)
   per sapere cosa è già stato fatto, e riportare qui le lezioni utili. 100C: bozza fatta e inviata in un'altra sessione.
-- Casa MAQ (29/10): pagina privata "di vetro" (glassmorphism, sfondo con le luci viola/rosa/pesca, font Sora) che l'utente
-  apre all'inizio: lavoro recente dei siti (commit di tutti i rami), stato dei siti, promemoria, numeri dei lead e chat
-  con Claude dentro la pagina (capacità `sample`: conosce solo i dati della pagina). URL fisso:
-  https://claude.ai/artifact/7mNJKpYPCR3dh9ecbVfbTu . File in `casa-maq/`: `modello.html` (grafica), `dati-manuali.json`
-  (stato dei siti e promemoria, da tenere aggiornati), `aggiorna.py` (legge Excel dei lead + git e genera `casa.html`,
-  non committato). Per aggiornarla: `python3 casa-maq/aggiorna.py`, poi Artifact read di quell'URL e publish con
-  `url` + `file_path` casa-maq/casa.html. Farlo a fine lavoro quando cambia lo stato di un sito, un lead o un promemoria.
+- Casa MAQ (29-30/10): pagina privata "di vetro" (glassmorphism, luci viola/rosa/pesca, font Sora) da cui l'utente vuole
+  lavorare al posto della schermata nera di Claude Code. URL fisso: https://claude.ai/artifact/7mNJKpYPCR3dh9ecbVfbTu .
+  Contiene: chiamate di oggi (`al_giorno`, 10), promemoria, lavoro sui siti (commit di tutti i rami), stato dei siti,
+  sessioni di Claude dal vivo, lead, e una CHAT CON CLAUDE CODE VERO (connettore "Claude Code Remote": create_session sul
+  repo con tag `casa-maq`, send_message, list_events, get_session, list_sessions). Le sessioni nate dalla chat ricevono
+  istruzioni di rispondere brevi, in italiano: l'utente legge solo il testo, non gli strumenti, e non può approvare permessi.
+  File in `casa-maq/`: `modello.html` (grafica e codice), `dati-manuali.json` (stato dei siti e promemoria),
+  `chiamate.json` (lead da chiamare con stato: Da chiamare / Chiamato / Richiamare / Interessato / No), `aggiorna.py`
+  (legge Excel + git + JSON e genera `casa.html`, non committato). Aggiornare: `python3 casa-maq/aggiorna.py`, poi Artifact
+  read dell'URL e publish con `url` + `file_path` casa-maq/casa.html SENZA `capabilities` (restano quelle salvate).
+  Farlo a fine lavoro quando cambia un sito, un lead, una chiamata o un promemoria. Stato siti al 30/10: clienti certi
+  OMA ed Exotique & Estetique (Naomi ha firmato il preventivo); in attesa Nanà (Giuseppe), Claudia Fulli (Dario Fulli),
+  Da Mario (Valerio); Picciolo (zio) da completare; 100C e FLIPPER tolti dall'elenco.
+- Lead "nascosti" per le chiamate (30/10, definizione dell'utente): NON vuol dire periferia, ma GESTIONI NUOVE/giovani
+  che cercano chi gli offra questo servizio: ricerca Maps "categoria + quartiere" (`gmaps_search.py`), 12-60 recensioni,
+  voto >= 4,8, nessun sito (controllare domini nome.it/.com: Reformer Hub ce l'ha, East End Tattoo "coming soon"),
+  cellulare, aperte. Mix di settori e quartieri. Primo blocco di 19 in `casa-maq/chiamate.json`.
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).

@@ -18,44 +18,30 @@
     {
       "nome": "Enrico Picciolo",
       "ramo": "claude/demo-picciolo",
-      "stato": "Bozza online",
-      "tono": "bozza",
-      "nota": "Nuova versione su GitHub Pages"
+      "stato": "Da completare",
+      "tono": "lavoro",
+      "nota": "Il sito dello zio: da finire"
     },
     {
       "nome": "Nanà Vini e Cucina",
       "ramo": "claude/tender-fermat-6x29iw",
-      "stato": "Bozza",
-      "tono": "bozza",
-      "nota": "Bilingue IT/EN, file unico pronto"
-    },
-    {
-      "nome": "100C Vino e Pesce",
-      "ramo": "claude/friendly-cray-in10av",
-      "stato": "Bozza inviata",
+      "stato": "In attesa",
       "tono": "attesa",
-      "nota": "Mandata su WhatsApp il 18/10 dopo il sì al telefono"
-    },
-    {
-      "nome": "Ristorante Da Mario",
-      "ramo": "claude/clever-davinci-dm707p",
-      "stato": "Preventivo",
-      "tono": "attesa",
-      "nota": "Base 500 €, completo 690 €, mandato a Valerio"
+      "nota": "Aspetta la risposta di Giuseppe"
     },
     {
       "nome": "Claudia Fulli Salon",
       "ramo": "claude/hopeful-brown-39feqc",
-      "stato": "Bozza",
-      "tono": "bozza",
-      "nota": "Galleria e foto di Claudia in attesa delle foto vere"
+      "stato": "In attesa",
+      "tono": "attesa",
+      "nota": "Aspetta la risposta di Dario Fulli"
     },
     {
-      "nome": "FLIPPER",
-      "ramo": "claude/youthful-meitner-e8cwyn",
-      "stato": "Bozza",
-      "tono": "bozza",
-      "nota": "Rotazione 3D guidata dallo scroll"
+      "nome": "Ristorante Da Mario",
+      "ramo": "claude/clever-davinci-dm707p",
+      "stato": "In attesa",
+      "tono": "attesa",
+      "nota": "Aspetta la risposta di Valerio (base 500 €, completo 690 €)"
     },
     {
       "nome": "MAQ Web Design",
@@ -67,12 +53,16 @@
   ],
   "promemoria": [
     {
-      "quando": "Da fissare",
-      "testo": "Genny a San Lorenzo è interessato: fissare l'incontro e preparare la bozza prima"
+      "quando": "Da fare",
+      "testo": "Completare il sito dello zio Enrico Picciolo"
     },
     {
       "quando": "In attesa",
-      "testo": "Da Mario: esito del preventivo non ancora segnato"
+      "testo": "Risposte di Giuseppe (Nanà), Dario Fulli (Claudia Fulli) e Valerio (Da Mario)"
+    },
+    {
+      "quando": "Da fissare",
+      "testo": "Genny a San Lorenzo è interessato: fissare l'incontro e preparare la bozza prima"
     },
     {
       "quando": "Da controllare",
@@ -88,10 +78,8 @@
     "claude/nifty-fermi-4z2y3y": "Exotique",
     "claude/demo-picciolo": "Picciolo",
     "claude/tender-fermat-6x29iw": "Nanà",
-    "claude/friendly-cray-in10av": "100C",
     "claude/clever-davinci-dm707p": "Da Mario",
     "claude/hopeful-brown-39feqc": "Claudia Fulli",
-    "claude/youthful-meitner-e8cwyn": "FLIPPER",
     "claude/intelligent-albattani-bti0iy": "MAQ"
   }
 }

@@ -98,6 +98,37 @@ body { background: var(--bg); color: var(--fg); font-family: var(--font); font-s
 .pillola.ok { color: var(--ok); }
 .pillola.attesa { color: var(--attesa); }
 .pillola.bozza { color: var(--bozza); }
+.pillola.lavoro { color: var(--pesca); }
+.pillola.male { color: #fca5a5; }
+
+/* Chiamate di oggi */
+.saluto .oggi { color: var(--fg); }
+.saluto .oggi b { font-weight: 600; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.chiamate { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 10px; }
+.chiamata { display: grid; gap: 8px; padding: 13px 14px; border-radius: 18px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); transition: background .2s, opacity .3s; min-width: 0; }
+.chiamata:hover { background: rgba(255,255,255,.08); }
+.chiamata.fatta { opacity: .45; }
+.chiamata .riga { display: flex; align-items: start; justify-content: space-between; gap: 10px; min-width: 0; }
+.chiamata .nome { font-size: 14px; font-weight: 500; overflow-wrap: anywhere; }
+.chiamata .dove { font-size: 12px; color: var(--muted); }
+.chiamata .stelle { font-size: 12px; color: var(--attesa); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.chiamata .stelle span { color: var(--faint); }
+.chiamata .tel { font-size: 15px; font-weight: 500; letter-spacing: .02em; font-variant-numeric: tabular-nums; user-select: all; }
+.chiamata .azioni { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.chip { display: inline-flex; align-items: center; gap: 5px; font: inherit; font-size: 11.5px; color: var(--muted); text-decoration: none; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--edge); background: rgba(255,255,255,.05); cursor: pointer; white-space: nowrap; }
+.chip:hover, .chip:focus-visible { color: var(--fg); background: rgba(255,255,255,.1); }
+.chip.fatto { color: var(--ok); border-color: rgba(110,231,183,.4); }
+.online { font-size: 11px; color: var(--faint); }
+.progresso { height: 6px; border-radius: 99px; background: rgba(255,255,255,.07); overflow: hidden; }
+.progresso i { display: block; height: 100%; width: 0; border-radius: 99px; background: var(--grad); transition: width .4s; }
+
+/* Sessioni con Claude */
+.sessioni li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; padding: 11px 14px; border-radius: 16px; background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.07); }
+.sessioni li.attuale { border-color: rgba(236,72,153,.45); background: rgba(236,72,153,.08); }
+.sessioni .titolo { font-size: 13.5px; font-weight: 500; overflow-wrap: anywhere; }
+.sessioni .riassunto { grid-column: 1 / -1; font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
+.sessioni .piede { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; font-size: 11px; color: var(--faint); }
+.avviso { font-size: 12.5px; color: var(--muted); padding: 12px 14px; border-radius: 14px; background: rgba(255,255,255,.04); border: 1px dashed var(--edge); }
 
 /* --- Griglia pannelli --- */
 .griglia { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 18px; }
@@ -162,7 +193,21 @@ body { background: var(--bg); color: var(--fg); font-family: var(--font); font-s
 
 /* --- Chat --- */
 .chat { position: fixed; z-index: 5; left: 50%; transform: translateX(-50%); bottom: calc(14px + env(safe-area-inset-bottom, 0px)); width: min(760px, calc(100% - 2 * max(16px, env(safe-area-inset-left, 0px)))); display: grid; gap: 10px; }
-.conversazione { max-height: min(46vh, 420px); overflow: auto; padding: 16px; display: grid; gap: 12px; }
+.finestra { display: grid; grid-template-rows: auto minmax(0, 1fr); max-height: min(58vh, 560px); overflow: hidden; }
+.finestra-testa { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 12px 10px 16px; border-bottom: 1px solid rgba(255,255,255,.08); min-width: 0; }
+.finestra-testa .chi { display: flex; align-items: center; gap: 8px; min-width: 0; font-size: 13px; }
+.finestra-testa .chi span:last-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.finestra-testa .bottoni { display: flex; gap: 6px; flex: none; }
+.stato-punto { width: 8px; height: 8px; border-radius: 50%; background: var(--faint); flex: none; }
+.stato-punto.lavora { background: var(--rosa); box-shadow: 0 0 10px var(--rosa); }
+.stato-punto.pronto { background: var(--ok); }
+.stato-punto.bloccato { background: var(--attesa); }
+@media (prefers-reduced-motion: no-preference) { .stato-punto.lavora { animation: pulsa 1.2s ease-in-out infinite; } }
+@keyframes pulsa { 50% { opacity: .35; } }
+.conversazione { overflow: auto; padding: 16px; display: grid; gap: 12px; align-content: start; }
+.msg code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; background: rgba(0,0,0,.3); padding: 1px 5px; border-radius: 6px; }
+.msg strong { font-weight: 600; }
+.msg.nota { justify-self: center; font-size: 12px; color: var(--muted); background: none; padding: 2px 8px; }
 .msg { max-width: 88%; font-size: 14px; line-height: 1.55; padding: 10px 14px; border-radius: 18px; white-space: pre-wrap; overflow-wrap: anywhere; }
 .msg.io { justify-self: end; background: rgba(255,255,255,.14); border: 1px solid var(--edge); border-bottom-right-radius: 6px; }
 .msg.claude { justify-self: start; background: rgba(139, 92, 246, .16); border: 1px solid rgba(196, 181, 253, .22); border-bottom-left-radius: 6px; }
@@ -176,7 +221,7 @@ body { background: var(--bg); color: var(--fg); font-family: var(--font); font-s
 .bottone-tondo:hover { transform: scale(1.06); }
 .bottone-tondo:disabled { opacity: .4; cursor: default; transform: none; }
 .bottone-tondo svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.apri-code { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); text-decoration: none; padding: 9px 12px; border-radius: 999px; border: 1px solid var(--edge); background: rgba(255,255,255,.05); white-space: nowrap; }
+.apri-code { font: inherit; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); text-decoration: none; padding: 9px 12px; border-radius: 999px; border: 1px solid var(--edge); background: rgba(255,255,255,.05); white-space: nowrap; }
 .apri-code:hover, .apri-code:focus-visible { color: var(--fg); background: rgba(255,255,255,.1); outline: none; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--pesca); outline-offset: 2px; }
 
@@ -214,6 +259,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--pesca); outline
   <section class="saluto" id="oggi">
     <div>
       <h1><span id="saluto">Buonasera</span>, <em>signore</em></h1>
+      <p class="oggi">Oggi tocca fare <b id="n-oggi">—</b> chiamate: le trova qui sotto, con il numero pronto.</p>
       <p>Ecco cosa è successo nei suoi progetti e a che punto sono i contatti.</p>
     </div>
     <span class="aggiornato" id="aggiornato"></span>
@@ -247,12 +293,13 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--pesca); outline
   </section>
 
   <section class="griglia">
-    <article class="pannello vetro s8">
+    <article class="pannello vetro s8" id="chiamate">
       <header>
-        <div><h2>Lavoro sui siti</h2><p>Modifiche salvate ogni giorno, ultime due settimane</p></div>
-        <span class="pillola" id="lavoro-totale"></span>
+        <div><h2>Chiamate di oggi</h2><p>Gestioni nuove o poco conosciute, senza sito, con cellulare. Verificate su Google Maps.</p></div>
+        <span class="pillola lavoro" id="chiamate-conto"></span>
       </header>
-      <div class="grafico" id="grafico"></div>
+      <div class="progresso" aria-hidden="true"><i id="chiamate-barra"></i></div>
+      <div class="chiamate" id="lista-chiamate"></div>
     </article>
 
     <article class="pannello vetro s4">
@@ -261,13 +308,28 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--pesca); outline
     </article>
 
     <article class="pannello vetro s7">
-      <header><div><h2>Cosa è successo</h2><p>Le ultime modifiche, dalla più recente</p></div></header>
-      <div class="scorre"><ul class="lista attivita" id="attivita"></ul></div>
+      <header>
+        <div><h2>Lavoro sui siti</h2><p>Modifiche salvate ogni giorno, ultime due settimane</p></div>
+        <span class="pillola" id="lavoro-totale"></span>
+      </header>
+      <div class="grafico" id="grafico"></div>
     </article>
 
     <article class="pannello vetro s5" id="siti">
       <header><div><h2>I siti</h2><p>Stato di ogni progetto</p></div></header>
       <div class="scorre"><ul class="lista siti" id="lista-siti"></ul></div>
+    </article>
+
+    <article class="pannello vetro s5" id="sessioni">
+      <header>
+        <div><h2>Le sue sessioni con Claude</h2><p>Dal vivo: tocchi "Continua" per riprenderne una dalla chat</p></div>
+      </header>
+      <div class="scorre"><ul class="lista sessioni" id="lista-sessioni"><li class="avviso">Le sessioni compaiono aprendo la pagina su claude.ai.</li></ul></div>
+    </article>
+
+    <article class="pannello vetro s7">
+      <header><div><h2>Cosa è successo</h2><p>Le ultime modifiche ai siti, dalla più recente</p></div></header>
+      <div class="scorre"><ul class="lista attivita" id="attivita"></ul></div>
     </article>
 
     <article class="pannello vetro s12" id="lead">
@@ -288,13 +350,23 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--pesca); outline
 </main>
 
 <div class="chat">
-  <div class="conversazione vetro" id="conversazione" hidden aria-live="polite"></div>
+  <section class="finestra vetro" id="finestra" hidden aria-label="Conversazione con Claude Code">
+    <div class="finestra-testa">
+      <div class="chi"><span class="stato-punto" id="stato-punto"></span><span id="chat-titolo">Claude Code</span></div>
+      <div class="bottoni">
+        <button class="chip" type="button" id="nuova-chat">Nuova chat</button>
+        <a class="chip" id="apri-sessione" href="https://claude.ai/code" target="_blank" rel="noopener">Apri ↗</a>
+        <button class="chip" type="button" id="riduci" aria-label="Riduci la chat">—</button>
+      </div>
+    </div>
+    <div class="conversazione" id="conversazione" aria-live="polite"></div>
+  </section>
   <form class="scrivi vetro" id="modulo-chat">
-    <label for="domanda" class="visivamente-nascosto" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Scrivi a Claude</label>
-    <input id="domanda" autocomplete="off" placeholder="Scrivi a Claude… (es. chi devo richiamare?)">
-    <a class="apri-code" href="https://claude.ai/code" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg><span class="lungo">Claude Code</span>
-    </a>
+    <label for="domanda" class="visivamente-nascosto" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Scrivi a Claude Code</label>
+    <input id="domanda" autocomplete="off" placeholder="Scrivi a Claude Code…">
+    <button class="apri-code" type="button" id="mostra-chat">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l.9-5.4A8 8 0 1 1 21 12z"/></svg><span class="lungo">Chat</span>
+    </button>
     <button class="bottone-tondo" id="invia" type="submit" aria-label="Invia">
       <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
     </button>
@@ -330,7 +402,7 @@ $('aggiornato').textContent = 'Dati aggiornati ' + quandoRelativo(DATI.generato)
 const siti = DATI.progetti.filter((p) => p.nome !== 'MAQ Web Design');
 const conta = (t) => siti.filter((p) => p.stato === t).length;
 $('n-siti').textContent = num.format(siti.length);
-$('n-siti-sotto').textContent = `${conta('Cliente')} cliente · ${conta('Preventivo')} preventivi · ${siti.length - conta('Cliente') - conta('Preventivo')} bozze`;
+$('n-siti-sotto').textContent = `${conta('Cliente')} clienti · ${conta('In attesa')} in attesa · ${conta('Da completare')} da completare`;
 const ultimi7 = DATI.giorni.slice(-7).reduce((s, g) => s + g.n, 0);
 const prima7 = DATI.giorni.slice(0, 7).reduce((s, g) => s + g.n, 0);
 $('n-modifiche').textContent = num.format(ultimi7);
@@ -459,56 +531,274 @@ document.querySelectorAll('.nav a').forEach((a) => a.addEventListener('click', (
   document.querySelectorAll('.nav a').forEach((x) => x.classList.toggle('attivo', x === a));
 }));
 
-/* Chat con Claude */
-const ISTRUZIONI = `Sei l'assistente della "Casa MAQ", la pagina personale di Mattia Aquiri, web designer di Roma (MAQ Web Design): crea siti per attività locali che non ne hanno uno.
-Rispondi sempre in italiano, chiamandolo "signore", in modo breve e concreto (poche righe, niente tabelle).
-Conosci solo i dati qui sotto, aggiornati ${DATI.generato}: stato dei siti, promemoria, lavoro recente e numeri dei lead. Non inventare nulla che non sia nei dati; se una cosa non c'è, dillo.
-Se chiede di modificare un sito, scrivere codice o mandare messaggi, spiegagli che per questo deve aprire Claude Code (il pulsante accanto alla chat), dove Claude ha accesso ai file dei siti.
+/* Chiamate di oggi */
+const C = DATI.chiamate;
+$('n-oggi').textContent = C.oggi.length;
+const chiaveOggi = 'casa-maq-fatte-' + new Date().toLocaleDateString('sv-SE');
+let fatte = new Set();
+try { fatte = new Set(JSON.parse(localStorage.getItem(chiaveOggi) || '[]')); } catch { fatte = new Set(); }
+const salvaFatte = () => { try { localStorage.setItem(chiaveOggi, JSON.stringify([...fatte])); } catch {} };
+function aggiornaConto() {
+  const n = C.oggi.filter((l) => fatte.has(l.nome)).length;
+  $('chiamate-conto').textContent = `${n} di ${C.oggi.length} fatte · ${C.in_coda} in lista`;
+  $('chiamate-barra').style.width = (C.oggi.length ? n / C.oggi.length * 100 : 0) + '%';
+}
+C.oggi.forEach((l) => {
+  const card = el('article', 'chiamata' + (fatte.has(l.nome) ? ' fatta' : ''));
+  const testa = el('div', 'riga');
+  const chi = el('div');
+  chi.append(el('div', 'nome', l.nome), el('div', 'dove', `${l.settore} · ${l.zona}`));
+  const stelle = el('span', 'stelle', '★ ' + l.voto.toLocaleString('it-IT', { minimumFractionDigits: 1 }) + ' ');
+  stelle.appendChild(el('span', null, `(${l.recensioni})`));
+  testa.append(chi, stelle);
+  const tel = el('div', 'riga');
+  tel.append(el('span', 'tel', l.telefono), el('span', 'online', 'Online: ' + l.online.join(', ')));
+  const azioni = el('div', 'azioni');
+  const chiamaLink = el('a', 'chip', 'Chiama'); chiamaLink.href = 'tel:' + l.telefono.replace(/\s/g, '');
+  const copia = el('button', 'chip', 'Copia numero'); copia.type = 'button';
+  copia.addEventListener('click', () => {
+    navigator.clipboard.writeText(l.telefono).then(() => { copia.textContent = 'Copiato'; setTimeout(() => { copia.textContent = 'Copia numero'; }, 1500); })
+      .catch(() => { const r = document.createRange(); r.selectNodeContents(tel.firstChild); const s = getSelection(); s.removeAllRanges(); s.addRange(r); });
+  });
+  const maps = el('a', 'chip', 'Maps ↗'); maps.href = l.maps; maps.target = '_blank'; maps.rel = 'noopener';
+  const fatta = el('button', 'chip' + (fatte.has(l.nome) ? ' fatto' : ''), fatte.has(l.nome) ? '✓ Fatta' : 'Segna fatta'); fatta.type = 'button';
+  fatta.addEventListener('click', () => {
+    if (fatte.has(l.nome)) fatte.delete(l.nome); else fatte.add(l.nome);
+    const si = fatte.has(l.nome);
+    fatta.textContent = si ? '✓ Fatta' : 'Segna fatta'; fatta.classList.toggle('fatto', si); card.classList.toggle('fatta', si);
+    salvaFatte(); aggiornaConto();
+  });
+  azioni.append(chiamaLink, copia, maps, fatta);
+  card.append(testa, tel, azioni);
+  $('lista-chiamate').appendChild(card);
+});
+if (!C.oggi.length) $('lista-chiamate').appendChild(el('p', 'avviso', 'Nessuna chiamata in lista: chieda a Claude nuovi lead dalla chat.'));
+aggiornaConto();
 
-DATI:
-${JSON.stringify(DATI)}`;
+/* Chat con Claude Code e sessioni, tramite il connettore "Claude Code Remote" */
+const SERVER = 'Claude Code Remote';
+const REPO = 'https://github.com/mattiaaquiri08-cloud/claude-mattia';
+const AMBIENTE = 'env_01D5azFawoAof7BXhp6YwDJ9';
+const TAG = 'casa-maq';
+const ISTRUZIONI_SESSIONE = `Mattia (MAQ Web Design) ti scrive dalla "Casa MAQ", la sua pagina personale su claude.ai, e legge lì solo i tuoi messaggi di testo, non gli strumenti: rispondi in italiano, chiamandolo "signore", in modo breve e chiaro. Da lì non può approvare richieste di permesso. Se cambia lo stato di un sito, di un lead o di un promemoria, a fine lavoro aggiorna la Casa MAQ come scritto in CLAUDE.md.`;
 
-const storia = [];
-let campionatore = null;
-let inCorso = null;
 const conv = $('conversazione'), input = $('domanda'), invia = $('invia');
+let mcp = null, sessione = null, titoloSessione = '', inAttesa = false, inizioAttesa = 0, giroId = 0;
 
-function aggiungi(chi, testo) {
-  const m = el('div', 'msg ' + chi, testo);
-  conv.hidden = false; conv.appendChild(m); conv.scrollTop = conv.scrollHeight;
+function payload(r) {
+  let p = r?.payload ?? r;
+  if (typeof p === 'string') {
+    try { p = JSON.parse(p); } catch { const m = p.match(/\{[\s\S]*\}/); try { p = m ? JSON.parse(m[0]) : {}; } catch { p = {}; } }
+  }
+  return p?.ccr ?? p;
+}
+const trovaId = (x) => (JSON.stringify(x || {}).match(/session_[A-Za-z0-9]+/) || [null])[0];
+const chiama = (tool, dati) => mcp.callTool(SERVER, tool, dati, { cache: false }).then(payload);
+
+function messaggioErrore(err) {
+  switch (err?.code) {
+    case 'needs_reauth': return 'Ricolleghi "Claude Code Remote" in claude.ai → Impostazioni → Connettori.';
+    case 'server_not_connected': case 'selection_required': return 'Il connettore "Claude Code Remote" non è disponibile qui: lo controlli in claude.ai → Impostazioni → Connettori.';
+    case 'not_in_manifest': return 'La pagina non ha il permesso di usare Claude Code: lo conceda dal menu Permessi della pagina.';
+    case 'server_unavailable': return 'Claude Code non risponde in questo momento: riprovi tra poco.';
+    case 'tool_error': return 'Claude Code ha rifiutato la richiesta: ' + (err.message || '');
+    default: return 'Qualcosa non ha funzionato (' + (err?.code || 'errore') + '). Riprovi tra poco.';
+  }
+}
+
+function bolla(chi, testo) {
+  const m = el('div', 'msg ' + chi);
+  const parti = testo.replace(/^#{1,6}\s*/gm, '').split(/(\*\*[^*\n]+\*\*|`[^`\n]+`)/g);
+  for (const p of parti) {
+    if (/^\*\*[^*]+\*\*$/.test(p)) m.appendChild(el('strong', null, p.slice(2, -2)));
+    else if (/^`[^`]+`$/.test(p)) m.appendChild(el('code', null, p.slice(1, -1)));
+    else if (p) m.appendChild(document.createTextNode(p));
+  }
   return m;
+}
+const nota = (testo, errore) => { const n = el('div', 'msg nota' + (errore ? ' errore' : ''), testo); conv.appendChild(n); conv.scrollTop = conv.scrollHeight; return n; };
+
+function testoDa(v) {
+  const m = v?.message ?? v?.internal_anthropic_catchall?.message ?? v;
+  const c = m?.content;
+  if (typeof c === 'string') return c;
+  if (Array.isArray(c)) return c.filter((b) => b?.type === 'text').map((b) => b.text).join('\n\n');
+  return '';
+}
+function estraiMessaggi(eventi) {
+  const out = [];
+  for (const ev of eventi) {
+    for (const k of ['user', 'assistant']) {
+      const v = ev?.[k] ?? ev?.data?.[k];
+      if (!v) continue;
+      if (k === 'user' && (v.isSynthetic || v.internal_anthropic_catchall?.isSynthetic)) continue;
+      let t = testoDa(v).trim();
+      if (k === 'user') {
+        if (/^<(system-reminder|local-command|command-)/.test(t)) continue;
+        t = t.replace(/<[^>]+>/g, '').trim();
+      }
+      if (t) out.push({ chi: k === 'user' ? 'io' : 'claude', testo: t });
+    }
+  }
+  return out;
+}
+
+async function caricaConversazione() {
+  let eventi = [], prima = null;
+  for (let i = 0; i < 3; i++) {
+    const p = await chiama('list_events', { session_id: sessione, kinds: ['user', 'assistant'], limit: 100, ...(prima ? { before_id: prima } : {}) });
+    eventi = (p?.data ?? []).concat(eventi);
+    if (!p?.has_more || !p.first_id || estraiMessaggi(eventi).length >= 12) break;
+    prima = p.first_id;
+  }
+  const msgs = estraiMessaggi(eventi).slice(-30);
+  conv.replaceChildren();
+  if (!msgs.length) nota('Nessun messaggio ancora.');
+  msgs.forEach((m) => conv.appendChild(bolla(m.chi, m.testo)));
+  conv.scrollTop = conv.scrollHeight;
+}
+
+function impostaStato(tipo, titolo) {
+  $('stato-punto').className = 'stato-punto ' + (tipo || '');
+  $('chat-titolo').textContent = titolo || titoloSessione || 'Claude Code';
+}
+const tipoStato = (b) => (/WORKING/i.test(b) ? 'lavora' : /BLOCKED/i.test(b) ? 'bloccato' : /FAILED/i.test(b) ? 'errore' : 'pronto');
+
+async function giro(id) {
+  if (id !== giroId || !sessione) return;
+  try {
+    const s = await chiama('get_session', { session_id: sessione });
+    if (s?.title) titoloSessione = s.title;
+    const tipo = tipoStato(String(s?.status_bucket || ''));
+    const lavora = tipo === 'lavora' || (inAttesa && Date.now() - inizioAttesa < 15000);
+    await caricaConversazione();
+    if (id !== giroId) return;
+    impostaStato(lavora ? 'lavora' : tipo);
+    if (lavora) nota('Claude sta lavorando…');
+    else if (tipo === 'bloccato') nota('Claude aspetta una sua approvazione: tocchi "Apri ↗" per darla.');
+    else if (tipo === 'errore') nota("L'ultimo turno si è interrotto con un errore: può riscrivere o aprire la sessione.", true);
+    inAttesa = lavora && Date.now() - inizioAttesa < 30 * 60000;
+    if (lavora) setTimeout(() => giro(id), 4000);
+  } catch (err) {
+    if (id !== giroId) return;
+    inAttesa = false; impostaStato('');
+    nota(messaggioErrore(err), true);
+  }
+}
+const avviaGiro = () => giro(++giroId);
+
+function scegliSessione(id, titolo) {
+  sessione = id; titoloSessione = titolo || '';
+  try { localStorage.setItem('casa-maq-sessione', id); } catch {}
+  $('apri-sessione').href = 'https://claude.ai/code/' + id;
+  document.querySelectorAll('#lista-sessioni li').forEach((li) => li.classList.toggle('attuale', li.dataset.id === id));
+  $('finestra').hidden = false; impostaStato(''); inAttesa = false;
+  conv.replaceChildren(); nota('Carico la conversazione…');
+  avviaGiro();
+}
+
+$('nuova-chat').addEventListener('click', () => {
+  giroId++; sessione = null; titoloSessione = ''; inAttesa = false;
+  try { localStorage.removeItem('casa-maq-sessione'); } catch {}
+  $('apri-sessione').href = 'https://claude.ai/code';
+  impostaStato('', 'Nuova chat');
+  conv.replaceChildren(); nota('Scriva qui sotto: si apre una nuova sessione di Claude Code con i file dei suoi siti.');
+  document.querySelectorAll('#lista-sessioni li').forEach((li) => li.classList.remove('attuale'));
+  input.focus();
+});
+$('riduci').addEventListener('click', () => { $('finestra').hidden = true; });
+$('mostra-chat').addEventListener('click', () => {
+  const apri = $('finestra').hidden;
+  $('finestra').hidden = !apri;
+  if (!apri) return;
+  if (!mcp) { conv.replaceChildren(); nota('La chat con Claude Code funziona aprendo la pagina su claude.ai.'); return; }
+  if (sessione) { if (!inAttesa) avviaGiro(); }
+  else { impostaStato('', 'Nuova chat'); conv.replaceChildren(); nota('Scriva qui sotto: si apre una nuova sessione di Claude Code con i file dei suoi siti.'); }
+});
+
+const ETICHETTE = [[/WORKING/i, 'sta lavorando', 'lavoro'], [/BLOCKED/i, 'aspetta lei', 'attesa'], [/REVIEW/i, 'da guardare', 'bozza'], [/FAILED/i, 'errore', 'male'], [/./, 'finita', 'ok']];
+function disegnaSessioni(p) {
+  const ul = $('lista-sessioni');
+  const lista = p?.data ?? [];
+  ul.replaceChildren();
+  if (!lista.length) { ul.appendChild(el('li', 'avviso', 'Nessuna sessione recente.')); return; }
+  lista.forEach((s) => {
+    const li = el('li' + '', sessione === s.id ? 'attuale' : '');
+    li.dataset.id = s.id;
+    const [, etichetta, tono] = ETICHETTE.find(([re]) => re.test(s.status_bucket || ''));
+    const pill = el('span', 'pillola ' + tono); pill.append(el('i'), document.createTextNode(etichetta));
+    li.append(el('span', 'titolo', s.title || 'Sessione senza titolo'), pill);
+    const riassunto = s.post_turn_summary?.recent_action || s.task_summary || '';
+    if (riassunto) li.appendChild(el('span', 'riassunto', riassunto));
+    const piede = el('div', 'piede');
+    piede.appendChild(el('span', null, s.updated_at ? 'Ultima attività ' + quandoRelativo(s.updated_at) : ''));
+    const azioni = el('span', 'azioni');
+    const cont = el('button', 'chip', 'Continua'); cont.type = 'button';
+    cont.addEventListener('click', () => scegliSessione(s.id, s.title));
+    const apri = el('a', 'chip', 'Apri ↗'); apri.href = 'https://claude.ai/code/' + s.id; apri.target = '_blank'; apri.rel = 'noopener';
+    azioni.append(cont, apri); piede.appendChild(azioni);
+    li.appendChild(piede);
+    ul.appendChild(li);
+  });
+}
+async function aggiornaSessioni() {
+  if (!mcp || document.hidden) return;
+  try { disegnaSessioni(await chiama('list_sessions', { limit: 8 })); }
+  catch (err) { $('lista-sessioni').replaceChildren(el('li', 'avviso', messaggioErrore(err))); }
 }
 
 (async () => {
-  try { campionatore = await window.claude?.use?.('sample'); } catch { campionatore = null; }
-  if (!campionatore) {
-    input.placeholder = 'La chat funziona aprendo la pagina su claude.ai';
+  try { mcp = await window.claude?.use?.('mcp'); } catch { mcp = null; }
+  if (!mcp) {
+    input.placeholder = 'La chat con Claude Code funziona aprendo la pagina su claude.ai';
     input.disabled = true; invia.disabled = true;
+    return;
+  }
+  let salvata = null;
+  try { salvata = localStorage.getItem('casa-maq-sessione'); } catch {}
+  if (salvata) { sessione = salvata; $('apri-sessione').href = 'https://claude.ai/code/' + salvata; }
+  await aggiornaSessioni();
+  setInterval(aggiornaSessioni, 60000);
+  document.addEventListener('visibilitychange', aggiornaSessioni);
+  if (!sessione) {
+    try { const p = await chiama('list_sessions', { tags: [TAG], limit: 1 }); const s = p?.data?.[0]; if (s) { sessione = s.id; titoloSessione = s.title || ''; $('apri-sessione').href = 'https://claude.ai/code/' + s.id; } } catch {}
   }
 })();
 
 $('modulo-chat').addEventListener('submit', async (e) => {
   e.preventDefault();
-  const domanda = input.value.trim();
-  if (!domanda || !campionatore || inCorso) return;
-  input.value = '';
-  aggiungi('io', domanda);
-  storia.push({ role: 'user', content: domanda });
-  const risposta = aggiungi('claude', 'Sto pensando…');
-  const turni = storia.map((t, i) => (i === 0 ? { role: 'user', content: ISTRUZIONI + '\n\nDOMANDA:\n' + t.content } : t));
-  inCorso = new AbortController(); invia.disabled = true;
+  const testo = input.value.trim();
+  if (!testo || !mcp) return;
+  input.value = ''; invia.disabled = true;
+  $('finestra').hidden = false;
+  if (!sessione) conv.replaceChildren();
+  conv.querySelectorAll('.msg.nota').forEach((n) => n.remove());
+  conv.appendChild(bolla('io', testo));
+  const invio = nota('Invio…');
   try {
-    const r = await campionatore(turni, { cache: false, signal: inCorso.signal, onText: ({ text }) => { risposta.textContent = text; conv.scrollTop = conv.scrollHeight; } });
-    risposta.textContent = r.text;
-    storia.push({ role: 'assistant', content: r.text });
+    if (!sessione) {
+      const base = { prompt: testo, title: 'Casa MAQ · ' + testo.slice(0, 48), source_url: REPO, environment_id: AMBIENTE, tags: [TAG], append_system_prompt: ISTRUZIONI_SESSIONE };
+      let p;
+      try { p = await chiama('create_session', { ...base, permission_mode: 'auto' }); }
+      catch (err) { if (err?.code === 'tool_error' && /permission/i.test(err.message || '')) p = await chiama('create_session', base); else throw err; }
+      const id = trovaId(p);
+      if (!id) throw { code: 'tool_error', message: 'la sessione non è stata creata.' };
+      sessione = id; titoloSessione = base.title;
+      try { localStorage.setItem('casa-maq-sessione', id); } catch {}
+      $('apri-sessione').href = 'https://claude.ai/code/' + id;
+      aggiornaSessioni();
+    } else {
+      await chiama('send_message', { session_id: sessione, message: testo });
+    }
+    invio.remove();
+    inAttesa = true; inizioAttesa = Date.now();
+    impostaStato('lavora'); nota('Claude sta lavorando…');
+    setTimeout(avviaGiro, 3000);
   } catch (err) {
-    storia.pop();
-    risposta.classList.add('errore');
-    risposta.textContent = err?.code === 'not_granted' ? 'Serve il permesso per usare Claude da questa pagina.'
-      : err?.code === 'rate_limited' ? 'Troppe domande di fila: riprovi tra un minuto.'
-      : (err?.text || 'Non sono riuscito a rispondere. Riprovi tra poco.');
+    invio.remove();
+    nota(messaggioErrore(err), true);
   } finally {
-    inCorso = null; invia.disabled = false; input.focus();
+    invia.disabled = false; input.focus();
   }
 });
 </script>
