@@ -205,9 +205,13 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   apre in un foglio con i dettagli (chi sono i clienti, modifiche per sito/giorno, lead per stato, testo della chiamata
   con esiti da mandare a Claude). La pagina è un file solo (~500 KB con la foto in base64).
 - Aggiornamento automatico della Casa MAQ (30/10, richiesto dall'utente): attività programmata "Casa MAQ – aggiornamento
-  del mattino" (trig_01S68gU1gtQE9ACP9z5nGcAd), ogni giorno alle 8:40 ora di Roma, nuova sessione: legge gli esiti
-  dalle chat con tag casa-maq, aggiorna chiamate/siti/promemoria, cerca nuovi lead se ne restano meno di 20, ripubblica
-  la pagina e fa push sul ramo principale. Non ha connettori (non le servono). Gli esiti delle chiamate l'utente li dice in chat.
+  del mattino" (trig_019sTVUeD4d1kbuaWjhX7gKg), ogni giorno alle 8:40 ora di Roma, che si risveglia nella sessione
+  session_014fGtWeyuJbunQc9Az6duVZ: legge gli esiti dalle chat con tag casa-maq, aggiorna chiamate/siti/promemoria,
+  cerca nuovi lead se ne restano meno di 20, ripubblica la pagina e fa push sul ramo principale.
+  LEZIONE 30/10: la prima versione (trig_01S68gU1gtQE9ACP9z5nGcAd, ora disattivata) apriva una sessione NUOVA ogni
+  mattina: quelle sessioni non hanno il repo tra le fonti (push 403 dal proxy) né gli strumenti claude-code-remote,
+  quindi i 19 lead trovati il 30/10 non sono stati salvati. Le attività programmate vanno fatte risvegliare in una
+  sessione che ha già il repo. Gli esiti delle chiamate l'utente li dice in chat.
 - Per OGNI lead proposto indica sempre: aperto o chiuso (e l'orario di oggi), numero di recensioni e
   voto su Google, se ha già un sito, e che il telefono coincide con quello su Google.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
