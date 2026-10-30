@@ -204,9 +204,11 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   con tocco Mac (semafori nelle finestre). Tutto deve essere "meccanico": ogni scheda, colonna, riga, stato o settore si
   apre in un foglio con i dettagli (chi sono i clienti, modifiche per sito/giorno, lead per stato, testo della chiamata
   con esiti da mandare a Claude). La pagina è un file solo (~500 KB con la foto in base64).
-  TEMA dal 30/10 sera (scelta dell'utente): BLU NEON (ciano #22d3ff + blu #2f7bff, bagliori), foto tinta di blu, e
-  vetro TRASPARENTE VERO: niente backdrop-filter/sfocatura, solo riflessi, bordi chiari e luce interna. Blocco CSS
-  "Tema BLU NEON" in fondo allo stile di `modello.html`. Il "Jarvis" vocale lo vuole fare quando avrà un PC suo.
+  TEMA (30/10 sera, scelta dell'utente, sostituisce soggiorno e blu neon): VERDE TECH SOSTENIBILE: sfondo foresta nella
+  nebbia vista dall'alto (`casa-maq/sfondo.jpg`, Unsplash), tinta verde, griglia tecnologica e luce di scansione,
+  verde smeraldo neon #34f5a0 + #10b981 (accento lime #a3e635), numeri in JetBrains Mono. Vetro TRASPARENTE VERO:
+  niente backdrop-filter/sfocatura, solo riflessi, bordi chiari e luce interna. Blocco CSS "Tema VERDE TECH" in fondo
+  allo stile di `modello.html`. Il "Jarvis" vocale lo vuole fare quando avrà un PC suo.
   Numeri delle chiamate (30/10, richiesta dell'utente): ogni lead in `chiamate.json` ha un numero FISSO `n` (assegnato
   da aggiorna.py, mai riusato): l'utente dice "il 7 non risponde" invece del nome. Ogni messaggio della chat porta in
   coda un blocco <contesto-casa> con "numero = nome" delle chiamate di oggi (nascosto nella pagina).
