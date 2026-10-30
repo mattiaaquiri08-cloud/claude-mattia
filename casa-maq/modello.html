@@ -294,6 +294,82 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   .foglio { top: calc(10px + env(safe-area-inset-top, 0px)); bottom: calc(10px + env(safe-area-inset-bottom, 0px)); right: 10px; width: calc(100% - 20px); }
 }
 @media (max-width: 420px) { .kpi .spark { width: 38%; } .kpi .valore { font-size: 22px; } }
+
+/* ===== Tema BLU NEON (31/10, scelto dall'utente): vetro trasparente vero, senza sfocare lo sfondo ===== */
+:root {
+  --bg: #02060f;
+  --fg: #eaf6ff;
+  --muted: rgba(214, 236, 255, .70);
+  --faint: rgba(200, 228, 255, .62);
+  --neon: #22d3ff;
+  --neon-2: #2f7bff;
+  --bordo: rgba(120, 200, 255, .30);
+  --bordo-alto: rgba(190, 235, 255, .65);
+  --riga: rgba(120, 200, 255, .06);
+  --riga-hover: rgba(120, 200, 255, .14);
+  --arancio: #5cc8ff;
+  --verde: #22e6ff;
+  --blu: #2f7bff;
+  --viola: #7a8cff;
+  --rosa: #4aa3ff;
+  --giallo: #a6dcff;
+  --azzurro: #22d3ff;
+}
+.sfondo { background: linear-gradient(180deg, rgba(1, 5, 16, .80) 0%, rgba(1, 6, 20, .64) 40%, rgba(1, 5, 16, .84) 100%), linear-gradient(135deg, #0a3dff, #00b7ff), url("__FOTO__") center 40% / cover no-repeat, var(--bg); background-blend-mode: normal, color, normal; }
+.sfondo::after { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 50% at 20% 10%, rgba(34, 211, 255, .16), transparent 70%), radial-gradient(50% 45% at 85% 90%, rgba(47, 123, 255, .18), transparent 70%); }
+.vetro, .barra, .foglio, .finestra, .velo { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+.vetro {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, .13) 0%, rgba(255, 255, 255, .03) 38%, rgba(255, 255, 255, .015) 60%, rgba(120, 200, 255, .07) 100%);
+  border: 1px solid var(--bordo);
+  border-top-color: var(--bordo-alto);
+  border-left-color: rgba(170, 225, 255, .5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .45), inset 0 0 0 1px rgba(255, 255, 255, .03), inset 0 -18px 30px -24px rgba(34, 211, 255, .35), 0 0 22px rgba(34, 160, 255, .16), 0 14px 34px rgba(0, 0, 0, .35);
+}
+.vetro::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: linear-gradient(115deg, transparent 0 18%, rgba(255, 255, 255, .10) 22%, rgba(255, 255, 255, .02) 30%, transparent 36%); }
+.vetro > * { position: relative; }
+.dock.vetro, .foglio.vetro { position: fixed; }
+.kpi .spark { position: absolute; }
+.kpi .freccia { position: absolute; }
+.kpi .valore { text-shadow: 0 0 14px rgba(34, 211, 255, .55); }
+.intro h1 { background: linear-gradient(90deg, #ffffff, #9fe6ff 60%, var(--neon)); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none; filter: drop-shadow(0 0 12px rgba(34, 211, 255, .35)); }
+.kpi .icona { background: rgba(34, 211, 255, .14) !important; color: var(--neon) !important; box-shadow: 0 0 12px rgba(34, 211, 255, .35), inset 0 0 0 1px rgba(34, 211, 255, .45); }
+.kpi:hover { background: linear-gradient(135deg, rgba(255, 255, 255, .17), rgba(120, 200, 255, .08)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), 0 0 30px rgba(34, 200, 255, .32), 0 14px 34px rgba(0, 0, 0, .35); }
+.barra { background: rgba(2, 8, 22, .72); border-bottom-color: rgba(34, 211, 255, .35); box-shadow: 0 0 18px rgba(34, 160, 255, .18); }
+body::before { background: rgba(2, 8, 22, .95); }
+.nav a.attivo, .dock button.attivo, .dock button:hover { color: #fff; background: rgba(34, 211, 255, .18); border-color: rgba(34, 211, 255, .6); box-shadow: 0 0 12px rgba(34, 211, 255, .45); }
+.tondo { border-color: rgba(120, 200, 255, .35); background: rgba(120, 200, 255, .07); }
+.tondo:hover { background: rgba(34, 211, 255, .18); box-shadow: 0 0 10px rgba(34, 211, 255, .4); }
+.avatar-io { background: linear-gradient(135deg, var(--neon), var(--neon-2)); box-shadow: 0 0 14px rgba(34, 211, 255, .6); }
+.badge { background: var(--neon-2); box-shadow: 0 0 8px var(--neon-2); }
+.pill { background: rgba(120, 200, 255, .1); color: var(--muted); }
+.pill.verde, .pill.arancio, .pill.blu, .pill.viola { background: rgba(34, 211, 255, .14); color: #8fe8ff; box-shadow: inset 0 0 0 1px rgba(34, 211, 255, .3); }
+.pill.gialla { background: rgba(122, 140, 255, .18); color: #b9c4ff; box-shadow: inset 0 0 0 1px rgba(122, 140, 255, .35); }
+.pill.rossa { background: rgba(255, 90, 120, .16); color: #ff9db0; }
+.segmenti button[aria-pressed="true"] { background: var(--neon); color: #001528; }
+.bottone, .chip { border-color: rgba(120, 200, 255, .35); background: rgba(120, 200, 255, .07); }
+.bottone:hover, .chip:hover { background: rgba(34, 211, 255, .18); box-shadow: 0 0 12px rgba(34, 211, 255, .35); color: #fff; }
+.numero { background: rgba(34, 211, 255, .14); color: #8fe8ff; box-shadow: 0 0 10px rgba(34, 211, 255, .3), inset 0 0 0 1px rgba(34, 211, 255, .45); }
+.chiamata { background: linear-gradient(135deg, rgba(255, 255, 255, .09), rgba(255, 255, 255, .02) 45%, rgba(120, 200, 255, .05)); border-color: rgba(120, 200, 255, .25); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .3); }
+.chiamata:hover { background: linear-gradient(135deg, rgba(255, 255, 255, .14), rgba(120, 200, 255, .08)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .4), 0 0 18px rgba(34, 211, 255, .3); }
+.chiamata .stelle { color: #9fe6ff; }
+.barretta i { background: linear-gradient(90deg, var(--neon-2), var(--neon)); box-shadow: 0 0 10px var(--neon); }
+.agenda-voce .blocco { background: linear-gradient(135deg, rgba(255, 255, 255, .09), rgba(255, 255, 255, .02)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25); }
+.agenda-voce .blocco:hover { background: rgba(34, 211, 255, .12); }
+.colonna rect.vetro-col { stroke: rgba(160, 225, 255, .55); }
+.foglio, .chat-pagina { background: linear-gradient(160deg, rgba(8, 22, 48, .94), rgba(3, 10, 26, .96)); border-color: rgba(34, 211, 255, .4); box-shadow: 0 0 30px rgba(34, 160, 255, .25), 0 20px 50px rgba(0, 0, 0, .5); }
+.foglio::before, .chat-pagina::before { display: none; }
+.velo { background: rgba(0, 4, 14, .55); }
+.msg.io { background: linear-gradient(135deg, var(--neon-2), #1aa6ff); box-shadow: 0 0 14px rgba(47, 123, 255, .45); }
+.msg.claude { background: rgba(120, 200, 255, .12); box-shadow: inset 0 0 0 1px rgba(120, 200, 255, .2); }
+.claude-av { background: linear-gradient(135deg, var(--neon), var(--neon-2)); box-shadow: 0 0 16px rgba(34, 211, 255, .6); }
+.invia { background: linear-gradient(135deg, var(--neon), var(--neon-2)); box-shadow: 0 0 12px rgba(34, 211, 255, .5); }
+.scrivi { border-color: rgba(120, 200, 255, .35); }
+.scrivi:focus-within { border-color: var(--neon); box-shadow: 0 0 14px rgba(34, 211, 255, .35); }
+.stato-punto { background: var(--neon); box-shadow: 0 0 8px var(--neon); }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline-color: var(--neon); }
+.pannello header p, .etichetta, .agenda-voce .ora, .intro p, .riga-av .sotto, .chiamata .dove, .obiettivo .sotto { text-shadow: 0 1px 3px rgba(0, 4, 16, .9); }
+.grafico text { paint-order: stroke; stroke: rgba(0, 6, 20, .75); stroke-width: 3px; stroke-linejoin: round; }
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -472,7 +548,7 @@ const num = new Intl.NumberFormat('it-IT');
 const NS = 'http://www.w3.org/2000/svg';
 const svgEl = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
 const icona = (nome, cls = 'i p') => { const s = svgEl('svg', { class: cls }); s.appendChild(svgEl('use', { href: '#i-' + nome })); return s; };
-const COLORI = ['#ff9f0a', '#0a84ff', '#30d158', '#bf5af2', '#ff375f', '#64d2ff', '#ffd60a', '#ac8e68'];
+const COLORI = ['#1f8bff', '#12b6e8', '#3d5bff', '#0ea5c6', '#5b6cff', '#1c74d9', '#2bc0ff', '#4a7dff'];
 const coloreDi = (s) => COLORI[[...String(s)].reduce((a, c) => a + c.charCodeAt(0), 0) % COLORI.length];
 const sigla = (s) => String(s).replace(/[^\p{L}\p{N} ]/gu, ' ').trim().split(/\s+/).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
 function avatar(nome, cls = 'av') { const a = el('span', cls, sigla(nome)); a.style.background = coloreDi(nome); return a; }
@@ -555,7 +631,7 @@ function disegnaKpi() {
   $('k-clienti').textContent = num.format(clienti.length);
   $('k-clienti-pill').textContent = clienti.map((p) => p.sigla).join(' · ') || 'nessuno';
   const sigleClienti = new Set(clienti.map((p) => p.sigla));
-  sparkline($('s-clienti'), serie(14, (c) => sigleClienti.has(c.progetto)).map((x) => x.n), '#ff9f0a');
+  sparkline($('s-clienti'), serie(14, (c) => sigleClienti.has(c.progetto)).map((x) => x.n), '#22d3ff');
 
   $('k-coda').textContent = num.format(restanti().length);
   const gruppiCoda = new Set(restanti().map((l) => gruppoDi(l.settore)));
@@ -564,12 +640,12 @@ function disegnaKpi() {
   $('k-attesa').textContent = num.format(inAttesaSiti.length);
   $('k-attesa-pill').textContent = inAttesaSiti.map((p) => p.sigla).join(' · ') || 'nessuno';
   const sigleAttesa = new Set(inAttesaSiti.map((p) => p.sigla));
-  sparkline($('s-attesa'), serie(14, (c) => sigleAttesa.has(c.progetto)).map((x) => x.n), '#0a84ff');
+  sparkline($('s-attesa'), serie(14, (c) => sigleAttesa.has(c.progetto)).map((x) => x.n), '#22d3ff');
 
   const n = fatteOggi();
   $('k-chiamate').textContent = `${n}/${C.al_giorno}`;
   $('k-chiamate-pill').textContent = `${restanti().length} in lista`;
-  sparkline($('s-chiamate'), Array.from({ length: C.al_giorno }, (_, i) => Math.min(n, i + 1)), '#bf5af2');
+  sparkline($('s-chiamate'), Array.from({ length: C.al_giorno }, (_, i) => Math.min(n, i + 1)), '#22d3ff');
 }
 
 /* Grafico a colonne */
@@ -590,9 +666,9 @@ function disegnaGrafico() {
   const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Attività da chiamare per settore' });
   const defs = svgEl('defs', {});
   const mk = (id, stops) => { const g = svgEl('linearGradient', { id, x1: 0, y1: 0, x2: 0, y2: 1 }); stops.forEach(([o, c, a]) => g.appendChild(svgEl('stop', { offset: o, 'stop-color': c, 'stop-opacity': a }))); defs.appendChild(g); };
-  mk('g-vetro', [[0, '#ffffff', .34], [1, '#ffffff', .07]]);
+  mk('g-vetro', [[0, '#bfefff', .30], [1, '#7fc8ff', .04]]);
   mk('g-vetro-hover', [[0, '#ffffff', .5], [1, '#ffffff', .14]]);
-  mk('g-blu', [[0, '#7cc0ff', 1], [.5, '#2f95ff', 1], [1, '#0a6cff', 1]]);
+  mk('g-blu', [[0, '#8ff3ff', 1], [.45, '#22d3ff', 1], [1, '#2f5bff', 1]]);
   svg.appendChild(defs);
   const max = Math.max(1, ...dati.map((x) => x.n));
   const alt = H - top - bottom, larg = W - sx;
@@ -611,7 +687,7 @@ function disegnaGrafico() {
     const forte = i === 0;
     const g = svgEl('g', { class: 'colonna', tabindex: 0, role: 'button', 'aria-label': `${x.settore}: ${x.n} da chiamare` });
     const r = svgEl('rect', { x: cx - lb / 2, y, width: lb, height: h, rx: lb / 2, class: forte ? '' : 'vetro-col' });
-    if (forte) { r.setAttribute('fill', 'url(#g-blu)'); r.setAttribute('style', 'filter: drop-shadow(0 0 12px rgba(10,132,255,.6))'); }
+    if (forte) { r.setAttribute('fill', 'url(#g-blu)'); r.setAttribute('style', 'filter: drop-shadow(0 0 14px rgba(34,211,255,.85))'); }
     g.appendChild(r);
     g.appendChild(svgEl('rect', { x: sx + passo * i, y: 0, width: passo, height: H, fill: 'transparent' }));
     const t = svgEl('text', { x: cx, y: H - 12, 'text-anchor': 'middle' });
