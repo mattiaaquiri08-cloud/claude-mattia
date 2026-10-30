@@ -310,6 +310,613 @@
    "stato": "Da chiamare",
    "verificato": "2026-10-30",
    "n": 19
+  },
+  {
+   "nome": "Estetica Vintage - Monteverde",
+   "settore": "Centro estetico",
+   "zona": "Monteverde",
+   "indirizzo": "Via Severo Carmignano, 13, 00151 Roma RM",
+   "recensioni": 44,
+   "voto": 5.0,
+   "telefono": "+39 320 959 2222",
+   "online": [
+    "Google",
+    "Facebook"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Estetica+Vintage+-+Monteverde+Via+Severo+Carmignano%2C+13%2C+00151+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 20
+  },
+  {
+   "nome": "Nails Mon Amour",
+   "settore": "Salone di manicure",
+   "zona": "Centocelle",
+   "indirizzo": "Via Delle Azalee, 140, 00172 Roma RM",
+   "recensioni": 34,
+   "voto": 5.0,
+   "telefono": "+39 329 856 9933",
+   "online": [
+    "Google",
+    "Facebook"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Nails+Mon+Amour+Via+Delle+Azalee%2C+140%2C+00172+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 21
+  },
+  {
+   "nome": "respiro",
+   "settore": "Locale specializzato in cocktail",
+   "zona": "EUR",
+   "indirizzo": "Viale Europa, 313, 00144 Roma RM",
+   "recensioni": 23,
+   "voto": 5.0,
+   "telefono": "+39 347 919 1167",
+   "online": [
+    "Google",
+    "Instagram"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=respiro+Viale+Europa%2C+313%2C+00144+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 22
+  },
+  {
+   "nome": "Ju Jitsu Torpignattara Roma - Wjj Pma Italia Arti marziali",
+   "settore": "Scuola di arti marziali",
+   "zona": "Torpignattara",
+   "indirizzo": "Via Mario Cartaro, 10, 00176 Roma RM",
+   "recensioni": 12,
+   "voto": 4.9,
+   "telefono": "+39 392 650 7800",
+   "online": [
+    "Google",
+    "Facebook"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Ju+Jitsu+Torpignattara+Roma+-+Wjj+Pma+Italia+Arti+marziali+Via+Mario+Cartaro%2C+10%2C+00176+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 23
+  },
+  {
+   "nome": "Studio di fisioterapia - FISIO REVOLUTION",
+   "settore": "Fisioterapista",
+   "zona": "Ostiense",
+   "indirizzo": "Via Gaspare Gozzi, 145, 00145 Roma RM",
+   "recensioni": 55,
+   "voto": 5.0,
+   "telefono": "+39 345 780 9119",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Studio+di+fisioterapia+-+FISIO+REVOLUTION+Via+Gaspare+Gozzi%2C+145%2C+00145+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 24
+  },
+  {
+   "nome": "Ali pinsa Pinseria",
+   "settore": "Pizzeria a domicilio",
+   "zona": "Centocelle",
+   "indirizzo": "Via delle Giunchiglie, 53, 00172 Roma RM",
+   "recensioni": 54,
+   "voto": 4.9,
+   "telefono": "+39 376 092 8665",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Ali+pinsa+Pinseria+Via+delle+Giunchiglie%2C+53%2C+00172+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 25
+  },
+  {
+   "nome": "Pilates Reformer Tuscolana",
+   "settore": "Insegnante di yoga",
+   "zona": "Tuscolano",
+   "indirizzo": "Via Statilio Ottato, 25, 00175 Roma RM",
+   "recensioni": 51,
+   "voto": 5.0,
+   "telefono": "+39 351 437 3433",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Pilates+Reformer+Tuscolana+Via+Statilio+Ottato%2C+25%2C+00175+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 26
+  },
+  {
+   "nome": "Alma Hair Salon, Eur Roma",
+   "settore": "Parrucchiere",
+   "zona": "EUR",
+   "indirizzo": "Via del Pianeta Venere, 54/56, 00144 Roma RM",
+   "recensioni": 48,
+   "voto": 5.0,
+   "telefono": "+39 375 889 8150",
+   "online": [
+    "Google",
+    "Instagram"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Alma+Hair+Salon%2C+Eur+Roma+Via+del+Pianeta+Venere%2C+54%2F56%2C+00144+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 27
+  },
+  {
+   "nome": "IVORY PIGNETO",
+   "settore": "Ristopub",
+   "zona": "Pigneto",
+   "indirizzo": "Via Avellino, 18 A/B, 00176 Roma RM",
+   "recensioni": 38,
+   "voto": 5.0,
+   "telefono": "+39 320 423 4567",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=IVORY+PIGNETO+Via+Avellino%2C+18+A%2FB%2C+00176+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 28
+  },
+  {
+   "nome": "Autofficina - Ricarica Aria Condizionata",
+   "settore": "Officina autoriparazioni",
+   "zona": "Montesacro",
+   "indirizzo": "Via Panaria, 5, 00141 Roma RM",
+   "recensioni": 26,
+   "voto": 4.8,
+   "telefono": "+39 339 237 3343",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Autofficina+-+Ricarica+Aria+Condizionata+Via+Panaria%2C+5%2C+00141+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 29
+  },
+  {
+   "nome": "Hard Work Tattoo",
+   "settore": "Studio di tatuaggi",
+   "zona": "Trastevere",
+   "indirizzo": "Via di S. Calisto, 8, 00153 Roma RM",
+   "recensioni": 55,
+   "voto": 4.9,
+   "telefono": "+39 334 153 8777",
+   "online": [
+    "Google",
+    "Instagram"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Hard+Work+Tattoo+Via+di+S.+Calisto%2C+8%2C+00153+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 30
+  },
+  {
+   "nome": "H2B Beauty",
+   "settore": "Centro estetico",
+   "zona": "Trieste",
+   "indirizzo": "Via Lambro, 2, 00199 Roma RM",
+   "recensioni": 38,
+   "voto": 4.9,
+   "telefono": "+39 328 136 6195",
+   "online": [
+    "Google",
+    "Facebook"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=H2B+Beauty+Via+Lambro%2C+2%2C+00199+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 31
+  },
+  {
+   "nome": "Giuseppe Il Tuo Curatore D`Immagine",
+   "settore": "Barbiere",
+   "zona": "Trieste",
+   "indirizzo": "Via Lucrino, 20 B, 00199 Roma RM",
+   "recensioni": 56,
+   "voto": 4.8,
+   "telefono": "+39 347 646 0330",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Giuseppe+Il+Tuo+Curatore+D%60Immagine+Via+Lucrino%2C+20+B%2C+00199+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 32
+  },
+  {
+   "nome": "JC Studio Nails & Academy - Jessica Costa",
+   "settore": "Centro di formazione",
+   "zona": "Montesacro",
+   "indirizzo": "Via di Valle Melaina, 50, 00139 Roma RM",
+   "recensioni": 28,
+   "voto": 4.8,
+   "telefono": "+39 351 814 3296",
+   "online": [
+    "Google",
+    "Instagram"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=JC+Studio+Nails+%5Cu0026+Academy+-+Jessica+Costa+Via+di+Valle+Melaina%2C+50%2C+00139+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 33
+  },
+  {
+   "nome": "Secco baretto",
+   "settore": "Locale specializzato in cocktail",
+   "zona": "Trieste",
+   "indirizzo": "Via Luigi Mancinelli, 23, 00199 Roma RM",
+   "recensioni": 59,
+   "voto": 4.8,
+   "telefono": "+39 329 392 5739",
+   "online": [
+    "Google",
+    "Instagram"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Secco+baretto+Via+Luigi+Mancinelli%2C+23%2C+00199+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 34
+  },
+  {
+   "nome": "Dott.ssa Diana Moretti - Fisioterapista a Roma",
+   "settore": "Fisioterapista",
+   "zona": "Trastevere",
+   "indirizzo": "Viale di Trastevere, 82, 00153 Roma RM",
+   "recensioni": 42,
+   "voto": 5.0,
+   "telefono": "+39 352 251 4652",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Dott.ssa+Diana+Moretti+-+Fisioterapista+a+Roma+Viale+di+Trastevere%2C+82%2C+00153+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 36
+  },
+  {
+   "nome": "Centro Pilates e Ginnastica Posturale BolerOlé",
+   "settore": "Pilates",
+   "zona": "Tuscolano",
+   "indirizzo": "Via dei Quintili, 45, 00175 Roma RM",
+   "recensioni": 37,
+   "voto": 4.8,
+   "telefono": "+39 392 983 0890",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Centro+Pilates+e+Ginnastica+Posturale+BolerOl%C3%A9+Via+dei+Quintili%2C+45%2C+00175+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 37
+  },
+  {
+   "nome": "Parrucchiere Roma Ostiense Garbatella - Home Salon 32",
+   "settore": "Salone da parrucchiere",
+   "zona": "Ostiense",
+   "indirizzo": "Via Bartolomeo Diaz, 32, 00154 Roma RM",
+   "recensioni": 39,
+   "voto": 4.8,
+   "telefono": "+39 389 853 1135",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Parrucchiere+Roma+Ostiense+Garbatella+-+Home+Salon+32+Via+Bartolomeo+Diaz%2C+32%2C+00154+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 38
+  },
+  {
+   "nome": "New Kathmandu Restaurant & Bar",
+   "settore": "Ristorante asiatico",
+   "zona": "Torpignattara",
+   "indirizzo": "Via di Tor Pignattara, 91, 00177 Roma RM",
+   "recensioni": 23,
+   "voto": 5.0,
+   "telefono": "+39 351 135 7948",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=New+Kathmandu+Restaurant+%5Cu0026+Bar+Via+di+Tor+Pignattara%2C+91%2C+00177+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 39
+  },
+  {
+   "nome": "Autofficina QB Car Service",
+   "settore": "Officina autoriparazioni",
+   "zona": "Tuscolano",
+   "indirizzo": "Viale Opita Oppio, 35, 00174 Roma RM",
+   "recensioni": 23,
+   "voto": 5.0,
+   "telefono": "+39 347 826 3766",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Autofficina+QB+Car+Service+Viale+Opita+Oppio%2C+35%2C+00174+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 40
+  },
+  {
+   "nome": "Traditional Stone Tattoo",
+   "settore": "Studio di tatuaggi",
+   "zona": "Monteverde",
+   "indirizzo": "Via Dante de Blasi, 47, 00151 Roma RM",
+   "recensioni": 53,
+   "voto": 4.9,
+   "telefono": "+39 366 359 8286",
+   "online": [
+    "Google",
+    "Instagram"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Traditional+Stone+Tattoo+-+studio+di+tatuaggi+-+tradizionale%2C+giapponese%2C+bianco+e+nero+Via+Dante+de+Blasi%2C+47%2C+00151+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 41
+  },
+  {
+   "nome": "Monica beauty studio",
+   "settore": "Centro estetico",
+   "zona": "Appio Latino",
+   "indirizzo": "Furio Camillo, Via Gino Capponi, 90, 00179 Roma RM",
+   "recensioni": 36,
+   "voto": 4.8,
+   "telefono": "+39 351 514 2590",
+   "online": [
+    "Google",
+    "Instagram"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Monica+beauty+studio+Furio+Camillo%2C+Via+Gino+Capponi%2C+90%2C+00179+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 42
+  },
+  {
+   "nome": "Parrucchiere per uomo",
+   "settore": "Parrucchiere",
+   "zona": "Prati",
+   "indirizzo": "Via Vespasiano, 5, 00192 Roma RM",
+   "recensioni": 54,
+   "voto": 4.9,
+   "telefono": "+39 327 976 9869",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Parrucchiere+per+uomo+Via+Vespasiano%2C+5%2C+00192+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 43
+  },
+  {
+   "nome": "Nailsaloon-Centocell/Pignatt Tower",
+   "settore": "Salone di manicure",
+   "zona": "Centocelle",
+   "indirizzo": "Via dei Glicini, 36 a, 00172 Roma RM",
+   "recensioni": 21,
+   "voto": 4.8,
+   "telefono": "+39 345 223 5421",
+   "online": [
+    "Google",
+    "Facebook"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Nailsaloon-Centocell%2FPignatt+Tower+Via+dei+Glicini%2C+36+a%2C+00172+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 44
+  },
+  {
+   "nome": "Enoteca Cantiere Vino",
+   "settore": "Negozio di vini",
+   "zona": "Appio Latino",
+   "indirizzo": "Via Tommaso da Celano, 116, 00179 Roma RM",
+   "recensioni": 56,
+   "voto": 5.0,
+   "telefono": "+39 366 206 3600",
+   "online": [
+    "Google",
+    "Facebook"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Enoteca+Cantiere+Vino+Via+Tommaso+da+Celano%2C+116%2C+00179+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 45
+  },
+  {
+   "nome": "Muay thai San lorenzo",
+   "settore": "Palestra per il pugilato Muay Thai",
+   "zona": "San Lorenzo",
+   "indirizzo": "Via dei Volsci, 94, 00185 Roma RM",
+   "recensioni": 34,
+   "voto": 5.0,
+   "telefono": "+39 328 080 9943",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Muay+thai+San+lorenzo+Via+dei+Volsci%2C+94%2C+00185+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 46
+  },
+  {
+   "nome": "Dott. Stefano Arcioni, Fisioterapista",
+   "settore": "Fisioterapista",
+   "zona": "Trieste",
+   "indirizzo": "Via Ghirza, 9, 00198 Roma RM",
+   "recensioni": 33,
+   "voto": 5.0,
+   "telefono": "+39 347 004 2397",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Dott.+Stefano+Arcioni%2C+Fisioterapista+Via+Ghirza%2C+9%2C+00198+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 47
+  },
+  {
+   "nome": "Giuliana e Dora hair parrucchiere",
+   "settore": "Salone da parrucchiere",
+   "zona": "Torpignattara",
+   "indirizzo": "Via Casilina, 315 A, 00176 Roma RM",
+   "recensioni": 26,
+   "voto": 4.9,
+   "telefono": "+39 320 854 0436",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Giuliana+e+Dora+hair+parrucchiere+Via+Casilina%2C+315+A%2C+00176+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 48
+  },
+  {
+   "nome": "AUTOFFICINA DR AUTOSPORT DI ZEZZA DANIELE E ROBERTO",
+   "settore": "Officina autoriparazioni",
+   "zona": "Centocelle",
+   "indirizzo": "Piazza dei Bossi, 14-15, 00172 Roma RM",
+   "recensioni": 17,
+   "voto": 4.9,
+   "telefono": "+39 338 618 3135",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=AUTOFFICINA+DR+AUTOSPORT+DI+ZEZZA+DANIELE+E+ROBERTO+Piazza+dei+Bossi%2C+14-15%2C+00172+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 49
+  },
+  {
+   "nome": "Saint Parker Tattoo Shop",
+   "settore": "Negozio per tatuaggi e piercing",
+   "zona": "Tuscolano",
+   "indirizzo": "Via Genzano, 189, 00179 Roma RM",
+   "recensioni": 40,
+   "voto": 4.9,
+   "telefono": "+39 328 730 4236",
+   "online": [
+    "Google",
+    "Instagram"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Saint+Parker+Tattoo+Shop+Via+Genzano%2C+189%2C+00179+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 50
+  },
+  {
+   "nome": "Fabio Serafini Hair Care Education & Training",
+   "settore": "Salone da parrucchiere",
+   "zona": "Trastevere",
+   "indirizzo": "Via di S. Calisto, 6/A, 00100 Roma RM",
+   "recensioni": 52,
+   "voto": 4.8,
+   "telefono": "+39 329 402 1487",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Fabio+Serafini+Hair+Care+Education+%5Cu0026+Training+Via+di+S.+Calisto%2C+6%2FA%2C+00100+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 51
+  },
+  {
+   "nome": "Tajo - cocktailpub",
+   "settore": "Locale specializzato in cocktail",
+   "zona": "Torpignattara",
+   "indirizzo": "Via Gentile da Mogliano, 180, 00176 Roma RM",
+   "recensioni": 52,
+   "voto": 4.9,
+   "telefono": "+39 392 629 6690",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Tajo+-+cocktailpub+Via+Gentile+da+Mogliano%2C+180%2C+00176+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 52
+  },
+  {
+   "nome": "Justfit Roma Libia",
+   "settore": "Personal trainer",
+   "zona": "Trieste",
+   "indirizzo": "Via Roccantica, 20, 00199 Roma RM",
+   "recensioni": 32,
+   "voto": 5.0,
+   "telefono": "+39 353 446 3577",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Justfit+Roma+Libia+Via+Roccantica%2C+20%2C+00199+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 53
+  },
+  {
+   "nome": "Fisiomariani",
+   "settore": "Fisioterapista",
+   "zona": "Ostiense",
+   "indirizzo": "Piazza Adele Zoagli 2, piano strada, 00145 Roma RM",
+   "recensioni": 29,
+   "voto": 5.0,
+   "telefono": "+39 351 614 3909",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Fisiomariani+Piazza+Adele+Zoagli+2%2C+piano+strada%2C+00145+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 54
+  },
+  {
+   "nome": "The Mirror Parrucchiere",
+   "settore": "Salone da parrucchiere",
+   "zona": "Torpignattara",
+   "indirizzo": "Via Bartolomeo Perestrello, 118, 00176 Roma RM",
+   "recensioni": 24,
+   "voto": 4.8,
+   "telefono": "+39 342 945 5638",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=The+Mirror+Parrucchiere+Via+Bartolomeo+Perestrello%2C+118%2C+00176+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 55
+  },
+  {
+   "nome": "Officina G.V. Auto",
+   "settore": "Autoriparatore",
+   "zona": "Trastevere",
+   "indirizzo": "Viale delle Mura Portuensi, 6, 00153 Roma RM",
+   "recensioni": 15,
+   "voto": 5.0,
+   "telefono": "+39 331 807 3522",
+   "online": [
+    "Google"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Officina+G.V.+Auto+Viale+delle+Mura+Portuensi%2C+6%2C+00153+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 56
+  },
+  {
+   "nome": "Rubedo Tattoo Studio",
+   "settore": "Studio di tatuaggi",
+   "zona": "Montesacro",
+   "indirizzo": "Via Antonio Silvani, 71/73, 00139 Roma RM",
+   "recensioni": 27,
+   "voto": 5.0,
+   "telefono": "+39 380 192 2097",
+   "online": [
+    "Google",
+    "Instagram"
+   ],
+   "maps": "https://www.google.com/maps/search/?api=1&query=Rubedo+Tattoo+Studio+Via+Antonio+Silvani%2C+71%2F73%2C+00139+Roma+RM",
+   "stato": "Da chiamare",
+   "verificato": "2026-10-30",
+   "n": 57
   }
  ]
 }

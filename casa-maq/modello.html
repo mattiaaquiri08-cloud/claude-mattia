@@ -328,7 +328,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
     <a href="#home" class="attivo" data-vai="home"><svg class="i p"><use href="#i-home"/></svg><span>Home</span></a>
     <a href="#chiamate" data-vai="chiamate"><svg class="i p"><use href="#i-phone"/></svg><span>Chiamate</span></a>
     <a href="#siti" data-vai="siti"><svg class="i p"><use href="#i-monitor"/></svg><span>Siti</span></a>
-    <a href="#lead" data-vai="lead"><svg class="i p"><use href="#i-users"/></svg><span>Lead</span></a>
   </nav>
   <div class="dx">
     <button class="tondo" type="button" data-chat aria-label="Chat con Claude Code"><svg class="i p"><use href="#i-chat"/></svg></button>
@@ -343,7 +342,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   <button type="button" data-chat data-etichetta="Chat con Claude" aria-label="Chat con Claude"><svg class="i"><use href="#i-chat"/></svg></button>
   <button type="button" data-vai="chiamate" data-etichetta="Chiamate" aria-label="Chiamate"><svg class="i"><use href="#i-phone"/></svg></button>
   <button type="button" data-vai="siti" data-etichetta="Siti" aria-label="Siti"><svg class="i"><use href="#i-monitor"/></svg></button>
-  <button type="button" data-vai="lead" data-etichetta="Lead" aria-label="Lead"><svg class="i"><use href="#i-users"/></svg></button>
   <button type="button" data-apri="cerca" data-etichetta="Cerca" aria-label="Cerca"><svg class="i"><use href="#i-search"/></svg></button>
 </nav>
 
@@ -433,20 +431,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
       <div class="chiamate" id="lista-chiamate"></div>
     </article>
 
-    <article class="pannello vetro s12" id="lead">
-      <header><div><h2>Lead</h2><p>Attività verificate senza sito: tocchi uno stato o un settore per vedere chi sono</p></div></header>
-      <div class="lead-corpo">
-        <div>
-          <div class="totale-lead"><b id="lead-totale">—</b><span>attività in lista</span></div>
-          <div class="barra-lead" id="barra-lead"></div>
-          <div class="legenda" id="legenda-lead"></div>
-        </div>
-        <div>
-          <p class="titoletto">Settori più presenti</p>
-          <div class="settori" id="settori"></div>
-        </div>
-      </div>
-    </article>
 
   </section>
   <p class="avviso" style="justify-self:center;border:0;background:none" id="aggiornato"></p>
@@ -518,19 +502,32 @@ const progettoDaSigla = (s) => DATI.progetti.find((p) => p.sigla === s);
 /* Saluto */
 const ora = new Date().getHours();
 $('saluto').textContent = ora < 5 ? 'Buonanotte' : ora < 13 ? 'Buongiorno' : ora < 18 ? 'Buon pomeriggio' : 'Buonasera';
-$('sottotitolo').textContent = `Oggi tocca fare ${C.oggi.length} chiamate · ${clienti.length} clienti · ${inAttesaSiti.length} in attesa di risposta`;
 $('oggi-data').textContent = new Date().toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'short' });
 $('aggiornato').textContent = 'Dati aggiornati ' + quandoRelativo(DATI.generato);
 $('badge-promemoria').textContent = DATI.promemoria.length;
 
-/* Chiamate fatte oggi (solo su questo dispositivo) */
-const chiaveOggi = 'casa-maq-fatte-' + new Date().toLocaleDateString('sv-SE');
-let fatte = new Set();
-try { fatte = new Set(JSON.parse(localStorage.getItem(chiaveOggi) || '[]')); } catch { fatte = new Set(); }
-const salvaFatte = () => { try { localStorage.setItem(chiaveOggi, JSON.stringify([...fatte])); } catch {} };
-function segnaFatta(nome) {
-  if (fatte.has(nome)) fatte.delete(nome); else fatte.add(nome);
-  salvaFatte(); disegnaChiamate(); disegnaKpi(); disegnaObiettivi();
+/* Chiamate fatte: nel database della pagina (collezione "chiamate-fatte", un documento per numero).
+   Appena una chiamata è segnata, sparisce dalla lista di oggi e al suo posto entra la successiva. */
+let db = null;
+let fatteDb = new Map();
+let OGGI = [];
+const fatta = (l) => fatteDb.has(String(l.n));
+const oggiISO = () => new Date().toLocaleDateString('sv-SE');
+const fatteOggi = () => [...fatteDb.values()].filter((f) => f.quando && new Date(f.quando).toLocaleDateString('sv-SE') === oggiISO()).length;
+const restanti = () => C.coda.filter((l) => !fatta(l));
+function calcolaOggi() { OGGI = restanti().slice(0, C.al_giorno); }
+calcolaOggi();
+async function segnaEsito(l, esito) {
+  if (!db) return false;
+  const ref = db.collection('chiamate-fatte').doc(String(l.n));
+  if (esito === null) await ref.delete();
+  else await ref.set({ n: l.n, nome: l.nome, esito, quando: new Date().toISOString() });
+  return true;
+}
+function aggiornaChiamate() {
+  calcolaOggi();
+  $('sottotitolo').textContent = `Oggi tocca fare ${C.al_giorno} chiamate (fatte ${fatteOggi()}) · ${clienti.length} clienti · ${inAttesaSiti.length} in attesa di risposta`;
+  disegnaChiamate(); disegnaKpi(); disegnaObiettivi(); disegnaAgenda(); disegnaGrafico();
 }
 
 /* Serie per giorno */
@@ -560,8 +557,8 @@ function disegnaKpi() {
   const sigleClienti = new Set(clienti.map((p) => p.sigla));
   sparkline($('s-clienti'), serie(14, (c) => sigleClienti.has(c.progetto)).map((x) => x.n), '#ff9f0a');
 
-  $('k-coda').textContent = num.format(C.in_coda);
-  const gruppiCoda = new Set(C.coda.map((l) => gruppoDi(l.settore)));
+  $('k-coda').textContent = num.format(restanti().length);
+  const gruppiCoda = new Set(restanti().map((l) => gruppoDi(l.settore)));
   $('k-coda-pill').textContent = `${gruppiCoda.size} settori`;
 
   $('k-attesa').textContent = num.format(inAttesaSiti.length);
@@ -569,10 +566,10 @@ function disegnaKpi() {
   const sigleAttesa = new Set(inAttesaSiti.map((p) => p.sigla));
   sparkline($('s-attesa'), serie(14, (c) => sigleAttesa.has(c.progetto)).map((x) => x.n), '#0a84ff');
 
-  const n = C.oggi.filter((l) => fatte.has(l.nome)).length;
-  $('k-chiamate').textContent = `${n}/${C.oggi.length}`;
-  $('k-chiamate-pill').textContent = `${C.in_coda} in lista`;
-  sparkline($('s-chiamate'), C.oggi.map((l, i) => C.oggi.slice(0, i + 1).filter((x) => fatte.has(x.nome)).length), '#bf5af2');
+  const n = fatteOggi();
+  $('k-chiamate').textContent = `${n}/${C.al_giorno}`;
+  $('k-chiamate-pill').textContent = `${restanti().length} in lista`;
+  sparkline($('s-chiamate'), Array.from({ length: C.al_giorno }, (_, i) => Math.min(n, i + 1)), '#bf5af2');
 }
 
 /* Grafico a colonne */
@@ -580,7 +577,7 @@ const GRUPPI = [[/ristorant|trattoria|bistrot|ristopub|pizz|sushi|hamburg/i, 'Ri
 const gruppoDi = (settore) => (GRUPPI.find(([re]) => re.test(settore)) || [null, 'Altro'])[1];
 function datiGrafico() {
   const conta = {};
-  C.coda.forEach((l) => { const g = gruppoDi(l.settore); conta[g] = (conta[g] || 0) + 1; });
+  restanti().forEach((l) => { const g = gruppoDi(l.settore); conta[g] = (conta[g] || 0) + 1; });
   return Object.entries(conta).sort((a, b) => b[1] - a[1]).slice(0, 10).map(([settore, n]) => ({ settore, n }));
 }
 function disegnaGrafico() {
@@ -635,7 +632,7 @@ function disegnaGrafico() {
   });
   box.append(svg, tip);
   $('grafico-pill').className = 'pill blu';
-  $('grafico-pill').textContent = `${C.in_coda} in lista`;
+  $('grafico-pill').textContent = `${restanti().length} in lista`;
 }
 let attesaRidisegno;
 new ResizeObserver(() => { clearTimeout(attesaRidisegno); attesaRidisegno = setTimeout(disegnaGrafico, 80); }).observe($('grafico'));
@@ -653,9 +650,9 @@ function voceAgenda(ora, titolo, sotto, colore, facce, azione) {
 }
 function disegnaAgenda() {
   const ag = $('agenda'); ag.replaceChildren();
-  if (C.oggi.length) {
-    const nomi = C.oggi.map((l) => l.nome);
-    ag.appendChild(voceAgenda('Oggi', `${C.oggi.length} chiamate da fare`, `${nomi.slice(0, 2).join(', ')} e altre ${Math.max(0, nomi.length - 2)}`, 'var(--blu)', nomi.slice(0, 4), () => apri(foglioChiamate)));
+  if (OGGI.length) {
+    const nomi = OGGI.map((l) => l.nome);
+    ag.appendChild(voceAgenda('Oggi', `${Math.max(0, C.al_giorno - fatteOggi())} chiamate da fare`, `${nomi.slice(0, 2).join(', ')} e altre ${Math.max(0, nomi.length - 2)}`, 'var(--blu)', nomi.slice(0, 4), () => apri(foglioChiamate)));
   }
   DATI.promemoria.forEach((p) => ag.appendChild(voceAgenda(p.quando, p.testo.split(':')[0], p.testo.includes(':') ? p.testo.split(':').slice(1).join(':').trim() : '', COLORE_QUANDO(p.quando), progettiCitati(p.testo).map((x) => x.sigla), () => apri(() => foglioPromemoria(p)))));
 }
@@ -714,61 +711,29 @@ function obiettivo(perc, colore, nome, sotto, azione) {
 }
 function disegnaObiettivi() {
   const box = $('obiettivi'); box.replaceChildren();
-  const n = C.oggi.filter((l) => fatte.has(l.nome)).length;
-  box.appendChild(obiettivo(C.oggi.length ? Math.round(n / C.oggi.length * 100) : 0, 'var(--arancio)', 'Chiamate di oggi', `${n} fatte su ${C.oggi.length}`, () => apri(foglioChiamate)));
+  const n = fatteOggi();
+  box.appendChild(obiettivo(Math.min(100, Math.round(n / C.al_giorno * 100)), 'var(--arancio)', 'Chiamate di oggi', `${n} fatte su ${C.al_giorno}`, () => apri(foglioChiamate)));
   box.appendChild(obiettivo(siti.length ? Math.round(clienti.length / siti.length * 100) : 0, 'var(--verde)', 'Siti diventati clienti', `${clienti.length} su ${siti.length} in corso`, () => apri(foglioClienti)));
-  const g = DATI.lead.gruppi, contattati = (g.contattati || 0) + (g.positivi || 0);
-  box.appendChild(obiettivo(Math.round(contattati / DATI.lead.totale * 100), 'var(--blu)', 'Lead contattati', `${contattati} su ${DATI.lead.totale}`, () => apri(() => foglioGruppo('contattati'))));
+  box.appendChild(obiettivo(C.coda.length ? Math.round(fatteDb.size / C.coda.length * 100) : 0, 'var(--blu)', 'Attività chiamate', `${fatteDb.size} su ${C.coda.length} della lista`, () => apri(() => foglioCoda(null))));
 }
 
 /* Chiamate */
 function disegnaChiamate() {
   const box = $('lista-chiamate'); box.replaceChildren();
-  C.oggi.forEach((l) => {
-    const c = el('button', 'chiamata' + (fatte.has(l.nome) ? ' fatta' : '')); c.type = 'button';
+  OGGI.forEach((l) => {
+    const c = el('button', 'chiamata'); c.type = 'button';
     const testa = el('div', 'testa');
     const chi = el('div', 'chi'); chi.append(el('span', 'numero', String(l.n)));
     const nomi = el('div'); nomi.append(el('div', 'nome', l.nome), el('div', 'dove', `${l.settore} · ${l.zona}`)); chi.appendChild(nomi);
     testa.append(chi, el('span', 'stelle', '★ ' + l.voto.toLocaleString('it-IT', { minimumFractionDigits: 1 }) + ` (${l.recensioni})`));
-    c.append(testa, el('span', 'tel', l.telefono), el('span', 'dove', (fatte.has(l.nome) ? '✓ Fatta · ' : '') + 'Online: ' + l.online.join(', ')));
+    c.append(testa, el('span', 'tel', l.telefono), el('span', 'dove', 'Online: ' + l.online.join(', ')));
     c.addEventListener('click', () => apri(() => foglioChiamata(l)));
     box.appendChild(c);
   });
-  if (!C.oggi.length) box.appendChild(el('p', 'avviso', 'Nessuna chiamata in lista: chieda a Claude nuovi lead dalla chat.'));
-  const n = C.oggi.filter((l) => fatte.has(l.nome)).length;
-  $('chiamate-conto').textContent = `${n} di ${C.oggi.length} fatte · ${C.in_coda} in lista`;
-  $('chiamate-barra').style.width = (C.oggi.length ? n / C.oggi.length * 100 : 0) + '%';
-}
-
-/* Lead */
-const STATI = [
-  ['positivi', 'Risposte positive', 'var(--verde)'],
-  ['contattati', 'Contattati', 'var(--blu)'],
-  ['da_chiamare', 'Da chiamare', 'var(--arancio)'],
-  ['da_contattare', 'Da contattare', 'var(--viola)'],
-  ['hanno_sito', 'Hanno già il sito', 'rgba(255,255,255,.25)'],
-];
-function disegnaLead() {
-  const g = DATI.lead.gruppi;
-  $('lead-totale').textContent = num.format(DATI.lead.totale);
-  const barra = $('barra-lead'), leg = $('legenda-lead'), set = $('settori');
-  barra.replaceChildren(); leg.replaceChildren(); set.replaceChildren();
-  STATI.forEach(([k, nome, colore]) => {
-    const v = g[k] || 0;
-    if (v) { const s = el('button'); s.type = 'button'; s.style.width = (v / DATI.lead.totale * 100) + '%'; s.style.background = colore; s.setAttribute('aria-label', `${nome}: ${v}`); s.addEventListener('click', () => apri(() => foglioGruppo(k))); barra.appendChild(s); }
-    const b = el('button'); b.type = 'button'; const i = el('i'); i.style.background = colore;
-    b.append(i, el('span', null, nome), el('b', null, num.format(v)));
-    b.addEventListener('click', () => apri(() => foglioGruppo(k)));
-    leg.appendChild(b);
-  });
-  const max = Math.max(1, ...DATI.lead.settori.map((s) => s.n));
-  DATI.lead.settori.forEach((s) => {
-    const b = el('button'); b.type = 'button';
-    const tr = el('span', 'traccia'); const f = el('i'); f.style.width = (s.n / max * 100) + '%'; tr.appendChild(f);
-    b.append(el('span', 'nome', s.nome), tr, el('b', null, s.n));
-    b.addEventListener('click', () => apri(() => foglioSettore(s.nome)));
-    set.appendChild(b);
-  });
+  if (!OGGI.length) box.appendChild(el('p', 'avviso', 'Nessuna chiamata in lista: chieda a Claude nuovi lead dalla chat.'));
+  const n = fatteOggi();
+  $('chiamate-conto').textContent = `${n} fatte oggi · ${restanti().length} in lista`;
+  $('chiamate-barra').style.width = Math.min(100, n / C.al_giorno * 100) + '%';
 }
 
 /* ---------- Fogli di dettaglio ---------- */
@@ -831,7 +796,7 @@ function rigaChiamata(l) {
   return li;
 }
 function foglioCoda(settore) {
-  const elenco = settore ? C.coda.filter((l) => gruppoDi(l.settore) === settore) : C.coda;
+  const elenco = settore ? restanti().filter((l) => gruppoDi(l.settore) === settore) : restanti();
   return { titolo: settore || 'Attività da chiamare', corpo: [par(`${elenco.length} attività da chiamare${settore ? ' in questo settore' : ''}. Tocchi un nome per il testo della chiamata.`), lista(elenco.map(rigaChiamata))] };
 }
 function foglioElencoSiti(titolo, testo, elenco) {
@@ -862,15 +827,6 @@ function rigaLead(l) {
   li.append(avatar(l.nome), t, el('span', 'lato', l.recensioni ? `★ ${String(l.voto).replace('.', ',')} (${l.recensioni})` : ''));
   return li;
 }
-function foglioGruppo(k) {
-  const [, nome] = STATI.find((s) => s[0] === k);
-  const elenco = DATI.lead.elenco.filter((l) => l.gruppo === k || (k === 'contattati' && l.gruppo === 'positivi'));
-  return { titolo: nome, corpo: [par(`${elenco.length} attività dal foglio "Lead strutturati".`), elenco.length ? lista(elenco.map(rigaLead)) : vuoto('Nessuna.')] };
-}
-function foglioSettore(s) {
-  const elenco = DATI.lead.elenco.filter((l) => l.settore === s);
-  return { titolo: s, corpo: [par(`${elenco.length} attività in questo settore.`), lista(elenco.map(rigaLead))] };
-}
 const voto = (v) => Number(v).toLocaleString('it-IT', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 function copione(l) {
   return DATI.script.replace(/([^\n])\n(?!\n)/g, '$1 ')
@@ -885,25 +841,31 @@ function foglioChiamata(l) {
   const tel = el('a', 'bottone'); tel.href = 'tel:' + l.telefono.replace(/\s/g, ''); tel.append(icona('phone'), document.createTextNode('Chiama'));
   const copia = el('button', 'bottone', 'Copia numero'); copia.type = 'button';
   copia.addEventListener('click', () => navigator.clipboard.writeText(l.telefono).then(() => { copia.textContent = 'Copiato'; }).catch(() => { copia.textContent = l.telefono; }));
-  const fatta = el('button', 'bottone', fatte.has(l.nome) ? '✓ Fatta' : 'Segna fatta'); fatta.type = 'button';
-  fatta.addEventListener('click', () => { segnaFatta(l.nome); fatta.textContent = fatte.has(l.nome) ? '✓ Fatta' : 'Segna fatta'; });
-  az.append(tel, copia, link(l.maps, 'Maps ↗'), fatta);
-  corpo.push(az, h3('Testo della chiamata'), el('div', 'copione', copione(l)), h3('Com\'è andata?'), par('Lo scriva a Claude: aggiorna la lista e la pagina.'));
+  az.append(tel, copia, link(l.maps, 'Maps ↗'));
+  corpo.push(az, h3('Testo della chiamata'), el('div', 'copione', copione(l)), h3('Com\'è andata?'), par('Tocchi l\'esito: la chiamata esce dalla lista e al suo posto entra la prossima.'));
   const esiti = el('div', 'azioni-foglio');
-  [['Interessato', 'è interessato, preparare la bozza'], ['Richiamare', 'da richiamare'], ['Non interessato', 'non interessato'], ['Non risponde', 'non risponde, riprovare']].forEach(([e, t]) => esiti.appendChild(bottoneChiedi(`Esito chiamata n. ${l.n} (${l.nome}): ${t}. `, e)));
-  corpo.push(esiti);
+  const f = fatteDb.get(String(l.n));
+  if (f) {
+    corpo.push(par(`Segnata: ${f.esito}.`));
+    const annulla = el('button', 'bottone', 'Rimetti nella lista'); annulla.type = 'button';
+    annulla.addEventListener('click', async () => { await segnaEsito(l, null); chiudi(); });
+    esiti.appendChild(annulla);
+  } else {
+    ['Interessato', 'Richiamare', 'Non interessato', 'Non risponde', 'Chiamato'].forEach((e) => {
+      const b = el('button', 'bottone', e); b.type = 'button';
+      b.addEventListener('click', async () => {
+        b.disabled = true;
+        const ok = await segnaEsito(l, e).catch(() => false);
+        if (ok) chiudi(); else { b.disabled = false; b.textContent = 'Non salvato, riprovi'; }
+      });
+      esiti.appendChild(b);
+    });
+  }
+  corpo.push(esiti, bottoneChiedi(`Sulla chiamata n. ${l.n} (${l.nome}): `, 'Scrivi a Claude'));
   return { titolo: `N. ${l.n} · ${l.nome}`, corpo };
 }
 function foglioChiamate() {
-  const righe = C.oggi.map((l) => {
-    const li = el('li', 'riga-av cliccabile'); li.tabIndex = 0;
-    const t = el('span', 'testo'); t.append(el('b', null, l.nome), el('span', 'sotto', `${l.settore} · ${l.zona} · ${l.telefono}`));
-    const num = el('span', 'numero', String(l.n));
-    li.append(num, t, el('span', 'lato', fatte.has(l.nome) ? '✓ fatta' : `★ ${String(l.voto).replace('.', ',')}`));
-    li.addEventListener('click', () => apri(() => foglioChiamata(l)));
-    return li;
-  });
-  return { titolo: 'Chiamate di oggi', corpo: [par(`${C.oggi.length} chiamate per oggi, ${C.in_coda} attività in lista in tutto. Tocchi un nome per il testo della chiamata.`), lista(righe)] };
+  return { titolo: 'Chiamate di oggi', corpo: [par(`${fatteOggi()} fatte oggi su ${C.al_giorno}. ${restanti().length} attività ancora in lista: tocchi un nome per il testo della chiamata.`), lista(OGGI.map(rigaChiamata))] };
 }
 function foglioPromemoria(p) {
   const corpo = [testaScheda(p.quando, p.testo), par(p.testo)];
@@ -935,14 +897,12 @@ function foglioCerca() {
     risultati.replaceChildren();
     if (q.length < 2 && !/^\d+$/.test(q)) { risultati.appendChild(par('Scriva almeno due lettere, o il numero di una chiamata.')); return; }
     const s = DATI.progetti.filter((p) => (p.nome + ' ' + p.nota).toLowerCase().includes(q));
-    const ch = C.oggi.filter((l) => (l.nome + ' ' + l.settore + ' ' + l.zona).toLowerCase().includes(q) || String(l.n) === q);
-    const ld = DATI.lead.elenco.filter((l) => (l.nome + ' ' + l.settore + ' ' + l.indirizzo + ' ' + l.nota).toLowerCase().includes(q)).slice(0, 30);
+    const ch = restanti().filter((l) => (l.nome + ' ' + l.settore + ' ' + l.zona).toLowerCase().includes(q) || String(l.n) === q);
     const cm = COMMIT.filter((c) => (c.progetto + ' ' + c.testo).toLowerCase().includes(q)).slice(0, 20);
     if (s.length) risultati.append(h3('Siti'), lista(s.map(rigaSito)));
-    if (ch.length) risultati.append(h3('Chiamate di oggi'), lista(ch.map((l) => { const li = rigaLead({ ...l, indirizzo: l.zona, nota: l.telefono }); li.classList.add('cliccabile'); li.addEventListener('click', () => apri(() => foglioChiamata(l))); return li; })));
-    if (ld.length) risultati.append(h3('Lead'), lista(ld.map(rigaLead)));
+    if (ch.length) risultati.append(h3('Da chiamare'), lista(ch.map(rigaChiamata)));
     if (cm.length) risultati.append(h3('Modifiche'), lista(cm.map(rigaCommit)));
-    if (!s.length && !ch.length && !ld.length && !cm.length) risultati.appendChild(vuoto('Nessun risultato.'));
+    if (!s.length && !ch.length && !cm.length) risultati.appendChild(vuoto('Nessun risultato.'));
   };
   input.addEventListener('input', aggiorna);
   setTimeout(() => input.focus(), 50);
@@ -966,7 +926,7 @@ function vai(id) {
 document.querySelectorAll('[data-vai]').forEach((b) => b.addEventListener('click', (e) => { e.preventDefault(); vai(b.dataset.vai); }));
 $('b-menu').addEventListener('click', () => vai('home'));
 document.querySelectorAll('[data-chat]').forEach((b) => b.addEventListener('click', () => apriChatCon('')));
-disegnaKpi(); disegnaGrafico(); disegnaAgenda(); disegnaSiti(); disegnaObiettivi(); disegnaChiamate(); disegnaLead();
+disegnaSiti(); aggiornaChiamate();
 
 /* ---------- Chat con Claude ----------
    I messaggi stanno nel database della pagina (collezione "chat"). Ogni messaggio manda anche un commento
@@ -974,7 +934,7 @@ disegnaKpi(); disegnaGrafico(); disegnaAgenda(); disegnaSiti(); disegnaObiettivi
    nel database e la conversazione si aggiorna da sola. */
 const pagina = document.querySelector('main.pagina');
 const conv = $('conversazione'), input = $('domanda'), invia = $('invia');
-let db = null, commenti = null, filo = null, messaggi = [], claudeScrive = false, inviando = false;
+let commenti = null, filo = null, messaggi = [], claudeScrive = false, inviando = false;
 try { filo = localStorage.getItem('casa-maq-filo'); } catch {}
 
 function apriChat(testo) {
@@ -1052,7 +1012,7 @@ async function avvisaClaude(testo) {
   let stato = 'off';
   try { stato = await commenti.canSendToClaude(); } catch { stato = 'off'; }
   if (stato !== 'available') return false;
-  const numeri = /\b\d{1,3}\b/.test(testo) && C.oggi.length ? `\n\n(Numeri delle chiamate: ${C.oggi.map((l) => `${l.n} = ${l.nome}`).join(', ')})` : '';
+  const numeri = /\b\d{1,3}\b/.test(testo) && OGGI.length ? `\n\n(Numeri delle chiamate: ${OGGI.map((l) => `${l.n} = ${l.nome}`).join(', ')})` : '';
   const text = `[Chat della Casa MAQ] ${testo}${numeri}\n\n(Rispondi scrivendo nel database della pagina, collezione "chat".)`;
   let r;
   try { r = filo ? await commenti.sendToClaude({ threadId: filo, text }) : await commenti.sendToClaude({ anchor: await commenti.anchorFor($('chat')), text }); }
@@ -1097,6 +1057,10 @@ $('modulo-chat').addEventListener('submit', async (e) => {
     messaggi = snap.docs.map((d) => d.data()).filter((m) => m && m.testo);
     disegnaConversazione();
   }, () => { impostaStato('spento', 'Chat non disponibile'); });
+  db.collection('chiamate-fatte').onSnapshot((snap) => {
+    fatteDb = new Map(snap.docs.map((d) => [d.id, d.data()]));
+    aggiornaChiamate();
+  }, () => {});
   db.doc('chat-stato/claude').onSnapshot((snap) => {
     claudeScrive = !!(snap.exists && snap.data()?.scrive);
     disegnaConversazione();

@@ -198,7 +198,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Lead "nascosti" per le chiamate (30/10, definizione dell'utente): NON vuol dire periferia, ma GESTIONI NUOVE/giovani
   che cercano chi gli offra questo servizio: ricerca Maps "categoria + quartiere" (`gmaps_search.py`), 12-60 recensioni,
   voto >= 4,8, nessun sito (controllare domini nome.it/.com: Reformer Hub ce l'ha, East End Tattoo "coming soon"),
-  cellulare, aperte. Mix di settori e quartieri. Primo blocco di 19 in `casa-maq/chiamate.json`.
+  cellulare, aperte. Mix di settori e quartieri. In `casa-maq/chiamate.json`: 19 il 30/10 mattina + 37 la sera (n. 20-57).
 - Stile Casa MAQ (30/10, scelto dall'utente): IDENTICA al reel "Glassy Dashboard V5" (foto di soggiorno al tramonto
   `casa-maq/sfondo.jpg` da Unsplash, vetro grigio fumé, barra in alto, dock a sinistra, colori di sistema Mac, font SF)
   con tocco Mac (semafori nelle finestre). Tutto deve essere "meccanico": ogni scheda, colonna, riga, stato o settore si
@@ -214,7 +214,13 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   risveglio: ArtifactData list "chat" → messaggi "io" senza risposta; update "chat-stato"/"claude" {scrive:true} (i
   puntini nella pagina); fai il lavoro; ArtifactData set "chat"/<AAAAMMGGhhmmss+suffisso> {chi:"claude", testo, quando};
   poi {scrive:false}. `quando` = ora vera (`date -u`), altrimenti l'ordine dei messaggi si sbaglia. NON rispondere nei
-  commenti (l'utente non li vuole). 30/10: l'utente NON vuole vedere le "modifiche ai siti" (commit): tolte dalla pagina. Il connettore "Claude Code Remote" dalla
+  commenti (l'utente non li vuole). ATTENZIONE: l'orologio del suo dispositivo è ~6 min indietro; per tenere l'ordine,
+  `quando` della risposta = `quando` del suo ultimo messaggio + 30 s. 30/10: l'utente NON vuole vedere le "modifiche ai
+  siti" né il vecchio elenco Lead (Excel): tolti dalla pagina. CHIAMATE (30/10, richiesta dell'utente): appena una
+  chiamata ha un esito, deve uscire e al suo posto entrare subito la successiva. Gli esiti stanno nel database della
+  pagina, collezione `chiamate-fatte`, doc id = numero n, {n, nome, esito, quando}: li scrive la pagina (pulsanti
+  nella scheda) o io via ArtifactData quando me lo dice in chat; la pagina ricalcola da sola la lista (non serve
+  ripubblicare). Ogni mattina: riportare quegli esiti in `chiamate.json` (stato) e tenere la lista sopra ~40. Il connettore "Claude Code Remote" dalla
   pagina non funziona (upstream_error): tolto. Capacità della pagina: comments + db.
 - Aggiornamento automatico della Casa MAQ (30/10, richiesto dall'utente): attività programmata "Casa MAQ – aggiornamento
   del mattino" (trig_019sTVUeD4d1kbuaWjhX7gKg), ogni giorno alle 8:40 ora di Roma, che si risveglia nella sessione
