@@ -1116,8 +1116,8 @@ function scegliSessione(id, titolo) {
 }
 
 $('nuova-chat').addEventListener('click', () => {
-  giroId++; sessione = null; titoloSessione = ''; inAttesa = false;
-  try { localStorage.removeItem('casa-maq-sessione'); } catch {}
+  giroId++; sessione = null; titoloSessione = ''; inAttesa = false; filo = null;
+  try { localStorage.removeItem('casa-maq-sessione'); localStorage.removeItem('casa-maq-filo'); } catch {}
   $('apri-sessione').href = 'https://claude.ai/code';
   impostaStato('', 'Nuova chat');
   conv.replaceChildren(); nota('Scriva qui sotto: si apre una nuova sessione di Claude Code con i file dei suoi siti.');
@@ -1129,7 +1129,7 @@ $('mostra-chat').addEventListener('click', () => {
   const apri = $('finestra').hidden;
   $('finestra').hidden = !apri;
   if (!apri) return;
-  if (!mcp) { conv.replaceChildren(); nota('La chat con Claude Code funziona aprendo la pagina su claude.ai.'); return; }
+  if (!mcp || !sessione) { impostaStato('', 'Claude Code'); conv.replaceChildren(); nota('Scriva qui sotto: il messaggio arriva a Claude Code, che le risponde nei commenti della pagina.'); return; }
   if (sessione) { if (!inAttesa) avviaGiro(); }
   else { impostaStato('', 'Nuova chat'); conv.replaceChildren(); nota('Scriva qui sotto: si apre una nuova sessione di Claude Code con i file dei suoi siti.'); }
 });
@@ -1188,8 +1188,6 @@ async function aggiornaSessioni(daClic) {
 (async () => {
   try { mcp = await window.claude?.use?.('mcp'); } catch { mcp = null; }
   if (!mcp) {
-    input.placeholder = 'La chat con Claude Code funziona aprendo la pagina su claude.ai';
-    input.disabled = true; invia.disabled = true;
     return;
   }
   let salvata = null;
@@ -1203,17 +1201,47 @@ async function aggiornaSessioni(daClic) {
   }
 })();
 
+/* Messaggi a Claude: prima via commento "Invia a Claude" (arriva alla sessione di Claude Code che segue la pagina,
+   con il repo), altrimenti con una sessione nuova tramite il connettore. */
+let commenti = null, filo = null;
+try { filo = localStorage.getItem('casa-maq-filo'); } catch {}
+(async () => { try { commenti = await window.claude?.use?.('comments'); } catch { commenti = null; } })();
+const conNumeri = (testo) => (/\b\d{1,3}\b/.test(testo) && C.oggi.length ? testo + `\n\n(Numeri delle chiamate: ${C.oggi.map((l) => `${l.n} = ${l.nome}`).join(', ')})` : testo);
+async function inviaComeCommento(testo) {
+  if (!commenti) return false;
+  let stato = 'off';
+  try { stato = await commenti.canSendToClaude(); } catch { stato = 'off'; }
+  if (stato !== 'available') return false;
+  const text = conNumeri(testo);
+  let r;
+  try {
+    r = filo ? await commenti.sendToClaude({ threadId: filo, text }) : await commenti.sendToClaude({ anchor: await commenti.anchorFor($('home')), text });
+  } catch (err) {
+    if (err?.code === 'not_found' && filo) { filo = null; r = await commenti.sendToClaude({ anchor: await commenti.anchorFor($('home')), text }); }
+    else throw err;
+  }
+  filo = r.threadId;
+  try { localStorage.setItem('casa-maq-filo', filo); } catch {}
+  return true;
+}
+
 $('modulo-chat').addEventListener('submit', async (e) => {
   e.preventDefault();
   const testo = input.value.trim();
-  if (!testo || !mcp) return;
+  if (!testo) return;
   input.value = ''; invia.disabled = true;
   $('finestra').hidden = false;
-  if (!sessione) conv.replaceChildren();
   conv.querySelectorAll('.msg.nota').forEach((n) => n.remove());
   conv.appendChild(bolla('io', testo));
   const invio = nota('Invio…');
   try {
+    if (await inviaComeCommento(testo)) {
+      invio.remove();
+      impostaStato('lavora', 'Claude Code');
+      nota('Inviato a Claude. La risposta arriva nei commenti della pagina: tocchi l\'icona dei commenti in alto a destra di claude.ai.');
+      return;
+    }
+    if (!mcp) throw { code: 'nessun_canale' };
     if (!sessione) {
       const base = { prompt: testo + contestoCasa(), title: 'Casa MAQ · ' + testo.slice(0, 48), source_url: REPO, environment_id: AMBIENTE, tags: [TAG], append_system_prompt: ISTRUZIONI_SESSIONE };
       let p;
@@ -1234,7 +1262,7 @@ $('modulo-chat').addEventListener('submit', async (e) => {
     setTimeout(avviaGiro, 3000);
   } catch (err) {
     invio.remove();
-    nota(messaggioErrore(err), true);
+    nota(err?.code === 'nessun_canale' ? 'Da qui non riesco a raggiungere Claude: apra la pagina da claude.ai.' : (err?.code === 'consent_required' || err?.code === 'forbidden') ? 'Serve il suo permesso per scrivere i commenti: accetti la richiesta e riprovi.' : messaggioErrore(err), true);
   } finally {
     invia.disabled = false; input.focus();
   }
