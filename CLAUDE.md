@@ -213,7 +213,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Claude" che sveglia la sessione session_014fGtWeyuJbunQc9Az6duVZ (watch con ArtifactComments). PROTOCOLLO al
   risveglio: ArtifactData list "chat" → messaggi "io" senza risposta; update "chat-stato"/"claude" {scrive:true} (i
   puntini nella pagina); fai il lavoro; ArtifactData set "chat"/<AAAAMMGGhhmmss+suffisso> {chi:"claude", testo, quando};
-  poi {scrive:false}. NON rispondere nei commenti (l'utente non li vuole). Il connettore "Claude Code Remote" dalla
+  poi {scrive:false}. `quando` = ora vera (`date -u`), altrimenti l'ordine dei messaggi si sbaglia. NON rispondere nei
+  commenti (l'utente non li vuole). 30/10: l'utente NON vuole vedere le "modifiche ai siti" (commit): tolte dalla pagina. Il connettore "Claude Code Remote" dalla
   pagina non funziona (upstream_error): tolto. Capacità della pagina: comments + db.
 - Aggiornamento automatico della Casa MAQ (30/10, richiesto dall'utente): attività programmata "Casa MAQ – aggiornamento
   del mattino" (trig_019sTVUeD4d1kbuaWjhX7gKg), ogni giorno alle 8:40 ora di Roma, che si risveglia nella sessione
