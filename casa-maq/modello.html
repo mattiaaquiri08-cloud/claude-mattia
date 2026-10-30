@@ -76,7 +76,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .dock button:hover::after, .dock button:focus-visible::after { opacity: 1; }
 
 /* Pagina */
-.pagina { position: relative; z-index: 1; max-width: 1320px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 22px 150px; display: grid; gap: 16px; }
+.pagina { position: relative; z-index: 1; max-width: 1320px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 22px 40px; display: grid; gap: 16px; }
 @media (min-width: 1000px) { .pagina { padding-left: max(92px, env(safe-area-inset-left, 0px)); padding-right: max(28px, env(safe-area-inset-right, 0px)); } }
 .intro { display: flex; align-items: end; justify-content: space-between; gap: 14px; flex-wrap: wrap; padding: 2px 4px; }
 .intro h1 { margin: 0; font-size: clamp(22px, 2.6vw, 28px); font-weight: 600; letter-spacing: -.01em; text-wrap: balance; }
@@ -238,34 +238,46 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .cerca { width: 100%; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--bordo); background: rgba(255, 255, 255, .07); color: var(--fg); font: inherit; font-size: 14px; }
 .cerca::placeholder { color: var(--faint); }
 
-/* Chat */
-.chat { position: fixed; z-index: 30; left: 50%; transform: translateX(-50%); bottom: calc(14px + env(safe-area-inset-bottom, 0px)); width: min(720px, calc(100% - 2 * max(16px, env(safe-area-inset-left, 0px)))); display: grid; gap: 10px; }
-.finestra { display: grid; grid-template-rows: auto minmax(0, 1fr); max-height: min(58vh, 560px); overflow: hidden; background: rgba(30, 30, 34, .72); border-radius: 16px; }
-.finestra-testa { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 12px 10px 14px; border-bottom: 1px solid var(--bordo); background: rgba(255, 255, 255, .04); min-width: 0; }
-.finestra-testa .chi { display: flex; align-items: center; gap: 10px; min-width: 0; font-size: 12.5px; font-weight: 600; }
-.finestra-testa .chi span:last-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.finestra-testa .bottoni { display: flex; gap: 6px; flex: none; }
-.stato-punto { width: 8px; height: 8px; border-radius: 50%; background: var(--faint); flex: none; }
-.stato-punto.lavora { background: var(--blu); box-shadow: 0 0 10px var(--blu); }
-.stato-punto.pronto { background: var(--verde); }
-.stato-punto.bloccato { background: var(--giallo); }
-@media (prefers-reduced-motion: no-preference) { .stato-punto.lavora { animation: pulsa 1.2s ease-in-out infinite; } }
+/* Pagina chat (come Messaggi del Mac) */
+.chat-pagina { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: calc(100svh - 100px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)); min-height: 420px; overflow: hidden; background: rgba(24, 24, 28, .55); }
+.chat-testa { display: grid; grid-template-columns: auto auto minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--bordo); background: rgba(255, 255, 255, .04); }
+.chat-testa .semafori { margin-right: 4px; }
+.claude-av { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, #e07a4f, #c4562e); color: #fff; font-size: 20px; font-weight: 700; flex: none; }
+.chat-testa .chi b { display: block; font-size: 14px; font-weight: 600; }
+.chat-testa .chi span { font-size: 11.5px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.stato-punto { width: 7px; height: 7px; border-radius: 50%; background: var(--verde); flex: none; display: inline-block; }
+.stato-punto.lavora { background: var(--blu); box-shadow: 0 0 8px var(--blu); }
+.stato-punto.spento { background: var(--faint); }
+@media (prefers-reduced-motion: no-preference) { .stato-punto.lavora { animation: pulsa 1.2s ease-in-out infinite; } .scrive i { animation: punti 1.2s ease-in-out infinite; } .scrive i:nth-child(2) { animation-delay: .15s; } .scrive i:nth-child(3) { animation-delay: .3s; } }
 @keyframes pulsa { 50% { opacity: .35; } }
-.conversazione { overflow: auto; padding: 14px; display: grid; gap: 10px; align-content: start; }
-.msg { max-width: 88%; font-size: 13.5px; line-height: 1.5; padding: 9px 13px; border-radius: 16px; white-space: pre-wrap; overflow-wrap: anywhere; }
-.msg.io { justify-self: end; background: var(--blu); color: #fff; border-bottom-right-radius: 5px; }
-.msg.claude { justify-self: start; background: rgba(255, 255, 255, .1); border-bottom-left-radius: 5px; }
-.msg.nota { justify-self: center; font-size: 11.5px; color: var(--muted); background: none; padding: 2px 8px; }
+@keyframes punti { 0%, 60%, 100% { transform: translateY(0); opacity: .5; } 30% { transform: translateY(-4px); opacity: 1; } }
+.conversazione { overflow: auto; padding: 18px clamp(12px, 3vw, 28px); display: flex; flex-direction: column; gap: 6px; scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, .2) transparent; }
+.giorno-sep { align-self: center; font-size: 11px; color: var(--faint); margin: 12px 0 6px; }
+.msg { max-width: min(620px, 80%); font-size: 14px; line-height: 1.5; padding: 8px 13px; border-radius: 18px; white-space: pre-wrap; overflow-wrap: anywhere; position: relative; }
+.msg.io { align-self: flex-end; background: var(--blu); color: #fff; border-bottom-right-radius: 6px; }
+.msg.claude { align-self: flex-start; background: rgba(255, 255, 255, .12); border-bottom-left-radius: 6px; }
+.msg-ora { font-size: 10.5px; color: var(--faint); margin: 0 6px 6px; }
+.msg-ora.io { align-self: flex-end; }
+.msg-ora.claude { align-self: flex-start; }
+.msg.nota { align-self: center; font-size: 12px; color: var(--muted); background: none; text-align: center; max-width: 90%; }
 .msg.errore { color: var(--giallo); }
-.msg code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; background: rgba(0, 0, 0, .3); padding: 1px 5px; border-radius: 6px; }
+.msg code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; background: rgba(0, 0, 0, .3); padding: 1px 5px; border-radius: 6px; }
 .msg strong { font-weight: 600; }
-.scrivi { display: flex; align-items: center; gap: 8px; padding: 6px 6px 6px 16px; border-radius: 999px; background: rgba(30, 30, 34, .6); }
-.scrivi input { flex: 1; min-width: 0; background: none; border: 0; color: var(--fg); font: inherit; font-size: 14px; padding: 9px 0; }
-.scrivi input::placeholder { color: var(--faint); }
-.scrivi input:focus { outline: none; }
+.scrive { align-self: flex-start; display: inline-flex; gap: 4px; padding: 12px 14px; border-radius: 18px; background: rgba(255, 255, 255, .12); }
+.scrive i { width: 7px; height: 7px; border-radius: 50%; background: rgba(255, 255, 255, .7); }
+.vuoto-chat { margin: auto; text-align: center; color: var(--muted); max-width: 420px; display: grid; gap: 8px; justify-items: center; }
+.vuoto-chat .claude-av { width: 56px; height: 56px; font-size: 28px; }
+.vuoto-chat b { color: var(--fg); font-size: 16px; }
+.composer { padding: 10px clamp(12px, 3vw, 24px) 14px; border-top: 1px solid var(--bordo); display: grid; gap: 8px; }
+.suggerimenti { display: flex; gap: 6px; flex-wrap: wrap; }
+.scrivi { display: flex; align-items: flex-end; gap: 8px; padding: 6px 6px 6px 16px; border-radius: 22px; border: 1px solid var(--bordo); background: rgba(255, 255, 255, .07); }
 .scrivi:focus-within { border-color: rgba(10, 132, 255, .6); }
-.invia { width: 36px; height: 36px; border-radius: 50%; border: 0; display: grid; place-items: center; cursor: pointer; background: var(--blu); color: #fff; flex: none; }
+.scrivi textarea { flex: 1; min-width: 0; resize: none; background: none; border: 0; color: var(--fg); font: inherit; font-size: 14px; line-height: 1.45; padding: 8px 0; max-height: 160px; }
+.scrivi textarea::placeholder { color: var(--faint); }
+.scrivi textarea:focus { outline: none; }
+.invia { width: 34px; height: 34px; border-radius: 50%; border: 0; display: grid; place-items: center; cursor: pointer; background: var(--blu); color: #fff; flex: none; }
 .invia:disabled { opacity: .4; cursor: default; }
+.in-chat > :not(#chat) { display: none !important; }
 
 @media (max-width: 1100px) {
   .s3, .s4, .s5 { grid-column: span 6; } .s7, .s8, .s9 { grid-column: span 12; }
@@ -332,7 +344,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   <button type="button" data-vai="chiamate" data-etichetta="Chiamate" aria-label="Chiamate"><svg class="i"><use href="#i-phone"/></svg></button>
   <button type="button" data-vai="siti" data-etichetta="Siti" aria-label="Siti"><svg class="i"><use href="#i-monitor"/></svg></button>
   <button type="button" data-vai="lead" data-etichetta="Lead" aria-label="Lead"><svg class="i"><use href="#i-users"/></svg></button>
-  <button type="button" data-vai="sessioni" data-etichetta="Sessioni di Claude" aria-label="Sessioni di Claude"><svg class="i"><use href="#i-terminal"/></svg></button>
   <button type="button" data-apri="cerca" data-etichetta="Cerca" aria-label="Cerca"><svg class="i"><use href="#i-search"/></svg></button>
 </nav>
 
@@ -436,7 +447,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
       <div class="chiamate" id="lista-chiamate"></div>
     </article>
 
-    <article class="pannello vetro s7" id="lead">
+    <article class="pannello vetro s12" id="lead">
       <header><div><h2>Lead</h2><p>Attività verificate senza sito: tocchi uno stato o un settore per vedere chi sono</p></div></header>
       <div class="lead-corpo">
         <div>
@@ -451,12 +462,25 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
       </div>
     </article>
 
-    <article class="pannello vetro s5" id="sessioni">
-      <header><div><h2>Le sue sessioni con Claude</h2><p>Dal vivo: "Continua" la riprende dalla chat</p></div></header>
-      <div class="scorre" style="max-height:340px"><ul class="lista sessioni" id="lista-sessioni"><li class="avviso">Le sessioni compaiono aprendo la pagina su claude.ai.</li></ul></div>
-    </article>
   </section>
   <p class="avviso" style="justify-self:center;border:0;background:none" id="aggiornato"></p>
+  <section class="chat-pagina vetro" id="chat" hidden aria-label="Chat con Claude">
+    <div class="chat-testa">
+      <div class="semafori"><button class="sem rosso" type="button" id="chiudi-chat" aria-label="Torna alla Home"></button><span class="sem giallo"></span><span class="sem verde"></span></div>
+      <span class="claude-av" aria-hidden="true">✳</span>
+      <div class="chi"><b>Claude</b><span><i class="stato-punto spento" id="stato-punto"></i><span id="chat-stato">Collegamento…</span></span></div>
+      <button class="chip" type="button" id="torna-home">‹ Home</button>
+    </div>
+    <div class="conversazione" id="conversazione" aria-live="polite"></div>
+    <div class="composer">
+      <div class="suggerimenti" id="suggerimenti"></div>
+      <form class="scrivi" id="modulo-chat">
+        <label for="domanda" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Scrivi a Claude</label>
+        <textarea id="domanda" rows="1" placeholder="Scriva a Claude…  (Invio per mandare, Maiusc+Invio per andare a capo)"></textarea>
+        <button class="invia" id="invia" type="submit" aria-label="Invia"><svg class="i"><use href="#i-up"/></svg></button>
+      </form>
+    </div>
+  </section>
 </main>
 
 <div class="velo" id="velo" hidden></div>
@@ -468,25 +492,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   </div>
   <div class="foglio-corpo" id="foglio-corpo"></div>
 </aside>
-
-<div class="chat">
-  <section class="finestra vetro" id="finestra" hidden aria-label="Conversazione con Claude Code">
-    <div class="finestra-testa">
-      <div class="chi"><span class="semafori"><button class="sem rosso" type="button" id="riduci" aria-label="Riduci la chat"></button><span class="sem giallo"></span><span class="sem verde"></span></span><span class="stato-punto" id="stato-punto"></span><span id="chat-titolo">Claude Code</span></div>
-      <div class="bottoni">
-        <button class="chip" type="button" id="nuova-chat">Nuova chat</button>
-        <a class="chip" id="apri-sessione" href="https://claude.ai/code" target="_blank" rel="noopener">Apri ↗</a>
-      </div>
-    </div>
-    <div class="conversazione" id="conversazione" aria-live="polite"></div>
-  </section>
-  <form class="scrivi vetro" id="modulo-chat">
-    <label for="domanda" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Scrivi a Claude Code</label>
-    <input id="domanda" autocomplete="off" placeholder="Scrivi a Claude Code…">
-    <button class="tondo" type="button" id="mostra-chat" aria-label="Mostra la chat"><svg class="i p"><use href="#i-chat"/></svg></button>
-    <button class="invia" id="invia" type="submit" aria-label="Invia"><svg class="i"><use href="#i-up"/></svg></button>
-  </form>
-</div>
 
 <script>
 const DATI = /*DATI*/null;
@@ -981,52 +986,52 @@ function vai(id) {
 document.querySelectorAll('[data-vai]').forEach((b) => b.addEventListener('click', (e) => { e.preventDefault(); vai(b.dataset.vai); }));
 $('b-menu').addEventListener('click', () => vai('home'));
 document.querySelectorAll('[data-chat]').forEach((b) => b.addEventListener('click', () => apriChatCon('')));
-function apriChatCon(testo) {
-  if ($('finestra').hidden) $('mostra-chat').click();
-  const inp = $('domanda');
-  if (testo) inp.value = testo;
-  inp.focus();
-  inp.setSelectionRange(inp.value.length, inp.value.length);
-}
-
 disegnaKpi(); disegnaGrafico(); disegnaAgenda(); disegnaAttivita(); disegnaSiti(); disegnaObiettivi(); disegnaChiamate(); disegnaLead();
 
-/* Chat con Claude Code e sessioni, tramite il connettore "Claude Code Remote" */
-const SERVER = 'Claude Code Remote';
-const REPO = 'https://github.com/mattiaaquiri08-cloud/claude-mattia';
-const AMBIENTE = 'env_01D5azFawoAof7BXhp6YwDJ9';
-const TAG = 'casa-maq';
-const ISTRUZIONI_SESSIONE = `Mattia (MAQ Web Design) ti scrive dalla "Casa MAQ", la sua pagina personale su claude.ai, e legge lì solo i tuoi messaggi di testo, non gli strumenti: rispondi in italiano, chiamandolo "signore", in modo breve e chiaro. Da lì non può approvare richieste di permesso. Se cambia lo stato di un sito, di un lead o di un promemoria, a fine lavoro aggiorna la Casa MAQ come scritto in CLAUDE.md.`;
-
+/* ---------- Chat con Claude ----------
+   I messaggi stanno nel database della pagina (collezione "chat"). Ogni messaggio manda anche un commento
+   "Invia a Claude" che sveglia la sessione di Claude Code collegata alla pagina; Claude risponde scrivendo
+   nel database e la conversazione si aggiorna da sola. */
+const pagina = document.querySelector('main.pagina');
 const conv = $('conversazione'), input = $('domanda'), invia = $('invia');
-const contestoCasa = () => `\n\n<contesto-casa>Numeri delle chiamate nella Casa MAQ (Mattia li usa al posto dei nomi; sono fissi in casa-maq/chiamate.json, campo "n"): ${C.oggi.map((l) => `${l.n} = ${l.nome} (${l.zona}, ${l.telefono})`).join('; ')}.</contesto-casa>`;
-let mcp = null, sessione = null, titoloSessione = '', inAttesa = false, inizioAttesa = 0, giroId = 0;
+let db = null, commenti = null, filo = null, messaggi = [], claudeScrive = false, inviando = false;
+try { filo = localStorage.getItem('casa-maq-filo'); } catch {}
 
-function payload(r) {
-  let p = r?.payload ?? r;
-  if (typeof p === 'string') {
-    try { p = JSON.parse(p); } catch { const m = p.match(/\{[\s\S]*\}/); try { p = m ? JSON.parse(m[0]) : {}; } catch { p = {}; } }
-  }
-  return p?.ccr ?? p;
+function apriChat(testo) {
+  pagina.classList.add('in-chat'); $('chat').hidden = false;
+  document.querySelectorAll('[data-vai]').forEach((x) => x.classList.remove('attivo'));
+  if (location.hash !== '#chat') history.replaceState(null, '', '#chat');
+  window.scrollTo(0, 0);
+  if (testo) input.value = testo;
+  ridimensiona(); input.focus(); input.setSelectionRange(input.value.length, input.value.length);
+  conv.scrollTop = conv.scrollHeight;
 }
-const trovaId = (x) => (JSON.stringify(x || {}).match(/session_[A-Za-z0-9]+/) || [null])[0];
-const chiama = (tool, dati) => mcp.callTool(SERVER, tool, dati, { cache: false }).then(payload);
+function chiudiChat() {
+  pagina.classList.remove('in-chat'); $('chat').hidden = true;
+  if (location.hash === '#chat') history.replaceState(null, '', location.pathname + location.search);
+  vai('home');
+}
+const apriChatCon = (testo) => apriChat(testo);
+document.querySelectorAll('[data-chat]').forEach((b) => b.addEventListener('click', () => apriChat('')));
+$('chiudi-chat').addEventListener('click', chiudiChat);
+$('torna-home').addEventListener('click', chiudiChat);
+document.querySelectorAll('[data-vai]').forEach((b) => b.addEventListener('click', () => { if (!$('chat').hidden) { pagina.classList.remove('in-chat'); $('chat').hidden = true; setTimeout(() => vai(b.dataset.vai), 0); } }));
+if (location.hash === '#chat') apriChat('');
+window.addEventListener('hashchange', () => { if (location.hash === '#chat') apriChat(''); });
 
-function messaggioErrore(err) {
-  switch (err?.code) {
-    case 'needs_reauth': return 'Ricolleghi "Claude Code Remote" in claude.ai → Impostazioni → Connettori.';
-    case 'server_not_connected': case 'selection_required': return 'Il connettore "Claude Code Remote" non è disponibile qui: lo controlli in claude.ai → Impostazioni → Connettori.';
-    case 'not_in_manifest': return 'La pagina non ha il permesso di usare Claude Code: lo conceda dal menu Permessi della pagina.';
-    case 'server_unavailable': return 'Claude Code non risponde in questo momento: riprovi tra poco.';
-    case 'tool_error': return 'Claude Code ha rifiutato la richiesta: ' + (err.message || '');
-    case 'upstream_error': return 'Claude Code non ha risposto' + (err.message ? ': ' + err.message : '') + '. Tocchi "Collega Claude Code" per dare il permesso alla pagina, poi riprovi.';
-    default: return 'Qualcosa non ha funzionato (' + (err?.code || 'errore') + (err?.message ? ': ' + err.message : '') + '). Riprovi tra poco.';
-  }
-}
+function ridimensiona() { input.style.height = 'auto'; input.style.height = Math.min(160, input.scrollHeight) + 'px'; }
+input.addEventListener('input', ridimensiona);
+input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); $('modulo-chat').requestSubmit(); } });
+
+[['Chi chiamo oggi?', 'Chi devo chiamare oggi?'], ['Esito chiamata', 'Il n. '], ['Novità sui siti', 'Novità sui siti: '], ['Prepara una bozza', 'Prepara la bozza del sito per ']].forEach(([e, t]) => {
+  const b = el('button', 'chip', e); b.type = 'button';
+  b.addEventListener('click', () => { input.value = t; ridimensiona(); input.focus(); });
+  $('suggerimenti').appendChild(b);
+});
 
 function bolla(chi, testo) {
   const m = el('div', 'msg ' + chi);
-  const parti = testo.replace(/^#{1,6}\s*/gm, '').split(/(\*\*[^*\n]+\*\*|`[^`\n]+`)/g);
+  const parti = String(testo).replace(/^#{1,6}\s*/gm, '').split(/(\*\*[^*\n]+\*\*|`[^`\n]+`)/g);
   for (const p of parti) {
     if (/^\*\*[^*]+\*\*$/.test(p)) m.appendChild(el('strong', null, p.slice(2, -2)));
     else if (/^`[^`]+`$/.test(p)) m.appendChild(el('code', null, p.slice(1, -1)));
@@ -1035,189 +1040,44 @@ function bolla(chi, testo) {
   return m;
 }
 const nota = (testo, errore) => { const n = el('div', 'msg nota' + (errore ? ' errore' : ''), testo); conv.appendChild(n); conv.scrollTop = conv.scrollHeight; return n; };
+function impostaStato(tipo, testo) { $('stato-punto').className = 'stato-punto ' + (tipo || ''); $('chat-stato').textContent = testo; }
 
-function testoDa(v) {
-  const m = v?.message ?? v?.internal_anthropic_catchall?.message ?? v;
-  const c = m?.content;
-  if (typeof c === 'string') return c;
-  if (Array.isArray(c)) return c.filter((b) => b?.type === 'text').map((b) => b.text).join('\n\n');
-  return '';
-}
-function estraiMessaggi(eventi) {
-  const out = [];
-  for (const ev of eventi) {
-    for (const k of ['user', 'assistant']) {
-      const v = ev?.[k] ?? ev?.data?.[k];
-      if (!v) continue;
-      if (k === 'user' && (v.isSynthetic || v.internal_anthropic_catchall?.isSynthetic)) continue;
-      let t = testoDa(v).trim();
-      if (k === 'user') {
-        if (/^<(system-reminder|local-command|command-)/.test(t)) continue;
-        t = t.replace(/<contesto-casa>[\s\S]*?<\/contesto-casa>/g, '').replace(/<[^>]+>/g, '').trim();
-      }
-      if (t) out.push({ chi: k === 'user' ? 'io' : 'claude', testo: t });
-    }
-  }
-  return out;
-}
-
-async function caricaConversazione() {
-  let eventi = [], prima = null;
-  for (let i = 0; i < 3; i++) {
-    const p = await chiama('list_events', { session_id: sessione, kinds: ['user', 'assistant'], limit: 100, ...(prima ? { before_id: prima } : {}) });
-    eventi = (p?.data ?? []).concat(eventi);
-    if (!p?.has_more || !p.first_id || estraiMessaggi(eventi).length >= 12) break;
-    prima = p.first_id;
-  }
-  const msgs = estraiMessaggi(eventi).slice(-30);
+function disegnaConversazione() {
+  const inFondo = conv.scrollHeight - conv.scrollTop - conv.clientHeight < 80;
   conv.replaceChildren();
-  if (!msgs.length) nota('Nessun messaggio ancora.');
-  msgs.forEach((m) => conv.appendChild(bolla(m.chi, m.testo)));
-  conv.scrollTop = conv.scrollHeight;
-}
-
-function impostaStato(tipo, titolo) {
-  $('stato-punto').className = 'stato-punto ' + (tipo || '');
-  $('chat-titolo').textContent = titolo || titoloSessione || 'Claude Code';
-}
-const tipoStato = (b) => (/WORKING/i.test(b) ? 'lavora' : /BLOCKED/i.test(b) ? 'bloccato' : /FAILED/i.test(b) ? 'errore' : 'pronto');
-
-async function giro(id) {
-  if (id !== giroId || !sessione) return;
-  try {
-    const s = await chiama('get_session', { session_id: sessione });
-    if (s?.title) titoloSessione = s.title;
-    const tipo = tipoStato(String(s?.status_bucket || ''));
-    const lavora = tipo === 'lavora' || (inAttesa && Date.now() - inizioAttesa < 15000);
-    await caricaConversazione();
-    if (id !== giroId) return;
-    impostaStato(lavora ? 'lavora' : tipo);
-    if (lavora) nota('Claude sta lavorando…');
-    else if (tipo === 'bloccato') nota('Claude aspetta una sua approvazione: tocchi "Apri ↗" per darla.');
-    else if (tipo === 'errore') nota("L'ultimo turno si è interrotto con un errore: può riscrivere o aprire la sessione.", true);
-    inAttesa = lavora && Date.now() - inizioAttesa < 30 * 60000;
-    if (lavora) setTimeout(() => giro(id), 4000);
-  } catch (err) {
-    if (id !== giroId) return;
-    inAttesa = false; impostaStato('');
-    nota(messaggioErrore(err), true);
+  if (!messaggi.length) {
+    const v = el('div', 'vuoto-chat');
+    const av = el('span', 'claude-av', '✳');
+    v.append(av, el('b', null, 'Scriva a Claude'), el('span', null, 'Esiti delle chiamate (anche solo col numero), novità sui siti, bozze da preparare: risponde qui, con accesso ai suoi file.'));
+    conv.appendChild(v);
   }
-}
-const avviaGiro = () => giro(++giroId);
-
-function scegliSessione(id, titolo) {
-  sessione = id; titoloSessione = titolo || '';
-  try { localStorage.setItem('casa-maq-sessione', id); } catch {}
-  $('apri-sessione').href = 'https://claude.ai/code/' + id;
-  document.querySelectorAll('#lista-sessioni li').forEach((li) => li.classList.toggle('attuale', li.dataset.id === id));
-  $('finestra').hidden = false; impostaStato(''); inAttesa = false;
-  conv.replaceChildren(); nota('Carico la conversazione…');
-  avviaGiro();
-}
-
-$('nuova-chat').addEventListener('click', () => {
-  giroId++; sessione = null; titoloSessione = ''; inAttesa = false; filo = null;
-  try { localStorage.removeItem('casa-maq-sessione'); localStorage.removeItem('casa-maq-filo'); } catch {}
-  $('apri-sessione').href = 'https://claude.ai/code';
-  impostaStato('', 'Nuova chat');
-  conv.replaceChildren(); nota('Scriva qui sotto: si apre una nuova sessione di Claude Code con i file dei suoi siti.');
-  document.querySelectorAll('#lista-sessioni li').forEach((li) => li.classList.remove('attuale'));
-  input.focus();
-});
-$('riduci').addEventListener('click', () => { $('finestra').hidden = true; });
-$('mostra-chat').addEventListener('click', () => {
-  const apri = $('finestra').hidden;
-  $('finestra').hidden = !apri;
-  if (!apri) return;
-  if (!mcp || !sessione) { impostaStato('', 'Claude Code'); conv.replaceChildren(); nota('Scriva qui sotto: il messaggio arriva a Claude Code, che le risponde nei commenti della pagina.'); return; }
-  if (sessione) { if (!inAttesa) avviaGiro(); }
-  else { impostaStato('', 'Nuova chat'); conv.replaceChildren(); nota('Scriva qui sotto: si apre una nuova sessione di Claude Code con i file dei suoi siti.'); }
-});
-
-const ETICHETTE = [[/WORKING/i, 'sta lavorando', 'lavoro'], [/BLOCKED/i, 'aspetta lei', 'attesa'], [/REVIEW/i, 'da guardare', 'bozza'], [/FAILED/i, 'errore', 'male'], [/./, 'finita', 'ok']];
-function disegnaSessioni(p) {
-  const ul = $('lista-sessioni');
-  const lista = p?.data ?? [];
-  ul.replaceChildren();
-  if (!lista.length) { ul.appendChild(el('li', 'avviso', 'Nessuna sessione recente.')); return; }
-  lista.forEach((s) => {
-    const li = el('li' + '', sessione === s.id ? 'attuale' : '');
-    li.dataset.id = s.id;
-    const [, etichetta, tono] = ETICHETTE.find(([re]) => re.test(s.status_bucket || ''));
-    const pill = el('span', 'pillola ' + tono); pill.append(el('i'), document.createTextNode(etichetta));
-    li.append(el('span', 'titolo', s.title || 'Sessione senza titolo'), pill);
-    const riassunto = s.post_turn_summary?.recent_action || s.task_summary || '';
-    if (riassunto) li.appendChild(el('span', 'riassunto', riassunto));
-    const piede = el('div', 'piede');
-    piede.appendChild(el('span', null, s.updated_at ? 'Ultima attività ' + quandoRelativo(s.updated_at) : ''));
-    const azioni = el('span', 'azioni');
-    const cont = el('button', 'chip', 'Continua'); cont.type = 'button';
-    cont.addEventListener('click', () => scegliSessione(s.id, s.title));
-    const apri = el('a', 'chip', 'Apri ↗'); apri.href = 'https://claude.ai/code/' + s.id; apri.target = '_blank'; apri.rel = 'noopener';
-    azioni.append(cont, apri); piede.appendChild(azioni);
-    li.appendChild(piede);
-    ul.appendChild(li);
+  let giorno = '';
+  messaggi.forEach((m) => {
+    const d = new Date(m.quando);
+    const g = d.toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'long' });
+    if (g !== giorno) { giorno = g; conv.appendChild(el('div', 'giorno-sep', g)); }
+    conv.appendChild(bolla(m.chi === 'claude' ? 'claude' : 'io', m.testo));
+    conv.appendChild(el('div', 'msg-ora ' + (m.chi === 'claude' ? 'claude' : 'io'), d.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' }) + (m.chi !== 'claude' && m.avviso === 'non_inviato' ? ' · Claude non avvisato' : '')));
   });
-}
-function bottoneCollega() {
-  const b = el('button', 'bottone', 'Collega Claude Code'); b.type = 'button';
-  b.addEventListener('click', async () => {
-    const perm = await window.claude?.use?.('permissions').catch(() => null);
-    if (perm) {
-      const st = await perm.request(['mcp:' + SERVER]).catch(() => ({}));
-      if (st?.['mcp:' + SERVER] === 'denied') { try { await perm.manage(); } catch {} }
-    }
-    aggiornaSessioni(true);
-  });
-  return b;
-}
-async function aggiornaSessioni(daClic) {
-  if (!mcp || (document.hidden && !daClic)) return;
-  for (let tentativo = 0; tentativo < 2; tentativo++) {
-    try { disegnaSessioni(await chiama('list_sessions', { limit: 8 })); return; }
-    catch (err) {
-      if (err?.retryable && tentativo === 0) { await new Promise((r) => setTimeout(r, Math.min(err.retryAfterMs || 2500, 10000) + Math.random() * 800)); continue; }
-      const li = el('li', 'avviso'); li.append(document.createTextNode(messaggioErrore(err) + ' '));
-      if (!['needs_reauth', 'server_not_connected'].includes(err?.code)) li.appendChild(bottoneCollega());
-      $('lista-sessioni').replaceChildren(li);
-      return;
-    }
-  }
+  const ultimo = messaggi[messaggi.length - 1];
+  if (claudeScrive || (ultimo && ultimo.chi !== 'claude' && Date.now() - new Date(ultimo.quando) < 20 * 60000 && ultimo.avviso !== 'non_inviato')) {
+    const s = el('div', 'scrive'); s.append(el('i'), el('i'), el('i')); conv.appendChild(s);
+    impostaStato('lavora', claudeScrive ? 'Sta scrivendo…' : 'Messaggio ricevuto, sta arrivando…');
+  } else impostaStato('', 'Collegato ai suoi file');
+  if (inFondo || !$('chat').hidden) conv.scrollTop = conv.scrollHeight;
 }
 
-(async () => {
-  try { mcp = await window.claude?.use?.('mcp'); } catch { mcp = null; }
-  if (!mcp) {
-    return;
-  }
-  let salvata = null;
-  try { salvata = localStorage.getItem('casa-maq-sessione'); } catch {}
-  if (salvata) { sessione = salvata; $('apri-sessione').href = 'https://claude.ai/code/' + salvata; }
-  await aggiornaSessioni();
-  setInterval(aggiornaSessioni, 60000);
-  document.addEventListener('visibilitychange', aggiornaSessioni);
-  if (!sessione) {
-    try { const p = await chiama('list_sessions', { tags: [TAG], limit: 1 }); const s = p?.data?.[0]; if (s) { sessione = s.id; titoloSessione = s.title || ''; $('apri-sessione').href = 'https://claude.ai/code/' + s.id; } } catch {}
-  }
-})();
-
-/* Messaggi a Claude: prima via commento "Invia a Claude" (arriva alla sessione di Claude Code che segue la pagina,
-   con il repo), altrimenti con una sessione nuova tramite il connettore. */
-let commenti = null, filo = null;
-try { filo = localStorage.getItem('casa-maq-filo'); } catch {}
-(async () => { try { commenti = await window.claude?.use?.('comments'); } catch { commenti = null; } })();
-const conNumeri = (testo) => (/\b\d{1,3}\b/.test(testo) && C.oggi.length ? testo + `\n\n(Numeri delle chiamate: ${C.oggi.map((l) => `${l.n} = ${l.nome}`).join(', ')})` : testo);
-async function inviaComeCommento(testo) {
+async function avvisaClaude(testo) {
   if (!commenti) return false;
   let stato = 'off';
   try { stato = await commenti.canSendToClaude(); } catch { stato = 'off'; }
   if (stato !== 'available') return false;
-  const text = conNumeri(testo);
+  const numeri = /\b\d{1,3}\b/.test(testo) && C.oggi.length ? `\n\n(Numeri delle chiamate: ${C.oggi.map((l) => `${l.n} = ${l.nome}`).join(', ')})` : '';
+  const text = `[Chat della Casa MAQ] ${testo}${numeri}\n\n(Rispondi scrivendo nel database della pagina, collezione "chat".)`;
   let r;
-  try {
-    r = filo ? await commenti.sendToClaude({ threadId: filo, text }) : await commenti.sendToClaude({ anchor: await commenti.anchorFor($('home')), text });
-  } catch (err) {
-    if (err?.code === 'not_found' && filo) { filo = null; r = await commenti.sendToClaude({ anchor: await commenti.anchorFor($('home')), text }); }
+  try { r = filo ? await commenti.sendToClaude({ threadId: filo, text }) : await commenti.sendToClaude({ anchor: await commenti.anchorFor($('chat')), text }); }
+  catch (err) {
+    if (err?.code === 'not_found' && filo) { filo = null; r = await commenti.sendToClaude({ anchor: await commenti.anchorFor($('chat')), text }); }
     else throw err;
   }
   filo = r.threadId;
@@ -1228,43 +1088,39 @@ async function inviaComeCommento(testo) {
 $('modulo-chat').addEventListener('submit', async (e) => {
   e.preventDefault();
   const testo = input.value.trim();
-  if (!testo) return;
-  input.value = ''; invia.disabled = true;
-  $('finestra').hidden = false;
-  conv.querySelectorAll('.msg.nota').forEach((n) => n.remove());
-  conv.appendChild(bolla('io', testo));
-  const invio = nota('Invio…');
+  if (!testo || inviando) return;
+  if (!db) { nota('La chat funziona aprendo la pagina su claude.ai.', true); return; }
+  inviando = true; invia.disabled = true;
+  input.value = ''; ridimensiona();
+  const id = new Date().toISOString().replace(/[-:.TZ]/g, '') + Math.random().toString(36).slice(2, 6);
+  const doc = { chi: 'io', testo, quando: new Date().toISOString() };
   try {
-    if (await inviaComeCommento(testo)) {
-      invio.remove();
-      impostaStato('lavora', 'Claude Code');
-      nota('Inviato a Claude. La risposta arriva nei commenti della pagina: tocchi l\'icona dei commenti in alto a destra di claude.ai.');
-      return;
-    }
-    if (!mcp) throw { code: 'nessun_canale' };
-    if (!sessione) {
-      const base = { prompt: testo + contestoCasa(), title: 'Casa MAQ · ' + testo.slice(0, 48), source_url: REPO, environment_id: AMBIENTE, tags: [TAG], append_system_prompt: ISTRUZIONI_SESSIONE };
-      let p;
-      try { p = await chiama('create_session', { ...base, permission_mode: 'auto' }); }
-      catch (err) { if (err?.code === 'tool_error' && /permission/i.test(err.message || '')) p = await chiama('create_session', base); else throw err; }
-      const id = trovaId(p);
-      if (!id) throw { code: 'tool_error', message: 'la sessione non è stata creata.' };
-      sessione = id; titoloSessione = base.title;
-      try { localStorage.setItem('casa-maq-sessione', id); } catch {}
-      $('apri-sessione').href = 'https://claude.ai/code/' + id;
-      aggiornaSessioni();
-    } else {
-      await chiama('send_message', { session_id: sessione, message: testo + contestoCasa() });
-    }
-    invio.remove();
-    inAttesa = true; inizioAttesa = Date.now();
-    impostaStato('lavora'); nota('Claude sta lavorando…');
-    setTimeout(avviaGiro, 3000);
+    await db.collection('chat').doc(id).set(doc);
+    let avvisato = false;
+    try { avvisato = await avvisaClaude(testo); } catch (err) { avvisato = false; }
+    if (!avvisato) { await db.collection('chat').doc(id).update({ avviso: 'non_inviato' }); nota('Messaggio salvato, ma ora Claude non è in ascolto: lo leggerà al prossimo aggiornamento del mattino, oppure riprovi tra poco.', true); }
   } catch (err) {
-    invio.remove();
-    nota(err?.code === 'nessun_canale' ? 'Da qui non riesco a raggiungere Claude: apra la pagina da claude.ai.' : (err?.code === 'consent_required' || err?.code === 'forbidden') ? 'Serve il suo permesso per scrivere i commenti: accetti la richiesta e riprovi.' : messaggioErrore(err), true);
+    input.value = testo; ridimensiona();
+    nota(err?.code === 'consent_required' || err?.code === 'not_granted' ? 'Serve il suo permesso: accetti la richiesta e riprovi.' : 'Il messaggio non è partito (' + (err?.code || 'errore') + '). Riprovi.', true);
   } finally {
-    invia.disabled = false; input.focus();
+    inviando = false; invia.disabled = false; input.focus();
   }
 });
+
+(async () => {
+  try { commenti = await window.claude?.use?.('comments'); } catch { commenti = null; }
+})();
+(async () => {
+  try { db = await window.claude?.use?.('db'); } catch { db = null; }
+  if (!db) { impostaStato('spento', 'Si apre da claude.ai'); disegnaConversazione(); return; }
+  db.collection('chat').orderBy('quando').limit(300).onSnapshot((snap) => {
+    messaggi = snap.docs.map((d) => d.data()).filter((m) => m && m.testo);
+    disegnaConversazione();
+  }, () => { impostaStato('spento', 'Chat non disponibile'); });
+  db.doc('chat-stato/claude').onSnapshot((snap) => {
+    claudeScrive = !!(snap.exists && snap.data()?.scrive);
+    disegnaConversazione();
+  }, () => {});
+})();
+disegnaConversazione();
 </script>

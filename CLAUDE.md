@@ -207,11 +207,14 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Numeri delle chiamate (30/10, richiesta dell'utente): ogni lead in `chiamate.json` ha un numero FISSO `n` (assegnato
   da aggiorna.py, mai riusato): l'utente dice "il 7 non risponde" invece del nome. Ogni messaggio della chat porta in
   coda un blocco <contesto-casa> con "numero = nome" delle chiamate di oggi (nascosto nella pagina).
-  Chat della pagina (30/10): dalla pagina il connettore "Claude Code Remote" dava "upstream_error" e non creava sessioni.
-  Ora la chat manda i messaggi come commenti "Invia a Claude" (capacità `comments`, sendToClaude, un solo filo):
-  svegliano la sessione session_014fGtWeyuJbunQc9Az6duVZ (iscritta alla pagina con ArtifactComments watch), che
-  risponde con ArtifactComments reply nel filo; l'utente legge le risposte nei commenti di claude.ai. Il connettore
-  resta come seconda strada.
+  CHAT (30/10, l'utente vuole una VERA pagina di chat, non i commenti): pagina "Chat" dentro la Casa (#chat, dock,
+  "Chiedi a Claude"), stile Messaggi del Mac. I messaggi stanno nel database della pagina (capacità `db`, collezione
+  `chat`, doc {chi:"io"|"claude", testo, quando ISO}); ogni messaggio dell'utente manda anche un commento "Invia a
+  Claude" che sveglia la sessione session_014fGtWeyuJbunQc9Az6duVZ (watch con ArtifactComments). PROTOCOLLO al
+  risveglio: ArtifactData list "chat" → messaggi "io" senza risposta; update "chat-stato"/"claude" {scrive:true} (i
+  puntini nella pagina); fai il lavoro; ArtifactData set "chat"/<AAAAMMGGhhmmss+suffisso> {chi:"claude", testo, quando};
+  poi {scrive:false}. NON rispondere nei commenti (l'utente non li vuole). Il connettore "Claude Code Remote" dalla
+  pagina non funziona (upstream_error): tolto. Capacità della pagina: comments + db.
 - Aggiornamento automatico della Casa MAQ (30/10, richiesto dall'utente): attività programmata "Casa MAQ – aggiornamento
   del mattino" (trig_019sTVUeD4d1kbuaWjhX7gKg), ogni giorno alle 8:40 ora di Roma, che si risveglia nella sessione
   session_014fGtWeyuJbunQc9Az6duVZ: legge gli esiti dalle chat con tag casa-maq, aggiorna chiamate/siti/promemoria,
