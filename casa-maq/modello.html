@@ -354,11 +354,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
       <p id="sottotitolo"></p>
     </div>
     <div class="azioni">
-      <div class="segmenti" role="group" aria-label="Periodo">
-        <button type="button" data-periodo="7" aria-pressed="true">Settimana</button>
-        <button type="button" data-periodo="14" aria-pressed="false">2 settimane</button>
-        <button type="button" data-periodo="30" aria-pressed="false">Mese</button>
-      </div>
       <button class="bottone" type="button" data-chat><svg class="i p"><use href="#i-chat"/></svg>Chiedi a Claude</button>
     </div>
   </section>
@@ -372,13 +367,12 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
       <span class="pill arancio" id="k-clienti-pill"></span>
       <svg class="spark" id="s-clienti" preserveAspectRatio="none"></svg>
     </button>
-    <button class="kpi vetro" type="button" data-apri="modifiche">
-      <span class="icona" style="background:rgba(48,209,88,.2);color:var(--verde)"><svg class="i p"><use href="#i-activity"/></svg></span>
+    <button class="kpi vetro" type="button" data-apri="coda">
+      <span class="icona" style="background:rgba(48,209,88,.2);color:var(--verde)"><svg class="i p"><use href="#i-users"/></svg></span>
       <svg class="i p freccia"><use href="#i-arrow"/></svg>
-      <span class="etichetta">Modifiche ai siti · 7 giorni</span>
-      <span class="valore" id="k-modifiche">—</span>
-      <span class="pill" id="k-modifiche-pill"></span>
-      <svg class="spark" id="s-modifiche" preserveAspectRatio="none"></svg>
+      <span class="etichetta">Attività da chiamare</span>
+      <span class="valore" id="k-coda">—</span>
+      <span class="pill verde" id="k-coda-pill"></span>
     </button>
     <button class="kpi vetro" type="button" data-apri="attesa">
       <span class="icona" style="background:rgba(10,132,255,.22);color:var(--blu)"><svg class="i p"><use href="#i-clock"/></svg></span>
@@ -401,7 +395,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   <section class="griglia">
     <article class="pannello vetro s8">
       <header>
-        <div><h2>Lavoro sui siti</h2><p id="grafico-sotto">Modifiche salvate ogni giorno</p></div>
+        <div><h2>Da chiamare per settore</h2><p id="grafico-sotto">Tocchi una colonna per vedere chi sono</p></div>
         <span class="pill" id="grafico-pill"></span>
       </header>
       <div class="grafico" id="grafico"></div>
@@ -415,15 +409,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
       <div class="agenda scorre" id="agenda"></div>
     </article>
 
-    <article class="pannello vetro s5">
-      <header>
-        <div><h2>Attività recenti</h2><p>Le ultime modifiche ai siti</p></div>
-        <button class="chip" type="button" data-apri="modifiche-tutte">Vedi tutto <svg class="i p"><use href="#i-down"/></svg></button>
-      </header>
-      <ul class="lista scorre" id="attivita" style="max-height:300px"></ul>
-    </article>
-
-    <article class="pannello vetro s4" id="siti">
+    <article class="pannello vetro s7" id="siti">
       <header>
         <div><h2>I siti</h2><p id="siti-sotto"></p></div>
         <button class="tondo" type="button" data-apri="siti" aria-label="Tutti i siti"><svg class="i p"><use href="#i-arrow"/></svg></button>
@@ -431,7 +417,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
       <ul class="lista scorre" id="lista-siti" style="max-height:300px"></ul>
     </article>
 
-    <article class="pannello vetro s3">
+    <article class="pannello vetro s5">
       <header>
         <div><h2>Obiettivi</h2><p>Di oggi e del mese</p></div>
       </header>
@@ -574,14 +560,9 @@ function disegnaKpi() {
   const sigleClienti = new Set(clienti.map((p) => p.sigla));
   sparkline($('s-clienti'), serie(14, (c) => sigleClienti.has(c.progetto)).map((x) => x.n), '#ff9f0a');
 
-  const ultimi = DATI.giorni.slice(-7).reduce((s, g) => s + g.n, 0);
-  const prima = DATI.giorni.slice(-14, -7).reduce((s, g) => s + g.n, 0);
-  $('k-modifiche').textContent = num.format(ultimi);
-  const v = variazione(ultimi, prima);
-  const pm = $('k-modifiche-pill');
-  pm.className = 'pill ' + (v == null ? '' : v >= 0 ? 'verde' : 'rossa');
-  pm.textContent = v == null ? `${prima} sett. prima` : `${v >= 0 ? '↗ +' : '↘ '}${v}% vs sett. prima`;
-  sparkline($('s-modifiche'), serie(14).map((x) => x.n), '#30d158');
+  $('k-coda').textContent = num.format(C.in_coda);
+  const gruppiCoda = new Set(C.coda.map((l) => gruppoDi(l.settore)));
+  $('k-coda-pill').textContent = `${gruppiCoda.size} settori`;
 
   $('k-attesa').textContent = num.format(inAttesaSiti.length);
   $('k-attesa-pill').textContent = inAttesaSiti.map((p) => p.sigla).join(' · ') || 'nessuno';
@@ -595,14 +576,21 @@ function disegnaKpi() {
 }
 
 /* Grafico a colonne */
-let periodo = 7;
+const GRUPPI = [[/ristorant|trattoria|bistrot|ristopub|pizz|sushi|hamburg/i, 'Ristoranti'], [/enoteca|vin|bar\b|cocktail|pub|birr/i, 'Bar e vino'], [/barb|parrucch|capell/i, 'Capelli'], [/estet|nail|manicure|unghie|beauty/i, 'Estetica'], [/palestr|pilates|personal|fitness|yoga|gym/i, 'Fitness'], [/tatu|tattoo/i, 'Tatuaggi'], [/officin|meccanic|auto|gommist|carrozz/i, 'Officine']];
+const gruppoDi = (settore) => (GRUPPI.find(([re]) => re.test(settore)) || [null, 'Altro'])[1];
+function datiGrafico() {
+  const conta = {};
+  C.coda.forEach((l) => { const g = gruppoDi(l.settore); conta[g] = (conta[g] || 0) + 1; });
+  return Object.entries(conta).sort((a, b) => b[1] - a[1]).slice(0, 10).map(([settore, n]) => ({ settore, n }));
+}
 function disegnaGrafico() {
   const box = $('grafico');
   box.replaceChildren();
-  const dati = DATI.giorni.slice(-periodo);
+  const dati = datiGrafico();
+  if (!dati.length) { box.appendChild(vuoto('Nessuna attività da chiamare.')); return; }
   const W = Math.max(280, box.clientWidth), H = Math.max(260, box.clientHeight);
-  const sx = 30, top = 22, bottom = 34;
-  const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Modifiche ai siti per giorno' });
+  const sx = 24, top = 22, bottom = 34;
+  const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Attività da chiamare per settore' });
   const defs = svgEl('defs', {});
   const mk = (id, stops) => { const g = svgEl('linearGradient', { id, x1: 0, y1: 0, x2: 0, y2: 1 }); stops.forEach(([o, c, a]) => g.appendChild(svgEl('stop', { offset: o, 'stop-color': c, 'stop-opacity': a }))); defs.appendChild(g); };
   mk('g-vetro', [[0, '#ffffff', .34], [1, '#ffffff', .07]]);
@@ -614,57 +602,41 @@ function disegnaGrafico() {
   [0, .5, 1].forEach((f) => {
     const y = top + alt * (1 - f);
     svg.appendChild(svgEl('line', { class: 'griglia-linea', x1: sx, x2: W, y1: y, y2: y }));
-    const t = svgEl('text', { x: 0, y: y + 3 }); t.textContent = Math.round(max * f); svg.appendChild(t);
+    if (Number.isInteger(max * f)) { const t = svgEl('text', { x: 0, y: y + 3 }); t.textContent = max * f; svg.appendChild(t); }
   });
   const passo = larg / dati.length;
   const lb = Math.min(28, passo * .46);
-  const iMax = dati.reduce((b, x, i, a) => (x.n > a[b].n ? i : b), 0);
   const tip = el('div', 'suggerimento'); tip.hidden = true;
-  const ogni = dati.length > 14 ? 5 : dati.length > 7 ? 2 : 1;
   dati.forEach((x, i) => {
     const cx = sx + passo * i + passo / 2;
     const h = Math.max(lb, x.n / max * alt);
     const y = top + alt - h;
-    const forte = i === iMax && x.n > 0;
-    const g = svgEl('g', { class: 'colonna', tabindex: 0, role: 'button', 'aria-label': `${giornoLungo(x.giorno)}: ${x.n} modifiche` });
+    const forte = i === 0;
+    const g = svgEl('g', { class: 'colonna', tabindex: 0, role: 'button', 'aria-label': `${x.settore}: ${x.n} da chiamare` });
     const r = svgEl('rect', { x: cx - lb / 2, y, width: lb, height: h, rx: lb / 2, class: forte ? '' : 'vetro-col' });
     if (forte) { r.setAttribute('fill', 'url(#g-blu)'); r.setAttribute('style', 'filter: drop-shadow(0 0 12px rgba(10,132,255,.6))'); }
-    if (x.n === 0) r.setAttribute('opacity', '.45');
     g.appendChild(r);
     g.appendChild(svgEl('rect', { x: sx + passo * i, y: 0, width: passo, height: H, fill: 'transparent' }));
-    const d = new Date(x.giorno + 'T12:00:00');
-    if ((dati.length - 1 - i) % ogni === 0) {
-      const t = svgEl('text', { x: cx, y: H - 12, 'text-anchor': 'middle' });
-      t.textContent = dati.length <= 7 ? d.toLocaleDateString('it-IT', { weekday: 'short' }).replace('.', '') : d.getDate() + '/' + (d.getMonth() + 1);
-      svg.appendChild(t);
-    }
-    if (forte) { const v = svgEl('text', { x: cx, y: y - 7, 'text-anchor': 'middle', class: 'valore-su' }); v.textContent = x.n; svg.appendChild(v); }
-    const apriGiorno = () => apri(() => foglioGiorno(x.giorno));
-    g.addEventListener('click', apriGiorno);
-    g.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); apriGiorno(); } });
+    const t = svgEl('text', { x: cx, y: H - 12, 'text-anchor': 'middle' });
+    let et = x.settore; if (passo < 60) et = et.slice(0, Math.max(3, Math.floor(passo / 7))) + (et.length * 7 > passo ? '.' : '');
+    t.textContent = et; svg.appendChild(t);
+    const v = svgEl('text', { x: cx, y: y - 7, 'text-anchor': 'middle', class: 'valore-su' }); v.textContent = x.n; svg.appendChild(v);
+    const apriSettore = () => apri(() => foglioCoda(x.settore));
+    g.addEventListener('click', apriSettore);
+    g.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); apriSettore(); } });
     g.addEventListener('pointerenter', () => {
-      tip.replaceChildren(el('span', null, d.toLocaleDateString('it-IT', { weekday: 'short', day: 'numeric', month: 'short' }) + ' · '), document.createTextNode(x.n === 1 ? '1 modifica' : x.n + ' modifiche'));
+      tip.replaceChildren(el('span', null, x.settore + ' · '), document.createTextNode(x.n === 1 ? '1 da chiamare' : x.n + ' da chiamare'));
       tip.hidden = false;
-      tip.style.left = (Math.min(Math.max(cx, 80), W - 80) / W * 100) + '%';
+      tip.style.left = (Math.min(Math.max(cx, 90), W - 90) / W * 100) + '%';
       tip.style.top = Math.max(y, 30) + 'px';
     });
     g.addEventListener('pointerleave', () => { tip.hidden = true; });
     svg.appendChild(g);
   });
   box.append(svg, tip);
-  const tot = dati.reduce((s, x) => s + x.n, 0);
-  const prec = DATI.giorni.slice(-periodo * 2, -periodo);
-  const v = prec.length === periodo ? variazione(tot, prec.reduce((s, x) => s + x.n, 0)) : null;
-  const pill = $('grafico-pill');
-  pill.className = 'pill ' + (v == null ? '' : v >= 0 ? 'verde' : 'rossa');
-  pill.textContent = v == null ? `${tot} modifiche` : `${v >= 0 ? '+' : ''}${v}% sul periodo prima`;
-  $('grafico-sotto').textContent = `${tot} modifiche salvate · ${periodo === 7 ? 'ultima settimana' : periodo === 14 ? 'ultime due settimane' : 'ultimo mese'} · tocchi una colonna`;
+  $('grafico-pill').className = 'pill blu';
+  $('grafico-pill').textContent = `${C.in_coda} in lista`;
 }
-document.querySelectorAll('[data-periodo]').forEach((b) => b.addEventListener('click', () => {
-  periodo = Number(b.dataset.periodo);
-  document.querySelectorAll('[data-periodo]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-  disegnaGrafico();
-}));
 let attesaRidisegno;
 new ResizeObserver(() => { clearTimeout(attesaRidisegno); attesaRidisegno = setTimeout(disegnaGrafico, 80); }).observe($('grafico'));
 
@@ -844,15 +816,23 @@ function lista(elementi) { const ul = el('ul', 'lista'); elementi.forEach((x) =>
 const vuoto = (t) => el('p', 'avviso', t);
 
 function foglioProgetto(p) {
-  const cs = COMMIT.filter((c) => c.progetto === p.sigla);
-  const ult7 = cs.filter((c) => (Date.now() - new Date(c.quando)) < 7 * 864e5).length;
-  const corpo = [testaScheda(p.nome, p.nota, el('span', 'pill ' + (TONO_PILL[p.tono] || ''), p.stato)),
-    dati(['Stato', p.stato], ['Ultima modifica', p.aggiornato ? quandoRelativo(p.aggiornato) : '—'], ['Modifiche in 7 giorni', String(ult7)], ['Modifiche nel mese', String(cs.length)])];
+  const corpo = [testaScheda(p.nome, p.nota, el('span', 'pill ' + (TONO_PILL[p.tono] || ''), p.stato)), dati(['Stato', p.stato], ['A che punto è', p.nota])];
   const az = el('div', 'azioni-foglio');
   if (p.link) az.appendChild(link(p.link, 'Apri il sito ↗'));
   az.appendChild(bottoneChiedi(`Riguardo al sito ${p.nome}: `, 'Lavora su questo sito'));
-  corpo.push(az, h3('Ultime modifiche'), cs.length ? lista(cs.slice(0, 30).map(rigaCommit)) : vuoto('Nessuna modifica nell\'ultimo mese.'));
+  corpo.push(az);
   return { titolo: p.nome, corpo };
+}
+function rigaChiamata(l) {
+  const li = el('li', 'riga-av cliccabile'); li.tabIndex = 0;
+  const t = el('span', 'testo'); t.append(el('b', null, l.nome), el('span', 'sotto', `${l.settore} · ${l.zona} · ${l.telefono}`));
+  li.append(el('span', 'numero', String(l.n)), t, el('span', 'lato', `★ ${voto(l.voto)} (${l.recensioni})`));
+  li.addEventListener('click', () => apri(() => foglioChiamata(l)));
+  return li;
+}
+function foglioCoda(settore) {
+  const elenco = settore ? C.coda.filter((l) => gruppoDi(l.settore) === settore) : C.coda;
+  return { titolo: settore || 'Attività da chiamare', corpo: [par(`${elenco.length} attività da chiamare${settore ? ' in questo settore' : ''}. Tocchi un nome per il testo della chiamata.`), lista(elenco.map(rigaChiamata))] };
 }
 function foglioElencoSiti(titolo, testo, elenco) {
   return { titolo, corpo: [par(testo), elenco.length ? lista(elenco.map(rigaSito)) : vuoto('Nessuno al momento.')] };
@@ -971,7 +951,7 @@ function foglioCerca() {
 }
 
 const FOGLI = {
-  clienti: foglioClienti, attesa: foglioAttesa, siti: foglioSiti, chiamate: foglioChiamate,
+  coda: () => foglioCoda(null), clienti: foglioClienti, attesa: foglioAttesa, siti: foglioSiti, chiamate: foglioChiamate,
   modifiche: () => foglioModifiche(7), 'modifiche-tutte': () => foglioModifiche(30),
   promemoria: foglioTuttiPromemoria, oggi: foglioOggi, cerca: foglioCerca,
 };
@@ -986,7 +966,7 @@ function vai(id) {
 document.querySelectorAll('[data-vai]').forEach((b) => b.addEventListener('click', (e) => { e.preventDefault(); vai(b.dataset.vai); }));
 $('b-menu').addEventListener('click', () => vai('home'));
 document.querySelectorAll('[data-chat]').forEach((b) => b.addEventListener('click', () => apriChatCon('')));
-disegnaKpi(); disegnaGrafico(); disegnaAgenda(); disegnaAttivita(); disegnaSiti(); disegnaObiettivi(); disegnaChiamate(); disegnaLead();
+disegnaKpi(); disegnaGrafico(); disegnaAgenda(); disegnaSiti(); disegnaObiettivi(); disegnaChiamate(); disegnaLead();
 
 /* ---------- Chat con Claude ----------
    I messaggi stanno nel database della pagina (collezione "chat"). Ogni messaggio manda anche un commento

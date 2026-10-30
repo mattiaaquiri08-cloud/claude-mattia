@@ -118,7 +118,7 @@ def chiamate():
             if gruppi[k]:
                 mescolati.append(gruppi[k].pop(0))
     da_chiamare = [l for l in mescolati if l["stato"] == "Da chiamare"]
-    return {"al_giorno": c["al_giorno"], "oggi": da_chiamare[: c["al_giorno"]],
+    return {"al_giorno": c["al_giorno"], "oggi": da_chiamare[: c["al_giorno"]], "coda": da_chiamare,
             "in_coda": len(da_chiamare), "fatte": len(c["lead"]) - len(da_chiamare)}
 
 
