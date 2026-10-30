@@ -2,7 +2,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap">
 <style>
 /* Layout: come il reel "Glassy Dashboard": foto di un soggiorno al tramonto, barra in alto a tutta larghezza, dock
    verticale a sinistra, schede di vetro grigio fumé su griglia a 12 colonne. Colori di sistema del Mac, font SF.
@@ -295,86 +295,170 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 }
 @media (max-width: 420px) { .kpi .spark { width: 38%; } .kpi .valore { font-size: 22px; } }
 
-/* ===== Tema VERDE TECH (31/10, scelto dall'utente): foresta nella nebbia, griglia tecnologica, verde smeraldo neon, vetro trasparente vero senza sfocare ===== */
+/* ===== Tema MUSCHIO HUD (31/10, dalle immagini dell'utente): nero oliva, muschio illuminato, rete di punti,
+   linee sottili e scritte tecniche, quadranti a tacche, schede a contorno con il punto nell'angolo. Niente sfocatura. ===== */
 :root {
-  --bg: #020a06;
-  --fg: #ecfff5;
-  --muted: rgba(220, 245, 232, .70);
-  --faint: rgba(205, 240, 220, .62);
-  --neon: #34f5a0;
-  --neon-2: #10b981;
-  --bordo: rgba(140, 255, 200, .30);
-  --bordo-alto: rgba(200, 255, 225, .65);
-  --riga: rgba(140, 255, 200, .06);
-  --riga-hover: rgba(140, 255, 200, .14);
-  --arancio: #7dffc4;
-  --verde: #5effb0;
-  --blu: #10b981;
-  --viola: #a3e635;
-  --rosa: #2dd4bf;
-  --giallo: #bbf7d0;
-  --azzurro: #34f5a0;
+  --bg: #060805;
+  --fg: #eef2e4;
+  --muted: rgba(232, 238, 214, .66);
+  --faint: rgba(222, 232, 200, .44);
+  --linea: rgba(226, 236, 200, .16);
+  --linea-forte: rgba(226, 236, 200, .32);
+  --lime: #b4f24a;
+  --lime-2: #7fd63a;
+  --oliva: #c9bf6a;
+  --bordo: var(--linea);
+  --bordo-alto: var(--linea-forte);
+  --riga: rgba(226, 236, 200, .04);
+  --riga-hover: rgba(180, 242, 74, .07);
+  --arancio: #c9bf6a; --verde: #b4f24a; --blu: #8fd14f; --viola: #a3c25a; --rosa: #d6c76a; --giallo: #e2d98b; --azzurro: #9ee35c; --rosso: #ff6b5b;
+  --font: "Manrope", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --hud: "Barlow Condensed", "Arial Narrow", ui-sans-serif, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --r: 14px;
 }
-.sfondo { background: linear-gradient(180deg, rgba(1, 8, 5, .80) 0%, rgba(1, 10, 6, .64) 40%, rgba(1, 8, 5, .84) 100%), linear-gradient(135deg, #064e3b, #10b981), url("__FOTO__") center 40% / cover no-repeat, var(--bg); background-blend-mode: normal, color, normal; }
-.sfondo::after { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 50% at 18% 8%, rgba(52, 245, 160, .18), transparent 70%), radial-gradient(50% 45% at 88% 92%, rgba(163, 230, 53, .10), transparent 70%), linear-gradient(rgba(140, 255, 200, .05) 1px, transparent 1px) 0 0 / 56px 56px, linear-gradient(90deg, rgba(140, 255, 200, .05) 1px, transparent 1px) 0 0 / 56px 56px; -webkit-mask-image: radial-gradient(120% 90% at 50% 30%, #000 40%, transparent 100%); mask-image: radial-gradient(120% 90% at 50% 30%, #000 40%, transparent 100%); }
-.sfondo::before { content: ""; position: absolute; left: 0; right: 0; height: 30vh; top: -30vh; background: linear-gradient(180deg, transparent, rgba(52, 245, 160, .06), transparent); pointer-events: none; z-index: 1; }
-@media (prefers-reduced-motion: no-preference) { .sfondo::before { animation: scansione 9s linear infinite; } }
-@keyframes scansione { to { transform: translateY(160vh); } }
-.kpi .valore, .numero, .chiamata .tel, .grafico text, .msg-ora, .anello b { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: -.01em; }
-.kpi .valore { font-weight: 600; }
-.vetro, .barra, .foglio, .finestra, .velo { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
-.vetro {
-  position: relative;
-  background: linear-gradient(135deg, rgba(255, 255, 255, .13) 0%, rgba(255, 255, 255, .03) 38%, rgba(255, 255, 255, .015) 60%, rgba(140, 255, 200, .07) 100%);
-  border: 1px solid var(--bordo);
-  border-top-color: var(--bordo-alto);
-  border-left-color: rgba(180, 255, 215, .5);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .45), inset 0 0 0 1px rgba(255, 255, 255, .03), inset 0 -18px 30px -24px rgba(52, 245, 160, .35), 0 0 22px rgba(20, 200, 130, .16), 0 14px 34px rgba(0, 0, 0, .35);
-}
-.vetro::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: linear-gradient(115deg, transparent 0 18%, rgba(255, 255, 255, .10) 22%, rgba(255, 255, 255, .02) 30%, transparent 36%); }
+body { font-family: var(--font); letter-spacing: -.005em; }
+.sfondo { background: radial-gradient(70% 60% at 78% 70%, rgba(150, 160, 60, .18), transparent 70%), linear-gradient(90deg, rgba(6, 8, 5, .97) 0%, rgba(6, 8, 5, .88) 30%, rgba(6, 8, 5, .35) 70%, rgba(6, 8, 5, .55) 100%), linear-gradient(180deg, rgba(6, 8, 5, .25) 0%, rgba(6, 8, 5, .2) 60%, rgba(6, 8, 5, .9) 100%), url("__FOTO__") 70% 60% / cover no-repeat, var(--bg); }
+.sfondo::before, .sfondo::after { content: none; }
+#rete { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 52vh; opacity: 1; }
+.vetro, .barra, .foglio, .velo { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+.vetro { position: relative; background: linear-gradient(180deg, rgba(14, 18, 10, .42), rgba(10, 13, 8, .30)); border: 1px solid var(--linea); border-radius: var(--r); box-shadow: none; }
+.vetro::after { content: ""; position: absolute; top: 12px; right: 12px; width: 9px; height: 9px; border-radius: 50%; border: 1px solid var(--linea-forte); background: radial-gradient(circle, var(--fg) 0 1.6px, transparent 2.2px); pointer-events: none; }
+.foglio.vetro::after, .chat-pagina.vetro::after { content: none; }
 .vetro > * { position: relative; }
-.dock.vetro, .foglio.vetro { position: fixed; }
-.kpi .spark { position: absolute; }
-.kpi .freccia { position: absolute; }
-.kpi .valore { text-shadow: 0 0 14px rgba(52, 245, 160, .55); }
-.intro h1 { background: linear-gradient(90deg, #ffffff, #a7ffd6 60%, var(--neon)); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none; filter: drop-shadow(0 0 12px rgba(52, 245, 160, .35)); }
-.kpi .icona { background: rgba(52, 245, 160, .14) !important; color: var(--neon) !important; box-shadow: 0 0 12px rgba(52, 245, 160, .35), inset 0 0 0 1px rgba(52, 245, 160, .45); }
-.kpi:hover { background: linear-gradient(135deg, rgba(255, 255, 255, .17), rgba(140, 255, 200, .08)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), 0 0 30px rgba(40, 230, 150, .32), 0 14px 34px rgba(0, 0, 0, .35); }
-.barra { background: rgba(2, 12, 8, .72); border-bottom-color: rgba(52, 245, 160, .35); box-shadow: 0 0 18px rgba(20, 200, 130, .18); }
-body::before { background: rgba(2, 12, 8, .95); }
-.nav a.attivo, .dock button.attivo, .dock button:hover { color: #fff; background: rgba(52, 245, 160, .18); border-color: rgba(52, 245, 160, .6); box-shadow: 0 0 12px rgba(52, 245, 160, .45); }
-.tondo { border-color: rgba(140, 255, 200, .35); background: rgba(140, 255, 200, .07); }
-.tondo:hover { background: rgba(52, 245, 160, .18); box-shadow: 0 0 10px rgba(52, 245, 160, .4); }
-.avatar-io { background: linear-gradient(135deg, var(--neon), var(--neon-2)); box-shadow: 0 0 14px rgba(52, 245, 160, .6); }
-.badge { background: var(--neon-2); box-shadow: 0 0 8px var(--neon-2); }
-.pill { background: rgba(140, 255, 200, .1); color: var(--muted); }
-.pill.verde, .pill.arancio, .pill.blu, .pill.viola { background: rgba(52, 245, 160, .14); color: #9dffd0; box-shadow: inset 0 0 0 1px rgba(52, 245, 160, .3); }
-.pill.gialla { background: rgba(163, 230, 53, .18); color: #d9f99d; box-shadow: inset 0 0 0 1px rgba(163, 230, 53, .35); }
-.pill.rossa { background: rgba(255, 90, 120, .16); color: #ff9db0; }
-.segmenti button[aria-pressed="true"] { background: var(--neon); color: #00140b; }
-.bottone, .chip { border-color: rgba(140, 255, 200, .35); background: rgba(140, 255, 200, .07); }
-.bottone:hover, .chip:hover { background: rgba(52, 245, 160, .18); box-shadow: 0 0 12px rgba(52, 245, 160, .35); color: #fff; }
-.numero { background: rgba(52, 245, 160, .14); color: #9dffd0; box-shadow: 0 0 10px rgba(52, 245, 160, .3), inset 0 0 0 1px rgba(52, 245, 160, .45); }
-.chiamata { background: linear-gradient(135deg, rgba(255, 255, 255, .09), rgba(255, 255, 255, .02) 45%, rgba(140, 255, 200, .05)); border-color: rgba(140, 255, 200, .25); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .3); }
-.chiamata:hover { background: linear-gradient(135deg, rgba(255, 255, 255, .14), rgba(140, 255, 200, .08)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .4), 0 0 18px rgba(52, 245, 160, .3); }
-.chiamata .stelle { color: #a7ffd6; }
-.barretta i { background: linear-gradient(90deg, var(--neon-2), var(--neon)); box-shadow: 0 0 10px var(--neon); }
-.agenda-voce .blocco { background: linear-gradient(135deg, rgba(255, 255, 255, .09), rgba(255, 255, 255, .02)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25); }
-.agenda-voce .blocco:hover { background: rgba(52, 245, 160, .12); }
-.colonna rect.vetro-col { stroke: rgba(170, 255, 210, .55); }
-.foglio, .chat-pagina { background: linear-gradient(160deg, rgba(6, 26, 18, .94), rgba(2, 12, 8, .96)); border-color: rgba(52, 245, 160, .4); box-shadow: 0 0 30px rgba(20, 200, 130, .25), 0 20px 50px rgba(0, 0, 0, .5); }
-.foglio::before, .chat-pagina::before { display: none; }
-.velo { background: rgba(0, 8, 4, .55); }
-.msg.io { background: linear-gradient(135deg, var(--neon-2), #22c55e); box-shadow: 0 0 14px rgba(16, 185, 129, .45); }
-.msg.claude { background: rgba(140, 255, 200, .12); box-shadow: inset 0 0 0 1px rgba(140, 255, 200, .2); }
-.claude-av { background: linear-gradient(135deg, var(--neon), var(--neon-2)); box-shadow: 0 0 16px rgba(52, 245, 160, .6); }
-.invia { background: linear-gradient(135deg, var(--neon), var(--neon-2)); box-shadow: 0 0 12px rgba(52, 245, 160, .5); }
-.scrivi { border-color: rgba(140, 255, 200, .35); }
-.scrivi:focus-within { border-color: var(--neon); box-shadow: 0 0 14px rgba(52, 245, 160, .35); }
-.stato-punto { background: var(--neon); box-shadow: 0 0 8px var(--neon); }
-a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline-color: var(--neon); }
-.pannello header p, .etichetta, .agenda-voce .ora, .intro p, .riga-av .sotto, .chiamata .dove, .obiettivo .sotto { text-shadow: 0 1px 3px rgba(0, 8, 4, .9); }
-.grafico text { paint-order: stroke; stroke: rgba(0, 10, 5, .75); stroke-width: 3px; stroke-linejoin: round; }
+.foglio.vetro { position: fixed; }
+
+/* Barra in alto, come una testata: marchio — linea — ora */
+.barra { display: grid; grid-template-columns: 1fr; gap: 10px; padding: 16px max(20px, env(safe-area-inset-right, 0px)) 10px max(20px, env(safe-area-inset-left, 0px)); background: linear-gradient(180deg, rgba(6, 8, 5, .92), rgba(6, 8, 5, .65)); border-bottom: 1px solid var(--linea); }
+body::before { background: rgba(6, 8, 5, .96); }
+.riga-alta { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.marchio { display: flex; align-items: baseline; gap: 8px; background: none; border: 0; padding: 0; cursor: pointer; }
+.marchio b { font-weight: 600; font-size: 17px; letter-spacing: .02em; }
+.marchio span { font-family: var(--hud); text-transform: uppercase; letter-spacing: .16em; font-size: 12px; color: var(--muted); }
+.linea { flex: 1; height: 1px; background: linear-gradient(90deg, var(--linea-forte), var(--linea) 60%, transparent); min-width: 20px; }
+.orologio { display: flex; gap: 14px; align-items: baseline; font-family: var(--mono); }
+#ora-live { color: var(--lime); font-size: 15px; letter-spacing: .04em; text-shadow: 0 0 10px rgba(180, 242, 74, .45); }
+#data-live { color: var(--muted); font-size: 12px; letter-spacing: .08em; }
+.riga-alta .dx { display: flex; gap: 8px; align-items: center; }
+.nav { display: flex; gap: 26px; flex-wrap: wrap; }
+.nav a, .nav button { font-family: var(--hud); text-transform: uppercase; letter-spacing: .14em; font-size: 12.5px; color: var(--muted); background: none; border: 0; padding: 4px 0; border-radius: 0; cursor: pointer; text-decoration: none; position: relative; display: inline-flex; align-items: center; gap: 8px; }
+.nav a:hover, .nav button:hover { color: var(--fg); background: none; }
+.nav a.attivo { color: var(--fg); background: none; border: 0; box-shadow: none; }
+.nav a.attivo::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 8px var(--lime); }
+.nav .nav-chat { margin-left: auto; color: var(--lime); }
+.tondo { width: 30px; height: 30px; border: 1px solid var(--linea-forte); background: transparent; }
+.tondo:hover { background: rgba(180, 242, 74, .08); border-color: var(--lime); }
+.badge { background: var(--lime); color: #0b1205; box-shadow: 0 0 8px rgba(180, 242, 74, .7); }
+.avatar-io { width: 30px; height: 30px; background: transparent; border: 1px solid var(--lime); color: var(--lime); box-shadow: 0 0 10px rgba(180, 242, 74, .3); font-family: var(--mono); font-size: 11px; }
+.avatar-io::after { background: var(--lime); border-color: var(--bg); }
+.dock { display: none !important; }
+@media (min-width: 1000px) { .pagina { padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); } }
+
+/* Testata della pagina: saluto e quadranti */
+.hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px; align-items: center; padding: 28px 4px 18px; min-height: 340px; }
+.hud-etichetta { margin: 0 0 18px; font-family: var(--hud); text-transform: uppercase; letter-spacing: .18em; font-size: 12.5px; color: var(--lime); display: flex; align-items: center; gap: 10px; }
+.punto-live { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 10px var(--lime); display: inline-block; }
+@media (prefers-reduced-motion: no-preference) { .punto-live { animation: pulsa 1.6s ease-in-out infinite; } }
+.hero h1 { margin: 0; font-size: clamp(40px, 6vw, 76px); font-weight: 300; line-height: 1.02; letter-spacing: -.035em; color: var(--fg); background: none; -webkit-background-clip: border-box; background-clip: border-box; filter: none; }
+.hero #sottotitolo { margin: 18px 0 26px; color: var(--muted); font-size: 14px; max-width: 46ch; }
+.cta { display: inline-flex; align-items: center; gap: 12px; background: none; border: 0; padding: 4px 0; cursor: pointer; color: var(--fg); font-size: 14px; }
+.cta-punto { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--linea-forte); background: radial-gradient(circle, var(--lime) 0 3px, transparent 3.5px); box-shadow: 0 0 12px rgba(180, 242, 74, .35); }
+.cta-linea { width: 54px; height: 1px; background: var(--fg); position: relative; transition: width .3s; }
+.cta-linea::after { content: ""; position: absolute; right: -1px; top: -3px; width: 7px; height: 7px; border-top: 1px solid var(--fg); border-right: 1px solid var(--fg); transform: rotate(45deg); }
+.cta:hover .cta-linea { width: 74px; }
+.quadranti { display: flex; gap: 28px; justify-content: flex-end; flex-wrap: wrap; }
+.quadrante { position: relative; width: min(220px, 42vw); aspect-ratio: 1; max-width: 100%; background: none; border: 0; padding: 0; cursor: pointer; color: var(--fg); }
+.quadrante svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.q-centro { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; gap: 4px; }
+.q-valore { font-size: clamp(26px, 3.4vw, 38px); font-weight: 300; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.q-etichetta { font-family: var(--hud); text-transform: uppercase; letter-spacing: .14em; font-size: 11px; color: var(--muted); }
+.quadrante:hover .q-valore { color: var(--lime); }
+
+/* Schede numeri */
+.kpi-riga { gap: 14px; }
+.kpi { min-height: 150px; padding: 18px 18px 16px; align-content: start; background: linear-gradient(180deg, rgba(14, 18, 10, .5), rgba(10, 13, 8, .25)); }
+.kpi:hover { transform: translateY(-4px); background: linear-gradient(180deg, rgba(30, 40, 16, .55), rgba(10, 13, 8, .3)); border-color: rgba(180, 242, 74, .45); box-shadow: 0 0 24px rgba(180, 242, 74, .12); }
+.kpi .icona, .kpi .freccia, .kpi .spark { display: none; }
+.kpi .etichetta { order: 3; font-family: var(--hud); text-transform: uppercase; letter-spacing: .14em; font-size: 12px; color: var(--muted); margin-top: 10px; }
+.kpi .valore { order: 1; font-family: var(--font); font-weight: 300; font-size: clamp(34px, 3.6vw, 46px); letter-spacing: -.03em; text-shadow: none; line-height: 1.05; }
+.kpi .pill { order: 4; margin-top: 8px; max-width: 100%; }
+
+/* Pannelli */
+.pannello { padding: 18px 20px 20px; }
+.pannello h2 { font-family: var(--hud); font-weight: 500; text-transform: uppercase; letter-spacing: .16em; font-size: 14px; color: var(--fg); }
+.pannello h2::before { content: ""; display: inline-block; width: 18px; height: 1px; background: var(--lime); vertical-align: middle; margin-right: 10px; box-shadow: 0 0 6px var(--lime); }
+.pannello header p { font-size: 12px; color: var(--faint); margin-top: 4px; }
+.pannello > header { padding-right: 24px; }
+.pill { font-family: var(--mono); font-size: 10.5px; background: transparent; border: 1px solid var(--linea-forte); color: var(--muted); }
+.pill.verde, .pill.arancio, .pill.blu, .pill.viola { border-color: rgba(180, 242, 74, .5); color: var(--lime); background: rgba(180, 242, 74, .06); box-shadow: none; }
+.pill.gialla { border-color: rgba(201, 191, 106, .55); color: var(--oliva); background: rgba(201, 191, 106, .07); box-shadow: none; }
+.pill.rossa { border-color: rgba(255, 107, 91, .5); color: #ff9a8e; background: transparent; }
+.bottone, .chip { background: transparent; border-color: var(--linea-forte); color: var(--fg); border-radius: 999px; }
+.bottone:hover, .chip:hover { background: rgba(180, 242, 74, .08); border-color: var(--lime); color: var(--lime); box-shadow: none; }
+
+/* Grafico: barre sottili con il punto luminoso in cima */
+.colonna rect.vetro-col { fill: url(#g-vetro); stroke: rgba(226, 236, 200, .28); }
+.grafico text { font-family: var(--hud); text-transform: uppercase; letter-spacing: .1em; font-size: 11px; fill: var(--muted); paint-order: normal; stroke: none; }
+.grafico .valore-su { font-family: var(--mono); fill: var(--fg); font-size: 11px; letter-spacing: 0; }
+.griglia-linea { stroke: rgba(226, 236, 200, .1); stroke-dasharray: 2 6; }
+.suggerimento { background: rgba(8, 11, 6, .95); border-color: var(--linea-forte); font-family: var(--mono); font-size: 11px; }
+
+/* Agenda come righe di dati */
+.agenda-voce { grid-template-columns: 70px minmax(0, 1fr); }
+.agenda-voce .ora { font-family: var(--hud); text-transform: uppercase; letter-spacing: .1em; font-size: 11px; color: var(--lime); padding-top: 11px; }
+.agenda-voce .blocco { background: transparent; border: 0; border-left: 1px solid var(--c, var(--lime)); border-bottom: 1px solid var(--linea); border-radius: 0; padding: 9px 4px 11px 14px; box-shadow: none; }
+.agenda-voce .blocco:hover { background: rgba(180, 242, 74, .05); }
+.agenda-voce .titolo { font-weight: 500; }
+.faccia { border-color: var(--bg); }
+
+/* Righe con avatar */
+.av { background: transparent !important; border: 1px solid rgba(180, 242, 74, .5); color: var(--lime); font-family: var(--mono); font-weight: 500; font-size: 9.5px; }
+.faccia { background: #10170a !important; border: 1px solid rgba(180, 242, 74, .55); color: var(--lime); }
+.riga-av { border-bottom: 1px solid var(--linea); border-radius: 0; }
+.cliccabile:hover { background: rgba(180, 242, 74, .05); }
+
+/* Obiettivi */
+.anello b { font-family: var(--mono); font-weight: 500; }
+
+/* Chiamate */
+.chiamata { background: linear-gradient(180deg, rgba(14, 18, 10, .55), rgba(10, 13, 8, .3)); border: 1px solid var(--linea); border-radius: 12px; box-shadow: none; }
+.chiamata:hover { border-color: rgba(180, 242, 74, .5); background: linear-gradient(180deg, rgba(30, 40, 16, .6), rgba(10, 13, 8, .35)); box-shadow: 0 0 20px rgba(180, 242, 74, .1); transform: translateY(-3px); }
+.numero { background: transparent; color: var(--lime); border: 1px solid rgba(180, 242, 74, .5); box-shadow: 0 0 10px rgba(180, 242, 74, .15); font-family: var(--mono); font-weight: 500; font-size: 13px; border-radius: 8px; }
+.chiamata .stelle { color: var(--oliva); font-family: var(--mono); }
+.chiamata .tel { font-family: var(--mono); font-weight: 400; font-size: 14px; color: var(--fg); }
+.barretta { height: 2px; background: var(--linea); }
+.barretta i { background: var(--lime); box-shadow: 0 0 10px var(--lime); }
+
+/* Fogli e chat */
+.foglio, .chat-pagina { background: linear-gradient(180deg, rgba(12, 16, 9, .97), rgba(7, 9, 6, .98)); border: 1px solid var(--linea-forte); box-shadow: 0 30px 60px rgba(0, 0, 0, .6); }
+.foglio-testa, .chat-testa { background: transparent; border-bottom-color: var(--linea); }
+.foglio-testa h2 { font-family: var(--hud); text-transform: uppercase; letter-spacing: .14em; font-weight: 500; }
+.foglio-corpo h3 { font-family: var(--hud); letter-spacing: .16em; color: var(--lime); }
+.dato { background: transparent; border: 1px solid var(--linea); }
+.dato b { font-weight: 500; }
+.copione { background: rgba(180, 242, 74, .04); border: 1px solid var(--linea); }
+.velo { background: rgba(3, 4, 2, .62); }
+.msg.io { background: var(--lime); color: #0b1205; box-shadow: none; font-weight: 500; }
+.msg.claude { background: rgba(226, 236, 200, .07); box-shadow: inset 0 0 0 1px var(--linea); }
+.claude-av { background: transparent; border: 1px solid var(--lime); color: var(--lime); box-shadow: 0 0 14px rgba(180, 242, 74, .35); }
+.invia { background: var(--lime); color: #0b1205; box-shadow: 0 0 12px rgba(180, 242, 74, .4); }
+.scrivi { border-color: var(--linea-forte); background: rgba(226, 236, 200, .03); }
+.scrivi:focus-within { border-color: var(--lime); box-shadow: 0 0 12px rgba(180, 242, 74, .2); }
+.stato-punto { background: var(--lime); box-shadow: 0 0 8px var(--lime); }
+.giorno-sep, .msg-ora { font-family: var(--mono); }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline-color: var(--lime); }
+.pannello header p, .intro p, .riga-av .sotto, .chiamata .dove { text-shadow: 0 1px 3px rgba(0, 0, 0, .9); }
+@media (max-width: 820px) {
+  .hero { grid-template-columns: minmax(0, 1fr); min-height: 0; padding-top: 18px; }
+  .quadranti { justify-content: center; gap: 16px; }
+  .quadrante { width: min(160px, 38vw); }
+  .quadranti { flex-wrap: nowrap; }
+  .pannello > header { flex-wrap: wrap; }
+  .orologio #data-live { display: none; }
+  .nav { gap: 16px; }
+  .nav .nav-chat { margin-left: 0; }
+}
+@media (max-width: 420px) { .riga-alta { gap: 10px; } .linea { display: none; } }
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -398,42 +482,40 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
 </svg>
 
-<div class="sfondo" aria-hidden="true"></div>
+<div class="sfondo" aria-hidden="true"><canvas id="rete"></canvas></div>
 
 <header class="barra">
-  <div class="sx">
-    <button class="tondo" type="button" id="b-menu" aria-label="Vai in cima"><svg class="i p"><use href="#i-menu"/></svg></button>
-    <button class="tondo" type="button" data-apri="oggi" aria-label="Oggi"><svg class="i p"><use href="#i-calendar"/></svg></button>
+  <div class="riga-alta">
+    <button class="marchio" type="button" id="b-menu" aria-label="Torna in cima"><b>MAQ</b><span>Casa</span></button>
+    <span class="linea" aria-hidden="true"></span>
+    <div class="orologio" aria-label="Ora"><span id="ora-live">--:--:--</span><span id="data-live"></span></div>
+    <div class="dx">
+      <button class="tondo" type="button" data-apri="promemoria" aria-label="Promemoria"><svg class="i p"><use href="#i-bell"/></svg><span class="badge" id="badge-promemoria"></span></button>
+      <button class="tondo cerca-btn" type="button" data-apri="cerca" aria-label="Cerca"><svg class="i p"><use href="#i-search"/></svg></button>
+      <span class="avatar-io" aria-label="Mattia">MA</span>
+    </div>
   </div>
   <nav class="nav" aria-label="Sezioni">
-    <a href="#home" class="attivo" data-vai="home"><svg class="i p"><use href="#i-home"/></svg><span>Home</span></a>
-    <a href="#chiamate" data-vai="chiamate"><svg class="i p"><use href="#i-phone"/></svg><span>Chiamate</span></a>
-    <a href="#siti" data-vai="siti"><svg class="i p"><use href="#i-monitor"/></svg><span>Siti</span></a>
+    <a href="#home" class="attivo" data-vai="home">Home</a>
+    <a href="#chiamate" data-vai="chiamate">Chiamate</a>
+    <a href="#siti" data-vai="siti">Siti</a>
+    <button type="button" data-apri="oggi">Oggi</button>
+    <button type="button" data-chat class="nav-chat">Chat con Claude</button>
   </nav>
-  <div class="dx">
-    <button class="tondo" type="button" data-chat aria-label="Chat con Claude Code"><svg class="i p"><use href="#i-chat"/></svg></button>
-    <button class="tondo" type="button" data-apri="promemoria" aria-label="Promemoria"><svg class="i p"><use href="#i-bell"/></svg><span class="badge" id="badge-promemoria"></span></button>
-    <button class="tondo cerca-btn" type="button" data-apri="cerca" aria-label="Cerca"><svg class="i p"><use href="#i-search"/></svg></button>
-    <span class="avatar-io" aria-label="Mattia">MA</span>
-  </div>
 </header>
 
-<nav class="dock vetro" aria-label="Dock">
-  <button type="button" data-vai="home" data-etichetta="Home" aria-label="Home" class="attivo"><svg class="i"><use href="#i-home"/></svg></button>
-  <button type="button" data-chat data-etichetta="Chat con Claude" aria-label="Chat con Claude"><svg class="i"><use href="#i-chat"/></svg></button>
-  <button type="button" data-vai="chiamate" data-etichetta="Chiamate" aria-label="Chiamate"><svg class="i"><use href="#i-phone"/></svg></button>
-  <button type="button" data-vai="siti" data-etichetta="Siti" aria-label="Siti"><svg class="i"><use href="#i-monitor"/></svg></button>
-  <button type="button" data-apri="cerca" data-etichetta="Cerca" aria-label="Cerca"><svg class="i"><use href="#i-search"/></svg></button>
-</nav>
 
 <main class="pagina">
-  <section class="intro" id="home">
-    <div>
-      <h1><span id="saluto">Buonasera</span>, signore</h1>
+  <section class="intro hero" id="home">
+    <div class="hero-testo">
+      <p class="hud-etichetta"><i class="punto-live"></i>Sistema operativo · Roma</p>
+      <h1><span id="saluto">Buonasera</span>,<br>signore</h1>
       <p id="sottotitolo"></p>
+      <button class="cta" type="button" data-chat><span class="cta-punto"></span><span class="cta-linea"></span>Chiedi a Claude</button>
     </div>
-    <div class="azioni">
-      <button class="bottone" type="button" data-chat><svg class="i p"><use href="#i-chat"/></svg>Chiedi a Claude</button>
+    <div class="quadranti">
+      <button class="quadrante" type="button" data-apri="chiamate"><svg id="dial-oggi" viewBox="0 0 200 200" aria-hidden="true"></svg><span class="q-centro"><span class="q-valore" id="dial-oggi-valore">—</span><span class="q-etichetta">Chiamate di oggi</span></span></button>
+      <button class="quadrante" type="button" data-apri="coda"><svg id="dial-lista" viewBox="0 0 200 200" aria-hidden="true"></svg><span class="q-centro"><span class="q-valore" id="dial-lista-valore">—</span><span class="q-etichetta">Lista chiamata</span></span></button>
     </div>
   </section>
 
@@ -553,7 +635,7 @@ const num = new Intl.NumberFormat('it-IT');
 const NS = 'http://www.w3.org/2000/svg';
 const svgEl = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
 const icona = (nome, cls = 'i p') => { const s = svgEl('svg', { class: cls }); s.appendChild(svgEl('use', { href: '#i-' + nome })); return s; };
-const COLORI = ['#059669', '#10b981', '#0d9488', '#16a34a', '#65a30d', '#047857', '#14b8a6', '#15803d'];
+const COLORI = ['#b4f24a', '#9ee35c', '#c9bf6a', '#8fd14f', '#d6e88a', '#a3c25a', '#b4f24a', '#c9bf6a'];
 const coloreDi = (s) => COLORI[[...String(s)].reduce((a, c) => a + c.charCodeAt(0), 0) % COLORI.length];
 const sigla = (s) => String(s).replace(/[^\p{L}\p{N} ]/gu, ' ').trim().split(/\s+/).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
 function avatar(nome, cls = 'av') { const a = el('span', cls, sigla(nome)); a.style.background = coloreDi(nome); return a; }
@@ -608,7 +690,7 @@ async function segnaEsito(l, esito) {
 function aggiornaChiamate() {
   calcolaOggi();
   $('sottotitolo').textContent = `Oggi tocca fare ${C.al_giorno} chiamate (fatte ${fatteOggi()}) · ${clienti.length} clienti · ${inAttesaSiti.length} in attesa di risposta`;
-  disegnaChiamate(); disegnaKpi(); disegnaObiettivi(); disegnaAgenda(); disegnaGrafico();
+  disegnaChiamate(); disegnaKpi(); disegnaObiettivi(); disegnaAgenda(); disegnaGrafico(); disegnaQuadranti();
 }
 
 /* Serie per giorno */
@@ -636,7 +718,7 @@ function disegnaKpi() {
   $('k-clienti').textContent = num.format(clienti.length);
   $('k-clienti-pill').textContent = clienti.map((p) => p.sigla).join(' · ') || 'nessuno';
   const sigleClienti = new Set(clienti.map((p) => p.sigla));
-  sparkline($('s-clienti'), serie(14, (c) => sigleClienti.has(c.progetto)).map((x) => x.n), '#34f5a0');
+  sparkline($('s-clienti'), serie(14, (c) => sigleClienti.has(c.progetto)).map((x) => x.n), '#b4f24a');
 
   $('k-coda').textContent = num.format(restanti().length);
   const gruppiCoda = new Set(restanti().map((l) => gruppoDi(l.settore)));
@@ -645,12 +727,12 @@ function disegnaKpi() {
   $('k-attesa').textContent = num.format(inAttesaSiti.length);
   $('k-attesa-pill').textContent = inAttesaSiti.map((p) => p.sigla).join(' · ') || 'nessuno';
   const sigleAttesa = new Set(inAttesaSiti.map((p) => p.sigla));
-  sparkline($('s-attesa'), serie(14, (c) => sigleAttesa.has(c.progetto)).map((x) => x.n), '#34f5a0');
+  sparkline($('s-attesa'), serie(14, (c) => sigleAttesa.has(c.progetto)).map((x) => x.n), '#b4f24a');
 
   const n = fatteOggi();
   $('k-chiamate').textContent = `${n}/${C.al_giorno}`;
   $('k-chiamate-pill').textContent = `${restanti().length} in lista`;
-  sparkline($('s-chiamate'), Array.from({ length: C.al_giorno }, (_, i) => Math.min(n, i + 1)), '#34f5a0');
+  sparkline($('s-chiamate'), Array.from({ length: C.al_giorno }, (_, i) => Math.min(n, i + 1)), '#b4f24a');
 }
 
 /* Grafico a colonne */
@@ -671,9 +753,9 @@ function disegnaGrafico() {
   const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Attività da chiamare per settore' });
   const defs = svgEl('defs', {});
   const mk = (id, stops) => { const g = svgEl('linearGradient', { id, x1: 0, y1: 0, x2: 0, y2: 1 }); stops.forEach(([o, c, a]) => g.appendChild(svgEl('stop', { offset: o, 'stop-color': c, 'stop-opacity': a }))); defs.appendChild(g); };
-  mk('g-vetro', [[0, '#d4ffe8', .28], [1, '#7dffc4', .04]]);
+  mk('g-vetro', [[0, '#e8f0d0', .22], [1, '#b4f24a', .03]]);
   mk('g-vetro-hover', [[0, '#ffffff', .5], [1, '#ffffff', .14]]);
-  mk('g-blu', [[0, '#e3ffef', 1], [.4, '#34f5a0', 1], [1, '#059669', 1]]);
+  mk('g-blu', [[0, '#f2ffd6', 1], [.35, '#b4f24a', 1], [1, '#4f7a1c', .9]]);
   svg.appendChild(defs);
   const max = Math.max(1, ...dati.map((x) => x.n));
   const alt = H - top - bottom, larg = W - sx;
@@ -683,7 +765,7 @@ function disegnaGrafico() {
     if (Number.isInteger(max * f)) { const t = svgEl('text', { x: 0, y: y + 3 }); t.textContent = max * f; svg.appendChild(t); }
   });
   const passo = larg / dati.length;
-  const lb = Math.min(28, passo * .46);
+  const lb = Math.min(12, passo * .3);
   const tip = el('div', 'suggerimento'); tip.hidden = true;
   dati.forEach((x, i) => {
     const cx = sx + passo * i + passo / 2;
@@ -692,13 +774,14 @@ function disegnaGrafico() {
     const forte = i === 0;
     const g = svgEl('g', { class: 'colonna', tabindex: 0, role: 'button', 'aria-label': `${x.settore}: ${x.n} da chiamare` });
     const r = svgEl('rect', { x: cx - lb / 2, y, width: lb, height: h, rx: lb / 2, class: forte ? '' : 'vetro-col' });
-    if (forte) { r.setAttribute('fill', 'url(#g-blu)'); r.setAttribute('style', 'filter: drop-shadow(0 0 14px rgba(52,245,160,.85))'); }
+    if (forte) { r.setAttribute('fill', 'url(#g-blu)'); r.setAttribute('style', 'filter: drop-shadow(0 0 12px rgba(180,242,74,.8))'); }
     g.appendChild(r);
+    g.appendChild(svgEl('circle', { cx, cy: y + lb / 2, r: forte ? 4 : 2.5, fill: forte ? '#f2ffd6' : '#b4f24a', style: 'filter: drop-shadow(0 0 5px rgba(180,242,74,.9))' }));
     g.appendChild(svgEl('rect', { x: sx + passo * i, y: 0, width: passo, height: H, fill: 'transparent' }));
     const t = svgEl('text', { x: cx, y: H - 12, 'text-anchor': 'middle' });
     let et = x.settore; if (passo < 60) et = et.slice(0, Math.max(3, Math.floor(passo / 7))) + (et.length * 7 > passo ? '.' : '');
     t.textContent = et; svg.appendChild(t);
-    const v = svgEl('text', { x: cx, y: y - 7, 'text-anchor': 'middle', class: 'valore-su' }); v.textContent = x.n; svg.appendChild(v);
+    const v = svgEl('text', { x: cx, y: y - 10, 'text-anchor': 'middle', class: 'valore-su' }); v.textContent = x.n; svg.appendChild(v);
     const apriSettore = () => apri(() => foglioCoda(x.settore));
     g.addEventListener('click', apriSettore);
     g.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); apriSettore(); } });
@@ -1007,6 +1090,71 @@ function vai(id) {
 document.querySelectorAll('[data-vai]').forEach((b) => b.addEventListener('click', (e) => { e.preventDefault(); vai(b.dataset.vai); }));
 $('b-menu').addEventListener('click', () => vai('home'));
 document.querySelectorAll('[data-chat]').forEach((b) => b.addEventListener('click', () => apriChatCon('')));
+
+/* Quadranti a tacche (come nel riferimento): le tacche accese sono la parte fatta */
+function quadrante(svg, frazione) {
+  svg.replaceChildren();
+  const N = 60, cx = 100, cy = 100, accese = Math.round(Math.max(0, Math.min(1, frazione)) * N);
+  for (let i = 0; i < N; i++) {
+    const a = (i / N) * Math.PI * 2 - Math.PI / 2;
+    const lunga = i % 5 === 0;
+    const r1 = lunga ? 68 : 72, r2 = 84;
+    const acceso = i < accese;
+    svg.appendChild(svgEl('line', { x1: cx + Math.cos(a) * r1, y1: cy + Math.sin(a) * r1, x2: cx + Math.cos(a) * r2, y2: cy + Math.sin(a) * r2, stroke: acceso ? '#b4f24a' : 'rgba(226,236,200,.22)', 'stroke-width': acceso ? 1.6 : 1, 'stroke-linecap': 'round' }));
+    if (acceso) svg.appendChild(svgEl('circle', { cx: cx + Math.cos(a) * 92, cy: cy + Math.sin(a) * 92, r: 1.8, fill: '#e6ffb0', style: 'filter: drop-shadow(0 0 3px rgba(180,242,74,.9))' }));
+  }
+  svg.appendChild(svgEl('circle', { cx, cy, r: 58, fill: 'none', stroke: 'rgba(226,236,200,.12)', 'stroke-width': 1 }));
+}
+function disegnaQuadranti() {
+  const n = fatteOggi();
+  quadrante($('dial-oggi'), n / C.al_giorno);
+  $('dial-oggi-valore').textContent = `${n}/${C.al_giorno}`;
+  const tot = C.coda.length, fatteTot = fatteDb.size;
+  quadrante($('dial-lista'), tot ? fatteTot / tot : 0);
+  $('dial-lista-valore').textContent = (tot ? Math.round(fatteTot / tot * 100) : 0) + '%';
+}
+
+/* Ora in diretta nella testata */
+function aggiornaOra() {
+  const d = new Date();
+  $('ora-live').textContent = d.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  $('data-live').textContent = d.toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, ' / ');
+}
+aggiornaOra(); setInterval(aggiornaOra, 1000);
+
+/* Rete di punti che ondeggia sul fondo, come il muschio "digitale" del riferimento */
+(() => {
+  const cv = $('rete'); const ctx = cv.getContext('2d');
+  const fermo = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W = 0, H = 0, dpr = 1, t = 0, ultimo = 0;
+  function misura() { dpr = Math.min(2, devicePixelRatio || 1); W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  function disegna() {
+    ctx.clearRect(0, 0, W, H);
+    const righe = 26, colonne = Math.max(40, Math.round(W / 16));
+    for (let r = 0; r < righe; r++) {
+      const z = r / (righe - 1);
+      const prof = 0.25 + z * 0.75;
+      for (let c = 0; c < colonne; c++) {
+        const u = c / (colonne - 1);
+        const x = W * (0.5 + (u - 0.5) * (0.55 + z * 0.9));
+        const onda = Math.sin(u * 9 + t * 0.9 + z * 3) * 0.5 + Math.sin(u * 4.3 - t * 0.6 + z * 5) * 0.5;
+        const y = H * (0.15 + z * 0.85) - onda * 26 * prof - Math.max(0, 1 - Math.abs(u - 0.72) * 2.2) * 34 * prof;
+        const luce = 0.12 + 0.6 * prof * (0.55 + 0.45 * onda) * (0.4 + 0.6 * Math.max(0, 1 - Math.abs(u - 0.7) * 1.6));
+        ctx.fillStyle = `rgba(190, 245, 110, ${Math.max(0.04, Math.min(0.85, luce)).toFixed(3)})`;
+        const rr = 0.5 + prof * 1.1;
+        ctx.fillRect(x - rr / 2, y - rr / 2, rr, rr);
+      }
+    }
+  }
+  function giro(ts) {
+    if (!document.hidden && ts - ultimo > 40) { t += 0.03; disegna(); ultimo = ts; }
+    requestAnimationFrame(giro);
+  }
+  misura(); disegna();
+  addEventListener('resize', () => { misura(); disegna(); });
+  if (!fermo) requestAnimationFrame(giro);
+})();
+
 disegnaSiti(); aggiornaChiamate();
 
 /* ---------- Chat con Claude ----------
