@@ -16,7 +16,8 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Sicch%C3%A9+-+Roba+Toscana+Via+Beniamino+Franklin%2C+12c%2C+00153+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-10-30"
+   "verificato": "2026-10-30",
+   "n": 1
   },
   {
    "nome": "Allier",
@@ -31,7 +32,8 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Allier+Via+dei+Magazzini+Generali%2C+4%2C+00154+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-10-30"
+   "verificato": "2026-10-30",
+   "n": 2
   },
   {
    "nome": "Galvino Testaccio",
@@ -46,7 +48,8 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Galvino+Testaccio+Via+Galvani%2C+33%2C+00153+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-10-30"
+   "verificato": "2026-10-30",
+   "n": 3
   },
   {
    "nome": "Cosetta",
@@ -61,7 +64,8 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Cosetta+Viale+delle+Milizie%2C+122%2C+00192+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-10-30"
+   "verificato": "2026-10-30",
+   "n": 4
   },
   {
    "nome": "MaDai!",
@@ -76,7 +80,8 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=MaDai%21+Via+dei+Glicini%2C+70a%2C+00172+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-10-30"
+   "verificato": "2026-10-30",
+   "n": 5
   },
   {
    "nome": "Les Amis",
@@ -91,7 +96,8 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Les+Amis+Via+di+Santa+Maria+Ausiliatrice%2C+15%2C+00181+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-10-30"
+   "verificato": "2026-10-30",
+   "n": 6
   },
   {
    "nome": "Club26 Centocelle",
@@ -106,7 +112,8 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Club26+Centocelle+Via+dei+Platani%2C+117%2C+00172+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-10-30"
+   "verificato": "2026-10-30",
+   "n": 7
   },
   {
    "nome": "Fresh Barbershop Merulana",
@@ -121,7 +128,8 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Fresh+Barbershop+Merulana+Via+Merulana%2C+114%2C+00185+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-10-30"
+   "verificato": "2026-10-30",
+   "n": 8
   },
   {
    "nome": "Fade Barber Studio",
@@ -137,7 +145,8 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Fade+Barber+Studio+Via+Delle+Azalee%2C+73%2C+00172+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-10-30"
+   "verificato": "2026-10-30",
+   "n": 9
   },
   {
    "nome": "Hair Lab di Michaela",
@@ -153,7 +162,8 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Hair+Lab+di+Michaela+Via+Renzo+da+Ceri%2C+128%2C+00176+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-10-30"
+   "verificato": "2026-10-30",
+   "n": 10
   },
   {
    "nome": "BLOOM NAIL STUDIO",
@@ -168,7 +178,8 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=BLOOM+NAIL+STUDIO+Via+Giovanni+Branca%2C+54%2C+00153+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-10-30"
+   "verificato": "2026-10-30",
+   "n": 11
   },
   {
    "nome": "Salu.b estetica avanzata",
@@ -183,7 +194,8 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Salu.b+estetica+avanzata+Via+Padre+Semeria%2C+53%2C+00154+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-10-30"
+   "verificato": "2026-10-30",
+   "n": 12
   },
   {
    "nome": "Level Up Balduina",
@@ -198,7 +210,8 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Level+Up+Balduina+-+T%28h%29rust+your+body+Via+Licinio+Calvo%2C+63%2C+00136+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-10-30"
+   "verificato": "2026-10-30",
+   "n": 13
   },
   {
    "nome": "Studio 141 Pilates Garbatella",
@@ -213,7 +226,8 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Studio+141+Pilates+Garbatella+Via+Carlo+Citerni%2C+41%2C+00154+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-10-30"
+   "verificato": "2026-10-30",
+   "n": 14
   },
   {
    "nome": "Higher Ground Tattoo",
@@ -228,7 +242,8 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Higher+Ground+Tattoo+via%2C+Via+Giulio+Curioni%2C+69%2C+00158+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-10-30"
+   "verificato": "2026-10-30",
+   "n": 15
   },
   {
    "nome": "Officina Marafini",
@@ -243,7 +258,8 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Officina+Marafini+Via+Tuscolana%2C+53%2C+00182+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-10-30"
+   "verificato": "2026-10-30",
+   "n": 16
   },
   {
    "nome": "Personal Studio Tortuga",
@@ -259,7 +275,8 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Personal+Studio+Tortuga+Via+dei+Faggi%2C+45%2F47%2C+00172+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-10-30"
+   "verificato": "2026-10-30",
+   "n": 17
   },
   {
    "nome": "Dresia Studio - Centro Pilates",
@@ -274,7 +291,8 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Dresia+Studio+-+Centro+Pilates+Via+di+Monte+Verde%2C+25%2C+00152+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-10-30"
+   "verificato": "2026-10-30",
+   "n": 18
   },
   {
    "nome": "Ramnes - Winebar",
@@ -290,7 +308,8 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Ramnes+-+Winebar+Via+dei+Ramni%2C+28%2C+00185+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-10-30"
+   "verificato": "2026-10-30",
+   "n": 19
   }
  ]
 }

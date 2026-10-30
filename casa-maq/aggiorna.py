@@ -102,6 +102,13 @@ def lavoro(nomi_rami):
 def chiamate():
     """Lead nascosti da chiamare, mescolati per settore: i primi `al_giorno` sono quelli di oggi."""
     c = json.loads((QUI / "chiamate.json").read_text())
+    # Ogni lead ha un numero fisso: l'utente lo usa al posto del nome ("il 7 non risponde").
+    prossimo = max([l.get("n", 0) for l in c["lead"]] + [0]) + 1
+    for l in c["lead"]:
+        if not l.get("n"):
+            l["n"] = prossimo
+            prossimo += 1
+    (QUI / "chiamate.json").write_text(json.dumps(c, ensure_ascii=False, indent=1) + "\n")
     gruppi = collections.defaultdict(list)
     for l in c["lead"]:
         gruppi[l["settore"]].append(l)

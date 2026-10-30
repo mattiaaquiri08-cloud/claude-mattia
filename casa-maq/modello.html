@@ -163,6 +163,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .chiamata:hover { background: rgba(255, 255, 255, .12); transform: translateY(-3px); }
 .chiamata.fatta { opacity: .45; }
 .chiamata .testa { display: flex; justify-content: space-between; gap: 8px; align-items: start; }
+.chiamata .chi { display: flex; gap: 10px; align-items: start; min-width: 0; }
+.numero { flex: none; min-width: 30px; height: 30px; padding: 0 6px; border-radius: 9px; display: grid; place-items: center; font-size: 15px; font-weight: 700; font-variant-numeric: tabular-nums; background: rgba(191, 90, 242, .22); color: #e2b3ff; }
 .chiamata .nome { font-size: 13px; font-weight: 600; overflow-wrap: anywhere; }
 .chiamata .dove { font-size: 11px; color: var(--muted); }
 .chiamata .stelle { font-size: 11px; color: var(--giallo); white-space: nowrap; font-variant-numeric: tabular-nums; }
@@ -748,7 +750,8 @@ function disegnaChiamate() {
   C.oggi.forEach((l) => {
     const c = el('button', 'chiamata' + (fatte.has(l.nome) ? ' fatta' : '')); c.type = 'button';
     const testa = el('div', 'testa');
-    const chi = el('div'); chi.append(el('div', 'nome', l.nome), el('div', 'dove', `${l.settore} · ${l.zona}`));
+    const chi = el('div', 'chi'); chi.append(el('span', 'numero', String(l.n)));
+    const nomi = el('div'); nomi.append(el('div', 'nome', l.nome), el('div', 'dove', `${l.settore} · ${l.zona}`)); chi.appendChild(nomi);
     testa.append(chi, el('span', 'stelle', '★ ' + l.voto.toLocaleString('it-IT', { minimumFractionDigits: 1 }) + ` (${l.recensioni})`));
     c.append(testa, el('span', 'tel', l.telefono), el('span', 'dove', (fatte.has(l.nome) ? '✓ Fatta · ' : '') + 'Online: ' + l.online.join(', ')));
     c.addEventListener('click', () => apri(() => foglioChiamata(l)));
@@ -891,7 +894,7 @@ function copione(l) {
     .replace('te ne ho già preparato uno e vorrei mostrartelo', 'te ne preparo uno e vorrei mostrartelo');
 }
 function foglioChiamata(l) {
-  const corpo = [testaScheda(l.nome, `${l.settore} · ${l.zona}`), dati(['Telefono', l.telefono], ['Google', `★ ${voto(l.voto)} · ${l.recensioni} recensioni`], ['Online', l.online.join(', ')], ['Verificato', new Date(l.verificato + 'T12:00:00').toLocaleDateString('it-IT')])];
+  const corpo = [testaScheda(l.nome, `N. ${l.n} · ${l.settore} · ${l.zona}`), dati(['Telefono', l.telefono], ['Google', `★ ${voto(l.voto)} · ${l.recensioni} recensioni`], ['Online', l.online.join(', ')], ['Verificato', new Date(l.verificato + 'T12:00:00').toLocaleDateString('it-IT')])];
   if (l.indirizzo) corpo.push(par(l.indirizzo));
   const az = el('div', 'azioni-foglio');
   const tel = el('a', 'bottone'); tel.href = 'tel:' + l.telefono.replace(/\s/g, ''); tel.append(icona('phone'), document.createTextNode('Chiama'));
@@ -902,15 +905,16 @@ function foglioChiamata(l) {
   az.append(tel, copia, link(l.maps, 'Maps ↗'), fatta);
   corpo.push(az, h3('Testo della chiamata'), el('div', 'copione', copione(l)), h3('Com\'è andata?'), par('Lo scriva a Claude: aggiorna la lista e la pagina.'));
   const esiti = el('div', 'azioni-foglio');
-  [['Interessato', 'è interessato, preparare la bozza'], ['Richiamare', 'da richiamare'], ['Non interessato', 'non interessato'], ['Non risponde', 'non risponde, riprovare']].forEach(([e, t]) => esiti.appendChild(bottoneChiedi(`Esito chiamata ${l.nome}: ${t}. `, e)));
+  [['Interessato', 'è interessato, preparare la bozza'], ['Richiamare', 'da richiamare'], ['Non interessato', 'non interessato'], ['Non risponde', 'non risponde, riprovare']].forEach(([e, t]) => esiti.appendChild(bottoneChiedi(`Esito chiamata n. ${l.n} (${l.nome}): ${t}. `, e)));
   corpo.push(esiti);
-  return { titolo: l.nome, corpo };
+  return { titolo: `N. ${l.n} · ${l.nome}`, corpo };
 }
 function foglioChiamate() {
   const righe = C.oggi.map((l) => {
     const li = el('li', 'riga-av cliccabile'); li.tabIndex = 0;
     const t = el('span', 'testo'); t.append(el('b', null, l.nome), el('span', 'sotto', `${l.settore} · ${l.zona} · ${l.telefono}`));
-    li.append(avatar(l.nome), t, el('span', 'lato', fatte.has(l.nome) ? '✓ fatta' : `★ ${String(l.voto).replace('.', ',')}`));
+    const num = el('span', 'numero', String(l.n));
+    li.append(num, t, el('span', 'lato', fatte.has(l.nome) ? '✓ fatta' : `★ ${String(l.voto).replace('.', ',')}`));
     li.addEventListener('click', () => apri(() => foglioChiamata(l)));
     return li;
   });
@@ -944,9 +948,9 @@ function foglioCerca() {
   const aggiorna = () => {
     const q = input.value.trim().toLowerCase();
     risultati.replaceChildren();
-    if (q.length < 2) { risultati.appendChild(par('Scriva almeno due lettere.')); return; }
+    if (q.length < 2 && !/^\d+$/.test(q)) { risultati.appendChild(par('Scriva almeno due lettere, o il numero di una chiamata.')); return; }
     const s = DATI.progetti.filter((p) => (p.nome + ' ' + p.nota).toLowerCase().includes(q));
-    const ch = C.oggi.filter((l) => (l.nome + ' ' + l.settore + ' ' + l.zona).toLowerCase().includes(q));
+    const ch = C.oggi.filter((l) => (l.nome + ' ' + l.settore + ' ' + l.zona).toLowerCase().includes(q) || String(l.n) === q);
     const ld = DATI.lead.elenco.filter((l) => (l.nome + ' ' + l.settore + ' ' + l.indirizzo + ' ' + l.nota).toLowerCase().includes(q)).slice(0, 30);
     const cm = COMMIT.filter((c) => (c.progetto + ' ' + c.testo).toLowerCase().includes(q)).slice(0, 20);
     if (s.length) risultati.append(h3('Siti'), lista(s.map(rigaSito)));
@@ -995,6 +999,7 @@ const TAG = 'casa-maq';
 const ISTRUZIONI_SESSIONE = `Mattia (MAQ Web Design) ti scrive dalla "Casa MAQ", la sua pagina personale su claude.ai, e legge lì solo i tuoi messaggi di testo, non gli strumenti: rispondi in italiano, chiamandolo "signore", in modo breve e chiaro. Da lì non può approvare richieste di permesso. Se cambia lo stato di un sito, di un lead o di un promemoria, a fine lavoro aggiorna la Casa MAQ come scritto in CLAUDE.md.`;
 
 const conv = $('conversazione'), input = $('domanda'), invia = $('invia');
+const contestoCasa = () => `\n\n<contesto-casa>Numeri delle chiamate nella Casa MAQ (Mattia li usa al posto dei nomi; sono fissi in casa-maq/chiamate.json, campo "n"): ${C.oggi.map((l) => `${l.n} = ${l.nome} (${l.zona}, ${l.telefono})`).join('; ')}.</contesto-casa>`;
 let mcp = null, sessione = null, titoloSessione = '', inAttesa = false, inizioAttesa = 0, giroId = 0;
 
 function payload(r) {
@@ -1014,7 +1019,8 @@ function messaggioErrore(err) {
     case 'not_in_manifest': return 'La pagina non ha il permesso di usare Claude Code: lo conceda dal menu Permessi della pagina.';
     case 'server_unavailable': return 'Claude Code non risponde in questo momento: riprovi tra poco.';
     case 'tool_error': return 'Claude Code ha rifiutato la richiesta: ' + (err.message || '');
-    default: return 'Qualcosa non ha funzionato (' + (err?.code || 'errore') + '). Riprovi tra poco.';
+    case 'upstream_error': return 'Claude Code non ha risposto' + (err.message ? ': ' + err.message : '') + '. Tocchi "Collega Claude Code" per dare il permesso alla pagina, poi riprovi.';
+    default: return 'Qualcosa non ha funzionato (' + (err?.code || 'errore') + (err?.message ? ': ' + err.message : '') + '). Riprovi tra poco.';
   }
 }
 
@@ -1047,7 +1053,7 @@ function estraiMessaggi(eventi) {
       let t = testoDa(v).trim();
       if (k === 'user') {
         if (/^<(system-reminder|local-command|command-)/.test(t)) continue;
-        t = t.replace(/<[^>]+>/g, '').trim();
+        t = t.replace(/<contesto-casa>[\s\S]*?<\/contesto-casa>/g, '').replace(/<[^>]+>/g, '').trim();
       }
       if (t) out.push({ chi: k === 'user' ? 'io' : 'claude', testo: t });
     }
@@ -1153,10 +1159,30 @@ function disegnaSessioni(p) {
     ul.appendChild(li);
   });
 }
-async function aggiornaSessioni() {
-  if (!mcp || document.hidden) return;
-  try { disegnaSessioni(await chiama('list_sessions', { limit: 8 })); }
-  catch (err) { $('lista-sessioni').replaceChildren(el('li', 'avviso', messaggioErrore(err))); }
+function bottoneCollega() {
+  const b = el('button', 'bottone', 'Collega Claude Code'); b.type = 'button';
+  b.addEventListener('click', async () => {
+    const perm = await window.claude?.use?.('permissions').catch(() => null);
+    if (perm) {
+      const st = await perm.request(['mcp:' + SERVER]).catch(() => ({}));
+      if (st?.['mcp:' + SERVER] === 'denied') { try { await perm.manage(); } catch {} }
+    }
+    aggiornaSessioni(true);
+  });
+  return b;
+}
+async function aggiornaSessioni(daClic) {
+  if (!mcp || (document.hidden && !daClic)) return;
+  for (let tentativo = 0; tentativo < 2; tentativo++) {
+    try { disegnaSessioni(await chiama('list_sessions', { limit: 8 })); return; }
+    catch (err) {
+      if (err?.retryable && tentativo === 0) { await new Promise((r) => setTimeout(r, Math.min(err.retryAfterMs || 2500, 10000) + Math.random() * 800)); continue; }
+      const li = el('li', 'avviso'); li.append(document.createTextNode(messaggioErrore(err) + ' '));
+      if (!['needs_reauth', 'server_not_connected'].includes(err?.code)) li.appendChild(bottoneCollega());
+      $('lista-sessioni').replaceChildren(li);
+      return;
+    }
+  }
 }
 
 (async () => {
@@ -1189,7 +1215,7 @@ $('modulo-chat').addEventListener('submit', async (e) => {
   const invio = nota('Invio…');
   try {
     if (!sessione) {
-      const base = { prompt: testo, title: 'Casa MAQ · ' + testo.slice(0, 48), source_url: REPO, environment_id: AMBIENTE, tags: [TAG], append_system_prompt: ISTRUZIONI_SESSIONE };
+      const base = { prompt: testo + contestoCasa(), title: 'Casa MAQ · ' + testo.slice(0, 48), source_url: REPO, environment_id: AMBIENTE, tags: [TAG], append_system_prompt: ISTRUZIONI_SESSIONE };
       let p;
       try { p = await chiama('create_session', { ...base, permission_mode: 'auto' }); }
       catch (err) { if (err?.code === 'tool_error' && /permission/i.test(err.message || '')) p = await chiama('create_session', base); else throw err; }
@@ -1200,7 +1226,7 @@ $('modulo-chat').addEventListener('submit', async (e) => {
       $('apri-sessione').href = 'https://claude.ai/code/' + id;
       aggiornaSessioni();
     } else {
-      await chiama('send_message', { session_id: sessione, message: testo });
+      await chiama('send_message', { session_id: sessione, message: testo + contestoCasa() });
     }
     invio.remove();
     inAttesa = true; inizioAttesa = Date.now();

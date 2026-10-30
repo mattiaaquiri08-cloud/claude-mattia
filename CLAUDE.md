@@ -204,6 +204,11 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   con tocco Mac (semafori nelle finestre). Tutto deve essere "meccanico": ogni scheda, colonna, riga, stato o settore si
   apre in un foglio con i dettagli (chi sono i clienti, modifiche per sito/giorno, lead per stato, testo della chiamata
   con esiti da mandare a Claude). La pagina è un file solo (~500 KB con la foto in base64).
+  Numeri delle chiamate (30/10, richiesta dell'utente): ogni lead in `chiamate.json` ha un numero FISSO `n` (assegnato
+  da aggiorna.py, mai riusato): l'utente dice "il 7 non risponde" invece del nome. Ogni messaggio della chat porta in
+  coda un blocco <contesto-casa> con "numero = nome" delle chiamate di oggi (nascosto nella pagina).
+  Chat della pagina: il 30/10 in Opera dava "upstream_error" (probabile permesso del connettore non concesso): c'è il
+  pulsante "Collega Claude Code" che chiede il permesso; non verificato che funzioni.
 - Aggiornamento automatico della Casa MAQ (30/10, richiesto dall'utente): attività programmata "Casa MAQ – aggiornamento
   del mattino" (trig_019sTVUeD4d1kbuaWjhX7gKg), ogni giorno alle 8:40 ora di Roma, che si risveglia nella sessione
   session_014fGtWeyuJbunQc9Az6duVZ: legge gli esiti dalle chat con tag casa-maq, aggiorna chiamate/siti/promemoria,
