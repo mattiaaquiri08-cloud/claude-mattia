@@ -459,6 +459,76 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .nav .nav-chat { margin-left: 0; }
 }
 @media (max-width: 420px) { .riga-alta { gap: 10px; } .linea { display: none; } }
+
+/* ===== Layout dashboard (31/10, dal reel "Glassy Dashboard V7" scelto dall'utente): menu laterale fisso, barra con
+   ricerca, 4 schede, grafico a tutta larghezza, attività + ciambella, animazioni in entrata. Colori: tema muschio. ===== */
+.lato { position: fixed; z-index: 25; top: 0; bottom: 0; left: 0; width: 232px; padding: calc(22px + env(safe-area-inset-top, 0px)) 16px 20px max(16px, env(safe-area-inset-left, 0px)); display: flex; flex-direction: column; gap: 26px; background: linear-gradient(180deg, rgba(10, 13, 8, .92), rgba(6, 8, 5, .88)); border-right: 1px solid var(--linea); }
+.lato-logo { display: flex; align-items: center; gap: 12px; background: none; border: 0; padding: 4px 6px; cursor: pointer; color: var(--fg); text-align: left; }
+.logo-segno { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; font-weight: 700; font-size: 18px; color: #0b1205; background: var(--lime); box-shadow: 0 0 18px rgba(180, 242, 74, .45); }
+.logo-testo b { display: block; font-size: 16px; font-weight: 600; letter-spacing: .02em; }
+.logo-testo small { font-family: var(--hud); text-transform: uppercase; letter-spacing: .14em; font-size: 10.5px; color: var(--muted); }
+.lato-nav { position: relative; display: grid; gap: 4px; }
+.lato-nav a, .lato-nav button { position: relative; z-index: 1; display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: 12px; border: 0; background: none; color: var(--muted); text-decoration: none; font: inherit; font-size: 14px; cursor: pointer; text-align: left; transition: color .25s; }
+.lato-nav a:hover, .lato-nav button:hover { color: var(--fg); }
+.lato-nav a.attivo { color: #0b1205; font-weight: 600; }
+.lato-nav .conta { margin-left: auto; font-style: normal; font-family: var(--mono); font-size: 10.5px; min-width: 22px; height: 20px; padding: 0 6px; border-radius: 99px; display: grid; place-items: center; border: 1px solid rgba(180, 242, 74, .5); color: var(--lime); }
+.lato-nav a.attivo .conta { border-color: rgba(11, 18, 5, .4); color: #0b1205; }
+.lato-indicatore { position: absolute; z-index: 0; left: 0; right: 0; top: 0; height: 44px; border-radius: 12px; background: var(--lime); box-shadow: 0 0 22px rgba(180, 242, 74, .35); transition: transform .45s cubic-bezier(.2, .9, .25, 1), opacity .3s; }
+.lato-piede { margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid var(--linea); border-radius: 12px; font-family: var(--hud); text-transform: uppercase; letter-spacing: .12em; font-size: 11px; color: var(--muted); }
+.area { margin-left: 232px; min-width: 0; position: relative; z-index: 1; }
+.barra { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; display: grid; grid-template-columns: minmax(0, 1fr) minmax(200px, 340px) auto auto; align-items: center; gap: 18px; padding: 16px max(28px, env(safe-area-inset-right, 0px)) 14px 28px; background: linear-gradient(180deg, rgba(6, 8, 5, .94), rgba(6, 8, 5, .7)); border-bottom: 1px solid var(--linea); }
+.saluto-barra h1 { margin: 0; font-size: clamp(20px, 2.2vw, 26px); font-weight: 400; letter-spacing: -.02em; }
+.saluto-barra p { margin: 2px 0 0; font-size: 12.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ricerca { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--linea-forte); background: rgba(226, 236, 200, .03); color: var(--muted); transition: border-color .2s, box-shadow .2s; }
+.ricerca:focus-within { border-color: var(--lime); box-shadow: 0 0 14px rgba(180, 242, 74, .2); }
+.ricerca input { flex: 1; min-width: 0; background: none; border: 0; color: var(--fg); font: inherit; font-size: 13.5px; }
+.ricerca input:focus { outline: none; }
+.ricerca input::placeholder { color: var(--faint); }
+.pagina { max-width: 1400px; padding-top: 24px; padding-bottom: 48px; }
+@media (min-width: 1000px) { .pagina { padding-left: 28px; padding-right: 28px; } }
+.kpi { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "icona etichetta" "valore valore" "pill pill"; column-gap: 12px; align-items: center; min-height: 0; }
+.kpi .icona { display: grid; grid-area: icona; width: 40px; height: 40px; border-radius: 50%; margin: 0; background: rgba(180, 242, 74, .1) !important; color: var(--lime) !important; border: 1px solid rgba(180, 242, 74, .45); box-shadow: 0 0 14px rgba(180, 242, 74, .2); }
+.kpi .etichetta { grid-area: etichetta; margin: 0; }
+.kpi .valore { grid-area: valore; margin-top: 14px; }
+.kpi .pill { grid-area: pill; justify-self: start; }
+.ciambella-box { position: relative; width: min(220px, 70%); aspect-ratio: 1; margin: 6px auto 0; }
+.ciambella-box svg { width: 100%; height: 100%; transform: rotate(-90deg); overflow: visible; }
+.ciambella-box circle.seg { fill: none; stroke-width: 16; stroke-linecap: round; transition: stroke-dasharray 1.2s cubic-bezier(.2, .8, .2, 1); }
+.ciambella-centro { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+.ciambella-centro b { font-size: 34px; font-weight: 300; letter-spacing: -.02em; }
+.ciambella-centro span { font-family: var(--hud); text-transform: uppercase; letter-spacing: .14em; font-size: 11px; color: var(--muted); }
+.legenda-siti { display: grid; gap: 4px; margin-top: 12px; }
+.legenda-siti button { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 8px 10px; border-radius: 10px; border: 0; background: none; color: var(--muted); font: inherit; font-size: 13px; cursor: pointer; text-align: left; }
+.legenda-siti button:hover { background: rgba(180, 242, 74, .06); color: var(--fg); }
+.legenda-siti i { width: 10px; height: 10px; border-radius: 50%; }
+.legenda-siti b { color: var(--fg); font-family: var(--mono); font-weight: 500; }
+.quadranti { display: flex; justify-content: space-around; gap: 12px; flex-wrap: nowrap; padding-top: 8px; }
+.quadrante { width: min(190px, 46%); }
+.chat-pagina { height: calc(100svh - 130px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)); }
+.dock, .riga-alta, .nav { display: none !important; }
+@media (prefers-reduced-motion: no-preference) {
+  .entra { animation: entra-su .75s cubic-bezier(.2, .8, .2, 1) both; animation-delay: var(--ritardo, 0ms); }
+  .colonna.cresce rect.barra-col { transform-box: fill-box; transform-origin: 50% 100%; animation: cresci .9s cubic-bezier(.2, .8, .2, 1) both; animation-delay: var(--ritardo, 0ms); }
+  .colonna.cresce circle, .colonna.cresce text { animation: appari .5s ease both; animation-delay: calc(var(--ritardo, 0ms) + 600ms); }
+  .kpi, .pannello, .chiamata { transition: transform .35s cubic-bezier(.2, .8, .2, 1), border-color .25s, box-shadow .25s, background .25s; }
+}
+@keyframes entra-su { from { opacity: 0; transform: translateY(18px); } }
+@keyframes cresci { from { transform: scaleY(0); } }
+@keyframes appari { from { opacity: 0; } }
+@media (max-width: 1100px) { .barra { grid-template-columns: minmax(0, 1fr) minmax(160px, 260px) auto; } .barra .orologio { display: none; } }
+@media (max-width: 900px) {
+  .lato { top: auto; bottom: 0; right: 0; width: auto; height: auto; flex-direction: row; padding: 6px max(8px, env(safe-area-inset-left, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)); gap: 0; border-right: 0; border-top: 1px solid var(--linea); background: rgba(6, 8, 5, .96); }
+  .lato-logo, .lato-piede { display: none; }
+  .lato-nav { grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); width: 100%; gap: 2px; }
+  .lato-nav a, .lato-nav button { flex-direction: column; gap: 3px; padding: 8px 2px; font-size: 10px; justify-content: center; text-align: center; }
+  .lato-nav .conta { position: absolute; top: 2px; right: 18%; margin: 0; min-width: 16px; height: 16px; font-size: 9px; padding: 0 4px; }
+  .lato-indicatore { display: none; }
+  .lato-nav a.attivo { color: var(--lime); font-weight: 600; }
+  .area { margin-left: 0; padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px)); }
+  .barra { grid-template-columns: minmax(0, 1fr) auto; padding: 12px 16px; gap: 10px; }
+  .ricerca { grid-column: 1 / -1; grid-row: 2; }
+  .chat-pagina { height: calc(100svh - 210px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)); }
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -484,68 +554,52 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 <div class="sfondo" aria-hidden="true"><canvas id="rete"></canvas></div>
 
-<header class="barra">
-  <div class="riga-alta">
-    <button class="marchio" type="button" id="b-menu" aria-label="Torna in cima"><b>MAQ</b><span>Casa</span></button>
-    <span class="linea" aria-hidden="true"></span>
-    <div class="orologio" aria-label="Ora"><span id="ora-live">--:--:--</span><span id="data-live"></span></div>
-    <div class="dx">
-      <button class="tondo" type="button" data-apri="promemoria" aria-label="Promemoria"><svg class="i p"><use href="#i-bell"/></svg><span class="badge" id="badge-promemoria"></span></button>
-      <button class="tondo cerca-btn" type="button" data-apri="cerca" aria-label="Cerca"><svg class="i p"><use href="#i-search"/></svg></button>
-      <span class="avatar-io" aria-label="Mattia">MA</span>
-    </div>
-  </div>
-  <nav class="nav" aria-label="Sezioni">
-    <a href="#home" class="attivo" data-vai="home">Home</a>
-    <a href="#chiamate" data-vai="chiamate">Chiamate</a>
-    <a href="#siti" data-vai="siti">Siti</a>
-    <button type="button" data-apri="oggi">Oggi</button>
-    <button type="button" data-chat class="nav-chat">Chat con Claude</button>
+<aside class="lato" aria-label="Menu">
+  <button class="lato-logo" type="button" id="b-menu" aria-label="Torna in cima"><span class="logo-segno">M</span><span class="logo-testo"><b>MAQ</b><small>Casa · Roma</small></span></button>
+  <nav class="lato-nav" id="lato-nav">
+    <span class="lato-indicatore" id="lato-indicatore" aria-hidden="true"></span>
+    <a href="#home" class="attivo" data-vai="home"><svg class="i"><use href="#i-home"/></svg><span>Dashboard</span></a>
+    <a href="#chiamate" data-vai="chiamate"><svg class="i"><use href="#i-phone"/></svg><span>Chiamate</span><em class="conta" id="lato-chiamate"></em></a>
+    <a href="#siti" data-vai="siti"><svg class="i"><use href="#i-monitor"/></svg><span>Siti</span></a>
+    <button type="button" data-apri="oggi"><svg class="i"><use href="#i-calendar"/></svg><span>Oggi</span></button>
+    <button type="button" data-apri="promemoria"><svg class="i"><use href="#i-bell"/></svg><span>Promemoria</span><em class="conta" id="badge-promemoria"></em></button>
+    <button type="button" data-chat><svg class="i"><use href="#i-chat"/></svg><span>Chat con Claude</span></button>
   </nav>
+  <div class="lato-piede"><span class="punto-live"></span><span id="aggiornato-breve">Sistema operativo</span></div>
+</aside>
+
+<div class="area">
+<header class="barra">
+  <div class="saluto-barra"><h1><span id="saluto">Buonasera</span>, signore</h1><p id="sottotitolo"></p></div>
+  <label class="ricerca"><svg class="i p"><use href="#i-search"/></svg><input id="ricerca" type="search" placeholder="Cerca attività, siti, numeri…" autocomplete="off"></label>
+  <div class="orologio" aria-label="Ora"><span id="ora-live">--:--:--</span><span id="data-live"></span></div>
+  <span class="avatar-io" aria-label="Mattia">MA</span>
 </header>
 
-
 <main class="pagina">
-  <section class="intro hero" id="home">
-    <div class="hero-testo">
-      <p class="hud-etichetta"><i class="punto-live"></i>Sistema operativo · Roma</p>
-      <h1><span id="saluto">Buonasera</span>,<br>signore</h1>
-      <p id="sottotitolo"></p>
-      <button class="cta" type="button" data-chat><span class="cta-punto"></span><span class="cta-linea"></span>Chiedi a Claude</button>
-    </div>
-    <div class="quadranti">
-      <button class="quadrante" type="button" data-apri="chiamate"><svg id="dial-oggi" viewBox="0 0 200 200" aria-hidden="true"></svg><span class="q-centro"><span class="q-valore" id="dial-oggi-valore">—</span><span class="q-etichetta">Chiamate di oggi</span></span></button>
-      <button class="quadrante" type="button" data-apri="coda"><svg id="dial-lista" viewBox="0 0 200 200" aria-hidden="true"></svg><span class="q-centro"><span class="q-valore" id="dial-lista-valore">—</span><span class="q-etichetta">Lista chiamata</span></span></button>
-    </div>
-  </section>
-
-  <section class="kpi-riga" aria-label="In breve">
+  <section class="kpi-riga" id="home" aria-label="In breve">
     <button class="kpi vetro" type="button" data-apri="clienti">
-      <span class="icona" style="background:rgba(255,159,10,.2);color:var(--arancio)"><svg class="i p"><use href="#i-briefcase"/></svg></span>
-      <svg class="i p freccia"><use href="#i-arrow"/></svg>
+      <span class="icona"><svg class="i p"><use href="#i-briefcase"/></svg></span>
       <span class="etichetta">Clienti</span>
       <span class="valore" id="k-clienti">—</span>
       <span class="pill arancio" id="k-clienti-pill"></span>
       <svg class="spark" id="s-clienti" preserveAspectRatio="none"></svg>
     </button>
     <button class="kpi vetro" type="button" data-apri="coda">
-      <span class="icona" style="background:rgba(48,209,88,.2);color:var(--verde)"><svg class="i p"><use href="#i-users"/></svg></span>
-      <svg class="i p freccia"><use href="#i-arrow"/></svg>
+      <span class="icona"><svg class="i p"><use href="#i-users"/></svg></span>
       <span class="etichetta">Attività da chiamare</span>
       <span class="valore" id="k-coda">—</span>
       <span class="pill verde" id="k-coda-pill"></span>
     </button>
     <button class="kpi vetro" type="button" data-apri="attesa">
-      <span class="icona" style="background:rgba(10,132,255,.22);color:var(--blu)"><svg class="i p"><use href="#i-clock"/></svg></span>
-      <svg class="i p freccia"><use href="#i-arrow"/></svg>
+      <span class="icona"><svg class="i p"><use href="#i-clock"/></svg></span>
       <span class="etichetta">In attesa di risposta</span>
       <span class="valore" id="k-attesa">—</span>
       <span class="pill blu" id="k-attesa-pill"></span>
       <svg class="spark" id="s-attesa" preserveAspectRatio="none"></svg>
     </button>
     <button class="kpi vetro" type="button" data-apri="chiamate">
-      <span class="icona" style="background:rgba(191,90,242,.2);color:var(--viola)"><svg class="i p"><use href="#i-phone"/></svg></span>
-      <svg class="i p freccia"><use href="#i-arrow"/></svg>
+      <span class="icona"><svg class="i p"><use href="#i-phone"/></svg></span>
       <span class="etichetta">Chiamate di oggi</span>
       <span class="valore" id="k-chiamate">—</span>
       <span class="pill viola" id="k-chiamate-pill"></span>
@@ -554,7 +608,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   </section>
 
   <section class="griglia">
-    <article class="pannello vetro s8">
+    <article class="pannello vetro s12">
       <header>
         <div><h2>Da chiamare per settore</h2><p id="grafico-sotto">Tocchi una colonna per vedere chi sono</p></div>
         <span class="pill" id="grafico-pill"></span>
@@ -562,27 +616,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
       <div class="grafico" id="grafico"></div>
     </article>
 
-    <article class="pannello vetro s4 agenda-pannello">
+    <article class="pannello vetro s7 agenda-pannello">
       <header>
         <div><h2>Oggi</h2><p id="oggi-data"></p></div>
-        <button class="tondo" type="button" data-chat aria-label="Aggiungi con Claude"><svg class="i p"><use href="#i-plus"/></svg></button>
+        <button class="chip" type="button" data-apri="promemoria">Vedi tutto</button>
       </header>
       <div class="agenda scorre" id="agenda"></div>
     </article>
 
-    <article class="pannello vetro s7" id="siti">
-      <header>
-        <div><h2>I siti</h2><p id="siti-sotto"></p></div>
-        <button class="tondo" type="button" data-apri="siti" aria-label="Tutti i siti"><svg class="i p"><use href="#i-arrow"/></svg></button>
-      </header>
-      <ul class="lista scorre" id="lista-siti" style="max-height:300px"></ul>
-    </article>
-
     <article class="pannello vetro s5">
       <header>
-        <div><h2>Obiettivi</h2><p>Di oggi e del mese</p></div>
+        <div><h2>Avanzamento siti</h2><p>Quanti progetti sono diventati clienti</p></div>
+        <button class="chip" type="button" data-apri="siti">Tutti</button>
       </header>
-      <div class="lista" id="obiettivi"></div>
+      <div class="ciambella-box"><svg id="ciambella" viewBox="0 0 200 200" aria-hidden="true"></svg><div class="ciambella-centro"><b id="ciambella-valore">—</b><span>Clienti</span></div></div>
+      <div class="legenda-siti" id="legenda-siti"></div>
     </article>
 
     <article class="pannello vetro s12" id="chiamate">
@@ -594,7 +642,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
       <div class="chiamate" id="lista-chiamate"></div>
     </article>
 
+    <article class="pannello vetro s7" id="siti">
+      <header>
+        <div><h2>I siti</h2><p id="siti-sotto"></p></div>
+        <button class="chip" type="button" data-apri="siti">Apri</button>
+      </header>
+      <ul class="lista scorre" id="lista-siti" style="max-height:340px"></ul>
+    </article>
 
+    <article class="pannello vetro s5">
+      <header><div><h2>Obiettivi</h2><p>Chiamate di oggi e lista intera</p></div></header>
+      <div class="quadranti">
+        <button class="quadrante" type="button" data-apri="chiamate"><svg id="dial-oggi" viewBox="0 0 200 200" aria-hidden="true"></svg><span class="q-centro"><span class="q-valore" id="dial-oggi-valore">—</span><span class="q-etichetta">Oggi</span></span></button>
+        <button class="quadrante" type="button" data-apri="coda"><svg id="dial-lista" viewBox="0 0 200 200" aria-hidden="true"></svg><span class="q-centro"><span class="q-valore" id="dial-lista-valore">—</span><span class="q-etichetta">Lista</span></span></button>
+      </div>
+    </article>
   </section>
   <p class="avviso" style="justify-self:center;border:0;background:none" id="aggiornato"></p>
   <section class="chat-pagina vetro" id="chat" hidden aria-label="Chat con Claude">
@@ -615,6 +677,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     </div>
   </section>
 </main>
+</div>
 
 <div class="velo" id="velo" hidden></div>
 <aside class="foglio vetro" id="foglio" hidden role="dialog" aria-modal="true" aria-labelledby="foglio-titolo">
@@ -667,6 +730,7 @@ const ora = new Date().getHours();
 $('saluto').textContent = ora < 5 ? 'Buonanotte' : ora < 13 ? 'Buongiorno' : ora < 18 ? 'Buon pomeriggio' : 'Buonasera';
 $('oggi-data').textContent = new Date().toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'short' });
 $('aggiornato').textContent = 'Dati aggiornati ' + quandoRelativo(DATI.generato);
+$('aggiornato-breve').textContent = 'Aggiornato ' + quandoRelativo(DATI.generato);
 $('badge-promemoria').textContent = DATI.promemoria.length;
 
 /* Chiamate fatte: nel database della pagina (collezione "chiamate-fatte", un documento per numero).
@@ -715,22 +779,23 @@ const variazione = (ora, prima) => (prima ? Math.round((ora - prima) / prima * 1
 
 /* Numeri in alto */
 function disegnaKpi() {
-  $('k-clienti').textContent = num.format(clienti.length);
+  contaSu($('k-clienti'), clienti.length);
   $('k-clienti-pill').textContent = clienti.map((p) => p.sigla).join(' · ') || 'nessuno';
   const sigleClienti = new Set(clienti.map((p) => p.sigla));
   sparkline($('s-clienti'), serie(14, (c) => sigleClienti.has(c.progetto)).map((x) => x.n), '#b4f24a');
 
-  $('k-coda').textContent = num.format(restanti().length);
+  contaSu($('k-coda'), restanti().length);
   const gruppiCoda = new Set(restanti().map((l) => gruppoDi(l.settore)));
   $('k-coda-pill').textContent = `${gruppiCoda.size} settori`;
 
-  $('k-attesa').textContent = num.format(inAttesaSiti.length);
+  contaSu($('k-attesa'), inAttesaSiti.length);
   $('k-attesa-pill').textContent = inAttesaSiti.map((p) => p.sigla).join(' · ') || 'nessuno';
   const sigleAttesa = new Set(inAttesaSiti.map((p) => p.sigla));
   sparkline($('s-attesa'), serie(14, (c) => sigleAttesa.has(c.progetto)).map((x) => x.n), '#b4f24a');
 
   const n = fatteOggi();
   $('k-chiamate').textContent = `${n}/${C.al_giorno}`;
+  $('lato-chiamate').textContent = Math.max(0, C.al_giorno - n);
   $('k-chiamate-pill').textContent = `${restanti().length} in lista`;
   sparkline($('s-chiamate'), Array.from({ length: C.al_giorno }, (_, i) => Math.min(n, i + 1)), '#b4f24a');
 }
@@ -743,6 +808,7 @@ function datiGrafico() {
   restanti().forEach((l) => { const g = gruppoDi(l.settore); conta[g] = (conta[g] || 0) + 1; });
   return Object.entries(conta).sort((a, b) => b[1] - a[1]).slice(0, 10).map(([settore, n]) => ({ settore, n }));
 }
+let primoGrafico = true;
 function disegnaGrafico() {
   const box = $('grafico');
   box.replaceChildren();
@@ -772,8 +838,8 @@ function disegnaGrafico() {
     const h = Math.max(lb, x.n / max * alt);
     const y = top + alt - h;
     const forte = i === 0;
-    const g = svgEl('g', { class: 'colonna', tabindex: 0, role: 'button', 'aria-label': `${x.settore}: ${x.n} da chiamare` });
-    const r = svgEl('rect', { x: cx - lb / 2, y, width: lb, height: h, rx: lb / 2, class: forte ? '' : 'vetro-col' });
+    const g = svgEl('g', { class: 'colonna' + (primoGrafico ? ' cresce' : ''), tabindex: 0, role: 'button', 'aria-label': `${x.settore}: ${x.n} da chiamare`, style: `--ritardo:${300 + i * 70}ms` });
+    const r = svgEl('rect', { x: cx - lb / 2, y, width: lb, height: h, rx: lb / 2, class: forte ? 'barra-col' : 'vetro-col barra-col' });
     if (forte) { r.setAttribute('fill', 'url(#g-blu)'); r.setAttribute('style', 'filter: drop-shadow(0 0 12px rgba(180,242,74,.8))'); }
     g.appendChild(r);
     g.appendChild(svgEl('circle', { cx, cy: y + lb / 2, r: forte ? 4 : 2.5, fill: forte ? '#f2ffd6' : '#b4f24a', style: 'filter: drop-shadow(0 0 5px rgba(180,242,74,.9))' }));
@@ -795,6 +861,7 @@ function disegnaGrafico() {
     svg.appendChild(g);
   });
   box.append(svg, tip);
+  primoGrafico = false;
   $('grafico-pill').className = 'pill blu';
   $('grafico-pill').textContent = `${restanti().length} in lista`;
 }
@@ -874,7 +941,7 @@ function obiettivo(perc, colore, nome, sotto, azione) {
   return o;
 }
 function disegnaObiettivi() {
-  const box = $('obiettivi'); box.replaceChildren();
+  const box = $('obiettivi'); if (!box) return; box.replaceChildren();
   const n = fatteOggi();
   box.appendChild(obiettivo(Math.min(100, Math.round(n / C.al_giorno * 100)), 'var(--arancio)', 'Chiamate di oggi', `${n} fatte su ${C.al_giorno}`, () => apri(foglioChiamate)));
   box.appendChild(obiettivo(siti.length ? Math.round(clienti.length / siti.length * 100) : 0, 'var(--verde)', 'Siti diventati clienti', `${clienti.length} su ${siti.length} in corso`, () => apri(foglioClienti)));
@@ -1053,8 +1120,8 @@ function foglioOggi() {
   corpo.push(h3('Promemoria'), ...foglioTuttiPromemoria().corpo);
   return { titolo: 'Oggi', corpo };
 }
-function foglioCerca() {
-  const input = el('input', 'cerca'); input.type = 'search'; input.placeholder = 'Cerchi un sito, un lead, una modifica…'; input.id = 'cerca-testo';
+function foglioCerca(iniziale = '') {
+  const input = el('input', 'cerca'); input.type = 'search'; input.placeholder = 'Cerchi un sito, un\'attività, un numero…'; input.id = 'cerca-testo'; input.value = iniziale;
   const risultati = el('div'); risultati.style.cssText = 'display:grid;gap:12px';
   const aggiorna = () => {
     const q = input.value.trim().toLowerCase();
@@ -1085,7 +1152,13 @@ document.querySelectorAll('[data-apri]').forEach((b) => b.addEventListener('clic
 function vai(id) {
   const t = $(id);
   if (t) t.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+  segnaAttivo(id);
+}
+function segnaAttivo(id) {
   document.querySelectorAll('[data-vai]').forEach((x) => x.classList.toggle('attivo', x.dataset.vai === id));
+  const att = document.querySelector('.lato-nav [data-vai].attivo'), ind = $('lato-indicatore');
+  if (att && ind) { ind.style.opacity = 1; ind.style.height = att.offsetHeight + 'px'; ind.style.transform = `translateY(${att.offsetTop}px)`; }
+  else if (ind) ind.style.opacity = 0;
 }
 document.querySelectorAll('[data-vai]').forEach((b) => b.addEventListener('click', (e) => { e.preventDefault(); vai(b.dataset.vai); }));
 $('b-menu').addEventListener('click', () => vai('home'));
@@ -1155,7 +1228,62 @@ aggiornaOra(); setInterval(aggiornaOra, 1000);
   if (!fermo) requestAnimationFrame(giro);
 })();
 
-disegnaSiti(); aggiornaChiamate();
+
+/* Ciambella "Avanzamento siti" */
+function disegnaCiambella() {
+  const svg = $('ciambella'); if (!svg) return;
+  svg.replaceChildren();
+  const parti = [['Clienti', clienti.length, '#b4f24a', foglioClienti], ['In attesa', inAttesaSiti.length, '#c9bf6a', foglioAttesa], ['Da completare', daCompletare.length, 'rgba(226,236,200,.45)', foglioSiti]];
+  const tot = Math.max(1, parti.reduce((a, x) => a + x[1], 0));
+  const r = 74, C2 = 2 * Math.PI * r, gap = 10;
+  svg.appendChild(svgEl('circle', { cx: 100, cy: 100, r, fill: 'none', stroke: 'rgba(226,236,200,.08)', 'stroke-width': 16 }));
+  let inizio = 0;
+  const archi = [];
+  parti.forEach(([, n, col]) => {
+    const lung = Math.max(0, n / tot * C2 - gap);
+    const c = svgEl('circle', { class: 'seg', cx: 100, cy: 100, r, stroke: col, 'stroke-dasharray': `0 ${C2}`, 'stroke-dashoffset': -inizio, style: n && col === '#b4f24a' ? 'filter: drop-shadow(0 0 6px rgba(180,242,74,.6))' : '' });
+    svg.appendChild(c); archi.push([c, lung]);
+    inizio += n / tot * C2;
+  });
+  requestAnimationFrame(() => requestAnimationFrame(() => archi.forEach(([c, lung]) => c.setAttribute('stroke-dasharray', `${lung} ${C2}`))));
+  contaSu($('ciambella-valore'), Math.round(clienti.length / tot * 100), (v) => v + '%');
+  const leg = $('legenda-siti'); leg.replaceChildren();
+  parti.forEach(([nome, n, col, foglio]) => {
+    const b = el('button'); b.type = 'button'; const pallino = el('i'); pallino.style.background = col;
+    b.append(pallino, el('span', null, nome), el('b', null, String(n)));
+    b.addEventListener('click', () => apri(foglio));
+    leg.appendChild(b);
+  });
+}
+
+/* Numeri che salgono la prima volta */
+const giaContati = new WeakSet();
+function contaSu(elm, valore, formato = (v) => String(v)) {
+  if (!elm) return;
+  if (giaContati.has(elm) || matchMedia('(prefers-reduced-motion: reduce)').matches) { elm.textContent = formato(valore); return; }
+  giaContati.add(elm);
+  const t0 = performance.now(), durata = 1100;
+  const passo = (t) => { const k = Math.min(1, (t - t0) / durata); const e = 1 - Math.pow(1 - k, 3); elm.textContent = formato(Math.round(valore * e)); if (k < 1) requestAnimationFrame(passo); };
+  requestAnimationFrame(passo);
+}
+
+/* Entrata a cascata delle schede */
+document.querySelectorAll('.kpi, .griglia > .pannello').forEach((x, i) => { x.classList.add('entra'); x.style.setProperty('--ritardo', `${80 + i * 90}ms`); });
+
+/* Ricerca nella barra in alto */
+$('ricerca').addEventListener('keydown', (e) => { if (e.key === 'Enter') { const v = e.target.value; e.target.value = ''; apri(() => foglioCerca(v)); } });
+$('ricerca').addEventListener('input', (e) => { const v = e.target.value; if (v.trim().length >= 2) { e.target.value = ''; apri(() => foglioCerca(v)); } });
+
+/* Voce attiva del menu mentre si scorre */
+const sezioniMenu = ['home', 'chiamate', 'siti'].map((id) => $(id)).filter(Boolean);
+const osservatoreMenu = new IntersectionObserver((voci) => {
+  const vis = voci.filter((v) => v.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+  if (vis && $('chat').hidden) segnaAttivo(vis.target.id);
+}, { rootMargin: '-30% 0px -60% 0px' });
+sezioniMenu.forEach((sz) => osservatoreMenu.observe(sz));
+requestAnimationFrame(() => segnaAttivo('home'));
+
+disegnaSiti(); aggiornaChiamate(); disegnaCiambella();
 
 /* ---------- Chat con Claude ----------
    I messaggi stanno nel database della pagina (collezione "chat"). Ogni messaggio manda anche un commento

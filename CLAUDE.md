@@ -211,6 +211,12 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   testi Manrope (titoli light grandi), numeri JetBrains Mono, due quadranti a tacche nella testata (chiamate di oggi,
   % lista chiamata). Vetro senza sfocatura. Blocco CSS "Tema MUSCHIO HUD" in fondo allo stile. Storia: soggiorno grigio
   → blu neon → verde foresta → muschio HUD. Il "Jarvis" vocale lo vuole fare quando avrà un PC suo.
+  LAYOUT (31/10, dal reel "Glassy Dashboard V7" di @code.xr, l'utente vuole quel layout e quelle animazioni ma la SUA
+  grafica muschio): menu laterale fisso a sinistra (Dashboard, Chiamate, Siti, Oggi, Promemoria, Chat; indicatore lime
+  che scivola; su telefono diventa barra in basso), barra in alto con saluto + ricerca + ora, 4 schede numeriche con
+  icona tonda, grafico a tutta larghezza, "Oggi" + ciambella "Avanzamento siti", chiamate, siti + obiettivi (quadranti).
+  Animazioni: entrata a cascata, numeri che salgono, barre che crescono, ciambella che si riempie (CSS/JS, rispettano
+  prefers-reduced-motion). Blocco CSS "Layout dashboard" in fondo allo stile.
   Numeri delle chiamate (30/10, richiesta dell'utente): ogni lead in `chiamate.json` ha un numero FISSO `n` (assegnato
   da aggiorna.py, mai riusato): l'utente dice "il 7 non risponde" invece del nome. Ogni messaggio della chat porta in
   coda un blocco <contesto-casa> con "numero = nome" delle chiamate di oggi (nascosto nella pagina).
