@@ -12,7 +12,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const SITE = 'https://exotiqueestetique.com'
 
 execSync('npx vite build --ssr src/entry-server.tsx --outDir dist-ssr --logLevel warn', { cwd: root, stdio: 'inherit' })
-const { render, business, categories, highlights } = await import(resolve(root, 'dist-ssr/entry-server.js'))
+const { render, business, categories, highlights, legal } = await import(resolve(root, 'dist-ssr/entry-server.js'))
 
 const dayMap = { Lunedì: 'Monday', Martedì: 'Tuesday', Mercoledì: 'Wednesday', Giovedì: 'Thursday', Venerdì: 'Friday', Sabato: 'Saturday', Domenica: 'Sunday' }
 const order = Object.keys(dayMap)
@@ -49,6 +49,8 @@ const ld = {
   logo: `${SITE}/favicon.svg`,
   telephone: business.mobile.href.replace('tel:', ''),
   email: business.email,
+  ...(legal.holder ? { legalName: legal.holder } : {}),
+  ...(legal.vatNumber ? { vatID: `IT${legal.vatNumber}` } : {}),
   priceRange: '€€',
   currenciesAccepted: 'EUR',
   founder: { '@type': 'Person', name: business.owner },

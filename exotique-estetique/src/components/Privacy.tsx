@@ -39,7 +39,7 @@ function Panel({ onClose }: { onClose: () => void }) {
     }
   }, [onClose])
 
-  const holder = legal.holder ? `${legal.holder}, titolare di ${business.name}` : business.name
+  const holder = legal.holder ? `${legal.holder} (${legal.holderType}), che gestisce ${business.name}` : business.name
 
   return (
     <motion.div

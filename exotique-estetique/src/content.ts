@@ -102,10 +102,11 @@ export const business = {
  * della titolare: finché sono null il sito non li mostra (nessun dato inventato).
  */
 export const legal = {
-  // Nome e cognome della titolare o ragione sociale dell'impresa
-  holder: null as string | null,
-  // Partita IVA: per legge va indicata sul sito dell'attività
-  vatNumber: null as string | null,
+  // Ditta individuale che gestisce il centro, indicata dall'utente il 4/11/2026
+  holder: "Nail's Time di Colletta E.O." as string | null,
+  holderType: 'ditta individuale',
+  // Partita IVA (verificata con la cifra di controllo): per legge va indicata sul sito dell'attività
+  vatNumber: '09633771002' as string | null,
   pec: null as string | null,
   updated: '4 novembre 2026',
 }

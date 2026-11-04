@@ -143,9 +143,14 @@ export const Visit = forwardRef<HTMLElement>(function Visit(_, ref) {
           </p>
           <div className="mt-10 flex flex-col gap-4 text-[0.875rem] text-night-soft md:flex-row md:items-center md:justify-between">
             <p>
-              &copy; {YEAR} {legal.holder ? `${legal.holder} · ` : ''}
-              {business.name}. {business.street}, {business.postalCode} {business.city}.
-              {legal.vatNumber && <> P. IVA {legal.vatNumber}.</>}
+              &copy; {YEAR} {business.name}. {business.street}, {business.postalCode} {business.city}.
+              {legal.holder && (
+                <>
+                  <br />
+                  {legal.holder}
+                  {legal.vatNumber && <> · P. IVA {legal.vatNumber}</>}
+                </>
+              )}
             </p>
             <ul className="flex flex-wrap items-center gap-x-6 gap-y-4">
               <li>
