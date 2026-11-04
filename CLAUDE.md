@@ -80,6 +80,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Il collegamento GitHub non è possibile: l'app Cloudflare di GitHub è legata a un altro account Cloudflare. Esiste anche
   un progetto vuoto `oma-osteria-moderna` creato per errore. Dominio omaosteriamoderna.com nello stesso account
   (registrato su Cloudflare il 19/10/2026, scade il 19/10/2027): https://omaosteriamoderna.com e www funzionano dal 4/11.
+  Google Search Console (4/11): proprietà Dominio omaosteriamoderna.com sull'account Google dell'utente (verificata),
+  sitemap inviata come URL completo https://omaosteriamoderna.com/sitemap.xml (con le proprietà Dominio il solo
+  "sitemap.xml" dà errore). Da fare: aggiungere Alessio come proprietario. Il sito è già nella scheda Google di OMA.
   Referente: Alessio. Preventivo: Completo 550 €, Base 450 €. Il 13/10/2026 hanno scelto il Completo,
   dominio omaosteriamoderna.com (libero a quella data, da registrare a nome del ristorante).
   Il menu della settimana resta il loro PDF su Linktree (stesso link del QR, `SITE.menuUrl` = linktr.ee/omaosteriamoderna,
