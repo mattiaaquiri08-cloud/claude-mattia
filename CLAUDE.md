@@ -83,7 +83,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   orari (`HOURS`), avviso (`AVVISO`) e lavagna (`LAVAGNA`) sono solo in site.ts; il sito non si collega a Google.
   Lavagna (20/10, sotto la hero; dal 27/10 bianca da pennarello sul nero, scritte nere e date in ocra scuro): ferie, chiusure, promo, eventi in `LAVAGNA` di site.ts; ferie e chiusure bloccano quei giorni (o solo pranzo/cena con `turno`) nelle prenotazioni. OMA scrive
   all'utente, l'utente lo dice a Claude. Al 4/11: promo "dal lunedì al venerdì a pranzo" un primo, acqua e caffè 12 €;
-  aperitivo "tutti i giorni dalle 18:30" tagliere + drink 12 € (campo `quando` per le voci senza data). Nessuna chiusura.
+  aperitivo "tutti i giorni tranne il mercoledì, dalle 18:30" tagliere + drink 12 € (campo `quando` per le voci senza data). Nessuna chiusura.
   Pagamenti OMA: 2 ricevute per prestazione occasionale (acconto e saldo, 275 € lordi ciascuna).
   Al 16/10/2026 nulla pagato: si attendono ragione sociale, P.IVA, sede di OMA e risposta del loro
   commercialista sulla ritenuta. Il 16/10/2026 confermato: ritenuta 20% sì. Per ogni rata: lordo 275 €,

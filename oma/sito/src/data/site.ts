@@ -172,7 +172,7 @@ export type VoceLavagna = {
 
 export const LAVAGNA: VoceLavagna[] = [
   { quando: 'dal lunedì al venerdì a pranzo', turno: 'pranzo', tipo: 'promo', testo: 'Un primo, acqua e caffè a 12\u00a0€.' },
-  { quando: 'tutti i giorni dalle 18:30', tipo: 'promo', testo: 'Aperitivo: tagliere + drink a 12\u00a0€.' },
+  { quando: 'tutti i giorni tranne il mercoledì, dalle 18:30', tipo: 'promo', testo: 'Aperitivo: tagliere + drink a 12\u00a0€.' },
 ]
 
 /* ---------- Avviso e orari ----------
