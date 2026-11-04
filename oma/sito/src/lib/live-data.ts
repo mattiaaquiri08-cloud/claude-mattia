@@ -57,7 +57,8 @@ const sheetUrl = (tab: string) =>
   `https://docs.google.com/spreadsheets/d/${SITE.sheetId}/gviz/tq?tqx=out:csv&headers=1&sheet=${encodeURIComponent(tab)}`
 
 async function fetchTab(tab: string) {
-  const res = await fetch(sheetUrl(tab), { cache: 'no-store' })
+  // nessun cookie e nessun referrer verso Google: arriva solo la richiesta dei dati pubblici del foglio
+  const res = await fetch(sheetUrl(tab), { cache: 'no-store', credentials: 'omit', referrerPolicy: 'no-referrer' })
   if (!res.ok) throw new Error(`Foglio "${tab}": ${res.status}`)
   const text = await res.text()
   // senza condivisione pubblica Google risponde con una pagina di accesso, non con il CSV
