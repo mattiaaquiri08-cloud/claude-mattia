@@ -77,6 +77,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   ONLINE dal 4/11 su Cloudflare Pages, account di Alessio (alessiobarricelli@…, accesso dal computer dell'utente): progetto
   `omaosteriamoderna` → https://omaosteriamoderna.pages.dev, caricato a mano (Direct Upload) con lo zip di `dist`
   (`cd dist && zip -qr …`), da mandare all'utente a ogni modifica (Workers & Pages → progetto → Create deployment).
+  Per verificare che l'ultima versione sia online: il nome di `dist/assets/index-*.js` deve coincidere con quello
+  richiamato dalla home di omaosteriamoderna.com (ultima verifica 4/11: firma MAQ e lavagna aggiornata online).
   Il collegamento GitHub non è possibile: l'app Cloudflare di GitHub è legata a un altro account Cloudflare. Esiste anche
   un progetto vuoto `oma-osteria-moderna` creato per errore. Dominio omaosteriamoderna.com nello stesso account
   (registrato su Cloudflare il 19/10/2026, scade il 19/10/2027): https://omaosteriamoderna.com e www funzionano dal 4/11.
