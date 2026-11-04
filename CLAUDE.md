@@ -53,7 +53,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 ## Preferenze e lezioni apprese
 
 - Recapiti professionali dell'utente (brand MAQ Web Design): email maq.webdesign@outlook.it, telefono e
-  WhatsApp +39 328 102 6484. Ai clienti si dà sempre questa email, MAI la vecchia Gmail personale.
+  WhatsApp +39 328 102 6484, sito maqwebdesign.com, Instagram @maqwebdesign. Ai clienti si dà sempre questa email, MAI la vecchia Gmail personale.
   Eccezione: l'account Cloudflare dell'utente è registrato con la Gmail (verificato il 17/10 dalle mail di
   Cloudflare), quindi gli inviti da membro ai domini dei clienti vanno a quella, finché non la cambia nel profilo.
 - Per i siti si usano le skill e i componenti di 21st, più le skill di design del profilo (vedi sopra).
