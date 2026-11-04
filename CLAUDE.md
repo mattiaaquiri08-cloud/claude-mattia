@@ -103,6 +103,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   SEO: canonical/og/robots.txt/sitemap su https://omaosteriamoderna.com/; JSON-LD Restaurant SENZA aggregateRating
   (le recensioni auto-dichiarate violano le regole di Google sui dati strutturati). Se cambiano gli orari, aggiornare
   anche il JSON-LD in index.html. Per salire nelle ricerche conta soprattutto la scheda Google Business di OMA.
+  Lighthouse (4/11, `npx lighthouse@12.6.1` con CHROME_PATH=/opt/pw-browsers/chromium-1194/chrome-linux/chrome): SEO 100,
+  accessibilità 100, best practice 100, prestazioni 100 PC / 80 smartphone (l'LCP su smartphone lo allunga la splash, scelta
+  di design). Le foto delle gallerie hanno la versione piccola `-540.webp` (srcset), il logo della barra `logo-oma-nav.webp`.
   Verifica privacy (4/11, con Playwright): nessun cookie, nessun dato nel browser, nessuna richiesta esterna finché non si preme
   "Mostra la mappa". La ragazza nella prima foto del Menù è Lilla (consenso ok); il video degli Eventi è già sui loro social:
   serve solo un ok scritto di Alessio per usarlo anche sul sito.

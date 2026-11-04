@@ -85,7 +85,7 @@ export function Nav({ revealed }: { revealed: boolean }) {
               className="flex items-center"
               aria-label="OMA Osteria Moderna, torna all'inizio"
             >
-              <img src="./img/logo-oma.png" alt="" width={620} height={303} className="h-8 w-auto md:h-9" />
+              <img src="./img/logo-oma-nav.webp" alt="" width={147} height={72} className="h-8 w-auto md:h-9" />
             </a>
 
             <ul className="hidden items-center gap-0.5 xl:flex">

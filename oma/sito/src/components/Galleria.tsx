@@ -58,6 +58,8 @@ export function Galleria({ foto, label, className = '' }: { foto: FotoGalleria[]
           <img
             key={f.src}
             src={f.src}
+            srcSet={`${f.src.replace('.webp', '-540.webp')} 540w, ${f.src} 1080w`}
+            sizes="(max-width: 767px) 80vw, 440px"
             alt={f.alt}
             width={1080}
             height={1350}
@@ -90,7 +92,7 @@ export function Galleria({ foto, label, className = '' }: { foto: FotoGalleria[]
             </button>
           ))}
 
-          {/* Pallini: quale foto si sta guardando */}
+          {/* Pallini: quale foto si sta guardando (area da toccare 24 px) */}
           <div className="absolute inset-x-0 bottom-3 flex justify-center gap-1.5">
             {foto.map((f, i) => (
               <button
@@ -102,7 +104,7 @@ export function Galleria({ foto, label, className = '' }: { foto: FotoGalleria[]
                 }}
                 aria-label={`Foto ${i + 1} di ${foto.length}`}
                 aria-current={i === attiva}
-                className="grid h-6 place-items-center px-0.5"
+                className="grid size-6 place-items-center"
               >
                 <span
                   className={`block h-1.5 rounded-full shadow-[0_0_0_1px_rgb(23_20_21/0.25)] transition-all duration-300 ${
