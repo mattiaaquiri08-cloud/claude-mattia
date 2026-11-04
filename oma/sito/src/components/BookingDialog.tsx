@@ -408,7 +408,7 @@ export function BookingDialog({ open, onClose }: Props) {
                         ) : noSlotsLeft ? (
                           <p className="rounded-[var(--radius-field)] border border-dashed border-line px-4 py-4 text-sm text-mute">
                             Per questo giorno non ci sono più orari prenotabili online. Scegli un altro giorno o chiamaci al{' '}
-                            <a href={SITE.phoneHref} className="text-ochre-deep underline underline-offset-4">
+                            <a href={SITE.phoneHref} target="_top" className="text-ochre-deep underline underline-offset-4">
                               {SITE.phoneDisplay}
                             </a>
                             .

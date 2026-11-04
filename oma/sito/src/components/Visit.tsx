@@ -36,7 +36,7 @@ export function Visit() {
                 <NavigationArrow size={18} weight="bold" />
                 Indicazioni
               </a>
-              <a href={SITE.phoneHref} className="btn-ghost !px-6">
+              <a href={SITE.phoneHref} target="_top" className="btn-ghost !px-6">
                 <Phone size={18} weight="bold" />
                 <span className="sm:hidden">Chiama</span>
                 <span className="hidden sm:inline">{SITE.phoneDisplay}</span>

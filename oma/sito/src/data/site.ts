@@ -160,13 +160,19 @@ export const VIDEO_EVENTI = {
 
 export type TipoLavagna = 'ferie' | 'chiuso' | 'promo' | 'evento' | 'avviso'
 export type Turno = 'pranzo' | 'cena'
-export type VoceLavagna = { dal?: string; al?: string; turno?: Turno; tipo: TipoLavagna; testo: string }
+export type VoceLavagna = {
+  dal?: string
+  al?: string
+  turno?: Turno
+  // per le voci senza data: quando vale (es. "dal lunedì al venerdì a pranzo"); se manca si usa il turno
+  quando?: string
+  tipo: TipoLavagna
+  testo: string
+}
 
 export const LAVAGNA: VoceLavagna[] = [
-  { turno: 'pranzo', tipo: 'promo', testo: 'Un primo, acqua e caffè a 12\u00a0€.' },
-  { dal: '2026-10-22', turno: 'cena', tipo: 'chiuso', testo: 'a cena. A pranzo siamo aperti.' },
-  { dal: '2026-10-27', turno: 'cena', tipo: 'chiuso', testo: 'a cena. A pranzo siamo aperti.' },
-  { dal: '2026-11-12', turno: 'cena', tipo: 'chiuso', testo: 'a cena. A pranzo siamo aperti.' },
+  { quando: 'dal lunedì al venerdì a pranzo', turno: 'pranzo', tipo: 'promo', testo: 'Un primo, acqua e caffè a 12\u00a0€.' },
+  { quando: 'tutti i giorni dalle 18:30', tipo: 'promo', testo: 'Aperitivo: tagliere + drink a 12\u00a0€.' },
 ]
 
 /* ---------- Avviso e orari ----------

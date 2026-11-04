@@ -41,7 +41,7 @@ export function Footer() {
           <h3 className="text-sm font-semibold text-ink">Contatti</h3>
           <ul className="mt-3 flex flex-col gap-1 text-ink/70">
             <li>
-              <a href={SITE.phoneHref} className="inline-flex min-h-11 items-center gap-2.5 hover:text-ink">
+              <a href={SITE.phoneHref} target="_top" className="inline-flex min-h-11 items-center gap-2.5 hover:text-ink">
                 <Phone size={18} />
                 {SITE.phoneDisplay}
               </a>

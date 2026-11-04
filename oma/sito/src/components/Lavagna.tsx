@@ -16,9 +16,9 @@ const ETICHETTA: Record<TipoLavagna, string> = {
 
 const giorno = (iso: string) => `${DAY_NAMES[weekdayOf(iso)].slice(0, 3).toLowerCase()} ${shortDate(iso)}`
 
-/** "sab 25 ott", più giorni separati da virgole, "dal 24 dic al 6 gen"; senza data il turno ("a pranzo"). */
+/** "sab 25 ott", più giorni separati da virgole, "dal 24 dic al 6 gen"; senza data il "quando" o il turno ("a pranzo"). */
 function quando(r: Riga) {
-  if (!r.dal) return r.turno === 'cena' ? 'a cena' : r.turno === 'pranzo' ? 'a pranzo' : 'sempre'
+  if (!r.dal) return r.quando ?? (r.turno === 'cena' ? 'a cena' : r.turno === 'pranzo' ? 'a pranzo' : 'sempre')
   if (r.al) return `dal ${shortDate(r.dal)} al ${shortDate(r.al)}`
   return r.giorni.map(giorno).join(', ')
 }

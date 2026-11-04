@@ -193,7 +193,7 @@ export function Nav({ revealed }: { revealed: boolean }) {
                 {SITE.address}, {SITE.city}
               </p>
               <div className="flex flex-wrap gap-3">
-                <a href={SITE.phoneHref} className="btn-ghost !px-5 !py-3">
+                <a href={SITE.phoneHref} target="_top" className="btn-ghost !px-5 !py-3">
                   <Phone size={18} weight="bold" />
                   Chiama
                 </a>
