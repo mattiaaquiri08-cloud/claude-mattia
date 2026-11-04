@@ -197,7 +197,7 @@ export function BookingDialog({ open, onClose }: Props) {
             {/* Colonna foto (solo desktop) */}
             <div className="relative hidden overflow-hidden md:block">
               <img
-                src="./img/g-sala-verticale.webp"
+                src="./img/prenota-sala.webp"
                 alt=""
                 width={940}
                 height={1672}
