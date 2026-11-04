@@ -91,7 +91,7 @@ export function Footer() {
           href={SITE.realizzatoDa.url}
           target="_blank"
           rel="noopener"
-          className="font-semibold text-ink/70 underline-offset-4 hover:text-ochre-deep hover:underline"
+          className="font-semibold text-ink/80 underline decoration-ochre underline-offset-4 hover:text-ochre-deep"
         >
           {SITE.realizzatoDa.nome}
         </a>
