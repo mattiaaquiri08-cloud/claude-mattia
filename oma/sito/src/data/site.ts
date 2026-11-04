@@ -98,7 +98,7 @@ export const TESTI = {
 } satisfies Record<string, Sezione>
 
 /* ---------- Foto delle sezioni (shooting di ottobre 2026) ----------
-  Tre foto per sezione, mostrate una alla volta in una galleria che scorre (con una sola foto è un'immagine fissa).
+  Tre o più foto per sezione, mostrate una alla volta in una galleria che scorre (con una sola foto è un'immagine fissa).
   File in public/img, tagliati 4:5 (1080×1350). Per cambiarle basta sostituire src e alt.
 */
 
@@ -107,6 +107,7 @@ export type FotoSezione = { src: string; alt: string }
 export const FOTO_SEZIONI: Record<string, FotoSezione[]> = {
   'chi-siamo': [
     { src: './img/s-chi-siamo-1.webp', alt: 'Alessio e Leonardo in sala, uno abbraccia l’altro da dietro' },
+    { src: './img/s-chi-siamo-4.webp', alt: 'Alessio e Leonardo in cucina con la nonna che pulisce il pesce' },
     { src: './img/s-chi-siamo-2.webp', alt: 'I titolari in cucina, uno lancia una zucca al volo' },
     { src: './img/s-chi-siamo-3.webp', alt: 'Lo chef al tagliere mentre prepara la battuta di manzo' },
   ],
@@ -126,11 +127,14 @@ export const FOTO_SEZIONI: Record<string, FotoSezione[]> = {
     { src: './img/s-menu-3.webp', alt: 'Pollo arrosto con le carote, tagliato a tavola nel piatto a fiori' },
   ],
   piatti: [
+    { src: './img/s-piatti-5.webp', alt: 'La nonna a tavola, sorridente, con un piatto e un calice di bianco' },
     { src: './img/s-piatti-1.webp', alt: 'Battuta di manzo con finferli nel piatto antico' },
+    { src: './img/s-piatti-4.webp', alt: 'La nonna tira la sfoglia di pasta fresca con la macchinetta' },
     { src: './img/s-piatti-2.webp', alt: 'Rigatoni verdi al cavolo nero con pomodorini' },
     { src: './img/s-piatti-3.webp', alt: 'Gnocchi con funghi e formaggio grattugiato al momento' },
   ],
   aperitivo: [
+    { src: './img/s-aperitivo-4.webp', alt: 'Un tagliere di salumi, formaggi e chips di pane con un calice di rosso' },
     { src: './img/s-aperitivo-1.webp', alt: 'Mani che prendono i crostini con le alici, bottiglie sullo sfondo' },
     { src: './img/s-aperitivo-2.webp', alt: 'Un vassoio di crostini con burro e alici' },
     { src: './img/s-aperitivo-3.webp', alt: 'L’alice posata con la pinza sul crostino' },
