@@ -84,6 +84,18 @@ export function Footer() {
           </a>
         </div>
       </div>
+
+      <p className="mx-auto mt-6 max-w-[1400px] text-xs text-mute">
+        Sito realizzato da{' '}
+        <a
+          href={SITE.realizzatoDa.url}
+          target="_blank"
+          rel="noopener"
+          className="font-semibold text-ink/70 underline-offset-4 hover:text-ochre-deep hover:underline"
+        >
+          {SITE.realizzatoDa.nome}
+        </a>
+      </p>
     </footer>
   )
 }

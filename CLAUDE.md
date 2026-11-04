@@ -119,6 +119,7 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   "Mostra la mappa". La ragazza nella prima foto del Menù è Lilla (consenso ok); il video degli Eventi è già sui loro social:
   serve solo un ok scritto di Alessio per usarlo anche sul sito.
   Foto del modulo di prenotazione (4/11): la sala con lo specchio (`img/prenota-sala.webp`, dallo shooting), al posto della vecchia.
+  In fondo al footer "Sito realizzato da MAQ Web Design" con link a maqwebdesign.com (`SITE.realizzatoDa`, 4/11).
   "Nel Quartiere Africano" sotto Dove siamo resta (28/10, per le ricerche locali), anche se OMA aveva chiesto di toglierlo.
 - Ricevute e documenti con dati personali (codice fiscale, IBAN, indirizzo dell'utente) NON vanno mai
   nel repository, che è pubblico: si generano nella scratchpad e si mandano all'utente come file.

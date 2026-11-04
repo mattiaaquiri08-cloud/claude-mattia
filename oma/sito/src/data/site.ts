@@ -12,6 +12,8 @@ export const SITE = {
   rea: 'RM-1756118',
   capitaleSociale: '5.000,00 € i.v.',
   pec: 'oma@pecimprese.it',
+  // Firma in fondo al footer
+  realizzatoDa: { nome: 'MAQ Web Design', url: 'https://maqwebdesign.com' },
   slogan: ['Mangi bene come da tu’ nonna.', 'Senza le domande de tu’ zia.'],
   address: 'Via Costantino Maes 78',
   city: '00162 Roma',
