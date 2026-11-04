@@ -1,8 +1,9 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { useRef, type ReactNode } from 'react'
 import { ArrowUpRight, InstagramLogo } from '@phosphor-icons/react'
-import { FOTO_SEZIONI, SITE, TESTI, type Sezione } from '../data/site'
+import { FOTO_SEZIONI, SITE, TESTI, VIDEO_EVENTI, type Sezione } from '../data/site'
 import { Galleria } from './Galleria'
+import { VideoSezione } from './VideoSezione'
 
 /*
   Le macro-sezioni del sito, nell'ordine dei testi della social media manager.
@@ -257,8 +258,8 @@ function Eventi({ s }: { s: Sezione }) {
             Seguici su Instagram
           </a>
         </motion.div>
-        <motion.div {...reveal} className="mx-auto w-[78%] max-w-[360px] md:col-span-4 md:col-start-8 md:w-full md:max-w-none">
-          <Foto3 s={s} className="aspect-[4/5]" />
+        <motion.div {...reveal} className="mx-auto w-[72%] max-w-[320px] md:col-span-4 md:col-start-8 md:w-full md:max-w-[360px]">
+          <VideoSezione video={VIDEO_EVENTI} className="aspect-[9/16]" />
         </motion.div>
       </div>
     </section>

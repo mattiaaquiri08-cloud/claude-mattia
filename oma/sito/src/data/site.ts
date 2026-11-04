@@ -144,8 +144,13 @@ export const FOTO_SEZIONI: Record<string, FotoSezione[]> = {
     { src: './img/s-wine-2.webp', alt: 'Tre bottiglie I Ca Ro che brindano' },
     { src: './img/s-wine-3.webp', alt: 'Una bottiglia di Montepulciano tenuta in mano' },
   ],
-  // per ora una sola foto: le altre arriveranno dalle prossime serate
-  eventi: [{ src: './img/s-eventi-1.webp', alt: 'I titolari assaggiano il vino a tavola' }],
+}
+
+// Video della sezione Eventi (verticale 9:16, muto, senza i secondi con una bambina): al posto delle foto
+export const VIDEO_EVENTI = {
+  src: './video/eventi.mp4',
+  poster: './img/eventi-video-poster.webp',
+  label: 'Video di una serata da OMA: la cucina al lavoro, i piatti e gli ospiti a tavola',
 }
 
 /* ---------- Lavagna: ferie, chiusure, promozioni, eventi ----------

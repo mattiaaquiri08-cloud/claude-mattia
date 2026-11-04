@@ -9,7 +9,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { extname } from 'node:path'
 
-const MIME = { '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg' }
+const MIME = { '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.mp4': 'video/mp4' }
 const dataUri = (file) =>
   `data:${MIME[extname(file)]};base64,${readFileSync(`public/${file}`).toString('base64')}`
 
@@ -30,7 +30,7 @@ let site = readFileSync('dist-single/index.html', 'utf8')
 
 for (const [from, to] of Object.entries(PDF)) site = site.replaceAll(from, to)
 
-const images = new Set(site.match(/\.\/img\/[\w.-]+\.(?:webp|png|jpe?g)/g) ?? [])
+const images = new Set(site.match(/\.\/(?:img\/[\w.-]+\.(?:webp|png|jpe?g)|video\/[\w.-]+\.mp4)/g) ?? [])
 for (const ref of images) site = site.replaceAll(ref, dataUri(ref.slice(2)))
 
 const out = '../../consegna'
