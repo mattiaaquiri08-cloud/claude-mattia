@@ -78,7 +78,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   `omaosteriamoderna` → https://omaosteriamoderna.pages.dev, caricato a mano (Direct Upload) con lo zip di `dist`
   (`cd dist && zip -qr …`), da mandare all'utente a ogni modifica (Workers & Pages → progetto → Create deployment).
   Il collegamento GitHub non è possibile: l'app Cloudflare di GitHub è legata a un altro account Cloudflare. Esiste anche
-  un progetto vuoto `oma-osteria-moderna` creato per errore. Dominio omaosteriamoderna.com nello stesso account.
+  un progetto vuoto `oma-osteria-moderna` creato per errore. Dominio omaosteriamoderna.com nello stesso account
+  (registrato su Cloudflare il 19/10/2026, scade il 19/10/2027): https://omaosteriamoderna.com e www funzionano dal 4/11.
   Referente: Alessio. Preventivo: Completo 550 €, Base 450 €. Il 13/10/2026 hanno scelto il Completo,
   dominio omaosteriamoderna.com (libero a quella data, da registrare a nome del ristorante).
   Il menu della settimana resta il loro PDF su Linktree (stesso link del QR, `SITE.menuUrl` = linktr.ee/omaosteriamoderna,
