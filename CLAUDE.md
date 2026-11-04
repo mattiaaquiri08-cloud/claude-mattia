@@ -116,6 +116,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Testi di Naomi (28/10/2026): in `content.ts` `naomiStory`, `naomiValues`, `naomiQuote` e i campi
   `intro`/`quote`/`caution` del laser. Riassunti fedeli in prima persona, senza emoji; precauzioni
   del laser sempre visibili. «Prenota una consulenza» in fondo alla sezione Naomi.
+- Pubblicazione: per Cloudflare Pages «caricamento diretto» si manda lo zip del contenuto di
+  `dist/` (dopo `npm run build`). Script Playwright nello scratchpad: importare da
+  `$(npm root -g)/playwright/index.mjs` (lo scratchpad si svuota tra le sessioni).
 - Trattamenti: niente foto (tolte su richiesta sia su PC sia su smartphone); elenco a tutta larghezza.
 - La skill `design-taste-frontend` non è più installata (è nel cestino delle skill): se serve,
   chiedere all'utente di reinstallarla.
