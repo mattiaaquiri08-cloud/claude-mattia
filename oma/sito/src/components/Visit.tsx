@@ -3,12 +3,10 @@ import { useEffect, useState } from 'react'
 import { MapPin, NavigationArrow, Phone, WhatsappLogo } from '@phosphor-icons/react'
 import { DAY_NAMES, SITE, WEEK_ORDER } from '../data/site'
 import { formatDayHours, openStatus, romeNow } from '../lib/hours'
-import { useLiveData } from '../lib/live-data'
 
 export function Visit() {
   const reduce = useReducedMotion()
-  // ridisegna quando arrivano gli orari dal foglio e una volta al minuto
-  useLiveData()
+  // ridisegna una volta al minuto (aperto/chiuso)
   const [, setTick] = useState(0)
   const [mappa, setMappa] = useState(false)
   const status = openStatus()

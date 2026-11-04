@@ -79,9 +79,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Il menu della settimana resta il loro PDF su Linktree (stesso link del QR, `SITE.menuUrl` = linktr.ee/omaosteriamoderna,
   confermato dall'utente il 19/10; lì ci sono anche i PDF di vini e menu inglese; il QR è fatto con QR.io, quindi nel sito va la destinazione finale
   e non il link qr.io, che smette di funzionare se scade il loro abbonamento): i pulsanti "Menu" e "Carta dei vini" portano lì;
-  la carta dei vini non è più nel sito. Il Foglio Google serve solo per orari, avviso e lavagna.
-  Lavagna (20/10, sotto la hero; dal 27/10 bianca da pennarello sul nero, scritte nere e date in ocra scuro): ferie, chiusure, promo, eventi in `LAVAGNA` di site.ts o scheda "Lavagna" del
-  foglio; ferie e chiusure bloccano quei giorni (o solo pranzo/cena con `turno`) nelle prenotazioni. OMA scrive
+  la carta dei vini non è più nel sito. Dal 4/11 NIENTE Foglio Google (scelta dell'utente: la lavagna la aggiorna lui):
+  orari (`HOURS`), avviso (`AVVISO`) e lavagna (`LAVAGNA`) sono solo in site.ts; il sito non si collega a Google.
+  Lavagna (20/10, sotto la hero; dal 27/10 bianca da pennarello sul nero, scritte nere e date in ocra scuro): ferie, chiusure, promo, eventi in `LAVAGNA` di site.ts; ferie e chiusure bloccano quei giorni (o solo pranzo/cena con `turno`) nelle prenotazioni. OMA scrive
   all'utente, l'utente lo dice a Claude. Al 20/10: chiusi a cena 22/10, 27/10, 12/11; promo fissa a pranzo 12 €
   (un primo, acqua e caffè), voce senza data da togliere quando finisce.
   Pagamenti OMA: 2 ricevute per prestazione occasionale (acconto e saldo, 275 € lordi ciascuna).
@@ -103,13 +103,13 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   SEO: canonical/og/robots.txt/sitemap su https://omaosteriamoderna.com/; JSON-LD Restaurant SENZA aggregateRating
   (le recensioni auto-dichiarate violano le regole di Google sui dati strutturati). Se cambiano gli orari, aggiornare
   anche il JSON-LD in index.html. Per salire nelle ricerche conta soprattutto la scheda Google Business di OMA.
+  Verifica privacy (4/11, con Playwright): nessun cookie, nessun dato nel browser, nessuna richiesta esterna finché non si preme
+  "Mostra la mappa". La ragazza nella prima foto del Menù è Lilla (consenso ok); il video degli Eventi è già sui loro social:
+  serve solo un ok scritto di Alessio per usarlo anche sul sito.
   Foto del modulo di prenotazione (4/11): la sala con lo specchio (`img/prenota-sala.webp`, dallo shooting), al posto della vecchia.
   "Nel Quartiere Africano" sotto Dove siamo resta (28/10, per le ricerche locali), anche se OMA aveva chiesto di toglierlo.
 - Ricevute e documenti con dati personali (codice fiscale, IBAN, indirizzo dell'utente) NON vanno mai
   nel repository, che è pubblico: si generano nella scratchpad e si mandano all'utente come file.
-  Il menu cambia ogni settimana: menu, orari e avviso li aggiorna il ristorante dal Foglio Google
-  "OMA - Menu e orari del sito" (Drive dell'utente, id in `SITE.sheetId`), incluso nel Completo.
-  Il foglio va condiviso "chiunque abbia il link: visualizzatore", altrimenti il sito usa i dati salvati.
 - Foto originali di OMA (shooting 19/10, dal Dropbox di Lilla): cartella Drive "2026 10 19 OMA JPEG ALTA"
   dell'utente (id 1aQS_1ytOh3UInFx46PGL2HdFfJb2W7yK, sottocartelle "1 JPEG"… "7 JPEG"). Lezioni: le immagini incollate
   o trascinate in chat arrivano ridotte a 2000 px; il connettore Drive scarica solo file fino a 10 MB, per quelli

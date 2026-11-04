@@ -8,7 +8,7 @@ import { SITE } from '../data/site'
   si carica solo su richiesta, quindi non serve il banner dei cookie.
 */
 
-const AGGIORNATA = '27 ottobre 2026'
+const AGGIORNATA = '4 novembre 2026'
 
 function Voce({ titolo, children }: { titolo: string; children: ReactNode }) {
   return (
@@ -84,16 +84,14 @@ export function PrivacyDialog() {
 
         <Voce titolo="Cookie">
           <p>
-            Il sito non usa cookie di profilazione né statistiche. Salva nel tuo browser solo una copia degli orari e
-            della lavagna, per mostrarli più in fretta: è un dato tecnico, non personale.
+            Il sito non usa cookie, né di profilazione né statistici, e non salva nulla nel tuo browser.
           </p>
         </Voce>
 
         <Voce titolo="Servizi esterni">
           <p>
-            Orari e lavagna arrivano da un foglio Google: il browser li scarica da Google, che riceve l’indirizzo IP
-            come per qualsiasi sito. La mappa di Google si carica solo se premi “Mostra la mappa”: da quel momento
-            Google può usare i propri cookie.
+            La mappa di Google si carica solo se premi “Mostra la mappa”: da quel momento Google può usare i propri
+            cookie.
           </p>
           <p>
             Il sito è ospitato su Cloudflare, che registra dati tecnici (come l’indirizzo IP) per sicurezza e

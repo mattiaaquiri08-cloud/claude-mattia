@@ -1,6 +1,6 @@
 import { IconContext } from '@phosphor-icons/react'
 import { MotionConfig } from 'motion/react'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { BookingContext } from './components/booking-context'
 import { BookingDialog } from './components/BookingDialog'
 import { Footer } from './components/Footer'
@@ -11,7 +11,6 @@ import { PrivacyDialog } from './components/Privacy'
 import { Sezioni } from './components/Sezioni'
 import { Splash } from './components/Splash'
 import { Visit } from './components/Visit'
-import { loadLiveData } from './lib/live-data'
 
 export default function App() {
   const [revealed, setRevealed] = useState(false)
@@ -23,11 +22,6 @@ export default function App() {
   const ctx = useMemo(() => ({ openBooking }), [openBooking])
   // le icone accompagnano sempre un testo o un aria-label: per gli screen reader sono decorative
   const icons = useMemo(() => ({ 'aria-hidden': true as const }), [])
-
-  // orari, avviso e lavagna aggiornati dal Foglio Google
-  useEffect(() => {
-    loadLiveData()
-  }, [])
 
   return (
     <MotionConfig reducedMotion="user">

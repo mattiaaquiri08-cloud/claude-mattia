@@ -57,7 +57,7 @@ export function Nav({ revealed }: { revealed: boolean }) {
         animate={revealed ? { y: 0, opacity: 1 } : undefined}
         transition={{ duration: 0.9, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
       >
-        {/* Avviso scritto dal ristorante nel foglio (ferie, chiusure, serate speciali) */}
+        {/* Avviso in cima al sito (AVVISO in site.ts: ferie, chiusure, serate speciali) */}
         {notice && (
           <p
             role="status"
