@@ -16,6 +16,8 @@ import { Works } from './components/Works'
 import { Reviews } from './components/Reviews'
 import { Treatments } from './components/Treatments'
 import { Visit } from './components/Visit'
+import { Privacy } from './components/Privacy'
+import { onPrivacyOpen } from './components/privacy-events'
 
 function useLenis(paused: boolean) {
   const lenis = useRef<Lenis | null>(null)
@@ -69,7 +71,26 @@ export default function App() {
   const close = useCallback(() => setBooking((b) => ({ ...b, open: false })), [])
   const api = useMemo<BookingApi>(() => ({ open, close, isOpen: booking.open }), [open, close, booking.open])
 
-  const locked = booking.open || !introDone
+  // Informativa privacy: si apre con #privacy nell'indirizzo o dai link «Privacy e cookie».
+  const [privacy, setPrivacy] = useState(false)
+  useEffect(() => {
+    const sync = () => setPrivacy(window.location.hash === '#privacy')
+    sync()
+    window.addEventListener('hashchange', sync)
+    window.addEventListener('popstate', sync)
+    const off = onPrivacyOpen(() => setPrivacy(true))
+    return () => {
+      window.removeEventListener('hashchange', sync)
+      window.removeEventListener('popstate', sync)
+      off()
+    }
+  }, [])
+  const closePrivacy = useCallback(() => {
+    setPrivacy(false)
+    if (window.location.hash === '#privacy') history.replaceState(null, '', window.location.pathname + window.location.search)
+  }, [])
+
+  const locked = booking.open || !introDone || privacy
   useLenis(locked)
   useEffect(() => {
     document.documentElement.style.overflow = locked ? 'hidden' : ''
@@ -107,6 +128,7 @@ export default function App() {
         </main>
         <MobileBar visible={pastHero && !atVisit} />
         <BookingSheet isOpen={booking.open} initialCategory={booking.cat} onClose={close} />
+        <Privacy isOpen={privacy} onClose={closePrivacy} />
         {needSplash && <Splash onDone={finishIntro} />}
         <div className="grain" aria-hidden />
       </BookingContext.Provider>

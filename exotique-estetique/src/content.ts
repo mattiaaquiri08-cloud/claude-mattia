@@ -97,6 +97,19 @@ export const business = {
   instagramUrl: 'https://www.instagram.com/exotiqueestetique/' as string | null,
 }
 
+/*
+ * Dati legali per informativa privacy e piè di pagina. Da completare con i dati
+ * della titolare: finché sono null il sito non li mostra (nessun dato inventato).
+ */
+export const legal = {
+  // Nome e cognome della titolare o ragione sociale dell'impresa
+  holder: null as string | null,
+  // Partita IVA: per legge va indicata sul sito dell'attività
+  vatNumber: null as string | null,
+  pec: null as string | null,
+  updated: '4 novembre 2026',
+}
+
 /* Listino: prezzi dal listino cartaceo del centro (ottobre 2026). */
 export const categories: Category[] = [
   {

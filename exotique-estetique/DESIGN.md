@@ -75,6 +75,10 @@ che servono a leggere il testo.
 - **Pannello di prenotazione:** foglio che sale dal basso su mobile e si apre di lato su desktop.
   Si sceglie categoria e trattamento (con prezzo), giorno (domenica e lunedì bloccati) e orario
   preferito, nome e note; la richiesta parte su WhatsApp o via email, oppure si chiama.
+- **Privacy e cookie:** pannello a tutto schermo (`Privacy.tsx`) aperto da `#privacy`, dal link in
+  fondo alla pagina e dal modulo di prenotazione. Nessun banner cookie: il sito usa solo archiviazione
+  tecnica, niente analytics, font o mappe di terze parti. Non aggiungere servizi esterni senza
+  aggiornare l'informativa e, se servono, il consenso.
 - **Barra mobile:** fissa in basso solo su smartphone, compare dopo la hero e sparisce vicino ai
   contatti. Contiene «Prenota ora» e il pulsante per chiamare.
 - **Foto in arrivo:** dove manca una foto vera (es. Naomi) si usa una cornice con la dicitura

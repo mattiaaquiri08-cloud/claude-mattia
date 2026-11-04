@@ -119,6 +119,10 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
 - Pubblicazione: per Cloudflare Pages «caricamento diretto» si manda lo zip del contenuto di
   `dist/` (dopo `npm run build`). Script Playwright nello scratchpad: importare da
   `$(npm root -g)/playwright/index.mjs` (lo scratchpad si svuota tra le sessioni).
+- Privacy (4/11/2026): informativa in `Privacy.tsx` (apertura con `#privacy`), dati in `legal` di
+  `content.ts` (titolare, P. IVA, PEC: null finché l'utente non li dà; la P. IVA va mostrata in fondo).
+  Niente banner: solo storage tecnico. Volti di clienti sfocati nelle foto (treccine). Mai aggiungere
+  analytics, mappe incorporate, font esterni o pixel senza consenso e informativa aggiornata.
 - Trattamenti: niente foto (tolte su richiesta sia su PC sia su smartphone); elenco a tutta larghezza.
 - La skill `design-taste-frontend` non è più installata (è nel cestino delle skill): se serve,
   chiedere all'utente di reinstallarla.

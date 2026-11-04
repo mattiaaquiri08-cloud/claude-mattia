@@ -4,6 +4,7 @@ import { EnvelopeSimple, Phone, WhatsappLogo, X } from '@phosphor-icons/react'
 import { business, categories } from '../content'
 import { EASE, cn } from '../lib'
 import { Button } from './Button'
+import { openPrivacy } from './privacy-events'
 
 /* Orari dal profilo Google: martedì - sabato 9:30 - 18:00, domenica e lunedì chiuso. */
 const CLOSED_DAYS = [0, 1]
@@ -313,6 +314,21 @@ function Sheet({ initialCategory, onClose }: { initialCategory?: string; onClose
                 Chiama
               </a>
             </div>
+            <p className="pt-1 text-[0.8125rem] leading-relaxed text-ink-soft">
+              I dati che scrivi non vengono salvati su questo sito: compongono un messaggio che invii tu. Non scrivere
+              informazioni sulla salute: ne parliamo di persona.{' '}
+              <a
+                href="#privacy"
+                onClick={(e) => {
+                  e.preventDefault()
+                  onClose()
+                  openPrivacy()
+                }}
+                className="underline underline-offset-4 hover:text-ink"
+              >
+                Informativa privacy
+              </a>
+            </p>
           </div>
         </form>
       </motion.div>
