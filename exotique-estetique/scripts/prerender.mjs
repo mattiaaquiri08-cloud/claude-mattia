@@ -42,6 +42,8 @@ const ld = {
   '@type': ['BeautySalon', 'HairSalon', 'NailSalon'],
   '@id': `${SITE}/#centro`,
   name: business.name,
+  // Varianti con cui le persone cercano il centro (anche scritte male), per le ricerche del nome
+  alternateName: ['Exotique Estetique', 'Exotique e Estetique', 'Exotic Estetique', 'Exotic Estetiche', 'Estetique La Storta'],
   description:
     'Centro estetico e parrucchiere a La Storta (Roma Nord): trattamenti viso, BB Glow, massaggi, epilazione con laser a diodo, ceretta, manicure, pedicure, ciglia, trucco, taglio e colore.',
   url: `${SITE}/`,
@@ -88,10 +90,23 @@ const ld = {
   },
 }
 
+/* Nome del sito nei risultati di Google (al posto dell'indirizzo). */
+const website = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${SITE}/#sito`,
+  url: `${SITE}/`,
+  name: business.name,
+  alternateName: ['Exotique Estetique', 'Exotique e Estetique'],
+  inLanguage: 'it-IT',
+  publisher: { '@id': `${SITE}/#centro` },
+}
+
 const dist = resolve(root, 'dist')
 let html = readFileSync(resolve(dist, 'index.html'), 'utf8')
 html = html.replace('<div id="root"></div>', `<div id="root">${render()}</div>`)
-html = html.replace('</head>', `<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>\n</head>`)
+const json = (o) => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, '\\u003c')}</script>`
+html = html.replace('</head>', `${json(website)}\n${json(ld)}\n</head>`)
 writeFileSync(resolve(dist, 'index.html'), html)
 
 writeFileSync(resolve(dist, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`)

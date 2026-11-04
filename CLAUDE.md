@@ -109,6 +109,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   JSON-LD BeautySalon con listino da `content.ts`, robots.txt, sitemap.xml). Dominio nel codice:
   `https://exotiqueestetique.com` (canonical, og, sitemap). Le bozze hanno `noindex`. Niente
   aggregateRating nel JSON-LD (Google non mostra stelle per recensioni del proprio sito).
+  Title con il nome per primo; `alternateName` (anche «Exotic Estetique/Estetiche») e schema WebSite
+  per le ricerche del nome. Il primo posto non si può garantire: contano scheda Google e Search Console.
 - Revisione utente 27/10/2026: splash ridotta a ~1,5 s e solo alla prima visita; ordine sezioni
   Hero → Trattamenti (con «da X €» in ogni voce) → Prezzi → Il centro → resto; voce menu «Prezzi».
   Prenotazione: trattamento + giorno + orario, invio WhatsApp/email (niente backend: la conferma
