@@ -85,6 +85,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Google Search Console (4/11): proprietà Dominio omaosteriamoderna.com sull'account Google dell'utente (verificata),
   sitemap inviata come URL completo https://omaosteriamoderna.com/sitemap.xml (con le proprietà Dominio il solo
   "sitemap.xml" dà errore). Da fare: aggiungere Alessio come proprietario. Il sito è già nella scheda Google di OMA.
+  Il 5/11 il sito compariva già su Google cercando "omaosteriamoderna", ma con l'icona generica e come descrizione il
+  testo del <noscript>: aggiunti favicon.ico (16/32/48) e favicon-192.png e un <noscript> descrittivo. Google aggiorna
+  icona e descrizione da solo nel giro di giorni o settimane.
   Referente: Alessio. Preventivo: Completo 550 €, Base 450 €. Il 13/10/2026 hanno scelto il Completo,
   dominio omaosteriamoderna.com (libero a quella data, da registrare a nome del ristorante).
   Il menu della settimana resta il loro PDF su Linktree (stesso link del QR, `SITE.menuUrl` = linktr.ee/omaosteriamoderna,

@@ -26,6 +26,8 @@ let site = readFileSync('dist-single/index.html', 'utf8')
   .replace(/\s*<link rel="preload" as="image"[^>]*>/g, '')
   .replace(/\s*<link rel="apple-touch-icon"[^>]*>/g, '')
   .replace(/\s*<meta property="og:image"[^>]*>/g, '')
+  // nelle bozze basta l'icona png incorporata
+  .replace(/\s*<link rel="icon"[^>]*favicon(?:\.ico|-192\.png)"[^>]*>/g, '')
   .replace(/\.\/favicon\.png/g, dataUri('favicon.png'))
 
 for (const [from, to] of Object.entries(PDF)) site = site.replaceAll(from, to)
