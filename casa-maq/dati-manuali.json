@@ -6,15 +6,16 @@
       "ramo": "claude/vigilant-edison-50pdj9",
       "stato": "Cliente",
       "tono": "ok",
-      "nota": "Sito in lavorazione, ricevuta d'acconto inviata",
-      "sigla": "OMA"
+      "nota": "Online su omaosteriamoderna.com dal 4/11",
+      "sigla": "OMA",
+      "link": "https://omaosteriamoderna.com"
     },
     {
       "nome": "Exotique & Estetique",
       "ramo": "claude/nifty-fermi-4z2y3y",
       "stato": "Cliente",
       "tono": "ok",
-      "nota": "Preventivo firmato da Naomi",
+      "nota": "Sito quasi pronto (privacy e dati della ditta inseriti), da pubblicare",
       "sigla": "Exotique"
     },
     {
