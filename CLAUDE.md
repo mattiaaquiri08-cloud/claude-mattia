@@ -103,7 +103,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   Al 16/10/2026 nulla pagato: si attendono ragione sociale, P.IVA, sede di OMA e risposta del loro
   commercialista sulla ritenuta. Il 16/10/2026 confermato: ritenuta 20% sì. Per ogni rata: lordo 275 €,
   ritenuta 55 €, netto 220 € + 2 € rimborso bollo = 222 € di bonifico. Ricevuta n. 1/2026 (acconto) inviata
-  il 16/10/2026; al saldo va la n. 2/2026, uguale (i dati personali dell'utente vanno richiesti di nuovo).
+  il 16/10/2026. Ricevuta n. 2/2026 (saldo) preparata il 13/11/2026 in PDF e Word nella scratchpad, con codice fiscale,
+  residenza e IBAN lasciati in bianco da compilare a mano (i dati dell'utente non sono salvati da nessuna parte).
   Testi ufficiali del sito: li ha mandati Lilla Milli (social media manager di OMA, social@lillamilli.com) il
   17/10 alla Outlook; sono in `TESTI` di site.ts, da non riscrivere. Foto chieste a Lilla il 19/10 (mail inviata):
   scelte dallo shooting invernale di marzo 2026 + quelle autunnali del 19/10, tra cui la hero (Alessio e
