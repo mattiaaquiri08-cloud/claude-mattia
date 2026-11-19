@@ -119,7 +119,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   `intro`/`quote`/`caution` del laser. Riassunti fedeli in prima persona, senza emoji; precauzioni
   del laser sempre visibili. «Prenota una consulenza» in fondo alla sezione Naomi.
 - Pubblicazione: per Cloudflare Pages «caricamento diretto» si manda lo zip del contenuto di
-  `dist/` (dopo `npm run build`). Script Playwright nello scratchpad: importare da
+  `dist/` (dopo `npm run build`). Online dal 19/11/2026 su `exotique-estetique.pages.dev` (progetto
+  `exotique-estetique` sull'account Cloudflare di Naomi); dominio exotiqueestetique.com comprato lì.
+  Verifica: `curl` del sito e confronto md5 con `dist/index.html`; DNS via cloudflare-dns.com/dns-query. Script Playwright nello scratchpad: importare da
   `$(npm root -g)/playwright/index.mjs` (lo scratchpad si svuota tra le sessioni).
 - Privacy (4/11/2026): informativa in `Privacy.tsx` (apertura con `#privacy`), dati in `legal` di
   `content.ts`: ditta individuale «Nail's Time di Colletta E.O.», P. IVA 09633771002 (in fondo alla
