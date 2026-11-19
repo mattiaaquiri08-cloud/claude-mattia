@@ -123,6 +123,8 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   `exotique-estetique` sull'account Cloudflare di Naomi); dominio exotiqueestetique.com comprato lì.
   Dominio collegato e attivo (www e senza www, http→https) dal 19/11/2026. L'HTML online differisce
   da `dist/index.html` solo per l'«Email Obfuscation» di Cloudflare (script sullo stesso dominio, ok).
+  `public/404.html`: senza, Cloudflare Pages risponde agli indirizzi inesistenti con la home (200).
+  Search Console verificato (account Google dell'utente); sitemap da inviare come `sitemap.xml`.
   Verifica: `curl` del sito e diff con `dist/index.html`; DNS via cloudflare-dns.com/dns-query. Script Playwright nello scratchpad: importare da
   `$(npm root -g)/playwright/index.mjs` (lo scratchpad si svuota tra le sessioni).
 - Privacy (4/11/2026): informativa in `Privacy.tsx` (apertura con `#privacy`), dati in `legal` di
