@@ -132,6 +132,9 @@ Tieni le voci brevi e concrete; aggiorna o elimina quelle superate invece di acc
   pagina e nel JSON-LD), PEC ancora null.
   Niente banner: solo storage tecnico. Volti delle clienti sempre oscurati nelle foto (preferenza dell'utente). Mai aggiungere
   analytics, mappe incorporate, font esterni o pixel senza consenso e informativa aggiornata.
+- Social: post mensile identico IG/FB preparato da me e pubblicato dall'utente via Meta Business Suite
+  (non accedere mai agli account). Attività programmata «Post mensile Exotique & Estetique» il 1° del
+  mese alle 8:37 (Europe/Rome). Primo post (19/11/2026): annuncio del sito online, foto della sala.
 - Trattamenti: niente foto (tolte su richiesta sia su PC sia su smartphone); elenco a tutta larghezza.
 - La skill `design-taste-frontend` non è più installata (è nel cestino delle skill): se serve,
   chiedere all'utente di reinstallarla.
