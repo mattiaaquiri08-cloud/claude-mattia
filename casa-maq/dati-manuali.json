@@ -15,8 +15,9 @@
       "ramo": "claude/nifty-fermi-4z2y3y",
       "stato": "Cliente",
       "tono": "ok",
-      "nota": "Sito quasi pronto (privacy e dati della ditta inseriti), da pubblicare",
-      "sigla": "Exotique"
+      "nota": "Online su exotiqueestetique.com dal 19/11 (Cloudflare Pages di Naomi); post mensile per i social",
+      "sigla": "Exotique",
+      "link": "https://exotiqueestetique.com"
     },
     {
       "nome": "Enrico Picciolo",
