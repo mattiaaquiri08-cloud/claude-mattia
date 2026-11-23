@@ -16,7 +16,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Sicch%C3%A9+-+Roba+Toscana+Via+Beniamino+Franklin%2C+12c%2C+00153+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 1
   },
   {
@@ -24,7 +24,7 @@
    "settore": "Ristorante romano",
    "zona": "Ostiense",
    "indirizzo": "Via dei Magazzini Generali, 4, 00154 Roma RM",
-   "recensioni": 29,
+   "recensioni": 30,
    "voto": 5.0,
    "telefono": "+39 375 878 2047",
    "online": [
@@ -32,7 +32,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Allier+Via+dei+Magazzini+Generali%2C+4%2C+00154+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 2
   },
   {
@@ -40,7 +40,7 @@
    "settore": "Locale specializzato in cocktail",
    "zona": "Testaccio",
    "indirizzo": "Via Galvani, 33, 00153 Roma RM",
-   "recensioni": 22,
+   "recensioni": 25,
    "voto": 5.0,
    "telefono": "+39 340 644 3474",
    "online": [
@@ -48,7 +48,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Galvino+Testaccio+Via+Galvani%2C+33%2C+00153+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 3
   },
   {
@@ -56,7 +56,7 @@
    "settore": "Enoteca",
    "zona": "Prati",
    "indirizzo": "Viale delle Milizie, 122, 00192 Roma RM",
-   "recensioni": 45,
+   "recensioni": 46,
    "voto": 4.9,
    "telefono": "+39 375 864 5245",
    "online": [
@@ -64,7 +64,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Cosetta+Viale+delle+Milizie%2C+122%2C+00192+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 4
   },
   {
@@ -80,7 +80,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=MaDai%21+Via+dei+Glicini%2C+70a%2C+00172+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 5
   },
   {
@@ -88,7 +88,7 @@
    "settore": "Enoteca",
    "zona": "Tuscolano",
    "indirizzo": "Via di Santa Maria Ausiliatrice, 15, 00181 Roma RM",
-   "recensioni": 47,
+   "recensioni": 48,
    "voto": 4.9,
    "telefono": "+39 339 650 4324",
    "online": [
@@ -96,7 +96,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Les+Amis+Via+di+Santa+Maria+Ausiliatrice%2C+15%2C+00181+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 6
   },
   {
@@ -104,15 +104,15 @@
    "settore": "Ristorante",
    "zona": "Centocelle",
    "indirizzo": "Via dei Platani, 117, 00172 Roma RM",
-   "recensioni": 30,
-   "voto": 4.9,
-   "telefono": "+39 351 628 9382",
+   "recensioni": 38,
+   "voto": 4.8,
+   "telefono": "+39 351 954 4760",
    "online": [
     "Google"
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Club26+Centocelle+Via+dei+Platani%2C+117%2C+00172+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 7
   },
   {
@@ -120,7 +120,7 @@
    "settore": "Barbiere",
    "zona": "Monti",
    "indirizzo": "Via Merulana, 114, 00185 Roma RM",
-   "recensioni": 45,
+   "recensioni": 47,
    "voto": 5.0,
    "telefono": "+39 351 435 2954",
    "online": [
@@ -128,7 +128,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Fresh+Barbershop+Merulana+Via+Merulana%2C+114%2C+00185+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 8
   },
   {
@@ -145,7 +145,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Fade+Barber+Studio+Via+Delle+Azalee%2C+73%2C+00172+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 9
   },
   {
@@ -153,8 +153,8 @@
    "settore": "Parrucchiere",
    "zona": "Pigneto",
    "indirizzo": "Via Renzo da Ceri, 128, 00176 Roma RM",
-   "recensioni": 51,
-   "voto": 5.0,
+   "recensioni": 52,
+   "voto": 4.9,
    "telefono": "+39 348 535 6117",
    "online": [
     "Google",
@@ -162,7 +162,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Hair+Lab+di+Michaela+Via+Renzo+da+Ceri%2C+128%2C+00176+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 10
   },
   {
@@ -178,7 +178,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=BLOOM+NAIL+STUDIO+Via+Giovanni+Branca%2C+54%2C+00153+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 11
   },
   {
@@ -194,7 +194,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Salu.b+estetica+avanzata+Via+Padre+Semeria%2C+53%2C+00154+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 12
   },
   {
@@ -202,7 +202,7 @@
    "settore": "Palestra",
    "zona": "Balduina",
    "indirizzo": "Via Licinio Calvo, 63, 00136 Roma RM",
-   "recensioni": 53,
+   "recensioni": 56,
    "voto": 5.0,
    "telefono": "+39 328 361 6700",
    "online": [
@@ -210,7 +210,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Level+Up+Balduina+-+T%28h%29rust+your+body+Via+Licinio+Calvo%2C+63%2C+00136+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 13
   },
   {
@@ -226,7 +226,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Studio+141+Pilates+Garbatella+Via+Carlo+Citerni%2C+41%2C+00154+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 14
   },
   {
@@ -242,7 +242,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Higher+Ground+Tattoo+via%2C+Via+Giulio+Curioni%2C+69%2C+00158+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 15
   },
   {
@@ -250,7 +250,7 @@
    "settore": "Meccanico",
    "zona": "Tuscolano",
    "indirizzo": "Via Tuscolana, 53, 00182 Roma RM",
-   "recensioni": 32,
+   "recensioni": 33,
    "voto": 5.0,
    "telefono": "+39 328 657 8174",
    "online": [
@@ -258,7 +258,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Officina+Marafini+Via+Tuscolana%2C+53%2C+00182+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 16
   },
   {
@@ -266,7 +266,7 @@
    "settore": "Personal trainer",
    "zona": "Centocelle",
    "indirizzo": "Via dei Faggi, 45/47, 00172 Roma RM",
-   "recensioni": 50,
+   "recensioni": 52,
    "voto": 5.0,
    "telefono": "+39 380 646 6803",
    "online": [
@@ -275,7 +275,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Personal+Studio+Tortuga+Via+dei+Faggi%2C+45%2F47%2C+00172+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 17
   },
   {
@@ -291,7 +291,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Dresia+Studio+-+Centro+Pilates+Via+di+Monte+Verde%2C+25%2C+00152+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 18
   },
   {
@@ -308,7 +308,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Ramnes+-+Winebar+Via+dei+Ramni%2C+28%2C+00185+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 19
   },
   {
@@ -325,7 +325,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Estetica+Vintage+-+Monteverde+Via+Severo+Carmignano%2C+13%2C+00151+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 20
   },
   {
@@ -342,7 +342,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Nails+Mon+Amour+Via+Delle+Azalee%2C+140%2C+00172+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 21
   },
   {
@@ -350,7 +350,7 @@
    "settore": "Locale specializzato in cocktail",
    "zona": "EUR",
    "indirizzo": "Viale Europa, 313, 00144 Roma RM",
-   "recensioni": 23,
+   "recensioni": 27,
    "voto": 5.0,
    "telefono": "+39 347 919 1167",
    "online": [
@@ -359,7 +359,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=respiro+Viale+Europa%2C+313%2C+00144+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 22
   },
   {
@@ -376,7 +376,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Ju+Jitsu+Torpignattara+Roma+-+Wjj+Pma+Italia+Arti+marziali+Via+Mario+Cartaro%2C+10%2C+00176+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 23
   },
   {
@@ -392,7 +392,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Studio+di+fisioterapia+-+FISIO+REVOLUTION+Via+Gaspare+Gozzi%2C+145%2C+00145+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 24
   },
   {
@@ -408,7 +408,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Ali+pinsa+Pinseria+Via+delle+Giunchiglie%2C+53%2C+00172+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 25
   },
   {
@@ -424,7 +424,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Pilates+Reformer+Tuscolana+Via+Statilio+Ottato%2C+25%2C+00175+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 26
   },
   {
@@ -432,7 +432,7 @@
    "settore": "Parrucchiere",
    "zona": "EUR",
    "indirizzo": "Via del Pianeta Venere, 54/56, 00144 Roma RM",
-   "recensioni": 48,
+   "recensioni": 50,
    "voto": 5.0,
    "telefono": "+39 375 889 8150",
    "online": [
@@ -441,7 +441,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Alma+Hair+Salon%2C+Eur+Roma+Via+del+Pianeta+Venere%2C+54%2F56%2C+00144+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 27
   },
   {
@@ -449,7 +449,7 @@
    "settore": "Ristopub",
    "zona": "Pigneto",
    "indirizzo": "Via Avellino, 18 A/B, 00176 Roma RM",
-   "recensioni": 38,
+   "recensioni": 40,
    "voto": 5.0,
    "telefono": "+39 320 423 4567",
    "online": [
@@ -457,7 +457,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=IVORY+PIGNETO+Via+Avellino%2C+18+A%2FB%2C+00176+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 28
   },
   {
@@ -473,7 +473,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Autofficina+-+Ricarica+Aria+Condizionata+Via+Panaria%2C+5%2C+00141+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 29
   },
   {
@@ -490,7 +490,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Hard+Work+Tattoo+Via+di+S.+Calisto%2C+8%2C+00153+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 30
   },
   {
@@ -507,7 +507,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=H2B+Beauty+Via+Lambro%2C+2%2C+00199+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 31
   },
   {
@@ -523,7 +523,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Giuseppe+Il+Tuo+Curatore+D%60Immagine+Via+Lucrino%2C+20+B%2C+00199+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 32
   },
   {
@@ -540,7 +540,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=JC+Studio+Nails+%5Cu0026+Academy+-+Jessica+Costa+Via+di+Valle+Melaina%2C+50%2C+00139+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 33
   },
   {
@@ -557,7 +557,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Secco+baretto+Via+Luigi+Mancinelli%2C+23%2C+00199+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 34
   },
   {
@@ -565,7 +565,7 @@
    "settore": "Fisioterapista",
    "zona": "Trastevere",
    "indirizzo": "Viale di Trastevere, 82, 00153 Roma RM",
-   "recensioni": 42,
+   "recensioni": 43,
    "voto": 5.0,
    "telefono": "+39 352 251 4652",
    "online": [
@@ -573,7 +573,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Dott.ssa+Diana+Moretti+-+Fisioterapista+a+Roma+Viale+di+Trastevere%2C+82%2C+00153+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 36
   },
   {
@@ -589,7 +589,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Centro+Pilates+e+Ginnastica+Posturale+BolerOl%C3%A9+Via+dei+Quintili%2C+45%2C+00175+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 37
   },
   {
@@ -605,7 +605,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Parrucchiere+Roma+Ostiense+Garbatella+-+Home+Salon+32+Via+Bartolomeo+Diaz%2C+32%2C+00154+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 38
   },
   {
@@ -613,7 +613,7 @@
    "settore": "Ristorante asiatico",
    "zona": "Torpignattara",
    "indirizzo": "Via di Tor Pignattara, 91, 00177 Roma RM",
-   "recensioni": 23,
+   "recensioni": 27,
    "voto": 5.0,
    "telefono": "+39 351 135 7948",
    "online": [
@@ -621,7 +621,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=New+Kathmandu+Restaurant+%5Cu0026+Bar+Via+di+Tor+Pignattara%2C+91%2C+00177+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 39
   },
   {
@@ -637,7 +637,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Autofficina+QB+Car+Service+Viale+Opita+Oppio%2C+35%2C+00174+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 40
   },
   {
@@ -654,7 +654,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Traditional+Stone+Tattoo+-+studio+di+tatuaggi+-+tradizionale%2C+giapponese%2C+bianco+e+nero+Via+Dante+de+Blasi%2C+47%2C+00151+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 41
   },
   {
@@ -671,7 +671,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Monica+beauty+studio+Furio+Camillo%2C+Via+Gino+Capponi%2C+90%2C+00179+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 42
   },
   {
@@ -687,7 +687,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Parrucchiere+per+uomo+Via+Vespasiano%2C+5%2C+00192+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 43
   },
   {
@@ -704,7 +704,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Nailsaloon-Centocell%2FPignatt+Tower+Via+dei+Glicini%2C+36+a%2C+00172+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 44
   },
   {
@@ -712,7 +712,7 @@
    "settore": "Negozio di vini",
    "zona": "Appio Latino",
    "indirizzo": "Via Tommaso da Celano, 116, 00179 Roma RM",
-   "recensioni": 56,
+   "recensioni": 60,
    "voto": 5.0,
    "telefono": "+39 366 206 3600",
    "online": [
@@ -721,7 +721,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Enoteca+Cantiere+Vino+Via+Tommaso+da+Celano%2C+116%2C+00179+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 45
   },
   {
@@ -737,7 +737,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Muay+thai+San+lorenzo+Via+dei+Volsci%2C+94%2C+00185+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 46
   },
   {
@@ -753,7 +753,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Dott.+Stefano+Arcioni%2C+Fisioterapista+Via+Ghirza%2C+9%2C+00198+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 47
   },
   {
@@ -769,7 +769,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Giuliana+e+Dora+hair+parrucchiere+Via+Casilina%2C+315+A%2C+00176+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 48
   },
   {
@@ -785,7 +785,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=AUTOFFICINA+DR+AUTOSPORT+DI+ZEZZA+DANIELE+E+ROBERTO+Piazza+dei+Bossi%2C+14-15%2C+00172+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 49
   },
   {
@@ -802,7 +802,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Saint+Parker+Tattoo+Shop+Via+Genzano%2C+189%2C+00179+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 50
   },
   {
@@ -818,7 +818,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Fabio+Serafini+Hair+Care+Education+%5Cu0026+Training+Via+di+S.+Calisto%2C+6%2FA%2C+00100+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 51
   },
   {
@@ -834,7 +834,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Tajo+-+cocktailpub+Via+Gentile+da+Mogliano%2C+180%2C+00176+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 52
   },
   {
@@ -850,7 +850,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Justfit+Roma+Libia+Via+Roccantica%2C+20%2C+00199+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 53
   },
   {
@@ -866,7 +866,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Fisiomariani+Piazza+Adele+Zoagli+2%2C+piano+strada%2C+00145+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 54
   },
   {
@@ -882,7 +882,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=The+Mirror+Parrucchiere+Via+Bartolomeo+Perestrello%2C+118%2C+00176+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 55
   },
   {
@@ -898,7 +898,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Officina+G.V.+Auto+Viale+delle+Mura+Portuensi%2C+6%2C+00153+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 56
   },
   {
@@ -915,7 +915,7 @@
    ],
    "maps": "https://www.google.com/maps/search/?api=1&query=Rubedo+Tattoo+Studio+Via+Antonio+Silvani%2C+71%2F73%2C+00139+Roma+RM",
    "stato": "Da chiamare",
-   "verificato": "2026-11-16",
+   "verificato": "2026-11-23",
    "n": 57
   }
  ]
